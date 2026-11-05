@@ -8,6 +8,10 @@
 //   · agua      tipo_nivel "quiz_agua"      tema "submarino"   · zona_agua que cubre todo el nivel, enemigos acuáticos
 //   · castillo  tipo_nivel "quiz_castillo"  tema "lava-fortaleza" · puente + palanca opcional y jefe_quiz con ≥ 5 preguntas
 //
+// Elementos de plataformas (CONTRATO §4b «Más elementos»): hileras de `ladrillo` (nada / moneda / moneda_multi y un `?` escondido),
+// 1–2 `plataforma_cae` sobre fosos cortos (la alternativa segura es saltar el foso) en tierra y castillo, y `planta_carnivora`
+// en ~45 % de las tuberías (el motor suelta además una planta si la pregunta de la tubería se falla).
+//
 // Elección del jefe (documentada, ver JEFES más abajo):
 //   mundo constitucion -> castillo: rey_entropia   (criatura de lava y engranajes; es el jefe de las fortalezas)
 //   mundo mouvement    -> castillo: golem_formulas (un golem de ecuaciones: fuerzas, vectores…)

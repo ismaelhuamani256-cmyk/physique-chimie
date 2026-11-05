@@ -48,7 +48,7 @@
     if (!gano) J.Audio.sfx('derrota');
     const w0 = g.bonus ? g.bonus.vuelta.w : g.w;
     const res = { capId: g.capId, gano, vidasRestantes: Math.max(0, g.vidas), coleccionados: g.coleccionados, jefeDerrotado: g.jefeDerrotado,
-      respuestas: { correctas: g.resp.correctas, total: g.resp.total }, premios: Object.assign({}, g.premios) };
+      respuestas: { correctas: g.resp.correctas, total: g.resp.total, mejorRacha: g.resp.mejorRacha || 0 }, premios: Object.assign({}, g.premios) };
     let hecho = false;
     g.ui.fin(Object.assign({ total: w0.items.length, modoQuiz: !!g.modoQuiz }, res), {
       continuar: () => {

@@ -164,7 +164,8 @@
     tb.replaceChildren(...[
       util.el('span', { class: 'marca' }, 'SUPER CLAUDE BROS'),
       n && n !== 'mapa' ? util.el('button', { class: 'btn mini', on: { click: () => PCB.flow.volverMapa() } }, '← Mapa') : null,
-      n === 'juego' ? util.el('button', { class: 'btn mini', title: 'Ir directo al capítulo', on: { click: () => PCB.flow.saltarJuego(c.capId) } }, 'Saltar juego → capítulo') : null,
+      // En Quiz Quest "saltar" va directo al capítulo (sin intro); en el juego normal, a la intro y luego al capítulo
+      n === 'juego' ? util.el('button', { class: 'btn mini', title: 'Ir directo al capítulo', on: { click: () => (c.modoQuiz ? PCB.flow.irCapituloDirecto(c.capId) : PCB.flow.saltarJuego(c.capId)) } }, c.modoQuiz ? 'Salir de Quiz Quest → capítulo' : 'Saltar juego → capítulo') : null,
       n === 'intro' ? util.el('button', { class: 'btn mini', on: { click: () => PCB.flow.finIntro(c.capId) } }, 'Saltar intro ⏭') : null,
       util.el('span', { class: 'sp' }),
       util.el('span', { class: 'chip' }, '🔥 ' + prog.racha.dias + ' d'),

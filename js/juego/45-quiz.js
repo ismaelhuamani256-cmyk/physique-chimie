@@ -17,6 +17,8 @@
     g.inp.saltoEdge = false; g.inp.accionEdge = false; g.inp.arribaEdge = false;
     g.ui.preguntaQ(q, info, (ok) => {
       g.resp.total++; if (ok) g.resp.correctas++;
+      // racha de aciertos seguidos (y la mejor de la partida) para el resumen del Quiz Quest
+      g.resp.racha = ok ? (g.resp.racha || 0) + 1 : 0; g.resp.mejorRacha = Math.max(g.resp.mejorRacha || 0, g.resp.racha);
       g.estado = 'jugando'; g.ui.estados(g);
       cb(ok);
     });

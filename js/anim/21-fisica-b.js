@@ -25,9 +25,9 @@
 //                     b   (opc.) 100–500 µm (250) separación de las dos rendijas
 //                     D   (opc.) 1–5  m   (2)     distancia rendija–pantalla
 //  doppler            f0  100–1000 Hz   (440)    frecuencia de la fuente
-//                     vs  0–300   m/s   (100)    celeridad de la fuente (v = 340 m·s⁻¹, dato típico del sonido en el aire)
+//                     vs  0–250   m/s   (100)    celeridad de la fuente (v = 340 m·s⁻¹, dato típico del sonido en el aire)
 //  lente              f   5–20    cm    (10)     distancia focal imagen f′ (lente convergente)
-//                     OA  2–40    cm    (25)     distancia objeto–lente (|OA|; algebraicamente OA = −|OA|)
+//                     OA  2–36    cm    (25)     distancia objeto–lente (|OA|; algebraicamente OA = −|OA|)
 //  fotones            nu  200–1500 THz  (700)    frecuencia de la radiación
 //                     W0  0,5–6   eV    (2,3)    trabajo de extracción del metal
 //                     Constantes del cours: h = 6,63×10⁻³⁴ J·s ; 1 eV = 1,60×10⁻¹⁹ J
@@ -1135,5 +1135,4 @@
   };
   PCB.anim.register('condensador-rc', RC);
 
-//@@FIN_PARTE_5@@
 })();

@@ -754,7 +754,12 @@
     const txt = (Math.abs(carga) > 1 ? Math.abs(carga) : '') + (carga > 0 ? '+' : '−');
     const bd = lib.textSprite(txt, { color: '#fff', bg: carga > 0 ? '#e5384f' : '#2f6bff', circle: true, h: 0.72, px: 56 });
     bd.position.set(r * 0.85, r * 0.85, 0.4); grp.add(bd);
-    const mol = { atomos: [{ el, r: r, lp: new T.Vector3(), mesh: null }], enlaces: [], spin: grp };
+    // para las reacciones: un ion poliatómico expone sus átomos (dentro de la esfera) y sus enlaces
+    let mol = { atomos: [{ el, r: r, lp: new T.Vector3(), mesh: null }], enlaces: [], spin: grp };
+    if (poli) {
+      const mm = resolverMolecula({ formula: ftxt, id: spec.id });
+      mol = { atomos: mm.atomos.map((at) => ({ el: at.el, r: infoEl(at.el).r * 0.5, lp: new T.Vector3(at.p[0] * 0.5, at.p[1] * 0.5, at.p[2] * 0.5), mesh: null })), enlaces: mm.enlaces.map(([i, j, ord]) => ({ i, j, ord })), spin: grp };
+    }
     return { obj: grp, radio: r * 1.5, tint: [mt], mol, caja: [r * 2.4, r * 2.4], ancla: [0, 0], update(a, S) { grp.position.y = Math.sin(S.i * 1.3 + r) * 0.05; } };
   };
 
@@ -787,7 +792,7 @@
       : [new T.Vector2(0, y0 + 0.05), new T.Vector2(Rl * 0.9, y0 + 0.05), new T.Vector2(Rl, y0 + 0.15), new T.Vector2(Rl * 1.05, lvl), new T.Vector2(0, lvl)], 36));
     const grp = new T.Group();
     const vidrio = lib.mat('#d8efff', { shininess: 120, specular: 0xffffff, opacity: 0.2, transparent: true, side: T.DoubleSide, depthWrite: false });
-    const liq = lib.mat(spec.color || '#4fc3f7', { shininess: 80, opacity: 0.82, transparent: true, side: T.DoubleSide, specular: 0x88aacc });
+    const liq = lib.mat(spec.color || '#4fc3f7', { opacity: 0.82, transparent: true, side: T.DoubleSide, specular: 0x223344, shininess: 25 });
     const mLiq = new T.Mesh(gLiq, liq); mLiq.renderOrder = 1; grp.add(mLiq);
     const mV = new T.Mesh(gOut, vidrio); mV.renderOrder = 2; grp.add(mV);
     // reflejo vertical (franja brillante)

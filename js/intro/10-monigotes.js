@@ -508,7 +508,7 @@
         lineas.forEach((l, i) => {
           const m = c.getTransform(), lx = 0, ly = (i - (lineas.length - 1) / 2) * 0.054;
           c.save(); c.setTransform(1, 0, 0, 1, 0, 0);
-          K.textoRico(c, l, m.a * lx + m.c * ly + m.e, m.b * lx + m.d * ly + m.f, px * dpr, { fill: col, fam: FUENTE });
+          K.textoRico(c, l, m.a * lx + m.c * ly + m.e, m.b * lx + m.d * ly + m.f, px * dpr, { fill: K.legible(col, true), halo: 'rgba(252,250,241,.9)', haloW: 4 * dpr, fam: FUENTE });
           c.restore();
         });
       };
@@ -624,6 +624,7 @@
       }
 
       function vectores() {
+        const etiquetas = [], colocadas = [];
         S.vectores.forEach((v) => {
           const a = S.actores[v.actor]; if (!a) return;
           const b = K.caja(a, S.aspecto), x0 = PX(b.cx), y0 = PY(b.cy), x1 = x0 + v.dx * W * cam.z, y1 = y0 + v.dy * H * cam.z;
@@ -632,14 +633,17 @@
           const xe = x1 - Math.cos(an) * cab * 0.6, ye = y1 - Math.sin(an) * cab * 0.6;
           linea(x0, y0, xe, ye, { w: Math.max(4, pen.lw * 1.25), c: col, amp: 1.2 });
           trazo([[x1 - Math.cos(an - 0.42) * cab, y1 - Math.sin(an - 0.42) * cab], [x1, y1], [x1 - Math.cos(an + 0.42) * cab, y1 - Math.sin(an + 0.42) * cab]], { w: Math.max(4, pen.lw * 1.25), c: col, close: true, fill: col, dbl: false, amp: 0.5 });
-          if (v.etiqueta) {
-            c.save(); c.setTransform(dpr, 0, 0, dpr, 0, 0);
-            const px = Math.max(15, H * 0.04), nx = -Math.sin(an), ny = Math.cos(an);
-            const tx = (x0 + x1) / 2 + nx * px * 1.0, ty = (y0 + y1) / 2 + ny * px * 1.0;
-            K.textoRico(c, v.etiqueta, tx, ty, px, { fill: col, halo: 'rgba(252,250,241,.95)', fam: FUENTE });
-            c.restore();
-          }
+          if (v.etiqueta) etiquetas.push({ v, col, x0, y0, x1, y1, caja: { x: PX(b.cx - b.hw), y: PY(b.cy - b.hh), w: b.hw * 2 * W * cam.z, h: b.hh * 2 * H * cam.z } });
         });
+        // etiquetas después de todas las flechas: sin solaparse entre sí, con la flecha ni con el actor
+        c.save(); c.setTransform(dpr, 0, 0, dpr, 0, 0);
+        etiquetas.forEach((e) => {
+          const px = Math.max(15, H * 0.04), w = K.textoRico(c, e.v.etiqueta, 0, 0, px, { medir: true, fam: FUENTE }) + 8, h = px * 1.25;
+          const p = K.colocaEtiqueta(colocadas, e.x0, e.y0, e.x1, e.y1, w, h, W, H, e.caja);
+          c.globalAlpha = e.v.alpha;
+          K.textoRico(c, e.v.etiqueta, p.x, p.y, px, { fill: K.legible(e.col, true), halo: 'rgba(252,250,241,.95)', fam: FUENTE });
+        });
+        c.restore();
         c.globalAlpha = 1;
       }
 

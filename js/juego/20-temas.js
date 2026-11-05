@@ -195,7 +195,8 @@
       x = nueva(0.16);          // nubes
       for (let i = 0; i < 9; i++) {
         const cx = i * 118 + r() * 50, cy = 50 + r() * 120;
-        envolver((ox) => { [[0, 0, 22], [24, -6, 26], [52, 2, 20], [22, 8, 24]].forEach(([dx, dy, rr]) => disco(x, cx + dx + ox, cy + dy, rr, 'rgba(255,255,255,.28)')); });
+        const colNube = J.mezcla(J.mezcla(p.cielo0, p.cielo1, cy / VH), '#ffffff', 0.28);   // opaco: sin manchas al solaparse
+        envolver((ox) => { [[0, 0, 22], [24, -6, 26], [52, 2, 20], [22, 8, 24]].forEach(([dx, dy, rr]) => disco(x, cx + dx + ox, cy + dy, rr, colNube)); });
       }
       for (let k = 0; k < 2; k++) {   // ondas lejanas
         x = nueva(0.26 + k * 0.1);

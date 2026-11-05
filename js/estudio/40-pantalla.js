@@ -63,7 +63,7 @@
     }
     const nPdf = cap.pdf_ini && cap.pdf_fin ? 'pp. ' + cap.pdf_ini + '–' + cap.pdf_fin : null;
     const cab = el('header', { class: 'est-cab' },
-      el('button', { class: 'btn est-volver', on: { click: volver }, 'aria-label': 'Volver al mapa' }, '← Mapa'),
+      // El botón ← Mapa ya está en la barra superior global (core.js); no se duplica aquí.
       el('div', { class: 'est-cab-t' },
         el('div', { class: 'est-kicker' }, (info.num ? 'Capítulo ' + info.num : 'Capítulo') + (cap.mundo ? ' · ' + cap.mundo : '')),
         el('h1', { lang: 'fr' }, cap.titulo || info.titulo || capId),

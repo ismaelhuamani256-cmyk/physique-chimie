@@ -39,7 +39,7 @@
     if (GL) return;
     let kata = '';
     try { // detecta si hay fuente con katakana (si no, se dibujaría "tofu")
-      const c = document.createElement('canvas'); c.width = c.height = 24; const g = c.getContext('2d'); g.font = '20px monospace';
+      const c = document.createElement('canvas'); c.width = c.height = 24; const g = c.getContext('2d', { willReadFrequently: true }); g.font = '20px monospace';
       g.fillText('ｱ', 2, 20); const a = g.getImageData(0, 0, 24, 24).data.join(); g.clearRect(0, 0, 24, 24); g.fillText('ﾈ', 2, 20); const b = g.getImageData(0, 0, 24, 24).data.join();
       if (a !== b && /[1-9]/.test(a)) kata = KATA;
     } catch (e) {}

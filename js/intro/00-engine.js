@@ -227,6 +227,53 @@
     return pal[K.hash(et || 'x') % pal.length];
   };
 
+  /** luminancia relativa aproximada 0..1 */
+  K.lum = (c) => { const q = K.rgb(c); return (0.2126 * q[0] + 0.7152 * q[1] + 0.0722 * q[2]) / 255; };
+  /**
+   * Ajusta un color para que se lea sobre el fondo del estilo: sobre fondo claro (papel) oscurece los
+   * colores claros (el blanco pasa a tinta); sobre fondo oscuro aclara los oscuros. Devuelve CSS.
+   */
+  K.legible = (col, fondoClaro, tinta) => {
+    if (col == null) return tinta || (fondoClaro ? '#262b36' : '#e8eefc');
+    let q = K.rgb(col), l = K.lum(q);
+    if (fondoClaro) {
+      if (l > 0.82) return tinta || '#262b36';
+      for (let i = 0; i < 12 && l > 0.38; i++) { q = K.mix(q, '#000000', 0.18); l = K.lum(q); }
+    } else {
+      if (l < 0.12) return tinta || '#e8eefc';
+      for (let i = 0; i < 12 && l < 0.55; i++) { q = K.mix(q, '#ffffff', 0.18); l = K.lum(q); }
+    }
+    return K.css(q);
+  };
+  /**
+   * Coloca una etiqueta de w×h px junto a una flecha (x0,y0)->(x1,y1) sin solaparse con otras etiquetas ya
+   * colocadas (lista de rects {x,y,w,h}), con la caja del actor `caja` ni con los bordes (W,H). Devuelve el
+   * centro {x,y} y registra el rect en la lista.
+   */
+  K.colocaEtiqueta = (lista, x0, y0, x1, y1, w, h, W, H, caja) => {
+    const dx = x1 - x0, dy = y1 - y0, l = Math.hypot(dx, dy) || 1, ux = dx / l, uy = dy / l, nx = -uy, ny = ux, gap = 7;
+    const ext = (vx, vy) => Math.abs(vx) * w / 2 + Math.abs(vy) * h / 2 + gap;
+    const mx = (x0 + x1) / 2, my = (y0 + y1) / 2, cand = [];
+    cand.push([x1 + ux * ext(ux, uy), y1 + uy * ext(ux, uy)]);
+    [1, -1].forEach((sg) => cand.push([mx + sg * nx * ext(nx, ny), my + sg * ny * ext(nx, ny)]));
+    cand.push([x0 - ux * ext(ux, uy), y0 - uy * ext(ux, uy)]);
+    for (let k = 1; k <= 3; k++) [1, -1].forEach((sg) => cand.push([mx + sg * nx * ext(nx, ny) * (1 + k * 0.7), my + sg * ny * ext(nx, ny) * (1 + k * 0.7)]));
+    const choca = (r, o) => r.x < o.x + o.w && r.x + r.w > o.x && r.y < o.y + o.h && r.y + r.h > o.y;
+    let mejor = null, mp = 1e9;
+    for (const c of cand) {
+      const r = { x: c[0] - w / 2, y: c[1] - h / 2, w, h };
+      let pen = 0;
+      lista.forEach((o) => { if (choca(r, o)) pen += 10; });
+      if (caja && choca(r, caja)) pen += 4;
+      if (r.x < 4 || r.y < 4 || r.x + w > W - 4 || r.y + h > H - 4) pen += 6;
+      if (pen < mp) { mp = pen; mejor = r; if (!pen) break; }
+    }
+    // si se sale del lienzo, lo empuja dentro
+    mejor.x = Math.max(4, Math.min(W - w - 4, mejor.x)); mejor.y = Math.max(4, Math.min(H - h - 4, mejor.y));
+    lista.push(mejor);
+    return { x: mejor.x + w / 2, y: mejor.y + h / 2 };
+  };
+
   /** parte un texto en líneas que quepan en maxW px con el font actual de ctx */
   K.envuelve = (ctx, texto, maxW) => {
     const pal = String(texto == null ? '' : texto).split(/\s+/), lineas = []; let cur = '';
@@ -276,6 +323,7 @@
     const fs = (k) => (k === 'n' ? px : px * 0.66);
     let tot = 0;
     parts.forEach((p) => { ctx.font = peso + ' ' + fs(p.k) + 'px ' + fam; p.w = ctx.measureText(p.t).width; tot += p.w; });
+    if (o.medir) return tot;
     let cx = o.align === 'left' ? x : o.align === 'right' ? x - tot : x - tot / 2;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     parts.forEach((p) => {
@@ -573,12 +621,12 @@
     };
     const eps = 0.04;
     lista.forEach((a) => {
-      let fRe = 1;
-      a.reac.forEach((r) => {
-        const p = K.clamp((t - r.t0) / r.dur, 0, 1);
-        if (r.rol === 'de') fRe *= 1 - K.smooth(p / 0.15);
-        else fRe *= K.smooth((p - 0.85) / 0.15);
-      });
+      // Fundido por reacciones: manda la reacción MÁS RECIENTE ya iniciada que lista al actor
+      // (así en reacciones reversibles un actor se apaga como `de` y reaparece como `a`).
+      let fRe = 1, ult = null;
+      for (const r of a.reac) if (r.t0 <= t) ult = r;
+      if (ult) { const p = K.clamp((t - ult.t0) / ult.dur, 0, 1); fRe = ult.rol === 'de' ? 1 - K.smooth(p / 0.15) : K.smooth((p - 0.85) / 0.15); }
+      else if (a.reac.length && a.reac[0].rol === 'a') fRe = 0; // los productos no existen antes de su reacción
       const x = evalPista(a.x, t), y = evalPista(a.y, t), alpha = K.clamp(evalPista(a.alpha, t), 0, 1) * fRe;
       let vx = 0, vy = 0;
       if (!congelado) { vx = (evalPista(a.x, t + eps) - evalPista(a.x, Math.max(0, t - eps))) / (t + eps - Math.max(0, t - eps)); vy = (evalPista(a.y, t + eps) - evalPista(a.y, Math.max(0, t - eps))) / (t + eps - Math.max(0, t - eps)); }

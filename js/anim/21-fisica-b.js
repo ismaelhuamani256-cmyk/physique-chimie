@@ -71,8 +71,8 @@
   const sci = (x, d = 2) => { const q = mant(x, d); return fmt(q.m, d) + '×10' + sup(q.e); };
   const texSci = (x, d = 2) => { const q = mant(x, d); return tx(q.m, d) + '\\times10^{' + q.e + '}'; };
   /** Duración legible (s → µs/ms/s). */
-  const tfmt = (s, d = 2) => (s < 1e-3 ? fmt(s * 1e6, d - 1 < 0 ? 0 : 1) + ' µs' : s < 1 ? fmt(s * 1e3, s < 0.01 ? 2 : 1) + ' ms' : fmt(s, d) + ' s');
-  const ttex = (s, d = 2) => (s < 1e-3 ? tx(s * 1e6, 1) + '\\ \\mu\\text{s}' : s < 1 ? tx(s * 1e3, s < 0.01 ? 2 : 1) + '\\ \\text{ms}' : tx(s, d) + '\\ \\text{s}');
+  const tfmt = (s, d = 2) => (s < 1e-3 ? fmt(s * 1e6, 1) + ' µs' : s < 0.1 ? fmt(s * 1e3, s < 0.01 ? 2 : 1) + ' ms' : fmt(s, d) + ' s');
+  const ttex = (s, d = 2) => (s < 1e-3 ? tx(s * 1e6, 1) + '\\ \\mu\\text{s}' : s < 0.1 ? tx(s * 1e3, s < 0.01 ? 2 : 1) + '\\ \\text{ms}' : tx(s, d) + '\\ \\text{s}');
   /** Longitud legible (m → mm/cm/m). */
   const lfmt = (m, d = 2) => (m < 0.01 ? fmt(m * 1e3, 2) + ' mm' : m < 1 ? fmt(m * 100, 1) + ' cm' : fmt(m, d) + ' m');
   const ltex = (m, d = 2) => (m < 0.01 ? tx(m * 1e3, 2) + '\\ \\text{mm}' : m < 1 ? tx(m * 100, 1) + '\\ \\text{cm}' : tx(m, d) + '\\ \\text{m}');
@@ -259,7 +259,7 @@
       // --- resumen
       const msg = k.P2 < 0 ? 'P₂ < 0: cavitación, el modelo ideal deja de valer' : (k.S2 < k.S1 ? 'S ↓  ⇒  v ↑  ⇒  P ↓' : k.S2 > k.S1 ? 'S ↑  ⇒  v ↓  ⇒  P ↑' : 'S₂ = S₁: nada cambia');
       chip(ctx, msg, w / 2, h - 14, { size: fs, color: k.P2 < 0 ? C.rojo : C.verde, align: 'center', border: k.P2 < 0 ? C.rojo : C.verde });
-      if (!compact) txt(ctx, 'ρ = 1000 kg·m⁻³ · P₁ = 1,50×10⁵ Pa · horizontal, sin pérdidas', w - 8, h - 10, { size: fs - 2, color: C.txt2, align: 'right' });
+      if (!compact) txt(ctx, 'ρ = 1000 kg·m⁻³ · P₁ = 1,50×10⁵ Pa · horizontal, sin pérdidas', w - 8, 14, { size: fs - 1.5, color: C.txt2, align: 'right' });
     },
     formula(p) {
       const k = bernCalc(p);
@@ -268,7 +268,7 @@
     },
     lecturas(p) {
       const k = bernCalc(p);
-      return [{ label: 'v₂', valor: fmt(k.v2, 2) + ' m·s⁻¹' }, { label: 'P₂', valor: sci(Math.max(k.P2, 0), 3) + ' Pa' },
+      return [{ label: 'v₂', valor: fmt(k.v2, 2) + ' m·s⁻¹' }, { label: 'P₂', valor: k.P2 < 0 ? '< 0 (cavitación)' : sci(k.P2, 3) + ' Pa' },
         { label: 'ΔP = P₂ − P₁', valor: fmt(k.dP / 1000, 1) + ' kPa' }, { label: 'S₁/S₂', valor: fmt(k.S1 / k.S2, 2) },
         { label: 'ρ (dato)', valor: '1000 kg·m⁻³' }, { label: 'P₁ (dato)', valor: sci(P1B, 2) + ' Pa' }];
     },
@@ -308,15 +308,15 @@
       fondo(ctx, w, h); S.btns = []; const fs = fsz(w), compact = w < 520;
       const Q = num(p.Q, 0), W = num(p.W, 0), dU = Q + W, s = S.s, U = clamp(U0T + dU * s, 120, UMAXT), fl = S.flujo ? 1 : 0;
       // --- cilindro
-      const cw = clamp(w * 0.27, 96, 210), cx = w * 0.3, xl = cx - cw / 2, xr = cx + cw / 2;
-      const yb = h * 0.72, yt = h * 0.2, ch = yb - yt;
+      const cw = clamp(w * 0.27, 90, 210), cx = w * (compact ? 0.34 : 0.3), xl = cx - cw / 2, xr = cx + cw / 2;
+      const yb = h * 0.72, yt = h * (compact ? 0.27 : 0.2), ch = yb - yt;
       const yp0 = yt + ch * 0.42, yp = yp0 + clamp(W / 500, -1, 1) * ch * 0.3 * s; // W>0 comprime: el pistón baja
       S.cw = cw; S.gh = yb - yp;
       // fuente de calor / sumidero bajo el cilindro
       const t = S.t;
       if (Math.abs(Q) < 1) { ctx.fillStyle = 'rgba(159,176,217,.2)'; ctx.fillRect(xl - 8, yb, cw + 16, 12); txt(ctx, 'Q = 0 (pared adiabática)', cx, yb + 30, { size: fs, color: C.txt2, align: 'center' }); }
       else if (Q > 0) {
-        for (let i = 0; i < 5; i++) { const fx = xl + 10 + (i + 0.5) * (cw - 20) / 5, fh = 24 + 10 * Math.sin(t * 9 + i * 1.7) + 12 * Math.sin(t * 5.3 + i);
+        for (let i = 0; i < 5; i++) { const fx = xl + 10 + (i + 0.5) * (cw - 20) / 5, fh = (compact ? 0.7 : 1) * (24 + 10 * Math.sin(t * 9 + i * 1.7) + 12 * Math.sin(t * 5.3 + i));
           const g = ctx.createLinearGradient(0, yb + 14 + fh, 0, yb + 14); g.addColorStop(0, '#ffd166'); g.addColorStop(0.5, '#ff6b4a'); g.addColorStop(1, 'rgba(255,60,40,0)');
           ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(fx, yb + 14 + fh * 0.0 + 6, (cw / 12), fh * 0.55 + 4, 0, 0, TAU); ctx.fill(); }
         ctx.fillStyle = '#3a2a2a'; rr(ctx, xl - 8, yb + 2, cw + 16, 10, 4); ctx.fill();
@@ -344,16 +344,16 @@
           arrow(ctx, ax, y0 + (y1 - y0) * 0.7, ax, y1, C.calor, lw, 6 + lw * 1.6);
         }
         ctx.globalAlpha = 1;
-        txt(ctx, 'Q = ' + sgn(Q) + ' J', xl - 8, yb + 36, { size: fs + 1, color: C.calor, align: 'right', w: 700, halo: true });
-        txt(ctx, Q > 0 ? 'recibido' : 'cedido', xl - 8, yb + 36 + fs + 3, { size: fs - 1, color: C.txt2, align: 'right' });
+        txt(ctx, 'Q = ' + sgn(Q) + ' J', compact ? 6 : xl - 8, yb + 36, { size: fs + (compact ? 0 : 1), color: C.calor, align: compact ? 'left' : 'right', w: 700, halo: true });
+        txt(ctx, Q > 0 ? 'recibido' : 'cedido', compact ? 6 : xl - 8, yb + 36 + fs + 3, { size: fs - 1, color: C.txt2, align: compact ? 'left' : 'right' });
       }
       // --- flecha de trabajo W sobre el pistón
       if (Math.abs(W) >= 1) {
         const L = 26 + 40 * Math.abs(W) / 500, ax = cx + cw * 0.3, a = 0.35 + 0.65 * fl; ctx.globalAlpha = a;
         if (W > 0) arrow(ctx, ax, yp - 12 - L, ax, yp - 12, C.ambar, 4, 16); else arrow(ctx, ax, yp - 12, ax, yp - 12 - L, C.ambar, 4, 16);
         ctx.globalAlpha = 1;
-        txt(ctx, 'W = ' + sgn(W) + ' J', xl - 8, yp - 22, { size: fs + 1, color: C.ambar, align: 'right', w: 700, halo: true });
-        txt(ctx, W > 0 ? 'recibido (compresión)' : 'cedido (expansión)', xl - 8, yp - 22 + fs + 3, { size: fs - 1, color: C.txt2, align: 'right' });
+        txt(ctx, 'W = ' + sgn(W) + ' J', compact ? 6 : xl - 8, yp - 22, { size: fs + (compact ? 0 : 1), color: C.ambar, align: compact ? 'left' : 'right', w: 700, halo: true });
+        txt(ctx, W > 0 ? (compact ? 'recibido' : 'recibido (compresión)') : (compact ? 'cedido' : 'cedido (expansión)'), compact ? 6 : xl - 8, yp - 22 + fs + 3, { size: fs - 1, color: C.txt2, align: compact ? 'left' : 'right' });
       }
       // --- balance de energía interna (cascada U_i → +Q → +W → U_f), misma escala vertical
       const bx0 = w * 0.585, bw = (w * 0.965 - bx0) / 5.5, gap = bw * 0.5, yU = (v) => yb - (clamp(v, 0, UMAXT) / UMAXT) * (yb - yt);
@@ -377,8 +377,8 @@
       txt(ctx, 'ΔU = ' + sgn(dU) + ' J', (colx(0) + colx(3) + bw) / 2, yt - 12, { size: fs + 2, color: dU > 0 ? C.verde : dU < 0 ? C.frio : C.txt2, align: 'center', w: 700 });
       txt(ctx, dU > 0.5 ? 'U aumenta · T sube' : dU < -0.5 ? 'U disminuye · T baja' : 'U no cambia', (colx(0) + colx(3) + bw) / 2, yt + 4, { size: fs - 1, color: C.txt2, align: 'center' });
       // --- convenio de signos
-      chip(ctx, 'Convenio: lo que RECIBE el sistema es positivo (+)', w / 2, h - 30, { size: fs, align: 'center', color: C.ambar, border: C.ambar });
-      txt(ctx, 'Q > 0 calor recibido · W > 0 compresión (el entorno trabaja sobre el gas)', w / 2, h - 10, { size: fs - 1.5, color: C.txt2, align: 'center' });
+      chip(ctx, 'Convenio: lo que RECIBE el sistema es positivo (+)', w / 2, compact ? h - 12 : h - 30, { size: fs, align: 'center', color: C.ambar, border: C.ambar });
+      if (!compact) txt(ctx, 'Q > 0 calor recibido · W > 0 compresión (el entorno trabaja sobre el gas)', w / 2, h - 10, { size: fs - 1.5, color: C.txt2, align: 'center' });
     },
     formula(p) {
       const Q = num(p.Q, 0), W = num(p.W, 0);
@@ -473,7 +473,7 @@
       txt(ctx, 'τ = ' + fmt(tau, 0) + ' s', xT + 6, G.y + G.h - 6, { size: fs, color: C.ambar, w: 700, halo: true });
       txt(ctx, 'T(τ) = ' + fmt(k.T(tau), 1) + ' °C  (63 % del cambio)', Math.min(xT + 8, G.x + G.w - 6), yT + (k.T0 > k.Te ? -8 : fs + 8), { size: fs - 1, color: C.ambar, align: xT + 8 > G.x + G.w * 0.55 ? 'right' : 'left', halo: true });
       txt(ctx, 'T_ext', G.x + G.w - 4, ax.Y(k.Te) + (k.T0 > k.Te ? -6 : fs + 5), { size: fs, color: C.frio, align: 'right', w: 700, halo: true });
-      txt(ctx, 'tangente en t = 0', ax.X(tau * 0.5) + 8, ax.Y(lerp(k.T0, k.Te, 0.5)) - 6, { size: fs - 2, color: 'rgba(255,209,102,.8)', halo: true });
+      if (wide) txt(ctx, 'tangente en t = 0', ax.X(tau * 0.5) + 8, ax.Y(lerp(k.T0, k.Te, 0.5)) - 6, { size: fs - 2, color: 'rgba(255,209,102,.8)', halo: true });
       // punto móvil
       ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(ax.X(t), ax.Y(T), 5.5, 0, TAU); ctx.fill(); ctx.strokeStyle = C.cian; ctx.lineWidth = 2.5; ctx.stroke();
     },
@@ -683,7 +683,7 @@
       if (!k.modo) {
         ctx.setLineDash([6, 5]); ctx.strokeStyle = C.ambar; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(g.xb, g.cyc); ctx.lineTo(g.xs, g.cyc - yfan); ctx.moveTo(g.xb, g.cyc); ctx.lineTo(g.xs, g.cyc + yfan); ctx.stroke(); ctx.setLineDash([]);
         ctx.strokeStyle = C.ambar; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.arc(g.xb, g.cyc, g.Dv * 0.17, -Math.asin(Math.min(1, 1 / g.aR)), 0); ctx.stroke();
-        txt(ctx, 'θ ≈ λ/a = ' + fmt(k.th, 4) + ' rad', g.xb + g.Dv * 0.19, g.cyc - 6 - fs * 0.2, { size: fs, color: C.ambar, w: 700, halo: true });
+        txt(ctx, (w >= 560 ? 'θ ≈ λ/a = ' : 'θ = ') + fmt(k.th, 4) + ' rad', g.xb + g.Dv * 0.19, g.cyc - 6 - fs * 0.2, { size: fs, color: C.ambar, w: 700, halo: true });
       }
       // ---- pantalla con el patrón de intensidad
       const I = (y) => { const s_ = (y - g.cyc) / Math.hypot(y - g.cyc, g.Dv); let v = sinc2(Math.PI * g.aR * s_); if (k.modo) { const cc = Math.cos(Math.PI * g.bR * s_); v *= cc * cc; } return v; };
@@ -696,12 +696,12 @@
       // cotas sobre la pantalla (valores reales)
       if (!k.modo) {
         cota(ctx, g.xs - 10, g.cyc - yfan, g.xs - 10, g.cyc + yfan, null, C.ambar, fs);
-        txt(ctx, 'L = 2λD/a', g.xs - 16, g.cyc - 4, { size: fs, color: C.ambar, align: 'right', w: 700, halo: true }); txt(ctx, '= ' + lfmt(k.Lc, 1), g.xs - 16, g.cyc + fs, { size: fs, color: C.ambar, align: 'right', w: 700, halo: true });
+        if (w >= 560) { txt(ctx, 'L = 2λD/a', g.xs - 16, g.cyc - 4, { size: fs, color: C.ambar, align: 'right', w: 700, halo: true }); txt(ctx, '= ' + lfmt(k.Lc, 1), g.xs - 16, g.cyc + fs, { size: fs, color: C.ambar, align: 'right', w: 700, halo: true }); } else txt(ctx, 'L = ' + lfmt(k.Lc, 1), g.xs - 16, g.cyc + 4, { size: fs, color: C.ambar, align: 'right', w: 700, halo: true });
       } else {
         const yi = g.Dv * Math.tan(Math.asin(Math.min(1, 1 / g.bR)));
         if (g.cyc - yi > g.y0 + 4) { cota(ctx, g.xs - 10, g.cyc, g.xs - 10, g.cyc - yi, null, C.ambar, fs); txt(ctx, 'i = λD/b', g.xs - 16, g.cyc - yi / 2 - 3, { size: fs, color: C.ambar, align: 'right', w: 700, halo: true }); txt(ctx, '= ' + lfmt(k.i, 1), g.xs - 16, g.cyc - yi / 2 + fs, { size: fs, color: C.ambar, align: 'right', w: 700, halo: true }); }
       }
-      txt(ctx, 'onda plana →', g.xb * 0.5, g.y0 - 9, { size: fs - 1, color: C.txt2, align: 'center' });
+      if (w >= 560) txt(ctx, 'onda plana →', g.xb * 0.5, g.y0 - 9, { size: fs - 1, color: C.txt2, align: 'center' });
       btn(S, ctx, { x: 10, y: 6, w: 96, h: 26, label: 'Una rendija', active: !k.modo, on: () => { p.modo = 0; S._vt = 9; vivo(S, DIFR, p, 0); }, size: fs });
       btn(S, ctx, { x: 112, y: 6, w: 104, h: 26, label: 'Dos rendijas', active: !!k.modo, on: () => { p.modo = 1; S._vt = 9; vivo(S, DIFR, p, 0); }, size: fs });
       txt(ctx, 'Esquema no a escala: proporciones exageradas', w - 10, h - 6, { size: fs - 2, color: C.txt2, align: 'right' });
@@ -751,8 +751,8 @@
     },
     draw(S, ctx, w, h, p) {
       fondo(ctx, w, h); const k = dopCalc(p), fs = fsz(w), wide = w >= 560;
-      const R = wide ? { x: 6, y: 6, w: w * 0.64, h: h - 12 } : { x: 6, y: 4, w: w - 12, h: h * 0.56 };
-      const G = wide ? { x: w * 0.64 + 54, y: 34, w: w * 0.36 - 70, h: h - 96 } : { x: 48, y: h * 0.56 + 26, w: w - 66, h: h * 0.44 - 66 };
+      const R = wide ? { x: 6, y: 6, w: w * 0.64, h: h - 12 } : { x: 6, y: 4, w: w - 12, h: h * 0.57 };
+      const G = wide ? { x: w * 0.64 + 54, y: 34, w: w * 0.36 - 70, h: h - 96 } : { x: 50, y: h * 0.57 + 22, w: w - 66, h: h * 0.43 - 50 };
       const cy = R.y + R.h * (wide ? 0.5 : 0.56), X = (f) => R.x + f * R.w, rad = Math.min(R.h * 0.34, 36);
       ctx.fillStyle = 'rgba(18,26,51,.5)'; rr(ctx, R.x, R.y, R.w, R.h, 12); ctx.fill(); ctx.strokeStyle = 'rgba(42,55,107,.9)'; ctx.stroke();
       ctx.strokeStyle = 'rgba(159,176,217,.2)'; ctx.setLineDash([4, 6]); ctx.beginPath(); ctx.moveTo(R.x + 6, cy); ctx.lineTo(R.x + R.w - 6, cy); ctx.stroke(); ctx.setLineDash([]);
@@ -762,8 +762,8 @@
       ctx.restore();
       // cotas de longitud de onda delante y detrás (entre dos frentes consecutivos)
       const ahead = S.ems.map((e) => X(e.x) + (S.t - e.t) * CF * R.w).filter((x) => x > X(S.sx) + 20 && x < R.x + R.w - 14).sort((a, b) => a - b), behind = S.ems.map((e) => X(e.x) - (S.t - e.t) * CF * R.w).filter((x) => x < X(S.sx) - 20 && x > R.x + 14).sort((a, b) => b - a);
-      if (ahead.length >= 2) cota(ctx, ahead[0], cy + rad + 14, ahead[1], cy + rad + 14, 'λ delante = ' + lfmt(k.lF), C.magenta, fs, false);
-      if (behind.length >= 2) cota(ctx, behind[1], cy + rad + 14, behind[0], cy + rad + 14, 'λ detrás = ' + lfmt(k.lB), C.verde, fs, false);
+      if (wide && ahead.length >= 2) cota(ctx, ahead[0], cy + rad + 14, ahead[1], cy + rad + 14, 'λ delante = ' + lfmt(k.lF), C.magenta, fs, false);
+      if (wide && behind.length >= 2) cota(ctx, behind[1], cy + rad + 14, behind[0], cy + rad + 14, 'λ detrás = ' + lfmt(k.lB), C.verde, fs, false);
       // fuente móvil
       const sx = X(S.sx), gS = ctx.createRadialGradient(sx, cy, 0, sx, cy, 15); gS.addColorStop(0, '#fff3c4'); gS.addColorStop(1, C.ambar); ctx.fillStyle = gS; ctx.beginPath(); ctx.arc(sx, cy, 10, 0, TAU); ctx.fill();
       if (k.vs > 0) arrow(ctx, sx + 14, cy - 22, sx + 14 + 14 + k.vs * 0.18, cy - 22, C.ambar, 3, 10);
@@ -772,21 +772,21 @@
       const obs = (xf, o, col, lab, fth) => { const x = X(xf), fl = S.flash[o]; const y = cy + 2;
         ctx.fillStyle = 'rgba(' + (o === 'A' ? '0,212,255' : '255,61,166') + ',' + (0.12 + 0.4 * fl) + ')'; ctx.beginPath(); ctx.arc(x, y, 20 + 14 * fl, 0, TAU); ctx.fill();
         ctx.fillStyle = '#cfd8ff'; ctx.beginPath(); ctx.arc(x, y - 4, 7, 0, TAU); ctx.fill(); ctx.fillStyle = col; rr(ctx, x - 9, y + 4, 18, 14, 5); ctx.fill();
-        const tx_ = clamp(x, R.x + 84, R.x + R.w - 84); txt(ctx, lab, tx_, R.y + R.h - (wide ? 40 : 30), { size: fs, color: col, align: 'center', w: 700, halo: true });
-        txt(ctx, 'f = ' + fmt(fth, 0) + ' Hz', tx_, R.y + R.h - (wide ? 24 : 14), { size: fs + 1, color: C.txt, align: 'center', w: 700, halo: true });
-        if (S.meas[o] > 0) txt(ctx, 'medida: ' + fmt(S.meas[o], 0) + ' Hz', tx_, R.y + R.h - (wide ? 8 : -2), { size: fs - 1.5, color: C.txt2, align: 'center', halo: true }); };
+        const tx_ = clamp(x, R.x + 84, R.x + R.w - 84); txt(ctx, wide ? lab : (o === 'A' ? 'A: grave' : 'B: agudo'), tx_, R.y + R.h - (wide ? 40 : 24), { size: fs, color: col, align: 'center', w: 700, halo: true });
+        txt(ctx, 'f = ' + fmt(fth, 0) + ' Hz', tx_, R.y + R.h - (wide ? 24 : 9), { size: fs + 1, color: C.txt, align: 'center', w: 700, halo: true });
+        if (wide && S.meas[o] > 0) txt(ctx, 'medida: ' + fmt(S.meas[o], 0) + ' Hz', tx_, R.y + R.h - 8, { size: fs - 1.5, color: C.txt2, align: 'center', halo: true }); };
       obs(0.06, 'A', C.verde, k.vs > 0 ? 'A (detrás): más grave' : 'A', k.fB); obs(0.94, 'B', C.magenta, k.vs > 0 ? 'B (delante): más agudo' : 'B', k.fF);
       chip(ctx, 'v = 340 m/s (sonido en el aire) · tiempo ÷200', R.x + R.w / 2, R.y + 16, { size: fs - 1.5, align: 'center', color: C.txt2, border: C.borde, w: 400 });
       // gráfica f(vs)
-      const ymax = 4 * k.f0, ax = ejes(ctx, G, 0, 250, 0, ymax, { xt: [0, 50, 100, 150, 200, 250], fx: (v) => fmt(v, 0), fy: (v) => fmt(v, 0), xl: 'vₛ (m/s)', yl: 'f percibida (Hz)', ny: 4 });
+      const ymax = 4 * k.f0, ax = ejes(ctx, G, 0, 250, 0, ymax, { xt: [0, 50, 100, 150, 200, 250], fx: (v) => fmt(v, 0), fy: (v) => fmt(v, 0), xl: wide ? 'vₛ (m/s)' : '', yl: 'f percibida (Hz)', ny: wide ? 4 : 2 });
       ctx.save(); ctx.beginPath(); ctx.rect(G.x, G.y, G.w, G.h); ctx.clip();
       ctx.setLineDash([5, 5]); ctx.strokeStyle = C.txt2; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(G.x, ax.Y(k.f0)); ctx.lineTo(G.x + G.w, ax.Y(k.f0)); ctx.stroke(); ctx.setLineDash([]);
       [[(v) => (k.f0 * VSON) / (VSON - v), C.magenta], [(v) => (k.f0 * VSON) / (VSON + v), C.verde]].forEach(([fn, col]) => { ctx.strokeStyle = col; ctx.lineWidth = 2.6; ctx.beginPath(); for (let i = 0; i <= 100; i++) { const v = (250 * i) / 100; i ? ctx.lineTo(ax.X(v), ax.Y(fn(v))) : ctx.moveTo(ax.X(v), ax.Y(fn(v))); } ctx.stroke(); });
       ctx.restore();
       [[k.fF, C.magenta], [k.fB, C.verde]].forEach(([f, col]) => { ctx.fillStyle = col; ctx.beginPath(); ctx.arc(ax.X(k.vs), ax.Y(Math.min(f, ymax)), 5.5, 0, TAU); ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke(); });
       ctx.setLineDash([3, 4]); ctx.strokeStyle = 'rgba(255,209,102,.6)'; ctx.beginPath(); ctx.moveTo(ax.X(k.vs), G.y + G.h); ctx.lineTo(ax.X(k.vs), G.y); ctx.stroke(); ctx.setLineDash([]);
-      txt(ctx, 'delante: f₀v/(v−vₛ)', G.x + 6, G.y + 14, { size: fs - 1, color: C.magenta, w: 700 }); txt(ctx, 'detrás: f₀v/(v+vₛ)', G.x + G.w - 6, G.y + G.h - 8, { size: fs - 1, color: C.verde, w: 700, align: 'right' });
-      txt(ctx, 'f₀', G.x + G.w - 4, ax.Y(k.f0) - 5, { size: fs - 1, color: C.txt2, align: 'right' });
+      if (wide) { txt(ctx, 'delante: f₀v/(v−vₛ)', G.x + 6, G.y + 14, { size: fs - 1, color: C.magenta, w: 700 }); txt(ctx, 'detrás: f₀v/(v+vₛ)', G.x + G.w - 6, G.y + G.h - 8, { size: fs - 1, color: C.verde, w: 700, align: 'right' }); }
+      if (wide) txt(ctx, 'f₀', G.x + G.w - 4, ax.Y(k.f0) - 5, { size: fs - 1, color: C.txt2, align: 'right' });
     },
     formula(p) {
       const k = dopCalc(p);
@@ -843,7 +843,7 @@
       ctx.save(); ctx.beginPath(); ctx.rect(0, 0, w, h); ctx.clip();
       // eje óptico + graduación
       ctx.strokeStyle = 'rgba(159,176,217,.55)'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.stroke();
-      for (let c = -30; c <= 50; c += 10) { ctx.beginPath(); ctx.moveTo(X(c), cy - 3); ctx.lineTo(X(c), cy + 3); ctx.stroke(); if (c !== 0 && w > 420) txt(ctx, c + '', X(c), cy + 16, { size: fs - 3, color: 'rgba(159,176,217,.55)', align: 'center' }); }
+      for (let c = -30; c <= 50; c += 10) { ctx.beginPath(); ctx.moveTo(X(c), cy - 3); ctx.lineTo(X(c), cy + 3); ctx.stroke(); }
       // lente
       const Hl = Math.min(h * 0.4, hObj * 3.2 + 30), bulge = 11 + sx * 0.25; ctx.beginPath(); ctx.moveTo(xL, cy - Hl); ctx.quadraticCurveTo(xL + bulge * 1.9, cy, xL, cy + Hl); ctx.quadraticCurveTo(xL - bulge * 1.9, cy, xL, cy - Hl); ctx.closePath();
       const gl = ctx.createLinearGradient(xL - bulge, 0, xL + bulge, 0); gl.addColorStop(0, 'rgba(120,200,255,.28)'); gl.addColorStop(1, 'rgba(0,212,255,.42)'); ctx.fillStyle = gl; ctx.fill(); ctx.strokeStyle = C.cian2; ctx.lineWidth = 2; ctx.stroke();
@@ -944,7 +944,7 @@
       const B = wide ? { x: w * 0.6, y: 8, w: w * 0.38, h: h - 16 } : { x: 8, y: h * 0.56, w: w - 16, h: h * 0.43 };
       const yPlate = A.y + A.h * 0.8, ang = 0.62; // los fotones llegan inclinados desde arriba-izquierda
       S.geo = { x0: A.x, y0: A.y + 20, W: A.w, yPlate, ang, sx0: A.x + A.w * 0.0 };
-      const col = nmRGB(k.lamNm), uv = k.nu > 750, ir = k.nu < 430;
+      const col = nmRGB(k.lamNm).map((c) => Math.round(lerp(c, 255, 0.28))), uv = k.nu > 750, ir = k.nu < 430;
       ctx.fillStyle = 'rgba(18,26,51,.5)'; rr(ctx, A.x, A.y, A.w, A.h, 12); ctx.fill(); ctx.strokeStyle = 'rgba(42,55,107,.9)'; ctx.lineWidth = 1; ctx.stroke();
       ctx.save(); rr(ctx, A.x, A.y, A.w, A.h, 12); ctx.clip();
       // placa metálica con red de iones y mar de electrones
@@ -952,6 +952,8 @@
       const nIon = Math.floor(A.w / 26); for (let i = 0; i < nIon; i++) for (let j = 0; j < 2; j++) { const x = A.x + 13 + i * 26 + (j % 2) * 13, y = yPlate + 12 + j * 16; ctx.fillStyle = 'rgba(255,255,255,.28)'; ctx.beginPath(); ctx.arc(x, y, 5, 0, TAU); ctx.fill(); txt(ctx, '+', x, y + 0.5, { size: 8, color: 'rgba(10,15,32,.7)', align: 'center', base: 'middle', w: 700 }); }
       for (let i = 0; i < 14; i++) { const x = A.x + ((i * 0.37 + S.t * (0.04 + (i % 3) * 0.01) * (i % 2 ? 1 : -1)) % 1 + 1) % 1 * A.w, y = yPlate + 8 + ((i * 7) % 5) * 7; ctx.fillStyle = 'rgba(120,200,255,.8)'; ctx.beginPath(); ctx.arc(x, y + Math.sin(S.t * 3 + i) * 2, 2.2, 0, TAU); ctx.fill(); }
       txt(ctx, 'metal', A.x + 10, A.y + A.h - 8, { size: fs - 1, color: '#dfe6ff' });
+      // haz de luz (banda tenue en la dirección de los fotones)
+      { const bg = ctx.createLinearGradient(A.x, A.y, A.x + A.w * 0.8, yPlate); bg.addColorStop(0, rgb(col, 0.13)); bg.addColorStop(1, rgb(col, 0.03)); ctx.fillStyle = bg; ctx.beginPath(); ctx.moveTo(A.x, A.y + 20); ctx.lineTo(A.x + A.w * 0.9, A.y + 20); ctx.lineTo(A.x + A.w * 0.9 + Math.tan(ang) * (yPlate - A.y - 20), yPlate); ctx.lineTo(A.x + Math.tan(ang) * (yPlate - A.y - 20), yPlate); ctx.closePath(); ctx.fill(); }
       // fotones (paquetes de onda; más ciclos = mayor ν)
       const ncyc = clamp(k.nu / 150, 1.5, 10), Lp = 40;
       S.ph.forEach((q) => { const x = S.geo.sx0 + q.u * A.w * 0.9 + Math.sin(ang) * q.s, y = S.geo.y0 + Math.cos(ang) * q.s; if (y < A.y) return;
@@ -971,6 +973,18 @@
       else chip(ctx, 'e⁻ con Ec = ' + fmt(k.Ec, 2) + ' eV', A.x + A.w - 10, yPlate - 16, { size: fs, align: 'right', color: C.verde, border: C.verde });
       // ---------- panel de energías ----------
       ctx.fillStyle = 'rgba(18,26,51,.5)'; rr(ctx, B.x, B.y, B.w, B.h, 12); ctx.fill(); ctx.strokeStyle = 'rgba(42,55,107,.9)'; ctx.stroke();
+      if (!wide) {
+        // variante compacta: barra de energía horizontal (0 … 6,6 eV)
+        const Emax = 6.6, bx = B.x + 16, bw = B.w - 32, by = B.y + 42, bh = 20, xE = (e) => bx + (clamp(e, 0, Emax) / Emax) * bw, gE = Math.min(k.Eev, k.W0);
+        ctx.fillStyle = '#8590b8'; ctx.fillRect(bx, by, xE(gE) - bx, bh); txt(ctx, 'W₀', (bx + xE(gE)) / 2, by + bh / 2 + 1, { size: fs, color: C.bg, align: 'center', base: 'middle', w: 700 });
+        if (k.emite) { ctx.fillStyle = C.verde; ctx.fillRect(xE(k.W0), by, xE(k.Eev) - xE(k.W0), bh); if (xE(k.Eev) - xE(k.W0) > 18) txt(ctx, 'Ec', (xE(k.W0) + xE(k.Eev)) / 2, by + bh / 2 + 1, { size: fs, color: C.bg, align: 'center', base: 'middle', w: 700 }); }
+        ctx.strokeStyle = C.borde; ctx.lineWidth = 1.2; ctx.strokeRect(bx, by, bw, bh);
+        [0, 2, 4, 6].forEach((e) => txt(ctx, e + '', xE(e), by + bh + fs + 2, { size: fs - 2, color: C.txt2, align: 'center' })); txt(ctx, 'eV', bx + bw, by + bh + fs + 2, { size: fs - 2, color: C.txt2, align: 'right' });
+        ctx.strokeStyle = rgb(col); ctx.lineWidth = 2.4; ctx.beginPath(); ctx.moveTo(xE(k.Eev), by - 7); ctx.lineTo(xE(k.Eev), by + bh + 2); ctx.stroke();
+        txt(ctx, 'hν = ' + fmt(k.Eev, 2) + ' eV', Math.min(xE(k.Eev) + 4, bx + bw - 70), by - 10, { size: fs, color: rgb(col), w: 700 });
+        ctx.setLineDash([4, 3]); ctx.strokeStyle = C.ambar; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(xE(k.W0), by - 2); ctx.lineTo(xE(k.W0), by + bh + 2); ctx.stroke(); ctx.setLineDash([]);
+        txt(ctx, 'W₀ = ' + fmt(k.W0, 2) + ' eV', bx, by - 10, { size: fs, color: C.ambar, w: 700 });
+      } else {
       const Emax = 6.6, bar = { x: B.x + (wide ? 50 : 56), y: B.y + 30, h: B.h - (wide ? 108 : 86), w: wide ? 70 : 90 }, yE = (e) => bar.y + bar.h - (clamp(e, 0, Emax) / Emax) * bar.h;
       ctx.strokeStyle = C.borde; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(bar.x - 6, bar.y); ctx.lineTo(bar.x - 6, bar.y + bar.h); ctx.stroke();
       [0, 2, 4, 6].forEach((e) => { txt(ctx, e + '', bar.x - 10, yE(e), { size: fs - 1.5, color: C.txt2, align: 'right', base: 'middle' }); ctx.beginPath(); ctx.moveTo(bar.x - 9, yE(e)); ctx.lineTo(bar.x - 6, yE(e)); ctx.stroke(); });
@@ -982,8 +996,9 @@
       ctx.strokeStyle = rgb(col); ctx.lineWidth = 2.2; ctx.beginPath(); ctx.moveTo(bar.x - 6, yE(k.Eev)); ctx.lineTo(bar.x + bar.w + 16, yE(k.Eev)); ctx.stroke();
       txt(ctx, 'hν = ' + fmt(k.Eev, 2) + ' eV', bar.x + bar.w + 20, yE(k.Eev) + 4, { size: fs, color: rgb(col), w: 700 });
       txt(ctx, 'W₀ = ' + fmt(k.W0, 2) + ' eV', bar.x + bar.w + 20, yE(k.W0) + (Math.abs(yE(k.Eev) - yE(k.W0)) < 16 ? 16 : 4), { size: fs, color: C.ambar, w: 700 });
+      }
       // regla de frecuencias con el umbral ν₀ = W₀/h
-      const rx = B.x + 14, rw = B.w - 28, ry = B.y + B.h - 34, nu0 = 100, nu1 = 1500, xN = (v) => rx + ((clamp(v, nu0, nu1) - nu0) / (nu1 - nu0)) * rw;
+      const rx = B.x + 14, rw = B.w - 28, ry = B.y + B.h - (wide ? 34 : 30), nu0 = 100, nu1 = 1500, xN = (v) => rx + ((clamp(v, nu0, nu1) - nu0) / (nu1 - nu0)) * rw;
       for (let i = 0; i < rw; i++) { const nu = nu0 + (i / rw) * (nu1 - nu0), c2 = nmRGB(3e5 / nu); ctx.fillStyle = rgb(c2, nu < 430 || nu > 750 ? 0.55 : 1); ctx.fillRect(rx + i, ry, 1.6, 9); }
       ctx.strokeStyle = C.borde; ctx.strokeRect(rx, ry, rw, 9);
       const tri = (x, col, up) => { ctx.fillStyle = col; ctx.beginPath(); if (up) { ctx.moveTo(x, ry + 10); ctx.lineTo(x - 5, ry + 18); ctx.lineTo(x + 5, ry + 18); } else { ctx.moveTo(x, ry - 1); ctx.lineTo(x - 5, ry - 9); ctx.lineTo(x + 5, ry - 9); } ctx.closePath(); ctx.fill(); };
@@ -1005,5 +1020,120 @@
   };
   PCB.anim.register('fotones', FOT);
 
-//@@FIN_PARTE_4@@
+  // =====================================================================================
+  // 9. CONDENSADOR RC — τ = RC ; carga u_C = E(1 − e^(−t/τ)) ; descarga u_C = E·e^(−t/τ) ; i = ±(E/R)·e^(−t/τ)
+  //    Circuito en serie: generador E, conmutador (1 = carga, 2 = descarga por un cable que puentea el generador),
+  //    resistencia R y condensador C. Los electrones se mueven por el circuito con velocidad ∝ |i(t)|
+  //    (en el aislante entre placas no pasan: se acumulan en la placa − y abandonan la placa +).
+  //    Didáctico: el tiempo se acelera/ralentiza para que cada fase dure ≈7 s reales; la ventana de la gráfica
+  //    es el primer 1, 2 ó 5×10ⁿ s ≥ 5τ y se indica el factor. Al cambiar R, C o E la fase se reinicia.
+  //    El cambio carga ↔ descarga es automático (tras una pausa) o con los botones del canvas.
+  // =====================================================================================
+  const rcCalc = (p) => {
+    const R = Math.max(1, num(p.R, 1000)), Cu = Math.max(1, num(p.C, 500)), E = Math.max(0.1, num(p.E, 6)), tau = R * Cu * 1e-6, raw = 5 * tau;
+    return { R, Cu, E, tau, W: raw, I0: E / R };
+  };
+  const rcAt = (k, mode, t) => { const ex = Math.exp(-t / k.tau); return mode === 'carga' ? { u: k.E * (1 - ex), i: k.I0 * ex } : { u: k.E * ex, i: -k.I0 * ex }; };
+  const fmtR = (R) => (R >= 1000 ? fmt(R / 1000, 2) + ' kΩ' : fmt(R, 0) + ' Ω');
+  const fmtI = (i) => { const a = Math.abs(i); return a < 1e-4 ? sgn(i * 1e6, 0) + ' µA' : a < 1 ? sgn(i * 1e3, 2) + ' mA' : sgn(i, 2) + ' A'; };
+  const fmtIabs = (i) => { const a = Math.abs(i); return a < 1e-4 ? fmt(a * 1e6, 0) + ' µA' : a < 1 ? fmt(a * 1e3, 2) + ' mA' : fmt(a, 2) + ' A'; };
+  const RC = {
+    titulo: 'Circuito RC: carga y descarga del condensador', materia: 'physique',
+    params: [
+      { id: 'R', label: 'Resistencia R', min: 100, max: 2000, step: 100, def: 1000, unit: 'Ω' },
+      { id: 'C', label: 'Capacidad C', min: 50, max: 1000, step: 50, def: 500, unit: 'µF' },
+      { id: 'E', label: 'Fuerza electromotriz E', min: 1, max: 12, step: 1, def: 6, unit: 'V' }],
+    create(host, p) {
+      const S = { host, mode: 'carga', t: 0, hold: 0, shift: 0, btns: [] };
+      punteros(S, {}); return S;
+    },
+    onParam(S) { S.t = 0; S.hold = 0; },
+    step(S, dt, p) {
+      const k = rcCalc(p), rate = k.W / 7; S.rate = rate;
+      if (S.t >= k.W) { S.hold += dt; if (S.hold > 1.2) { S.mode = S.mode === 'carga' ? 'descarga' : 'carga'; S.t = 0; S.hold = 0; } } else S.t = Math.min(k.W, S.t + dt * rate);
+      const q = rcAt(k, S.mode, S.t), dir = S.mode === 'carga' ? 1 : -1; S.shift += dir * (Math.abs(q.i) / k.I0) * 120 * dt;
+      p._t = S.t; p._mode = S.mode; vivo(S, RC, p, dt);
+    },
+    draw(S, ctx, w, h, p) {
+      fondo(ctx, w, h); S.btns = []; const k = rcCalc(p), fs = fsz(w), wide = w >= 560, t = S.t, q = rcAt(k, S.mode, t), carga = S.mode === 'carga';
+      const Rc = wide ? { x: 6, y: 40, w: w * 0.47, h: h - 48 } : { x: 6, y: 38, w: w - 12, h: h * 0.5 - 38 };
+      const G = wide ? { x: w * 0.47 + 62, y: 40, w: w * 0.53 - 112, h: h - 104 } : { x: 48, y: h * 0.5 + 22, w: w - 104, h: h * 0.5 - 58 };
+      // botones
+      btn(S, ctx, { x: 10, y: 8, w: 76, h: 26, label: 'Cargar', active: carga, on: () => { S.mode = 'carga'; S.t = 0; S.hold = 0; }, size: fs });
+      btn(S, ctx, { x: 92, y: 8, w: 96, h: 26, label: 'Descargar', active: !carga, on: () => { S.mode = 'descarga'; S.t = 0; S.hold = 0; }, size: fs });
+      chip(ctx, carga ? 'interruptor en 1: carga' : 'interruptor en 2: descarga', 196, 21, { size: fs - 1, color: carga ? C.cian : C.naranja, border: carga ? C.cian : C.naranja, w: 600 });
+      // ---------- circuito ----------
+      const m = Math.min(Rc.w, Rc.h) * 0.13, Lx = Rc.x + m + 34, Rx = Rc.x + Rc.w - Math.min(58, Rc.w * 0.18) / 2 - 96, Ty = Rc.y + m + 12, By = Rc.y + Rc.h - m, My = (Ty + By) / 2;
+      const P = { x: Lx + 44, y: Ty }, cA = { x: P.x - 34, y: Ty + 13 }, cB = { x: P.x - 34, y: Ty - 13 }, Bx = Lx - 24; // pivote y contactos del conmutador, columna del bypass
+      const gap = Math.min(30, Rc.h * 0.1), yTp = My - gap / 2, yBp = My + gap / 2, pw = Math.min(58, Rc.w * 0.18), bt = My - 16, bb = My + 16; // placas y generador
+      const wire = '#8a97c4';
+      const poly = (pts) => { ctx.beginPath(); pts.forEach((q2, i) => (i ? ctx.lineTo(q2[0], q2[1]) : ctx.moveTo(q2[0], q2[1]))); ctx.stroke(); };
+      ctx.lineWidth = 3; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+      // trayectorias de los electrones (de placa superior a placa inferior en el sentido de la corriente de carga)
+      const common1 = [[Rx, yTp], [Rx, Ty], [P.x, Ty]], common2 = [[Lx, By], [Rx, By], [Rx, yBp]];
+      const pathC = [...common1, [P.x, Ty], [cA.x + 0, cA.y], [Lx, cA.y], [Lx, bt], [Lx, bb], [Lx, By], ...common2.slice(1)];
+      const pathD = [...common1, [P.x, Ty], [cB.x, cB.y], [Bx, cB.y], [Bx, By], [Lx, By], ...common2.slice(1)];
+      // cables fijos
+      ctx.strokeStyle = wire; poly([[Rx, yTp], [Rx, Ty], [P.x, Ty]]); poly([[Rx, yBp], [Rx, By], [Lx, By]]);
+      poly([[cA.x, cA.y], [Lx, cA.y], [Lx, bt]]); poly([[Lx, bb], [Lx, By]]); poly([[cB.x, cB.y], [Bx, cB.y], [Bx, By], [Lx, By]]);
+      // conmutador (lámina hacia el contacto activo)
+      const tgt = carga ? cA : cB; ctx.strokeStyle = carga ? C.cian : C.naranja; ctx.lineWidth = 3.4; poly([[P.x, P.y], [tgt.x + 3, tgt.y]]);
+      ctx.fillStyle = '#cfd8ff'; [[P.x, P.y], [cA.x, cA.y], [cB.x, cB.y]].forEach((q2) => { ctx.beginPath(); ctx.arc(q2[0], q2[1], 3.8, 0, TAU); ctx.fill(); });
+      txt(ctx, '1', cA.x - 6, cA.y + 12, { size: fs - 1, color: C.cian, align: 'right', w: 700 }); txt(ctx, '2', cB.x - 6, cB.y - 6, { size: fs - 1, color: C.naranja, align: 'right', w: 700 });
+      // generador (placa larga arriba = +)
+      ctx.strokeStyle = '#cfd8ff'; ctx.lineWidth = 3; poly([[Lx - 16, bt], [Lx + 16, bt]]); ctx.lineWidth = 5; poly([[Lx - 8, bb], [Lx + 8, bb]]);
+      txt(ctx, '+', Lx + 22, bt + 1, { size: fs + 2, color: C.rojo, base: 'middle', w: 700 }); txt(ctx, '−', Lx + 22, bb, { size: fs + 3, color: C.cian2, base: 'middle', w: 700 });
+      txt(ctx, 'E = ' + fmt(k.E, 0) + ' V', wide ? Lx - 26 : Lx + 36, My + 4, { size: fs, color: C.txt, align: wide ? 'right' : 'left', w: 700 });
+      // resistencia
+      const rx0 = (P.x + Rx) / 2 - 24; ctx.fillStyle = '#1d2850'; ctx.strokeStyle = wire; ctx.lineWidth = 3; rr(ctx, rx0, Ty - 9, 48, 18, 3); ctx.fill(); ctx.stroke();
+      txt(ctx, 'R = ' + fmtR(k.R), rx0 + 24, Ty - 15, { size: fs, color: C.txt, align: 'center', w: 700 });
+      // condensador: placas, cargas y campo
+      const nq = Math.round(7 * q.u / k.E), slots = 7; ctx.lineWidth = 5; ctx.strokeStyle = '#dfe6ff'; poly([[Rx - pw / 2, yTp], [Rx + pw / 2, yTp]]); poly([[Rx - pw / 2, yBp], [Rx + pw / 2, yBp]]);
+      for (let i = 0; i < slots; i++) { const x = Rx - pw / 2 + 4 + (i + 0.5) * (pw - 8) / slots; if (i < nq) { txt(ctx, '+', x, yTp - 7, { size: fs + 1, color: C.rojo, align: 'center', base: 'middle', w: 700 }); txt(ctx, '−', x, yBp + 8, { size: fs + 2, color: C.cian2, align: 'center', base: 'middle', w: 700 }); } }
+      const fa = clamp(q.u / k.E, 0, 1); if (fa > 0.03) for (let i = 0; i < 3; i++) { const x = Rx - pw * 0.3 + i * pw * 0.3; arrow(ctx, x, yTp + 3, x, yBp - 3, 'rgba(255,209,102,' + (0.25 + 0.7 * fa) + ')', 1.6, 6); }
+      txt(ctx, 'C = ' + fmt(k.Cu, 0) + ' µF', Rx + pw / 2 + 8, My - 12, { size: fs, color: C.txt, w: 700 });
+      txt(ctx, 'u_C = ' + fmt(q.u, 2) + ' V', Rx + pw / 2 + 8, My + 6, { size: fs, color: C.cian, w: 700 });
+      // electrones a lo largo del trayecto activo (velocidad ∝ |i|)
+      const path = carga ? pathC : pathD, segs = []; let L = 0; for (let i = 1; i < path.length; i++) { const a = path[i - 1], b = path[i], l = Math.hypot(b[0] - a[0], b[1] - a[1]); if (l > 0.5) { segs.push({ a, b, l, s0: L }); L += l; } }
+      const spacing = S.host.reduced ? 30 : 19, nE = Math.floor(L / spacing), at = (s) => { for (const g of segs) if (s <= g.s0 + g.l) { const u = (s - g.s0) / g.l; return [lerp(g.a[0], g.b[0], u), lerp(g.a[1], g.b[1], u)]; } const g = segs[segs.length - 1]; return [g.b[0], g.b[1]]; };
+      const act = Math.abs(q.i) / k.I0;
+      for (let i = 0; i < nE; i++) { const s = (((i * spacing + S.shift) % L) + L) % L, pt = at(s), ed = Math.min(s, L - s), a = clamp(ed / 14, 0, 1);
+        ctx.fillStyle = 'rgba(46,229,157,' + (0.35 + 0.6 * Math.min(1, act * 1.6 + 0.1)) * a + ')'; ctx.beginPath(); ctx.arc(pt[0], pt[1], 3, 0, TAU); ctx.fill(); }
+      // sentido de la corriente (convencional) y lectura de i
+      const ix = (P.x + rx0) / 2 + 4; if (act > 0.02) arrow(ctx, carga ? ix + 6 : ix + 30, Ty + 20, carga ? ix + 30 : ix + 6, Ty + 20, C.naranja, 2.4, 9);
+      txt(ctx, 'i = ' + fmtI(q.i), (P.x + Rx) / 2, Ty + 38, { size: fs, color: C.naranja, align: 'center', w: 700 });
+      if (wide) txt(ctx, carga ? 'electrones: − → placa inferior' : 'electrones: placa − → placa +', Rc.x + Rc.w / 2, By + fs + 12, { size: fs - 1.5, color: C.txt2, align: 'center' });
+      // ---------- gráfica u_C(t) (V, izquierda) e i(t) (derecha) ----------
+      const imin = carga ? 0 : -k.I0, imax = carga ? k.I0 : 0, u = (tt) => rcAt(k, S.mode, tt), ms = k.W < 1, Tm = (v) => (ms ? v * 1000 : v);
+      const trim = (x) => fmt(x, 2).replace(/,?0+$/, ''), ax = ejes(ctx, G, 0, k.W, 0, k.E, { xt: [0, 1, 2, 3, 4, 5].map((i) => i * k.tau), fx: (v) => trim(Tm(v)), fy: (v) => fmt(v, v % 1 ? 1 : 0), xl: 't (' + (ms ? 'ms' : 's') + ')', yl: 'u_C (V)', ny: 4 });
+      const Yi = (ii) => G.y + G.h - ((ii - imin) / (imax - imin)) * G.h;
+      ticks(imin * 1e3, imax * 1e3, 4).forEach((v) => txt(ctx, fmt(v, v % 1 ? 1 : 0), G.x + G.w + 6, Yi(v / 1e3), { size: 10.5, color: C.naranja, base: 'middle' })); txt(ctx, 'i (mA)', G.x + G.w + 2, G.y - 15, { size: 10.5, color: C.naranja });
+      // marca τ y nivel 63 % / 37 %
+      const lvl = carga ? 0.632 : 0.368, yl = ax.Y(lvl * k.E), xT = ax.X(k.tau);
+      ctx.setLineDash([4, 4]); ctx.strokeStyle = C.ambar; ctx.lineWidth = 1.3; ctx.beginPath(); ctx.moveTo(xT, G.y + G.h); ctx.lineTo(xT, yl); ctx.lineTo(G.x, yl); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = C.ambar; ctx.beginPath(); ctx.arc(xT, yl, 4.5, 0, TAU); ctx.fill();
+      txt(ctx, 'τ = ' + tfmt(k.tau), xT + 6, G.y + G.h - 6, { size: fs, color: C.ambar, w: 700, halo: true }); txt(ctx, carga ? '63 % de E' : '37 % de E', xT + 10, yl + 16, { size: fs - 1, color: C.ambar, w: 700, halo: true });
+      const curve = (fn, Y, tmax, col, lw) => { ctx.strokeStyle = col; ctx.lineWidth = lw; ctx.lineJoin = 'round'; ctx.beginPath(); for (let i = 0; i <= 100; i++) { const tt = (tmax * i) / 100; i ? ctx.lineTo(ax.X(tt), Y(fn(tt))) : ctx.moveTo(ax.X(tt), Y(fn(tt))); } ctx.stroke(); };
+      curve((tt) => u(tt).u, ax.Y, k.W, 'rgba(0,212,255,.22)', 2); curve((tt) => u(tt).i, Yi, k.W, 'rgba(255,159,28,.22)', 2);
+      curve((tt) => u(tt).u, ax.Y, t, C.cian, 3.2); curve((tt) => u(tt).i, Yi, t, C.naranja, 3.2);
+      [[ax.Y(q.u), C.cian], [Yi(q.i), C.naranja]].forEach(([yy, col]) => { ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(ax.X(t), yy, 5, 0, TAU); ctx.fill(); ctx.strokeStyle = col; ctx.lineWidth = 2.4; ctx.stroke(); });
+      txt(ctx, 'u_C', G.x + G.w - 6, G.y + 14, { size: fs, color: C.cian, align: 'right', w: 700 }); txt(ctx, 'i', G.x + G.w - 6, G.y + 14 + fs + 3, { size: fs, color: C.naranja, align: 'right', w: 700 });
+      if (wide) txt(ctx, 't = ' + tfmt(t) + ' · tiempo ×' + fmt(S.rate || 1, S.rate < 1 ? 2 : 1), G.x, G.y + G.h + fs * 2 + 12, { size: fs - 1.5, color: C.txt2 });
+    },
+    formula(p) {
+      const k = rcCalc(p), t = p._t || 0, mode = p._mode || 'carga', q = rcAt(k, mode, t), carga = mode === 'carga';
+      const tauTex = '\\tau=RC=' + tx(k.R, 0) + '\\times' + tx(k.Cu, 0) + '\\times10^{-6}=' + ttex(k.tau);
+      const eq = carga ? 'u_C(t)=E\\left(1-e^{-t/\\tau}\\right)' : 'u_C(t)=E\\,e^{-t/\\tau}';
+      return '\\begin{aligned}' + tauTex.replace('=', '&=') + '\\\\[3pt]' + eq + '&\\Rightarrow u_C(' + ttex(t) + ')=' + tx(q.u, 2) + '\\ \\text{V}\\end{aligned}';
+    },
+    lecturas(p) {
+      const k = rcCalc(p), t = p._t || 0, mode = p._mode || 'carga', q = rcAt(k, mode, t);
+      return [{ label: 'τ', valor: tfmt(k.tau) }, { label: 'u_C(t)', valor: fmt(q.u, 2) + ' V' }, { label: 'i(t)', valor: fmtI(q.i) }, { label: 'i máx = E/R', valor: fmtIabs(k.I0) },
+        { label: 'q = C·u_C', valor: sci(k.Cu * 1e-6 * q.u, 2) + ' C' }, { label: 'Fase', valor: mode === 'carga' ? 'carga' : 'descarga' }];
+    },
+    dispose(S) { disposeComun(S); },
+  };
+  PCB.anim.register('condensador-rc', RC);
+
+//@@FIN_PARTE_5@@
 })();

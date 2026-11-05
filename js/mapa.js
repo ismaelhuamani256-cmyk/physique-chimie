@@ -807,8 +807,10 @@
     let idleAmt = 0;                 // 0..1, cuánto "respira" la cámara en reposo
     const LIM_PAN = { x: [-70, 75], z: [-70, 45], y: [-4, 26] };
 
+    /** En pantallas verticales hay que alejar más la cámara para que quepa el ancho */
+    const factorAspecto = () => clamp(1.5 / camera.aspect, 1, 2.4);
     function volarA(vista) {
-      goal.target.copy(vista.target); goal.radius = vista.radius;
+      goal.target.copy(vista.target); goal.radius = vista.radius * factorAspecto();
       if (vista.phi != null) goal.phi = vista.phi;
       if (vista.theta != null) goal.theta = vista.theta;
       ultimaInteraccion = performance.now(); dirty = true;
@@ -1049,7 +1051,7 @@
       if (punteros.has(e.pointerId)) punteros.set(e.pointerId, { x: e.clientX, y: e.clientY });
       if (punteros.size === 2) { // pellizco = zoom
         const [a, b] = [...punteros.values()], d = Math.hypot(a.x - b.x, a.y - b.y);
-        if (distPellizco) goal.radius = clamp(goal.radius * (distPellizco / d), 14, 170);
+        if (distPellizco) goal.radius = clamp(goal.radius * (distPellizco / d), 14, 280);
         distPellizco = d; tocar(); return;
       }
       if (ptr.down && !viaje) {
@@ -1075,7 +1077,7 @@
     const onLeave = () => { ptr.dentro = false; ptr.nx = 0; ptr.ny = 0; };
     const onWheel = (e) => {
       if (viaje || listaVisible) return; e.preventDefault();
-      goal.radius = clamp(goal.radius * Math.exp(e.deltaY * 0.0012), 14, 170); tocar();
+      goal.radius = clamp(goal.radius * Math.exp(e.deltaY * 0.0012), 14, 280); tocar();
     };
     const onKey = (e) => {
       if (e.key === 'Escape') {
@@ -1087,7 +1089,7 @@
       if (e.target !== canvas || viaje) return;
       const paso = { ArrowLeft: [0.12, 0, 1], ArrowRight: [-0.12, 0, 1], ArrowUp: [0, -0.08, 1], ArrowDown: [0, 0.08, 1], '+': [0, 0, 0.88], '=': [0, 0, 0.88], '-': [0, 0, 1.14] }[e.key];
       if (!paso) return;
-      e.preventDefault(); goal.theta += paso[0]; goal.phi = clamp(goal.phi + paso[1], 0.22, 1.5); goal.radius = clamp(goal.radius * paso[2], 14, 170); tocar();
+      e.preventDefault(); goal.theta += paso[0]; goal.phi = clamp(goal.phi + paso[1], 0.22, 1.5); goal.radius = clamp(goal.radius * paso[2], 14, 280); tocar();
     };
     canvas.addEventListener('pointerdown', onDown);
     canvas.addEventListener('pointermove', onMove);
@@ -1241,7 +1243,7 @@
       // mundo activo (para resaltar el botón)
       let mejor = '', md = 1e9;
       ORDEN_MUNDOS.forEach((id) => { const M = MUNDOS[id], d = Math.hypot(goal.target.x - M.centro[0], goal.target.z - M.centro[2]); if (d < md) { md = d; mejor = id; } });
-      const todo = goal.radius > 70; const clave = todo ? 'todo' : mejor;
+      const todo = goal.radius > 70 * factorAspecto(); const clave = todo ? 'todo' : mejor;
       if (clave !== mundoActivo) { mundoActivo = clave; Object.entries(botonesMundo).forEach(([k, b]) => b.classList.toggle('activo', k === clave)); }
     }
 
@@ -1277,6 +1279,7 @@
     // Arranque
     // =============================================================================
     tamano();
+    goal.radius = VISTA_TODO.radius * factorAspecto(); cur.logR = Math.log(rm ? goal.radius : goal.radius * 1.5);
     refrescarEstados(); actualizarPanel();
     actualizar(0.016); renderer.render(scene, camera);
     arrancar();

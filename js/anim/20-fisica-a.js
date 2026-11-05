@@ -22,7 +22,7 @@
 //                   v0  1e5 … 5e7 · 1e5 · 2e7   m/s    velocidad de entrada (horizontal)
 //                   signo -1 | 1  · 2   · -1           (opc.) -1 = electrón, +1 = protón
 //                   peso  0 | 1   · 1   · 0            (opc.) 1 = muestra la comparación F/P
-// gravitacion       M   1 … 100   · 0,1 · 5,97 ×10²⁴ kg  masa del astro central
+// gravitacion       M   1 … 100   · 0,01· 5,97 ×10²⁴ kg  masa del astro central
 //                   r   7 … 100   · 0,1 · 42,2  ×10⁶ m   radio orbital (semieje mayor si e>0)
 //                   m   100…5000  · 100 · 1000  kg     (opc.) masa del satélite
 //                   e   0 … 0,8   · 0,05· 0            (opc.) excentricidad (0 = círculo)
@@ -976,7 +976,7 @@
       fondo(ctx, w, h); s._btns.length = 0;
       const k = kPant(w, h), ph = arqFisica(p, s.f), a = ph.a;
       const sceneW = w * (w < 520 ? 0.58 : 0.62);
-      const sc = Math.min((0.86 * h) / 0.78, (0.52 * sceneW) / AR.Wt);
+      const sc = Math.min((0.88 * h) / 0.66, (0.52 * sceneW) / AR.Wt);
       const tx0 = (sceneW - AR.Wt * sc) / 2, tyB = h * 0.95, X = (xm) => tx0 + xm * sc, Y = (ym) => tyB - ym * sc;
       const cxm = AR.Wt / 2;
       // ---- depósito y fluido ----
@@ -1012,7 +1012,7 @@
       gcub.addColorStop(0, `rgb(${c1})`); gcub.addColorStop(1, `rgb(${c2})`);
       ctx.fillStyle = gcub; rr(ctx, bcx - bw / 2, bodyTop, bw, bh, 4); ctx.fill(); ctx.strokeStyle = 'rgba(255,255,255,.55)'; ctx.lineWidth = 1.4; ctx.stroke();
       if (s.modo === 'dina') { ctx.fillStyle = '#8ea0cf'; ctx.beginPath(); ctx.arc(bcx, bodyTop, 3, 0, TAU); ctx.fill(); }
-      txt(ctx, `ρc = ${num(ph.rhoc, 0)}`, bcx, (bodyTop + bodyBot) / 2, { align: 'center', size: clamp(bw * 0.17, 9, 12.5), color: '#10162e' });
+      txt(ctx, 'ρc', bcx - bw / 2 + 5, bodyTop + 9 * k + 2, { size: clamp(bw * 0.2, 10, 13), color: '#10162e', weight: 700 });
       // velo de fluido sobre la parte sumergida + superficie
       ctx.fillStyle = 'rgba(43,121,214,.30)'; ctx.fillRect(X(0), yS, AR.Wt * sc, tyB - yS);
       ctx.strokeStyle = '#7fc2ff'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(X(0), yS); ctx.lineTo(X(AR.Wt), yS); ctx.stroke();
@@ -1022,9 +1022,9 @@
       const Lmax = 0.2 * h, kF = Lmax / Math.max(ph.P, ph.PiMax, 1e-6), cyb = (bodyTop + bodyBot) / 2;
       const off = Math.max(10, bw * 0.28), fl = (nom, v) => `${nom} = ${num(v, 1)} N`;
       flecha(ctx, bcx, cyb, bcx, cyb + ph.P * kF, C.fuerza, { lw: 3.4 * k, label: fl('P', ph.P), lsize: 11 * k + 1 });
-      if (ph.Pi > 0.05) flecha(ctx, bcx - off, cyb, bcx - off, cyb - ph.Pi * kF, C.fuerza, { lw: 3.4 * k, label: fl('Π', ph.Pi), lsize: 11 * k + 1 });
-      if (s.modo === 'dina' && ph.T > 0.05) flecha(ctx, bcx + off, cyb, bcx + off, cyb - ph.T * kF, C.fuerza, { lw: 3.4 * k, label: fl('T', ph.T), lsize: 11 * k + 1 });
-      if (s.modo === 'libre' && s.yb <= 0 && ph.P - ph.Pi > 0.05) flecha(ctx, bcx + off, cyb, bcx + off, cyb - (ph.P - ph.Pi) * kF, C.fuerza, { lw: 3.4 * k, label: fl('N', ph.P - ph.Pi), lsize: 11 * k + 1 });
+      if (ph.Pi > 0.05) flecha(ctx, bcx - off, cyb, bcx - off, cyb - ph.Pi * kF, C.fuerza, { lw: 3.4 * k, label: fl('Π', ph.Pi), lsize: 11 * k + 1, lside: -1 });
+      if (s.modo === 'dina' && ph.T > 0.05) flecha(ctx, bcx + off, cyb, bcx + off, cyb - ph.T * kF, C.fuerza, { lw: 3.4 * k, label: fl('T', ph.T), lsize: 11 * k + 1, lside: 1 });
+      if (s.modo === 'libre' && s.yb <= 0 && ph.P - ph.Pi > 0.05) flecha(ctx, bcx + off, cyb, bcx + off, cyb - (ph.P - ph.Pi) * kF, C.fuerza, { lw: 3.4 * k, label: fl('N', ph.P - ph.Pi), lsize: 11 * k + 1, lside: 1 });
       // ---- panel de datos ----
       const px = sceneW + 8, pw = w - px - 8, lh = 17 * k + 1;
       let y = 16 * k;
@@ -1103,8 +1103,8 @@
       fondo(ctx, w, h); s._btns.length = 0;
       const k = kPant(w, h), H0 = p.H0 || 1, lv = Math.max(s.lv, 0), v = Math.sqrt(2 * G0 * lv);
       const Rmax = 2 * Math.sqrt(p.h * H0) + 0.3;
-      const sc = Math.min((0.86 * h) / (H0 + 1.7), (0.86 * w) / (TQ.Wt + 0.35 + Rmax));
-      const gy = h * 0.9, tx0 = w * 0.05 + 0.35 * sc * 0.4, X = (xm) => tx0 + xm * sc, Y = (ym) => gy - ym * sc; // ym = altura sobre el suelo
+      const sc = Math.min((0.86 * h) / (H0 + p.h + 0.35), (w - 90 * k - 10) / (0.12 + TQ.Wt + Rmax));
+      const gy = h * 0.9, tx0 = 0.12 * sc + 84 * k, X = (xm) => tx0 + xm * sc, Y = (ym) => gy - ym * sc; // ym = altura sobre el suelo
       const xO = TQ.Wt;                                    // pared del orificio
       // suelo y regla de alcances
       ctx.fillStyle = '#16224a'; ctx.fillRect(0, gy, w, h - gy);
@@ -1116,7 +1116,7 @@
       }
       txt(ctx, 'distancia al depósito (m)', w - 8, gy + 28 * k, { align: 'right', size: 10 * k + 1, color: C.tenue, weight: 400 });
       // depósito: soporte, agua, paredes
-      const topY = Y(H0 + 1.5 + 0.15), botY = Y(H0 - 0.1), yS = Y(H0 + lv);
+      const topY = Y(H0 + p.h + 0.2), botY = Y(H0 - 0.1), yS = Y(H0 + lv);
       ctx.fillStyle = '#243462'; ctx.fillRect(X(0.1), botY, 0.15 * sc, gy - botY); ctx.fillRect(X(TQ.Wt - 0.25), botY, 0.15 * sc, gy - botY);
       const gw = ctx.createLinearGradient(0, yS, 0, botY); gw.addColorStop(0, '#2f86e6'); gw.addColorStop(1, '#14408a');
       ctx.fillStyle = gw; ctx.fillRect(X(0), yS, TQ.Wt * sc, botY - yS);
@@ -1174,7 +1174,7 @@
   // =====================================================================================
   const R_GAS = 8.314, GAS_VMAX = 50;
   const gasP = (p) => (p.n * R_GAS * p.T) / (p.V / 1000); // Pa
-  const niceMax = (v) => { for (const m of [1, 2, 5]) for (let e = -1; e < 8; e++) { const c = m * Math.pow(10, e); if (c >= v) return c; } return v; };
+  const niceMax = (v) => { for (let e = -1; e < 8; e++) for (const m of [1, 2, 5]) { const c = m * Math.pow(10, e); if (c >= v) return c; } return v; };
   reg('gas-ideal', {
     titulo: 'Gas ideal: P·V = n·R·T',
     params: [

@@ -17,17 +17,17 @@
     const R = (x, y, w, h, c) => { for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) P(x + i, y + j, c); };
     const E = (cx, cy, rx, ry, c) => { for (let y = 0; y < 16; y++) for (let x = 0; x < 16; x++) if (((x + 0.5 - cx) / rx) ** 2 + ((y + 0.5 - cy) / ry) ** 2 <= 1) P(x, y, c); };
     const bob = p.bob || 0;
-    // pies (detrás del cuerpo)
     const f1 = p.pie1 || { dx: 0, dy: 0 }, f2 = p.pie2 || { dx: 0, dy: 0 };
-    R(4 + f1.dx, 13 + f1.dy, 3, 2, '#2b3a6b'); R(9 + f2.dx, 13 + f2.dy, 3, 2, '#2b3a6b');
-    // brazos
     const a1 = p.brazo1 || { dx: 0, dy: 0 }, a2 = p.brazo2 || { dx: 0, dy: 0 };
-    R(2 + a1.dx, 10 + bob + a1.dy, 2, 3, '#c9d3ea'); R(12 + a2.dx, 10 + bob + a2.dy, 2, 3, '#c9d3ea');
+    // brazos (sobresalen del cuerpo)
+    R(0 + a1.dx, 10 + bob + a1.dy, 3, 3, '#c9d3ea'); R(13 + a2.dx, 10 + bob + a2.dy, 3, 3, '#c9d3ea');
     // cuerpo redondo
-    E(8, 11.3 + bob, 5.8, 3.3, '#eef2fa');
+    E(8, 10.9 + bob, 5.8, 3.0, '#eef2fa');
     for (let y = 0; y < 16; y++) for (let x = 0; x < 16; x++) if (b[y * 16 + x] === '#eef2fa' && y >= 12 + bob) b[y * 16 + x] = '#b8c4de';
+    // pies (encima del cuerpo para que se vean al correr)
+    R(4 + f1.dx, 13 + f1.dy, 3, 2, '#2b3a6b'); R(9 + f2.dx, 13 + f2.dy, 3, 2, '#2b3a6b');
     // luz del pecho
-    R(8, 11 + bob, 2, 2, '#ffb020'); P(8, 11 + bob, '#fff1b0');
+    R(7, 12, 2, 2, '#ffb020'); P(7, 12, '#fff1b0');
     // casco-burbuja: aro claro + pantalla oscura
     E(8, 6 + bob, 6, 5.2, '#bfeeff');
     E(8, 6.1 + bob, 5, 4.3, '#16275a');

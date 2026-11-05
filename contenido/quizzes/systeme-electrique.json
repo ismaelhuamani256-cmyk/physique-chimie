@@ -1,0 +1,300 @@
+{
+ "capitulo_id": "systeme-electrique",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "opcion",
+   "enunciado": "Un condensateur est un dipôle :",
+   "opciones": [
+    "constitué de deux armatures isolantes",
+    "qui comporte deux armatures conductrices séparées par un isolant",
+    "dont les deux armatures sont en contact",
+    "qui s'oppose au passage du courant dans un conducteur ohmique"
+   ],
+   "correcta": 1,
+   "explicacion": "Un condensateur est un ensemble de deux conducteurs (armatures) placés l'un en face de l'autre et séparés par un isolant.",
+   "pagina_pdf": 527
+  },
+  {
+   "id": "q2",
+   "tipo": "opcion",
+   "enunciado": "La charge q portée par l'armature d'un condensateur de capacité C soumis à la tension u s'écrit :",
+   "opciones": [
+    "q = C · u",
+    "q = C / u",
+    "q = u / C",
+    "q = C · u²"
+   ],
+   "correcta": 0,
+   "explicacion": "La charge est proportionnelle à la tension : q = C·u, la capacité C étant le coefficient de proportionnalité (en farads).",
+   "pagina_pdf": 522
+  },
+  {
+   "id": "q3",
+   "tipo": "opcion",
+   "enunciado": "L'intensité du courant qui traverse un condensateur de capacité C, soumis à une tension u(t), s'écrit :",
+   "opciones": [
+    "i = C · du/dt",
+    "i = C · u",
+    "i = u / (R · C)",
+    "i = −dq/dt · C"
+   ],
+   "correcta": 0,
+   "explicacion": "En dérivant q = C·u et avec i = dq/dt on obtient i = C·du/dt (comportement capacitif).",
+   "pagina_pdf": 523
+  },
+  {
+   "id": "q4",
+   "tipo": "opcion",
+   "enunciado": "Un dipôle a un comportement capacitif lorsque :",
+   "opciones": [
+    "la tension u est en avance de phase sur l'intensité i",
+    "l'intensité i est en avance de phase sur la tension u",
+    "i et u sont toujours en phase",
+    "le déphasage entre i et u est toujours nul"
+   ],
+   "correcta": 1,
+   "explicacion": "Puisque i = C·du/dt, u et i ne peuvent pas être en phase : c'est i qui est en avance de phase sur u.",
+   "pagina_pdf": 523
+  },
+  {
+   "id": "q5",
+   "tipo": "opcion",
+   "enunciado": "Lors de la charge d'un condensateur dans un circuit RC série (générateur de tension E), la tension u_C :",
+   "opciones": [
+    "tend vers 0",
+    "augmente progressivement jusqu'à E",
+    "reste constante",
+    "diminue puis s'annule"
+   ],
+   "correcta": 1,
+   "explicacion": "u_C(t) = E·(1 − e^(−t/RC)) : fonction croissante qui tend vers E (régime permanent).",
+   "pagina_pdf": 524
+  },
+  {
+   "id": "q6",
+   "tipo": "opcion",
+   "enunciado": "L'équation différentielle vérifiée par u_C lors de la décharge d'un condensateur dans un circuit RC série est :",
+   "opciones": [
+    "du_C/dt + u_C/(R·C) = 0",
+    "du_C/dt + u_C/(R·C) = E/(R·C)",
+    "du_C/dt − u_C/(R·C) = 0",
+    "du_C/dt + R·C·u_C = 0"
+   ],
+   "correcta": 0,
+   "explicacion": "Condensateur chargé, interrupteur fermé : u_C + u_R = 0 avec u_R = R·i et i = C·du_C/dt, donc du_C/dt + u_C/(RC) = 0.",
+   "pagina_pdf": 525
+  },
+  {
+   "id": "q7",
+   "tipo": "opcion",
+   "enunciado": "La durée de charge d'un condensateur dans un circuit RC série dépend :",
+   "opciones": [
+    "de la valeur de la capacité C et de la valeur de la résistance R",
+    "uniquement de la tension E du générateur",
+    "uniquement de la capacité C",
+    "uniquement de la résistance R"
+   ],
+   "correcta": 0,
+   "explicacion": "τ = R·C : la durée de charge ne dépend que de R et de C (pas de E).",
+   "pagina_pdf": 527
+  },
+  {
+   "id": "q8",
+   "tipo": "opcion",
+   "enunciado": "Un capteur capacitif de niveau d'un liquide fonctionne grâce à :",
+   "opciones": [
+    "la variation de capacité due au changement de matériau entre les armatures quand le niveau varie",
+    "la variation de la résistance du liquide conducteur",
+    "l'avance de phase de la tension sur l'intensité",
+    "la variation de la température du liquide"
+   ],
+   "correcta": 0,
+   "explicacion": "La paroi de la cuve et la sonde jouent le rôle d'armatures ; la variation de niveau change le matériau entre les armatures et donc la capacité.",
+   "pagina_pdf": 523
+  },
+  {
+   "id": "q9",
+   "tipo": "opcion",
+   "enunciado": "Lors de la charge d'un condensateur initialement déchargé, à la date t = τ la tension u_C vaut :",
+   "opciones": [
+    "0,37 × E",
+    "0,63 × E",
+    "E",
+    "0,5 × E"
+   ],
+   "correcta": 1,
+   "explicacion": "u_C(τ) = E(1 − e^(−1)) = 0,63·E (à la décharge, u_C(τ) = 0,37·E).",
+   "pagina_pdf": 525
+  },
+  {
+   "id": "q10",
+   "tipo": "opcion",
+   "enunciado": "À partir de combien de constantes de temps considère-t-on qu'un condensateur est totalement chargé ou déchargé ?",
+   "opciones": [
+    "1 τ",
+    "2 τ",
+    "5 τ",
+    "10 τ"
+   ],
+   "correcta": 2,
+   "explicacion": "On considère qu'un condensateur est totalement chargé ou déchargé au bout de 5τ.",
+   "pagina_pdf": 525
+  },
+  {
+   "id": "q11",
+   "tipo": "numerico",
+   "enunciado": "On étudie la charge d'un circuit RC avec R = 10 kΩ et C = 1,0 µF. Quelle est la constante de temps τ ?",
+   "valor": 10,
+   "unidad": "ms",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "τ = R·C",
+    "R = 10×10³ Ω ; C = 1,0×10⁻⁶ F",
+    "τ = 10×10³ × 1,0×10⁻⁶ = 1,0×10⁻² s = 10 ms"
+   ],
+   "pagina_pdf": 525
+  },
+  {
+   "id": "q12",
+   "tipo": "numerico",
+   "enunciado": "Un condensateur initialement déchargé est relié à un courant d'intensité constante I = 12 mA. Au bout d'une minute la tension vaut 1,5 V. Quelle est sa capacité ?",
+   "valor": 0.48,
+   "unidad": "F",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "q = I·Δt = 12×10⁻³ × 60 = 0,72 C",
+    "C = q/u = 0,72/1,5 = 0,48 F"
+   ],
+   "pagina_pdf": 529
+  },
+  {
+   "id": "q13",
+   "tipo": "numerico",
+   "enunciado": "Décharge d'un condensateur : R = 2,2 kΩ et C = 470 µF. Calculer la constante de temps τ.",
+   "valor": 1.034,
+   "unidad": "s",
+   "tolerancia_rel": 0.05,
+   "cifras_sig": 2,
+   "pasos": [
+    "τ = R·C = 2,2×10³ × 470×10⁻⁶",
+    "τ = 1,034 s ≈ 1,0 s (donc 5τ ≈ 5 s)"
+   ],
+   "pagina_pdf": 530
+  },
+  {
+   "id": "q14",
+   "tipo": "numerico",
+   "enunciado": "Un condensateur de 330 µF a une tension de service de 42 V. Il est chargé par un courant constant de 2,0 mA. Quelle durée de charge maximale respecte la limite du composant ?",
+   "valor": 6.93,
+   "unidad": "s",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "q = C·U = 330×10⁻⁶ × 42 = 1,386×10⁻² C",
+    "Δt = q/I = 1,386×10⁻² / 2,0×10⁻³ = 6,9 s"
+   ],
+   "pagina_pdf": 529
+  },
+  {
+   "id": "q15",
+   "tipo": "numerico",
+   "enunciado": "Charge à intensité constante I = 1,0 mA : la droite u_C = f(t) a pour coefficient directeur 2,5 V·s⁻¹. Quelle est la capacité C du condensateur ?",
+   "valor": 400,
+   "unidad": "µF",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "Coefficient directeur = I/C",
+    "C = I/2,5 = 1,0×10⁻³ / 2,5 = 4,0×10⁻⁴ F = 400 µF"
+   ],
+   "pagina_pdf": 531
+  },
+  {
+   "id": "q16",
+   "tipo": "numerico",
+   "enunciado": "Circuit RC série : R = 1,0 MΩ, C = 10 µF. Calculer la constante de temps τ.",
+   "valor": 10,
+   "unidad": "s",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "τ = R·C = 1,0×10⁶ × 10×10⁻⁶ = 10 s"
+   ],
+   "pagina_pdf": 532
+  },
+  {
+   "id": "q17",
+   "tipo": "numerico",
+   "enunciado": "Un condensateur se charge sous E = 9,0 V dans un circuit RC série. Quelle est la tension u_C à la date t = τ ?",
+   "valor": 5.69,
+   "unidad": "V",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "u_C(τ) = E·(1 − e^(−1)) ≈ 0,63·E",
+    "u_C(τ) = 0,632 × 9,0 = 5,7 V"
+   ],
+   "pagina_pdf": 525
+  },
+  {
+   "id": "q18",
+   "tipo": "numerico",
+   "enunciado": "Lampe de poche « sans pile » modélisée par un condensateur C = 1,0 F se déchargeant dans R = 220 Ω. Quelle durée de décharge quasi complète (5τ) ?",
+   "valor": 1100,
+   "unidad": "s",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "τ = R·C = 220 × 1,0 = 220 s",
+    "5τ = 5 × 220 = 1 100 s (≈ 18 min)"
+   ],
+   "pagina_pdf": 534
+  },
+  {
+   "id": "q19",
+   "tipo": "numerico",
+   "enunciado": "Mesure de C à intensité constante I = 10 µA : u_AB atteint 6,0 V à t₁ = 7,2 s. Calculer C.",
+   "valor": 12,
+   "unidad": "µF",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "u_AB = I·t/C donc C = I·t₁/u₁",
+    "C = 10×10⁻⁶ × 7,2 / 6,0 = 1,2×10⁻⁵ F = 12 µF"
+   ],
+   "pagina_pdf": 548
+  },
+  {
+   "id": "q20",
+   "tipo": "numerico",
+   "enunciado": "Un laser (λ = 532 nm) éclaire un tamis ; la tache centrale carrée a pour côté L = 2,66 cm sur un écran à D = 2,0 m. Avec θ = λ/a = L/(2D), calculer le côté a d'une maille.",
+   "valor": 80,
+   "unidad": "µm",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "θ = L/(2D) et θ = λ/a",
+    "a = 2·D·λ/L = 2 × 2,0 × 532×10⁻⁹ / 2,66×10⁻²",
+    "a = 8,0×10⁻⁵ m = 80 µm"
+   ],
+   "pagina_pdf": 540
+  },
+  {
+   "id": "q21",
+   "tipo": "numerico",
+   "enunciado": "Wi-Fi à 2,4 GHz : l'atténuation vaut A = 40 + 20·log(d), d en mètres. Quelle atténuation à d = 10 m ?",
+   "valor": 60,
+   "unidad": "dB",
+   "tolerancia_rel": 0.01,
+   "cifras_sig": 2,
+   "pasos": [
+    "log(10) = 1",
+    "A = 40 + 20 × 1 = 60 dB"
+   ],
+   "pagina_pdf": 542
+  }
+ ]
+}

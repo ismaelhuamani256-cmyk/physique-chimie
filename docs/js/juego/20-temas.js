@@ -7,7 +7,7 @@
   const J = window.PCB.juego;
   const Temas = (J.Temas = {});
   const VW = 512, VH = 288, LW = 1024;   // ancho de cada capa de parallax (se repite)
-  const SOL = (t) => t === 1 || t === 3 || t === 4;
+  const SOL = (t) => t === 1 || t === 3 || t === 4 || t === 5 || t === 6 || t === 7 || t === 8;   // 5/6/7/8: bloque ?, tubería, puerta (los dibuja 45-quiz.js)
 
   // ---------- primitivas pixel (sin antialias) ----------
   function poli(ctx, pts, color) {
@@ -55,6 +55,10 @@
       estilo: 'nube', musica: 'cielo',
       pal: { cielo0: '#2a1066', cielo1: '#58c8f5', acento: '#ffe27a', acento2: '#9b5de5', marco: '#6d56c8', fillA: '#4a3a9c', fillB: '#5646b0', linea: '#35287c', top: '#f2eaff', top2: '#cdbfff', plat: '#7d68dc', platLuz: '#ffffff', hz0: '#3a1d86', hz1: '#1a0b4a', hzTop: '#9fe7ff', texto: '#ffffff' },
     },
+    submarino: {
+      estilo: 'agua', musica: 'agua',
+      pal: { cielo0: '#021a38', cielo1: '#0a7a9a', acento: '#ffe27a', acento2: '#ff7aa8', marco: '#2a7a9a', fillA: '#16405a', fillB: '#1d5070', linea: '#0c2a40', top: '#35e0b8', top2: '#1a9a8a', plat: '#e0608a', platLuz: '#ffb3cc', hz0: '#0a2a50', hz1: '#041428', hzTop: '#3a7ab0', texto: '#e8fbff' },
+    },
     _fallback: {
       estilo: 'natural', musica: 'base',
       pal: { cielo0: '#0f2f3f', cielo1: '#3aa0a0', acento: '#ffd166', acento2: '#ef476f', marco: '#6a4a2a', fillA: '#4a3420', fillB: '#58402a', linea: '#2e2012', top: '#4ed17a', top2: '#2e9a52', plat: '#8a6a3a', platLuz: '#c9a15e', hz0: '#2a6fd6', hz1: '#143a7a', hzTop: '#bfe0ff', texto: '#ffffff' },
@@ -80,6 +84,10 @@
       } else if (def.estilo === 'nube') {
         x.fillStyle = alt; for (let i = 0; i < 4; i++) { const cx = (r() * 12) | 0, cy = (r() * 12) | 0; x.fillRect(cx, cy, 4, 2); x.fillRect(cx + 1, cy - 1, 2, 1); }
         x.fillStyle = p.linea; x.fillRect(0, 15, 16, 1);
+      } else if (def.estilo === 'agua') {
+        x.fillStyle = alt; for (let i = 0; i < 7; i++) x.fillRect((r() * 13) | 0, (r() * 14) | 0, 2 + ((r() * 2) | 0), 1);
+        x.fillStyle = p.linea; for (let i = 0; i < 4; i++) x.fillRect((r() * 14) | 0, (r() * 14) | 0, 2, 2);
+        if (v) { x.fillStyle = 'rgba(180,240,255,.35)'; x.fillRect(11, 9, 2, 2); x.fillRect(4, 12, 1, 1); }
       } else {
         x.fillStyle = alt; for (let i = 0; i < 8; i++) x.fillRect((r() * 14) | 0, (r() * 14) | 0, 2, 2);
         x.fillStyle = p.linea; for (let i = 0; i < 4; i++) x.fillRect((r() * 14) | 0, (r() * 14) | 0, 1, 1);
@@ -92,6 +100,7 @@
       x.fillStyle = 'rgba(255,255,255,.35)'; x.fillRect(0, 0, 16, 1);
       if (def.estilo === 'natural') { x.fillStyle = p.top; for (let i = 0; i < 16; i += 3) x.fillRect(i, 5, 2, 1 + (r() * 2 | 0)); }
       if (def.estilo === 'castillo') { x.fillStyle = p.acento2; x.fillRect(2 + v * 7, 4, 3, 1); }
+      if (def.estilo === 'agua') { x.fillStyle = p.top; for (let i = 0; i < 16; i += 2) x.fillRect(i, 5, 1, 1 + ((r() * 3) | 0)); }
       out.top.push(c);
     }
     // plataforma flotante: losa fina en la parte superior de la casilla
@@ -107,6 +116,13 @@
     x.fillStyle = p.acento2; x.fillRect(0, 1, 16, 5); x.fillStyle = '#ffffff'; x.fillRect(0, 1, 16, 1);
     x.fillStyle = 'rgba(0,0,0,.3)'; x.fillRect(0, 5, 16, 1); x.fillStyle = p.acento; x.fillRect(3, 6, 10, 2);
     out.movil = c;
+    // plataforma que cae: losa ámbar agrietada con remaches
+    [c, x] = mk();
+    x.fillStyle = '#0b1230'; x.fillRect(0, 0, 16, 8);
+    x.fillStyle = '#c98a3a'; x.fillRect(0, 1, 16, 5); x.fillStyle = '#ffd9a0'; x.fillRect(0, 1, 16, 1);
+    x.fillStyle = 'rgba(0,0,0,.3)'; x.fillRect(0, 5, 16, 1); x.fillStyle = '#7a4a1a'; x.fillRect(0, 6, 16, 1);
+    x.fillStyle = '#0b1230'; x.fillRect(5, 2, 1, 3); x.fillRect(6, 4, 1, 2); x.fillRect(11, 1, 1, 3); x.fillRect(10, 3, 1, 2);
+    out.cae = c;
     // bloque sólido
     [c, x] = mk(); textura(x, p.fillB, p.fillA, 1);
     x.fillStyle = p.top2; x.fillRect(0, 0, 16, 2); x.fillRect(0, 0, 2, 16); x.fillStyle = p.linea; x.fillRect(14, 0, 2, 16); x.fillRect(0, 14, 16, 2);
@@ -209,6 +225,31 @@
         x.fillStyle = '#3a1d86'; x.fillRect(xx, Math.round(y), 1, VH);
         x.fillStyle = '#9fe7ff'; x.fillRect(xx, Math.round(y), 1, 1);
       }
+    } else if (def.estilo === 'agua') {
+      let x = nueva(0.05);      // rayos de luz desde la superficie + peces lejanos
+      for (let i = 0; i < 7; i++) {
+        const bx = i * 150 + r() * 60, wd = 24 + r() * 30;
+        poli(x, [[bx, 0], [bx + wd, 0], [bx + wd - 90, 288], [bx - 90 - wd / 2, 288]], 'rgba(190,240,255,.06)');
+      }
+      for (let i = 0; i < 12; i++) { const fx = r() * LW, fy = 40 + r() * 140; x.fillStyle = 'rgba(120,200,230,.35)'; x.fillRect(fx | 0, fy | 0, 6, 2); x.fillRect((fx + 6) | 0, (fy - 1) | 0, 2, 4); }
+      x = nueva(0.15);          // arrecife y arcos de roca lejanos
+      for (let i = 0; i < 9; i++) {
+        const cx = i * 118 + r() * 40, base = 262;
+        for (let k = 0; k < 4; k++) { const hh = 40 + r() * 80, ww = 6 + r() * 6, ox = cx + k * 14; x.fillStyle = '#0a3450'; x.fillRect(ox, base - hh, ww, hh); x.fillRect(ox - 5, base - hh * 0.7, 6, 5); x.fillRect(ox + ww, base - hh * 0.5, 6, 5); disco(x, ox + ww / 2, base - hh, ww / 2 + 1, '#0a3450'); }
+      }
+      x.fillStyle = '#0a3450'; x.fillRect(0, 262, LW, 26);
+      x = nueva(0.3);           // algas ondulantes y corales
+      for (let i = 0; i < 16; i++) {
+        const bx = i * 66 + r() * 30, hh = 70 + r() * 110;
+        for (let y = 0; y < hh; y += 2) { const o = Math.round(Math.sin(y * 0.09 + i) * 4); x.fillStyle = y % 8 < 4 ? '#0f7a62' : '#0b5f4e'; x.fillRect(bx + o, 270 - y, 4, 2); }
+      }
+      for (let i = 0; i < 8; i++) { const bx = 30 + i * 125 + r() * 40; for (let k = 0; k < 5; k++) { x.fillStyle = k % 2 ? '#a03a6a' : '#7a2a58'; x.fillRect(bx + k * 4, 252 - ((r() * 18) | 0), 3, 40); disco(x, bx + k * 4 + 1, 252 - 10 - ((r() * 10) | 0), 3, '#c25a8a'); } }
+      x = nueva(0.5);           // rocas y anémonas del primer plano
+      for (let i = 0; i < 7; i++) {
+        const bx = i * 150 + r() * 50, ww = 30 + r() * 40, hh = 20 + r() * 26;
+        poli(x, [[bx, 288], [bx + ww * 0.2, 288 - hh], [bx + ww * 0.7, 288 - hh * 0.8], [bx + ww, 288]], '#0b2e48');
+        for (let k = 0; k < 4; k++) { const ax = bx + ww * 0.25 + k * 5; x.fillStyle = '#4a2a7a'; x.fillRect(ax, 288 - hh - 8, 2, 10); x.fillStyle = '#6ff0ff'; x.fillRect(ax, 288 - hh - 10, 2, 2); }
+      }
     } else {
       let x = nueva(0.06);
       for (let i = 0; i < 40; i++) { x.fillStyle = '#fff'; x.globalAlpha = 0.2 + r() * 0.4; x.fillRect((r() * LW) | 0, (r() * 150) | 0, 1, 1); } x.globalAlpha = 1;
@@ -251,6 +292,7 @@
       if (tema.estilo === 'castillo') { y = ((a.y - t * a.v * 1.5) % VH + VH) % VH; x = (a.x + Math.sin(t + a.ph) * 8 - camX * 0.7 + 4000 * VW) % VW; col = a.s > 1 ? '#ffd166' : '#ff7a2a'; }
       else if (tema.estilo === 'lab') { y = ((a.y - t * a.v * 0.8) % VH + VH) % VH; x = (a.x + Math.sin(t * 0.8 + a.ph) * 6 - camX * 0.6 + 4000 * VW) % VW; col = a.s > 1 ? '#ff3da6' : '#19e3ff'; }
       else if (tema.estilo === 'nube') { y = (a.y + Math.sin(t + a.ph) * 6); x = ((a.x - t * a.v * 0.7 - camX * 0.5) % VW + VW) % VW; col = a.s > 1 ? '#fff' : '#cdbfff'; }
+      else if (tema.estilo === 'agua') { y = ((a.y - t * a.v * 1.3) % VH + VH) % VH; x = ((a.x + Math.sin(t * 1.2 + a.ph) * 5 - camX * 0.55) % VW + VW) % VW; col = a.s > 1 ? '#d8f6ff' : '#8fd8f0'; }
       else { y = ((a.y + t * a.v * 0.3) % VH); x = ((a.x - camX * 0.5) % VW + VW) % VW; col = '#ffffff55'; }
       ctx.globalAlpha = 0.35 + 0.35 * Math.sin(t * 2 + a.ph);
       ctx.fillStyle = col; ctx.fillRect(Math.round(x), Math.round(y), a.s, a.s);
@@ -264,6 +306,7 @@
     const tl = tema.tiles;
     for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) {
       const t = mundo.get(x, y); if (!t) continue;
+      if (t >= 5) continue;   // bloque ?, tubería, puerta: entidades (45-quiz.js)
       const v = (x * 7 + y * 3) & 1;
       let img;
       if (t === 1) img = SOL(mundo.get(x, y - 1)) ? tl.fill[v] : tl.top[v];

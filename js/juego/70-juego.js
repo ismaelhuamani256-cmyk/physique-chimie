@@ -15,12 +15,16 @@
       vidas: 3, coleccionados: 0, tiempo: 0, t: 0, estado: 'jugando', cam: { x: 0, y: 0 }, part: [], proy: [], shake: 0,
       jefe: null, jefeDerrotado: false, respawn: { x: w.spawn.x, y: w.spawn.y }, snapCamara: true, congelado: false, victoriaEn: 0, tVic: 0,
       reducido: PCB.util.reducedMotion(), acc: 0,
+      // Quiz Quest
+      modoQuiz: S.modoQuiz, tm: 0, resp: { correctas: 0, total: 0 }, premios: { moneda: 0, vida: 0, pista: 0, escudo: 0, estrella: 0, reloj: 0 },
+      flot: [], escudo: false, lento: 0, anim: null, flash: 0, bonus: null,
     });
     J._g = g;
     S.input.onTecla = null;
     S.ui.cerrarModal(); S.ui.ocultarJefe(); S.ui.vidas(-1); S.ui.vidas(3);
     g.terminar = (gano) => terminar(g, gano);
     g.preguntar = (b) => preguntar(g, b);
+    g.ui.estados(g, true);
     J.pasoCamara(g, 0);
     J.Audio.musica(tema.musica);
   }
@@ -28,8 +32,7 @@
   function preguntar(g, b) {
     const qs = b.preguntas, q = qs[b.pIdx % qs.length];
     b.pIdx++;
-    g.estado = 'quiz';
-    g.ui.pregunta(q, { jefe: b.nombre, n: Math.min(3, b.aciertos + 1) }, (ok) => { g.estado = 'jugando'; J.Jefe.respuesta(g, b, ok); });
+    J.Quiz.preguntar(g, q, { titulo: b.nombre, n: Math.min(b.vidasMax, b.aciertos + 1), total: b.vidasMax }, (ok) => J.Jefe.respuesta(g, b, ok));
   }
 
   function terminar(g, gano) {
@@ -43,12 +46,16 @@
   function mostrarFin(g, gano) {
     g.estado = 'fin';
     if (!gano) J.Audio.sfx('derrota');
-    const res = { capId: g.capId, gano, vidasRestantes: Math.max(0, g.vidas), coleccionados: g.coleccionados, jefeDerrotado: g.jefeDerrotado, total: g.w.items.length };
+    const w0 = g.bonus ? g.bonus.vuelta.w : g.w;
+    const res = { capId: g.capId, gano, vidasRestantes: Math.max(0, g.vidas), coleccionados: g.coleccionados, jefeDerrotado: g.jefeDerrotado,
+      respuestas: { correctas: g.resp.correctas, total: g.resp.total, mejorRacha: g.resp.mejorRacha || 0 }, premios: Object.assign({}, g.premios) };
     let hecho = false;
-    g.ui.fin(res, {
+    g.ui.fin(Object.assign({ total: w0.items.length, modoQuiz: !!g.modoQuiz }, res), {
       continuar: () => {
         if (hecho) return; hecho = true;
-        PCB.flow.finNivel({ capId: res.capId, gano: res.gano, vidasRestantes: res.vidasRestantes, coleccionados: res.coleccionados, jefeDerrotado: res.jefeDerrotado });
+        // Quiz Quest: ctx.onFin(res) recibe el resultado ampliado; el flujo normal solo conoce los 5 campos del contrato §2
+        if (typeof S.onFin === 'function') S.onFin(res);
+        else PCB.flow.finNivel({ capId: res.capId, gano: res.gano, vidasRestantes: res.vidasRestantes, coleccionados: res.coleccionados, jefeDerrotado: res.jefeDerrotado });
       },
       reintentar: () => iniciar(),
     });
@@ -97,25 +104,43 @@
     for (const c of w.campos) if (vis(c.x, c.x + c.w)) dibujarCampo(ctx, c, camX, camY, t, tema);
     J.Temas.dibujarPeligro(ctx, w, tema, camX, camY, t);
     J.Temas.dibujarTiles(ctx, w, tema, camX, camY);
-    for (const m of w.movers) if (vis(m.x, m.x + m.largo)) J.Temas.dibujarMovil(ctx, tema, m, camX, camY);
+    for (const m of w.movers) if (!m.cae && vis(m.x, m.x + m.largo)) J.Temas.dibujarMovil(ctx, tema, m, camX, camY);
     for (const e of w.escombros) { ctx.save(); ctx.translate(Math.round((e.x + 0.5) * T - camX), Math.round((e.y + 0.5) * T - camY)); ctx.rotate(e.rot); ctx.drawImage(tema.tiles.puente, -8, -8); ctx.restore(); }
     // meta, checkpoints, palancas, resortes
     if (w.meta && vis(w.meta.x, w.meta.x + 2)) S2.dibujarMeta(ctx, w.meta.x * T - camX, w.meta.y * T - camY, t, tema, w.meta.bloqueada);
     for (const c of w.checks) if (vis(c.x, c.x + 1) && c.top >= 0) S2.dibujarCheckpoint(ctx, c.x * T - camX, c.top * T - camY, c.activo, t);
     for (const l of w.palancas) if (vis(l.x, l.x + 1)) S2.dibujarPalanca(ctx, l.x * T - camX, l.y * T - camY, l.estado, !l.usada, t);
     for (const r of w.resortes) if (vis(r.cx, r.cx + 1)) S2.dibujarResorte(ctx, r.cx * T - camX, r.fila * T - camY, r.comp);
-    for (const it of w.items) if (!it.tomado && vis(it.x, it.x + 1)) S2.dibujarFormula(ctx, (it.x + 0.5) * T - camX, (it.y + 0.5) * T - camY, t, tema, it.fase);
+    for (const it of w.items) if (!it.tomado && vis(it.x, it.x + 1)) {
+      if (it.moneda) S2.dibujarPremio(ctx, 'moneda', (it.x + 0.5) * T - camX, (it.y + 0.5) * T - camY + Math.round(Math.sin(t * 4 + it.fase) * 1.5), 1.5 + 0.4 * Math.abs(Math.sin(t * 3 + it.fase)));
+      else S2.dibujarFormula(ctx, (it.x + 0.5) * T - camX, (it.y + 0.5) * T - camY, t, tema, it.fase);
+    }
+    J.Quiz.dibujar(ctx, g, camX, camY, vis);
     for (const k of w.bloqueos) if (k.activo && vis(k.x, k.x + 1)) dibujarMuro(ctx, k, camX, camY, t, w);
-    for (const e of w.enemigos) if (e.vivo && vis(e.x, e.x + 1)) S2.dibujarEnemigo(ctx, e, t, camX, camY);
+    for (const e of w.enemigos) if (e.vivo && vis(e.x, e.x + 1)) { if (e.acuatico) S2.dibujarAcuatico(ctx, e, t, camX, camY); else S2.dibujarEnemigo(ctx, e, t, camX, camY); }
     J.Jefe.dibujar(ctx, g, camX, camY);
-    S2.dibujarAto(ctx, g.jugador, t, camX, camY);
+    const pj = g.jugador;
+    if (pj.hundido > 0 && g.anim && g.anim.pipe) {   // entrando en la tubería: Ato se hunde tras la boca
+      ctx.save(); ctx.beginPath(); ctx.rect(0, 0, J.VW, Math.round(g.anim.pipe.top * T - camY + 4)); ctx.clip();
+      const yo = pj.y; pj.y += pj.hundido * (pj.h + 0.6); S2.dibujarAto(ctx, pj, t, camX, camY); pj.y = yo; ctx.restore();
+    } else S2.dibujarAto(ctx, pj, t, camX, camY);
+    if (g.escudo && !pj.muriendo) {   // burbuja protectora
+      const bx = Math.round((pj.x + pj.w / 2) * T - camX), by = Math.round((pj.y + pj.h / 2) * T - camY);
+      for (let i = 0; i < 28; i++) { const a = (i / 28) * Math.PI * 2 + t; ctx.fillStyle = 'rgba(111,240,255,' + (0.45 + 0.3 * Math.sin(a * 2 + t * 4)) + ')'; ctx.fillRect(Math.round(bx + Math.cos(a) * 11), Math.round(by + Math.sin(a) * 12), 1, 1); }
+    }
+    if (pj.estrella > 0 && !pj.muriendo) {   // estrella: halo de colores
+      const bx = Math.round((pj.x + pj.w / 2) * T - camX), by = Math.round((pj.y + pj.h / 2) * T - camY);
+      for (let i = 0; i < 12; i++) { const a = (i / 12) * Math.PI * 2 + t * 5; ctx.fillStyle = ['#ffe27a', '#ff3da6', '#6ff0ff', '#2ee59d'][i % 4]; ctx.fillRect(Math.round(bx + Math.cos(a) * 12), Math.round(by + Math.sin(a) * 13), 2, 2); }
+    }
     J.Jefe.dibujarProy(ctx, g, camX, camY);
+    J.Quiz.dibujarAgua(ctx, g, camX, camY);
     for (const q of g.part) {
       ctx.globalAlpha = Math.min(1, q.vida * 2.5); ctx.fillStyle = q.color; ctx.fillRect(Math.round(q.x - camX), Math.round(q.y - camY), q.size, q.size);
     }
     ctx.globalAlpha = 1;
     // destello al ser herido / viñeta de peligro
-    if (g.jugador.inv > 0 && g.jugador.inv > 1.6) { ctx.fillStyle = 'rgba(255,77,109,.18)'; ctx.fillRect(0, 0, J.VW, J.VH); }
+    if (g.flash > 0) { ctx.fillStyle = 'rgba(255,255,255,' + (g.flash * 0.7) + ')'; ctx.fillRect(0, 0, J.VW, J.VH); }
+    if (g.jugador.inv > 0 && g.jugador.inv > 1.6 && !g.jugador.estrella) { ctx.fillStyle = 'rgba(255,77,109,.18)'; ctx.fillRect(0, 0, J.VW, J.VH); }
   }
 
   function dibujarCampo(ctx, c, camX, camY, t, tema) {
@@ -151,7 +176,7 @@
       const v = J.validar(nivel);
       if (!v.ok) console.warn('[juego] el nivel no pasa el validador de jugabilidad:', v.errores);
       J.Sprites.init();
-      S = { host, capId: ctx.capId, nivel, capitulo: ctx.capitulo || {}, tema: J.Temas.get(nivel.tema_visual), raf: 0, last: performance.now() / 1000, g: null };
+      S = { host, capId: ctx.capId, nivel, capitulo: ctx.capitulo || {}, onFin: ctx.onFin, modoQuiz: !!ctx.modoQuiz || String(nivel.tipo_nivel || '').indexOf('quiz_') === 0, tema: J.Temas.get(nivel.tema_visual), raf: 0, last: performance.now() / 1000, g: null };
       S.input = J.crearInput(pausar);
       S.ui = J.crearUI(host, { vidas: 3 }, { input: S.input, pausar });
       S.ctx = S.ui.canvas.getContext('2d');

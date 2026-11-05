@@ -22,6 +22,7 @@ Mapa 3D ─▶ eliges capítulo ─▶ NIVEL de plataformas ─▶ (ganar o mori
 - **Saltar juego → capítulo** está siempre en la barra superior (y **Saltar intro**).
 - Ganar da XP extra y una pista gratis en el quiz. Morir no bloquea nada.
 - Controles del juego: flechas / WASD, Espacio o ↑ para saltar, P pausa. Hay botones táctiles.
+- **🎮 Quiz Quest** (botón en la pestaña Quiz de cada capítulo): aventura de 3 fases (tierra, agua, castillo) donde bloques ?, tuberías, puertas y jefes solo se abren si respondes bien; hay ladrillos, plataformas que caen y plantas carnívoras.
 - **Fortalezas** (castillo de lava + jefe «Rey Entropía», que se derrota respondiendo preguntas del cours): capítulos 1, 10, 15, 17 y 20.
 
 ## Fórmulas animadas

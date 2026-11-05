@@ -8,7 +8,7 @@
 (function () {
   const J = window.PCB.juego;
   const A = (J.Audio = {});
-  let ctx = null, master = null, gMus = null, gSfx = null, timer = null, ruido = null;
+  let ctx = null, master = null, gMus = null, gSfx = null, timer = null, ruido = null, lp = null, enAgua = false;
   let tema = 'base', paso = 0, proximo = 0, vuelta = 0;
 
   const mtof = (m) => 440 * Math.pow(2, (m - 69) / 12);
@@ -20,6 +20,7 @@
     lab: { bpm: 138, root: 60, onda: 'square', vol: 0.05, lead: [0, 3, 7, 3, 10, 7, 3, null, 0, 3, 7, 12, 10, 7, 3, null, 5, 8, 12, 8, 10, 8, 5, null, 3, 7, 10, 7, 3, 0, null, null], bajo: [0, 0, 5, 7], arp: [0, 0, 7, 0, 12, 7, 0, 7] },
     lava: { bpm: 92, root: 50, onda: 'sawtooth', vol: 0.04, lead: [0, null, 3, null, 7, null, 5, 3, 0, null, -2, null, 3, null, 2, 0, 0, null, 3, null, 7, null, 10, 8, 7, null, 5, null, 3, 2, 0, null], bajo: [0, -2, -4, -5], arp: [0, null, 0, null, 7, null, 0, 3] },
     cielo: { bpm: 112, root: 64, onda: 'triangle', vol: 0.09, lead: [0, 4, 7, 12, 9, 7, 4, null, 2, 5, 9, 14, 12, 9, 5, null, 4, 7, 11, 16, 14, 11, 7, null, 9, 12, 9, 7, 4, 2, 0, null], bajo: [0, -3, -5, -7], arp: [0, 7, 12, 7, 4, 7, 12, 16] },
+    agua: { bpm: 84, root: 57, onda: 'sine', vol: 0.11, lead: [0, null, 4, null, 7, null, 4, null, 2, null, 5, null, 9, null, 5, null, 0, null, 4, null, 7, null, 12, null, 9, null, 7, null, 4, null, 2, null], bajo: [0, -3, -5, -7], arp: [0, null, 7, null, 12, null, 7, null] },
     base: { bpm: 120, root: 57, onda: 'square', vol: 0.05, lead: [0, 2, 4, 7, 4, 2, 0, null, 5, 4, 2, 4, 2, 0, null, null, 7, 9, 12, 9, 7, 4, 7, null, 4, 2, 0, 2, 4, 2, 0, null], bajo: [0, 5, 7, 0], arp: [0, 0, 7, 0, 4, 4, 7, 4] },
   };
 
@@ -30,7 +31,9 @@
         const AC = window.AudioContext || window.webkitAudioContext;
         if (!AC) return;
         ctx = new AC();
-        master = ctx.createGain(); master.gain.value = 0.55; master.connect(ctx.destination);
+        // master -> filtro paso-bajo (sonido amortiguado bajo el agua) -> salida
+        lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 20000; lp.Q.value = 0.7; lp.connect(ctx.destination);
+        master = ctx.createGain(); master.gain.value = 0.55; master.connect(lp);
         gMus = ctx.createGain(); gMus.gain.value = 1; gMus.connect(master);
         gSfx = ctx.createGain(); gSfx.gain.value = 1; gSfx.connect(master);
         // buffer de ruido blanco reutilizable
@@ -48,12 +51,18 @@
     tema = MUSICAS[nombreMusica] ? nombreMusica : 'base'; paso = 0; vuelta = 0;
     if (ctx) proximo = ctx.currentTime + 0.1;
   };
+  /** Bajo el agua el sonido se amortigua (paso-bajo). */
+  A.agua = function (b) {
+    if (!ctx || !lp || b === enAgua) return;
+    enAgua = b;
+    lp.frequency.setTargetAtTime(b ? 650 : 20000, ctx.currentTime, 0.06);
+  };
   A.pausarMusica = function (p) { if (gMus) gMus.gain.value = p ? 0.35 : 1; };
 
   A.cerrar = function () {
     clearInterval(timer); timer = null;
     try { if (ctx) ctx.close(); } catch (e) {}
-    ctx = master = gMus = gSfx = ruido = null;
+    ctx = master = gMus = gSfx = ruido = lp = null; enAgua = false;
   };
 
   // ---------- síntesis ----------
@@ -109,6 +118,16 @@
     fuego: (t) => { golpeRuido(gSfx, t, 0.25, 0.14, 1800); nota(gSfx, 500, t, 0.25, 'sawtooth', 0.05, 120); },
     onda: (t) => { golpeRuido(gSfx, t, 0.35, 0.25, 250); nota(gSfx, 80, t, 0.35, 'sine', 0.25, 30); },
     aviso: (t) => nota(gSfx, 740, t, 0.08, 'square', 0.05),
+    romper: (t) => { golpeRuido(gSfx, t, 0.22, 0.2, 2600); nota(gSfx, 520, t, 0.1, 'square', 0.06, 160); },
+    mordisco: (t) => { golpeRuido(gSfx, t, 0.07, 0.2, 2200); nota(gSfx, 300, t, 0.08, 'square', 0.1, 90); nota(gSfx, 300, t + 0.1, 0.08, 'square', 0.08, 90); },
+    tiembla: (t) => { nota(gSfx, 90, t, 0.35, 'sawtooth', 0.06, 70); golpeRuido(gSfx, t, 0.3, 0.05, 300); },
+    tonk: (t) => { nota(gSfx, 140, t, 0.1, 'square', 0.12, 90); golpeRuido(gSfx, t, 0.05, 0.1, 1500); },
+    premio: (t) => { [659, 784, 988, 1319].forEach((f, i) => nota(gSfx, f, t + i * 0.07, 0.16, 'square', 0.07)); },
+    puerta: (t) => { golpeRuido(gSfx, t, 0.4, 0.12, 600); nota(gSfx, 200, t, 0.5, 'sawtooth', 0.06, 700); nota(gSfx, 880, t + 0.3, 0.3, 'triangle', 0.1); },
+    tubo: (t) => { nota(gSfx, 600, t, 0.5, 'square', 0.07, 120); golpeRuido(gSfx, t, 0.3, 0.08, 400); },
+    teletransporte: (t) => { nota(gSfx, 300, t, 0.3, 'triangle', 0.12, 1400); nota(gSfx, 1400, t + 0.3, 0.2, 'sine', 0.08, 500); },
+    splash: (t) => { golpeRuido(gSfx, t, 0.25, 0.18, 1200); nota(gSfx, 300, t, 0.15, 'sine', 0.1, 120); },
+    nadar: (t) => { golpeRuido(gSfx, t, 0.12, 0.06, 700); nota(gSfx, 220, t, 0.14, 'sine', 0.06, 440); },
     menu: (t) => nota(gSfx, 600, t, 0.05, 'square', 0.05),
   };
   A.sfx = function (nombre) {

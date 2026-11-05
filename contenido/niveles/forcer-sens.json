@@ -1,0 +1,414 @@
+{
+ "capitulo_id": "forcer-sens",
+ "tipo_nivel": "normal",
+ "tema_visual": "laboratorio-neon",
+ "fisica_juego": {
+  "gravedad": 1.0,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 180,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "foso",
+   "x": 24,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 27,
+   "y": 14,
+   "largo": 15
+  },
+  {
+   "tipo": "foso",
+   "x": 42,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 45,
+   "y": 14,
+   "largo": 18
+  },
+  {
+   "tipo": "foso",
+   "x": 63,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 67,
+   "y": 14,
+   "largo": 18
+  },
+  {
+   "tipo": "foso",
+   "x": 85,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 88,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "foso",
+   "x": 108,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 112,
+   "y": 14,
+   "largo": 18
+  },
+  {
+   "tipo": "foso",
+   "x": 130,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 133,
+   "y": 14,
+   "largo": 19
+  },
+  {
+   "tipo": "foso",
+   "x": 152,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 155,
+   "y": 14,
+   "largo": 25
+  },
+  {
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 30,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 50,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 96,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 138,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 72,
+   "y": 12,
+   "largo": 4,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 91,
+   "y": 12,
+   "largo": 3,
+   "recorrido": 1,
+   "eje": "y",
+   "periodo": 3
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 118,
+   "y": 12,
+   "largo": 4,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 5
+  },
+  {
+   "tipo": "resorte",
+   "x": 21,
+   "y": 14
+  },
+  {
+   "tipo": "resorte",
+   "x": 105,
+   "y": 14
+  },
+  {
+   "tipo": "resorte",
+   "x": 148,
+   "y": 14
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 28,
+   "y": 8,
+   "w": 13,
+   "h": 6,
+   "fx": 0.5,
+   "fy": 0
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 68,
+   "y": 5,
+   "w": 12,
+   "h": 9,
+   "fx": 0,
+   "fy": -0.6
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 89,
+   "y": 8,
+   "w": 18,
+   "h": 6,
+   "fx": -0.5,
+   "fy": 0
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 113,
+   "y": 8,
+   "w": 16,
+   "h": 6,
+   "fx": -0.5,
+   "fy": 0
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 7,
+   "y": 12,
+   "ref": "f1",
+   "latex": "Q_{r,i} < K(T) \\;\\Rightarrow\\; \\text{évolution spontanée dans le sens direct}",
+   "nombre": "Critère d'évolution spontanée (Qr,i frente a K)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 14,
+   "y": 10,
+   "ref": "f2",
+   "latex": "Q_{r,i} = \\dfrac{[\\mathrm{Zn^{2+}(aq)}]_i\\,[\\mathrm{I^-(aq)}]_i^{2}}{[\\mathrm{I_2(aq)}]_i}",
+   "nombre": "Cociente de reacción inicial (ejemplo Zn / I2)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 32,
+   "y": 10,
+   "ref": "f3",
+   "latex": "[\\mathrm{X}]_i = \\dfrac{n_i}{V_{total}} = \\dfrac{c\\cdot V}{V_{total}}",
+   "nombre": "Concentración inicial tras mezclar"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 55,
+   "y": 12,
+   "ref": "f4",
+   "latex": "q = I\\cdot\\Delta t",
+   "nombre": "Carga eléctrica y corriente"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 75,
+   "y": 12,
+   "ref": "f5",
+   "latex": "q = n(e^-)\\cdot N_A\\cdot e",
+   "nombre": "Carga y cantidad de electrones"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 98,
+   "y": 10,
+   "ref": "f6",
+   "latex": "n(\\mathrm{I_2})_{formé}=n(\\mathrm{Zn})_{formé}=\\dfrac{1}{2}\\,n(e^-)=\\dfrac{I\\cdot\\Delta t}{2\\,N_A\\cdot e}",
+   "nombre": "Balance de materia de la electrólisis (Zn²⁺ / I⁻)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 115,
+   "y": 12,
+   "ref": "f7",
+   "latex": "\\Delta t = \\dfrac{n(e^-)\\cdot N_A\\cdot e}{I}",
+   "nombre": "Duración de la electrólisis"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 125,
+   "y": 12,
+   "ref": "f10",
+   "latex": "n = \\dfrac{m}{M}",
+   "nombre": "Cantidad de materia a partir de la masa"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 140,
+   "y": 10,
+   "ref": "f9",
+   "latex": "m = \\rho\\cdot V = \\rho\\cdot S\\cdot e",
+   "nombre": "Masa de un depósito metálico"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 170,
+   "y": 12,
+   "ref": "f8",
+   "latex": "E = U\\cdot I\\cdot\\Delta t",
+   "nombre": "Energía eléctrica"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 18,
+   "y": 13,
+   "enemigo": "error_anodo_catodo",
+   "nombre": "Confundir ánodo y cátodo",
+   "correccion": "Cátodo = reducción (borne −); ánodo = oxidación (borne +)."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 36,
+   "y": 13,
+   "enemigo": "error_volumen_total",
+   "nombre": "Usar el volumen de una solución en vez del total",
+   "correccion": "Tras mezclar, [X]i = ni / Vtotal de la mezcla."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 57,
+   "y": 13,
+   "enemigo": "error_unidades",
+   "nombre": "Unidades incoherentes",
+   "correccion": "Pasar Δt a segundos y µm/cm² a cm antes de calcular (q en C, I en A)."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 78,
+   "y": 13,
+   "enemigo": "error_sentido_corriente",
+   "nombre": "Invertir el sentido de I y de los e⁻",
+   "correccion": "Los electrones circulan en sentido contrario al de la corriente I."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 95,
+   "y": 13,
+   "enemigo": "error_portadores",
+   "nombre": "Confundir iones y electrones como portadores",
+   "correccion": "Iones en la disolución; electrones solo en el circuito exterior."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 120,
+   "y": 13,
+   "enemigo": "error_estequiometria",
+   "nombre": "Olvidar la estequiometría de la semiecuación",
+   "correccion": "n(Zn) = n(e⁻)/2; para Cr³⁺, n(e⁻) = 3·n(Cr)."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 145,
+   "y": 13,
+   "enemigo": "error_espontanea",
+   "nombre": "Creer que la electrólisis es espontánea",
+   "correccion": "Es una transformación forzada por el generador, en sentido opuesto al espontáneo; la pila es la espontánea."
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 70
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 114
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 157
+  },
+  {
+   "tipo": "jefe",
+   "x": 168,
+   "jefe": "ejercicio_bac_1",
+   "titulo": "Ejercicio bac: électrolyse (ex. 12, 19, 22 del cours)",
+   "preguntas": [
+    {
+     "pregunta": "Lors d'une électrolyse, la cathode est :",
+     "opciones": [
+      "le siège d'une oxydation, reliée à la borne + du générateur",
+      "le siège d'une réduction, reliée à la borne − du générateur",
+      "le siège d'une réduction, reliée à la borne + du générateur",
+      "l'électrode qui attire les anions"
+     ],
+     "correcta": 1,
+     "explicacion": "La cathode est le siège de la réduction et se relie à la borne − du générateur, qui fournit les électrons (cours p.210 ; conseil de l'exercice 18).",
+     "pagina_pdf": 210
+    },
+    {
+     "pregunta": "Ex. 12 : on branche à un générateur un électrolyseur contenant Cu²⁺(aq), SO₄²⁻(aq) et Ag⁺(aq), NO₃⁻(aq). Qu'observe-t-on à la cathode ?",
+     "opciones": [
+      "Un dépôt gris d'argent et une solution plus bleue",
+      "Un dégagement de dioxygène",
+      "Un dépôt métallique orangé de cuivre et la solution se décolore",
+      "Rien : la transformation est spontanée"
+     ],
+     "correcta": 2,
+     "explicacion": "Le générateur force le sens opposé : Cu²⁺(aq) + 2 Ag(s) ⇌ Cu(s) + 2 Ag⁺(aq). La solution se décolore et du cuivre orangé se dépose sur la cathode (corrigé de l'ex. 12).",
+     "pagina_pdf": 615
+    },
+    {
+     "pregunta": "Ex. 22 : Cu²⁺ + Zn ⇌ Cu + Zn²⁺, K = 2,0×10³⁷, [Cu²⁺]i = [Zn²⁺]i = 0,05 mol·L⁻¹. Que vaut Qr,i et quel métal se forme lors de l'électrolyse ?",
+     "opciones": [
+      "Qr,i = 1 < K : sens direct ; l'électrolyse forme du cuivre",
+      "Qr,i = 1 < K : sens direct ; l'électrolyse (sens opposé) forme du zinc",
+      "Qr,i = 1 > K : sens opposé ; l'électrolyse forme du zinc",
+      "Qr,i = 0,05 ; l'électrolyse forme du cuivre"
+     ],
+     "correcta": 1,
+     "explicacion": "Qr,i = [Zn²⁺]i/[Cu²⁺]i = 1 < K : sens direct (spontané). Le générateur force le sens opposé : Zn²⁺ + 2 e⁻ = Zn(s), il se forme du zinc (corrigé de l'ex. 22).",
+     "pagina_pdf": 616
+    },
+    {
+     "pregunta": "Ex. 19 : on forme 179 mg de titane (M = 47,9 g·mol⁻¹) avec I = 200 mA pendant 1,0 h. Quels sont l'électrode et les ions titane ?",
+     "opciones": [
+      "Anode ; Ti³⁺",
+      "Cathode ; Ti²⁺",
+      "Cathode ; Ti⁴⁺",
+      "Anode ; Ti²⁺"
+     ],
+     "correcta": 1,
+     "explicacion": "Le titane se réduit : cathode. n(e⁻) = 7,5×10⁻³ mol et n(Ti) = 3,7×10⁻³ mol, donc α = 2 : Ti²⁺ (corrigé de l'ex. 19).",
+     "pagina_pdf": 616
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 178
+  }
+ ]
+}

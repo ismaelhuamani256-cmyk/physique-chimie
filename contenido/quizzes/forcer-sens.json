@@ -1,0 +1,223 @@
+{
+ "capitulo_id": "forcer-sens",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "opcion",
+   "enunciado": "Pour forcer une transformation chimique à évoluer dans le sens opposé à son sens spontané, on utilise :",
+   "opciones": [
+    "un générateur de tension alternative",
+    "une pile",
+    "un générateur de tension continue",
+    "un simple chauffage"
+   ],
+   "correcta": 2,
+   "explicacion": "Un générateur de tension continue force le système à évoluer dans le sens opposé (Vérifier l'essentiel nº 1 : C).",
+   "pagina_pdf": 209
+  },
+  {
+   "id": "q2",
+   "tipo": "opcion",
+   "enunciado": "Lors d'une électrolyse, l'anode est :",
+   "opciones": [
+    "le siège d'une réduction, reliée à la borne −",
+    "reliée à la borne + du générateur et siège d'une oxydation",
+    "reliée à la borne − du générateur et siège d'une oxydation",
+    "l'électrode qui attire les cations"
+   ],
+   "correcta": 1,
+   "explicacion": "L'anode est le siège de l'oxydation et est reliée à la borne + du générateur, qui capte les électrons libérés (p.210).",
+   "pagina_pdf": 210
+  },
+  {
+   "id": "q3",
+   "tipo": "opcion",
+   "enunciado": "Lors d'une électrolyse, quels sont les porteurs de charge dans la solution et dans le circuit extérieur ?",
+   "opciones": [
+    "Électrons dans la solution, ions dans le circuit",
+    "Ions dans la solution, électrons dans le circuit",
+    "Atomes dans les deux",
+    "Ions dans les deux"
+   ],
+   "correcta": 1,
+   "explicacion": "Dans la solution aqueuse se déplacent les ions ; dans le circuit extérieur circulent les électrons (corrigé nº 2 et 3 : A et B).",
+   "pagina_pdf": 214
+  },
+  {
+   "id": "q4",
+   "tipo": "opcion",
+   "enunciado": "Pour 2 H₂O(ℓ) ⇌ 2 H₂(g) + O₂(g), la quantité de dihydrogène formée est reliée à n(e⁻) par :",
+   "opciones": [
+    "n(H₂) = 2 × n(e⁻)",
+    "n(H₂) = n(e⁻)",
+    "n(H₂) = ½ × n(e⁻)",
+    "n(H₂) = 4 × n(e⁻)"
+   ],
+   "correcta": 2,
+   "explicacion": "2 H₂O + 2 e⁻ = H₂ + 2 HO⁻ : il faut 2 électrons pour 1 H₂, donc n(H₂) = n(e⁻)/2 (Vérifier l'essentiel nº 7 : C).",
+   "pagina_pdf": 214
+  },
+  {
+   "id": "q5",
+   "tipo": "opcion",
+   "enunciado": "Qu'est-ce qu'un accumulateur ?",
+   "opciones": [
+    "Une pile qui ne se recharge jamais",
+    "Une pile pouvant être rechargée grâce à une électrolyse : pile à la décharge, électrolyseur à la charge",
+    "Un électrolyseur qui ne fonctionne qu'en charge",
+    "Un dispositif qui stocke l'énergie sous forme thermique"
+   ],
+   "correcta": 1,
+   "explicacion": "Un accumulateur fonctionne en pile lors de la décharge et en électrolyseur lors de la charge (p.212-213).",
+   "pagina_pdf": 212
+  },
+  {
+   "id": "q6",
+   "tipo": "opcion",
+   "enunciado": "La photosynthèse (6 CO₂ + 6 H₂O → C₆H₁₂O₆ + 6 O₂) est :",
+   "opciones": [
+    "une transformation spontanée, de nuit",
+    "une transformation spontanée, toute la journée",
+    "une transformation forcée par l'énergie lumineuse, le jour",
+    "l'inverse de la combustion de l'octane"
+   ],
+   "correcta": 2,
+   "explicacion": "C'est l'inverse de la respiration, qui est spontanée ; elle n'est pas spontanée et se réalise le jour grâce à la chlorophylle et à l'énergie lumineuse (p.212, Vérifier l'essentiel nº 10 : A).",
+   "pagina_pdf": 212
+  },
+  {
+   "id": "q7",
+   "tipo": "numerico",
+   "enunciado": "On mélange trois solutions (I₂, KI et ZnSO₄), de concentration c = 0,015 mol·L⁻¹ et de volume V = 20 mL chacune (Vtotal = 60 mL). Calculer [Zn²⁺]i.",
+   "valor": 0.005,
+   "unidad": "mol·L⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "[Zn²⁺]i = c·V/Vtotal",
+    "= 0,015 × 0,020 / 0,060",
+    "= 5,0×10⁻³ mol·L⁻¹"
+   ],
+   "pagina_pdf": 209
+  },
+  {
+   "id": "q8",
+   "tipo": "numerico",
+   "enunciado": "Pour Zn(s) + I₂(aq) ⇌ Zn²⁺(aq) + 2 I⁻(aq), avec [Zn²⁺]i = [I⁻]i = [I₂]i = 0,0050 mol·L⁻¹, calculer Qr,i (sans unité). Comparer à K(T) = 10^46 : dans quel sens évolue le système spontanément ?",
+   "valor": 2.5e-05,
+   "unidad": "",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "Qr,i = [Zn²⁺]i·[I⁻]i² / [I₂]i",
+    "= 0,0050 × 0,0050² / 0,0050 = 2,5×10⁻⁵",
+    "Qr,i < K : sens direct"
+   ],
+   "pagina_pdf": 209
+  },
+  {
+   "id": "q9",
+   "tipo": "numerico",
+   "enunciado": "Un électrolyseur parcouru par I = 250 mA fonctionne Δt = 3,0 min. Calculer la quantité de charges q.",
+   "valor": 45.0,
+   "unidad": "C",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "Δt = 3,0 × 60 = 180 s",
+    "q = I·Δt = 0,250 × 180 = 45 C"
+   ],
+   "pagina_pdf": 214
+  },
+  {
+   "id": "q10",
+   "tipo": "numerico",
+   "enunciado": "Avec q = 45 C, calculer la quantité de matière d'électrons n(e⁻) échangés (N_A = 6,02×10²³ mol⁻¹ ; e = 1,6×10⁻¹⁹ C).",
+   "valor": 0.000467,
+   "unidad": "mol",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "n(e⁻) = q/(N_A·e)",
+    "= 45 / (6,02×10²³ × 1,6×10⁻¹⁹)",
+    "= 4,7×10⁻⁴ mol"
+   ],
+   "pagina_pdf": 214
+  },
+  {
+   "id": "q11",
+   "tipo": "numerico",
+   "enunciado": "Électrolyse de ZnI₂ : I = 500 mA pendant 10 min. Calculer n(I₂) formé = I·Δt/(2·N_A·e).",
+   "valor": 0.00156,
+   "unidad": "mol",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "q = 0,500 × 600 = 300 C",
+    "n(I₂) = q/(2·N_A·e) = 300/(2 × 6,02×10²³ × 1,6×10⁻¹⁹)",
+    "= 1,6×10⁻³ mol"
+   ],
+   "pagina_pdf": 211
+  },
+  {
+   "id": "q12",
+   "tipo": "numerico",
+   "enunciado": "Chromage (ex. 20) : n(e⁻) = 8,1×10⁻² mol et I = 2,5 A. Calculer la durée Δt de l'électrolyse.",
+   "valor": 3120.0,
+   "unidad": "s",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "Δt = n(e⁻)·N_A·e/I",
+    "= 8,1×10⁻² × 6,02×10²³ × 1,6×10⁻¹⁹ / 2,5",
+    "≈ 3,1×10³ s (52 min)"
+   ],
+   "pagina_pdf": 218
+  },
+  {
+   "id": "q13",
+   "tipo": "numerico",
+   "enunciado": "Électrolyse du titane (ex. 19) : I = 200 mA pendant 1,0 h. Calculer n(e⁻).",
+   "valor": 0.00748,
+   "unidad": "mol",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "q = 0,200 × 3600 = 720 C",
+    "n(e⁻) = 720/(6,02×10²³ × 1,6×10⁻¹⁹)",
+    "= 7,5×10⁻³ mol"
+   ],
+   "pagina_pdf": 217
+  },
+  {
+   "id": "q14",
+   "tipo": "numerico",
+   "enunciado": "Ex. 22 : électrolyse de 30 min avec I = 200 mA ; Zn²⁺ + 2 e⁻ = Zn(s), M(Zn) = 65,4 g·mol⁻¹. Calculer la masse de zinc formé.",
+   "valor": 0.122,
+   "unidad": "g",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "q = 0,200 × 1800 = 360 C",
+    "n(Zn) = q/(2·N_A·e) = 1,9×10⁻³ mol",
+    "m = n·M = 1,9×10⁻³ × 65,4 ≈ 0,12 g"
+   ],
+   "pagina_pdf": 219
+  },
+  {
+   "id": "q15",
+   "tipo": "numerico",
+   "enunciado": "Ex. 16 : n(e⁻) = 4,0×10⁴ mol lors de l'électrolyse de NaCl(aq) (2 Cl⁻ = Cl₂ + 2 e⁻), V_m = 24 L·mol⁻¹. Calculer le volume de Cl₂ formé.",
+   "valor": 480000.0,
+   "unidad": "L",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "n(Cl₂) = n(e⁻)/2 = 2,0×10⁴ mol",
+    "V = n·V_m = 2,0×10⁴ × 24",
+    "= 4,8×10⁵ L (480 m³)"
+   ],
+   "pagina_pdf": 216
+  }
+ ]
+}

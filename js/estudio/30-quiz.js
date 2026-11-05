@@ -27,7 +27,7 @@
   function cajaResultado(r) {
     const clase = r.ok ? 'ok' : r.valorOk || r.unidadOk ? 'parcial' : 'mal';
     return el('div', { class: 'est-res ' + clase, role: 'status' },
-      el('b', {}, r.ok ? '✔ ' : r.valorOk ? '◐ ' : '✘ '), r.mensaje);
+      el('b', {}, r.ok ? '✔ ' : r.valorOk ? '⚠ ' : '✘ '), r.mensaje);
   }
   const listaPasos = (pasos) => (pasos && pasos.length ? el('div', { class: 'est-solpasos' }, el('h4', {}, 'Resolución paso a paso'), el('ol', {}, pasos.map((p) => el('li', {}, H.txt(p))))) : null);
 

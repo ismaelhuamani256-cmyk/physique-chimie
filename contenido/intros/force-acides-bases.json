@@ -1,0 +1,357 @@
+{
+ "titulo": "Fuertes y débiles: dos ácidos, dos destinos",
+ "estilo": "quimica3d",
+ "duracion_seg": 26,
+ "actores": [
+  {
+   "id": "vA",
+   "tipo": "vaso",
+   "pos": [
+    0.25,
+    0.68
+   ],
+   "color": "#2ee59d",
+   "escala": 1.2
+  },
+  {
+   "id": "vB",
+   "tipo": "vaso",
+   "pos": [
+    0.75,
+    0.68
+   ],
+   "color": "#ff3da6",
+   "escala": 1.2
+  },
+  {
+   "id": "tA",
+   "tipo": "texto",
+   "pos": [
+    0.25,
+    0.14
+   ],
+   "color": "#2ee59d",
+   "escala": 1,
+   "texto": "Ácido fuerte: HCl"
+  },
+  {
+   "id": "tB",
+   "tipo": "texto",
+   "pos": [
+    0.75,
+    0.14
+   ],
+   "color": "#ff3da6",
+   "escala": 1,
+   "texto": "Ácido débil: CH₃CO₂H"
+  },
+  {
+   "id": "hcl",
+   "tipo": "molecula",
+   "pos": [
+    0.25,
+    0.3
+   ],
+   "color": "#2ee59d",
+   "escala": 1
+  },
+  {
+   "id": "cl",
+   "tipo": "ion",
+   "pos": [
+    0.21,
+    0.7
+   ],
+   "color": "#00d4ff",
+   "escala": 0.8
+  },
+  {
+   "id": "h3o_a",
+   "tipo": "ion",
+   "pos": [
+    0.29,
+    0.7
+   ],
+   "color": "#ffd23f",
+   "escala": 0.8
+  },
+  {
+   "id": "ah",
+   "tipo": "molecula",
+   "pos": [
+    0.75,
+    0.3
+   ],
+   "color": "#ff3da6",
+   "escala": 1
+  },
+  {
+   "id": "ab",
+   "tipo": "ion",
+   "pos": [
+    0.72,
+    0.72
+   ],
+   "color": "#00d4ff",
+   "escala": 0.7
+  },
+  {
+   "id": "h3o_b",
+   "tipo": "ion",
+   "pos": [
+    0.78,
+    0.72
+   ],
+   "color": "#ffd23f",
+   "escala": 0.7
+  },
+  {
+   "id": "atomo",
+   "tipo": "atomo",
+   "pos": [
+    0.5,
+    0.45
+   ],
+   "color": "#ffffff",
+   "escala": 0.8
+  }
+ ],
+ "pasos": [
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "cl"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "h3o_a"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "ab"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "h3o_b"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "atomo"
+  },
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "vA",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "vB",
+   "dur": 1
+  },
+  {
+   "t": 0.5,
+   "accion": "aparece",
+   "actor": "tA",
+   "dur": 1
+  },
+  {
+   "t": 0.5,
+   "accion": "aparece",
+   "actor": "tB",
+   "dur": 1
+  },
+  {
+   "t": 1.5,
+   "accion": "subtitulo",
+   "texto": "Dos vasos de agua y dos ácidos con la misma concentración: c = 1,0×10⁻² mol·L⁻¹."
+  },
+  {
+   "t": 3,
+   "accion": "mueve",
+   "actor": "hcl",
+   "a": [
+    0.25,
+    0.62
+   ],
+   "dur": 1.5
+  },
+  {
+   "t": 4.5,
+   "accion": "habla",
+   "actor": "hcl",
+   "texto": "¡Yo me rindo del todo!"
+  },
+  {
+   "t": 5,
+   "accion": "reaccion",
+   "de": [
+    "hcl"
+   ],
+   "a": [
+    "cl",
+    "h3o_a"
+   ]
+  },
+  {
+   "t": 5,
+   "accion": "aparece",
+   "actor": "cl",
+   "dur": 0.5
+  },
+  {
+   "t": 5,
+   "accion": "aparece",
+   "actor": "h3o_a",
+   "dur": 0.5
+  },
+  {
+   "t": 5.5,
+   "accion": "desaparece",
+   "actor": "hcl"
+  },
+  {
+   "t": 5.5,
+   "accion": "particulas",
+   "tipo": "burbujas",
+   "pos": [
+    0.25,
+    0.7
+   ]
+  },
+  {
+   "t": 6,
+   "accion": "subtitulo",
+   "texto": "Ácido fuerte: la reacción con el agua es total y no queda ninguna molécula de ácido."
+  },
+  {
+   "t": 7,
+   "accion": "formula",
+   "latex": "\\mathrm{pH}=-\\log c",
+   "pos": [
+    0.25,
+    0.42
+   ]
+  },
+  {
+   "t": 8,
+   "accion": "valor",
+   "id": "phA",
+   "desde": 7,
+   "hasta": 2,
+   "dur": 2,
+   "etiqueta": "pH del vaso verde"
+  },
+  {
+   "t": 10,
+   "accion": "mueve",
+   "actor": "ah",
+   "a": [
+    0.75,
+    0.62
+   ],
+   "dur": 1.5
+  },
+  {
+   "t": 11.5,
+   "accion": "habla",
+   "actor": "ah",
+   "texto": "Yo casi me quedo entero... solo algunos se atreven."
+  },
+  {
+   "t": 12,
+   "accion": "reaccion",
+   "de": [
+    "ah"
+   ],
+   "a": [
+    "ab",
+    "h3o_b"
+   ]
+  },
+  {
+   "t": 12,
+   "accion": "aparece",
+   "actor": "ab",
+   "dur": 0.5
+  },
+  {
+   "t": 12,
+   "accion": "aparece",
+   "actor": "h3o_b",
+   "dur": 0.5
+  },
+  {
+   "t": 13,
+   "accion": "reaccion",
+   "de": [
+    "ab",
+    "h3o_b"
+   ],
+   "a": [
+    "ah"
+   ]
+  },
+  {
+   "t": 13.5,
+   "accion": "resalta",
+   "actor": "vB"
+  },
+  {
+   "t": 14,
+   "accion": "subtitulo",
+   "texto": "Ácido débil: la reacción no es total, llega a un equilibrio ⇌ y el pH no es −log c."
+  },
+  {
+   "t": 15.5,
+   "accion": "formula",
+   "latex": "K_A=\\dfrac{[\\mathrm{A^-}]_f\\,[\\mathrm{H_3O^+}]_f}{[\\mathrm{AH}]_f}",
+   "pos": [
+    0.75,
+    0.42
+   ]
+  },
+  {
+   "t": 17.5,
+   "accion": "aparece",
+   "actor": "atomo",
+   "dur": 1
+  },
+  {
+   "t": 18,
+   "accion": "habla",
+   "actor": "atomo",
+   "texto": "¡Mayor pKA, ácido más débil!"
+  },
+  {
+   "t": 18.5,
+   "accion": "subtitulo",
+   "texto": "Cuanto mayor es el pKA, menos reacciona el ácido con el agua."
+  },
+  {
+   "t": 21,
+   "accion": "camara",
+   "zoom": 1.2,
+   "centro": [
+    0.5,
+    0.5
+   ],
+   "dur": 1.5
+  },
+  {
+   "t": 22.5,
+   "accion": "subtitulo",
+   "texto": "Mide el pH, compáralo con −log c y sabrás si el ácido es fuerte o débil."
+  },
+  {
+   "t": 24,
+   "accion": "pausa",
+   "dur": 1
+  }
+ ]
+}

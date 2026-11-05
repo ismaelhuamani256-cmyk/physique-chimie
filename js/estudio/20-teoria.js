@@ -56,7 +56,7 @@
     const a = f.animacion || { preset: 'generico', params: {} };
     let preset = a.preset || 'generico', params = Object.assign({}, a.params);
     if (!PCB.anim.get(preset)) { preset = 'generico'; if (!params.expr) params.expr = 'x'; }
-    PCB.anim.open(preset, { params, leyenda: a.leyenda, latexBase: f.latex, titulo: f.nombre_fr || f.nombre });
+    PCB.anim.open(preset, { params, leyenda: a.leyenda && String(a.leyenda).replace(/\$([^$]*)\$/g, '$1'), latexBase: f.latex, titulo: f.nombre_fr || f.nombre });
   }
   E.abrirAnimacion = abrirAnim;
 
@@ -166,6 +166,8 @@
   // ---------------------------------------------------------------------------
   // 5. LABORATORIO — simuladores grandes con sliders (montaje perezoso)
   // ---------------------------------------------------------------------------
+  const plano = (s) => (s == null ? s : String(s).replace(/\$([^$]*)\$/g, '$1')); // leyenda del motor es texto plano
+
   T.lab = function (ctx) {
     const cap = ctx.cap, fs = cap.formulas || [];
     // Elementos: laboratorio[] + fórmulas con animación (sin duplicar preset+params iguales)
@@ -174,12 +176,12 @@
     (cap.laboratorio || []).forEach((l) => {
       const f = fs.find((x) => x.animacion && x.animacion.preset === l.preset);
       vistos.add(clave(l.preset, l.params));
-      items.push({ titulo: l.titulo || l.preset, sub: l.relacion, preset: l.preset, params: l.params, leyenda: l.relacion, latexBase: f && f.latex, tipo: 'lab' });
+      items.push({ titulo: l.titulo || l.preset, sub: l.relacion, preset: l.preset, params: l.params, leyenda: plano(l.relacion), latexBase: f && f.latex, tipo: 'lab' });
     });
     fs.forEach((f) => {
       if (!f.animacion || !f.animacion.preset) return;
       const k = clave(f.animacion.preset, f.animacion.params); if (vistos.has(k)) return; vistos.add(k);
-      items.push({ titulo: f.nombre_fr || f.nombre, sub: f.animacion.leyenda || 'Fórmula del capítulo', preset: f.animacion.preset, params: f.animacion.params, leyenda: f.animacion.leyenda, latexBase: f.latex, tipo: 'formula' });
+      items.push({ titulo: f.nombre_fr || f.nombre, sub: f.animacion.leyenda || 'Fórmula del capítulo', preset: f.animacion.preset, params: f.animacion.params, leyenda: plano(f.animacion.leyenda), latexBase: f.latex, tipo: 'formula' });
     });
     if (!items.length) return { el: el('p', { class: 'est-vacio' }, 'Este capítulo aún no tiene simuladores.') };
 

@@ -350,7 +350,7 @@
       const gTop = new T.CircleGeometry(R, SEG); gTop.rotateX(-Math.PI / 2);
       for (let i = 0; i < gTop.attributes.position.count; i++) {
         const x = gTop.attributes.position.getX(i), z = gTop.attributes.position.getZ(i), f = fb(Math.atan2(z, x));
-        gTop.attributes.position.setXZ(i, x * f, z * f);
+        gTop.attributes.position.setX(i, x * f); gTop.attributes.position.setZ(i, z * f);
       }
       g.add(mesh(gTop, stdM({ map: tg, emissiveMap: tg, emissive: 0xffffff, emissiveIntensity: 0.5, roughness: 0.85, metalness: 0.05 })));
 
@@ -373,7 +373,7 @@
       const gR = new T.RingGeometry(R * 0.985, R * 1.012, SEG, 1); gR.rotateX(-Math.PI / 2);
       for (let i = 0; i < gR.attributes.position.count; i++) {
         const x = gR.attributes.position.getX(i), z = gR.attributes.position.getZ(i), f = fb(Math.atan2(z, x));
-        gR.attributes.position.setXZ(i, x * f, z * f);
+        gR.attributes.position.setX(i, x * f); gR.attributes.position.setZ(i, z * f);
       }
       gR.translate(0, 0.04, 0);
       g.add(mesh(gR, basM({ color: pal.a, transparent: true, opacity: 0.9 })));
@@ -584,7 +584,7 @@
       // --- plataforma circular sobre el camino ---
       const rPad = n.fort ? 1.55 : 2.0;
       const pad = new T.Group(); pad.position.copy(n.pos); scene.add(pad);
-      pad.add(mesh(new T.CylinderGeometry(rPad, rPad + 0.15, 0.16, 36), m.piedra)).position.y = 0.01;
+      const disco = mesh(new T.CylinderGeometry(rPad, rPad + 0.15, 0.16, 36), m.piedra); disco.position.y = 0.01; pad.add(disco);
       const aro = mesh(new T.TorusGeometry(rPad, 0.045, 6, 48), m.acento); aro.rotation.x = Math.PI / 2; aro.position.y = 0.09; pad.add(aro);
       n.pad = pad;
 
@@ -1243,7 +1243,7 @@
       raf = requestAnimationFrame(frame);
       if (destruido || document.hidden || listaVisible) return;
       // Límite de FPS: 60 mientras algo se mueve por el usuario, 30 en reposo
-      const interactuando = viaje || ptr.arrastre || !camaraQuieta() || now - ultimaInteraccion < 1500 || nodos.some((n) => Math.abs(n.lift - (hover === n ? 1 : 0)) > 0.01 && hover === n);
+      const interactuando = viaje || ptr.arrastre || !camaraQuieta() || now - ultimaInteraccion < 1500;
       const fps = rm ? 20 : interactuando ? 60 : 30;
       if (now - ultimoFrame < 1000 / fps - 2) return;
       const dt = Math.min(0.1, (now - ultimoFrame) / 1000 || 0.016); ultimoFrame = now;

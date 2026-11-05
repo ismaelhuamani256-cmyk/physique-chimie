@@ -1,0 +1,1050 @@
+{
+ "id": "methodes-physiques",
+ "titulo": "Méthodes physiques d'analyse",
+ "materia": "chimie",
+ "mundo": "constitucion",
+ "pdf_ini": 58,
+ "pdf_fin": 81,
+ "resumen": "Tres métodos físicos para analizar soluciones: la medida del pH (pH = −log([H₃O⁺]/c°)), la espectroscopía (UV-visible e infrarroja) para identificar especies y grupos característicos, y las medidas de absorbancia y conductividad (leyes de Beer-Lambert y de Kohlrausch) que permiten dosificar por etalonnage una solución. Ambas leyes solo valen para c < 10⁻² mol·L⁻¹.",
+ "resumen_fr": "Mesure du pH, spectroscopies UV-visible et infrarouge, absorbance (loi de Beer-Lambert) et conductance/conductivité (loi de Kohlrausch) : dosages par étalonnage.",
+ "nociones_clave": [
+  {
+   "fr": "pH (potentiel Hydrogène)",
+   "es": "Número entre 0 y 14 que mide la acidez de una solución acuosa; se calcula a partir de [H₃O⁺] o se mide con un pH-metro previamente calibrado.",
+   "pagina_pdf": 60
+  },
+  {
+   "fr": "Fonction logarithme décimal",
+   "es": "log transforma un producto en suma (log(a×b)=log a+log b, log 1=0, log 10=1); su recíproca es la función 10ˣ.",
+   "pagina_pdf": 63
+  },
+  {
+   "fr": "Fonction décroissante",
+   "es": "El pH decrece cuando [H₃O⁺] aumenta; el pH del agua pura es 7, o sea [H₃O⁺] = 10⁻⁷ mol·L⁻¹.",
+   "pagina_pdf": 63
+  },
+  {
+   "fr": "pH-mètre et papier pH",
+   "es": "El papel pH da el pH con precisión de una unidad; el pH-metro es fiable entre pH 1 y 13 (10⁻¹ a 10⁻¹³ mol·L⁻¹) con incertidumbre de 0,1 unidad.",
+   "pagina_pdf": 63
+  },
+  {
+   "fr": "Diagramme de Flood",
+   "es": "Representación pH = f(−log([H₃O⁺]/c°)). Zona 1 (poca dilución): relación no válida; zona 2 (c entre 10⁻² y 10⁻⁶·⁵ mol·L⁻¹): válida; zona 3 (gran dilución): el agua impone pH = 7.",
+   "pagina_pdf": 63
+  },
+  {
+   "fr": "Niveaux d'énergie quantifiés / photon",
+   "es": "Un fotón solo es absorbido si su energía coincide exactamente con el salto entre dos niveles de energía de la molécula.",
+   "pagina_pdf": 64
+  },
+  {
+   "fr": "Spectroscopie",
+   "es": "Análisis de las ondas absorbidas: da información sobre los niveles de energía y por tanto sobre la estructura de la materia.",
+   "pagina_pdf": 64
+  },
+  {
+   "fr": "Spectroscopie UV-visible : absorbance et spectre d'absorption",
+   "es": "La energía del fotón absorbido la ganan los electrones. La absorbancia A mide la capacidad de absorber luz; el espectro A = f(λ) caracteriza la especie disuelta (p. ej. azul de metileno: λ_max = 295 nm y 660 nm).",
+   "pagina_pdf": 64
+  },
+  {
+   "fr": "Spectroscopie IR : groupes caractéristiques",
+   "es": "Los fotones infrarrojos hacen vibrar los átomos alrededor de los enlaces covalentes: da el tipo de enlaces y permite identificar grupos característicos.",
+   "pagina_pdf": 64
+  },
+  {
+   "fr": "Transmittance et nombre d'onde",
+   "es": "Un espectro IR representa T (%) en función de ν̃ (cm⁻¹); los picos (bandas) corresponden a las longitudes de onda absorbidas.",
+   "pagina_pdf": 64
+  },
+  {
+   "fr": "Zone des empreintes digitales",
+   "es": "En un espectro IR, la zona ν̃ < 1 300 cm⁻¹ es difícil de explotar, pero sirve para comparar con un espectro de referencia; la zona > 1 300 cm⁻¹ contiene las bandas características.",
+   "pagina_pdf": 64
+  },
+  {
+   "fr": "Tables de données spectroscopiques",
+   "es": "Permiten atribuir las bandas de absorción a grupos característicos (O–H alcohol 3 200–3 700 cm⁻¹, C=O cetona 1 705–1 725 cm⁻¹…). Ej.: 5-hidroxipentan-2-ona: banda ancha y fuerte hacia 3 500 → O–H; banda fina y fuerte en 1 720 → C=O.",
+   "pagina_pdf": 65
+  },
+  {
+   "fr": "Loi de Beer-Lambert",
+   "es": "Proporcionalidad entre absorbancia y concentración (A = k·c). Medir en λ_max, con A pequeña y c < 10⁻² mol·L⁻¹.",
+   "pagina_pdf": 65
+  },
+  {
+   "fr": "Absorbance, grandeur additive",
+   "es": "En una mezcla A = A₁ + … + Aₙ = Σ kᵢ·cᵢ.",
+   "pagina_pdf": 65
+  },
+  {
+   "fr": "Conductance G et conductivité σ",
+   "es": "G (siemens) es el inverso de la resistencia; σ = (ℓ/S)·G no depende de la geometría de la celda de medida.",
+   "pagina_pdf": 66
+  },
+  {
+   "fr": "Conductivité molaire ionique λ",
+   "es": "Cada ion contribuye a σ según su λᵢ (S·m²·mol⁻¹), que depende de la temperatura; ley de Kohlrausch σ = Σ λᵢ[Xᵢ].",
+   "pagina_pdf": 66
+  },
+  {
+   "fr": "Dosage par étalonnage",
+   "es": "Se prepara por dilución una gama patrón (soluciones hijas), se traza la curva A = f(c), G = f(c) o σ = f(c) y, midiendo la solución a dosificar, se lee su concentración. La gama debe cubrir la concentración desconocida y c < 10⁻² mol·L⁻¹.",
+   "pagina_pdf": 66
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "\\mathrm{pH} = -\\log\\left(\\dfrac{[\\mathrm{H_3O^+}]}{c^{\\circ}}\\right)",
+   "nombre": "pH a partir de la concentración en ion oxonio",
+   "nombre_fr": "Calcul du pH d'une solution",
+   "variables": [
+    {
+     "simbolo": "pH",
+     "significado": "potencial Hidrógeno (sin unidad)",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "[H₃O⁺]",
+     "significado": "concentración en cantidad de materia de iones oxonio",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "c°",
+     "significado": "concentración estándar = 1 mol·L⁻¹",
+     "unidad": "mol·L⁻¹"
+    }
+   ],
+   "explicacion": "El pH se calcula directamente a partir de la concentración de iones oxonio. Es una función decreciente: cuanto mayor [H₃O⁺], menor pH. Válida entre 10⁻² y 10⁻⁶·⁵ mol·L⁻¹ (diagrama de Flood).",
+   "ejemplo": {
+    "enunciado": "Solución con [H₃O⁺] = 0,010 mol·L⁻¹",
+    "resultado": "pH = −log(0,010/1) = 2",
+    "pagina_pdf": 63
+   },
+   "pagina_pdf": 63,
+   "animacion": {
+    "preset": "ph",
+    "params": {
+     "pH": 2
+    },
+    "leyenda": "Al bajar el pH aumentan los iones H₃O⁺ del vaso y la escala de color pasa hacia el rojo (ácido)."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "[\\mathrm{H_3O^+}] = c^{\\circ}\\times 10^{-\\mathrm{pH}}",
+   "nombre": "Concentración en ion oxonio a partir del pH",
+   "nombre_fr": "Calcul de [H₃O⁺] connaissant le pH",
+   "variables": [
+    {
+     "simbolo": "[H₃O⁺]",
+     "significado": "concentración en iones oxonio",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "c°",
+     "significado": "concentración estándar = 1 mol·L⁻¹",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "pH",
+     "significado": "pH de la solución",
+     "unidad": "sin unidad"
+    }
+   ],
+   "explicacion": "Relación recíproca del logaritmo decimal (función 10ˣ): conocido el pH se obtiene la concentración en H₃O⁺.",
+   "ejemplo": {
+    "enunciado": "Solución de pH = 8,5",
+    "resultado": "[H₃O⁺] = 1 × 10⁻⁸·⁵ = 3,2 × 10⁻⁹ mol·L⁻¹",
+    "pagina_pdf": 63
+   },
+   "pagina_pdf": 63,
+   "animacion": {
+    "preset": "ph",
+    "params": {
+     "pH": 8.5
+    },
+    "leyenda": "A pH = 8,5 casi no quedan iones H₃O⁺ (3,2·10⁻⁹ mol·L⁻¹): la solución es básica."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "\\tilde{\\nu} = \\dfrac{1}{\\lambda}",
+   "nombre": "Número de onda",
+   "nombre_fr": "Nombre d'onde",
+   "variables": [
+    {
+     "simbolo": "ν̃",
+     "significado": "número de onda (inverso de la longitud de onda)",
+     "unidad": "cm⁻¹"
+    },
+    {
+     "simbolo": "λ",
+     "significado": "longitud de onda",
+     "unidad": "cm"
+    }
+   ],
+   "explicacion": "El número de onda es el inverso de la longitud de onda; se expresa en cm⁻¹ si λ está en cm. Es el eje horizontal de un espectro IR.",
+   "ejemplo": {
+    "enunciado": "Banda de número de onda 3 500 cm⁻¹ (ejercicio 17)",
+    "resultado": "λ = 1/3 500 cm ≈ 2,86 µm (infrarrojo, no visible)",
+    "pagina_pdf": 70
+   },
+   "pagina_pdf": 64,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "10000/x",
+     "xmin": 2.5,
+     "xmax": 25,
+     "vars": {}
+    },
+    "leyenda": "Curva ν̃ (cm⁻¹) en función de λ (µm): cuanto menor la longitud de onda, mayor el número de onda (4 000–400 cm⁻¹ = zona IR del libro)."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "\\Delta E = E_f - E_i = h\\cdot\\nu",
+   "nombre": "Energía del fotón absorbido",
+   "nombre_fr": "Absorption d'un photon de fréquence ν",
+   "variables": [
+    {
+     "simbolo": "ΔE",
+     "significado": "variación de energía de la molécula (o átomo)",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "E_f, E_i",
+     "significado": "niveles de energía final e inicial",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "h",
+     "significado": "constante de Planck",
+     "unidad": "J·s"
+    },
+    {
+     "simbolo": "ν",
+     "significado": "frecuencia del fotón",
+     "unidad": "Hz"
+    }
+   ],
+   "explicacion": "Un fotón solo es absorbido si su energía coincide exactamente con la diferencia entre dos niveles de energía (cuantificados) de la molécula. Base de toda la espectroscopía.",
+   "ejemplo": null,
+   "pagina_pdf": 64,
+   "animacion": {
+    "preset": "fotones",
+    "params": {},
+    "leyenda": "Un fotón de frecuencia ν tiene energía hν; solo se absorbe si iguala el salto entre dos niveles de energía."
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "A = k\\cdot c",
+   "nombre": "Ley de Beer-Lambert",
+   "nombre_fr": "Loi de Beer-Lambert",
+   "variables": [
+    {
+     "simbolo": "A",
+     "significado": "absorbancia (sin unidad)",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "k",
+     "significado": "coeficiente de proporcionalidad",
+     "unidad": "L·mol⁻¹"
+    },
+    {
+     "simbolo": "c",
+     "significado": "concentración en cantidad de materia de la solución",
+     "unidad": "mol·L⁻¹"
+    }
+   ],
+   "explicacion": "La absorbancia es proporcional a la concentración. Se mide en λ_max, con A suficientemente pequeña y c < 10⁻² mol·L⁻¹.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 21 (β-caroteno, λ = 450 nm): A_S = 1,25 sobre la recta A = f(c)",
+    "resultado": "c_S = 4,3 mmol·L⁻¹",
+    "pagina_pdf": 71
+   },
+   "pagina_pdf": 65,
+   "animacion": {
+    "preset": "beer-lambert",
+    "params": {},
+    "leyenda": "Al aumentar la concentración la luz transmitida se debilita: la absorbancia crece en proporción a c."
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "A = A_1 + A_2 + \\dots + A_n = \\sum_{i=1}^{n} k_i\\cdot c_i",
+   "nombre": "Aditividad de la absorbancia",
+   "nombre_fr": "Absorbance, grandeur additive",
+   "variables": [
+    {
+     "simbolo": "A",
+     "significado": "absorbancia de la mezcla",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "kᵢ",
+     "significado": "coeficiente de proporcionalidad de la especie i",
+     "unidad": "L·mol⁻¹"
+    },
+    {
+     "simbolo": "cᵢ",
+     "significado": "concentración de la especie i",
+     "unidad": "mol·L⁻¹"
+    }
+   ],
+   "explicacion": "Si la solución contiene varias especies, cada una aporta su propia absorbancia y se suman.",
+   "ejemplo": null,
+   "pagina_pdf": 65,
+   "animacion": {
+    "preset": "beer-lambert",
+    "params": {},
+    "leyenda": "Cada especie disuelta absorbe parte de la luz: la absorbancia total es la suma de las contribuciones."
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "G = \\dfrac{1}{R} = \\dfrac{I}{U}",
+   "nombre": "Conductancia de una solución",
+   "nombre_fr": "Conductance G",
+   "variables": [
+    {
+     "simbolo": "G",
+     "significado": "conductancia (inverso de la resistencia)",
+     "unidad": "S"
+    },
+    {
+     "simbolo": "R",
+     "significado": "resistencia",
+     "unidad": "Ω"
+    },
+    {
+     "simbolo": "I",
+     "significado": "intensidad de la corriente",
+     "unidad": "A"
+    },
+    {
+     "simbolo": "U",
+     "significado": "tensión entre los electrodos",
+     "unidad": "V"
+    }
+   ],
+   "explicacion": "La conductancia, en siemens, expresa la capacidad de la solución para conducir la corriente; es el inverso de su resistencia.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 23: U = 5 V e I = 8 mA",
+    "resultado": "G = I/U = 1,6 mS (calculado con la fórmula; no está el corrigé)",
+    "pagina_pdf": 71
+   },
+   "pagina_pdf": 66,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x/U",
+     "xmin": 0,
+     "xmax": 50,
+     "vars": {
+      "U": {
+       "min": 1,
+       "max": 10,
+       "step": 0.5,
+       "def": 5,
+       "label": "Tensión U",
+       "unit": "V"
+      }
+     }
+    },
+    "leyenda": "G (mS) en función de I (mA) para una tensión U fija: recta de pendiente 1/U."
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "\\sigma = \\dfrac{\\ell}{S}\\cdot G",
+   "nombre": "Conductividad a partir de la conductancia",
+   "nombre_fr": "Conductivité σ",
+   "variables": [
+    {
+     "simbolo": "σ",
+     "significado": "conductividad",
+     "unidad": "S·m⁻¹"
+    },
+    {
+     "simbolo": "ℓ",
+     "significado": "separación entre los electrodos",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "S",
+     "significado": "superficie de los electrodos",
+     "unidad": "m²"
+    },
+    {
+     "simbolo": "G",
+     "significado": "conductancia",
+     "unidad": "S"
+    }
+   ],
+   "explicacion": "La conductividad no depende de la geometría de la celda de medida (solo de temperatura y naturaleza de la solución); es proporcional a la conductancia.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 22: S = 1 cm², ℓ = 9 mm, G = 1,60 mS",
+    "resultado": "σ = 0,144 S·m⁻¹ (calculado con la fórmula; no está el corrigé)",
+    "pagina_pdf": 71
+   },
+   "pagina_pdf": 66,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "k*x",
+     "xmin": 0,
+     "xmax": 10,
+     "vars": {
+      "k": {
+       "min": 10,
+       "max": 200,
+       "step": 5,
+       "def": 90,
+       "label": "Constante de celda ℓ/S",
+       "unit": "m⁻¹"
+      }
+     }
+    },
+    "leyenda": "σ (mS·m⁻¹) en función de G (mS): recta de pendiente ℓ/S (90 m⁻¹ con los datos del ejercicio 22)."
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "\\sigma = \\sum_{i=1}^{n}\\lambda_i\\cdot[X_i]",
+   "nombre": "Ley de Kohlrausch",
+   "nombre_fr": "Loi de Kohlrausch",
+   "variables": [
+    {
+     "simbolo": "σ",
+     "significado": "conductividad de la solución",
+     "unidad": "S·m⁻¹"
+    },
+    {
+     "simbolo": "λᵢ",
+     "significado": "conductividad molar iónica del ion i",
+     "unidad": "S·m²·mol⁻¹"
+    },
+    {
+     "simbolo": "[Xᵢ]",
+     "significado": "concentración del ion i (en mol·m⁻³ para calcular σ)",
+     "unidad": "mol·m⁻³"
+    }
+   ],
+   "explicacion": "Cada ion aporta a la conductividad en proporción a su concentración. Válida solo para c < 10⁻² mol·L⁻¹. Para NaCl: σ = (λ_Na⁺ + λ_Cl⁻)·c, es decir σ proporcional a c.",
+   "ejemplo": {
+    "enunciado": "NaCl (Na⁺, Cl⁻) de concentración c",
+    "resultado": "σ = λ_Na⁺·[Na⁺] + λ_Cl⁻·[Cl⁻] = (λ_Na⁺ + λ_Cl⁻)·c",
+    "pagina_pdf": 66
+   },
+   "pagina_pdf": 66,
+   "animacion": {
+    "preset": "conductimetria",
+    "params": {
+     "c": 10
+    },
+    "leyenda": "Más iones disueltos en el vaso, más cargas transportan la corriente: sube la conductividad."
+   }
+  },
+  {
+   "id": "f10",
+   "latex": "[\\mathrm{A}^{b+}] = a\\cdot c \\quad;\\quad [\\mathrm{B}^{a-}] = b\\cdot c",
+   "nombre": "Concentraciones de iones tras disolver un sólido iónico",
+   "nombre_fr": "Équation de dissolution A_aB_b(s) → a A^{b+}(aq) + b B^{a−}(aq)",
+   "variables": [
+    {
+     "simbolo": "a, b",
+     "significado": "coeficientes estequiométricos de la ecuación de disolución",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "c",
+     "significado": "concentración en cantidad de materia de soluto aportado",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "[Aᵇ⁺], [Bᵃ⁻]",
+     "significado": "concentraciones de catión y anión",
+     "unidad": "mol·L⁻¹"
+    }
+   ],
+   "explicacion": "La estequiometría de la ecuación de disolución da las concentraciones de cada ion en función del soluto aportado.",
+   "ejemplo": {
+    "enunciado": "CaCl₂(s) → Ca²⁺(aq) + 2 Cl⁻(aq) con c′ = 0,068 mol·L⁻¹ (ejercicio 27)",
+    "resultado": "[Ca²⁺] = 0,068 mol·L⁻¹ y [Cl⁻] = 0,136 mol·L⁻¹",
+    "pagina_pdf": 73
+   },
+   "pagina_pdf": 78,
+   "animacion": {
+    "preset": "concentracion",
+    "params": {},
+    "leyenda": "El soluto disuelto libera iones en proporción estequiométrica: el vaso se llena de cationes y de aniones."
+   }
+  },
+  {
+   "id": "f11",
+   "latex": "c_m\\cdot V_m = c_f\\cdot V_f",
+   "nombre": "Conservación de la cantidad de materia en una dilución (gama patrón)",
+   "nombre_fr": "Dilution d'une solution-mère",
+   "variables": [
+    {
+     "simbolo": "c_m, V_m",
+     "significado": "concentración y volumen tomado de la solución madre",
+     "unidad": "mol·L⁻¹ ; mL"
+    },
+    {
+     "simbolo": "c_f, V_f",
+     "significado": "concentración y volumen de la solución hija",
+     "unidad": "mol·L⁻¹ ; mL"
+    }
+   ],
+   "explicacion": "Al diluir, la cantidad de materia tomada de la solución madre es la misma que la de la solución hija (corrigé del ejercicio 20). Se usa para preparar la gama patrón.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 20: c_m = 5×10⁻² mol·L⁻¹, V_m = 30 mL, V_f = 50 mL",
+    "resultado": "c_f = 30 mmol·L⁻¹",
+    "pagina_pdf": 611
+   },
+   "pagina_pdf": 70,
+   "animacion": {
+    "preset": "dilucion",
+    "params": {
+     "C0": 0.05,
+     "V0": 30,
+     "Vf": 50
+    },
+    "leyenda": "Se añade agua al volumen tomado: aparecen más litros pero el mismo número de moléculas, así que baja la concentración."
+   }
+  },
+  {
+   "id": "f12",
+   "latex": "c = \\dfrac{n}{V}",
+   "nombre": "Concentración en cantidad de materia",
+   "nombre_fr": "Concentration en quantité de matière",
+   "variables": [
+    {
+     "simbolo": "c",
+     "significado": "concentración en cantidad de materia",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "n",
+     "significado": "cantidad de materia de soluto disuelto",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen de la solución",
+     "unidad": "L"
+    }
+   ],
+   "explicacion": "Recordatorio de «Avant d'aborder le chapitre»; se usa en el ejercicio 13 y en toda la química de soluciones.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 13: 2,0×10⁻⁴ mol de HCl en 200 mL de solución",
+    "resultado": "c = 1,0×10⁻³ mol·L⁻¹ (calculado con la fórmula), pH = 3",
+    "pagina_pdf": 69
+   },
+   "pagina_pdf": 58,
+   "animacion": {
+    "preset": "concentracion",
+    "params": {
+     "n": 0.0002,
+     "V": 0.2
+    },
+    "leyenda": "Un vaso con n mol de soluto en V litros: más moléculas o menos volumen, mayor concentración."
+   }
+  },
+  {
+   "id": "f13",
+   "latex": "T = \\dfrac{I_{\\text{transmitida}}}{I_{\\text{incidente}}}",
+   "nombre": "Transmitancia",
+   "nombre_fr": "Transmittance",
+   "variables": [
+    {
+     "simbolo": "T",
+     "significado": "transmitancia (sin unidad, se expresa en %)",
+     "unidad": "% (sin unidad)"
+    },
+    {
+     "simbolo": "I_transmitida",
+     "significado": "intensidad de la radiación transmitida",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "I_incidente",
+     "significado": "intensidad de la radiación incidente",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Cociente entre la intensidad transmitida y la incidente. Es el eje vertical de un espectro IR: un pico (banda) hacia abajo es una absorción.",
+   "ejemplo": null,
+   "pagina_pdf": 64,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "100*x",
+     "xmin": 0,
+     "xmax": 1,
+     "vars": {}
+    },
+    "leyenda": "T (%) en función del cociente I_transmitida / I_incidente: 1 = todo pasa (100 %), 0 = todo se absorbe."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "c° (concentración estándar)",
+   "valor": "1",
+   "unidad": "mol·L⁻¹",
+   "pagina_pdf": 63
+  },
+  {
+   "nombre": "pH del agua pura",
+   "valor": "7",
+   "unidad": "sin unidad",
+   "pagina_pdf": 63
+  },
+  {
+   "nombre": "Rango fiable del pH-metro",
+   "valor": "pH 1 a 13 (incertidumbre 0,1 unidad)",
+   "unidad": "sin unidad",
+   "pagina_pdf": 63
+  },
+  {
+   "nombre": "Límite de validez de Beer-Lambert y Kohlrausch",
+   "valor": "c < 10⁻² (= 1,0×10⁻²)",
+   "unidad": "mol·L⁻¹",
+   "pagina_pdf": 65
+  },
+  {
+   "nombre": "λ_max del azul de metileno",
+   "valor": "295 (UV) y 660 (visible)",
+   "unidad": "nm",
+   "pagina_pdf": 64
+  },
+  {
+   "nombre": "Conductividad molar iónica λ(H₃O⁺) a 25 °C",
+   "valor": "35,0×10⁻³",
+   "unidad": "S·m²·mol⁻¹",
+   "pagina_pdf": 66
+  },
+  {
+   "nombre": "Conductividad molar iónica λ(Na⁺) a 25 °C",
+   "valor": "5,0×10⁻³",
+   "unidad": "S·m²·mol⁻¹",
+   "pagina_pdf": 66
+  },
+  {
+   "nombre": "Conductividad molar iónica λ(K⁺) a 25 °C",
+   "valor": "7,4×10⁻³",
+   "unidad": "S·m²·mol⁻¹",
+   "pagina_pdf": 66
+  },
+  {
+   "nombre": "Conductividad molar iónica λ(HO⁻) a 25 °C",
+   "valor": "19,8×10⁻³",
+   "unidad": "S·m²·mol⁻¹",
+   "pagina_pdf": 66
+  },
+  {
+   "nombre": "Conductividad molar iónica λ(Cl⁻) a 25 °C",
+   "valor": "7,6×10⁻³",
+   "unidad": "S·m²·mol⁻¹",
+   "pagina_pdf": 66
+  },
+  {
+   "nombre": "Conductividad molar iónica λ(Br⁻) a 25 °C",
+   "valor": "7,8×10⁻³",
+   "unidad": "S·m²·mol⁻¹",
+   "pagina_pdf": 66
+  },
+  {
+   "nombre": "Masa molar del NaCl",
+   "valor": "58,5",
+   "unidad": "g·mol⁻¹",
+   "pagina_pdf": 61
+  },
+  {
+   "nombre": "Concentración en masa media de NaCl en los océanos",
+   "valor": "27",
+   "unidad": "g·L⁻¹",
+   "pagina_pdf": 61
+  },
+  {
+   "nombre": "Bandas IR: O–H alcohol",
+   "valor": "3 200 – 3 700 (ancha / fuerte)",
+   "unidad": "cm⁻¹",
+   "pagina_pdf": 62
+  },
+  {
+   "nombre": "Bandas IR: C=O cetona",
+   "valor": "1 705 – 1 725 (fina / fuerte)",
+   "unidad": "cm⁻¹",
+   "pagina_pdf": 62
+  },
+  {
+   "nombre": "Bandas IR: aldehído C–H y C=O",
+   "valor": "2 650 – 2 830 (media / media) y 1 680 – 1 740 (fina / fuerte)",
+   "unidad": "cm⁻¹",
+   "pagina_pdf": 62
+  },
+  {
+   "nombre": "Bandas IR: ácido carboxílico O–H y C=O",
+   "valor": "2 500 – 3 200 (ancha / media) y 1 740 – 1 800 (fina / fuerte)",
+   "unidad": "cm⁻¹",
+   "pagina_pdf": 62
+  },
+  {
+   "nombre": "Constante de Planck h",
+   "valor": "no está en el cours (solo aparece el símbolo h en ΔE = h·ν)",
+   "unidad": "J·s",
+   "pagina_pdf": 64
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Calcular el pH o [H₃O⁺] (y su dominio de validez)",
+   "pasos": [
+    "Para el pH: dividir [H₃O⁺] (en mol·L⁻¹) entre c° = 1 mol·L⁻¹ y aplicar −log (tecla «log» de la calculadora).",
+    "Para la concentración: [H₃O⁺] = c° × 10^(−pH).",
+    "Comprobar la validez: la relación solo es válida si la concentración aportada está entre 10⁻² y 10⁻⁶·⁵ mol·L⁻¹ (zona 2 del diagrama de Flood); a gran dilución el agua impone pH = 7.",
+    "Interpretar: pH decreciente con [H₃O⁺]; el agua pura tiene pH 7."
+   ],
+   "pagina_pdf": 63
+  },
+  {
+   "titulo": "Preparar una gama de soluciones por dilución (gama patrón)",
+   "pasos": [
+    "Tomar con pipeta aforada un volumen V_m de solución madre.",
+    "Introducirlo en un matraz aforado de volumen V_f y completar con agua destilada hasta el enrase.",
+    "La cantidad de materia tomada se conserva: c_f = c_m·V_m / V_f (ej. 20: V_m = 10, 20, 30, 40 mL y V_f = 50 mL dan c_f = 10, 20, 30, 40 mmol·L⁻¹).",
+    "Repetir para toda la gama, con c < 10⁻² mol·L⁻¹ si se quiere verificar Beer-Lambert o Kohlrausch."
+   ],
+   "pagina_pdf": 60
+  },
+  {
+   "titulo": "Dosaje por etalonnage (absorbancia o conductividad)",
+   "pasos": [
+    "Preparar por dilución la gama patrón de concentraciones conocidas, que cubra la concentración de la solución desconocida.",
+    "Medir A o G (o σ) de cada solución hija y trazar la curva de calibrado A = f(c), G = f(c) o σ = f(c).",
+    "Comprobar que es una recta que pasa por el origen (Beer-Lambert o Kohlrausch verificadas).",
+    "Medir la solución a dosificar y leer en la curva su concentración; si se diluyó antes, multiplicar por el factor de dilución.",
+    "Recordar el dominio de validez: c < 10⁻² mol·L⁻¹."
+   ],
+   "pagina_pdf": 66
+  },
+  {
+   "titulo": "Identificar un grupo característico con un espectro IR",
+   "pasos": [
+    "Leer los ejes: ordenada = transmitancia T (%), abscisa = número de onda ν̃ (cm⁻¹).",
+    "Localizar las bandas (picos hacia abajo) y precisar su posición, anchura (fina/ancha) e intensidad (fuerte/media).",
+    "Consultar la tabla de datos espectroscópicos para asociar cada banda a un enlace (O–H, C=O, C–H…) y a una familia.",
+    "Usar la fórmula bruta: da el número de átomos de oxígeno y, por tanto, qué bandas buscar; una fórmula bruta puede corresponder a varios isómeros.",
+    "Deducir la(s) fórmula(s) desarrollada(s) posibles y nombrarlas (ej. 25: C₅H₁₀O₂ lineal con C=O y O–H de ácido → ácido pentanoico)."
+   ],
+   "pagina_pdf": 72
+  },
+  {
+   "titulo": "Identificar una especie con un espectro UV-visible y elegir λ",
+   "pasos": [
+    "Con el espectrofotómetro, medir la absorbancia en cada longitud de onda y trazar A = f(λ).",
+    "Localizar el/los máximos de absorción (λ_max): caracterizan la especie disuelta.",
+    "Para dosificar, fijar el espectrofotómetro en λ_max (ej. azul de metileno: 660 nm) y mantener A suficientemente pequeña.",
+    "Si hay una mezcla, recordar que A es aditiva (el jarabe de menta muestra los máximos de E102 y E131)."
+   ],
+   "pagina_pdf": 65
+  },
+  {
+   "titulo": "Medir la conductividad y calcularla con Kohlrausch",
+   "pasos": [
+    "Sumergir dos electrodos de superficie S separados por ℓ y aplicar una tensión U; medir I: G = I/U.",
+    "Calcular σ = (ℓ/S)·G con ℓ en m y S en m², o bien usar la ley de Kohlrausch con las λᵢ de la tabla.",
+    "Expresar las concentraciones en mol·m⁻³ al calcular σ (1 mol·L⁻¹ = 10³ mol·m⁻³).",
+    "Escribir la ecuación de disolución para obtener [Xᵢ] a partir de c (estequiometría)."
+   ],
+   "pagina_pdf": 66
+  },
+  {
+   "titulo": "Dosaje conductimétrico resuelto (ejercicio 27, CaCl₂)",
+   "pasos": [
+    "Escribir la ecuación de disolución: CaCl₂(s) → Ca²⁺(aq) + 2 Cl⁻(aq).",
+    "Leer en la curva de calibrado σ = f(c) la concentración de la solución diluida (σ = 1,7 mS·cm⁻¹ → c = 6,8 mmol·L⁻¹).",
+    "Multiplicar por el factor de dilución (10): c′ = 10 × 6,8 mmol·L⁻¹ = 0,068 mol·L⁻¹.",
+    "Deducir las concentraciones de los iones con la estequiometría: [Ca²⁺] = 0,068 y [Cl⁻] = 2×0,068 = 0,136 mol·L⁻¹."
+   ],
+   "pagina_pdf": 73
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Olvidar pasar mol·L⁻¹ a mol·m⁻³ en Kohlrausch",
+   "correccion": "Multiplica c por 10³: σ en S·m⁻¹ exige [Xᵢ] en mol·m⁻³.",
+   "pagina_pdf": 66
+  },
+  {
+   "id": "err2",
+   "nombre": "Usar pH = −log(…) fuera de su dominio",
+   "correccion": "Solo vale entre 10⁻² y 10⁻⁶·⁵ mol·L⁻¹; si hay mucha dilución, pH = 7.",
+   "pagina_pdf": 63
+  },
+  {
+   "id": "err3",
+   "nombre": "Usar Beer-Lambert o Kohlrausch con c ≥ 10⁻² mol·L⁻¹",
+   "correccion": "Diluye antes: solo son válidas para c < 10⁻² mol·L⁻¹.",
+   "pagina_pdf": 65
+  },
+  {
+   "id": "err4",
+   "nombre": "Medir la absorbancia en una λ cualquiera",
+   "correccion": "Colócate en λ_max del espectro de la especie.",
+   "pagina_pdf": 65
+  },
+  {
+   "id": "err5",
+   "nombre": "Olvidar el factor de dilución al leer la curva de calibrado",
+   "correccion": "c solución = factor de dilución × c leída (ej. 10 × 6,8 mmol·L⁻¹).",
+   "pagina_pdf": 73
+  },
+  {
+   "id": "err6",
+   "nombre": "Ignorar la estequiometría de la disolución",
+   "correccion": "Usa la ecuación: para CaCl₂, [Cl⁻] = 2c y [Ca²⁺] = c.",
+   "pagina_pdf": 73
+  },
+  {
+   "id": "err7",
+   "nombre": "Confundir ν̃ con λ y sus unidades",
+   "correccion": "ν̃ = 1/λ en cm⁻¹ si λ está en cm.",
+   "pagina_pdf": 67
+  },
+  {
+   "id": "err8",
+   "nombre": "Dar una sola fórmula con la fórmula bruta sin pensar en isómeros",
+   "correccion": "Una fórmula bruta admite varias desarrolladas: el espectro IR decide.",
+   "pagina_pdf": 72
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "TP 1 — Cálculo del pH de una solución (Démarches différenciées)",
+   "descripcion": "Se prepara por diluciones sucesivas (factor 10) una gama de soluciones de ácido clorhídrico a partir de una solución madre de 10⁻¹ mol·L⁻¹ (matraz aforado + pipeta aforada); se mide el pH de cada una con pH-metro calibrado con soluciones patrón (pH 4 y 7) y se traza pH = f(−log([H₃O⁺]/c°)) para comprobar la relación y deducir su dominio de validez.",
+   "pagina_pdf": 60
+  },
+  {
+   "titulo": "TP 2 — Dosaje por conductimetría: salinidad de los océanos",
+   "descripcion": "Con una solución madre de NaCl (c_m = 1,0×10⁻² mol·L⁻¹) se prepara una gama patrón (S₁…S₄: 10, 20, 30, 40 mL de S_m en 50 mL); se verifica la ley de Kohlrausch (válida si c < 10⁻² mol·L⁻¹) y se determina la concentración de una muestra de agua de mar diluida 100 veces (G = 0,74 mS) para compararla con la media de 27 g·L⁻¹.",
+   "pagina_pdf": 61
+  },
+  {
+   "titulo": "TP 3 — Tarea compleja: espectroscopía infrarroja de dos vinos",
+   "descripcion": "Con los espectros IR del compuesto mayoritario de dos botellas y la tabla de bandas, decidir si el vino se ha transformado en vinagre (etanol + O₂ → ácido etanoico + H₂O) buscando las bandas de O–H alcohol y de C=O / O–H de ácido carboxílico.",
+   "pagina_pdf": 62
+  },
+  {
+   "titulo": "Preparar la ECE: antálgico pediátrico (colorante E122)",
+   "descripcion": "Proponer y aplicar un protocolo de dosaje UV-visible del rojo azorrubina con gama patrón S₀…S₅ (0 a 50 µmol·L⁻¹), determinar su concentración en la jeringa de 8,13 mL y compararla con la dosis diaria admisible (4 mg/kg; M = 502,2 g·mol⁻¹, niño de 13 kg).",
+   "pagina_pdf": 80
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Ejercicio resuelto 25 — Identificación de grupos característicos. Se registró el espectro IR de una molécula lineal de fórmula bruta C₅H₁₀O₂. 1. Explicar la significación de las magnitudes de los ejes y dar su unidad. 2. Determinar los grupos característicos presentes. 3. Deducir la(s) fórmula(s) desarrollada(s) posibles y nombrarlas.",
+   "datos": {
+    "formula_bruta": "C5H10O2",
+    "banda_1": "fina y fuerte hacia 1 740 cm⁻¹",
+    "banda_2": "ancha y fuerte hacia 2 980 cm⁻¹"
+   },
+   "respuesta": "1. Ordenada: transmitancia (sin unidad, en %), capacidad de transmitir la luz; abscisa: número de onda en cm⁻¹ (inverso de la longitud de onda). 2. Banda fina y fuerte hacia 1 740 cm⁻¹ → enlace C=O; banda ancha y fuerte hacia 2 980 cm⁻¹ → grupo O–H de un ácido carboxílico. 3. Molécula lineal: ácido pentanoico CH₃–CH₂–CH₂–CH₂–COOH.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "La fórmula bruta informa del número de O: buscar bandas con oxígeno.",
+    "Leer posición, anchura e intensidad de cada banda y consultar la tabla.",
+    "Con la molécula lineal solo hay una fórmula desarrollada posible."
+   ],
+   "pagina_pdf": 72,
+   "corrige_pagina_pdf": 72
+  },
+  {
+   "id": "e2",
+   "enunciado": "Ejercicio resuelto 27 — Dosaje conductimétrico. Se quiere dosificar una solución obtenida disolviendo cloruro de calcio CaCl₂(s) en agua. Con una gama patrón se traza σ = f(c). Una solución de concentración desconocida c′ diluida 10 veces da σ = 1,7 mS·cm⁻¹. 1. Escribir la ecuación de disolución. 2. Determinar la concentración en cantidad de materia de soluto aportado de la solución desconocida. 3. Deducir las concentraciones de los iones presentes en la solución desconocida.",
+   "datos": {
+    "σ medida": "1,7 mS·cm⁻¹",
+    "factor de dilución": "10"
+   },
+   "respuesta": "1. CaCl₂(s) → Ca²⁺(aq) + 2 Cl⁻(aq). 2. Lectura en la curva: c = 6,8 mmol·L⁻¹ (solución diluida); la inicial es 10 veces más concentrada: c′ = 10 × 6,8×10⁻³ = 0,068 mol·L⁻¹. 3. [Ca²⁺] = c′ = 0,068 mol·L⁻¹; [Cl⁻] = 2c′ = 0,136 mol·L⁻¹.",
+   "respuesta_numerica": {
+    "valor": 0.068,
+    "unidad": "mol·L⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Escribir la ecuación de disolución.",
+    "Leer c en la curva de calibrado.",
+    "Multiplicar por el factor de dilución.",
+    "Aplicar la estequiometría ([Cl⁻] = 2c′)."
+   ],
+   "pagina_pdf": 73,
+   "corrige_pagina_pdf": 73
+  },
+  {
+   "id": "e3",
+   "enunciado": "Ejercicio 21 — Dosaje espectrofotométrico. Se dosifica una solución de β-caroteno con un espectrofotómetro regulado a λ = 450 nm. Medidas: c (mmol·L⁻¹) = 1,0; 2,0; 3,0; 4,0; 5,0; 6,0 con A = 0,25; 0,60; 0,90; 1,15; 1,45; 1,75. 1. ¿Cómo se eligió la longitud de onda de ajuste? 2. Trazar A = f(c). 3. Comentar la curva citando la ley verificada. 4. Se mide A_S = 1,25 para una solución de concentración desconocida: ¿cuál es su concentración c_S?",
+   "datos": {
+    "λ": "450 nm",
+    "A_S": "1,25"
+   },
+   "respuesta": "1. Hay que colocarse en la longitud de onda correspondiente al máximo de absorción. 3. Se obtiene una recta que pasa por el origen: A y c son proporcionales; se verifica la ley de Beer-Lambert. 4. c_S = 4,3 mmol·L⁻¹ (lectura en la recta).",
+   "respuesta_numerica": {
+    "valor": 0.0043,
+    "unidad": "mol·L⁻¹",
+    "tolerancia_rel": 0.05
+   },
+   "pasos": [
+    "Elegir λ_max.",
+    "Trazar A = f(c): recta por el origen.",
+    "Leer A_S = 1,25 en la recta y deducir c_S."
+   ],
+   "pagina_pdf": 71,
+   "corrige_pagina_pdf": 611
+  },
+  {
+   "id": "e4",
+   "enunciado": "Ejercicio 20 — Gama patrón. Se quiere preparar una gama patrón a partir de una solución madre de concentración 5×10⁻² mol·L⁻¹ mediante diluciones: V_m = 10, 20, 30, 40 mL tomados y V_f = 50 mL cada vez. 1. ¿Cuál es el protocolo? 2. ¿Qué magnitud se conserva en una dilución? 3. Completar la tabla de concentraciones c_f. 4. ¿Puede usarse esta gama para verificar la ley de Beer-Lambert? Justificar.",
+   "datos": {
+    "c_madre": "5×10⁻² mol·L⁻¹",
+    "V_f": "50 mL"
+   },
+   "respuesta": "1. Tomar V_m con pipeta aforada, introducirlo en un matraz aforado V_f y completar con agua destilada hasta el enrase. 2. La cantidad de materia tomada de la solución madre es la misma que la de la solución hija. 3. V_m = 10 mL → c_f = 10 mmol·L⁻¹; 20 mL → 20; 30 mL → 30; 40 mL → 40 mmol·L⁻¹. 4. No: la ley de Beer-Lambert solo es válida para concentraciones inferiores a 10⁻² mol·L⁻¹.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Pipeta aforada + matraz aforado + enrase con agua destilada.",
+    "n(madre tomada) = n(hija).",
+    "c_f = c_m·V_m / V_f.",
+    "Comparar con el límite 10⁻² mol·L⁻¹."
+   ],
+   "pagina_pdf": 70,
+   "corrige_pagina_pdf": 611
+  },
+  {
+   "id": "e5",
+   "enunciado": "Ejercicio 16 — Jarabe de menta. Con un espectrofotómetro se obtienen los espectros UV-visible de un jarabe de menta y de dos colorantes alimentarios (E102 y E131). 1. Determinar la(s) longitud(es) de onda del máximo de absorción de cada muestra. 2. Deducir el origen del color del jarabe de menta.",
+   "datos": {
+    "muestras": "jarabe de menta, E102, E131"
+   },
+   "respuesta": "1. E102: λ_max = 430 nm. E131: λ_max = 640 nm. Jarabe de menta: λ_max1 = 430 nm y λ_max2 = 640 nm. 2. El color verde del jarabe de menta se obtiene mezclando E102 y E131.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Leer los máximos de cada espectro.",
+    "Comparar los máximos del jarabe con los de los colorantes.",
+    "La absorbancia es aditiva: la mezcla presenta ambos máximos."
+   ],
+   "pagina_pdf": 70,
+   "corrige_pagina_pdf": 611
+  },
+  {
+   "id": "e6",
+   "enunciado": "Ejercicio 19 — Asociación. Se dan los espectros infrarrojos del ácido butanoico y del butanal. 1. Escribir las fórmulas semidesarrolladas. 2. Buscar los números de onda de las bandas características. 3. Identificar el espectro de cada molécula.",
+   "datos": {
+    "espectros": "A y B"
+   },
+   "respuesta": "1. Ácido butanoico CH₃–CH₂–CH₂–COOH; butanal CH₃–CH₂–CH₂–CHO. 2. Ácido butanoico: banda fuerte y fina a 1 740 cm⁻¹ (C=O) y banda fuerte y ancha a 3 000 cm⁻¹ (O–H de ácido carboxílico). Butanal: banda fuerte y fina a 1 720 cm⁻¹ (C=O) y banda débil y media a 2 830 cm⁻¹ (C–H de aldehído). 3. El primer espectro es el del ácido butanoico; el segundo, el del butanal.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Dibujar ambas moléculas y sus grupos.",
+    "Mirar la tabla: aldehído (C–H 2 650–2 830, C=O 1 680–1 740) frente a ácido (O–H 2 500–3 200 ancha, C=O 1 740–1 800).",
+    "Asociar cada espectro."
+   ],
+   "pagina_pdf": 70,
+   "corrige_pagina_pdf": 611
+  },
+  {
+   "id": "e7",
+   "enunciado": "Ejercicio 10 — Calidad del agua de una piscina. El pH del agua de una piscina debe situarse alrededor de 7,4. 1. ¿Cuál es la concentración en cantidad de materia de iones oxonio del agua? 2. Se mide un pH de 7,6: ¿puede volverse a un valor correcto de pH añadiendo ácido clorhídrico (H₃O⁺(aq), Cl⁻(aq))?",
+   "datos": {
+    "pH": "7,4"
+   },
+   "respuesta": "1. [H₃O⁺] = 4,0×10⁻⁸ mol·L⁻¹. 2. Sí: se puede añadir solución de ácido clorhídrico, lo que aumenta [H₃O⁺] y hace disminuir el pH.",
+   "respuesta_numerica": {
+    "valor": 4e-08,
+    "unidad": "mol·L⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "[H₃O⁺] = c°×10^(−pH) = 10^(−7,4).",
+    "Un ácido añade H₃O⁺: el pH baja."
+   ],
+   "pagina_pdf": 69,
+   "corrige_pagina_pdf": 611
+  },
+  {
+   "id": "e8",
+   "enunciado": "Ejercicio 30 — El pH (historia de las ciencias). Texto sobre Sørensen (1909) que introduce el pH. 1. ¿Qué ion es responsable de la acidez de una solución? 2. ¿Cómo se llama hoy y cuál es su fórmula química? 3. a. Recordar la relación matemática que lleva al cálculo del pH. b. Aplicarla a una solución de ácido clorhídrico de concentración c = 0,10 mol·L⁻¹. 4. ¿Es válido este cálculo? Explicar por qué.",
+   "datos": {
+    "c(HCl)": "0,10 mol·L⁻¹"
+   },
+   "respuesta": "1. El ion hidrógeno. 2. El ion oxonio H₃O⁺. 3. a. pH = −log([H₃O⁺]/c°); b. pH = −log(0,10/1) = 1. 4. Este cálculo no es válido: la solución es demasiado concentrada; la relación solo vale para [H₃O⁺] < 1,0×10⁻² mol·L⁻¹.",
+   "respuesta_numerica": {
+    "valor": 1.0,
+    "unidad": "",
+    "tolerancia_rel": 0.05
+   },
+   "pasos": [
+    "pH = −log(0,10) = 1.",
+    "Comprobar el dominio de validez (c < 10⁻² mol·L⁻¹)."
+   ],
+   "pagina_pdf": 74,
+   "corrige_pagina_pdf": 611
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "ph",
+   "params": {
+    "pH": 2
+   },
+   "titulo": "pH y concentración de H₃O⁺",
+   "relacion": "Relación pH = −log([H₃O⁺]/c°) y su recíproca (curso 1)."
+  },
+  {
+   "preset": "beer-lambert",
+   "params": {},
+   "titulo": "Absorbancia y concentración",
+   "relacion": "Ley de Beer-Lambert A = k·c y curva de calibrado (curso 3)."
+  },
+  {
+   "preset": "conductimetria",
+   "params": {
+    "c": 10
+   },
+   "titulo": "Conductividad de una solución iónica",
+   "relacion": "Ley de Kohlrausch σ = Σ λᵢ[Xᵢ] y dosaje por etalonnage (curso 3)."
+  },
+  {
+   "preset": "dilucion",
+   "params": {
+    "C0": 0.05,
+    "V0": 30,
+    "Vf": 50
+   },
+   "titulo": "Gama patrón por dilución",
+   "relacion": "Preparar la gama de soluciones hijas c_f = c_m·V_m/V_f (TP 1 y ejercicio 20)."
+  },
+  {
+   "preset": "fotones",
+   "params": {},
+   "titulo": "Fotón absorbido y niveles de energía",
+   "relacion": "ΔE = h·ν: base de la espectroscopía UV-visible e IR (curso 2)."
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "laboratorio-neon",
+  "mecanica_especial": "Celda de conductimetría: zonas de campo eléctrico que empujan a Ato como un ion entre los electrodos, un chorro vertical que alivia la gravedad sobre un foso, y plataformas oscilantes que suben y bajan como un haz de luz."
+ },
+ "estilo_intro_sugerido": "matrix"
+}

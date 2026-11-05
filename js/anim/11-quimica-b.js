@@ -381,4 +381,135 @@
       return [{ label: 'A', valor: num(A, 2) }, { label: 'T = I/I₀', valor: pctT(T) }, { label: 'c', valor: num(p.c * 1000, 2) + ' mmol·L⁻¹' }, { label: 'ε·ℓ', valor: num(p.eps * p.l, 0) + ' L·mol⁻¹' }];
     },
   });
+
+  // =====================================================================================
+  // 2. AVANCE — tableau d'avancement  a A + b B → c C   (por defecto 2 A + B → 3 C)
+  //   n(A) = n1 − a·x ;  n(B) = n2 − b·x ;  n(C) = c·x ;  x_max = min(n1/a, n2/b)
+  // Las moléculas son un "pool" por especie: al subir x, las de reactivos que sobran se consumen con un
+  // destello y en ese mismo lugar aparecen moléculas de producto (≈ 30 partículas por mol).
+  // =====================================================================================
+  const COL_A = '#3d8bff', COL_B = '#ff9f1c', COL_C = '#2ee59d';
+  const coef = (p) => ({ a: p.a || 2, b: p.b || 1, c: p.c || 3 });
+  const cf = (k) => (k === 1 ? '' : String(k)); // coeficiente 1 no se escribe
+  function estadoAvance(p) {
+    const { a, b, c } = coef(p), xmax = Math.min(p.n1 / a, p.n2 / b), xe = Math.min(p.x, xmax);
+    const lim = Math.abs(p.n1 / a - p.n2 / b) < 1e-9 ? 'ambos' : p.n1 / a < p.n2 / b ? 'A' : 'B';
+    return { a, b, c, xmax, xe, lim, nA: p.n1 - a * xe, nB: p.n2 - b * xe, nC: c * xe, bloq: p.x > xmax + 1e-9 };
+  }
+
+  PCB.anim.register('avance', {
+    titulo: 'Tableau d’avancement', materia: 'chimie',
+    params: [
+      { id: 'x', label: 'Avancement x', min: 0, max: 2, step: 0.01, def: 0.2, unit: 'mol' },
+      { id: 'n1', label: 'n(A) initial', min: 0.2, max: 2, step: 0.05, def: 1, unit: 'mol' },
+      { id: 'n2', label: 'n(B) initial', min: 0.2, max: 2, step: 0.05, def: 0.4, unit: 'mol' },
+      { id: 'a', label: 'coef. a', min: 1, max: 4, step: 1, def: 2, unit: '', oculto: true },
+      { id: 'b', label: 'coef. b', min: 1, max: 4, step: 1, def: 1, unit: '', oculto: true },
+      { id: 'c', label: 'coef. c', min: 1, max: 4, step: 1, def: 3, unit: '', oculto: true },
+    ],
+    create(host, p) {
+      const rng = host.rng, mk = (n) => Array.from({ length: n }, () => ({ u: rng(), v: rng(), a: rng() * TAU, vis: 0, want: false, fl: 0 }));
+      const red = host.reduced;
+      return { t: 0, rng, K: red ? 18 : 30, A: mk(70), B: mk(70), C: mk(110), burst: [], rings: [], red };
+    },
+    step(s, dt, p) {
+      const e = estadoAvance(p), rng = s.rng, K = s.K;
+      s.t += dt;
+      const sync = (pool, n, nuevo) => {
+        const obj = Math.min(pool.length, Math.max(0, Math.round(n * K)));
+        pool.forEach((q, i) => {
+          const quiere = i < obj;
+          if (quiere !== q.want) { // cambio de estado: destello de reacción
+            q.want = quiere;
+            if (nuevo === 'C') {
+              if (quiere) { const b = s.burst.pop(); if (b) { q.u = b.u; q.v = b.v; } q.vis = Math.max(q.vis, 0.05); s.rings.push({ u: q.u, v: q.v, t: 0, col: COL_C }); }
+            } else if (!quiere && q.vis > 0.3) { s.burst.push({ u: q.u, v: q.v }); if (s.burst.length > 40) s.burst.shift(); s.rings.push({ u: q.u, v: q.v, t: 0, col: nuevo === 'A' ? COL_A : COL_B }); }
+          }
+          q.vis = suav(q.vis, quiere ? 1 : 0, 5, dt); deambula(q, dt, 0.07, 1, rng);
+        });
+      };
+      sync(s.A, e.nA, 'A'); sync(s.B, e.nB, 'B'); sync(s.C, e.nC, 'C');
+      for (let i = s.rings.length - 1; i >= 0; i--) { s.rings[i].t += dt; if (s.rings[i].t > 0.55) s.rings.splice(i, 1); }
+    },
+    draw(s, ctx, w, h, p) {
+      const e = estadoAvance(p), fs = FS(w, h);
+      fondo(ctx, w, h);
+      const eq = `${cf(e.a)}A + ${cf(e.b)}B → ${cf(e.c)}C`;
+      // ---------- vaso con moléculas (izquierda)
+      const vx = w * 0.05, vw = w * 0.34, vy = h * 0.2, vh = h * 0.64;
+      txt(ctx, eq, vx + vw / 2, h * 0.1, fs + 3, '#eaf0ff', 'center', 700);
+      const r = vaso(ctx, vx, vy, vw, vh, 0.8, '#5fd0ff', 0.2);
+      const pulso = 0.5 + 0.5 * Math.sin(s.t * 4);
+      const rad = clamp(Math.min(vw, vh) * 0.034, 3.2, 6.6);
+      const pos = (q) => [r.x0 + q.u * (r.x1 - r.x0), r.y0 + q.v * (r.y1 - r.y0)];
+      const lim = (k) => e.lim === k || e.lim === 'ambos';
+      for (const [pool, col, k, rr0] of [[s.A, COL_A, 'A', rad], [s.B, COL_B, 'B', rad * 1.12], [s.C, COL_C, 'C', rad * 0.92]]) {
+        for (const q of pool) {
+          if (q.vis < 0.02) continue; const [x, y] = pos(q);
+          if (k !== 'C' && lim(k) && !e.bloq) brillo(ctx, x, y, rr0 * (3.2 + pulso), '#ff4d6d', 0.28 * q.vis); // reactivo limitante resaltado
+          bola(ctx, x, y, rr0 * (0.6 + 0.4 * q.vis), col, q.vis);
+        }
+      }
+      ctx.save(); ctx.globalCompositeOperation = 'lighter';
+      for (const g of s.rings) { const [x, y] = pos(g), k = g.t / 0.55; ctx.strokeStyle = rgba(g.col, 0.9 * (1 - k)); ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, 3 + k * 16, 0, TAU); ctx.stroke(); }
+      ctx.restore();
+      // leyenda bajo el vaso
+      const ly = vy + vh + fs + 8, lw = vw / 3;
+      [[COL_A, 'A', e.nA, 'A'], [COL_B, 'B', e.nB, 'B'], [COL_C, 'C', e.nC, 'C']].forEach(([col, nm, v, k], i) => {
+        const lx = vx + i * lw + 6;
+        bola(ctx, lx, ly - fs * 0.35, 4.5, col); txt(ctx, `${nm} ${num(v, 2)}`, lx + 9, ly, fs - 1, '#c9d6f5', 'left', 600);
+      });
+      // ---------- barra de avance + tableau (derecha)
+      const rx = w * 0.45, rw = w * 0.52;
+      txt(ctx, 'Avancement x', rx, h * 0.1, fs + 1, '#c9d6f5', 'left', 700);
+      txt(ctx, 'x = ' + num(e.xe, 2) + ' mol', rx + rw, h * 0.1, fs + 1, '#ffd166', 'right', 700);
+      const by = h * 0.15, bh = Math.max(12, h * 0.05);
+      rr(ctx, rx, by, rw, bh, bh / 2); ctx.fillStyle = 'rgba(255,255,255,.08)'; ctx.fill();
+      const f = e.xmax > 0 ? clamp(e.xe / e.xmax, 0, 1) : 0;
+      if (f > 0.001) { const gb = ctx.createLinearGradient(rx, 0, rx + rw, 0); gb.addColorStop(0, '#2ee59d'); gb.addColorStop(1, '#ff3da6'); rr(ctx, rx, by, Math.max(bh, rw * f), bh, bh / 2); ctx.fillStyle = gb; ctx.fill(); }
+      brillo(ctx, rx + rw * f, by + bh / 2, bh * 1.8, '#ffd166', 0.6); bola(ctx, rx + rw * f, by + bh / 2, bh * 0.55, '#ffd166');
+      txt(ctx, '0', rx, by + bh + fs + 2, fs - 1, '#9fb0d9', 'left', 400);
+      const limTxt = e.lim === 'ambos' ? 'A y B (mezcla estequiométrica)' : e.lim + ' limitante';
+      txt(ctx, 'x_max = ' + num(e.xmax, 2) + ' mol  ·  ' + limTxt, rx + rw, by + bh + fs + 2, fs - 1, '#ff8fb1', 'right', 700);
+      if (e.bloq) txt(ctx, 'x > x_max: la reacción se detiene en x_max', rx + rw / 2, by + bh + 2 * fs + 6, fs - 1, '#ffd166', 'center', 600);
+      // tableau
+      const ty = h * 0.34, th = h * 0.6, rows = 4, rh = th / rows;
+      const cw0 = rw * 0.25, cwi = (rw - cw0) / 4;
+      panel(ctx, rx, ty, rw, th, 8);
+      const fsT = clamp(rh * 0.34, 9.5, 15);
+      const cols = ['x', `n(A)`, `n(B)`, `n(C)`], colC = ['#ffd166', COL_A, COL_B, COL_C];
+      // cabecera
+      txt(ctx, 'État', rx + cw0 / 2, ty + rh * 0.62, fsT, '#9fb0d9', 'center', 700);
+      cols.forEach((c, i) => txt(ctx, c + (i ? ' (mol)' : ''), rx + cw0 + cwi * (i + 0.5), ty + rh * 0.62, fsT - (i ? 1.5 : 0), colC[i], 'center', 700));
+      const filas = [
+        ['Initial', 0, p.n1, p.n2, 0, ['0', 'n₁', 'n₂', '0'], 0],
+        ['En cours', e.xe, e.nA, e.nB, e.nC, ['x', `n₁−${cf(e.a)}x`, `n₂−${cf(e.b)}x`, `${cf(e.c)}x`], 1],
+        ['Final', e.xmax, p.n1 - e.a * e.xmax, p.n2 - e.b * e.xmax, e.c * e.xmax, ['x_max', 'n₁−a·x_max', 'n₂−b·x_max', 'c·x_max'], 2],
+      ];
+      filas.forEach((fl, i) => {
+        const y = ty + rh * (i + 1);
+        ctx.strokeStyle = 'rgba(255,255,255,.12)'; ctx.beginPath(); ctx.moveTo(rx + 6, y); ctx.lineTo(rx + rw - 6, y); ctx.stroke();
+        if (i === 1) { rr(ctx, rx + 3, y + 2, rw - 6, rh - 4, 6); ctx.fillStyle = 'rgba(255,209,102,.10)'; ctx.fill(); ctx.strokeStyle = 'rgba(255,209,102,.45)'; ctx.stroke(); }
+        txt(ctx, fl[0], rx + cw0 / 2, y + rh * (rh > 34 ? 0.45 : 0.62), fsT, i === 1 ? '#ffd166' : '#c9d6f5', 'center', 700);
+        for (let k = 0; k < 4; k++) {
+          const cx = rx + cw0 + cwi * (k + 0.5), v = fl[1 + k], cero = Math.abs(v) < 1e-9;
+          const esLim = i === 2 && ((k === 1 && lim('A')) || (k === 2 && lim('B')));
+          if (esLim) { rr(ctx, cx - cwi / 2 + 3, y + 3, cwi - 6, rh - 6, 6); ctx.fillStyle = 'rgba(255,77,109,.2)'; ctx.fill(); ctx.strokeStyle = '#ff4d6d'; ctx.stroke(); }
+          txt(ctx, num(cero ? 0 : v, 2), cx, y + rh * (rh > 34 ? 0.45 : 0.62), fsT + 1, esLim ? '#ff8fb1' : '#eaf0ff', 'center', 700);
+          if (rh > 34) txt(ctx, esLim ? '★ limitante' : fl[5][k], cx, y + rh * 0.82, fsT - 3, esLim ? '#ff8fb1' : '#7f8fb8', 'center', 400);
+        }
+      });
+      if (rh <= 34) txt(ctx, '★ = reactivo limitante (se agota)', rx + rw, ty + th + fs + 3, fs - 2, '#ff8fb1', 'right', 400);
+    },
+    formula(p) {
+      const e = estadoAvance(p), A = e.a === 1 ? '' : `${e.a}\\times`, B = e.b === 1 ? '' : `${e.b}\\times`;
+      return `\\begin{gathered}n(\\mathrm{A})=n_1-${cf(e.a)}x=${tx(p.n1)}-${A}${tx(e.xe)}=${tx(e.nA)}\\ \\text{mol}\\qquad n(\\mathrm{B})=n_2-${cf(e.b)}x=${tx(e.nB)}\\ \\text{mol}\\qquad n(\\mathrm{C})=${cf(e.c)}x=${tx(e.nC)}\\ \\text{mol}\\\\[2pt] x_{\\max}=\\min\\!\\left(\\dfrac{n_1}{${e.a}},\\dfrac{n_2}{${e.b}}\\right)=${tx(e.xmax)}\\ \\text{mol}\\end{gathered}`;
+    },
+    lecturas(p) {
+      const e = estadoAvance(p);
+      return [{ label: 'x', valor: num(e.xe, 2) + ' mol' }, { label: 'x_max', valor: num(e.xmax, 2) + ' mol' }, { label: 'limitante', valor: e.lim === 'ambos' ? 'A y B' : e.lim },
+        { label: 'n(A)', valor: num(e.nA, 2) + ' mol' }, { label: 'n(B)', valor: num(e.nB, 2) + ' mol' }, { label: 'n(C)', valor: num(e.nC, 2) + ' mol' }];
+    },
+    dispose(s) { /* sin listeners */ },
+  });
 })();

@@ -84,7 +84,7 @@
 .est-ftex{position:relative;display:block;width:100%;cursor:pointer;color:var(--txt);background:radial-gradient(circle at 50% 0,var(--acc-soft),#0a0f20 75%);border:1px solid var(--borde);border-radius:14px;padding:14px 8px 22px;overflow-x:auto;transition:transform .15s,border-color .15s}
 .est-ftex:hover{border-color:var(--acc2);transform:translateY(-1px)}
 .est-ftex-in .katex-display{margin:.3em 0}
-.est-ftex-in .katex{font-size:1.9em}
+.est-ftex-in .katex{font-size:2.15em}
 .est-ftex-hint{position:absolute;right:10px;bottom:4px;font:600 11px var(--f-ui);color:var(--acc2);opacity:.85}
 .est-oculto{color:var(--txt2);font:italic 600 17px var(--f-estudio);margin:0;padding:18px 0;text-align:center}
 .est-fdet{display:flex;flex-direction:column;gap:10px}
@@ -97,7 +97,7 @@
 .est-ej-cuerpo{margin-top:8px;padding:10px 12px;border-left:3px solid var(--acc2);background:#0a0f20;border-radius:0 10px 10px 0;font:15px/1.55 var(--f-estudio)}
 .est-ej-cuerpo p{margin:0 0 6px;white-space:pre-line}
 .est-ej-cuerpo[hidden]{display:none}
-.est-facc{display:flex;flex-wrap:wrap;gap:10px;margin-top:2px}
+.est-facc{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:2px}
 .est-anim-btn{flex:1 1 200px;font-size:16px;padding:12px 16px;box-shadow:0 4px 18px var(--acc-soft)}
 .est-dom-btn.on{background:#124a38;border-color:var(--ok);color:var(--ok)}
 .est-fcard.oculta .est-ftex{min-height:110px;display:flex;align-items:center;justify-content:center}
@@ -128,7 +128,8 @@
 .est-err-bien p{margin:0}
 
 /* ---------- LABORATORIO ---------- */
-.est-lab{display:grid;grid-template-columns:260px 1fr;gap:18px;align-items:start}
+.est-lab{display:grid;grid-template-columns:260px minmax(0,1fr);gap:18px;align-items:start}
+.est-labmain{min-width:0}
 .est-lablist{display:flex;flex-direction:column;gap:8px;position:sticky;top:0}
 .est-labitem{display:flex;gap:10px;align-items:center;text-align:left;padding:10px 12px;border-radius:12px;background:var(--panel);border:1px solid var(--borde);color:var(--txt);cursor:pointer;font:14px var(--f-ui)}
 .est-labitem b{display:block;font-weight:600;line-height:1.25}
@@ -254,10 +255,10 @@
   .est-tabs{padding:6px 8px 0;gap:2px}
   .est-tab{padding:9px 10px;font-size:13px}.est-tab kbd{display:none}
   .est-scroll{padding:14px 14px 80px}
-  .est-lab{grid-template-columns:1fr}
+  .est-lab{grid-template-columns:minmax(0,1fr)}
   .est-lablist{position:static;flex-direction:row;overflow-x:auto;padding-bottom:6px}
   .est-labitem{flex:none;min-width:190px}
-  .est-ftex-in .katex{font-size:1.45em}
+  .est-ftex-in .katex{font-size:1.6em}
   .est-ftools{top:-14px}
   .est-fcount{flex:1 1 100%;margin:0}
   .est-nivel{flex-direction:column;align-items:stretch;text-align:center}

@@ -92,7 +92,7 @@
     // --- pestañas ---
     const tablist = el('div', { class: 'est-tabs', role: 'tablist', 'aria-label': 'Secciones del capítulo' });
     const paneles = el('div', { class: 'est-paneles' });
-    const scroll = el('div', { class: 'est-scroll' }, banner, paneles);
+    const scroll = el('div', { class: 'est-scroll' }, paneles);
     const tctx = { capId, cap, quiz, bonus, irA: (id) => irA(id) };
     const inst = {}; // pestañas ya construidas
     let activa = null;
@@ -124,6 +124,7 @@
         else r = E.tabs[id](tctx);
       } catch (err) { console.error(err); r = { el: el('p', { class: 'est-vacio' }, 'Error al cargar esta sección: ' + err.message) }; }
       pan[id].append(r.el); inst[id] = r;
+      if (id === 'resumen' && banner) pan[id].prepend(banner); // el aviso de bienvenida vive en la pestaña inicial
       return r;
     }
     function pestanaProgreso() {

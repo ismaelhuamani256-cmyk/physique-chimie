@@ -237,6 +237,20 @@
     return lineas.slice(0, 5);
   };
 
+  /** LaTeX sencillo -> texto plano con Unicode (para etiquetas dibujadas en canvas): \vec F -> F⃗, v_0 -> v₀, \Delta -> Δ */
+  K.texPlano = (s) => {
+    s = String(s == null ? '' : s);
+    const sub = { 0: '₀', 1: '₁', 2: '₂', 3: '₃', 4: '₄', 5: '₅', 6: '₆', 7: '₇', 8: '₈', 9: '₉', '+': '₊', '-': '₋', n: 'ₙ', i: 'ᵢ', x: 'ₓ' };
+    const sup = { 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴', 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹', '+': '⁺', '-': '⁻', n: 'ⁿ' };
+    const gr = { alpha: 'α', beta: 'β', gamma: 'γ', delta: 'δ', Delta: 'Δ', lambda: 'λ', mu: 'μ', nu: 'ν', omega: 'ω', Omega: 'Ω', pi: 'π', rho: 'ρ', sigma: 'σ', Sigma: 'Σ', sum: 'Σ', tau: 'τ', theta: 'θ', phi: 'φ', varphi: 'φ', epsilon: 'ε', varepsilon: 'ε', eta: 'η', cdot: '·', times: '×', rightarrow: '→', Rightarrow: '⇒', approx: '≈', neq: '≠', infty: '∞', degree: '°' };
+    s = s.replace(/\$/g, '').replace(/\\(?:vec|overrightarrow)\s*\{([^}]*)\}/g, '$1⃗').replace(/\\(?:vec|overrightarrow)\s*([A-Za-z])/g, '$1⃗')
+      .replace(/\\(?:text|mathrm|mathit|mathbf)\s*\{([^}]*)\}/g, '$1').replace(/\\([A-Za-z]+)/g, (m, k) => (gr[k] != null ? gr[k] : k))
+      .replace(/_\{([^}]*)\}/g, (m, t) => t.split('').map((ch) => sub[ch] || ch).join('')).replace(/_([0-9a-z])/g, (m, ch) => sub[ch] || ch)
+      .replace(/\^\{([^}]*)\}/g, (m, t) => t.split('').map((ch) => sup[ch] || ch).join('')).replace(/\^([0-9n+-])/g, (m, ch) => sup[ch] || ch)
+      .replace(/[{}]/g, '').replace(/\\,|\\;|\\ /g, ' ');
+    return s;
+  };
+
   /**
    * Partículas deterministas: dado un evento p={tipo,x,y,t0,dur,n} y el tiempo de escena t devuelve
    * una lista de {k:'burbuja'|'chispa'|'polvo', x, y, r, a, u, ang} (x,y normalizados; r en alturas).

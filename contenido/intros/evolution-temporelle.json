@@ -1,0 +1,310 @@
+{
+ "titulo": "Évolution temporelle: la reacción que tardaba años",
+ "estilo": "quimica3d",
+ "duracion_seg": 26,
+ "actores": [
+  {
+   "id": "tubo",
+   "tipo": "tubo_ensayo",
+   "pos": [
+    0.5,
+    0.55
+   ],
+   "color": "#9be7ff",
+   "escala": 1.8
+  },
+  {
+   "id": "a1",
+   "tipo": "molecula",
+   "pos": [
+    0.3,
+    0.5
+   ],
+   "color": "#2ee59d",
+   "escala": 1
+  },
+  {
+   "id": "a2",
+   "tipo": "molecula",
+   "pos": [
+    0.72,
+    0.58
+   ],
+   "color": "#ff3da6",
+   "escala": 1
+  },
+  {
+   "id": "a3",
+   "tipo": "molecula",
+   "pos": [
+    0.35,
+    0.68
+   ],
+   "color": "#2ee59d",
+   "escala": 1
+  },
+  {
+   "id": "a4",
+   "tipo": "molecula",
+   "pos": [
+    0.66,
+    0.42
+   ],
+   "color": "#ff3da6",
+   "escala": 1
+  },
+  {
+   "id": "cat",
+   "tipo": "atomo",
+   "pos": [
+    0.12,
+    0.25
+   ],
+   "color": "#ffd23f",
+   "escala": 1.2
+  },
+  {
+   "id": "term",
+   "tipo": "termometro",
+   "pos": [
+    0.86,
+    0.5
+   ],
+   "color": "#9be7ff",
+   "escala": 1
+  },
+  {
+   "id": "p1",
+   "tipo": "molecula",
+   "pos": [
+    0.47,
+    0.55
+   ],
+   "color": "#00d4ff",
+   "escala": 1
+  },
+  {
+   "id": "p2",
+   "tipo": "molecula",
+   "pos": [
+    0.54,
+    0.55
+   ],
+   "color": "#00d4ff",
+   "escala": 1
+  }
+ ],
+ "pasos": [
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "p1"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "p2"
+  },
+  {
+   "t": 0,
+   "accion": "subtitulo",
+   "texto": "La rouille tarda años en formarse. ¿Cómo medir y acelerar una reacción?"
+  },
+  {
+   "t": 0.5,
+   "accion": "mueve",
+   "actor": "a1",
+   "a": [
+    0.42,
+    0.58
+   ],
+   "dur": 4
+  },
+  {
+   "t": 0.5,
+   "accion": "mueve",
+   "actor": "a2",
+   "a": [
+    0.58,
+    0.5
+   ],
+   "dur": 4
+  },
+  {
+   "t": 0.5,
+   "accion": "mueve",
+   "actor": "a3",
+   "a": [
+    0.4,
+    0.45
+   ],
+   "dur": 4
+  },
+  {
+   "t": 0.5,
+   "accion": "mueve",
+   "actor": "a4",
+   "a": [
+    0.6,
+    0.63
+   ],
+   "dur": 4
+  },
+  {
+   "t": 2,
+   "accion": "habla",
+   "actor": "a1",
+   "texto": "Casi nunca chocamos…"
+  },
+  {
+   "t": 4.5,
+   "accion": "subtitulo",
+   "texto": "Transformación lenta: pocos choques eficaces."
+  },
+  {
+   "t": 5.5,
+   "accion": "color",
+   "actor": "term",
+   "color": "#ff3d3d"
+  },
+  {
+   "t": 5.5,
+   "accion": "valor",
+   "id": "T",
+   "desde": 20,
+   "hasta": 60,
+   "dur": 2.5,
+   "etiqueta": "Temperatura (°C)"
+  },
+  {
+   "t": 5.5,
+   "accion": "subtitulo",
+   "texto": "Más temperatura o más concentración: más choques eficaces."
+  },
+  {
+   "t": 6.5,
+   "accion": "particulas",
+   "tipo": "chispas",
+   "pos": [
+    0.5,
+    0.52
+   ]
+  },
+  {
+   "t": 7.5,
+   "accion": "mueve",
+   "actor": "cat",
+   "a": [
+    0.5,
+    0.3
+   ],
+   "dur": 2
+  },
+  {
+   "t": 8.5,
+   "accion": "habla",
+   "actor": "cat",
+   "texto": "Soy catalizador: acelero y no me gasto."
+  },
+  {
+   "t": 9.5,
+   "accion": "reaccion",
+   "de": [
+    "a1",
+    "a2"
+   ],
+   "a": [
+    "p1",
+    "p2"
+   ]
+  },
+  {
+   "t": 10,
+   "accion": "aparece",
+   "actor": "p1"
+  },
+  {
+   "t": 10,
+   "accion": "aparece",
+   "actor": "p2"
+  },
+  {
+   "t": 10.5,
+   "accion": "desaparece",
+   "actor": "a1"
+  },
+  {
+   "t": 10.5,
+   "accion": "desaparece",
+   "actor": "a2"
+  },
+  {
+   "t": 10.5,
+   "accion": "particulas",
+   "tipo": "burbujas",
+   "pos": [
+    0.5,
+    0.45
+   ]
+  },
+  {
+   "t": 11.5,
+   "accion": "formula",
+   "latex": "v_{\\text{Produit}}=\\dfrac{\\mathrm{d}[\\text{Produit}]}{\\mathrm{d}t}"
+  },
+  {
+   "t": 12,
+   "accion": "subtitulo",
+   "texto": "La velocidad volúmica es la derivada de la concentración del producto."
+  },
+  {
+   "t": 14,
+   "accion": "vector",
+   "actor": "p1",
+   "dx": 0.1,
+   "dy": -0.1,
+   "etiqueta": "v"
+  },
+  {
+   "t": 16,
+   "accion": "formula",
+   "latex": "x(t_{1/2})=\\dfrac{x_\\mathrm{f}}{2}"
+  },
+  {
+   "t": 16.5,
+   "accion": "subtitulo",
+   "texto": "t1/2: el avance vale la mitad del avance final."
+  },
+  {
+   "t": 19,
+   "accion": "mueve",
+   "actor": "cat",
+   "a": [
+    0.12,
+    0.25
+   ],
+   "dur": 3
+  },
+  {
+   "t": 20,
+   "accion": "resalta",
+   "actor": "cat"
+  },
+  {
+   "t": 20.5,
+   "accion": "habla",
+   "actor": "cat",
+   "texto": "¡Intacto al final: consumido y regenerado!"
+  },
+  {
+   "t": 22,
+   "accion": "subtitulo",
+   "texto": "El mecanismo suma actos elementales; la flecha curva sigue a los electrones."
+  },
+  {
+   "t": 24,
+   "accion": "formula",
+   "latex": "\\text{donneur}\\ \\curvearrowright\\ \\text{accepteur de doublet}"
+  }
+ ]
+}

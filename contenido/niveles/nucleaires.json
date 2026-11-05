@@ -105,18 +105,7 @@
    "tipo": "plataforma",
    "x": 139,
    "y": 14,
-   "largo": 10
-  },
-  {
-   "tipo": "foso",
-   "x": 149,
-   "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 152,
-   "y": 14,
-   "largo": 18
+   "largo": 31
   },
   {
    "tipo": "plataforma_movil",

@@ -132,7 +132,7 @@
    "tipo": "plataforma",
    "x": 175,
    "y": 14,
-   "largo": 13
+   "largo": 15
   },
   {
    "tipo": "plataforma_movil",
@@ -169,15 +169,6 @@
    "recorrido": 1,
    "eje": "x",
    "periodo": 3
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 166,
-   "y": 12,
-   "largo": 4,
-   "recorrido": 5,
-   "eje": "x",
-   "periodo": 3.2
   },
   {
    "tipo": "resorte",
@@ -404,7 +395,7 @@
   },
   {
    "tipo": "meta",
-   "x": 187
+   "x": 186
   }
  ]
 }

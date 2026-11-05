@@ -1,0 +1,188 @@
+{
+ "capitulo_id": "newton-2",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "numerico",
+   "enunciado": "Un jouet de masse m = 150 g est suspendu à un ressort. Le poids vaut P = 1,5 N et la force de rappel du ressort F = 2,0 N (vers le haut). Quelle est la valeur de l'accélération a_G du jouet ?",
+   "valor": 3.33,
+   "unidad": "m·s⁻²",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "ΣF = F − P = 2,0 − 1,5 = 0,5 N",
+    "m = 0,150 kg",
+    "a_G = ΣF/m = 0,5/0,150 = 3.33 m·s⁻²"
+   ],
+   "pagina_pdf": 294
+  },
+  {
+   "id": "q2",
+   "tipo": "numerico",
+   "enunciado": "Chronophotographie d'une voiture qui freine (τ = 0,50 s). Sur le schéma, Δv₃ = v₄ − v₂ = 3,6 m·s⁻¹. Calculer la valeur de l'accélération a₃ = Δv₃/(2τ).",
+   "valor": 3.6,
+   "unidad": "m·s⁻²",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "a₃ = Δv₃/(2τ)",
+    "a₃ = 3,6/(2×0,50) = 3.6 m·s⁻²"
+   ],
+   "pagina_pdf": 294
+  },
+  {
+   "id": "q3",
+   "tipo": "numerico",
+   "enunciado": "Voiture de masse 1 000 kg dont l'accélération (en valeur) est a₃ = 3,6 m·s⁻² pendant le freinage. Quelle est la valeur F de la force de frottement (P et R se compensent) ?",
+   "valor": 3600.0,
+   "unidad": "N",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "P⃗ + R⃗ + F⃗ = m·a⃗_G et P⃗ + R⃗ = 0⃗ donc F = m·a₃",
+    "F = 1 000 × 3,6 = 3600 N = 3,6×10³ N"
+   ],
+   "pagina_pdf": 294
+  },
+  {
+   "id": "q4",
+   "tipo": "numerico",
+   "enunciado": "Exercice 25 : un scooter + conducteur (m = 200 kg) roule à 10 m·s⁻¹ et s'immobilise en Δt = 2,0 s. Quelle est la valeur de la résultante des forces ΣF ?",
+   "valor": 1000.0,
+   "unidad": "N",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "a = (0 − 10)/2,0 = −5,0 m·s⁻²",
+    "ΣF = m·|a| = 200×5,0 = 1000 N = 1,0×10³ N (sens opposé au mouvement)"
+   ],
+   "pagina_pdf": 617
+  },
+  {
+   "id": "q5",
+   "tipo": "numerico",
+   "enunciado": "Ariane 5 : M = 7,3×10⁵ kg, force de poussée F = 1,16×10⁷ N, g = 10 m·s⁻². Calculer a = F/M − g au décollage.",
+   "valor": 5.9,
+   "unidad": "m·s⁻²",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "Projection sur Oy : F − M·g = M·a",
+    "a = 1,16×10⁷/7,3×10⁵ − 10 = 15.89 − 10 = 5.9 m·s⁻²"
+   ],
+   "pagina_pdf": 300
+  },
+  {
+   "id": "q6",
+   "tipo": "numerico",
+   "enunciado": "Palet d'acier de masse m = 50 g propulsé sur un plan incliné de α = 28° ; accélération a_G3 = 10 m·s⁻², g = 9,8 m·s⁻². Calculer la force F de rappel du ressort : F = m(a_G + g·sin α).",
+   "valor": 0.73,
+   "unidad": "N",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "Projection sur x'x : −m·g·sin α + F = m·a_G",
+    "F = 50×10⁻³×(10 + 9,8×sin 28°) = 0.73 N"
+   ],
+   "pagina_pdf": 301
+  },
+  {
+   "id": "q7",
+   "tipo": "numerico",
+   "enunciado": "Exercice 31 : voiture + automobiliste de masse 1,0 t démarre dans une côte de 10° et atteint 72 km·h⁻¹ en 10 s (frottements négligés, g = 9,8 m·s⁻²). Calculer la force de propulsion F = m(a + g·sin α).",
+   "valor": 3700.0,
+   "unidad": "N",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "72 km·h⁻¹ = 20 m·s⁻¹ ; a = 20/10 = 2,0 m·s⁻²",
+    "F = 1,0×10³×(2,0 + 9,8×sin 10°) = 3702 N ≈ 3,7×10³ N"
+   ],
+   "pagina_pdf": 301
+  },
+  {
+   "id": "q8",
+   "tipo": "opcion",
+   "enunciado": "Un référentiel est dit galiléen si :",
+   "opciones": [
+    "la 1re loi de Newton y est vérifiée",
+    "la 1re loi de Newton n'y est pas vérifiée",
+    "il est en rotation rapide par rapport à la Terre",
+    "les forces y sont toujours nulles"
+   ],
+   "correcta": 0,
+   "explicacion": "Définition : un référentiel est galiléen si le principe d'inertie (1re loi de Newton) y est vérifié.",
+   "pagina_pdf": 292
+  },
+  {
+   "id": "q9",
+   "tipo": "opcion",
+   "enunciado": "Le référentiel géocentrique peut être considéré comme galiléen si le mouvement étudié ne dépasse pas :",
+   "opciones": [
+    "quelques minutes",
+    "quelques heures",
+    "quelques mois",
+    "une année"
+   ],
+   "correcta": 1,
+   "explicacion": "Géocentrique : quelques heures (rotation de la Terre négligeable) ; terrestre : quelques minutes ; héliocentrique : galiléen.",
+   "pagina_pdf": 293
+  },
+  {
+   "id": "q10",
+   "tipo": "opcion",
+   "enunciado": "Un système est homogène (cylindre, disque, cube…). Où se situe son centre de masse ?",
+   "opciones": [
+    "À la surface, au point le plus bas",
+    "Au centre géométrique du système",
+    "Au point le plus massif",
+    "N'importe où"
+   ],
+   "correcta": 1,
+   "explicacion": "Si le système est homogène, le centre de masse se situe au centre géométrique.",
+   "pagina_pdf": 292
+  },
+  {
+   "id": "q11",
+   "tipo": "opcion",
+   "enunciado": "Si les forces qui s'exercent sur un système se compensent (ΣF⃗ = 0⃗), le système :",
+   "opciones": [
+    "est nécessairement immobile",
+    "est au repos ou en mouvement rectiligne uniforme",
+    "accélère dans le sens de la plus grande force",
+    "tourne obligatoirement"
+   ],
+   "correcta": 1,
+   "explicacion": "ΣF = 0 donne a_G = 0 : le système peut être au repos ou en mouvement rectiligne uniforme (principe d'inertie).",
+   "pagina_pdf": 293
+  },
+  {
+   "id": "q12",
+   "tipo": "opcion",
+   "enunciado": "D'après la 2e loi de Newton, le vecteur résultante des forces et le vecteur accélération du centre de masse :",
+   "opciones": [
+    "ont la même direction et le même sens",
+    "ont des directions perpendiculaires",
+    "ont le même sens que le vecteur vitesse",
+    "sont toujours de sens opposés"
+   ],
+   "correcta": 0,
+   "explicacion": "ΣF = m·a_G avec m > 0 : ΣF et a_G ont même direction et même sens (pas forcément celui de v).",
+   "pagina_pdf": 293
+  },
+  {
+   "id": "q13",
+   "tipo": "opcion",
+   "enunciado": "Dans un manège qui tourne (référentiel non galiléen), les nacelles s'inclinent. Pourquoi la 2e loi ΣF = m·a_G ne peut-elle pas s'appliquer telle quelle ?",
+   "opciones": [
+    "Parce que la masse n'y est pas constante",
+    "Parce que ce référentiel est en rotation par rapport à un référentiel galiléen",
+    "Parce qu'il n'y a pas de poids",
+    "Parce que G n'existe pas"
+   ],
+   "correcta": 1,
+   "explicacion": "Un référentiel en rotation par rapport à un référentiel galiléen n'est pas galiléen : les lois de Newton ne s'y appliquent pas.",
+   "pagina_pdf": 293
+  }
+ ]
+}

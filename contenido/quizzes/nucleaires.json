@@ -1,0 +1,236 @@
+{
+ "capitulo_id": "nucleaires",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "opcion",
+   "enunciado": "Dans l'équation ²⁷₁₃Al + ⁴₂He → ³⁰₁₅P + ᴬ_Z X, quelle est la particule X ?",
+   "opciones": [
+    "Un neutron ¹₀n",
+    "Un proton ¹₁H",
+    "Un électron ⁰₋₁e",
+    "Un positon ⁰₁e"
+   ],
+   "correcta": 0,
+   "explicacion": "A : 27 + 4 = 30 + A donc A = 1 ; Z : 13 + 2 = 15 + Z donc Z = 0. C'est un neutron ¹₀n.",
+   "pagina_pdf": 146
+  },
+  {
+   "id": "q2",
+   "tipo": "opcion",
+   "enunciado": "Le carbone 14 se désintègre selon ¹⁴₆C → ¹⁴₇N + ⁰₋₁e. Il s'agit d'une radioactivité :",
+   "opciones": [
+    "β⁻",
+    "β⁺",
+    "α",
+    "γ"
+   ],
+   "correcta": 0,
+   "explicacion": "La particule émise est un électron ⁰₋₁e : radioactivité β⁻ ; un neutron se transforme en proton (Z passe de 6 à 7).",
+   "pagina_pdf": 136
+  },
+  {
+   "id": "q3",
+   "tipo": "opcion",
+   "enunciado": "³⁰₁₅P → ³⁰₁₄Si + ⁰₁e est l'équation d'une désintégration :",
+   "opciones": [
+    "β⁺",
+    "β⁻",
+    "α",
+    "γ"
+   ],
+   "correcta": 0,
+   "explicacion": "Un positon ⁰₁e est émis : radioactivité β⁺ (un proton se transforme en neutron).",
+   "pagina_pdf": 140
+  },
+  {
+   "id": "q4",
+   "tipo": "opcion",
+   "enunciado": "Une désintégration α permet d'éliminer :",
+   "opciones": [
+    "4 nucléons",
+    "4 protons",
+    "4 neutrons",
+    "2 nucléons"
+   ],
+   "correcta": 0,
+   "explicacion": "Le noyau d'hélium ⁴₂He émis contient 2 protons et 2 neutrons : 4 nucléons.",
+   "pagina_pdf": 140
+  },
+  {
+   "id": "q5",
+   "tipo": "opcion",
+   "enunciado": "Quelle relation lie la constante radioactive λ et le temps de demi-vie t½ ?",
+   "opciones": [
+    "t½ = ln2 / λ",
+    "t½ = log2 / λ",
+    "t½ = λ / ln2",
+    "t½ = λ · ln2"
+   ],
+   "correcta": 0,
+   "explicacion": "N(t½) = N₀/2 donne −λ·t½ = −ln2, d'où t½ = ln2/λ.",
+   "pagina_pdf": 138
+  },
+  {
+   "id": "q6",
+   "tipo": "opcion",
+   "enunciado": "Dans le diagramme (N, Z), les noyaux légers (Z ≤ 20) sont stables si :",
+   "opciones": [
+    "N = Z",
+    "N = 2Z",
+    "N < Z/2",
+    "N = Z + 20"
+   ],
+   "correcta": 0,
+   "explicacion": "Les noyaux légers jusqu'à Z ≤ 20 sont stables si N = Z ; les plus lourds ont un excès de neutrons.",
+   "pagina_pdf": 136
+  },
+  {
+   "id": "q7",
+   "tipo": "opcion",
+   "enunciado": "Un noyau fils obtenu par désintégration β est dans un état excité ¹X*. Il se stabilise en émettant :",
+   "opciones": [
+    "Un ou plusieurs photons γ",
+    "Une particule α",
+    "Un neutron",
+    "Un électron et un positon"
+   ],
+   "correcta": 0,
+   "explicacion": "Le retour à l'état fondamental se fait avec émission d'un ou plusieurs photons γ (onde électromagnétique de très courte longueur d'onde).",
+   "pagina_pdf": 137
+  },
+  {
+   "id": "q8",
+   "tipo": "opcion",
+   "enunciado": "Parmi les rayonnements α, β et γ, lequel est le plus pénétrant dans la matière et les tissus ?",
+   "opciones": [
+    "Le rayonnement γ",
+    "Les particules α",
+    "Les particules β",
+    "Tous pénètrent pareil"
+   ],
+   "correcta": 0,
+   "explicacion": "α : arrêtées par la peau ; β : traversent l'épiderme ; γ : très pénétrants, tissus ou organes atteints.",
+   "pagina_pdf": 138
+  },
+  {
+   "id": "q9",
+   "tipo": "opcion",
+   "enunciado": "Au bout de 2 temps de demi-vie, la fraction de noyaux radioactifs restants est :",
+   "opciones": [
+    "N₀/4",
+    "N₀/2",
+    "N₀/3",
+    "0"
+   ],
+   "correcta": 0,
+   "explicacion": "Après t½ il reste N₀/2 ; après 2·t½ il reste N₀/4 (les 3/4 sont désintégrés).",
+   "pagina_pdf": 138
+  },
+  {
+   "id": "q10",
+   "tipo": "numerico",
+   "enunciado": "Lait radioactif (ex. 25) : l'activité de 1 L de lait due au césium 137 est A = 0,22 Bq et λ = 7,3×10⁻¹⁰ s⁻¹. Quel est le nombre de noyaux de césium 137 dans ce litre ? (A = λ·N)",
+   "valor": 300000000.0,
+   "unidad": "noyaux",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "A(t) = λ·N(t)",
+    "N = A/λ = 0,22 / 7,3×10⁻¹⁰",
+    "N ≈ 3,0×10⁸ noyaux"
+   ],
+   "pagina_pdf": 144
+  },
+  {
+   "id": "q11",
+   "tipo": "numerico",
+   "enunciado": "Le carbone 14 a un temps de demi-vie t½ = 5,70×10³ ans. Calculer sa constante radioactive λ en an⁻¹.",
+   "valor": 0.000122,
+   "unidad": "an⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "λ = ln2 / t½",
+    "λ = 0,693 / 5,70×10³",
+    "λ ≈ 1,22×10⁻⁴ an⁻¹"
+   ],
+   "pagina_pdf": 145
+  },
+  {
+   "id": "q12",
+   "tipo": "numerico",
+   "enunciado": "Le polonium 210 a une constante de désintégration λ = 5,8×10⁻⁸ s⁻¹. Calculer son temps de demi-vie en secondes.",
+   "valor": 12000000.0,
+   "unidad": "s",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "t½ = ln2 / λ",
+    "t½ = 0,693 / 5,8×10⁻⁸",
+    "t½ ≈ 1,2×10⁷ s (≈ 138 j)"
+   ],
+   "pagina_pdf": 146
+  },
+  {
+   "id": "q13",
+   "tipo": "numerico",
+   "enunciado": "Le polonium 210 a une activité massique de 1,66×10¹⁴ Bq par gramme. Quelle est l'activité de 10 µg de polonium ?",
+   "valor": 1660000000.0,
+   "unidad": "Bq",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "m = 10 µg = 1,0×10⁻⁵ g",
+    "A = 1,66×10¹⁴ × 1,0×10⁻⁵",
+    "A = 1,66×10⁹ Bq"
+   ],
+   "pagina_pdf": 146
+  },
+  {
+   "id": "q14",
+   "tipo": "numerico",
+   "enunciado": "Lait radioactif (ex. 25) : au bout de combien de temps (en secondes) l'activité du césium 137 n'est-elle plus que 1 % de sa valeur initiale ? (λ = 7,3×10⁻¹⁰ s⁻¹)",
+   "valor": 6300000000.0,
+   "unidad": "s",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "A₀/A = e^(λ·t) donc t = (1/λ)·ln(A₀/A)",
+    "t = ln(100) / 7,3×10⁻¹⁰",
+    "t ≈ 6,3×10⁹ s"
+   ],
+   "pagina_pdf": 144
+  },
+  {
+   "id": "q15",
+   "tipo": "numerico",
+   "enunciado": "Datation d'un drakkar (ex. 23) : A = 12,0 et A₀ = 13,6 désintégrations par minute et par gramme de carbone ; λ(¹⁴C) = 3,87×10⁻¹² s⁻¹. Calculer l'âge t en secondes avec t = (1/λ)·ln(A₀/A).",
+   "valor": 32000000000.0,
+   "unidad": "s",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "t = (1/λ)·ln(A₀/A(t))",
+    "t = ln(13,6/12,0) / 3,87×10⁻¹²",
+    "t ≈ 3,2×10¹⁰ s ≈ 1,03×10³ ans"
+   ],
+   "pagina_pdf": 143
+  },
+  {
+   "id": "q16",
+   "tipo": "numerico",
+   "enunciado": "Scintigraphie myocardique (ex. 40) : l'activité initiale de thallium 201 injectée est A₀ = 78 MBq et λ = 2,6×10⁻⁶ s⁻¹. Calculer le nombre initial N₀ de noyaux injectés.",
+   "valor": 30000000000000.0,
+   "unidad": "noyaux",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "A₀ = λ·N₀",
+    "N₀ = 78×10⁶ / 2,6×10⁻⁶",
+    "N₀ ≈ 3,0×10¹³ noyaux"
+   ],
+   "pagina_pdf": 150
+  }
+ ]
+}

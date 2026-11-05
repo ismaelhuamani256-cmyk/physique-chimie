@@ -263,7 +263,7 @@
     },
     formula(p) {
       const k = bernCalc(p);
-      return '\\begin{aligned}S_1v_1=S_2v_2&\\Rightarrow v_2=\\dfrac{S_1v_1}{S_2}=\\dfrac{' + tx(k.S1, 0) + '\\times' + tx(k.v1, 1) + '}{' + tx(k.S2, 0) + '}=' + tx(k.v2, 1) + '\\ \\text{m·s}^{-1}\\\\[3pt]'
+      return '\\begin{aligned}S_1v_1=S_2v_2&\\Rightarrow v_2=\\dfrac{S_1v_1}{S_2}=\\dfrac{' + tx(k.S1, 0) + '\\times' + tx(k.v1, 1) + '}{' + tx(k.S2, 0) + '}=' + tx(k.v2, 1) + '\\ \\text{m}\\cdot\\text{s}^{-1}\\\\[3pt]'
         + 'P_2&=P_1+\\tfrac12\\rho\\,(v_1^2-v_2^2)=' + (k.P2 / 1000).toFixed(1).replace('.', '{,}') + '\\ \\text{kPa}\\end{aligned}';
     },
     lecturas(p) {
@@ -308,7 +308,7 @@
       fondo(ctx, w, h); S.btns = []; const fs = fsz(w), compact = w < 520;
       const Q = num(p.Q, 0), W = num(p.W, 0), dU = Q + W, s = S.s, U = clamp(U0T + dU * s, 120, UMAXT), fl = S.flujo ? 1 : 0;
       // --- cilindro
-      const cw = clamp(w * 0.27, 96, 210), cx = compact ? w * 0.28 : w * 0.27, xl = cx - cw / 2, xr = cx + cw / 2;
+      const cw = clamp(w * 0.27, 96, 210), cx = w * 0.3, xl = cx - cw / 2, xr = cx + cw / 2;
       const yb = h * 0.72, yt = h * 0.2, ch = yb - yt;
       const yp0 = yt + ch * 0.42, yp = yp0 + clamp(W / 500, -1, 1) * ch * 0.3 * s; // W>0 comprime: el pistón baja
       S.cw = cw; S.gh = yb - yp;
@@ -325,7 +325,7 @@
         ctx.strokeStyle = 'rgba(255,255,255,.4)'; ctx.beginPath(); ctx.moveTo(xl + 10, yb + 12); ctx.lineTo(xl + 26, yb + 26); ctx.moveTo(xr - 30, yb + 10); ctx.lineTo(xr - 16, yb + 22); ctx.stroke();
       }
       // gas (color según U) y paredes de vidrio
-      const tU = clamp((U - 200) / 2000, 0, 1), gc = termo(0.12 + tU * 0.72);
+      const tU = clamp((U - 200) / 2000, 0, 1), gc = termo((U / UMAXT) * 0.8);
       ctx.fillStyle = rgb(gc, 0.16 + 0.1 * tU); ctx.fillRect(xl, yp, cw, yb - yp);
       ctx.strokeStyle = 'rgba(190,210,255,.85)'; ctx.lineWidth = 4; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
       ctx.beginPath(); ctx.moveTo(xl, yt - 10); ctx.lineTo(xl, yb); ctx.lineTo(xr, yb); ctx.lineTo(xr, yt - 10); ctx.stroke();
@@ -345,7 +345,7 @@
         }
         ctx.globalAlpha = 1;
         txt(ctx, 'Q = ' + sgn(Q) + ' J', xl - 8, yb + 36, { size: fs + 1, color: C.calor, align: 'right', w: 700, halo: true });
-        txt(ctx, Q > 0 ? 'calor recibido' : 'calor cedido', xl - 8, yb + 36 + fs + 3, { size: fs - 1, color: C.txt2, align: 'right' });
+        txt(ctx, Q > 0 ? 'recibido' : 'cedido', xl - 8, yb + 36 + fs + 3, { size: fs - 1, color: C.txt2, align: 'right' });
       }
       // --- flecha de trabajo W sobre el pistón
       if (Math.abs(W) >= 1) {
@@ -353,10 +353,10 @@
         if (W > 0) arrow(ctx, ax, yp - 12 - L, ax, yp - 12, C.ambar, 4, 16); else arrow(ctx, ax, yp - 12, ax, yp - 12 - L, C.ambar, 4, 16);
         ctx.globalAlpha = 1;
         txt(ctx, 'W = ' + sgn(W) + ' J', xl - 8, yp - 22, { size: fs + 1, color: C.ambar, align: 'right', w: 700, halo: true });
-        txt(ctx, W > 0 ? 'trabajo recibido (compresión)' : 'trabajo cedido (expansión)', xl - 8, yp - 22 + fs + 3, { size: fs - 1, color: C.txt2, align: 'right' });
+        txt(ctx, W > 0 ? 'recibido (compresión)' : 'cedido (expansión)', xl - 8, yp - 22 + fs + 3, { size: fs - 1, color: C.txt2, align: 'right' });
       }
       // --- balance de energía interna (cascada U_i → +Q → +W → U_f), misma escala vertical
-      const bx0 = compact ? w * 0.54 : w * 0.56, bw = (w * 0.97 - bx0) / 4.5, gap = bw * 0.5, yU = (v) => yb - (clamp(v, 0, UMAXT) / UMAXT) * (yb - yt);
+      const bx0 = w * 0.585, bw = (w * 0.965 - bx0) / 5.5, gap = bw * 0.5, yU = (v) => yb - (clamp(v, 0, UMAXT) / UMAXT) * (yb - yt);
       ctx.strokeStyle = C.borde; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(bx0 - 8, yt - 6); ctx.lineTo(bx0 - 8, yb); ctx.lineTo(w * 0.975, yb); ctx.stroke();
       ticks(0, UMAXT, 4).forEach((v) => { txt(ctx, String(v), bx0 - 12, yU(v), { size: fs - 2, color: C.txt2, align: 'right', base: 'middle' }); });
       txt(ctx, 'U (J)', bx0 - 8, yt - 12, { size: fs, color: C.verde, w: 700 });

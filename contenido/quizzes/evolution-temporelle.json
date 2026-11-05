@@ -1,0 +1,276 @@
+{
+ "capitulo_id": "evolution-temporelle",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "opcion",
+   "enunciado": "Une transformation lente :",
+   "opciones": [
+    "se produit toujours en plusieurs années",
+    "peut être suivie par un appareil de mesure courant",
+    "ne peut pas être suivie",
+    "dure moins de 1/10 s"
+   ],
+   "correcta": 1,
+   "explicacion": "Lente = suivie à l'œil nu ou avec un appareil courant; rapide = durée ≤ persistance rétinienne (1/10 s).",
+   "pagina_pdf": 112
+  },
+  {
+   "id": "q2",
+   "tipo": "opcion",
+   "enunciado": "Un facteur cinétique est :",
+   "opciones": [
+    "un paramètre influant sur la vitesse d'une transformation",
+    "un paramètre influant sur l'état final",
+    "une espèce susceptible d'accélérer une transformation",
+    "la quantité finale de produit"
+   ],
+   "correcta": 0,
+   "explicacion": "Température et concentration en réactifs sont des facteurs cinétiques (corrigé Vérifier l'essentiel, 2 : A).",
+   "pagina_pdf": 112
+  },
+  {
+   "id": "q3",
+   "tipo": "opcion",
+   "enunciado": "Un catalyseur :",
+   "opciones": [
+    "augmente la quantité finale de produit formé",
+    "accélère la transformation chimique",
+    "apparaît dans le bilan réactionnel",
+    "est consommé définitivement"
+   ],
+   "correcta": 1,
+   "explicacion": "Il accélère ou oriente sans modifier l'état final, et n'apparaît pas dans l'équation (corrigé : B).",
+   "pagina_pdf": 112
+  },
+  {
+   "id": "q4",
+   "tipo": "opcion",
+   "enunciado": "Expression de la vitesse volumique de disparition d'un réactif :",
+   "opciones": [
+    "v = dn/dt",
+    "v = −d[Réactif]/dt",
+    "v = d[Réactif]/dt",
+    "v = [Réactif]/t"
+   ],
+   "correcta": 1,
+   "explicacion": "Le signe moins rend la vitesse positive puisque [Réactif] diminue.",
+   "pagina_pdf": 113
+  },
+  {
+   "id": "q5",
+   "tipo": "opcion",
+   "enunciado": "Une réaction est d'ordre 1 par rapport à un réactif A si :",
+   "opciones": [
+    "la vitesse volumique de disparition de A est proportionnelle à sa concentration",
+    "le nombre stœchiométrique devant A vaut 1",
+    "A est l'unique réactif",
+    "la vitesse est constante"
+   ],
+   "correcta": 0,
+   "explicacion": "L'ordre se déduit uniquement de l'expérience (corrigé : A).",
+   "pagina_pdf": 113
+  },
+  {
+   "id": "q6",
+   "tipo": "opcion",
+   "enunciado": "Un intermédiaire réactionnel est une espèce :",
+   "opciones": [
+    "formée lors de la première étape",
+    "consommée puis régénérée",
+    "formée puis consommée au cours du mécanisme",
+    "présente dans le bilan"
+   ],
+   "correcta": 2,
+   "explicacion": "Consommée puis régénérée = catalyseur (corrigé : C).",
+   "pagina_pdf": 114
+  },
+  {
+   "id": "q7",
+   "tipo": "opcion",
+   "enunciado": "Un site accepteur de doublet d'électrons peut être :",
+   "opciones": [
+    "un site comportant une lacune électronique",
+    "un doublet non liant",
+    "une double liaison",
+    "un atome portant une charge partielle négative δ−"
+   ],
+   "correcta": 0,
+   "explicacion": "Accepteur : lacune électronique ou atome avec charge partielle δ+ ; donneur : doublet non liant ou double liaison.",
+   "pagina_pdf": 114
+  },
+  {
+   "id": "q8",
+   "tipo": "opcion",
+   "enunciado": "Une flèche courbe sur une étape d'un mécanisme réactionnel :",
+   "opciones": [
+    "part d'un site donneur et pointe vers un site accepteur",
+    "part d'un site accepteur vers un site donneur",
+    "part d'un élément portant une lacune électronique",
+    "pointe vers un site de forte densité électronique"
+   ],
+   "correcta": 0,
+   "explicacion": "Elle part d'un donneur de doublet et pointe vers un accepteur.",
+   "pagina_pdf": 114
+  },
+  {
+   "id": "q9",
+   "tipo": "opcion",
+   "enunciado": "Pour augmenter la fréquence des chocs efficaces, on peut :",
+   "opciones": [
+    "augmenter le volume du milieu réactionnel",
+    "diminuer la concentration des réactifs",
+    "augmenter la température du milieu",
+    "refroidir le milieu"
+   ],
+   "correcta": 2,
+   "explicacion": "Plus de température ou plus de réactifs : chocs efficaces plus fréquents.",
+   "pagina_pdf": 114
+  },
+  {
+   "id": "q10",
+   "tipo": "opcion",
+   "enunciado": "Ex. 12 : trois expériences avec [H₃O⁺] = 0,50 ; 0,25 ; 0,40 mol·L⁻¹ à 25 °C. Quel facteur cinétique est mis en évidence ?",
+   "opciones": [
+    "la température",
+    "la concentration en réactifs",
+    "la nature du catalyseur",
+    "la masse du produit"
+   ],
+   "correcta": 1,
+   "explicacion": "La température est identique ; seule la concentration en réactifs varie (corrigé ex. 12).",
+   "pagina_pdf": 117
+  },
+  {
+   "id": "q11",
+   "tipo": "opcion",
+   "enunciado": "Ex. 29 : dans la réaction avec Co²⁺, quel est le rôle de Co³⁺ ?",
+   "opciones": [
+    "catalyseur",
+    "réactif",
+    "intermédiaire réactionnel",
+    "produit final"
+   ],
+   "correcta": 2,
+   "explicacion": "Co³⁺ est formé puis consommé : intermédiaire; Co²⁺ est le catalyseur (corrigé ex. 29).",
+   "pagina_pdf": 123
+  },
+  {
+   "id": "q12",
+   "tipo": "opcion",
+   "enunciado": "Ex. 13 : le zinc, le fer et le cuivre accélèrent la décomposition de l'eau de Javel. Quelle catalyse est-ce ?",
+   "opciones": [
+    "homogène",
+    "hétérogène",
+    "enzymatique",
+    "aucune, ce ne sont pas des catalyseurs"
+   ],
+   "correcta": 1,
+   "explicacion": "Métaux solides, ions en solution : deux phases distinctes (corrigé ex. 13).",
+   "pagina_pdf": 117
+  },
+  {
+   "id": "q13",
+   "tipo": "numerico",
+   "enunciado": "Ex. 38 : on introduit 1,0 mL de 2-chloro-2-méthylpropane (M = 92,0 g·mol⁻¹ ; ρ = 0,85 g·mL⁻¹). Quelle quantité de matière (en mol) cela représente-t-il ?",
+   "valor": 0.00924,
+   "unidad": "mol",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "m = ρ·V = 0,85 × 1,0 = 0,85 g",
+    "n = m/M = 0,85/92,0 = 9,2×10⁻³ mol"
+   ],
+   "pagina_pdf": 126
+  },
+  {
+   "id": "q14",
+   "tipo": "numerico",
+   "enunciado": "Ex. 38 : cette quantité est complétée à 25,0 mL avec de l'acétone (solution S), puis 5,0 mL de S sont versés dans 200,0 mL d'eau (volume total 205 mL). Quelle est la concentration finale en 2-chloro-2-méthylpropane (en mol·L⁻¹) ?",
+   "valor": 0.00901,
+   "unidad": "mol·L⁻¹",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "c(S) = 9,24×10⁻³/0,0250 = 0,370 mol·L⁻¹",
+    "n dans le mélange = 0,370 × 5,0×10⁻³ = 1,85×10⁻³ mol",
+    "c = 1,85×10⁻³/0,205 = 9,0×10⁻³ mol·L⁻¹"
+   ],
+   "pagina_pdf": 126
+  },
+  {
+   "id": "q15",
+   "tipo": "numerico",
+   "enunciado": "Ex. 38 : si la réaction est totale, il se forme autant de H₃O⁺ et de Cl⁻ que de réactif initial (c = 9,0 mmol·L⁻¹). Avec λ(H₃O⁺) = 349,8×10⁻⁴ et λ(Cl⁻) = 76,3×10⁻⁴ S·m²·mol⁻¹, calculer σ finale (en S·m⁻¹).",
+   "valor": 0.384,
+   "unidad": "S·m⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "c = 9,01 mol·m⁻³",
+    "σ = (349,8+76,3)×10⁻⁴ × 9,01",
+    "σ ≈ 0,384 S·m⁻¹, égale à la valeur mesurée (0,384)"
+   ],
+   "pagina_pdf": 126
+  },
+  {
+   "id": "q16",
+   "tipo": "numerico",
+   "enunciado": "Ex. 31 : [H₂O₂] vaut 0,22 mol·L⁻¹ à t = 30 min et 0,091 mol·L⁻¹ à t = 50 min. Avec v ≈ −(C(50)−C(30))/(50−30), calculer la vitesse volumique de disparition à t = 40 min (en mol·L⁻¹·min⁻¹).",
+   "valor": 0.00645,
+   "unidad": "mol·L⁻¹·min⁻¹",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 3,
+   "pasos": [
+    "v = −Δ[H₂O₂]/Δt",
+    "v = −(0,091 − 0,22)/(50 − 30)",
+    "v = 6,45×10⁻³ mol·L⁻¹·min⁻¹"
+   ],
+   "pagina_pdf": 123
+  },
+  {
+   "id": "q17",
+   "tipo": "numerico",
+   "enunciado": "Ex. 31 : à t = 40 min, [H₂O₂] = 0,14 mol·L⁻¹ et v = 6,45×10⁻³ mol·L⁻¹·min⁻¹. Calculer k = v/[H₂O₂] (en min⁻¹), constante pour une réaction d'ordre 1.",
+   "valor": 0.0461,
+   "unidad": "min⁻¹",
+   "tolerancia_rel": 0.05,
+   "cifras_sig": 3,
+   "pasos": [
+    "v = k·[A] donc k = v/[A]",
+    "k = 6,45×10⁻³/0,14 = 4,6×10⁻² min⁻¹",
+    "k reste ≈ constant aux autres instants (0,044 à 0,046): ordre 1"
+   ],
+   "pagina_pdf": 123
+  },
+  {
+   "id": "q18",
+   "tipo": "numerico",
+   "enunciado": "ECE : l'éthanoate d'éthyle (M = 88 g·mol⁻¹, densité 0,90) : on en prend 1 mL. Quelle quantité de matière (en mol) ? (à comparer à n(HO⁻) = 2,0×10⁻⁴ mol : l'ester est en excès).",
+   "valor": 0.0102,
+   "unidad": "mol",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 3,
+   "pasos": [
+    "m = 0,90 × 1,0 = 0,90 g (ρ = 0,90 g·mL⁻¹)",
+    "n = 0,90/88 = 1,0×10⁻² mol",
+    "n(ester) ≫ n(HO⁻) = 0,200 L × 1,0×10⁻³ mol·L⁻¹ = 2,0×10⁻⁴ mol"
+   ],
+   "pagina_pdf": 128
+  },
+  {
+   "id": "q19",
+   "tipo": "numerico",
+   "enunciado": "Ex. 24 : t1/2 = 63 min. On considère la réaction terminée au bout de 6 t1/2. Quelle durée (en min) ?",
+   "valor": 378,
+   "unidad": "min",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "Réaction terminée après 6 à 7 t1/2",
+    "6 × 63 = 378 min"
+   ],
+   "pagina_pdf": 113
+  }
+ ]
+}

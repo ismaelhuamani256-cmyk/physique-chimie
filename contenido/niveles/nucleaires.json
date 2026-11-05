@@ -1,0 +1,377 @@
+{
+ "capitulo_id": "nucleaires",
+ "tipo_nivel": "normal",
+ "tema_visual": "laboratorio-neon",
+ "fisica_juego": {
+  "gravedad": 0.9,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 170,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "foso",
+   "x": 22,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 25,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 39,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 43,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "foso",
+   "x": 53,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 57,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 69,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 77,
+   "y": 10,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 85,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "foso",
+   "x": 97,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 101,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 115,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 119,
+   "y": 14,
+   "largo": 16
+  },
+  {
+   "tipo": "plataforma",
+   "x": 128,
+   "y": 11,
+   "largo": 5
+  },
+  {
+   "tipo": "foso",
+   "x": 135,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 139,
+   "y": 14,
+   "largo": 31
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 58,
+   "y": 11,
+   "largo": 4,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 103,
+   "y": 11,
+   "largo": 4,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 136,
+   "y": 12,
+   "largo": 3,
+   "recorrido": 2,
+   "eje": "y",
+   "periodo": 3
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 97,
+   "y": 13,
+   "largo": 3,
+   "recorrido": 1,
+   "eje": "x",
+   "periodo": 3
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 8,
+   "y": 12,
+   "ref": "f1",
+   "latex": "Z = Z' + Z'' \\quad\\text{et}\\quad A = A' + A''",
+   "nombre": "Lois de conservation (charge et nucléons)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 18,
+   "y": 12,
+   "ref": "f2",
+   "latex": "{}^{A}_{Z}\\mathrm{X} \\to {}^{A-4}_{Z-2}\\mathrm{X}' + {}^{4}_{2}\\mathrm{He}",
+   "nombre": "Désintégration α"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 30,
+   "y": 12,
+   "ref": "f3",
+   "latex": "{}^{A}_{Z}\\mathrm{X} \\to {}^{A}_{Z+1}\\mathrm{X}' + {}^{\\,0}_{-1}\\mathrm{e}",
+   "nombre": "Désintégration β⁻"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 36,
+   "y": 12,
+   "ref": "f4",
+   "latex": "{}^{A}_{Z}\\mathrm{X} \\to {}^{A}_{Z-1}\\mathrm{X}' + {}^{\\,0}_{1}\\mathrm{e}",
+   "nombre": "Désintégration β⁺"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 47,
+   "y": 12,
+   "ref": "f5",
+   "latex": "{}^{A}_{Z}\\mathrm{X}^{*} \\to {}^{A}_{Z}\\mathrm{X} + \\gamma",
+   "nombre": "Radioactivité γ (désexcitation)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 62,
+   "y": 12,
+   "ref": "f6",
+   "latex": "\\Delta N = -\\lambda \\cdot N(t) \\cdot \\Delta t",
+   "nombre": "Variation du nombre de noyaux"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 73,
+   "y": 10,
+   "ref": "f7",
+   "latex": "\\dfrac{\\mathrm{d}N(t)}{\\mathrm{d}t} = -\\lambda \\cdot N(t)",
+   "nombre": "Équation différentielle de la décroissance"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 81,
+   "y": 8,
+   "ref": "f8",
+   "latex": "N(t) = N_0 \\cdot e^{-\\lambda \\cdot t}",
+   "nombre": "Loi de décroissance radioactive"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 92,
+   "y": 12,
+   "ref": "f9",
+   "latex": "t_{1/2} = \\dfrac{\\ln 2}{\\lambda}",
+   "nombre": "Temps de demi-vie"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 108,
+   "y": 12,
+   "ref": "f10",
+   "latex": "A(t) = -\\dfrac{\\mathrm{d}N(t)}{\\mathrm{d}t} = \\lambda \\cdot N(t)",
+   "nombre": "Activité d'un échantillon"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 130,
+   "y": 9,
+   "ref": "f11",
+   "latex": "A(t) = A_0 \\cdot e^{-\\lambda \\cdot t}",
+   "nombre": "Loi de décroissance de l'activité"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 155,
+   "y": 12,
+   "ref": "f12",
+   "latex": "t = \\dfrac{1}{\\lambda}\\,\\ln\\dfrac{A_0}{A(t)}",
+   "nombre": "Datation isotopique (âge d'un échantillon)"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 14,
+   "y": 13,
+   "enemigo": "error_conservacion",
+   "nombre": "Olvidar la conservación de Z y A",
+   "correccion": "Comprobar siempre Z = Z' + Z'' y A = A' + A''."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 33,
+   "y": 13,
+   "enemigo": "error_beta_signo",
+   "nombre": "Confundir β⁻ y β⁺",
+   "correccion": "β⁻: electrón, Z sube 1. β⁺: positón, Z baja 1."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 50,
+   "y": 13,
+   "enemigo": "error_espontanea",
+   "nombre": "Confundir espontánea y provocada",
+   "correccion": "Radiactiva = espontánea; la artificial se provoca."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 65,
+   "y": 13,
+   "enemigo": "error_unidades_lambda",
+   "nombre": "No convertir λ a s⁻¹",
+   "correccion": "Pasar λ y t al SI antes de calcular."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 110,
+   "y": 13,
+   "enemigo": "error_actividad_n",
+   "nombre": "Confundir actividad A y núcleos N",
+   "correccion": "A (Bq) = λ·N: desintegraciones por segundo."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 143,
+   "y": 13,
+   "enemigo": "error_dos_semividas",
+   "nombre": "Creer que a 2 t½ no queda nada",
+   "correccion": "A 2 t½ queda N₀/4 (la mitad de la mitad)."
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 69,
+   "y": 5,
+   "w": 8,
+   "h": 6,
+   "fx": 0,
+   "fy": -0.4
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 126,
+   "y": 6,
+   "w": 8,
+   "h": 6,
+   "fx": 0,
+   "fy": -0.5
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 59
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 120
+  },
+  {
+   "tipo": "jefe",
+   "x": 160,
+   "jefe": "ejercicio_bac_1",
+   "titulo": "Ejercicio bac: el reactor inestable",
+   "preguntas": [
+    {
+     "pregunta": "Désintégration α du radium: ²²⁶₈₈Ra → ²²²₈₆Rn + ᴬ_Z X. Quelle est la particule émise ?",
+     "opciones": [
+      "⁴₂He (noyau d'hélium)",
+      "⁰₋₁e (électron)",
+      "⁰₁e (positon)",
+      "¹₀n (neutron)"
+     ],
+     "correcta": 0,
+     "explicacion": "Z: 88 = 86 + 2 et A: 226 = 222 + 4 ; c'est un noyau d'hélium ⁴₂He, donc une radioactivité α.",
+     "pagina_pdf": 136
+    },
+    {
+     "pregunta": "Quelle relation lie le temps de demi-vie t½ et la constante radioactive λ ?",
+     "opciones": [
+      "t½ = ln2 / λ",
+      "t½ = λ / ln2",
+      "t½ = log2 / λ",
+      "t½ = λ · ln2"
+     ],
+     "correcta": 0,
+     "explicacion": "N(t½) = N₀/2 conduit à −λ·t½ = −ln2, soit t½ = ln2/λ.",
+     "pagina_pdf": 138
+    },
+    {
+     "pregunta": "Dans ³⁰₁₅P → ³⁰₁₄Si + ⁰₁e, de quel type de désintégration s'agit-il ?",
+     "opciones": [
+      "β⁺ (émission d'un positon)",
+      "β⁻ (émission d'un électron)",
+      "α",
+      "γ"
+     ],
+     "correcta": 0,
+     "explicacion": "La particule émise ⁰₁e est un positon : radioactivité β⁺ (un proton se transforme en neutron).",
+     "pagina_pdf": 136
+    },
+    {
+     "pregunta": "Quel rayonnement est le plus pénétrant ?",
+     "opciones": [
+      "Le rayonnement γ",
+      "Les particules α",
+      "Les particules β",
+      "Aucun : tous sont arrêtés par une feuille de papier"
+     ],
+     "correcta": 0,
+     "explicacion": "Les rayons γ sont très pénétrants ; α et β sont complètement absorbés par la matière, pas γ (il faut blinder avec un matériau lourd comme le plomb).",
+     "pagina_pdf": 138
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 167
+  }
+ ]
+}

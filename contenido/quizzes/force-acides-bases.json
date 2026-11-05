@@ -1,0 +1,253 @@
+{
+ "capitulo_id": "force-acides-bases",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "opcion",
+   "enunciado": "Le produit ionique de l'eau Ke est la constante de l'équilibre d'équation...",
+   "opciones": [
+    "H₃O⁺(aq) + HO⁻(aq) ⇌ 2 H₂O(ℓ), avec Ke = 1/([H₃O⁺]f·[HO⁻]f)",
+    "2 H₂O(ℓ) ⇌ H₃O⁺(aq) + HO⁻(aq), avec Ke = [H₃O⁺]f·[HO⁻]f",
+    "AH(aq) + H₂O(ℓ) ⇌ A⁻(aq) + H₃O⁺(aq), avec Ke = [A⁻]f·[H₃O⁺]f/[AH]f",
+    "2 H₂O(ℓ) → H₃O⁺(aq) + HO⁻(aq), avec Ke = [H₃O⁺]f/[HO⁻]f"
+   ],
+   "correcta": 1,
+   "explicacion": "Ke est la constante de l'autoprotolyse de l'eau : Ke = [H₃O⁺]f·[HO⁻]f = 1,0×10⁻¹⁴ à 25 °C.",
+   "pagina_pdf": 184
+  },
+  {
+   "id": "q2",
+   "tipo": "numerico",
+   "enunciado": "Une solution d'acide nitrique HNO₃ (acide fort) a une concentration c = 5,0×10⁻³ mol·L⁻¹. Quelle est la valeur de son pH ?",
+   "valor": 2.3,
+   "unidad": "",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "Acide fort : transformation totale, [H₃O⁺]f = c",
+    "pH = −log c = −log(5,0×10⁻³)",
+    "pH = 2.30"
+   ],
+   "pagina_pdf": 191
+  },
+  {
+   "id": "q3",
+   "tipo": "opcion",
+   "enunciado": "Dans une solution d'acide chlorhydrique (acide fort), que devient la base conjuguée Cl⁻ ?",
+   "opciones": [
+    "Une base forte qui capte H⁺",
+    "Une base faible en équilibre avec HCl",
+    "Une base indifférente : elle ne réagit pas avec l'eau",
+    "Elle réagit avec l'eau pour reformer HCl"
+   ],
+   "correcta": 2,
+   "explicacion": "La base conjuguée d'un acide fort n'a pas tendance à capter un proton : on dit qu'elle est indifférente (Cl⁻, NO₃⁻).",
+   "pagina_pdf": 185
+  },
+  {
+   "id": "q4",
+   "tipo": "numerico",
+   "enunciado": "La soude (Na⁺, HO⁻) de concentration c = 3,0×10⁻² mol·L⁻¹ est une base forte. Calculer son pH à 25 °C (pKe = 14).",
+   "valor": 12.48,
+   "unidad": "",
+   "tolerancia_rel": 0.01,
+   "cifras_sig": 3,
+   "pasos": [
+    "Base forte : [HO⁻]f = c",
+    "pH = pKe + log c",
+    "pH = 14 + log(3,0×10⁻²) = 12.48"
+   ],
+   "pagina_pdf": 186
+  },
+  {
+   "id": "q5",
+   "tipo": "opcion",
+   "enunciado": "Plus le pKA d'un couple acide-base est grand...",
+   "opciones": [
+    "plus l'acide est fort",
+    "moins l'acide réagit avec l'eau : plus il est faible",
+    "plus l'acide est en excès dans la solution",
+    "plus la constante Ke est petite"
+   ],
+   "correcta": 1,
+   "explicacion": "Un pKA grand : acide qui réagit peu avec l'eau (faible) et base conjuguée plus forte.",
+   "pagina_pdf": 185
+  },
+  {
+   "id": "q6",
+   "tipo": "numerico",
+   "enunciado": "Calculer la constante d'acidité KA du couple NH₄⁺(aq)/NH₃(aq) sachant que pKA = 9,2 à 25 °C.",
+   "valor": 6.31e-10,
+   "unidad": "",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "KA = 10^(−pKA)",
+    "KA = 10^(−9,2)",
+    "KA = 6.31e-10"
+   ],
+   "pagina_pdf": 191
+  },
+  {
+   "id": "q7",
+   "tipo": "numerico",
+   "enunciado": "Acide glycolique (acide faible), c = 1,0×10⁻³ mol·L⁻¹, pKA = 3,8. Résoudre c·τ² + KA·τ − KA = 0 pour obtenir le taux d'avancement final τ (en %).",
+   "valor": 33,
+   "unidad": "%",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "KA = 10^(−3,8) = 1,58×10⁻⁴",
+    "Δ = KA² + 4cKA = 6,6×10⁻⁷",
+    "τ = (−KA + √Δ)/(2c) = 0.33 soit 33 %"
+   ],
+   "pagina_pdf": 194
+  },
+  {
+   "id": "q8",
+   "tipo": "opcion",
+   "enunciado": "À pH = pKA du couple, que peut-on dire du diagramme de distribution ?",
+   "opciones": [
+    "Seule la forme acide est présente",
+    "Les formes acide et basique sont en proportions égales (50 % chacune)",
+    "Seule la base conjuguée est présente",
+    "Le pH de la solution vaut 14"
+   ],
+   "correcta": 1,
+   "explicacion": "Si [AH]f = [A⁻]f, alors KA = [H₃O⁺]f donc pH = pKA.",
+   "pagina_pdf": 188
+  },
+  {
+   "id": "q9",
+   "tipo": "numerico",
+   "enunciado": "Lait de chèvre de pH = 6,0 et c = 1,52×10⁻² mol·L⁻¹ en acide caprique. D'après le diagramme de distribution, 93 % de l'acide est sous forme de base conjuguée C₁₀H₁₉O₂⁻. Calculer [C₁₀H₁₉O₂⁻]f.",
+   "valor": 0.0141,
+   "unidad": "mol·L⁻¹",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "Concentration = c × pourcentage",
+    "[C₁₀H₁₉O₂⁻]f = 0,93 × 1,52×10⁻²",
+    "= 1.41e-02 mol·L⁻¹"
+   ],
+   "pagina_pdf": 195
+  },
+  {
+   "id": "q10",
+   "tipo": "numerico",
+   "enunciado": "Acide lactique AH de concentration c = 1,0×10⁻² mol·L⁻¹ avec un taux d'avancement final τ = 13 %. Calculer KA = (c·τ)²/(c(1−τ)).",
+   "valor": 0.00019,
+   "unidad": "",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "[A⁻]f = [H₃O⁺]f = c·τ = 1,3×10⁻³ mol·L⁻¹",
+    "[AH]f = c(1−τ) = 8,7×10⁻³ mol·L⁻¹",
+    "KA = 1.94e-04 (pKA = 3.7)"
+   ],
+   "pagina_pdf": 196
+  },
+  {
+   "id": "q11",
+   "tipo": "opcion",
+   "enunciado": "Le pH à l'équivalence du titrage de la soude par l'acide chlorhydrique vaut 7,0. Quel indicateur coloré est adapté ?",
+   "opciones": [
+    "Hélianthine (zone de virage 3,1–4,4)",
+    "Rouge de méthyle (4,2–6,2)",
+    "Bleu de bromothymol (6,0–7,6)",
+    "Thymolphtaléine (9,3–10,5)"
+   ],
+   "correcta": 2,
+   "explicacion": "L'indicateur convient si le pH à l'équivalence est dans sa zone de virage : 7,0 ∈ [6,0 ; 7,6] → BBT.",
+   "pagina_pdf": 188
+  },
+  {
+   "id": "q12",
+   "tipo": "opcion",
+   "enunciado": "Une solution tampon est une solution dont le pH...",
+   "opciones": [
+    "ne varie jamais",
+    "varie peu par addition d'une petite quantité d'acide ou de base et par dilution modérée",
+    "est toujours égal à 7",
+    "varie beaucoup par dilution"
+   ],
+   "correcta": 1,
+   "explicacion": "Définition du cours : le pH varie peu par ajout modéré d'acide/base et par dilution modérée (ex. éthanoïque/éthanoate).",
+   "pagina_pdf": 187
+  },
+  {
+   "id": "q13",
+   "tipo": "numerico",
+   "enunciado": "Solution d'acide éthanoïque de concentration c = 8,0×10⁻² mol·L⁻¹ (pKA = 4,8). Calculer le pH de cette solution (comparer à la valeur mesurée pH = 3,0).",
+   "valor": 2.95,
+   "unidad": "",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "KA = 10^(−4,8) = 1,58×10⁻⁵ ; Δ = KA² + 4cKA",
+    "τ = (−KA + √Δ)/(2c) = 0.0140",
+    "[H₃O⁺]f = c·τ = 1.12e-03 mol·L⁻¹",
+    "pH = −log[H₃O⁺]f = 2.95"
+   ],
+   "pagina_pdf": 197
+  },
+  {
+   "id": "q14",
+   "tipo": "numerico",
+   "enunciado": "Vinaigre blanc à 10° : 100 g de vinaigre contiennent 10 g d'acide éthanoïque CH₃CO₂H (M = 60 g·mol⁻¹), masse volumique ρ = 1,01 g·mL⁻¹. Calculer la concentration c en quantité de matière d'acide éthanoïque dans ce vinaigre.",
+   "valor": 1.68,
+   "unidad": "mol·L⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "n = m/M = 10/60 = 0,167 mol",
+    "V = 100 g / 1,01 g·mL⁻¹ = 99,0 mL = 0,0990 L",
+    "c = n/V = 1.68 mol·L⁻¹"
+   ],
+   "pagina_pdf": 182
+  },
+  {
+   "id": "q15",
+   "tipo": "numerico",
+   "enunciado": "Test Dornic (ex. 41) : 10,0 mL de lait sont dosés par la soude cb = 0,111 mol·L⁻¹, VE = 2,1 mL. L'acidité n'est due qu'à l'acide lactique C₃H₆O₃ (M = 90 g·mol⁻¹). Calculer l'acidité en degrés Dornic (1 °D = 0,1 g d'acide lactique par litre). Le lait est-il frais (≤ 18 °D) ?",
+   "valor": 21,
+   "unidad": "°D",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "n(HO⁻) = cb·VE = 2,33×10⁻⁴ mol = n(acide lactique) (réaction 1:1)",
+    "m = n·M = 2,10×10⁻² g dans 10,0 mL → 2,10 g·L⁻¹",
+    "Acidité = 2,10/0,1 = 21 °D > 18 °D : le lait n'est pas frais"
+   ],
+   "pagina_pdf": 200
+  },
+  {
+   "id": "q16",
+   "tipo": "opcion",
+   "enunciado": "Pour des acides de même concentration c = 1,0×10⁻³ mol·L⁻¹, quel acide a le taux d'avancement final le plus grand ?",
+   "opciones": [
+    "NH₄⁺ (KA = 6,31×10⁻¹⁰)",
+    "CH₃CO₂H (KA = 1,58×10⁻⁵)",
+    "HCO₂H (KA = 1,58×10⁻⁴)",
+    "Tous le même"
+   ],
+   "correcta": 2,
+   "explicacion": "Plus KA est grand, plus τ est grand : HCO₂H 32,7 %, CH₃CO₂H 11,8 %, NH₄⁺ 0,08 %.",
+   "pagina_pdf": 187
+  },
+  {
+   "id": "q17",
+   "tipo": "opcion",
+   "enunciado": "Si le pH mesuré d'une solution d'acide de concentration c ne vérifie pas pH = −log c, alors...",
+   "opciones": [
+    "l'acide est fort",
+    "la transformation de l'acide avec l'eau n'est pas totale : l'acide est faible",
+    "la solution est une solution tampon",
+    "Ke n'est pas égal à 1,0×10⁻¹⁴"
+   ],
+   "correcta": 1,
+   "explicacion": "pH = −log c correspond au cas limite d'une transformation totale ; sinon l'acide considéré est faible.",
+   "pagina_pdf": 185
+  }
+ ]
+}

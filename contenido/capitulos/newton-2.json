@@ -1,0 +1,953 @@
+{
+ "id": "newton-2",
+ "titulo": "Deuxième loi de Newton",
+ "materia": "physique",
+ "mundo": "mouvement",
+ "pdf_ini": 286,
+ "pdf_fin": 309,
+ "resumen": "Se define el centro de masa G (punto de trayectoria más simple) y los referenciales galileanos (donde vale el principio de inercia: heliocéntrico, geocéntrico en horas, terrestre en minutos). En un referencial galileano y con masa constante, la resultante de las fuerzas exteriores es igual a m por la aceleración de G: ΣF = m·a_G. De ahí dos usos: de las fuerzas a la aceleración (a = ΣF/m) y del movimiento (cronofotografía, gráficas v(t)) a las fuerzas. Con ΣF = 0 el sistema está en equilibrio (v_G = 0) o en movimiento rectilíneo uniforme.",
+ "resumen_fr": "Centre de masse, référentiel galiléen, deuxième loi de Newton ΣF = m·a_G, équilibre d'un système, des forces à l'accélération et de l'accélération aux forces.",
+ "nociones_clave": [
+  {
+   "id": "n1",
+   "fr": "Centre de masse G d'un système",
+   "es": "Punto donde se sitúa la posición media de la masa del cuerpo (punto central de todas las masas). Si el sistema es homogéneo está en el centro geométrico; si no, del lado más masivo.",
+   "pagina_pdf": 292
+  },
+  {
+   "id": "n2",
+   "fr": "Propriété du centre de masse",
+   "es": "G es el punto que describe la trayectoria más simple cuando el sistema se mueve; por eso se asimila el sistema a un punto material G donde se construyen fuerza, velocidad y variación de velocidad.",
+   "pagina_pdf": 292
+  },
+  {
+   "id": "n3",
+   "fr": "Référentiel",
+   "es": "El objeto de referencia respecto al cual se estudia un movimiento.",
+   "pagina_pdf": 292
+  },
+  {
+   "id": "n4",
+   "fr": "Référentiel galiléen",
+   "es": "Referencial en el que se verifica el principio de inercia (1.ª ley de Newton). Todo referencial inmóvil o en traslación rectilínea uniforme respecto a uno galileano es también galileano.",
+   "pagina_pdf": 292
+  },
+  {
+   "id": "n5",
+   "fr": "Principe d'inertie (1re loi de Newton)",
+   "es": "En un referencial galileano, todo cuerpo persevera en su estado de reposo o de movimiento rectilíneo uniforme si las acciones mecánicas que se ejercen sobre él se compensan.",
+   "pagina_pdf": 289
+  },
+  {
+   "id": "n6",
+   "fr": "Référentiels héliocentrique, géocentrique, terrestre",
+   "es": "Heliocéntrico (centro del Sol, ejes hacia 3 estrellas lejanas): galileano. Geocéntrico: galileano si el movimiento dura no más de unas horas. Terrestre: galileano si dura no más de unos minutos.",
+   "pagina_pdf": 293
+  },
+  {
+   "id": "n7",
+   "fr": "Référentiel non galiléen",
+   "es": "Referencial en traslación acelerada o frenada, o en rotación respecto a uno galileano (p. ej. el manège que gira: las nacelles se inclinan sin que las fuerzas se compensen).",
+   "pagina_pdf": 293
+  },
+  {
+   "id": "n8",
+   "fr": "Équilibre d'un système",
+   "es": "Un sistema está en equilibrio en un referencial dado si y solo si v_G = 0 y a_G = 0; entonces ΣF = 0.",
+   "pagina_pdf": 293
+  },
+  {
+   "id": "n9",
+   "fr": "Vecteur accélération",
+   "es": "a_i = Δv_i/Δt (con Δv_i = v_{i+1} − v_{i−1}) o a = dv/dt; es el vector que relaciona movimiento y fuerzas mediante la 2.ª ley.",
+   "pagina_pdf": 286
+  },
+  {
+   "id": "n10",
+   "fr": "Résultante des forces et variation de vitesse",
+   "es": "Δv/Δt = (1/m)·ΣF: la variación de velocidad tiene la dirección de ΣF; con la misma fuerza, doble masa → la mitad de variación de velocidad (Acquis de 1re).",
+   "pagina_pdf": 286
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "\\sum \\vec F_{\\text{ext/syst}} = m\\,\\vec a_G",
+   "nombre": "Deuxième loi de Newton",
+   "nombre_fr": "Deuxième loi de Newton",
+   "variables": [
+    {
+     "simbolo": "\\sum \\vec F_{\\text{ext/syst}}",
+     "significado": "resultante (suma vectorial) de las fuerzas exteriores que modelizan las acciones mecánicas sobre el sistema",
+     "unidad": "N"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa del sistema (constante)",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "\\vec a_G",
+     "significado": "vector aceleración del centro de masa",
+     "unidad": "m·s⁻²"
+    }
+   ],
+   "explicacion": "En un referencial galileano, para un sistema de masa constante, la suma vectorial de las fuerzas exteriores es igual a la masa por el vector aceleración del centro de masa. ΣF y a_G tienen la misma dirección y el mismo sentido.",
+   "ejemplo": {
+    "enunciado": "Mobile de enfant: ressort de raideur k = 20 N/m allongé de h = 10 cm, jouet de masse m = 150 g. P = 1,5 N (vers le bas), F = k·h = 2,0 N (vers le haut).",
+    "resultado": "Projection sur l'axe vertical vers le haut : F − P = m·a_G donc a_G = (2,0 − 1,5)/0,150 = 3,3 m·s⁻², orienté vers le haut comme ΣF.",
+    "pagina_pdf": 294
+   },
+   "pagina_pdf": 293,
+   "animacion": {
+    "preset": "newton2",
+    "params": {
+     "m": 0.15,
+     "F": 0.5
+    },
+    "leyenda": "Un cuerpo de 150 g recibe una fuerza neta de 0,5 N: el vector aceleración (≈ 3,3 m·s⁻²) apunta igual que ΣF; cambia m o F y mira cómo varía a."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "\\vec v_G=\\vec 0\\ \\text{et}\\ \\vec a_G=\\vec 0 \\;\\Rightarrow\\; \\sum \\vec F_{\\text{ext/syst}}=\\vec 0",
+   "nombre": "Équilibre d'un système",
+   "nombre_fr": "Équilibre d'un système",
+   "variables": [
+    {
+     "simbolo": "\\vec v_G",
+     "significado": "velocidad del centro de masa",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "\\vec a_G",
+     "significado": "aceleración del centro de masa",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "\\sum \\vec F_{\\text{ext/syst}}",
+     "significado": "resultante de las fuerzas exteriores",
+     "unidad": "N"
+    }
+   ],
+   "explicacion": "Un sistema está en equilibrio en un referencial dado si y solo si v_G = 0 y a_G = 0; por la 2.ª ley, la resultante de las fuerzas es nula y los vectores fuerza forman un polígono cerrado (F1+F2+F3 = 0).",
+   "ejemplo": {
+    "enunciado": "Exercice 20 : la piñata immobile suspendue à deux cordes (v_G = 0, a_G = 0).",
+    "resultado": "ΣF = 0 : la piñata est à l'équilibre.",
+    "pagina_pdf": 617
+   },
+   "pagina_pdf": 293,
+   "animacion": {
+    "preset": "newton2",
+    "params": {
+     "F": 0
+    },
+    "leyenda": "Con fuerza neta cero el cuerpo no acelera: queda en reposo (o con velocidad constante si ya se movía)."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "\\vec a_G=\\dfrac{\\sum \\vec F_{\\text{ext/syst}}}{m}",
+   "nombre": "De las fuerzas a la aceleración",
+   "nombre_fr": "Des forces à l'accélération",
+   "variables": [
+    {
+     "simbolo": "\\vec a_G",
+     "significado": "aceleración del centro de masa",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "\\sum \\vec F_{\\text{ext/syst}}",
+     "significado": "resultante de las fuerzas (se construye a escala)",
+     "unidad": "N"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa del sistema",
+     "unidad": "kg"
+    }
+   ],
+   "explicacion": "Se hace el balance de fuerzas, se representan en G y se suman; el valor de a_G es el de ΣF dividido por la masa, con la dirección y el sentido de ΣF.",
+   "ejemplo": {
+    "enunciado": "Mobile à ressort : ΣF = F − P = 2,0 − 1,5 = 0,5 N, m = 0,150 kg.",
+    "resultado": "a_G = 0,5 / 0,150 = 3,3 m·s⁻²",
+    "pagina_pdf": 294
+   },
+   "pagina_pdf": 293,
+   "animacion": {
+    "preset": "newton2",
+    "params": {
+     "m": 0.15,
+     "F": 0.5
+    },
+    "leyenda": "Con la misma fuerza neta, un cuerpo menos masivo se acelera más: ajusta m y observa a = ΣF/m."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "\\vec a_i=\\dfrac{\\Delta \\vec v_i}{\\Delta t}=\\dfrac{\\vec v_{i+1}-\\vec v_{i-1}}{2\\tau}",
+   "nombre": "Aceleración a partir de una cronofotografía",
+   "nombre_fr": "De l'accélération aux forces : vecteur accélération par chronophotographie",
+   "variables": [
+    {
+     "simbolo": "\\Delta \\vec v_i",
+     "significado": "variación del vector velocidad en el punto i",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "\\tau",
+     "significado": "intervalo de tiempo entre dos posiciones consecutivas",
+     "unidad": "s"
+    },
+    {
+     "simbolo": "\\vec v_{i\\pm1}",
+     "significado": "vectores velocidad en los puntos vecinos",
+     "unidad": "m·s⁻¹"
+    }
+   ],
+   "explicacion": "Para conocer las fuerzas a partir del movimiento se determina el vector aceleración (construcción gráfica de Δv, o datos numéricos) y se multiplica por la masa.",
+   "ejemplo": {
+    "enunciado": "Voiture de 1 000 kg qui freine : τ = 0,50 s, Δv₃ = 3,6 m·s⁻¹ (mesuré avec l'échelle).",
+    "resultado": "a₃ = 3,6 / (2 × 0,50) = 3,6 m·s⁻² ; F = m·a₃ = 1 000 × 3,6 (le cours imprime 3,6·10² N, erreur : c'est 3,6·10³ N).",
+    "pagina_pdf": 294
+   },
+   "pagina_pdf": 294,
+   "animacion": {
+    "preset": "cinematica",
+    "params": {
+     "v": 3.6,
+     "t": 1.0
+    },
+    "leyenda": "Se ven los vectores velocidad y aceleración: la aceleración mide cuánto cambia v por unidad de tiempo."
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "R = P\\cos\\alpha = m\\,g\\cos\\alpha",
+   "nombre": "Proyección perpendicular a la pista (esquiador)",
+   "nombre_fr": "Projection sur l'axe (y'y) perpendiculaire à la piste",
+   "variables": [
+    {
+     "simbolo": "R",
+     "significado": "reacción normal de la pista",
+     "unidad": "N"
+    },
+    {
+     "simbolo": "P",
+     "significado": "peso",
+     "unidad": "N"
+    },
+    {
+     "simbolo": "\\alpha",
+     "significado": "ángulo de la pista con la horizontal",
+     "unidad": "°"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "g",
+     "significado": "intensidad de la pesadez",
+     "unidad": "m·s⁻²"
+    }
+   ],
+   "explicacion": "Para un esquiador que baja una pista inclinada, proyectando ΣF = m a_G sobre el eje perpendicular a la pista la aceleración es nula en esa dirección: R − P cos α = 0.",
+   "ejemplo": null,
+   "pagina_pdf": 294,
+   "animacion": {
+    "preset": "newton2",
+    "params": {},
+    "leyenda": "Un bloque en un plano inclinado: las fuerzas se descomponen según los ejes; perpendicular a la pista se compensan."
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "f = m\\,(g\\sin\\alpha - a_G)",
+   "nombre": "Proyección a lo largo de la pista (rozamiento)",
+   "nombre_fr": "Projection sur l'axe (x'x) de la piste",
+   "variables": [
+    {
+     "simbolo": "f",
+     "significado": "fuerza de rozamiento",
+     "unidad": "N"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "g",
+     "significado": "intensidad de la pesadez",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "\\alpha",
+     "significado": "ángulo de la pista",
+     "unidad": "°"
+    },
+    {
+     "simbolo": "a_G",
+     "significado": "aceleración a lo largo de la pista",
+     "unidad": "m·s⁻²"
+    }
+   ],
+   "explicacion": "Proyectando sobre el eje de la pista: P sin α − f = m a_G, de donde f = m(g sin α − a_G).",
+   "ejemplo": null,
+   "pagina_pdf": 294,
+   "animacion": {
+    "preset": "newton2",
+    "params": {},
+    "leyenda": "Bloque que desciende por un plano: P sin α empuja, el rozamiento frena; la diferencia da m·a."
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "F = k\\times h",
+   "nombre": "Fuerza de recuperación de un resorte",
+   "nombre_fr": "Force de rappel d'un ressort",
+   "variables": [
+    {
+     "simbolo": "F",
+     "significado": "valor de la fuerza de recuperación",
+     "unidad": "N"
+    },
+    {
+     "simbolo": "k",
+     "significado": "constante de rigidez (raideur)",
+     "unidad": "N·m⁻¹"
+    },
+    {
+     "simbolo": "h",
+     "significado": "alargamiento respecto al reposo",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "El cours modeliza la acción del resorte con una fuerza cuyo valor es el producto de la constante de rigidez por el alargamiento.",
+   "ejemplo": {
+    "enunciado": "k = 20 N/m, h = 10 cm",
+    "resultado": "F = 20 × 10 × 10⁻² = 2,0 N",
+    "pagina_pdf": 294
+   },
+   "pagina_pdf": 294,
+   "animacion": {
+    "preset": "newton2",
+    "params": {
+     "m": 0.15,
+     "F": 0.5
+    },
+    "leyenda": "La fuerza del resorte (2,0 N) contra el peso (1,5 N) deja una fuerza neta de 0,5 N hacia arriba."
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "P = m\\times g",
+   "nombre": "Peso",
+   "nombre_fr": "Poids",
+   "variables": [
+    {
+     "simbolo": "P",
+     "significado": "valor del peso",
+     "unidad": "N"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "g",
+     "significado": "intensidad de la pesadez",
+     "unidad": "N·kg⁻¹ = m·s⁻²"
+    }
+   ],
+   "explicacion": "El peso del sistema tiene dirección vertical, sentido hacia abajo, y valor P = m·g (g = 9,8 m·s⁻² en el cours).",
+   "ejemplo": {
+    "enunciado": "Jouet de masse m = 0,150 kg",
+    "resultado": "P = 0,150 × 9,8 = 1,5 N",
+    "pagina_pdf": 294
+   },
+   "pagina_pdf": 294,
+   "animacion": {
+    "preset": "newton2",
+    "params": {
+     "m": 0.15
+    },
+    "leyenda": "Para cada masa aparece el vector peso P = m·g hacia abajo."
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "m_1\\,\\overrightarrow{GA}+m_2\\,\\overrightarrow{GB}=\\vec 0",
+   "nombre": "Baricentro de dos puntos materiales",
+   "nombre_fr": "Barycentre (« Un pont vers les maths »)",
+   "variables": [
+    {
+     "simbolo": "G",
+     "significado": "centro de masa (baricentro)",
+     "unidad": ""
+    },
+    {
+     "simbolo": "m_1, m_2",
+     "significado": "masas de los puntos A y B",
+     "unidad": "kg"
+    }
+   ],
+   "explicacion": "El centro de masa G de dos puntos A y B cumple m₁·GA + m₂·GB = 0; para un objeto cualquiera, Σ mᵢ·GMᵢ = 0. G queda del lado más masivo.",
+   "ejemplo": null,
+   "pagina_pdf": 292,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "d*m2/(x+m2)",
+     "xmin": 0.1,
+     "xmax": 10,
+     "vars": {
+      "m2": {
+       "min": 0.1,
+       "max": 5,
+       "step": 0.1,
+       "def": 1,
+       "label": "m₂",
+       "unit": "kg"
+      },
+      "d": {
+       "min": 0.1,
+       "max": 2,
+       "step": 0.1,
+       "def": 1,
+       "label": "AB",
+       "unit": "m"
+      }
+     }
+    },
+    "leyenda": "Gráfica de la distancia AG (de G a A) en función de m₁ (eje x): cuanto más masivo es A, más cerca de A queda G."
+   }
+  },
+  {
+   "id": "f10",
+   "latex": "a = \\dfrac{F}{M}-g",
+   "nombre": "Despegue vertical de un cohete",
+   "nombre_fr": "Décollage de la fusée (Ariane 5)",
+   "variables": [
+    {
+     "simbolo": "a",
+     "significado": "aceleración vertical (hacia arriba)",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "F",
+     "significado": "fuerza de empuje",
+     "unidad": "N"
+    },
+    {
+     "simbolo": "M",
+     "significado": "masa del cohete",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "g",
+     "significado": "intensidad de la pesadez",
+     "unidad": "m·s⁻²"
+    }
+   ],
+   "explicacion": "Proyectando F⃗ + P⃗ = M a⃗ sobre el eje vertical hacia arriba: F − M·g = M·a, así que a = F/M − g.",
+   "ejemplo": {
+    "enunciado": "Ariane 5 : M = 7,3×10⁵ kg, F = 1,16×10⁷ N, g = 10 m·s⁻².",
+    "resultado": "a = 1,16×10⁷ / 7,3×10⁵ − 10 = 5,9 m·s⁻²",
+    "pagina_pdf": 300
+   },
+   "pagina_pdf": 300,
+   "animacion": {
+    "preset": "newton2",
+    "params": {},
+    "leyenda": "Empuje hacia arriba frente a peso hacia abajo: la aceleración es la fuerza neta entre la masa."
+   }
+  },
+  {
+   "id": "f11",
+   "latex": "F = m\\,(a_G + g\\sin\\alpha)",
+   "nombre": "Fuerza del resorte lanzador sobre un disco en plano inclinado",
+   "nombre_fr": "Propulsion d'un palet",
+   "variables": [
+    {
+     "simbolo": "F",
+     "significado": "fuerza de recuperación del resorte",
+     "unidad": "N"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa del disco",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "a_G",
+     "significado": "aceleración del disco",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "g",
+     "significado": "intensidad de la pesadez",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "\\alpha",
+     "significado": "ángulo del plano inclinado",
+     "unidad": "°"
+    }
+   ],
+   "explicacion": "Proyectando P⃗ + R⃗ + F⃗ = m a⃗ sobre el eje x'x del plano: −m·g·sin α + 0 + F = m·a_Gx, de donde F = m(a_G + g sin α) (a_Gy = 0 porque el movimiento es rectilíneo).",
+   "ejemplo": {
+    "enunciado": "Palet de m = 50 g, α = 28°, a_G3 = 10 m·s⁻² (cronofotografía τ = 20,0 ms).",
+    "resultado": "F = 50×10⁻³ × (10 + 9,8·sin 28°) = 0,73 N",
+    "pagina_pdf": 301
+   },
+   "pagina_pdf": 301,
+   "animacion": {
+    "preset": "newton2",
+    "params": {
+     "m": 0.05,
+     "F": 0.5
+    },
+    "leyenda": "Disco de 50 g con una fuerza neta de 0,5 N a lo largo del plano: a = 10 m·s⁻²."
+   }
+  },
+  {
+   "id": "f12",
+   "latex": "\\sum \\vec F = m\\,\\dfrac{\\Delta \\vec v}{\\Delta t}",
+   "nombre": "Segunda ley de Newton aproximada",
+   "nombre_fr": "La 2e loi de Newton approchée",
+   "variables": [
+    {
+     "simbolo": "\\sum \\vec F",
+     "significado": "resultante de las fuerzas",
+     "unidad": "N"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "\\Delta \\vec v/\\Delta t",
+     "significado": "variación del vector velocidad por unidad de tiempo ≈ aceleración",
+     "unidad": "m·s⁻²"
+    }
+   ],
+   "explicacion": "Forma aproximada del TP: la resultante de las fuerzas es la masa por la variación de velocidad por intervalo de tiempo (a = Δv/Δt = dv/dt).",
+   "ejemplo": {
+    "enunciado": "Exercice 25 : scooter + conducteur, m = 200 kg, v passe de 10 m·s⁻¹ à 0 en Δt = 2,0 s.",
+    "resultado": "a = (0 − 10)/2,0 = −5,0 m·s⁻² ; ΣF = 200 × 5,0 = 1,0×10³ N, de sens opposé au mouvement.",
+    "pagina_pdf": 617
+   },
+   "pagina_pdf": 290,
+   "animacion": {
+    "preset": "newton2",
+    "params": {
+     "m": 200,
+     "F": 1000
+    },
+    "leyenda": "Un scooter de 200 kg con 1 000 N de fuerza neta (de frenado): la velocidad cambia 5 m·s⁻¹ cada segundo."
+   }
+  },
+  {
+   "id": "f13",
+   "latex": "\\vec v_i=\\dfrac{\\overrightarrow{M_{i-1}M_{i+1}}}{\\Delta t}",
+   "nombre": "Vector velocidad en el punto Mi (acquis de 1re)",
+   "nombre_fr": "Vecteur vitesse au point Mi",
+   "variables": [
+    {
+     "simbolo": "\\overrightarrow{M_{i-1}M_{i+1}}",
+     "significado": "vector entre las posiciones anterior y siguiente",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "\\Delta t",
+     "significado": "intervalo de tiempo entre esas dos posiciones (2τ)",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "Recordatorio de «Avant d'aborder le chapitre»: la velocidad en Mi se calcula con las posiciones vecinas y sirve para obtener Δv y después a.",
+   "ejemplo": {
+    "enunciado": "Palet : v_G2 = G₁G₃/(2τ) = 4,7×10⁻²/(2×20,0×10⁻³)",
+    "resultado": "v_G2 = 1,2 m·s⁻¹",
+    "pagina_pdf": 301
+   },
+   "pagina_pdf": 286,
+   "animacion": {
+    "preset": "cinematica",
+    "params": {
+     "v": 1.2
+    },
+    "leyenda": "Vectores velocidad a lo largo de la trayectoria del centro de masa."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "g (intensidad de la pesadez)",
+   "valor": "9,8",
+   "unidad": "m·s⁻² (= N·kg⁻¹)",
+   "pagina_pdf": 290
+  },
+  {
+   "nombre": "g (ejercicio 47 : valor más preciso)",
+   "valor": "9,81",
+   "unidad": "m·s⁻²",
+   "pagina_pdf": 307
+  },
+  {
+   "nombre": "g (aproximación usada en el ejercicio resuelto 28 : Ariane 5)",
+   "valor": "10",
+   "unidad": "m·s⁻²",
+   "pagina_pdf": 300
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Des forces à l'accélération (calcular a conociendo las fuerzas)",
+   "pasos": [
+    "Definir el sistema y el referencial de estudio, y hacer el balance de las acciones mecánicas que se ejercen sobre el sistema.",
+    "Representar en G, a la escala dada, las fuerzas y efectuar su suma para obtener la resultante ΣF.",
+    "Medir el valor de la resultante y dividirlo por la masa del sistema para obtener el valor de a_G.",
+    "La dirección y el sentido de a_G son los de la resultante."
+   ],
+   "pagina_pdf": 293
+  },
+  {
+   "titulo": "De l'accélération aux forces (calcular una fuerza conociendo el movimiento)",
+   "pasos": [
+    "Determinar el vector aceleración (construcción gráfica con los vectores velocidad, datos numéricos, tabla, gráfica…).",
+    "Multiplicar el valor de la aceleración por la masa del sistema.",
+    "Trazar, a la escala dada, la resultante de las fuerzas y deducir las características de una fuerza a partir de las otras fuerzas conocidas."
+   ],
+   "pagina_pdf": 294
+  },
+  {
+   "titulo": "Proyectar la 2.ª ley sobre uno o dos ejes",
+   "pasos": [
+    "Escoger ejes adaptados (p. ej. x'x a lo largo de la pista y y'y perpendicular).",
+    "Proyectar P⃗ + R⃗ + f⃗ = m a⃗ sobre cada eje.",
+    "Perpendicular a la pista: R − P cos α = 0 (a = 0 en esa dirección).",
+    "A lo largo de la pista: P sin α − f = m a_G, luego f = m(g sin α − a_G)."
+   ],
+   "pagina_pdf": 294
+  },
+  {
+   "titulo": "Resolver un ejercicio: representar con valor y escala, aplicar la ley",
+   "pasos": [
+    "Calcular los valores de las fuerzas (P = m·g…) y definir una escala para representarlas.",
+    "Aplicar la 2.ª ley de Newton en un referencial galileano al sistema.",
+    "Obtener la resultante por construcción (valor por la escala) o por proyección sobre el eje vertical/horizontal.",
+    "Verificar el sentido de los vectores al aplicar la 2.ª ley."
+   ],
+   "pagina_pdf": 300
+  },
+  {
+   "titulo": "Fiche méthode 19 : sumar vectores / fuerzas",
+   "pasos": [
+    "Un vector se caracteriza por dirección, sentido y norma (longitud).",
+    "Vectores opuestos: u⃗ = −v⃗, es decir u⃗ + v⃗ = 0⃗.",
+    "Método de los triángulos: colocar el origen de v⃗ en la punta de u⃗ y unir el origen de u⃗ con la punta de v⃗.",
+    "Si tres vectores puestos uno tras otro forman un bucle, u⃗ + v⃗ + w⃗ = 0⃗ (fuerzas que se compensan)."
+   ],
+   "pagina_pdf": 573
+  },
+  {
+   "titulo": "Fiche pratique 23 : cronofotografía / software de vídeo",
+   "pasos": [
+    "Grabar el movimiento en un plano perpendicular al eje óptico de la cámara, con un objeto o regla de dimensión conocida.",
+    "Calibrar (étalonnage) la escala, definir el origen y los ejes, y marcar (pointage) la posición en cada imagen.",
+    "Exportar las coordenadas (t, x, y) a una hoja de cálculo o a un programa para obtener v y a."
+   ],
+   "pagina_pdf": 604
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Fuerzas compensadas = reposo",
+   "correccion": "Si las fuerzas se compensan, a_G = 0: el sistema puede estar en reposo o en movimiento rectilíneo uniforme.",
+   "pagina_pdf": 293
+  },
+  {
+   "id": "err2",
+   "nombre": "Referencial no galileano",
+   "correccion": "La 2.ª ley (ΣF = m·a_G) solo vale en un referencial galileano; en un manège que gira o un referencial acelerado no se aplica.",
+   "pagina_pdf": 293
+  },
+  {
+   "id": "err3",
+   "nombre": "Vectores sin escala ni sentido",
+   "correccion": "Da el valor de cada fuerza, define una escala y comprueba el sentido de los vectores antes de aplicar la ley.",
+   "pagina_pdf": 300
+  },
+  {
+   "id": "err4",
+   "nombre": "Ángulo, unidades y escala",
+   "correccion": "Calculadora en grados, unidades coherentes, escala de la cronofotografía y ángulo de la pendiente en el peso.",
+   "pagina_pdf": 301
+  },
+  {
+   "id": "err5",
+   "nombre": "ΣF en el sentido de la velocidad",
+   "correccion": "ΣF tiene el sentido de a_G, no necesariamente el de v: al frenar, ΣF apunta contra el movimiento.",
+   "pagina_pdf": 617
+  },
+  {
+   "id": "err6",
+   "nombre": "Balance de fuerzas incompleto",
+   "correccion": "Antes de aplicar la ley haz el balance completo (peso, reacción, rozamiento, empuje…) sobre el sistema.",
+   "pagina_pdf": 291
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "TP — Centre de masse d'un système",
+   "descripcion": "Objetos homogéneos de forma distinta se hacen bascular al borde de la mesa; se marca el punto de contacto y se graba el movimiento (cronofotografía) para comparar la trayectoria de G con la de otro punto del objeto: G describe la trayectoria más simple.",
+   "pagina_pdf": 288
+  },
+  {
+   "titulo": "Activité — Référentiel galiléen",
+   "descripcion": "Móvil autoportador (chispas a intervalos regulares): con la mesa fija el movimiento es rectilíneo uniforme; al tirar bruscamente de la hoja (soporte en movimiento) el registro cambia. Sirve para discutir qué referenciales son galileanos.",
+   "pagina_pdf": 289
+  },
+  {
+   "titulo": "TP — La 2e loi de Newton",
+   "descripcion": "Carrito de masa m arrastrado por una carga m' vía hilo y polea (F = m·m'/(m+m')·g). Con webcam y cronofotografía se miden masas, posiciones, v, a y el producto m·a; un programa Python (matplotlib) traza los vectores v y a.",
+   "pagina_pdf": 290
+  },
+  {
+   "titulo": "Résolution de problème — Le téléski",
+   "descripcion": "Esquiadora de 80 kg (pista 15°, pértiga 35°; f = 100 N, T = 470 N, R = 490 N): verificar que el movimiento es rectilíneo acelerado y determinar a por dos métodos distintos.",
+   "pagina_pdf": 291
+  },
+  {
+   "titulo": "Pour préparer l'ECE — La 2e loi de Newton",
+   "descripcion": "Determinar la fuerza de tensión de un elástico antes de la rotura con un móvil autoportador, webcam, software de pointage y hoja de cálculo.",
+   "pagina_pdf": 308
+  },
+  {
+   "titulo": "Exercices 42 y 43 — Chute libre y reverse bungee (oral)",
+   "descripcion": "Exposé oral sobre la ausencia de acciones del aire en la caída libre (pluma y manzana) y sobre cómo evaluar las fuerzas elásticas y la aceleración de la nacelle.",
+   "pagina_pdf": 304
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Exercice résolu 28 — Décollage fusée Ariane 5 : M = 7,3×10⁵ kg, force de poussée verticale constante F = 1,16×10⁷ N, g = 10 m·s⁻². Représenter les forces (poids et poussée) et, en appliquant la 2e loi de Newton, donner les caractéristiques du vecteur accélération dès que la fusée a quitté le sol (méthode vectorielle et méthode calculatoire).",
+   "datos": {
+    "M": "7,3×10⁵ kg",
+    "F": "1,16×10⁷ N",
+    "g": "10 m·s⁻²"
+   },
+   "respuesta": "P = 7,3×10⁶ N ; ΣF = 4,3×10⁶ N verticale vers le haut ; a = ΣF/M = 5,9 m·s⁻² (vertical, vers le haut). Par projection : a = F/M − g = 5,9 m·s⁻².",
+   "respuesta_numerica": {
+    "valor": 5.9,
+    "unidad": "m·s⁻²",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Poids P = M·g = 7,3×10⁵ × 10 = 7,3×10⁶ N",
+    "Choisir une échelle (1,0 cm ↔ 1,0×10⁶ N) : P = 7,3 cm, F = 11,6 cm, ΣF = 4,3 cm",
+    "F⃗ + P⃗ = M·a⃗ → ΣF = 4,3×10⁶ N, vertical vers le haut",
+    "a = ΣF/M = 4,3×10⁶ / 7,3×10⁵ = 5,9 m·s⁻²",
+    "Projection sur (Oy) : F − M·g = M·a → a = F/M − g"
+   ],
+   "pagina_pdf": 300,
+   "corrige_pagina_pdf": 300
+  },
+  {
+   "id": "e2",
+   "enunciado": "Exercice résolu 30 — Propulsion d'un palet : palet d'acier m = 50 g propulsé sans frottement sur un plan incliné α = 28° par un ressort comprimé ; chronophotographie de τ = 20,0 ms (G₀G₅ = OD = 12,1 cm ; G₁G₃ = 4,7×10⁻² m, G₃G₅ = 6,3×10⁻² m). 1. Exprimer le vecteur accélération a_G3 en fonction de v_G4, v_G2 et 2τ et en déduire sa valeur. 2. En projetant la 2e loi de Newton sur x'x, exprimer F en fonction de m, g, a_G, α. 3. Calculer F au point G₃.",
+   "datos": {
+    "m": "50 g",
+    "alpha": "28°",
+    "tau": "20,0 ms",
+    "g": "9,8 m·s⁻²"
+   },
+   "respuesta": "v_G2 = 1,2 m·s⁻¹ ; v_G4 = 1,6 m·s⁻¹ ; a_G3 = 10 m·s⁻² ; −m·g·sin α + F = m·a_G donc F = m(a_G + g sin α) = 0,73 N.",
+   "respuesta_numerica": {
+    "valor": 0.73,
+    "unidad": "N",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "a_G3 = Δv/Δt = (v_G4 − v_G2)/(2τ)",
+    "v_G2 = G₁G₃/(2τ) = 4,7×10⁻²/(2×20,0×10⁻³) = 1,2 m·s⁻¹ ; v_G4 = 6,3×10⁻²/(2×20,0×10⁻³) = 1,6 m·s⁻¹",
+    "a_G3 = (1,6 − 1,2)/(2×20,0×10⁻³) = 10 m·s⁻²",
+    "Projection sur x'x : −m·g·sin α + 0 + F = m·a_Gx (a_Gy = 0)",
+    "F = m·(a_G + g·sin α) = 50×10⁻³×(10 + 9,8·sin 28°) = 0,73 N"
+   ],
+   "pagina_pdf": 301,
+   "corrige_pagina_pdf": 301
+  },
+  {
+   "id": "e3",
+   "enunciado": "Exercice 22 — Saut en parachute : parachutiste avec équipement (m = 90 kg) qui vient de sauter de l'avion. Dans le référentiel terrestre supposé galiléen, lors des premiers instants les actions sont modélisées par le poids P⃗ et la force de frottements f⃗ (schéma à l'échelle). 1. Donner les caractéristiques de ΣF⃗. 2. En déduire la valeur de l'accélération.",
+   "datos": {
+    "m": "90 kg",
+    "g": "9,8 m·s⁻²"
+   },
+   "respuesta": "ΣF : direction verticale, sens vers le bas ; P = 8,8×10² N (vecteur de 1,6 cm), ΣF mesure 0,60 cm donc ΣF = 3,3×10² N ; a = ΣF/m = 3,6 m·s⁻² (le cours arrondit 3,67 en 3,6).",
+   "respuesta_numerica": {
+    "valor": 3.6,
+    "unidad": "m·s⁻²",
+    "tolerancia_rel": 0.05
+   },
+   "pasos": [
+    "Construction graphique de ΣF : direction verticale, sens vers le bas",
+    "P = m·g = 90×9,8 = 8,8×10² N, vecteur P de 1,6 cm ; ΣF mesure 0,60 cm",
+    "ΣF = 8,8×10²×0,60/1,6 = 3,3×10² N",
+    "2e loi : a = ΣF/m = 3,3×10²/90 ≈ 3,6 m·s⁻² (corrigé)"
+   ],
+   "pagina_pdf": 298,
+   "corrige_pagina_pdf": 617
+  },
+  {
+   "id": "e4",
+   "enunciado": "Exercice 25 — Coup de frein : un conducteur de scooter se déplace horizontalement à v = 10 m·s⁻¹ ; il freine pendant Δt = 2,0 s avant de s'immobiliser dans le référentiel terrestre galiléen ; masse du système {conducteur + scooter} = 200 kg. 1. Valeur de l'accélération. 2. Quelle loi de Newton utiliser ? 3. Caractéristiques de la résultante des forces.",
+   "datos": {
+    "v": "10 m·s⁻¹",
+    "dt": "2,0 s",
+    "m": "200 kg"
+   },
+   "respuesta": "a = (0 − 10)/2,0 = −5,0 m·s⁻² ; on utilise la 2e loi ΣF = m·a ; ΣF a la même direction (horizontale) et le même sens que a (opposé au mouvement), de valeur ΣF = 200×5,0 = 1,0×10³ N.",
+   "respuesta_numerica": {
+    "valor": 1000,
+    "unidad": "N",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "a = Δv/Δt = (0 − 10)/2,0 = −5,0 m·s⁻²",
+    "2e loi de Newton : ΣF = m·a",
+    "ΣF = 200 × 5,0 = 1,0×10³ N, même sens que a⃗ (opposé au mouvement)"
+   ],
+   "pagina_pdf": 299,
+   "corrige_pagina_pdf": 617
+  },
+  {
+   "id": "e5",
+   "enunciado": "Exercice 31 — Démarrage en côte : un automobiliste, à l'arrêt sur une côte faisant 10° avec l'horizontale, doit réaliser un démarrage et atteindre 72 km·h⁻¹ en 10 s. Système {automobiliste + voiture} de masse M = 1,0 t, référentiel galiléen, frottements négligés, force de propulsion F. 1. Vecteur accélération. 2. Exprimer F. 3. Calculer F. 4. En réalité la valeur est plus élevée, justifier.",
+   "datos": {
+    "M": "1,0×10³ kg",
+    "alpha": "10°",
+    "v": "72 km·h⁻¹",
+    "dt": "10 s",
+    "g": "9,8 m·s⁻²"
+   },
+   "respuesta": "a = (72/3,6 − 0)/10 = 2,0 m·s⁻² (sens du mouvement, le long de la pente) ; −m·g·sin α + F = m·a donc F = m(a + g sin α) = 1,0×10³×(2,0 + 9,8·sin 10°) = 3,7×10³ N ; en réalité les frottements ne sont pas négligeables.",
+   "respuesta_numerica": {
+    "valor": 3700,
+    "unidad": "N",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "72 km/h = 20 m·s⁻¹",
+    "a = 20/10 = 2,0 m·s⁻²",
+    "Projection sur l'axe de la pente : F = m(a + g sin α)",
+    "F = 1,0×10³×(2,0 + 9,8×sin 10°) = 3,7×10³ N",
+    "Frottements à ne pas négliger : il faut une force plus grande"
+   ],
+   "pagina_pdf": 301,
+   "corrige_pagina_pdf": 617
+  },
+  {
+   "id": "e6",
+   "enunciado": "Exercice 29 — Ascension de la fusée Saturn V : poussée F = 3,3×10⁷ N, premier étage avec environ 2 000 tonnes de carburant. 1. Référentiel galiléen ? 2. Inventaire des forces (avec l'air) et schéma. 3. En ne considérant que le poids et la poussée, calculer l'accélération initiale.",
+   "datos": {
+    "F": "3,3×10⁷ N",
+    "M": "≈ 2 000 t (corrigé : 2 000×10³ kg)"
+   },
+   "respuesta": "Corrigé : référentiel terrestre supposé galiléen ; forces : poids P, poussée F, frottement de l'air f ; F − M·g = M·a donc a = F/M − g = 3,3×10⁷/(2 000×10³) − 10 = 6,5 m·s⁻² (l'énoncé imprimé indique 1,6 m·s⁻², discordance du manuel ; le corrigé donne 6,5).",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Référentiel terrestre supposé galiléen",
+    "Bilan : poids P, force de poussée F, frottement de l'air f",
+    "Frottements négligés : F + P = M·a → F − M·g = M·a",
+    "a = F/M − g = 3,3×10⁷/(2 000×10³) − 10 = 6,5 m·s⁻² (valeur du corrigé)"
+   ],
+   "pagina_pdf": 300,
+   "corrige_pagina_pdf": 617
+  },
+  {
+   "id": "e7",
+   "enunciado": "Exercice 20 — La piñata : accrochée par deux cordes (angles 35° et 55°). 1. Que dire de v⃗_G et a⃗_G dans le référentiel terrestre galiléen ? 2. Valeur de la résultante des forces ? 3. La piñata est-elle à l'équilibre ?",
+   "datos": {},
+   "respuesta": "v⃗ = 0⃗ et a⃗ = 0⃗ ; 2e loi : ΣF = m·a donc ΣF = 0⃗ ; v⃗ = 0⃗ et ΣF = 0⃗ : la piñata est à l'équilibre.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "v⃗_G = 0⃗ et a⃗_G = 0⃗",
+    "ΣF⃗ = m·a⃗_G = 0⃗",
+    "Équilibre : v⃗_G = 0⃗ et ΣF⃗ = 0⃗"
+   ],
+   "pagina_pdf": 298,
+   "corrige_pagina_pdf": 617
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "newton2",
+   "params": {
+    "m": 0.15,
+    "F": 0.5
+   },
+   "titulo": "Mobile à ressort",
+   "relacion": "ΣF = m·a_G con F − P = 0,5 N y m = 150 g (a ≈ 3,3 m·s⁻²)."
+  },
+  {
+   "preset": "newton2",
+   "params": {
+    "m": 200,
+    "F": 1000
+   },
+   "titulo": "Coup de frein du scooter",
+   "relacion": "ΣF = m·a: 1,0×10³ N sobre 200 kg dan 5,0 m·s⁻² de deceleración."
+  },
+  {
+   "preset": "cinematica",
+   "params": {
+    "v": 3.6,
+    "t": 1.0
+   },
+   "titulo": "Vectores v y a",
+   "relacion": "a = Δv/Δt: cómo se obtiene la aceleración de una cronofotografía."
+  },
+  {
+   "preset": "generico",
+   "params": {
+    "expr": "d*m2/(x+m2)",
+    "xmin": 0.1,
+    "xmax": 10,
+    "vars": {
+     "m2": {
+      "min": 0.1,
+      "max": 5,
+      "step": 0.1,
+      "def": 1,
+      "label": "m₂",
+      "unit": "kg"
+     },
+     "d": {
+      "min": 0.1,
+      "max": 2,
+      "step": 0.1,
+      "def": 1,
+      "label": "AB",
+      "unit": "m"
+     }
+    }
+   },
+   "titulo": "Baricentro de dos masas",
+   "relacion": "m₁·GA + m₂·GB = 0: G se acerca a la masa mayor (eje x = m₁)."
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "pista-hielo-newton",
+  "mecanica_especial": "Hielo (fricción baja: la velocidad cambia despacio, ΣF = m·a), campo horizontal que empuja (fuerza constante → aceleración constante), zona de gravedad reducida, resortes y plataformas móviles."
+ },
+ "estilo_intro_sugerido": "monigotes"
+}

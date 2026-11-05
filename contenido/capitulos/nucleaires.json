@@ -1,0 +1,1154 @@
+{
+ "id": "nucleaires",
+ "titulo": "Transformations nucléaires",
+ "materia": "chimie",
+ "mundo": "constitucion",
+ "pdf_ini": 131,
+ "pdf_fin": 153,
+ "resumen": "Los núcleos inestables (radiactivos) se transforman espontáneamente en otros más estables emitiendo partículas α, β⁻, β⁺ o fotones γ; las ecuaciones respetan la conservación de la carga y de los nucleones. El número de núcleos de una muestra decrece exponencialmente, N(t)=N₀·e^(−λt), con un tiempo de semivida t½=ln2/λ y una actividad A=λN medida en becquerel. Aplicaciones: datación por carbono 14, medicina nuclear (escintigrafía, TEP, radioterapia) y protección frente a las radiaciones ionizantes.",
+ "resumen_fr": "Les noyaux instables se transforment spontanément en émettant des particules α, β⁻, β⁺ ou des photons γ ; N(t) = N₀·e^(−λt), t½ = ln2/λ, activité A en becquerels ; applications à la datation et à la médecine ; protection contre les rayonnements ionisants.",
+ "nociones_clave": [
+  {
+   "id": "n1",
+   "fr": "Noyaux isotopes stables et instables",
+   "es": "Para un elemento dado existen isótopos estables e inestables: el ¹²₆C es estable y el ¹⁴₆C (2 neutrones más) no lo es.",
+   "pagina_pdf": 136
+  },
+  {
+   "id": "n2",
+   "fr": "Diagramme (N, Z) et vallée de la stabilité",
+   "es": "Diagrama N en ordenadas y Z en abscisas que permite localizar los núcleos inestables; los núcleos estables se agrupan en la 'valle de la stabilité'.",
+   "pagina_pdf": 136
+  },
+  {
+   "id": "n3",
+   "fr": "Stabilité et rapport N/Z",
+   "es": "Los núcleos ligeros (Z ≤ 20) son estables si N = Z; los más pesados lo son si tienen exceso de neutrones respecto a los protones.",
+   "pagina_pdf": 136
+  },
+  {
+   "id": "n4",
+   "fr": "Noyaux instables = radioactifs",
+   "es": "Los núcleos inestables (radiactivos) se transforman espontáneamente en otros más estables emitiendo radiaciones; la inestabilidad viene de un exceso de nucleones o de una proporción neutrones/protones desequilibrada.",
+   "pagina_pdf": 136
+  },
+  {
+   "id": "n5",
+   "fr": "Lois de conservation",
+   "es": "Una ecuación de reacción nuclear respeta la conservación de la carga eléctrica (Z) y del número de nucleones (A).",
+   "pagina_pdf": 136
+  },
+  {
+   "id": "n6",
+   "fr": "Radioactivité α",
+   "es": "Un núcleo pesado con demasiados nucleones emite un núcleo de helio ⁴₂He; elimina 4 nucleones.",
+   "pagina_pdf": 136
+  },
+  {
+   "id": "n7",
+   "fr": "Radioactivité β⁻",
+   "es": "Núcleo con exceso de neutrones: emite un electrón; un neutrón se transforma en protón.",
+   "pagina_pdf": 136
+  },
+  {
+   "id": "n8",
+   "fr": "Radioactivité β⁺ et positon",
+   "es": "Núcleo con exceso de protones: emite un positón (partícula con la masa del electrón y carga opuesta, el antielectrón); un protón se transforma en neutrón.",
+   "pagina_pdf": 136
+  },
+  {
+   "id": "n9",
+   "fr": "Radioactivité γ",
+   "es": "El núcleo hijo excitado (X*) vuelve al estado fundamental emitiendo uno o varios fotones γ, ondas electromagnéticas de longitud de onda muy corta.",
+   "pagina_pdf": 137
+  },
+  {
+   "id": "n10",
+   "fr": "Radioactivité naturelle",
+   "es": "El ser humano está sometido a radiactividad natural de la Tierra y del espacio (gas radón 52 %, suelo 20 %, rayos cósmicos 16 %, cuerpo humano 12 %).",
+   "pagina_pdf": 137
+  },
+  {
+   "id": "n11",
+   "fr": "Phénomène aléatoire",
+   "es": "La desintegración de un núcleo es aleatoria; N₀ es el número inicial de núcleos y N(t) los restantes en t, con N(t) < N₀.",
+   "pagina_pdf": 137
+  },
+  {
+   "id": "n12",
+   "fr": "Constante radioactive λ",
+   "es": "Coeficiente de proporcionalidad de ΔN = −λ·N·Δt, característico de un núcleo; se expresa en s⁻¹.",
+   "pagina_pdf": 137
+  },
+  {
+   "id": "n13",
+   "fr": "Temps de demi-vie",
+   "es": "Duración necesaria para que se desintegre la mitad de los núcleos de una muestra; característico del núcleo (segundos, años…).",
+   "pagina_pdf": 138
+  },
+  {
+   "id": "n14",
+   "fr": "Activité et becquerel",
+   "es": "La actividad es el número medio de desintegraciones por segundo; se expresa en becquerel (1 Bq = 1 desintegración por segundo) y se mide con un contador Geiger-Müller.",
+   "pagina_pdf": 138
+  },
+  {
+   "id": "n15",
+   "fr": "Datation isotopique",
+   "es": "La ley de decaimiento permite fechar una muestra si se conoce N₀ y se mide A(t) o N(t); el isótopo más conocido es el carbono 14 (materia orgánica).",
+   "pagina_pdf": 138
+  },
+  {
+   "id": "n16",
+   "fr": "Principe de la datation au carbone 14",
+   "es": "La proporción ¹⁴C/¹²C es casi constante en seres vivos; a su muerte el ¹⁴C ya no se renueva y su proporción disminuye por decaimiento.",
+   "pagina_pdf": 134
+  },
+  {
+   "id": "n17",
+   "fr": "Domaine médical",
+   "es": "Radioelementos artificiales para radioterapia e imagen médica; escintigrafía con trazadores (tecnecio 99, talio 201, yodo 123) y TEP con flúor 18 (emisor β⁺, los positones dan fotones γ).",
+   "pagina_pdf": 138
+  },
+  {
+   "id": "n18",
+   "fr": "Protection contre les rayonnements",
+   "es": "Las radiaciones son ionizantes (efectos nocivos sobre las moléculas del vivo). α y β son totalmente absorbidas por la materia, γ no; hay que blindar la fuente, alejarse o usar pantallas.",
+   "pagina_pdf": 138
+  },
+  {
+   "id": "n19",
+   "fr": "Pénétration des rayonnements",
+   "es": "α: detenidas por la piel, sin efecto; β: atraviesan la epidermis, lesiones cutáneas; γ: muy penetrantes, afectan tejidos u órganos (se frenan con plomo/hierro).",
+   "pagina_pdf": 138
+  },
+  {
+   "id": "n20",
+   "fr": "Radioactivité artificielle",
+   "es": "Descubierta por Irène y Frédéric Joliot-Curie (1934): se sintetizó el ³⁰₁₅P por bombardeo de aluminio con partículas α.",
+   "pagina_pdf": 146
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "Z = Z' + Z'' \\quad\\text{et}\\quad A = A' + A''",
+   "nombre": "Lois de conservation (charge et nucléons)",
+   "nombre_fr": "Lois de conservation de la charge électrique et du nombre de nucléons",
+   "variables": [
+    {
+     "simbolo": "Z",
+     "significado": "número atómico (carga) del núcleo padre",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "Z', Z''",
+     "significado": "números atómicos de los productos (núcleo hijo y partícula)",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "A",
+     "significado": "número de nucleones del núcleo padre",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "A', A''",
+     "significado": "número de nucleones de los productos",
+     "unidad": "sin unidad"
+    }
+   ],
+   "explicacion": "En toda ecuación de reacción nuclear se conservan la carga eléctrica (suma de los Z) y el número de nucleones (suma de los A). Sirven para completar cualquier ecuación.",
+   "ejemplo": {
+    "enunciado": "Fusión en el Sol: ²₁H + ³₁H → ⁴₂He + ¹₀n",
+    "resultado": "Carga: 1 + 1 = 2 + 0. Nucleones: 2 + 3 = 4 + 1.",
+    "pagina_pdf": 133
+   },
+   "pagina_pdf": 136,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "A - x",
+     "xmin": 0,
+     "xmax": 20,
+     "vars": {
+      "A": {
+       "min": 1,
+       "max": 240,
+       "step": 1,
+       "def": 226,
+       "label": "A del núcleo padre",
+       "unit": "nucleones"
+      }
+     }
+    },
+    "leyenda": "Gráfica de A'' = A − A' : lo que sale como partícula (A') se resta al padre; el total de nucleones siempre se conserva."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "{}^{A}_{Z}\\mathrm{X} \\to {}^{A-4}_{Z-2}\\mathrm{X}' + {}^{4}_{2}\\mathrm{He}",
+   "nombre": "Désintégration α",
+   "nombre_fr": "Radioactivité α",
+   "variables": [
+    {
+     "simbolo": "X",
+     "significado": "núcleo padre",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "X'",
+     "significado": "núcleo hijo",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "⁴₂He",
+     "significado": "partícula α (núcleo de helio)",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Un núcleo pesado con demasiados nucleones emite un núcleo de helio; así elimina 4 nucleones (2 protones y 2 neutrones).",
+   "ejemplo": {
+    "enunciado": "Désintégration α du radon: ²²⁶₈₈Ra → ²²²₈₆Rn + ⁴₂He",
+    "resultado": "226 = 222 + 4 y 88 = 86 + 2",
+    "pagina_pdf": 136
+   },
+   "pagina_pdf": 136,
+   "animacion": {
+    "preset": "radioactividad",
+    "params": {},
+    "leyenda": "Núcleos inestables que se desintegran al azar: cada uno emite una partícula α y se convierte en un núcleo hijo más estable."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "{}^{A}_{Z}\\mathrm{X} \\to {}^{A}_{Z+1}\\mathrm{X}' + {}^{\\,0}_{-1}\\mathrm{e}",
+   "nombre": "Désintégration β⁻",
+   "nombre_fr": "Radioactivité β⁻",
+   "variables": [
+    {
+     "simbolo": "X",
+     "significado": "núcleo padre (exceso de neutrones)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "X'",
+     "significado": "núcleo hijo (Z aumenta en 1, A igual)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "⁰₋₁e",
+     "significado": "electrón emitido",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Un núcleo con exceso de neutrones respecto a los protones emite un electrón: un neutrón se transforma en protón.",
+   "ejemplo": {
+    "enunciado": "Désintégration β⁻ du carbone 14: ¹⁴₆C → ¹⁴₇N + ⁰₋₁e",
+    "resultado": "14 = 14 + 0 y 6 = 7 + (−1)",
+    "pagina_pdf": 136
+   },
+   "pagina_pdf": 136,
+   "animacion": {
+    "preset": "radioactividad",
+    "params": {},
+    "leyenda": "Cada núcleo que decae (por ejemplo el carbono 14) emite un electrón y se transforma en un núcleo con un protón más."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "{}^{A}_{Z}\\mathrm{X} \\to {}^{A}_{Z-1}\\mathrm{X}' + {}^{\\,0}_{1}\\mathrm{e}",
+   "nombre": "Désintégration β⁺",
+   "nombre_fr": "Radioactivité β⁺",
+   "variables": [
+    {
+     "simbolo": "X",
+     "significado": "núcleo padre (exceso de protones)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "X'",
+     "significado": "núcleo hijo (Z disminuye en 1, A igual)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "⁰₁e",
+     "significado": "positón (antielectrón) emitido",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Un núcleo con exceso de protones respecto a los neutrones emite un positón: un protón se transforma en neutrón.",
+   "ejemplo": {
+    "enunciado": "Désintégration β⁺ du sodium 22: ²²₁₁Na → ²²₁₀Ne + ⁰₁e",
+    "resultado": "22 = 22 + 0 y 11 = 10 + 1",
+    "pagina_pdf": 137
+   },
+   "pagina_pdf": 136,
+   "animacion": {
+    "preset": "radioactividad",
+    "params": {},
+    "leyenda": "Los núcleos con exceso de protones decaen emitiendo un positón; el núcleo hijo tiene un protón menos."
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "{}^{A}_{Z}\\mathrm{X}^{*} \\to {}^{A}_{Z}\\mathrm{X} + \\gamma",
+   "nombre": "Radioactivité γ (désexcitation)",
+   "nombre_fr": "Radioactivité γ",
+   "variables": [
+    {
+     "simbolo": "X*",
+     "significado": "núcleo hijo excitado",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "X",
+     "significado": "núcleo hijo en estado fundamental",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "γ",
+     "significado": "fotón: onda electromagnética de longitud de onda muy corta",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "El núcleo hijo de una desintegración suele quedar excitado (se marca con asterisco) y vuelve a su estado fundamental emitiendo uno o varios fotones γ.",
+   "ejemplo": {
+    "enunciado": "Níquel 60 excitado tras una β⁻ del cobalto 60: ⁶⁰₂₈Ni* → ⁶⁰₂₈Ni + 2γ",
+    "resultado": "El núcleo se estabiliza emitiendo 2 fotones γ.",
+    "pagina_pdf": 137
+   },
+   "pagina_pdf": 137,
+   "animacion": {
+    "preset": "radioactividad",
+    "params": {},
+    "leyenda": "Tras decaer, el núcleo hijo excitado se relaja emitiendo fotones γ sin cambiar Z ni A."
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "\\Delta N = -\\lambda \\cdot N(t) \\cdot \\Delta t",
+   "nombre": "Variation du nombre de noyaux",
+   "nombre_fr": "Évolution temporelle d'une population de noyaux radioactifs",
+   "variables": [
+    {
+     "simbolo": "ΔN",
+     "significado": "variación del número de núcleos = número medio de desintegraciones (negativo)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "λ",
+     "significado": "constante radiactiva",
+     "unidad": "s⁻¹"
+    },
+    {
+     "simbolo": "N(t)",
+     "significado": "núcleos radiactivos presentes en t",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "Δt",
+     "significado": "duración de la medida",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "El número medio de desintegraciones durante Δt es proporcional al número de núcleos presentes y a la duración Δt; λ es el coeficiente de proporcionalidad.",
+   "ejemplo": null,
+   "pagina_pdf": 137,
+   "animacion": {
+    "preset": "radioactividad",
+    "params": {},
+    "leyenda": "Cuantos más núcleos hay, más se desintegran en un mismo intervalo Δt: la caída es proporcional a N."
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "\\dfrac{\\mathrm{d}N(t)}{\\mathrm{d}t} = -\\lambda \\cdot N(t)",
+   "nombre": "Équation différentielle de la décroissance",
+   "nombre_fr": "Équation différentielle linéaire du premier ordre à coefficients constants",
+   "variables": [
+    {
+     "simbolo": "N(t)",
+     "significado": "número de núcleos radiactivos en t",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "λ",
+     "significado": "constante radiactiva",
+     "unidad": "s⁻¹"
+    },
+    {
+     "simbolo": "t",
+     "significado": "tiempo",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "Haciendo tender Δt a 0 se obtiene una ecuación diferencial lineal de primer orden de tipo y' = a·y, cuya solución es N(t)=K·e^(−λt).",
+   "ejemplo": null,
+   "pagina_pdf": 137,
+   "animacion": {
+    "preset": "radioactividad",
+    "params": {},
+    "leyenda": "La pendiente de la curva N(t) es −λN: empinada al principio (muchos núcleos) y cada vez más plana."
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "N(t) = N_0 \\cdot e^{-\\lambda \\cdot t}",
+   "nombre": "Loi de décroissance radioactive",
+   "nombre_fr": "Loi de décroissance radioactive",
+   "variables": [
+    {
+     "simbolo": "N(t)",
+     "significado": "núcleos radiactivos restantes en t",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "N₀",
+     "significado": "núcleos radiactivos iniciales (t = 0)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "λ",
+     "significado": "constante radiactiva",
+     "unidad": "s⁻¹"
+    },
+    {
+     "simbolo": "t",
+     "significado": "tiempo",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "Solución de la ecuación diferencial con N(0)=N₀: el número de núcleos decrece exponencialmente. Es una curva decreciente que permite leer el tiempo de semivida.",
+   "ejemplo": {
+    "enunciado": "Ex. 27 (resuelto): la solución de la ecuación diferencial es N(t)=K·e^(−λt); como N(0)=N₀, K=N₀.",
+    "resultado": "N(t) = N₀·e^(−λt)",
+    "pagina_pdf": 145
+   },
+   "pagina_pdf": 137,
+   "animacion": {
+    "preset": "radioactividad",
+    "params": {},
+    "leyenda": "Curva exponencial N(t): cada intervalo igual a t½ reduce a la mitad el número de núcleos que quedan."
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "t_{1/2} = \\dfrac{\\ln 2}{\\lambda}",
+   "nombre": "Temps de demi-vie",
+   "nombre_fr": "Temps de demi-vie t½",
+   "variables": [
+    {
+     "simbolo": "t½",
+     "significado": "tiempo de semivida: duración en que se desintegra la mitad de los núcleos",
+     "unidad": "s (o año…)"
+    },
+    {
+     "simbolo": "λ",
+     "significado": "constante radiactiva",
+     "unidad": "s⁻¹"
+    }
+   ],
+   "explicacion": "Se obtiene imponiendo N(t½)=N₀/2 en la ley de decaimiento. Es característico de cada núcleo.",
+   "ejemplo": {
+    "enunciado": "Ex. 27: t½ del carbono 14 = 5,70×10³ años; λ = ln2 / t½",
+    "resultado": "λ = 1,22×10⁻⁴ an⁻¹",
+    "pagina_pdf": 145
+   },
+   "pagina_pdf": 138,
+   "animacion": {
+    "preset": "radioactividad",
+    "params": {},
+    "leyenda": "Marca en la curva el instante en que queda N₀/2: es t½ = ln2/λ; a 2 t½ queda N₀/4."
+   }
+  },
+  {
+   "id": "f10",
+   "latex": "A(t) = -\\dfrac{\\mathrm{d}N(t)}{\\mathrm{d}t} = \\lambda \\cdot N(t)",
+   "nombre": "Activité d'un échantillon",
+   "nombre_fr": "Activité A (en becquerel, Bq)",
+   "variables": [
+    {
+     "simbolo": "A(t)",
+     "significado": "actividad: número medio de desintegraciones por segundo",
+     "unidad": "Bq (1 Bq = 1 desintegración·s⁻¹)"
+    },
+    {
+     "simbolo": "λ",
+     "significado": "constante radiactiva",
+     "unidad": "s⁻¹"
+    },
+    {
+     "simbolo": "N(t)",
+     "significado": "núcleos radiactivos presentes",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "La actividad es proporcional al número de núcleos radiactivos presentes. Se mide con un contador de radiactividad (Geiger-Müller).",
+   "ejemplo": {
+    "enunciado": "Ex. 25 (resuelto): leche con ¹³⁷Cs, A = 0,22 Bq por litro, λ = 7,3×10⁻¹⁰ s⁻¹",
+    "resultado": "N = A/λ = 0,22 / 7,3×10⁻¹⁰ = 3,0×10⁸ núcleos",
+    "pagina_pdf": 144
+   },
+   "pagina_pdf": 138,
+   "animacion": {
+    "preset": "radioactividad",
+    "params": {},
+    "leyenda": "Cada núcleo que decae es un 'clic' del contador: más núcleos, más clics por segundo (mayor actividad)."
+   }
+  },
+  {
+   "id": "f11",
+   "latex": "A(t) = A_0 \\cdot e^{-\\lambda \\cdot t}",
+   "nombre": "Loi de décroissance de l'activité",
+   "nombre_fr": "Loi de décroissance de l'activité",
+   "variables": [
+    {
+     "simbolo": "A(t)",
+     "significado": "actividad en t",
+     "unidad": "Bq"
+    },
+    {
+     "simbolo": "A₀",
+     "significado": "actividad inicial = λ·N₀",
+     "unidad": "Bq"
+    },
+    {
+     "simbolo": "λ",
+     "significado": "constante radiactiva",
+     "unidad": "s⁻¹"
+    },
+    {
+     "simbolo": "t",
+     "significado": "tiempo",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "Como A=λN y N=N₀e^(−λt), la actividad sigue la misma ley exponencial decreciente que el número de núcleos, con A₀=λ·N₀.",
+   "ejemplo": {
+    "enunciado": "Ex. 26: ¹⁴C, λ=1,22×10⁻⁴ an⁻¹, A=0,223 Bq (actual) y A₀=0,255 Bq (vegetal vivo)",
+    "resultado": "t = (1/λ)·ln(A₀/A) ≈ 1,10×10³ años",
+    "pagina_pdf": 144
+   },
+   "pagina_pdf": 138,
+   "animacion": {
+    "preset": "radioactividad",
+    "params": {},
+    "leyenda": "La actividad cae igual que N(t): el contador marca cada vez menos desintegraciones por segundo."
+   }
+  },
+  {
+   "id": "f12",
+   "latex": "t = \\dfrac{1}{\\lambda}\\,\\ln\\dfrac{A_0}{A(t)}",
+   "nombre": "Datation isotopique (âge d'un échantillon)",
+   "nombre_fr": "Datation par le carbone 14",
+   "variables": [
+    {
+     "simbolo": "t",
+     "significado": "edad del objeto (tiempo desde su muerte)",
+     "unidad": "s (o año)"
+    },
+    {
+     "simbolo": "λ",
+     "significado": "constante radiactiva del ¹⁴C",
+     "unidad": "s⁻¹ o an⁻¹"
+    },
+    {
+     "simbolo": "A₀",
+     "significado": "actividad de un organismo vivo",
+     "unidad": "Bq"
+    },
+    {
+     "simbolo": "A(t)",
+     "significado": "actividad medida en la muestra",
+     "unidad": "Bq"
+    }
+   ],
+   "explicacion": "Despejando t de A(t)=A₀·e^(−λt) se obtiene la edad: conociendo A₀ (organismo vivo) y midiendo A(t) se data la muestra.",
+   "ejemplo": {
+    "enunciado": "Ex. 23 (drakkar): A = 12,0 desint./min por g de C; A₀ = 13,6 desint./min por g de C; λ = 3,87×10⁻¹² s⁻¹",
+    "resultado": "t = 1,03×10³ años, es decir, construido hacia el año 953",
+    "pagina_pdf": 143
+   },
+   "pagina_pdf": 143,
+   "animacion": {
+    "preset": "radioactividad",
+    "params": {},
+    "leyenda": "Al medir cuánto ha caído la actividad respecto a A₀ en la curva, se lee cuánto tiempo ha pasado desde la muerte."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "Constante radiactiva del carbono 14 (λ)",
+   "valor": "3,93×10⁻¹²",
+   "unidad": "s⁻¹",
+   "pagina_pdf": 142
+  },
+  {
+   "nombre": "Constante radiactiva del carbono 14 (λ, ex. 23)",
+   "valor": "3,87×10⁻¹²",
+   "unidad": "s⁻¹",
+   "pagina_pdf": 143
+  },
+  {
+   "nombre": "Constante radiactiva del carbono 14 (λ, ex. 26)",
+   "valor": "1,22×10⁻⁴",
+   "unidad": "an⁻¹",
+   "pagina_pdf": 144
+  },
+  {
+   "nombre": "Temps de demi-vie du carbone 14",
+   "valor": "5,7×10³ (5 730)",
+   "unidad": "ans",
+   "pagina_pdf": 142
+  },
+  {
+   "nombre": "Temps de demi-vie du césium 137",
+   "valor": "30",
+   "unidad": "ans",
+   "pagina_pdf": 142
+  },
+  {
+   "nombre": "Temps de demi-vie du cobalt 60",
+   "valor": "5,3",
+   "unidad": "ans",
+   "pagina_pdf": 142
+  },
+  {
+   "nombre": "Temps de demi-vie du radium 226",
+   "valor": "1,6×10³ (1,58×10³ en ex. 41)",
+   "unidad": "ans",
+   "pagina_pdf": 142
+  },
+  {
+   "nombre": "Constante radiactiva du césium 137",
+   "valor": "2,3×10⁻² (= 7,3×10⁻¹⁰ s⁻¹)",
+   "unidad": "an⁻¹",
+   "pagina_pdf": 144
+  },
+  {
+   "nombre": "Constante radiactiva del polonio 210",
+   "valor": "5,8×10⁻⁸",
+   "unidad": "s⁻¹",
+   "pagina_pdf": 146
+  },
+  {
+   "nombre": "Actividad másica del polonio 210",
+   "valor": "1,66×10¹⁴",
+   "unidad": "Bq·g⁻¹",
+   "pagina_pdf": 146
+  },
+  {
+   "nombre": "Temps de demi-vie du technétium 99",
+   "valor": "6,0",
+   "unidad": "h",
+   "pagina_pdf": 146
+  },
+  {
+   "nombre": "Temps de demi-vie du chlore 36",
+   "valor": "3,01×10⁵",
+   "unidad": "ans",
+   "pagina_pdf": 148
+  },
+  {
+   "nombre": "Temps de demi-vie de l'oxygène 15",
+   "valor": "123",
+   "unidad": "s",
+   "pagina_pdf": 148
+  },
+  {
+   "nombre": "Constante radiactiva du thallium 201",
+   "valor": "2,6×10⁻⁶",
+   "unidad": "s⁻¹",
+   "pagina_pdf": 150
+  },
+  {
+   "nombre": "Temps de demi-vie de l'iode 131",
+   "valor": "8",
+   "unidad": "jours",
+   "pagina_pdf": 143
+  },
+  {
+   "nombre": "Becquerel (unité d'activité)",
+   "valor": "1 Bq = 1 désintégration par seconde",
+   "unidad": "s⁻¹",
+   "pagina_pdf": 138
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Écrire et vérifier une équation de désintégration",
+   "pasos": [
+    "Identificar el tipo de radiactividad: α emite ⁴₂He; β⁻ emite un electrón ⁰₋₁e; β⁺ emite un positón ⁰₁e.",
+    "Escribir ᴬ_Z X → ᴬ'_Z' X' + partícula, con los símbolos del núcleo padre, el hijo y la partícula.",
+    "Aplicar las dos leyes: Z = Z' + Z'' (conservación de la carga) y A = A' + A'' (conservación de los nucleones).",
+    "Deducir Z' y A' del núcleo hijo y buscar su símbolo en la tabla de datos (el número atómico fija el elemento).",
+    "Si el núcleo hijo queda excitado se marca X* y se añade la desexcitación X* → X + γ."
+   ],
+   "pagina_pdf": 136
+  },
+  {
+   "titulo": "Interpretar el diagrama (N, Z)",
+   "pasos": [
+    "Abscisa: número de protones Z; ordenada: número de neutrones N.",
+    "Los núcleos estables forman la 'valle de la stabilité'; los ligeros (Z ≤ 20) están sobre N = Z, los pesados con exceso de neutrones.",
+    "Núcleos con exceso de neutrones (por encima de la valle): emisores β⁻. Núcleos con exceso de protones (por debajo): emisores β⁺.",
+    "Los núcleos muy pesados (con demasiados nucleones) son emisores α."
+   ],
+   "pagina_pdf": 132
+  },
+  {
+   "titulo": "Determinar t½ gráficamente",
+   "pasos": [
+    "La curva N = f(t) es decreciente; localizar N₀ en el eje de ordenadas.",
+    "Marcar el valor N₀/2 y leer en abscisas el instante correspondiente: es t½.",
+    "Comprobación: a 2·t½ quedan N₀/4 núcleos."
+   ],
+   "pagina_pdf": 145
+  },
+  {
+   "titulo": "Demostrar la ley de decaimiento y t½ (ex. 27)",
+   "pasos": [
+    "Partir de dN(t)/dt = −λ·N(t), ecuación diferencial lineal de primer orden a coeficientes constantes (y' = a·y).",
+    "Su solución es N(t) = K·e^(−λt); con N(0) = N₀ se obtiene K = N₀, luego N(t) = N₀·e^(−λt).",
+    "Imponer N(t½) = N₀/2: N₀/2 = N₀·e^(−λ·t½), de donde ln(1/2) = −λ·t½.",
+    "Usar ln(a/b) = ln a − ln b y ln 1 = 0: t½ = ln2/λ."
+   ],
+   "pagina_pdf": 145
+  },
+  {
+   "titulo": "Fechar una muestra por decaimiento (ex. 23)",
+   "pasos": [
+    "Justificar que la actividad de un organismo muerto disminuye: ya no renueva su carbono 14.",
+    "Escribir A(t) = A₀·e^(−λt) y despejar: t = (1/λ)·ln(A₀/A(t)).",
+    "Convertir las actividades a la misma unidad y λ al sistema internacional (s⁻¹) antes de calcular.",
+    "Interpretar el resultado: restar la duración de la fecha de la medida para obtener el año."
+   ],
+   "pagina_pdf": 143
+  },
+  {
+   "titulo": "Protegerse de las radiaciones ionizantes",
+   "pasos": [
+    "Las radiaciones α y β son completamente absorbidas por la materia; las γ no.",
+    "Blindar la fuente, alejarse de ella, o interponer pantallas cuya eficacia depende de la naturaleza y del espesor del material absorbente.",
+    "Papel/piel detienen α; aluminio, vidrio o plexiglás detienen β; los γ requieren plomo o hierro (espesor grande)."
+   ],
+   "pagina_pdf": 138
+  },
+  {
+   "titulo": "Redactar bien (ex. resueltos 25 y 27)",
+   "pasos": [
+    "'Préciser': aportar una información nueva. 'Déterminer': aplicar una estrategia para hallar un resultado. 'En déduire': integrar el dato de la pregunta anterior.",
+    "Respetar la conservación de la carga y de los nucleones en la ecuación.",
+    "Recordar la definición de becquerel y convertir λ a la unidad del Sistema Internacional (s⁻¹).",
+    "Usar la propiedad ln(a/b) = ln a − ln b y ln 1 = 0 para despejar."
+   ],
+   "pagina_pdf": 144
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Olvidar la conservación de Z y A",
+   "correccion": "Comprobar siempre Z = Z' + Z'' y A = A' + A''.",
+   "pagina_pdf": 146
+  },
+  {
+   "id": "err2",
+   "nombre": "Confundir β⁻ y β⁺",
+   "correccion": "β⁻: electrón, Z sube 1. β⁺: positón, Z baja 1.",
+   "pagina_pdf": 136
+  },
+  {
+   "id": "err3",
+   "nombre": "Confundir espontánea y provocada",
+   "correccion": "Radiactiva = espontánea; la artificial se provoca.",
+   "pagina_pdf": 146
+  },
+  {
+   "id": "err4",
+   "nombre": "No convertir λ a s⁻¹",
+   "correccion": "Pasar λ y t al SI antes de calcular.",
+   "pagina_pdf": 144
+  },
+  {
+   "id": "err5",
+   "nombre": "Confundir actividad A y núcleos N",
+   "correccion": "A (Bq) = λ·N: desintegraciones por segundo.",
+   "pagina_pdf": 138
+  },
+  {
+   "id": "err6",
+   "nombre": "Creer que a 2 t½ no queda nada",
+   "correccion": "A 2 t½ queda N₀/4 (la mitad de la mitad).",
+   "pagina_pdf": 138
+  },
+  {
+   "id": "err7",
+   "nombre": "Creer que γ es una partícula o que se frena con papel",
+   "correccion": "γ es onda electromagnética, muy penetrante.",
+   "pagina_pdf": 138
+  },
+  {
+   "id": "err8",
+   "nombre": "Pensar que la radiactividad siempre es natural",
+   "correccion": "También existe la radiactividad artificial.",
+   "pagina_pdf": 146
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "Activité 1 · Diagramme de stabilité des noyaux",
+   "descripcion": "Interpretar el diagrama (N, Z): comparar protones y neutrones de los núcleos estables (Z ≤ 20 y Z > 20), caracterizar los emisores β⁻, β⁺ y α, y reconocer la 'valle de la stabilité' y el 'mar de la inestabilidad'.",
+   "pagina_pdf": 132
+  },
+  {
+   "titulo": "Activité 2 · Différents types de radioactivité",
+   "descripcion": "Escribir ecuaciones de desintegración (flúor 18 → oxígeno por β⁺; carbono 14 → nitrógeno por β⁻; uranio 238 α → torio), escribir la desexcitación y completar un esquema (N, Z) con los núcleos hijos α, β⁻ y β⁺.",
+   "pagina_pdf": 133
+  },
+  {
+   "titulo": "Activité 3 · Datation au carbone 14",
+   "descripcion": "Principio: la proporción ¹⁴C/¹²C es casi constante en los seres vivos; a su muerte el ¹⁴C se desintegra. Sirve para fechar materia orgánica (madera, hueso, cabello, tejido) y autentificar obras de arte (blanco de plomo, que atrapa CO₂); el tronco de kauri se dató entre 7 000 y 50 000 años.",
+   "pagina_pdf": 134
+  },
+  {
+   "titulo": "Activité 4 · Applications en médecine",
+   "descripcion": "Imagen médica nuclear: se administra por vía intravenosa un trazador radiactivo y una gamma cámara detecta la radiación (escintigrafía con tecnecio 99, talio 201, yodo 123; TEP con flúor 18, emisor β⁺ cuyos positones producen fotones γ). El t½ debe ser suficientemente largo para seguir el proceso biológico y suficientemente corto para evitar irradiación inútil.",
+   "pagina_pdf": 135
+  },
+  {
+   "titulo": "Pour préparer l'ECE · Décroissance radioactive (simulation Python)",
+   "descripcion": "Simulación con Python de una población de N₀ = 1,0×10⁵ núcleos: en cada paso cada núcleo se desintegra con probabilidad 1/50 (randint(1,50)==1) y se registra N en función del tiempo; se traza el nuevo gráfico, se resuelve dN/dt = −λN, se compara y se obtiene t½ de la curva. La fuente real (contador Geiger-Müller) se simula por los riesgos para la salud.",
+   "pagina_pdf": 152
+  },
+  {
+   "titulo": "Grand oral · Comment se protéger des effets de la radioactivité ?",
+   "descripcion": "Plan propuesto: origen de la radiactividad, tipos α β γ, ionización de las moléculas del vivo y consecuencias, protección (medidas y factores). Palabras clave: inestabilidad, fuente, radiactividad α β γ, actividad, contador Geiger-Müller, pantalla.",
+   "pagina_pdf": 153
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Ex. 15 · Équations. 1) Citer les lois de conservation nécessaires. 2) Vérifier si ces lois sont respectées: a) ²¹⁰₈₄Po → ²⁰⁶₈₂Pb + ⁴₂He ; b) ⁷₄Be + ¹₁H → 2 ⁴₂He ; c) ²³⁵₉₂U + ¹₀n → ¹³⁹₅₄Xe + ⁹⁴₃₈Sr + ¹₀n ; d) ⁴₂He + ⁹₄Be → ¹²₆C.",
+   "datos": {},
+   "respuesta": "1) Conservation de la charge et du nombre de nucléons. 2) a) Oui. b) Non. c) Non. d) Non.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "a) Z: 84 = 82 + 2 ; A: 210 = 206 + 4 ✔",
+    "b) Z: 4 + 1 = 5 ≠ 4 ✘",
+    "c) A: 235 + 1 = 236 ≠ 139 + 94 + 1 = 234 ✘",
+    "d) A: 4 + 9 = 13 ≠ 12 ✘"
+   ],
+   "pagina_pdf": 141,
+   "corrige_pagina_pdf": 614
+  },
+  {
+   "id": "e2",
+   "enunciado": "Ex. 17 · Noyau d'argent. L'argent 108 (Z = 47) est radioactif et se désintègre par plusieurs processus dont β⁻ et β⁺. 1) Rappeler les deux lois de conservation. 2) Nature des particules émises en β⁻ et β⁺ et leur symbole. 3) Écrire les équations des transformations pour ¹⁰⁸Ag. Données: Cd Z = 48 ; Pd Z = 46.",
+   "datos": {
+    "Z(Ag)": "47",
+    "Z(Cd)": "48",
+    "Z(Pd)": "46"
+   },
+   "respuesta": "1) Conservation de la charge et du nombre de nucléons. 2) β⁻: un électron ⁰₋₁e ; β⁺: un positon ⁰₁e. 3) ¹⁰⁸₄₇Ag → ¹⁰⁸₄₈Cd + ⁰₋₁e ; ¹⁰⁸₄₇Ag → ¹⁰⁸₄₆Pd + ⁰₁e.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "β⁻: Z' = 47 + 1 = 48 → cadmio, A = 108",
+    "β⁺: Z' = 47 − 1 = 46 → paladio, A = 108"
+   ],
+   "pagina_pdf": 141,
+   "corrige_pagina_pdf": 614
+  },
+  {
+   "id": "e3",
+   "enunciado": "Ex. 20 · Élément radioactif. Soit N₀ le nombre de noyaux à l'instant origine. On a tracé N = f(t) (axe t en 10³ ans). Données: t½ — césium 137: 30 ans ; cobalt 60: 5,3 ans ; carbone 14: 5,7×10³ ans ; radium 226: 1,6×10³ ans. 1) Établir l'équation correspondant à la courbe. 2) a) Temps de demi-vie? b) Sa valeur? c) Quel élément? 3) a) Relation entre t½ et λ. b) Valeur de λ.",
+   "datos": {
+    "t½ (14C)": "5,7×10³ ans"
+   },
+   "respuesta": "1) dN/dt = −λ·N(t), équation différentielle linéaire du premier ordre à coefficients constants; sa solution N(t)=K·e^(−λt), avec N(0)=N₀ donne N(t)=N₀·e^(−λt). 2) a) Durée au bout de laquelle la moitié des noyaux présents s'est désintégrée. b) t½ = 5,7×10³ ans. c) Carbone 14. 3) a) t½ = ln2/λ. b) λ = 3,9×10⁻¹² s⁻¹.",
+   "respuesta_numerica": {
+    "valor": 3.9e-12,
+    "unidad": "s⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "N(t½) = N₀/2 = N₀·e^(−λ·t½)",
+    "ln(1/2) = −λ·t½ ⇒ t½ = ln2/λ",
+    "λ = ln2 / (5,7×10³ ans en secondes) = 3,9×10⁻¹² s⁻¹"
+   ],
+   "pagina_pdf": 142,
+   "corrige_pagina_pdf": 614
+  },
+  {
+   "id": "e4",
+   "enunciado": "Ex. 23 · Datation d'un drakkar. En 1983, l'épave d'un drakkar a été découverte à Roskilde (Danemark). L'activité mesurée sur un échantillon de bois était de 12,0 désintégrations par minute et par gramme de carbone; l'activité A₀ d'un gramme de carbone vivant vaut 13,6 désintégrations par minute. Donnée: λ(¹⁴C) = 3,87×10⁻¹² s⁻¹. 1) Justifier la variation d'activité d'un échantillon de bois mort. 2) a) Exprimer t en fonction de A(t), A₀ et λ; calculer. b) Année de construction du bateau.",
+   "datos": {
+    "A": "12,0 désint./min/g de C",
+    "A0": "13,6 désint./min/g de C",
+    "λ": "3,87×10⁻¹² s⁻¹"
+   },
+   "respuesta": "1) Le bois mort ne renouvelle plus son carbone 14, donc son activité diminue au cours du temps; elle est plus faible que celle d'un bois vivant. 2) a) t = (1/λ)·ln(A₀/A(t)), t = 1,03×10³ ans. b) L'année 953.",
+   "respuesta_numerica": {
+    "valor": 1030.0,
+    "unidad": "ans",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "A(t) = A₀·e^(−λt) ⇒ t = (1/λ)·ln(A₀/A)",
+    "ln(13,6/12,0) = 0,125 ; t = 0,125 / 3,87×10⁻¹² ≈ 3,2×10¹⁰ s ≈ 1,03×10³ ans",
+    "1983 − 1030 ≈ 953"
+   ],
+   "pagina_pdf": 143,
+   "corrige_pagina_pdf": 614
+  },
+  {
+   "id": "e5",
+   "enunciado": "Ex. 25 (résolu) · Du lait radioactif! Le lait de vache contient du césium 137, élément β⁻ dont l'activité est de l'ordre de 0,22 Bq pour un litre. La constante radioactive du césium 137 est λ = 2,3×10⁻² an⁻¹ (= 7,3×10⁻¹⁰ s⁻¹). Z: iode 53, xénon 54, césium 55, baryum 56. 1) Préciser ce qu'est la radioactivité β⁻. 2) Équation de désintégration du césium 137 (noyau fils non excité). 3) Combien de désintégrations par seconde dans un litre de lait? 4) Nombre de noyaux de césium 137 dans un litre. 5) Au bout de combien de temps ne restera-t-il plus que 1 % de cette activité?",
+   "datos": {
+    "A": "0,22 Bq",
+    "λ": "7,3×10⁻¹⁰ s⁻¹"
+   },
+   "respuesta": "1) Désintégration spontanée d'un noyau instable qui se transforme en un autre noyau en libérant un électron. 2) ¹³⁷₅₅Cs → ¹³⁷₅₆Ba + ⁰₋₁e. 3) 0,22 désintégration par seconde. 4) N = A/λ = 3,0×10⁸ noyaux. 5) t = ln(100)/λ = 6,3×10⁹ s.",
+   "respuesta_numerica": {
+    "valor": 300000000.0,
+    "unidad": "noyaux",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "A = λ·N ⇒ N = 0,22 / 7,3×10⁻¹⁰ = 3,0×10⁸",
+    "A₀/A = e^(λt) ⇒ t = (1/λ)·ln(A₀/A) = ln(100)/λ = 6,3×10⁹ s"
+   ],
+   "pagina_pdf": 144,
+   "corrige_pagina_pdf": 614
+  },
+  {
+   "id": "e6",
+   "enunciado": "Ex. 26 · Séisme californien. Après le séisme de San Francisco (1989), on a prélevé un échantillon de végétal enseveli, d'activité A = 0,223 SI, due uniquement au ¹⁴C (β⁻, λ = 1,22×10⁻⁴ an⁻¹). Z: Be 4, B 5, C 6, N 7, O 8. 1) Équation de désintégration du ¹⁴C (noyau fils non excité). 2) Définir l'activité d'un échantillon et son unité SI. 3) A₀ d'un végétal vivant de même masse = 0,255 SI; durée écoulée entre t₀ = 0 (séisme) et la mesure. 4) Date approximative du séisme.",
+   "datos": {
+    "A": "0,223 SI",
+    "A0": "0,255 SI",
+    "λ": "1,22×10⁻⁴ an⁻¹"
+   },
+   "respuesta": "1) ¹⁴₆C → ¹⁴₇N + ⁰₋₁e. 2) Nombre de désintégrations par seconde, en Bq. 3) t = 1,10×10³ ans. 4) Environ l'an 889.",
+   "respuesta_numerica": {
+    "valor": 1100.0,
+    "unidad": "ans",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "t = (1/λ)·ln(A₀/A) = ln(0,255/0,223)/1,22×10⁻⁴ ≈ 1,10×10³ ans",
+    "1989 − 1100 ≈ 889"
+   ],
+   "pagina_pdf": 144,
+   "corrige_pagina_pdf": 614
+  },
+  {
+   "id": "e7",
+   "enunciado": "Ex. 27 (résolu) · Datation isotopique. On donne dN(t)/dt = −λ·N(t). 1) Établir la loi de décroissance radioactive. 2) Définition du temps de demi-vie t½. 3) Allure de N = f(t) et détermination graphique de t½. 4) Expression littérale de t½. 5) t½ du ¹⁴C = 5,70×10³ ans: en déduire λ en an⁻¹.",
+   "datos": {
+    "t½(14C)": "5,70×10³ ans"
+   },
+   "respuesta": "1) N(t) = K·e^(−λt) et N(0)=N₀ ⇒ K=N₀, N(t)=N₀·e^(−λt). 2) Durée au bout de laquelle la moitié des noyaux initialement présents se sont désintégrés. 3) Courbe décroissante; t½ lu sur l'abscisse correspondant à N₀/2. 4) t½ = ln2/λ. 5) λ = ln2/t½ = 1,22×10⁻⁴ an⁻¹.",
+   "respuesta_numerica": {
+    "valor": 0.000122,
+    "unidad": "an⁻¹",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "N₀/2 = N₀·e^(−λ·t½) ⇒ ln(1/2) = −λ·t½",
+    "t½ = ln2/λ ⇒ λ = ln2 / 5,70×10³ = 1,22×10⁻⁴ an⁻¹"
+   ],
+   "pagina_pdf": 145,
+   "corrige_pagina_pdf": 614
+  },
+  {
+   "id": "e8",
+   "enunciado": "Ex. 28 · Détection par un compteur de radioactivité. Courbes N(t) du plomb 214 et du bismuth 214 (t en min). 1) À partir de dN(t)/dt = −λ·N(t), établir N(t). 2) Définition de t½. 3) Comparer graphiquement les temps de demi-vie. 4) Quel radioélément a la plus grande constante radioactive?",
+   "datos": {},
+   "respuesta": "1) N(t) = N₀·e^(−λt). 2) Durée au bout de laquelle la moitié des noyaux initialement présents se sont désintégrés. 3) Plomb 214: t½ = 27 min ; bismuth 214: t½ = 20 min ; t½(plomb) > t½(bismuth). 4) λ(bismuth) > λ(plomb).",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Graphiquement: lire le temps où N = N₀/2 pour chaque courbe",
+    "t½ = ln2/λ: t½ plus petit ⇒ λ plus grand"
+   ],
+   "pagina_pdf": 145,
+   "corrige_pagina_pdf": 614
+  },
+  {
+   "id": "e9",
+   "enunciado": "Ex. 29 · Corriger la solution d'un élève. Prix Nobel 1935 (Irène Curie et Frédéric Joliot): bombardement d'aluminium par des particules α avec capture de la particule α et expulsion d'un neutron, formant un isotope du phosphore de masse 30. Z(P) = 15 ; Z(Al) = 13. 1) Expliquer la production du phosphore 30 à partir de l'aluminium 27. 2) Cette transformation est-elle une désintégration radioactive? 3) Pourquoi cette expérience est-elle la découverte de la radioactivité artificielle?",
+   "datos": {
+    "Z(P)": "15",
+    "Z(Al)": "13"
+   },
+   "respuesta": "1) ²⁷₁₃Al + ⁴₂He → ³⁰₁₅P + ¹₀n. 2) Non, car cette transformation est provoquée par le bombardement de particules α sur l'aluminium. 3) Le phosphore 30 est radioactif et comme il n'existe pas dans la nature, on a donc produit un élément radioactif artificiel.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Conservation de A: 27 + 4 = 30 + 1",
+    "Conservation de Z: 13 + 2 = 15 + 0"
+   ],
+   "pagina_pdf": 146,
+   "corrige_pagina_pdf": 614
+  },
+  {
+   "id": "e10",
+   "enunciado": "Ex. 30 · Le technétium. Données: ⁹⁷₄₃Tc ; ⁹⁹₄₃Tc ; ⁹⁶₄₂Mo ; ⁹⁹₄₂Mo ; deutérium ²₁H ; t½(⁹⁹Tc) = 6,0 h. 1) Énoncer les lois de conservation. 2) Équation de synthèse du technétium 97 par bombardement du molybdène 96 avec du deutérium (une particule est émise): nommer la particule. 3) Équation de désintégration du molybdène 99 en technétium: type de radioactivité? 4) Définir « temps de demi-vie ». 5) a) Deux applications en médecine nucléaire. b) Avantage du technétium.",
+   "datos": {
+    "t½(99Tc)": "6,0 h"
+   },
+   "respuesta": "1) Conservation du nombre de charges et du nombre de nucléons. 2) ⁹⁶₄₂Mo + ²₁H → ⁹⁷₄₃Tc + ¹₀n ; la particule libérée est un neutron (le corrigé imprime 99 pour le Mo, errata: la conservation exige 96). 3) ⁹⁹₄₂Mo → ⁹⁹₄₃Tc + ⁰₋₁e : radioactivité β⁻ (le corrigé imprime 97 pour le Tc, errata: la conservation exige 99). 4) Durée au bout de laquelle la moitié des noyaux initialement présents a subi une désintégration. 5) a) Imagerie médicale (traceurs en scintigraphie) et traitement thérapeutique (radiothérapie). b) Le temps d'irradiation du patient est réduit.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Mo-96 + H-2: A = 96 + 2 = 98 = 97 + 1 ; Z = 42 + 1 = 43",
+    "Mo-99 → Tc-99 + e⁻ : Z = 42 → 43 (+1), A constante ⇒ β⁻"
+   ],
+   "pagina_pdf": 146,
+   "corrige_pagina_pdf": 614
+  },
+  {
+   "id": "e11",
+   "enunciado": "Ex. 31 · The Litvinenko case. En 2006, 10 µg de polonium 210 ont empoisonné Alexander Litvinenko. Ce corps, découvert par Marie Curie, a une activité de 1,66×10¹⁴ Bq par gramme; constante de désintégration λ = 5,8×10⁻⁸ s⁻¹. Il émet des noyaux d'hélium. 1) Polonium 210 d'origine naturelle ou artificielle? Et celui découvert par Marie Curie? 2) Activité de 10 µg de polonium. 3) Temps de demi-vie en jours.",
+   "datos": {
+    "A massique": "1,66×10¹⁴ Bq/g",
+    "m": "10 µg",
+    "λ": "5,8×10⁻⁸ s⁻¹"
+   },
+   "respuesta": "1) Origine artificielle pour Litvinenko; origine naturelle pour Marie Curie. 2) A = 1,66×10⁹ Bq. 3) t½ = 138,4 j.",
+   "respuesta_numerica": {
+    "valor": 1660000000.0,
+    "unidad": "Bq",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "m = 10 µg = 1,0×10⁻⁵ g ⇒ A = 1,66×10¹⁴ × 1,0×10⁻⁵ = 1,66×10⁹ Bq",
+    "t½ = ln2/λ = 0,693/5,8×10⁻⁸ ≈ 1,2×10⁷ s ≈ 138 j"
+   ],
+   "pagina_pdf": 146,
+   "corrige_pagina_pdf": 614
+  },
+  {
+   "id": "e12",
+   "enunciado": "Ex. 33 · Protection contre les rayonnements. Un protège-seringue en plomb de 5 mm protège l'infirmière du rayonnement γ du traceur. La couche de demi-atténuation d'un matériau est l'épaisseur capable d'arrêter 50 % du rayonnement. Graphique: pourcentage de rayonnement transmis en fonction de l'épaisseur de plomb (0 à 7 mm). 1) Valeur de la couche de demi-atténuation du plomb. 2) Justifier le choix d'une épaisseur de 5 mm.",
+   "datos": {
+    "épaisseur": "5 mm"
+   },
+   "respuesta": "1) Graphiquement, à 50 %, l'épaisseur de plomb est d'environ 0,4 mm. 2) La totalité des rayonnements γ est neutralisée.",
+   "respuesta_numerica": {
+    "valor": 0.4,
+    "unidad": "mm",
+    "tolerancia_rel": 0.25
+   },
+   "pasos": [
+    "Lire sur la courbe l'épaisseur pour laquelle 50 % du rayonnement est transmis",
+    "À 5 mm, la courbe est pratiquement à 0 %"
+   ],
+   "pagina_pdf": 147,
+   "corrige_pagina_pdf": 614
+  },
+  {
+   "id": "e13",
+   "enunciado": "Ex. 41 · Marie et Pierre Curie. Doc 3: le radium ²²⁶₈₈Ra se désintègre en radon ²²²₈₆Rn, avec émission d'un rayonnement γ; t½ = 1,58×10³ années. 1) a) Écrire l'équation et préciser le type de radioactivité. b) Expliquer la présence du rayonnement γ. 2) a) Équation de désintégration du phosphore 30 (β⁺, noyau fils ³⁰₁₄Si). b) Y a-t-il émission d'un rayonnement γ? 3) Au bout de combien de temps les 3/4 des noyaux d'un échantillon de radium seront-ils désintégrés? Synthèse: différence entre radioactivité naturelle et artificielle.",
+   "datos": {
+    "t½(Ra)": "1,58×10³ ans"
+   },
+   "respuesta": "1) a) ²²⁶₈₈Ra → ²²²₈₆Rn + ⁴₂He : radioactivité α. b) C'est le noyau de radon qui émet ce rayonnement γ car ce noyau a été formé dans un état excité. 2) a) ³⁰₁₅P → ³⁰₁₄Si + ⁰₁e. b) Le noyau de silicium 30 étant obtenu directement dans l'état fondamental, il n'y a pas d'émission de rayonnement. 3) t = 2·t½ = 3,16×10³ années. Synthèse: la radioactivité naturelle correspond à la désintégration spontanée de noyaux qui existent à l'état naturel; la radioactivité artificielle, à la désintégration spontanée de noyaux qui n'existent pas à l'état naturel mais ont été synthétisés.",
+   "respuesta_numerica": {
+    "valor": 3160.0,
+    "unidad": "ans",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Si 3/4 sont désintégrés, il reste N₀/4 = N₀/2² ⇒ t = 2·t½",
+    "t = 2 × 1,58×10³ = 3,16×10³ ans"
+   ],
+   "pagina_pdf": 151,
+   "corrige_pagina_pdf": 614
+  },
+  {
+   "id": "e14",
+   "enunciado": "Ex. 24 · Dangerosité des sources radioactives. Schéma: particules α, β (électrons ou positons) et rayonnements γ face à du papier, de l'aluminium et du béton. 1) Quels sont les rayonnements les plus pénétrants? 2) Pourquoi les rayonnements α sont-ils facilement absorbés par les matériaux et les tissus humains?",
+   "datos": {},
+   "respuesta": "1) Les rayonnements gamma. 2) Le rayonnement alpha est constitué de noyaux d'hélium (2 protons et 2 neutrons), particules lourdes par rapport aux autres (électron, positon, etc.).",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Ordre de pénétration: α (papier) < β (aluminium) < γ (béton/plomb)"
+   ],
+   "pagina_pdf": 143,
+   "corrige_pagina_pdf": 614
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "radioactividad",
+   "params": {},
+   "titulo": "Decaimiento radiactivo y semivida",
+   "relacion": "Ilustra N(t)=N₀·e^(−λt), t½=ln2/λ y A=λN (fórmulas f6–f11)."
+  },
+  {
+   "preset": "generico",
+   "params": {
+    "expr": "N0*exp(-lam*x)",
+    "xmin": 0,
+    "xmax": 10,
+    "vars": {
+     "N0": {
+      "min": 100,
+      "max": 1000,
+      "step": 10,
+      "def": 1000,
+      "label": "N₀ núcleos iniciales",
+      "unit": ""
+     },
+     "lam": {
+      "min": 0.05,
+      "max": 1,
+      "step": 0.05,
+      "def": 0.35,
+      "label": "λ constante radiactiva",
+      "unit": "u.t.⁻¹"
+     }
+    }
+   },
+   "titulo": "Curva N(t) con λ variable",
+   "relacion": "Gráfica de la ley de decaimiento radiactivo N(t)=N₀·e^(−λt) (f8); mover λ cambia la semivida."
+  },
+  {
+   "preset": "generico",
+   "params": {
+    "expr": "log(2)/x",
+    "xmin": 0.05,
+    "xmax": 2,
+    "vars": {}
+   },
+   "titulo": "t½ en función de λ",
+   "relacion": "Relación t½ = ln2/λ (f9): a mayor λ, menor tiempo de semivida."
+  },
+  {
+   "preset": "generico",
+   "params": {
+    "expr": "A - x",
+    "xmin": 0,
+    "xmax": 20,
+    "vars": {
+     "A": {
+      "min": 1,
+      "max": 240,
+      "step": 1,
+      "def": 226,
+      "label": "A del núcleo padre",
+      "unit": "nucleones"
+     }
+    }
+   },
+   "titulo": "Conservación de los nucleones",
+   "relacion": "A'' = A − A' (f1): lo que sale se resta al núcleo padre."
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "laboratorio-neon",
+  "mecanica_especial": "Núcleos inestables: plataformas móviles con periodo (como la semivida) y zonas de campo que levantan suavemente; gravedad ligeramente reducida."
+ },
+ "estilo_intro_sugerido": "fisica3d"
+}

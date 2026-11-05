@@ -1,0 +1,276 @@
+{
+ "titulo": "Acide-base: el regalo del protón",
+ "estilo": "quimica3d",
+ "duracion_seg": 27,
+ "actores": [
+  {
+   "id": "vaso",
+   "tipo": "vaso",
+   "pos": [
+    0.5,
+    0.66
+   ],
+   "color": "#7fd8ff",
+   "escala": 2.2
+  },
+  {
+   "id": "acido",
+   "tipo": "molecula",
+   "pos": [
+    0.22,
+    0.6
+   ],
+   "color": "#ff3da6",
+   "escala": 1.4
+  },
+  {
+   "id": "base",
+   "tipo": "molecula",
+   "pos": [
+    0.78,
+    0.6
+   ],
+   "color": "#2ee59d",
+   "escala": 1.4
+  },
+  {
+   "id": "proton",
+   "tipo": "ion",
+   "pos": [
+    0.27,
+    0.5
+   ],
+   "color": "#ffd23f",
+   "escala": 0.8
+  },
+  {
+   "id": "agua",
+   "tipo": "molecula",
+   "pos": [
+    0.5,
+    0.82
+   ],
+   "color": "#00d4ff",
+   "escala": 1.0
+  },
+  {
+   "id": "limon",
+   "tipo": "bola",
+   "pos": [
+    0.5,
+    0.08
+   ],
+   "color": "#ffd23f",
+   "escala": 1.6
+  },
+  {
+   "id": "burbuja",
+   "tipo": "bola",
+   "pos": [
+    0.56,
+    0.8
+   ],
+   "color": "#d6f6ff",
+   "escala": 0.5
+  }
+ ],
+ "pasos": [
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "acido",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "base",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "subtitulo",
+   "texto": "Transformations acide-base: ¡una historia de regalos de protones!"
+  },
+  {
+   "t": 2,
+   "accion": "habla",
+   "actor": "acido",
+   "texto": "¡Me sobra un H⁺!"
+  },
+  {
+   "t": 3,
+   "accion": "aparece",
+   "actor": "proton",
+   "dur": 0.8
+  },
+  {
+   "t": 3.5,
+   "accion": "resalta",
+   "actor": "acido"
+  },
+  {
+   "t": 4,
+   "accion": "formula",
+   "latex": "\\mathrm{AH} = \\mathrm{A}^{-} + \\mathrm{H}^{+}"
+  },
+  {
+   "t": 4,
+   "accion": "subtitulo",
+   "texto": "Un ácido es una especie capaz de ceder un ion H⁺ (Brønsted)."
+  },
+  {
+   "t": 6,
+   "accion": "habla",
+   "actor": "base",
+   "texto": "¡Yo lo capto!"
+  },
+  {
+   "t": 6.5,
+   "accion": "mueve",
+   "actor": "proton",
+   "a": [
+    0.73,
+    0.5
+   ],
+   "dur": 2.5
+  },
+  {
+   "t": 6.5,
+   "accion": "vector",
+   "actor": "proton",
+   "dx": 0.12,
+   "dy": 0,
+   "etiqueta": "H⁺"
+  },
+  {
+   "t": 9,
+   "accion": "color",
+   "actor": "acido",
+   "color": "#2ee59d"
+  },
+  {
+   "t": 9,
+   "accion": "color",
+   "actor": "base",
+   "color": "#ff3da6"
+  },
+  {
+   "t": 9,
+   "accion": "particulas",
+   "tipo": "chispas",
+   "pos": [
+    0.76,
+    0.55
+   ]
+  },
+  {
+   "t": 9.5,
+   "accion": "subtitulo",
+   "texto": "Una base es una especie capaz de captar un ion H⁺: ahora cada una es la conjugada de la otra."
+  },
+  {
+   "t": 11,
+   "accion": "formula",
+   "latex": "\\mathrm{A_1H} + \\mathrm{A_2^{-}} \\rightleftharpoons \\mathrm{A_1^{-}} + \\mathrm{A_2H}"
+  },
+  {
+   "t": 11,
+   "accion": "subtitulo",
+   "texto": "Dos pares ácido-base diferentes intercambian un H⁺: eso es una reacción ácido-base."
+  },
+  {
+   "t": 13.5,
+   "accion": "desaparece",
+   "actor": "proton"
+  },
+  {
+   "t": 13.5,
+   "accion": "aparece",
+   "actor": "vaso",
+   "dur": 1
+  },
+  {
+   "t": 14,
+   "accion": "camara",
+   "zoom": 1.3,
+   "centro": [
+    0.5,
+    0.6
+   ],
+   "dur": 2
+  },
+  {
+   "t": 14.5,
+   "accion": "mueve",
+   "actor": "limon",
+   "a": [
+    0.5,
+    0.6
+   ],
+   "dur": 2.2
+  },
+  {
+   "t": 16.5,
+   "accion": "particulas",
+   "tipo": "burbujas",
+   "pos": [
+    0.52,
+    0.72
+   ]
+  },
+  {
+   "t": 16.5,
+   "accion": "aparece",
+   "actor": "agua",
+   "dur": 0.8
+  },
+  {
+   "t": 17,
+   "accion": "habla",
+   "actor": "agua",
+   "texto": "Soy anfótera: ácido o base, según con quién me junte."
+  },
+  {
+   "t": 19,
+   "accion": "subtitulo",
+   "texto": "El agua es anfótera: H₃O⁺/H₂O y H₂O/HO⁻. El ion HCO₃⁻ también."
+  },
+  {
+   "t": 21,
+   "accion": "aparece",
+   "actor": "burbuja",
+   "dur": 0.5
+  },
+  {
+   "t": 21,
+   "accion": "mueve",
+   "actor": "burbuja",
+   "a": [
+    0.58,
+    0.4
+   ],
+   "dur": 3
+  },
+  {
+   "t": 21,
+   "accion": "subtitulo",
+   "texto": "El ácido del limón le cede H⁺ al hidrogenocarbonato: ¡nace CO₂, las burbujas!"
+  },
+  {
+   "t": 24.5,
+   "accion": "camara",
+   "zoom": 1,
+   "centro": [
+    0.5,
+    0.5
+   ],
+   "dur": 1
+  },
+  {
+   "t": 24.5,
+   "accion": "subtitulo",
+   "texto": "Ácido cede, base capta: toda reacción ácido-base es una transferencia de H⁺."
+  }
+ ]
+}

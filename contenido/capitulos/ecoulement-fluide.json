@@ -1,0 +1,1236 @@
+{
+ "id": "ecoulement-fluide",
+ "titulo": "Écoulement d'un fluide",
+ "materia": "physique",
+ "mundo": "mouvement",
+ "pdf_ini": 358,
+ "pdf_fin": 393,
+ "resumen": "Capítulo de mecánica de fluidos. Primero, las fuerzas presionantes (F = P·S) y la ley fundamental de la estática (ΔP = ρ·g·Δz) explican el empuje de Arquímedes π = ρ_f·V·g. Después, el flujo de un fluido incompresible en régimen permanente: caudal Q = V/Δt = v·S que se conserva (v_A·S_A = v_B·S_B). Por último, la relación de Bernoulli P + ½ρv² + ρgz = cte y sus consecuencias: efecto Venturi, v = √(2gh) y efecto Magnus. El libro avisa de que, en la fecha de publicación, estas nociones están excluidas de la prueba escrita (pero sirven para el oral y la ECE).",
+ "resumen_fr": "Poussée d'Archimède, écoulement permanent d'un fluide incompressible (débit volumique, conservation du débit), relation de Bernoulli et effet Venturi. Le manuel précise que ces notions sont exclues de l'épreuve écrite à la date de publication.",
+ "nociones_clave": [
+  {
+   "fr": "Masse volumique",
+   "es": "Refleja el estado de dispersión de los constituyentes microscópicos de un fluido (gas: partículas dispersas; líquido: partículas próximas). Ej.: ρ_aire = 1,20 kg·m⁻³ y ρ_agua = 9,98×10² kg·m⁻³ a 20 °C.",
+   "pagina_pdf": 358
+  },
+  {
+   "fr": "Force pressante",
+   "es": "Modela la acción mecánica de un fluido sobre una superficie; su valor es F = P·S.",
+   "pagina_pdf": 358
+  },
+  {
+   "fr": "Loi fondamentale de la statique des fluides",
+   "es": "Relaciona la diferencia de presión entre dos puntos A y B de un fluido en reposo con ρ, g y la diferencia de altitud: ΔP = ρ·g·Δz.",
+   "pagina_pdf": 358
+  },
+  {
+   "fr": "Origine de la poussée d'Archimède",
+   "es": "Un objeto sumergido recibe fuerzas presionantes en toda su superficie; como la presión aumenta con la profundidad, son más intensas abajo que arriba. La resultante es una fuerza vertical hacia arriba: el empuje de Arquímedes.",
+   "pagina_pdf": 364
+  },
+  {
+   "fr": "Poussée d'Archimède",
+   "es": "Todo cuerpo sumergido, total o parcialmente, en un fluido recibe una fuerza vertical, dirigida hacia arriba, de valor igual al peso del volumen de fluido desplazado: π⃗ = −ρ_f·V·g⃗.",
+   "pagina_pdf": 364
+  },
+  {
+   "fr": "Paramètres d'influence de la poussée d'Archimède",
+   "es": "El valor π = ρ_f·V·g depende del volumen sumergido V y de la masa volúmica ρ_f del fluido; la masa del cuerpo, su forma, su orientación y la profundidad (si está totalmente inmerso) no influyen. Un barco se diseña para que el peso del agua desplazada iguale su peso.",
+   "pagina_pdf": 364
+  },
+  {
+   "fr": "Régime permanent (stationnaire)",
+   "es": "Un fluido está en régimen permanente cuando las líneas de corriente no varían con el tiempo: la velocidad en un punto cualquiera se mantiene constante (puede ser distinta de un punto a otro, en dirección y valor).",
+   "pagina_pdf": 365
+  },
+  {
+   "fr": "Ligne de courant",
+   "es": "Curva tangente al vector velocidad del fluido; modela las trayectorias de las partículas. Un conducto o tubo de corriente está delimitado por líneas de corriente.",
+   "pagina_pdf": 365
+  },
+  {
+   "fr": "Débit volumique",
+   "es": "Volumen de fluido que atraviesa una sección del conducto por unidad de tiempo: Q = V/Δt = v·S.",
+   "pagina_pdf": 365
+  },
+  {
+   "fr": "Conservation du débit volumique",
+   "es": "En régimen permanente y fluido incompresible no hay pérdida de materia: Q(A) = Q(B). La velocidad aumenta cuando la sección del conducto se estrecha.",
+   "pagina_pdf": 365
+  },
+  {
+   "fr": "Relation de Bernoulli (hypothèses)",
+   "es": "Modela la evolución de P, v y z a lo largo de una línea de corriente para un fluido incompresible, en régimen permanente y sin rozamiento (sin trabajo ni intercambio térmico). Traduce la conservación de la energía total del fluido.",
+   "pagina_pdf": 366
+  },
+  {
+   "fr": "Effet Venturi",
+   "es": "En régimen permanente, la presión P de un fluido disminuye cuando su velocidad v aumenta (y viceversa), en un conducto horizontal.",
+   "pagina_pdf": 366
+  },
+  {
+   "fr": "Fluide au repos et Bernoulli",
+   "es": "Si v = 0, Bernoulli se reduce a P_A + ρ·g·z_A = P_B + ρ·g·z_B, es decir ΔP = ρ·g·Δz: se recupera la ley de la estática de fluidos.",
+   "pagina_pdf": 366
+  },
+  {
+   "fr": "Effet Magnus",
+   "es": "La rotación de una pelota en el aire hace aumentar la velocidad del aire en un lado y disminuir en el otro; la diferencia de presión resultante desvía la trayectoria (golpe «liftado»).",
+   "pagina_pdf": 366
+  },
+  {
+   "fr": "Portance aérodynamique",
+   "es": "Fuerza que modela la acción de un fluido sobre el ala de un avión o una pelota en sustentación; el ala se aspira hacia arriba por la menor presión del aire más rápido (ej. 23 y 37).",
+   "pagina_pdf": 371
+  },
+  {
+   "fr": "Exclusión de l'épreuve écrite",
+   "es": "El libro indica que, a la fecha de su publicación, las nociones de este capítulo están excluidas de la prueba escrita (y la capacidad experimental de la prueba práctica); se trabajan igualmente en exercices y Grand oral.",
+   "pagina_pdf": 377
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "F = P \\cdot S",
+   "nombre": "Fuerza presionante",
+   "nombre_fr": "Force pressante",
+   "variables": [
+    {
+     "simbolo": "F",
+     "significado": "valor de la fuerza presionante (acción del fluido sobre una superficie)",
+     "unidad": "N"
+    },
+    {
+     "simbolo": "P",
+     "significado": "presión del fluido",
+     "unidad": "Pa"
+    },
+    {
+     "simbolo": "S",
+     "significado": "área de la superficie",
+     "unidad": "m²"
+    }
+   ],
+   "explicacion": "La fuerza presionante modela la acción mecánica de un fluido sobre una superficie: es proporcional a la presión y al área. Es la base para explicar el origen de la poussée d'Archimède.",
+   "ejemplo": {
+    "enunciado": "Representar la fuerza presionante del aire (P = 1013 hPa) sobre 50 cm² de la superficie de un globo (situación 2 de «Pour vérifier les acquis»).",
+    "resultado": "F = 1013×10² Pa × 50×10⁻⁴ m² ≈ 5,1×10² N (cálculo a partir de F = P·S; el libro solo plantea la situación)",
+    "pagina_pdf": 358
+   },
+   "pagina_pdf": 358,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "P*100*x",
+     "xmin": 0,
+     "xmax": 0.01,
+     "vars": {
+      "P": {
+       "min": 500,
+       "max": 2000,
+       "step": 10,
+       "def": 1013,
+       "label": "Presión P",
+       "unit": "hPa"
+      }
+     }
+    },
+    "leyenda": "Gráfica F = P·S (S en m² en el eje x): la fuerza crece linealmente con el área y la pendiente es la presión; mueve P y mira cómo cambia."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "\\Delta P = \\rho \\cdot g \\cdot \\Delta z",
+   "nombre": "Ley fundamental de la estática de fluidos",
+   "nombre_fr": "Loi fondamentale de la statique des fluides",
+   "variables": [
+    {
+     "simbolo": "ΔP = P_B − P_A",
+     "significado": "diferencia de presión entre dos puntos A y B de un fluido en reposo",
+     "unidad": "Pa"
+    },
+    {
+     "simbolo": "ρ",
+     "significado": "masa volúmica del fluido",
+     "unidad": "kg·m⁻³"
+    },
+    {
+     "simbolo": "g",
+     "significado": "intensidad del campo de pesadez",
+     "unidad": "N·kg⁻¹"
+    },
+    {
+     "simbolo": "Δz = z_A − z_B",
+     "significado": "diferencia de altitud entre A y B",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "En un fluido en reposo la presión aumenta con la profundidad. Por eso las fuerzas presionantes son más intensas en la parte baja de un cuerpo sumergido que en la alta (origen de π). Se recupera también desde Bernoulli con v = 0.",
+   "ejemplo": {
+    "enunciado": "Un buceador prevé sumergirse a 15 m bajo la superficie del agua (ρ = 1000 kg·m⁻³): variación máxima de presión (situación 3).",
+    "resultado": "ΔP = 1000 × 9,8 × 15 ≈ 1,5×10⁵ Pa (cálculo con la fórmula del libro)",
+    "pagina_pdf": 358
+   },
+   "pagina_pdf": 358,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "rho*9.81*x",
+     "xmin": 0,
+     "xmax": 15,
+     "vars": {
+      "rho": {
+       "min": 700,
+       "max": 1100,
+       "step": 10,
+       "def": 1000,
+       "label": "Masa volúmica ρ",
+       "unit": "kg/m³"
+      }
+     }
+    },
+    "leyenda": "Gráfica de ΔP = ρ·g·Δz (Δz = profundidad en m): la presión crece linealmente al sumergirse; con ρ = 1000 kg/m³ a 15 m el aumento es ≈ 1,5×10⁵ Pa."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "\\vec{\\pi} = -m_f \\cdot \\vec{g} = -\\rho_f \\cdot V \\cdot \\vec{g}",
+   "nombre": "Empuje de Arquímedes (expresión vectorial)",
+   "nombre_fr": "Poussée d'Archimède (expression vectorielle)",
+   "variables": [
+    {
+     "simbolo": "π⃗",
+     "significado": "empuje de Arquímedes (vertical, hacia arriba)",
+     "unidad": "N"
+    },
+    {
+     "simbolo": "m_f",
+     "significado": "masa de fluido desplazado",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "ρ_f",
+     "significado": "masa volúmica del fluido",
+     "unidad": "kg·m⁻³"
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen de fluido desplazado",
+     "unidad": "m³"
+    },
+    {
+     "simbolo": "g⃗",
+     "significado": "campo de pesadez terrestre",
+     "unidad": "N·kg⁻¹ (o m·s⁻²)"
+    }
+   ],
+   "explicacion": "Todo cuerpo sumergido, total o parcialmente, en un fluido recibe una fuerza vertical, dirigida hacia arriba, de valor igual al peso del volumen de fluido desplazado. Modela la resultante de las fuerzas presionantes.",
+   "ejemplo": {
+    "enunciado": "Bola de acero (V = 5,0 cm³, ρ_Fe = 7,8×10³ kg·m⁻³) totalmente sumergida en agua (ρ_eau = 1,0×10³ kg·m⁻³).",
+    "resultado": "Empuje vertical hacia arriba de valor π = ρ_f·V·g",
+    "pagina_pdf": 364
+   },
+   "pagina_pdf": 364,
+   "animacion": {
+    "preset": "arquimedes",
+    "params": {
+     "rho": 1000
+    },
+    "leyenda": "Un cuerpo en un fluido: el empuje apunta hacia arriba y vale lo que pesa el fluido desplazado; cambia ρ del fluido o el volumen y compara con el peso."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "\\pi = \\rho_f \\cdot V \\cdot g",
+   "nombre": "Valor del empuje de Arquímedes",
+   "nombre_fr": "Valeur de la poussée d'Archimède",
+   "variables": [
+    {
+     "simbolo": "π",
+     "significado": "valor del empuje",
+     "unidad": "N"
+    },
+    {
+     "simbolo": "ρ_f",
+     "significado": "masa volúmica del fluido",
+     "unidad": "kg·m⁻³"
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen de fluido desplazado (cuerpo totalmente inmerso: volumen del cuerpo)",
+     "unidad": "m³"
+    },
+    {
+     "simbolo": "g",
+     "significado": "intensidad de la pesadez",
+     "unidad": "N·kg⁻¹"
+    }
+   ],
+   "explicacion": "El valor depende solo del volumen sumergido y de la masa volúmica del fluido. La masa del cuerpo, su forma, su orientación y la profundidad (cuerpo totalmente sumergido) no influyen. Más volumen o más fluido denso → empuje mayor.",
+   "ejemplo": {
+    "enunciado": "Bola de acero de 5,0 cm³ totalmente sumergida en agua.",
+    "resultado": "π = 1,0×10³ × 5,0×10⁻⁶ × 9,8 = 4,9×10⁻² N",
+    "pagina_pdf": 364
+   },
+   "pagina_pdf": 364,
+   "animacion": {
+    "preset": "arquimedes",
+    "params": {
+     "rho": 1000
+    },
+    "leyenda": "Mueve la masa volúmica del fluido y el volumen del cuerpo: el empuje π = ρ_f·V·g crece con ambos y no depende de la masa del cuerpo."
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "\\pi = P_1 - P_2 \\quad (\\text{peso aparente } P_2 = P_1 - \\pi)",
+   "nombre": "Empuje y peso aparente (dinamómetro)",
+   "nombre_fr": "Poussée d'Archimède et poids apparent",
+   "variables": [
+    {
+     "simbolo": "P₁",
+     "significado": "peso del cuerpo en el aire (lectura del dinamómetro)",
+     "unidad": "N"
+    },
+    {
+     "simbolo": "P₂",
+     "significado": "peso aparente del cuerpo sumergido",
+     "unidad": "N"
+    },
+    {
+     "simbolo": "π",
+     "significado": "empuje de Arquímedes",
+     "unidad": "N"
+    }
+   ],
+   "explicacion": "El empuje es responsable del peso aparente: cuando se sumerge el cuerpo, el dinamómetro marca menos (P₂ < P₁) y la diferencia es π, igual al peso del volumen de fluido desplazado (π = ρ_f·V·g).",
+   "ejemplo": {
+    "enunciado": "Ejercicio 11: un dinamómetro marca 1,97 N en el aire y 1,52 N con el cuerpo sumergido; deducir π de dos maneras.",
+    "resultado": "π = 1,97 − 1,52 = 4,50×10⁻¹ N (y π = 45,9×10⁻³ kg × 9,81 = 4,50×10⁻¹ N con la masa de fluido desplazado)",
+    "pagina_pdf": 369
+   },
+   "pagina_pdf": 364,
+   "animacion": {
+    "preset": "arquimedes",
+    "params": {
+     "rho": 1000
+    },
+    "leyenda": "Modo dinamómetro: al sumergir el cuerpo, la lectura baja (peso aparente) en exactamente el empuje de Arquímedes."
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "Q = \\dfrac{V}{\\Delta t}",
+   "nombre": "Caudal volumétrico",
+   "nombre_fr": "Débit volumique",
+   "variables": [
+    {
+     "simbolo": "Q",
+     "significado": "caudal volumétrico (débit volumique)",
+     "unidad": "m³·s⁻¹"
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen de fluido que atraviesa la sección",
+     "unidad": "m³"
+    },
+    {
+     "simbolo": "Δt",
+     "significado": "duración del flujo",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "El caudal volumétrico es el volumen de fluido que atraviesa una sección del conducto por unidad de tiempo.",
+   "ejemplo": {
+    "enunciado": "El Loira vierte unos 80×10⁶ m³ de agua al océano por día. Caudal medio.",
+    "resultado": "Q = 80×10⁶ / (24×3600) = 926 m³·s⁻¹ ≈ 9,3×10² m³·s⁻¹",
+    "pagina_pdf": 365
+   },
+   "pagina_pdf": 365,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "V/x",
+     "xmin": 10,
+     "xmax": 300,
+     "vars": {
+      "V": {
+       "min": 0.01,
+       "max": 0.2,
+       "step": 0.01,
+       "def": 0.05,
+       "label": "Volumen V (0,05 m³ = 50 L)",
+       "unit": "m³"
+      }
+     }
+    },
+    "leyenda": "Gráfica de Q = V/Δt (Δt en s en el eje x): para llenar 50 L, cuanto más tiempo tardas, menor es el caudal; con Δt = 125 s resulta Q = 4,0×10⁻⁴ m³·s⁻¹."
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "Q = v \\cdot S",
+   "nombre": "Caudal, velocidad y sección",
+   "nombre_fr": "Relation entre débit volumique et vitesse",
+   "variables": [
+    {
+     "simbolo": "Q",
+     "significado": "caudal volumétrico",
+     "unidad": "m³·s⁻¹"
+    },
+    {
+     "simbolo": "v",
+     "significado": "velocidad del fluido",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "S",
+     "significado": "área de la sección del conducto",
+     "unidad": "m²"
+    }
+   ],
+   "explicacion": "Si el fluido atraviesa una sección S a velocidad v durante Δt, el volumen es V = S·v·Δt, de donde Q = V/Δt = v·S. En régimen permanente Q es constante a lo largo del tiempo.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 16: tubo de riego de sección S_A (diámetro 25 mm) con v_A = 1,7 m·s⁻¹.",
+    "resultado": "Q = v_A·S_A = 8,3×10⁻⁴ m³·s⁻¹ = 3,0×10³ L·h⁻¹",
+    "pagina_pdf": 370
+   },
+   "pagina_pdf": 365,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x*S*0.0001",
+     "xmin": 0,
+     "xmax": 5,
+     "vars": {
+      "S": {
+       "min": 1,
+       "max": 20,
+       "step": 0.1,
+       "def": 4.9,
+       "label": "Sección S (4,9 cm² ≈ tubo de 25 mm)",
+       "unit": "cm²"
+      }
+     }
+    },
+    "leyenda": "Gráfica de Q = v·S (v en m/s en el eje x, S en cm²): a sección fija el caudal es proporcional a la velocidad; con S = 4,9 cm² y v = 1,7 m/s sale Q ≈ 8,3×10⁻⁴ m³/s."
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "Q_{(A)} = Q_{(B)} \\;\\Leftrightarrow\\; v_A \\cdot S_A = v_B \\cdot S_B \\;\\Rightarrow\\; \\dfrac{v_B}{v_A} = \\dfrac{S_A}{S_B}",
+   "nombre": "Conservación del caudal volumétrico",
+   "nombre_fr": "Conservation du débit volumique",
+   "variables": [
+    {
+     "simbolo": "Q(A), Q(B)",
+     "significado": "caudales en las secciones A y B",
+     "unidad": "m³·s⁻¹"
+    },
+    {
+     "simbolo": "v_A, v_B",
+     "significado": "velocidades del fluido en A y B",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "S_A, S_B",
+     "significado": "áreas de las secciones A y B",
+     "unidad": "m²"
+    }
+   ],
+   "explicacion": "En régimen permanente, un fluido incompresible no pierde materia: el caudal es el mismo en todos los puntos de un tubo de corriente. Velocidad y sección son inversamente proporcionales: si el conducto se estrecha (S_B < S_A), el fluido acelera (v_B > v_A).",
+   "ejemplo": {
+    "enunciado": "Si S_A / S_B = 3 (manguera de riego que se estrecha), ¿cuánto vale v_B?",
+    "resultado": "v_B = (S_A/S_B)·v_A = 3·v_A (la velocidad del agua se triplica)",
+    "pagina_pdf": 365
+   },
+   "pagina_pdf": 365,
+   "animacion": {
+    "preset": "bernoulli",
+    "params": {
+     "S1": 30,
+     "S2": 10
+    },
+    "leyenda": "Un tubo que se estrecha: con S₂ tres veces menor que S₁, las partículas van tres veces más rápido en la parte estrecha porque el caudal se conserva."
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "P + \\dfrac{1}{2}\\,\\rho\\, v^2 + \\rho\\, g\\, z = \\text{constante}",
+   "nombre": "Relación de Bernoulli",
+   "nombre_fr": "Relation de Bernoulli",
+   "variables": [
+    {
+     "simbolo": "P",
+     "significado": "presión del fluido",
+     "unidad": "Pa"
+    },
+    {
+     "simbolo": "ρ",
+     "significado": "masa volúmica del fluido",
+     "unidad": "kg·m⁻³"
+    },
+    {
+     "simbolo": "v",
+     "significado": "velocidad del fluido",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "g",
+     "significado": "intensidad de la pesadez",
+     "unidad": "N·kg⁻¹"
+    },
+    {
+     "simbolo": "z",
+     "significado": "altitud",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Para un fluido incompresible, en régimen permanente, sin rozamiento ni intercambio de energía por trabajo o térmico, la presión, la velocidad y la altitud a lo largo de una línea de corriente están ligadas: expresa la conservación de la energía total del fluido.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 19: agua en flujo sin rozamiento entre las posiciones 1 (6,5 m; P₁ = 1,0×10⁵ Pa; v₁ = 1,0 m/s) y 2 (3,0 m; v₂ = 4,5×10⁻¹ m/s).",
+    "resultado": "P₂ = P₁ + ½ρ(v₁² − v₂²) + ρg(z₁ − z₂) ≈ 1,3×10⁵ Pa",
+    "pagina_pdf": 371
+   },
+   "pagina_pdf": 366,
+   "animacion": {
+    "preset": "bernoulli",
+    "params": {
+     "S1": 30,
+     "S2": 10
+    },
+    "leyenda": "En el estrechamiento el fluido va más rápido y la presión medida baja: la suma P + ½ρv² se mantiene (altitud constante)."
+   }
+  },
+  {
+   "id": "f10",
+   "latex": "P_A + \\dfrac{1}{2}\\rho v_A^2 + \\rho g z_A = P_B + \\dfrac{1}{2}\\rho v_B^2 + \\rho g z_B",
+   "nombre": "Bernoulli entre dos puntos de una línea de corriente",
+   "nombre_fr": "Relation de Bernoulli entre deux points A et B",
+   "variables": [
+    {
+     "simbolo": "P_A, P_B",
+     "significado": "presiones en A y B",
+     "unidad": "Pa"
+    },
+    {
+     "simbolo": "v_A, v_B",
+     "significado": "velocidades en A y B",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "z_A, z_B",
+     "significado": "altitudes de A y B",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "ρ",
+     "significado": "masa volúmica",
+     "unidad": "kg·m⁻³"
+    },
+    {
+     "simbolo": "g",
+     "significado": "campo de pesadez",
+     "unidad": "N·kg⁻¹"
+    }
+   ],
+   "explicacion": "Forma práctica para resolver problemas: se eligen dos puntos A y B de la misma línea de corriente y se simplifica con los datos (P = P_atm en una salida al aire, v ≈ 0 en una superficie libre ancha, z_A = z_B en un conducto horizontal). Con v = 0 se recupera ΔP = ρ·g·Δz.",
+   "ejemplo": {
+    "enunciado": "Ejercicio resuelto 28 (lanza de incendio): v_B = 1,8 m/s a la salida de la boca de incendios, v_A = 35 m/s en la lanza, z_A = z_B, P_A = P_atm = 1,013×10⁵ Pa, ρ = 1000 kg·m⁻³.",
+    "resultado": "P_B = P_atm + ½ρ(v_A² − v_B²) = 7,1×10⁵ Pa ≈ 7 bar",
+    "pagina_pdf": 374
+   },
+   "pagina_pdf": 366,
+   "animacion": {
+    "preset": "bernoulli",
+    "params": {
+     "S1": 30,
+     "S2": 10
+    },
+    "leyenda": "Compara dos puntos A y B del tubo: donde la sección es menor (B) la velocidad es mayor y la presión menor, justo lo que da la igualdad."
+   }
+  },
+  {
+   "id": "f11",
+   "latex": "P_A - P_B = \\dfrac{1}{2}\\rho\\,(v_B^2 - v_A^2) \\quad (z_A = z_B)",
+   "nombre": "Efecto Venturi",
+   "nombre_fr": "Effet Venturi",
+   "variables": [
+    {
+     "simbolo": "P_A − P_B",
+     "significado": "diferencia de presión entre A y B (misma altitud)",
+     "unidad": "Pa"
+    },
+    {
+     "simbolo": "ρ",
+     "significado": "masa volúmica",
+     "unidad": "kg·m⁻³"
+    },
+    {
+     "simbolo": "v_A, v_B",
+     "significado": "velocidades en A y B",
+     "unidad": "m·s⁻¹"
+    }
+   ],
+   "explicacion": "En un conducto horizontal (z_A = z_B), P + ½ρv² = cte. En régimen permanente, la presión de un fluido disminuye cuando su velocidad aumenta (y al revés): si v_A < v_B entonces P_A > P_B. Explica la baja presión en un estrechamiento, el efecto Magnus o la aspiración entre dos camiones.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 22: fluido ρ = 825 kg·m⁻³, v_A = 4,5 m/s, P_A = 1002 hPa, P_B = 987 hPa. ¿Cuánto vale v_B?",
+    "resultado": "v_B = √(2(P_A − P_B)/ρ + v_A²) = 4,9 m·s⁻¹ (> v_A, coherente con P_B < P_A)",
+    "pagina_pdf": 371
+   },
+   "pagina_pdf": 366,
+   "animacion": {
+    "preset": "bernoulli",
+    "params": {
+     "S1": 30,
+     "S2": 10
+    },
+    "leyenda": "Venturi: reduce S₂ y verás subir la velocidad y bajar la presión en el estrechamiento; la diferencia de presión es ½ρ(v₂² − v₁²)."
+   }
+  },
+  {
+   "id": "f12",
+   "latex": "v_B = \\sqrt{2 \\cdot g \\cdot h}",
+   "nombre": "Velocidad de salida del agua (depósito/château d'eau)",
+   "nombre_fr": "Vitesse de sortie de l'eau",
+   "variables": [
+    {
+     "simbolo": "v_B",
+     "significado": "velocidad del agua a la salida (grifo)",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "g",
+     "significado": "campo de pesadez",
+     "unidad": "N·kg⁻¹"
+    },
+    {
+     "simbolo": "h",
+     "significado": "altura de agua en el depósito sobre la salida",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Bernoulli entre la superficie libre A (v_A ≈ 0, presión atmosférica) y la salida B (presión atmosférica, z_B = 0): P_atm + ρ·g·z_A = P_atm + ½ρ·v_B², de donde v_B = √(2gh).",
+   "ejemplo": {
+    "enunciado": "Grifo alimentado por un château d'eau con h = 10 m (figura 9 del cours).",
+    "resultado": "v_B = √(2 × 9,8 × 10) = 14 m·s⁻¹",
+    "pagina_pdf": 366
+   },
+   "pagina_pdf": 366,
+   "animacion": {
+    "preset": "torricelli",
+    "params": {},
+    "leyenda": "Un chorro que sale de un depósito: cuanto mayor es la altura h de agua, más rápido sale (v = √(2gh))."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "g (intensidad de pesadez, superficie terrestre)",
+   "valor": "9,81 (el libro usa también 9,8)",
+   "unidad": "N·kg⁻¹ = m·s⁻²",
+   "pagina_pdf": 360
+  },
+  {
+   "nombre": "ρ_eau a 20 °C",
+   "valor": "998",
+   "unidad": "kg·m⁻³",
+   "pagina_pdf": 360
+  },
+  {
+   "nombre": "ρ_eau (valor redondeado de los ejercicios)",
+   "valor": "1,0×10³",
+   "unidad": "kg·m⁻³",
+   "pagina_pdf": 369
+  },
+  {
+   "nombre": "ρ_eau des océans",
+   "valor": "1024",
+   "unidad": "kg·m⁻³",
+   "pagina_pdf": 360
+  },
+  {
+   "nombre": "ρ_eau de mer",
+   "valor": "1025",
+   "unidad": "kg·m⁻³",
+   "pagina_pdf": 369
+  },
+  {
+   "nombre": "ρ_eau à 15 °C",
+   "valor": "9,99×10²",
+   "unidad": "kg·m⁻³",
+   "pagina_pdf": 363
+  },
+  {
+   "nombre": "ρ_glace",
+   "valor": "910",
+   "unidad": "kg·m⁻³",
+   "pagina_pdf": 360
+  },
+  {
+   "nombre": "ρ_acier",
+   "valor": "7850",
+   "unidad": "kg·m⁻³",
+   "pagina_pdf": 360
+  },
+  {
+   "nombre": "ρ_air à 25 °C",
+   "valor": "1,184",
+   "unidad": "kg·m⁻³",
+   "pagina_pdf": 362
+  },
+  {
+   "nombre": "ρ_air (troposphère)",
+   "valor": "1,2",
+   "unidad": "kg·m⁻³",
+   "pagina_pdf": 373
+  },
+  {
+   "nombre": "ρ_éthanol",
+   "valor": "0,79",
+   "unidad": "g·cm⁻³",
+   "pagina_pdf": 369
+  },
+  {
+   "nombre": "P_atm",
+   "valor": "1013 (1,013×10⁵ Pa)",
+   "unidad": "hPa",
+   "pagina_pdf": 363
+  },
+  {
+   "nombre": "Equivalencia bar–pascal",
+   "valor": "1 bar = 10⁵",
+   "unidad": "Pa",
+   "pagina_pdf": 363
+  },
+  {
+   "nombre": "1 mmHg",
+   "valor": "133,3",
+   "unidad": "Pa",
+   "pagina_pdf": 379
+  },
+  {
+   "nombre": "ρ_sang",
+   "valor": "1061",
+   "unidad": "kg·m⁻³",
+   "pagina_pdf": 379
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Calcular y comprobar el empuje de Arquímedes",
+   "pasos": [
+    "Identificar el fluido (ρ_f) y el volumen de fluido desplazado V (cuerpo totalmente inmerso: V = volumen del cuerpo).",
+    "Aplicar π = ρ_f·V·g con unidades SI (kg·m⁻³, m³, N·kg⁻¹) y escribir la dirección: vertical, hacia arriba.",
+    "Comprobar con dinamómetro: π = P₁ − P₂ (peso en el aire menos peso aparente en el fluido).",
+    "Para un cuerpo que flota o está en equilibrio: π = P y se despeja el volumen sumergido (ej.: V_inmerso/V = ρ_hielo/ρ_agua de mar ≈ 0,89 ⇒ ≈ 1/10 emerge)."
+   ],
+   "pagina_pdf": 360
+  },
+  {
+   "titulo": "Deducir la velocidad a partir del caudal",
+   "pasos": [
+    "Convertir el caudal a m³·s⁻¹ y los diámetros a metros.",
+    "Calcular el área de la sección circular S = π·d²/4.",
+    "Aplicar Q = v·S, o la conservación v_A·S_A = v_B·S_B si hay varias secciones.",
+    "Comprobar el sentido: si la sección disminuye, la velocidad aumenta."
+   ],
+   "pagina_pdf": 374
+  },
+  {
+   "titulo": "Aplicar la relación de Bernoulli",
+   "pasos": [
+    "Elegir dos puntos A y B situados sobre la misma línea de corriente.",
+    "Identificar en el enunciado los datos que permiten simplificar (P = P_atm en una salida al aire libre, z_A = z_B en un conducto horizontal, v ≈ 0 en la superficie libre de un depósito ancho).",
+    "Escribir P_A + ½ρv_A² + ρgz_A = P_B + ½ρv_B² + ρgz_B y despejar la incógnita en forma literal.",
+    "Hacer la aplicación numérica con unidades SI y comprobar el resultado (por ejemplo, calcularlo dos veces)."
+   ],
+   "pagina_pdf": 374
+  },
+  {
+   "titulo": "Redactar con los verbos de acción",
+   "pasos": [
+    "Expliquer qualitativement: dar una justificación a partir de una observación o una afirmación, sin hacer cálculo.",
+    "Illustrer: hacer un esquema simbólico (sin escala pero coherente con la situación).",
+    "Vérifier: hacer un razonamiento lógico para confirmar un resultado.",
+    "Appliquer / En déduire / Comparer: adaptar una relación al caso, integrar resultados previos y confrontar dos resultados."
+   ],
+   "pagina_pdf": 373
+  },
+  {
+   "titulo": "Expresar la incertidumbre de una medida (Fiche méthode 7)",
+   "pasos": [
+    "La incertidumbre típica u(x) define el intervalo donde está probablemente el valor «verdadero»; se da con 1 cifra significativa y se redondea el resultado a la misma decimal.",
+    "Para comparar con un valor de referencia: Q = |x_mes − x_ref| / u(x); son compatibles a Q·u(x) cerca.",
+    "Evaluación de tipo A: varias medidas (histograma; descartar valores aberrantes). Tipo B: una sola medida."
+   ],
+   "pagina_pdf": 556
+  },
+  {
+   "titulo": "Grabar y puntear un vídeo (Fiche pratique 23)",
+   "pasos": [
+    "Filmar con el movimiento en un plano perpendicular al eje óptico de la cámara y con un objeto o regla de dimensiones conocidas en ese plano (calibrado).",
+    "En el programa: calibrar un segmento, elegir el origen y los ejes del repère y puntear imagen por imagen el centro del objeto.",
+    "Exportar (t, x, y) a un tablero-graficador para explotar los datos."
+   ],
+   "pagina_pdf": 604
+  },
+  {
+   "titulo": "Exercices de synthèse del Thème 2 «Mouvement et interactions» (págs. 382–393)",
+   "pasos": [
+    "Ex. 1 Saturne (resuelto): referencial saturnocéntrico, v² = G·M_S/r, 3.ª ley de Kepler y masa de Saturno.",
+    "Ex. 2 Curling y Ex. 3 Snowboard: segunda ley de Newton, aceleración, fuerzas de rozamiento y energías.",
+    "Ex. 4 Lanzamiento de peso y Ex. 5 Satélites de Júpiter: movimiento en campo uniforme y en campo gravitatorio (Kepler, energía mecánica).",
+    "Ex. 6 Partículas en un campo: electrones en campo eléctrico uniforme frente a un proyectil en el campo de pesadez.",
+    "Ex. 7 Fontaine avec son jet d'eau: Bernoulli, débit volumique y trayectoria del chorro (parte de este capítulo)."
+   ],
+   "pagina_pdf": 382
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "No convertir a unidades SI",
+   "correccion": "Pasar caudales a m³·s⁻¹ y diámetros a m (S = πd²/4) antes de aplicar Q = v·S o Bernoulli.",
+   "pagina_pdf": 374
+  },
+  {
+   "id": "err2",
+   "nombre": "Pensar que el empuje depende de la masa del cuerpo",
+   "correccion": "π = ρ_f·V·g: depende del volumen sumergido y del fluido, no de la masa, forma o profundidad del cuerpo.",
+   "pagina_pdf": 364
+  },
+  {
+   "id": "err3",
+   "nombre": "Confundir P (peso) y π (empuje)",
+   "correccion": "Para flotar en equilibrio π = P; si π > P el cuerpo asciende, si π < P se hunde (ej. 26 y 30).",
+   "pagina_pdf": 373
+  },
+  {
+   "id": "err4",
+   "nombre": "Creer que más velocidad implica más presión",
+   "correccion": "Efecto Venturi: en régimen permanente, si v aumenta, P disminuye (P + ½ρv² = cte a igual altitud).",
+   "pagina_pdf": 366
+  },
+  {
+   "id": "err5",
+   "nombre": "Creer que Q cambia al estrecharse el tubo",
+   "correccion": "El caudal se conserva (Q(A) = Q(B)): lo que cambia es la velocidad, v_B/v_A = S_A/S_B.",
+   "pagina_pdf": 365
+  },
+  {
+   "id": "err6",
+   "nombre": "Aplicar Bernoulli sin simplificar con los datos",
+   "correccion": "Identificar P = P_atm, z_A = z_B o v ≈ 0 (superficie libre) para simplificar la relación antes de calcular.",
+   "pagina_pdf": 374
+  },
+  {
+   "id": "err7",
+   "nombre": "Dar demasiadas cifras significativas",
+   "correccion": "Respetar las cifras significativas de los datos (ej.: masa en toneladas con 1 cifra ⇒ resultado con 1 cifra).",
+   "pagina_pdf": 373
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "Activité 1 · La poussée d'Archimède (TP, démarches différenciées)",
+   "descripcion": "Con dinamómetro, balanza, probeta y vaso de rebose medir el peso P₁ de un objeto y su peso «aparente» P₂ totalmente sumergido en agua; deducir π = P₁ − P₂ y compararlo con el peso del volumen de agua desplazado (ρ_eau·V·g) para validar la expresión. Aplicación: un iceberg (ρ_glace = 910, ρ_océano = 1024 kg·m⁻³) flota con V_inmergé = (ρ_glace/ρ_eau)·V_iceberg, por lo que emerge ≈ 1/10.",
+   "pagina_pdf": 360
+  },
+  {
+   "titulo": "Activité 2 · Les grandeurs caractéristiques de l'écoulement d'un fluide (TP)",
+   "descripcion": "Con una bureta de 25,0 mL y una cámara (análisis de vídeo) seguir la posición de la superficie libre mientras el líquido se vacía; deducir v y V(t), calcular Q = V/Δt en dos fases (0 a 5 mL y 20 a 25 mL) y razonar con las unidades que Q = v·S; discutir si el flujo es permanente.",
+   "pagina_pdf": 361
+  },
+  {
+   "titulo": "Activité 3 · Relation de Bernoulli (démarche d'investigation)",
+   "descripcion": "Modelar la arteria con estenosis (aterosclerosis) con un conducto de sección variable (botellas de plástico unidas) y un aspirador; medir con un sensor la presión para distintos diámetros, calcular v = Q/S, trazar P = f(v²) y comprobar que es una recta decreciente (P + ½ρv² = cte). Conclusión: el estrechamiento baja la presión (ρ_aire = 1,184 kg·m⁻³ a 25 °C).",
+   "pagina_pdf": 362
+  },
+  {
+   "titulo": "Activité 4 · Hauteur d'un jet d'eau (tâche complexe)",
+   "descripcion": "Prever la altura máxima del chorro de agua de Ginebra aplicando Bernoulli entre la salida de la bomba (16,5 bar, canalización de 1,00 m de diámetro, 2 bombas de 250 L·s⁻¹) y la tobera de 10,7 cm de diámetro equivalente; validar con la foto del chorro. Coup de pouce: en régimen permanente se conserva el caudal; en el punto más alto el fluido está inmóvil y se elige un origen de altitudes adecuado.",
+   "pagina_pdf": 363
+  },
+  {
+   "titulo": "Pour préparer l'ECE · Ascension d'un ballon sonde",
+   "descripcion": "Probar la expresión del empuje de Arquímedes a partir de un vídeo del despegue de un globo sonda: proponer un protocolo para medir la aceleración a por puntero de vídeo, calcular π = m(a + g) con su incertidumbre u(π)/π = √((u(m)/m)² + (u(a)/a)²) y compararlo con π = ρ_air·V·g (V = 4,2 L, ρ_air = 1,2 kg·m⁻³).",
+   "pagina_pdf": 380
+  },
+  {
+   "titulo": "Problèmes (ex. 38 Montgolfière y 39 Fusée à eau)",
+   "descripcion": "Dos problemas de resolución con iniciativa: temperatura mínima del aire en una montgolfière para despegar (empuje de Arquímedes con ρ_aire(T)) y velocidad de una fusée à eau 10 ms tras el despegue (Bernoulli y conservación del caudal). Nociones excluidas de la prueba escrita.",
+   "pagina_pdf": 377
+  },
+  {
+   "titulo": "Grand oral · ¿Es realista un proyecto de taxis «voladores» sobre el agua?",
+   "descripcion": "Pista para el Grand oral: modelización de las acciones sobre un barco (peso, empuje, propulsión, arrastre), foils e hidroala (efecto Bernoulli) y límites de las embarcaciones clásicas. Palabras clave: poussée d'Archimède, relation de Bernoulli, effet Venturi, pression, écoulement, vitesse d'un fluide.",
+   "pagina_pdf": 381
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Ex. 28 (resuelto) · Lance à incendie. Borne d'incendie (P = 7 bar) con caudal Q = 60 m³·h⁻¹ por un tuyau de diámetro D = 110 mm; la lanza (A) tiene diámetro d = 25 mm. 1. a) Calcular v_B (salida de la boca de incendios). b) Aplicar la conservación del caudal para v_A. 2. a) Aplicar Bernoulli entre B y A (misma línea de corriente, z_A = z_B, P_A = P_atm). b) Deducir P_B y comparar con el enunciado.",
+   "datos": {
+    "P_atm": "1,013×10⁵ Pa",
+    "ρ_eau": "1000 kg·m⁻³",
+    "Q": "60 m³·h⁻¹",
+    "D": "110 mm",
+    "d": "25 mm"
+   },
+   "respuesta": "1. a) Q = 1,7×10⁻² m³·s⁻¹ y S_B = π·(0,110/2)² = 9,5×10⁻³ m²: v_B = Q/S_B = 1,8 m·s⁻¹. b) v_A = v_B·S_B/S_A = 35 m·s⁻¹. 2. a) P_B + ½ρv_B² = P_atm + ½ρv_A². b) P_B = P_atm + ½ρ(v_A² − v_B²) = 7,1×10⁵ Pa ≈ 7 bar, valor coherente con el enunciado.",
+   "respuesta_numerica": {
+    "valor": 710000,
+    "unidad": "Pa",
+    "tolerancia_rel": 0.05
+   },
+   "pasos": [
+    "Convertir Q a m³·s⁻¹ y D a m",
+    "S_B = π·D²/4 = 9,5×10⁻³ m²; v_B = Q/S_B = 1,8 m/s",
+    "v_A·S_A = v_B·S_B ⇒ v_A = 35 m/s",
+    "Bernoulli con z_A = z_B y P_A = P_atm",
+    "P_B = 1,013×10⁵ + ½·1000·(35² − 1,8²) = 7,1×10⁵ Pa"
+   ],
+   "pagina_pdf": 374,
+   "corrige_pagina_pdf": 374
+  },
+  {
+   "id": "e2",
+   "enunciado": "Ex. 26 (resuelto) · Ascension de Félix Baumgartner. Globo con 5100 m³ de helio, masa total (equipaje, globo y helio) ≈ 3 toneladas, ρ_air = 1,2 kg·m⁻³ al nivel del suelo, g = 9,81 N·kg⁻¹. 1. Explicar la ascensión y esquematizar las acciones. 2. Verificar con un cálculo: a) que el globo puede despegar; b) que 5100 m³ corresponde a «el doble del necesario» para la sustentación.",
+   "datos": {
+    "V_helio": "5100 m³",
+    "m_sistema": "3×10³ kg",
+    "ρ_air": "1,2 kg·m⁻³",
+    "g": "9,81 N·kg⁻¹"
+   },
+   "respuesta": "1. a) La densidad del aire disminuye con la altitud: la acción del aire es más intensa en la parte baja del globo → fuerza vertical hacia arriba, el empuje de Arquímedes π⃗. 2. a) P = 3×10³ × 9,81 = 2,94×10⁴ N ≈ 3×10⁴ N; π = ρ_air·V·g = 1,2 × 5100 × 9,81 ≈ 6×10⁴ N (el libro redondea 6,1×10⁴ N): π > P, el globo puede despegar. b) En sustentación π = P: V_globo = m/ρ_air = 3×10³/1,2 = 2500 m³, cerca de la mitad de 5100 m³.",
+   "respuesta_numerica": {
+    "valor": 2500,
+    "unidad": "m³",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "P = m·g ≈ 3×10⁴ N",
+    "π = ρ_air·V·g ≈ 6×10⁴ N > P",
+    "En equilibrio ρ_air·V·g = m·g ⇒ V = m/ρ_air",
+    "V = 3×10³ / 1,2 = 2,5×10³ m³"
+   ],
+   "pagina_pdf": 373,
+   "corrige_pagina_pdf": 373
+  },
+  {
+   "id": "e3",
+   "enunciado": "Ex. 11 · Valeur de la poussée d'Archimède. 1. ¿Qué es el empuje de Arquímedes π⃗? Dar sus características (dirección, sentido, valor). 2. A partir de las experiencias (dinamómetro: 1,97 N en el aire, 1,52 N con el cuerpo en agua; balanza: 45,9 g de agua desplazada), determinar de dos maneras diferentes el valor π.",
+   "datos": {
+    "P₁": "1,97 N",
+    "P₂": "1,52 N",
+    "m_agua desplazada": "45,9 g",
+    "g": "9,81 N·kg⁻¹"
+   },
+   "respuesta": "1. π⃗: resultante de las fuerzas presionantes que modelan las acciones mecánicas de un fluido sobre la superficie de un objeto sumergido. Fuerza vertical, hacia arriba, de valor igual al peso del volumen de fluido desplazado. 2. π = 45,9×10⁻³ × 9,81 = 4,50×10⁻¹ N; π = 1,97 − 1,52 = 4,50×10⁻¹ N.",
+   "respuesta_numerica": {
+    "valor": 0.45,
+    "unidad": "N",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Método 1: peso del agua desplazada π = m·g = 45,9×10⁻³ × 9,81 = 0,450 N",
+    "Método 2: π = P₁ − P₂ = 1,97 − 1,52 = 0,45 N"
+   ],
+   "pagina_pdf": 369,
+   "corrige_pagina_pdf": 619
+  },
+  {
+   "id": "e4",
+   "enunciado": "Ex. 16 · Tuyau d'arrosage. Manguera de sección S_A (diámetro 25 mm) alimentada por una bomba con v_A = 1,7 m·s⁻¹. 1. a) Calcular el caudal (resultado en L·h⁻¹). b) Duración para llenar un arrosoir de 12 L. 2. Se pellizca el extremo hasta S_B = 2,0 cm²: expresar y calcular la nueva velocidad v_B.",
+   "datos": {
+    "d": "25 mm",
+    "v_A": "1,7 m·s⁻¹",
+    "V_arrosoir": "12 L",
+    "S_B": "2,0 cm²"
+   },
+   "respuesta": "1. a) Q = v·S = 8,3×10⁻⁴ m³·s⁻¹ = 3,0×10³ L·h⁻¹. b) Δt = V/Q = 12/(3,0×10³) h = 14 s. 2. v_A·S_A = v_B·S_B ⇒ v_B = v_A·S_A/S_B ≈ 4,1 m·s⁻¹ (el corrigé da 4,1).",
+   "respuesta_numerica": {
+    "valor": 0.00083,
+    "unidad": "m³·s⁻¹",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "S_A = π·(25×10⁻³/2)² = 4,9×10⁻⁴ m²",
+    "Q = v_A·S_A = 8,3×10⁻⁴ m³/s = 3,0×10³ L/h",
+    "Δt = 12 L / (0,83 L/s) ≈ 14 s",
+    "v_B = v_A·S_A/S_B = 1,7 × 4,9/2,0 ≈ 4,1 m/s"
+   ],
+   "pagina_pdf": 370,
+   "corrige_pagina_pdf": 619
+  },
+  {
+   "id": "e5",
+   "enunciado": "Ex. 19 · Écoulement sans frottement. Agua en flujo entre las posiciones 1 (z₁ = 6,5 m; P₁ = 1,0×10⁵ Pa; v₁ = 1,0 m·s⁻¹) y 2 (z₂ = 3,0 m; v₂ = 4,5×10⁻¹ m·s⁻¹) de una misma línea de corriente. 1. Aplicar Bernoulli. 2. Dar la expresión literal de P₂ y calcular su valor.",
+   "datos": {
+    "ρ_eau": "1,0×10³ kg·m⁻³",
+    "g": "9,81 N·kg⁻¹",
+    "P₁": "1,0×10⁵ Pa",
+    "v₁": "1,0 m·s⁻¹",
+    "v₂": "4,5×10⁻¹ m·s⁻¹",
+    "z₁": "6,5 m",
+    "z₂": "3,0 m"
+   },
+   "respuesta": "1. P₁ + ½ρv₁² + ρgz₁ = P₂ + ½ρv₂² + ρgz₂. 2. P₂ = P₁ + ½ρ(v₁² − v₂²) + ρg(z₁ − z₂) ; AN: P₂ ≈ 1,3×10⁵ Pa.",
+   "respuesta_numerica": {
+    "valor": 134700,
+    "unidad": "Pa",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Escribir Bernoulli entre 1 y 2",
+    "Despejar P₂ = P₁ + ½ρ(v₁² − v₂²) + ρg(z₁ − z₂)",
+    "½ρ(v₁² − v₂²) = 4,0×10² Pa; ρg(z₁ − z₂) = 3,4×10⁴ Pa",
+    "P₂ ≈ 1,35×10⁵ Pa ≈ 1,3×10⁵ Pa"
+   ],
+   "pagina_pdf": 371,
+   "corrige_pagina_pdf": 619
+  },
+  {
+   "id": "e6",
+   "enunciado": "Ex. 22 · Rétrécissement d'un écoulement. Fluido incompresible ρ = 825 kg·m⁻³ en un tubo de corriente que se estrecha; v_A = 4,5 m·s⁻¹, P_A = 1002 hPa, P_B = 987 hPa. 1. ¿En qué sección (S_A o S_B) es mayor la velocidad? Justificar. 2. a) Aplicar Bernoulli entre A y B (misma línea de corriente). b) Deducir v_B y comprobar que valida la respuesta de 1.",
+   "datos": {
+    "ρ": "825 kg·m⁻³",
+    "v_A": "4,5 m·s⁻¹",
+    "P_A": "1002 hPa",
+    "P_B": "987 hPa"
+   },
+   "respuesta": "1. Si P_B < P_A entonces v_B > v_A (principio de Venturi): la velocidad es mayor en S_B. 2. a) P_A + ½ρv_A² = P_B + ½ρv_B². b) v_B = √(2(P_A − P_B)/ρ + v_A²) = 4,9 m·s⁻¹. El resultado valida la respuesta de 1.",
+   "respuesta_numerica": {
+    "valor": 4.9,
+    "unidad": "m·s⁻¹",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Misma altitud: P_A + ½ρv_A² = P_B + ½ρv_B²",
+    "v_B² = v_A² + 2(P_A − P_B)/ρ = 20,25 + 3,64 = 23,9",
+    "v_B = 4,9 m/s > v_A = 4,5 m/s"
+   ],
+   "pagina_pdf": 371,
+   "corrige_pagina_pdf": 619
+  },
+  {
+   "id": "e7",
+   "enunciado": "Ex. 27 · Le ludion. Bola de caucho (A) con aire, cerrada y estanca, unida a una bola (B) de volumen V_B = 1,8 cm³, en una probeta llena de agua cerrada por una membrana; el ludion está en equilibrio en la superficie del agua. m_L = 6,8 g; ρ_eau = 1000 kg·m⁻³; g = 9,8 m·s⁻². 1. a) Establecer la expresión literal del volumen de aire V_A en equilibrio. b) Calcularlo. 2. Al apretar la membrana, ¿cómo evoluciona V_A? Explicar por qué el ludion desciende.",
+   "datos": {
+    "m_L": "6,8 g",
+    "V_B": "1,8 cm³",
+    "ρ_eau": "1000 kg·m⁻³",
+    "g": "9,8 m·s⁻²"
+   },
+   "respuesta": "1. a) En equilibrio, P y π se compensan: m_L·g = ρ_eau·(V_A + V_B)·g, es decir V_A = m_L/ρ_eau − V_B. b) V_A = 5,0 cm³. 2. V_A del aire disminuye (la presión del agua aumenta); entonces π disminuye y se vuelve inferior al peso: el ludion desciende.",
+   "respuesta_numerica": {
+    "valor": 5.0,
+    "unidad": "cm³",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Equilibrio: π = P ⇒ ρ_eau·(V_A + V_B)·g = m_L·g",
+    "V_A = m_L/ρ_eau − V_B = 6,8 cm³ − 1,8 cm³",
+    "V_A = 5,0 cm³"
+   ],
+   "pagina_pdf": 373,
+   "corrige_pagina_pdf": 619
+  },
+  {
+   "id": "e8",
+   "enunciado": "Ex. 29 · Fontaine à eau. Una pompa alimenta una fuente con caudal 1 m³ por minuto; la canalización tiene 80 mm de diámetro y el orificio de la tobera 25 mm, orientada verticalmente. 1. a) Calcular v_A de eyección del agua. b) ¿Presión y velocidad en la cima del chorro? 2. a) Bernoulli entre el orificio y la cima del chorro. b) Expresión literal de la altura h y valor. c) ¿Por qué la altura real es menor? d) ¿Cómo aumentarla?",
+   "datos": {
+    "Q": "1 m³·min⁻¹",
+    "d_canalización": "80 mm",
+    "d_tobera": "25 mm",
+    "P_atm": "1013 hPa",
+    "g": "9,8 m·s⁻²"
+   },
+   "respuesta": "1. a) v_A = Q/S = 3,4×10¹ m·s⁻¹. b) En la cima P = P_atm y v = 0 m·s⁻¹. 2. a) P_A + ½ρv_A² + ρgz_A = P_S + ½ρv_S² + ρgz_S. b) Con z_A = 0, v_S = 0, P_S = P_A = P_atm: h = v_A²/(2g) ≈ 5,9×10¹ m. c) El valor se calcula despreciando los rozamientos del aire sobre el chorro. d) Hay que reducir el diámetro de la tobera para aumentar la velocidad de eyección.",
+   "respuesta_numerica": {
+    "valor": 59,
+    "unidad": "m",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Q = 1/60 = 1,67×10⁻² m³/s; S = π·(25×10⁻³/2)² = 4,9×10⁻⁴ m²",
+    "v_A = Q/S = 34 m/s",
+    "Bernoulli: ½ρv_A² = ρgh",
+    "h = v_A²/(2g) = 34²/(2×9,8) ≈ 59 m"
+   ],
+   "pagina_pdf": 374,
+   "corrige_pagina_pdf": 619
+  },
+  {
+   "id": "e9",
+   "enunciado": "Ex. 35 · VMC. Una ventilación mecánica controlada recicla el aire de una habitación de 25 m³ cada 10 min. 1. Calcular la velocidad del aire que atraviesa una sección de la funda de 200 mm de diámetro interior. 2. En conductos horizontales se registra la presión del aire en función de v² (P decrece linealmente de ≈1021 hPa con v²). a) ¿Qué función elegir? b) ¿Qué es la ordenada en el origen y su valor? c) ¿Es coherente con Bernoulli?",
+   "datos": {
+    "V_habitación": "25 m³",
+    "Δt": "10 min",
+    "d_funda": "200 mm"
+   },
+   "respuesta": "1. Q = V/Δt = S·v ⇒ v = V/(S·Δt) ≈ 1,3 m·s⁻¹. 2. a) Una función afín. b) Ordenada en el origen: la presión del fluido en reposo, P = 1021 hPa. c) P + ½ρv² = k = cte, es decir P = k − ½ρ·v²: función afín decreciente de coeficiente director −½ρ; es coherente con el modelo de Bernoulli.",
+   "respuesta_numerica": {
+    "valor": 1.3,
+    "unidad": "m·s⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Q = 25 m³ / 600 s = 4,2×10⁻² m³/s",
+    "S = π·(0,200/2)² = 3,14×10⁻² m²",
+    "v = Q/S ≈ 1,3 m/s",
+    "P = k − ½ρv²: recta decreciente de pendiente −ρ/2"
+   ],
+   "pagina_pdf": 376,
+   "corrige_pagina_pdf": 619
+  },
+  {
+   "id": "e10",
+   "enunciado": "Ex. 40 · Anévrisme de l'aorte (SVT, résolution de problème). Una aorta normal (diámetro 2 cm, caudal sanguíneo 5 L·min⁻¹, presión media 9,3 cm Hg) se dilata localmente (anévrisme, diámetro 5,0 cm). Preguntas preliminares: efecto del aumento del diámetro sobre a) el caudal, b) la velocidad de la sangre, c) la presión. Estimar los nuevos valores. Datos: 1,0 mm Hg = 133,3 Pa; ρ_sang = 1061 kg·m⁻³; g = 9,81 N·kg⁻¹.",
+   "datos": {
+    "Q": "5 L·min⁻¹",
+    "d_aorta": "2 cm",
+    "d_anévrisme": "5,0 cm",
+    "ρ_sang": "1061 kg·m⁻³"
+   },
+   "respuesta": "a) El caudal volumétrico sanguíneo se conserva (Q = 5,0 L·min⁻¹ = 8,3×10⁻⁵ m³·s⁻¹). b) La velocidad disminuye en el anévrisme. c) La presión aumenta en el anévrisme. Corrigé: v_aorta = Q/S = 2,7×10⁻¹ m·s⁻¹ (S = 3,1×10⁻⁴ m²) y v_anévrisme = 4,2×10⁻² m·s⁻¹ (S = 2,0×10⁻³ m²); la presión sanguínea aumenta en el anévrisme (el libro da un aumento de 9,3 a 10,1 cm Hg).",
+   "respuesta_numerica": null,
+   "pasos": [
+    "S_aorta = π·(1 cm)² = 3,1×10⁻⁴ m²; S_anév = π·(2,5 cm)² = 2,0×10⁻³ m²",
+    "v = Q/S: 2,7×10⁻¹ m/s en la aorta y 4,2×10⁻² m/s en el anévrisme",
+    "Bernoulli: v disminuye ⇒ P aumenta (efecto Venturi)"
+   ],
+   "pagina_pdf": 379,
+   "corrige_pagina_pdf": 620
+  },
+  {
+   "id": "e11",
+   "enunciado": "Ex. 7 (Exercices de synthèse) · Fontaine avec son jet d'eau, 2.ª parte: «Débit volumique du jet». Depósito a cielo abierto (nivel constante) a H = 15,0 m sobre la salida C; canalización de radio r₁ = 450 mm; jet-réducteur de radio r₂ = 55,0 mm; cuenca de volumen V = 40 m³; g = 9,80 N·kg⁻¹. a) Aplicando Bernoulli, establecer v₂ en C y verificar que vale 17,1 m·s⁻¹. b) Deducir v₁ por conservación del caudal. c) Caudal Q_v del chorro. d) ¿Durante cuánto tiempo Δt hasta que la cuenca (vacía) se desborde?",
+   "datos": {
+    "H": "15,0 m",
+    "r₁": "450 mm",
+    "r₂": "55,0 mm",
+    "V_cuenca": "40 m³",
+    "g": "9,80 N·kg⁻¹"
+   },
+   "respuesta": "(Sin corrigé en el libro: resultado calculado con las relaciones del cours.) a) A (superficie libre: v ≈ 0, P_atm) y C (P_atm): ρ·g·H = ½ρ·v₂² ⇒ v₂ = √(2gH) = 17,1 m·s⁻¹. b) v₁ = v₂·r₂²/r₁² = 0,256 m·s⁻¹. c) Q_v = v₂·π·r₂² = 0,163 m³·s⁻¹. d) Δt = V/Q_v ≈ 2,5×10² s (≈ 4 min).",
+   "respuesta_numerica": {
+    "valor": 245,
+    "unidad": "s",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "v₂ = √(2·9,80·15,0) = 17,1 m/s",
+    "S₂ = π·(55,0×10⁻³)² = 9,50×10⁻³ m²; Q_v = v₂·S₂ = 0,163 m³/s",
+    "v₁ = Q_v/S₁ = 0,256 m/s",
+    "Δt = 40 / 0,163 ≈ 245 s"
+   ],
+   "pagina_pdf": 393,
+   "corrige_pagina_pdf": 0
+  },
+  {
+   "id": "e12",
+   "enunciado": "Ex. 1 (Exercices de synthèse, resuelto) · Saturne, ses satellites, ses anneaux. Tabla de satélites (Janus: T = 17 h 58 min, r = 159 000 km, etc.), G = 6,67×10⁻¹¹ m³·kg⁻¹·s⁻². 2. Demostrar v² = G·M_S/r. 3. Con T² = k·r³, hallar k en función de M_S. 4. Con los datos de un satélite, deducir la masa de Saturno. 5. ¿Se conserva el alineamiento de dos elementos A y B de los anillos (inicialmente alineados con Saturno)?",
+   "datos": {
+    "G": "6,67×10⁻¹¹ m³·kg⁻¹·s⁻²",
+    "Janus: r": "159×10⁶ m",
+    "Janus: T": "17 h 58 min = 64 680 s"
+   },
+   "respuesta": "2. Con la 2.ª ley de Newton y la fuerza de gravitación: m·v²/r = G·M_S·m/r² ⇒ v² = G·M_S/r. 3. T = 2πr/v ⇒ T²/r³ = 4π²/(G·M_S) = k, con k = 4π²/(G·M_S). 4. M_S = 4π²·r³/(G·T²) = 5,73×10²⁶ kg (con Janus). 5. r_A ≠ r_B implica períodos distintos: no permanecerán alineados.",
+   "respuesta_numerica": {
+    "valor": 5.73e+26,
+    "unidad": "kg",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Referencial saturnocéntrico supuesto galileano",
+    "v² = G·M_S/r y T = 2πr/v",
+    "T²/r³ = 4π²/(G·M_S)",
+    "M_S = 4π²·(159×10⁶)³ / (6,67×10⁻¹¹ × 64680²) = 5,73×10²⁶ kg"
+   ],
+   "pagina_pdf": 382,
+   "corrige_pagina_pdf": 382
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "arquimedes",
+   "params": {
+    "rho": 1000
+   },
+   "titulo": "Empuje de Arquímedes y peso aparente",
+   "relacion": "Ilustra π = ρ_f·V·g y el peso aparente P₂ = P₁ − π (f3–f5)."
+  },
+  {
+   "preset": "bernoulli",
+   "params": {
+    "S1": 30,
+    "S2": 10
+   },
+   "titulo": "Continuidad y efecto Venturi",
+   "relacion": "Q = v·S se conserva (f7–f8) y P + ½ρv² + ρgz = cte (f9–f11): al estrecharse el tubo sube v y baja P."
+  },
+  {
+   "preset": "torricelli",
+   "params": {},
+   "titulo": "Velocidad de salida del agua",
+   "relacion": "Bernoulli entre la superficie libre y la salida: v = √(2gh) (f12)."
+  },
+  {
+   "preset": "generico",
+   "params": {
+    "expr": "rho*9.81*x",
+    "xmin": 0,
+    "xmax": 15,
+    "vars": {
+     "rho": {
+      "min": 700,
+      "max": 1100,
+      "step": 10,
+      "def": 1000,
+      "label": "Masa volúmica ρ",
+      "unit": "kg/m³"
+     }
+    }
+   },
+   "titulo": "Presión en función de la profundidad",
+   "relacion": "Ley fundamental de la estática de fluidos ΔP = ρ·g·Δz (f2), origen del empuje."
+  },
+  {
+   "preset": "generico",
+   "params": {
+    "expr": "P0 - 0.5*rho*x*x",
+    "xmin": 0,
+    "xmax": 6,
+    "vars": {
+     "P0": {
+      "min": 90000,
+      "max": 110000,
+      "step": 500,
+      "def": 102100,
+      "label": "Presión en reposo P₀",
+      "unit": "Pa"
+     },
+     "rho": {
+      "min": 1,
+      "max": 1000,
+      "step": 1,
+      "def": 1.184,
+      "label": "Masa volúmica ρ",
+      "unit": "kg/m³"
+     }
+    }
+   },
+   "titulo": "P = P₀ − ½ρv² (efecto Venturi)",
+   "relacion": "Gráfica de P frente a v (ex. 35): a altitud constante la presión baja al aumentar la velocidad (f11)."
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "laboratorio-neon",
+  "mecanica_especial": "Corrientes de fluido: zonas de campo horizontales que empujan (más fuertes en los «estrechamientos» tipo Venturi), una zona de empuje de Arquímedes que reduce el peso aparente, gravedad reducida por flotabilidad, plataformas móviles oscilantes y un resorte-chorro de agua que lanza hacia arriba."
+ },
+ "estilo_intro_sugerido": "monigotes"
+}

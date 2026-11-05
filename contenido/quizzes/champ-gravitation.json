@@ -1,0 +1,326 @@
+{
+ "capitulo_id": "champ-gravitation",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "opcion",
+   "enunciado": "Les planètes du système solaire décrivent une ellipse dans le référentiel :",
+   "opciones": [
+    "géocentrique",
+    "terrestre",
+    "héliocentrique",
+    "lié à la planète elle-même"
+   ],
+   "correcta": 2,
+   "explicacion": "La 1re loi de Kepler est énoncée dans le référentiel héliocentrique, centré sur le Soleil.",
+   "pagina_pdf": 344
+  },
+  {
+   "id": "q2",
+   "tipo": "opcion",
+   "enunciado": "D'après la 1re loi de Kepler, le Soleil est situé :",
+   "opciones": [
+    "au centre de l'ellipse",
+    "à l'un des foyers de l'ellipse",
+    "sur l'orbite",
+    "au sommet du petit axe"
+   ],
+   "correcta": 1,
+   "explicacion": "L'orbite d'une planète est une ellipse dont le Soleil occupe l'un des foyers.",
+   "pagina_pdf": 340
+  },
+  {
+   "id": "q3",
+   "tipo": "opcion",
+   "enunciado": "La troisième loi de Kepler s'écrit :",
+   "opciones": [
+    "T³ = k·a²",
+    "T² = k·a³",
+    "k = a³/T²",
+    "T = k·a"
+   ],
+   "correcta": 1,
+   "explicacion": "Le carré de la période est proportionnel au cube du demi-grand axe : T²/a³ = k.",
+   "pagina_pdf": 344
+  },
+  {
+   "id": "q4",
+   "tipo": "opcion",
+   "enunciado": "On considère une planète en orbite autour du Soleil. Les aires 𝒜₁, 𝒜₂ et 𝒜₃ balayées pendant trois durées Δt égales sont :",
+   "opciones": [
+    "égales entre elles",
+    "différentes : la plus grande est celle près du périhélie",
+    "égales seulement pour 𝒜₁ et 𝒜₂",
+    "proportionnelles à la distance au Soleil"
+   ],
+   "correcta": 0,
+   "explicacion": "2e loi de Kepler : des aires égales sont balayées pendant des durées égales.",
+   "pagina_pdf": 344
+  },
+  {
+   "id": "q5",
+   "tipo": "opcion",
+   "enunciado": "Dans le cas d'une orbite circulaire, quelle affirmation est vraie ?",
+   "opciones": [
+    "L'accélération est nulle",
+    "L'accélération est radiale, centripète et constante en valeur",
+    "La vitesse augmente vers le périhélie",
+    "L'accélération est tangente à la trajectoire"
+   ],
+   "correcta": 1,
+   "explicacion": "Pour un mouvement circulaire uniforme a = v²/r est dirigée vers le centre (radiale, centripète) ; elle n'est pas nulle.",
+   "pagina_pdf": 341
+  },
+  {
+   "id": "q6",
+   "tipo": "opcion",
+   "enunciado": "Quelle est l'expression de la vitesse d'un satellite sur une orbite circulaire de rayon r autour d'un astre de masse M ?",
+   "opciones": [
+    "v = √(r/(G·M))",
+    "v = √(G·M/r)",
+    "v = G·M/r²",
+    "v = (G·M·r)²"
+   ],
+   "correcta": 1,
+   "explicacion": "De a = G·M/r² = v²/r on obtient v = √(G·M/r), indépendante de la masse du satellite.",
+   "pagina_pdf": 341
+  },
+  {
+   "id": "q7",
+   "tipo": "opcion",
+   "enunciado": "Un satellite géostationnaire est un satellite :",
+   "opciones": [
+    "dont la période de révolution est celle d'un jour solaire, sur n'importe quelle orbite",
+    "placé à environ 36 000 km d'altitude dans le plan équatorial terrestre",
+    "qui reste au-dessus du pôle Nord",
+    "dont l'orbite est elliptique et polaire"
+   ],
+   "correcta": 1,
+   "explicacion": "Un satellite géostationnaire est immobile au-dessus d'un point de l'équateur : il est dans le plan équatorial à environ 36 000 km d'altitude, avec la période sidérale de la Terre.",
+   "pagina_pdf": 342
+  },
+  {
+   "id": "q8",
+   "tipo": "opcion",
+   "enunciado": "La période de révolution d'un satellite géostationnaire correspond à :",
+   "opciones": [
+    "la période sidérale de la Terre",
+    "la période de rotation de la Lune",
+    "un jour solaire moyen",
+    "l'année terrestre"
+   ],
+   "correcta": 0,
+   "explicacion": "Il tourne comme la Terre : la période est la période de rotation sidérale (23 h 56 min 4 s).",
+   "pagina_pdf": 344
+  },
+  {
+   "id": "q9",
+   "tipo": "opcion",
+   "enunciado": "De quoi dépend la constante k = 4π²/(G·M) de la 3e loi de Kepler ?",
+   "opciones": [
+    "De la masse du satellite",
+    "De la masse de l'astre attracteur seulement",
+    "Du demi-grand axe de l'orbite",
+    "De l'excentricité de l'orbite"
+   ],
+   "correcta": 1,
+   "explicacion": "k = 4π²/(G·M) : seule la masse M de l'astre attracteur intervient.",
+   "pagina_pdf": 340
+  },
+  {
+   "id": "q10",
+   "tipo": "opcion",
+   "enunciado": "Un satellite passe d'une orbite circulaire de rayon r à une orbite circulaire de rayon plus petit autour du même astre. Que devient sa vitesse ?",
+   "opciones": [
+    "Elle diminue",
+    "Elle reste la même",
+    "Elle augmente",
+    "Elle s'annule"
+   ],
+   "correcta": 2,
+   "explicacion": "v = √(G·M/r) : si r diminue, v augmente (et la période T = 2π√(r³/(G·M)) diminue).",
+   "pagina_pdf": 341
+  },
+  {
+   "id": "q11",
+   "tipo": "opcion",
+   "enunciado": "Pour un satellite de la Terre, l'altitude h et le rayon d'orbite r sont liés par :",
+   "opciones": [
+    "r = h − R_T",
+    "r = R_T + h",
+    "r = R_T × h",
+    "r = h"
+   ],
+   "correcta": 1,
+   "explicacion": "L'altitude est prise par rapport à la surface de l'astre : il faut ajouter le rayon de l'astre attracteur, r = R_T + h.",
+   "pagina_pdf": 341
+  },
+  {
+   "id": "q12",
+   "tipo": "numerico",
+   "enunciado": "Un satellite orbite autour de la Terre sur une trajectoire circulaire de rayon r = 7,23×10⁶ m (M_T = 5,97×10²⁴ kg, G = 6,67×10⁻¹¹ SI). Calculer sa période de révolution T.",
+   "valor": 6121.0,
+   "unidad": "s",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "T = 2π√(r³/(G·M_T))",
+    "r³ = (7,23×10⁶)³ = 3,78×10²⁰ m³",
+    "T = 2π√(3,78×10²⁰ / (6,67×10⁻¹¹ × 5,97×10²⁴))",
+    "T ≈ 6,12×10³ s (1,70 h)"
+   ],
+   "pagina_pdf": 342
+  },
+  {
+   "id": "q13",
+   "tipo": "numerico",
+   "enunciado": "Satellite à l'altitude h = 800 km (R_T = 6,4×10³ km, M_T = 5,97×10²⁴ kg). Quelle est sa période de révolution ?",
+   "valor": 6083.0,
+   "unidad": "s",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "r = R_T + h = 6,4×10⁶ + 0,8×10⁶ = 7,2×10⁶ m",
+    "T = 2π√(r³/(G·M_T))",
+    "T ≈ 6,08×10³ s"
+   ],
+   "pagina_pdf": 344
+  },
+  {
+   "id": "q14",
+   "tipo": "numerico",
+   "enunciado": "Cérès : distance à l'aphélie 4,47×10⁸ km, au périhélie 3,81×10⁸ km ; a_T = 1,50×10⁸ km et T_T = 365,25 jours. Avec la 3e loi de Kepler, calculer la période de révolution de Cérès (en jours).",
+   "valor": 1675.0,
+   "unidad": "jours",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 3,
+   "pasos": [
+    "a_C = (4,47×10⁸ + 3,81×10⁸)/2 = 4,14×10⁸ km",
+    "T_C²/a_C³ = T_T²/a_T³",
+    "T_C = T_T·√((a_C/a_T)³) = 365,25 × 4,59",
+    "T_C ≈ 1,67×10³ jours"
+   ],
+   "pagina_pdf": 345
+  },
+  {
+   "id": "q15",
+   "tipo": "numerico",
+   "enunciado": "Un satellite de Jupiter a un rayon orbital r = 6,7×10⁵ km et une période T = 3 j 13 h 14 min = 306 840 s. Calculer la masse de Jupiter avec T²/r³ = 4π²/(G·M) (G = 6,67×10⁻¹¹ SI).",
+   "valor": 1.89e+27,
+   "unidad": "kg",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "M = 4π²·r³/(G·T²)",
+    "M = 4π²×(6,7×10⁸)³ / (6,67×10⁻¹¹ × 306 840²)",
+    "M ≈ 1,9×10²⁷ kg"
+   ],
+   "pagina_pdf": 351
+  },
+  {
+   "id": "q16",
+   "tipo": "numerico",
+   "enunciado": "Sonde MOM en orbite elliptique autour de Mars : périapside h₁ = 422 km, apoapside h₂ = 76 994 km, R_M = 3 390 km. Calculer le demi-grand axe a (en km).",
+   "valor": 42098.0,
+   "unidad": "km",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "2a = h₁ + 2R_M + h₂",
+    "a = (422 + 2×3 390 + 76 994)/2",
+    "a ≈ 4,21×10⁴ km"
+   ],
+   "pagina_pdf": 349
+  },
+  {
+   "id": "q17",
+   "tipo": "numerico",
+   "enunciado": "Comète Hale-Bopp : demi-grand axe a = 186 U.A. (1 U.A. = 1,50×10¹¹ m), M_S = 2,0×10³⁰ kg. Calculer sa période de révolution (en années, 1 an = 3,156×10⁷ s).",
+   "valor": 2540.0,
+   "unidad": "ans",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "a = 186 × 1,50×10¹¹ = 2,79×10¹³ m",
+    "T = √(4π²a³/(G·M_S)) ≈ 8,0×10¹⁰ s",
+    "T ≈ 2,5×10³ ans"
+   ],
+   "pagina_pdf": 349
+  },
+  {
+   "id": "q18",
+   "tipo": "numerico",
+   "enunciado": "Satellite géostationnaire (T = 86 204 s comme dans le cours, M_T = 5,97×10²⁴ kg, R_T = 6,37×10⁶ m) : calculer son altitude h (en m).",
+   "valor": 35790000.0,
+   "unidad": "m",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "h = (T²·G·M_T/(4π²))^(1/3) − R_T",
+    "(T²·G·M_T/(4π²))^(1/3) ≈ 4,22×10⁷ m",
+    "h ≈ 3,6×10⁷ m (≈ 36 000 km)"
+   ],
+   "pagina_pdf": 342
+  },
+  {
+   "id": "q19",
+   "tipo": "numerico",
+   "enunciado": "Station spatiale à l'altitude de 430 km (M = 5,98×10²⁴ kg, R_T = 6,37×10³ km). Calculer la vitesse v de la station sur son orbite circulaire.",
+   "valor": 7659.0,
+   "unidad": "m·s⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "r = 6,37×10⁶ + 0,43×10⁶ = 6,80×10⁶ m",
+    "v = √(G·M/r) = √(6,67×10⁻¹¹ × 5,98×10²⁴ / 6,80×10⁶)",
+    "v ≈ 7,66×10³ m·s⁻¹ (≈ 27 600 km/h)"
+   ],
+   "pagina_pdf": 350
+  },
+  {
+   "id": "q20",
+   "tipo": "numerico",
+   "enunciado": "Pour le système solaire (M_S = 1,99×10³⁰ kg), calculer la constante k = T²/r³ = 4π²/(G·M_S).",
+   "valor": 2.97e-19,
+   "unidad": "s²·m⁻³",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 3,
+   "pasos": [
+    "k = 4π²/(G·M_S)",
+    "k = 39,48 / (6,67×10⁻¹¹ × 1,99×10³⁰)",
+    "k ≈ 2,97×10⁻¹⁹ s²·m⁻³ (le corrigé trouve ≈ 2,95×10⁻¹⁹)"
+   ],
+   "pagina_pdf": 346
+  },
+  {
+   "id": "q21",
+   "tipo": "numerico",
+   "enunciado": "« Faire le point » : un satellite est à 1,0×10³ km du centre de sa planète avec une période de 15 jours. Un second satellite de la même planète a une période de 24 jours. À quelle distance du centre de la planète est-il (en km) ?",
+   "valor": 1368.0,
+   "unidad": "km",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "T₁²/r₁³ = T₂²/r₂³ (même astre attracteur)",
+    "r₂ = r₁·(T₂/T₁)^(2/3) = 1,0×10³ × (24/15)^(2/3)",
+    "r₂ ≈ 1,4×10³ km"
+   ],
+   "pagina_pdf": 347
+  },
+  {
+   "id": "q22",
+   "tipo": "numerico",
+   "enunciado": "Capsule Apollo à h = 110 km de la Lune (R_L = 1 737 km, M_L = 7,34×10²² kg). Calculer sa vitesse v = √(G·M_L/(R_L+h)).",
+   "valor": 1628.0,
+   "unidad": "m·s⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "r = R_L + h = 1 847 km = 1,847×10⁶ m",
+    "v = √(6,67×10⁻¹¹ × 7,34×10²² / 1,847×10⁶)",
+    "v ≈ 1,63×10³ m·s⁻¹"
+   ],
+   "pagina_pdf": 355
+  }
+ ]
+}

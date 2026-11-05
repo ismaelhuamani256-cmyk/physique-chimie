@@ -1,0 +1,360 @@
+{
+ "titulo": "El perro aeronauta y el gas perfecto",
+ "estilo": "fisica3d",
+ "duracion_seg": 29,
+ "actores": [
+  {
+   "id": "perro",
+   "tipo": "perro",
+   "pos": [
+    0.2,
+    0.8
+   ],
+   "color": "#c8895a",
+   "escala": 0.9
+  },
+  {
+   "id": "globo",
+   "tipo": "bola",
+   "pos": [
+    0.2,
+    0.7
+   ],
+   "color": "#ff7a1a",
+   "escala": 2.2
+  },
+  {
+   "id": "llama",
+   "tipo": "fluido",
+   "pos": [
+    0.2,
+    0.85
+   ],
+   "color": "#ffb703",
+   "escala": 0.8
+  },
+  {
+   "id": "termo",
+   "tipo": "termometro",
+   "pos": [
+    0.88,
+    0.62
+   ],
+   "color": "#e63946",
+   "escala": 1.3
+  },
+  {
+   "id": "m1",
+   "tipo": "molecula",
+   "pos": [
+    0.55,
+    0.3
+   ],
+   "color": "#00d4ff",
+   "escala": 0.7
+  },
+  {
+   "id": "m2",
+   "tipo": "molecula",
+   "pos": [
+    0.65,
+    0.4
+   ],
+   "color": "#00d4ff",
+   "escala": 0.7
+  },
+  {
+   "id": "m3",
+   "tipo": "molecula",
+   "pos": [
+    0.6,
+    0.5
+   ],
+   "color": "#00d4ff",
+   "escala": 0.7
+  },
+  {
+   "id": "pared",
+   "tipo": "bloque",
+   "pos": [
+    0.78,
+    0.4
+   ],
+   "color": "#9aa5b1",
+   "escala": 1.6
+  },
+  {
+   "id": "sol",
+   "tipo": "texto",
+   "pos": [
+    0.5,
+    0.12
+   ],
+   "color": "#ffd166",
+   "escala": 1.0
+  }
+ ],
+ "pasos": [
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "m1"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "m2"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "m3"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "pared"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "sol"
+  },
+  {
+   "t": 0,
+   "accion": "subtitulo",
+   "texto": "Un perro aeronauta quiere subir al cielo en una montgolfière… pero necesita entender el gas."
+  },
+  {
+   "t": 1,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "¡Guau! ¿Y si calentamos el aire?"
+  },
+  {
+   "t": 3,
+   "accion": "particulas",
+   "tipo": "chispas",
+   "pos": [
+    0.2,
+    0.85
+   ]
+  },
+  {
+   "t": 3,
+   "accion": "valor",
+   "id": "T",
+   "desde": 293,
+   "hasta": 373,
+   "dur": 5,
+   "etiqueta": "T (K) del aire del globo"
+  },
+  {
+   "t": 4,
+   "accion": "subtitulo",
+   "texto": "Un gas es un enjambre de partículas muy separadas que se mueven sin parar."
+  },
+  {
+   "t": 5,
+   "accion": "camara",
+   "zoom": 1.5,
+   "centro": [
+    0.65,
+    0.4
+   ],
+   "dur": 2
+  },
+  {
+   "t": 5,
+   "accion": "aparece",
+   "actor": "m1",
+   "dur": 0.5
+  },
+  {
+   "t": 5,
+   "accion": "aparece",
+   "actor": "m2",
+   "dur": 0.5
+  },
+  {
+   "t": 5,
+   "accion": "aparece",
+   "actor": "m3",
+   "dur": 0.5
+  },
+  {
+   "t": 5.5,
+   "accion": "aparece",
+   "actor": "pared",
+   "dur": 0.5
+  },
+  {
+   "t": 6,
+   "accion": "mueve",
+   "actor": "m1",
+   "a": [
+    0.75,
+    0.3
+   ],
+   "dur": 1.5
+  },
+  {
+   "t": 6,
+   "accion": "mueve",
+   "actor": "m2",
+   "a": [
+    0.76,
+    0.4
+   ],
+   "dur": 1.2
+  },
+  {
+   "t": 6,
+   "accion": "mueve",
+   "actor": "m3",
+   "a": [
+    0.75,
+    0.5
+   ],
+   "dur": 1.8
+  },
+  {
+   "t": 7.5,
+   "accion": "particulas",
+   "tipo": "chispas",
+   "pos": [
+    0.77,
+    0.4
+   ]
+  },
+  {
+   "t": 8,
+   "accion": "subtitulo",
+   "texto": "La presión nace de los choques contra las paredes; la temperatura mide su agitación."
+  },
+  {
+   "t": 8,
+   "accion": "vector",
+   "actor": "m2",
+   "dx": 0.1,
+   "dy": 0,
+   "etiqueta": "choque"
+  },
+  {
+   "t": 10,
+   "accion": "formula",
+   "latex": "T = \\theta + 273{,}15"
+  },
+  {
+   "t": 10,
+   "accion": "resalta",
+   "actor": "termo"
+  },
+  {
+   "t": 11,
+   "accion": "subtitulo",
+   "texto": "La temperatura termodinámica va en kelvin; en 0 K ya no hay agitación."
+  },
+  {
+   "t": 13,
+   "accion": "camara",
+   "zoom": 1,
+   "centro": [
+    0.5,
+    0.5
+   ],
+   "dur": 1.5
+  },
+  {
+   "t": 14,
+   "accion": "formula",
+   "latex": "P \\cdot V = n \\cdot R \\cdot T"
+  },
+  {
+   "t": 14,
+   "accion": "subtitulo",
+   "texto": "Gas perfecto: moléculas puntuales sin interacciones salvo los choques. ¡Esa es su ecuación de estado!"
+  },
+  {
+   "t": 16,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "Si T sube a presión constante, el gas se expande."
+  },
+  {
+   "t": 17,
+   "accion": "escala",
+   "actor": "globo",
+   "a": 2.9,
+   "dur": 3
+  },
+  {
+   "t": 17,
+   "accion": "resalta",
+   "actor": "globo"
+  },
+  {
+   "t": 19,
+   "accion": "mueve",
+   "actor": "globo",
+   "a": [
+    0.2,
+    0.3
+   ],
+   "dur": 5
+  },
+  {
+   "t": 19,
+   "accion": "mueve",
+   "actor": "perro",
+   "a": [
+    0.2,
+    0.4
+   ],
+   "dur": 5
+  },
+  {
+   "t": 19,
+   "accion": "vector",
+   "actor": "globo",
+   "dx": 0,
+   "dy": -0.12,
+   "etiqueta": "sube"
+  },
+  {
+   "t": 20,
+   "accion": "subtitulo",
+   "texto": "El aire caliente queda más disperso: su masa volúmica ρ = PM/(RT) baja y el globo despega."
+  },
+  {
+   "t": 22,
+   "accion": "formula",
+   "latex": "\\rho = \\dfrac{P\\cdot M}{R\\cdot T}"
+  },
+  {
+   "t": 24,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "¡Soy un perro de modelos! (Hasta unos pocos bar, claro.)"
+  },
+  {
+   "t": 25,
+   "accion": "particulas",
+   "tipo": "burbujas",
+   "pos": [
+    0.2,
+    0.35
+   ]
+  },
+  {
+   "t": 26,
+   "accion": "subtitulo",
+   "texto": "El gas perfecto es un modelo: vale para gases reales a presiones bajas."
+  },
+  {
+   "t": 28,
+   "accion": "pausa",
+   "dur": 1
+  }
+ ]
+}

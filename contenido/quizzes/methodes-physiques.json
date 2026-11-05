@@ -1,0 +1,229 @@
+{
+ "capitulo_id": "methodes-physiques",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "numerico",
+   "enunciado": "Le pH d'une solution de concentration en ions oxonium [H₃O⁺] = 2,5×10⁻⁹ mol·L⁻¹ est… (donner la valeur, sans unité).",
+   "valor": 8.6,
+   "unidad": "",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "pH = −log([H₃O⁺]/c°) avec c° = 1 mol·L⁻¹",
+    "pH = −log(2,5×10⁻⁹) = 8,6"
+   ],
+   "pagina_pdf": 68
+  },
+  {
+   "id": "q2",
+   "tipo": "numerico",
+   "enunciado": "La concentration en ions oxonium d'une solution de pH = 3,2 vaut… (en mol·L⁻¹).",
+   "valor": 0.00063,
+   "unidad": "mol·L⁻¹",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "[H₃O⁺] = c°×10^(−pH)",
+    "[H₃O⁺] = 10^(−3,2) = 6,3×10⁻⁴ mol·L⁻¹"
+   ],
+   "pagina_pdf": 68
+  },
+  {
+   "id": "q3",
+   "tipo": "numerico",
+   "enunciado": "Préparation d'une solution diluée : une solution d'acide chlorhydrique a [H₃O⁺] = 1,5×10⁻³ mol·L⁻¹ ; on la dilue d'un facteur 100. Quel est le pH de la solution diluée ? (sans unité)",
+   "valor": 4.8,
+   "unidad": "",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "[H₃O⁺]dil = 1,5×10⁻³ / 100 = 1,5×10⁻⁵ mol·L⁻¹",
+    "pH = −log(1,5×10⁻⁵) = 4,8 (le pH initial était 2,8)"
+   ],
+   "pagina_pdf": 69
+  },
+  {
+   "id": "q4",
+   "tipo": "numerico",
+   "enunciado": "Une solution de chlorure de sodium a une concentration c = 1,0×10⁻³ mol·L⁻¹. Avec λ(Na⁺) = 5,0×10⁻³ S·m²·mol⁻¹ et λ(Cl⁻) = 7,6×10⁻³ S·m²·mol⁻¹, calculer sa conductivité σ (en S·m⁻¹).",
+   "valor": 0.0126,
+   "unidad": "S·m⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "c = 1,0×10⁻³ mol·L⁻¹ = 1,0 mol·m⁻³ (×10³)",
+    "σ = (λ(Na⁺)+λ(Cl⁻))·c = (5,0+7,6)×10⁻³ × 1,0 = 1,26×10⁻² S·m⁻¹"
+   ],
+   "pagina_pdf": 66
+  },
+  {
+   "id": "q5",
+   "tipo": "numerico",
+   "enunciado": "Conductance et conductivité : des électrodes de surface S = 1 cm², espacées de ℓ = 9 mm, donnent une conductance G = 1,60 mS. Calculer la conductivité σ de la solution (en S·m⁻¹).",
+   "valor": 0.144,
+   "unidad": "S·m⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "ℓ = 9×10⁻³ m ; S = 1×10⁻⁴ m² ; G = 1,60×10⁻³ S",
+    "σ = (ℓ/S)·G = 90 × 1,60×10⁻³ = 0,144 S·m⁻¹"
+   ],
+   "pagina_pdf": 71
+  },
+  {
+   "id": "q6",
+   "tipo": "numerico",
+   "enunciado": "Dosage conductimétrique (CaCl₂) : la courbe d'étalonnage donne c = 6,8 mmol·L⁻¹ pour la solution diluée 10 fois. Quelle est la concentration c′ de la solution inconnue ? (en mol·L⁻¹)",
+   "valor": 0.068,
+   "unidad": "mol·L⁻¹",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "c′ = 10 × c = 10 × 6,8×10⁻³",
+    "c′ = 0,068 mol·L⁻¹"
+   ],
+   "pagina_pdf": 73
+  },
+  {
+   "id": "q7",
+   "tipo": "numerico",
+   "enunciado": "Pour la même solution de CaCl₂ de concentration apportée c′ = 0,068 mol·L⁻¹, quelle est la concentration en ions chlorure [Cl⁻] ? (en mol·L⁻¹)",
+   "valor": 0.136,
+   "unidad": "mol·L⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "CaCl₂(s) → Ca²⁺(aq) + 2 Cl⁻(aq)",
+    "[Cl⁻] = 2c′ = 0,136 mol·L⁻¹"
+   ],
+   "pagina_pdf": 73
+  },
+  {
+   "id": "q8",
+   "tipo": "numerico",
+   "enunciado": "Une bande d'absorption IR a pour nombre d'onde ν̃ = 3 500 cm⁻¹. Calculer la longueur d'onde correspondante λ (en µm).",
+   "valor": 2.86,
+   "unidad": "µm",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "ν̃ = 1/λ donc λ = 1/ν̃ = 1/3 500 cm = 2,86×10⁻⁴ cm",
+    "1 cm = 10⁴ µm : λ = 2,86 µm (infrarouge, non visible à l'œil nu)"
+   ],
+   "pagina_pdf": 70
+  },
+  {
+   "id": "q9",
+   "tipo": "numerico",
+   "enunciado": "Gamme étalon : solution-mère de concentration 5×10⁻² mol·L⁻¹ ; on prélève V_m = 30 mL pour obtenir V_f = 50 mL de solution-fille. Calculer c_f (en mmol·L⁻¹).",
+   "valor": 30.0,
+   "unidad": "mmol·L⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "La quantité de matière prélevée se conserve : c_m·V_m = c_f·V_f",
+    "c_f = 50×30/50 = 30 mmol·L⁻¹"
+   ],
+   "pagina_pdf": 70
+  },
+  {
+   "id": "q10",
+   "tipo": "numerico",
+   "enunciado": "Un montage conductimétrique impose U = 5 V ; l'intensité mesurée vaut I = 16,5 mA. Calculer la conductance G de la solution (en mS).",
+   "valor": 3.3,
+   "unidad": "mS",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "G = I/U = 16,5×10⁻³ / 5",
+    "G = 3,3×10⁻³ S = 3,3 mS"
+   ],
+   "pagina_pdf": 71
+  },
+  {
+   "id": "q11",
+   "tipo": "opcion",
+   "enunciado": "La spectroscopie infrarouge permet…",
+   "opciones": [
+    "de connaître la formule brute d'une molécule",
+    "de déterminer la pureté d'une espèce",
+    "d'identifier des groupes d'atomes",
+    "de mesurer directement le pH"
+   ],
+   "correcta": 2,
+   "explicacion": "La spectroscopie IR renseigne sur le type de liaisons et donc sur les groupes caractéristiques présents.",
+   "pagina_pdf": 68
+  },
+  {
+   "id": "q12",
+   "tipo": "opcion",
+   "enunciado": "En abscisse d'un spectre IR, on trouve…",
+   "opciones": [
+    "la longueur d'onde en nm",
+    "le nombre d'onde en cm⁻¹",
+    "l'absorbance A",
+    "la fréquence en Hz"
+   ],
+   "correcta": 1,
+   "explicacion": "Un spectre IR représente la transmittance T en fonction du nombre d'onde ν̃ (cm⁻¹).",
+   "pagina_pdf": 64
+  },
+  {
+   "id": "q13",
+   "tipo": "opcion",
+   "enunciado": "Dans le diagramme de Flood de l'acide chlorhydrique, pour de fortes dilutions (zone 3), que vaut le pH ?",
+   "opciones": [
+    "Il continue à augmenter sans limite",
+    "Il vaut 7 car l'eau, solvant, impose son pH",
+    "Il redevient égal à 0",
+    "Il vaut 14"
+   ],
+   "correcta": 1,
+   "explicacion": "Pour de fortes dilutions, l'eau solvant impose son pH = 7 : la relation pH = −log([H₃O⁺]/c°) n'est plus valable.",
+   "pagina_pdf": 63
+  },
+  {
+   "id": "q14",
+   "tipo": "opcion",
+   "enunciado": "La loi de Beer-Lambert A = k·c ne s'applique correctement que si…",
+   "opciones": [
+    "la solution est très concentrée (c > 1 mol·L⁻¹)",
+    "c < 10⁻² mol·L⁻¹, et à la longueur d'onde du maximum d'absorption",
+    "on choisit une longueur d'onde quelconque",
+    "la solution est incolore"
+   ],
+   "correcta": 1,
+   "explicacion": "Il faut se placer à λ_max et que c reste inférieure à 10⁻² mol·L⁻¹ (absorbance suffisamment faible).",
+   "pagina_pdf": 65
+  },
+  {
+   "id": "q15",
+   "tipo": "opcion",
+   "enunciado": "Quelle grandeur doit être exprimée en mol·m⁻³ dans la loi de Kohlrausch σ = Σ λᵢ·[Xᵢ] pour obtenir σ en S·m⁻¹ ?",
+   "opciones": [
+    "La conductance G",
+    "La concentration en ions [Xᵢ]",
+    "La tension U",
+    "La surface S en cm²"
+   ],
+   "correcta": 1,
+   "explicacion": "Le « Repère » du cours : les concentrations en quantité de matière sont exprimées en mol·m⁻³ pour le calcul de la conductivité σ.",
+   "pagina_pdf": 66
+  },
+  {
+   "id": "q16",
+   "tipo": "opcion",
+   "enunciado": "Sur un spectre IR, une bande fine et forte vers 1 720 cm⁻¹ est attribuée au groupe…",
+   "opciones": [
+    "hydroxyle O–H",
+    "carbonyle C=O des cétones",
+    "C–H d'un aldéhyde uniquement",
+    "à une liaison O–H d'acide carboxylique"
+   ],
+   "correcta": 1,
+   "explicacion": "Dans l'exemple de la 5-hydroxypentan-2-one, la bande fine et forte à 1 720 cm⁻¹ est attribuée au groupe carbonyle C=O des cétones (1 705–1 725 cm⁻¹).",
+   "pagina_pdf": 65
+  }
+ ]
+}

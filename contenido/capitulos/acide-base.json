@@ -1,0 +1,730 @@
+{
+ "id": "acide-base",
+ "titulo": "Transformations acide-base",
+ "materia": "chimie",
+ "mundo": "constitucion",
+ "pdf_ini": 34,
+ "pdf_fin": 57,
+ "resumen": "Según Brønsted, un ácido es una especie química capaz de ceder un ion hidrógeno H⁺ y una base una especie capaz de captarlo. Un ácido AH y su base conjugada A⁻ forman un par ácido-base AH/A⁻, descrito por la semiecuación AH = A⁻ + H⁺. Una reacción ácido-base es una transferencia de H⁺ entre el ácido de un par y la base de otro par distinto. El agua y el ion hidrogenocarbonato son anfóteros.",
+ "resumen_fr": "Selon Brønsted, un acide est une espèce chimique capable de céder un ion hydrogène H⁺, une base une espèce capable de capter un ion H⁺. Une transformation acide-base met en jeu deux couples acide-base et se modélise par un transfert d'ion hydrogène H⁺.",
+ "nociones_clave": [
+  {
+   "fr": "Définition de Brønsted (1923)",
+   "es": "Ácido: especie capaz de ceder un ion hidrógeno H⁺ (protón). Base: especie capaz de capturar un ion H⁺. Es la definición que se usa en terminale.",
+   "pagina_pdf": 39
+  },
+  {
+   "fr": "Ion hydrogène H⁺ (proton)",
+   "es": "Átomo de hidrógeno que perdió su único electrón. En disolución no existe libre: está hidratado, formando el ion oxonio H₃O⁺ (H⁺ + H₂O → H₃O⁺). Las ecuaciones con H⁺ son formales.",
+   "pagina_pdf": 39
+  },
+  {
+   "fr": "Écritures formelles",
+   "es": "Las ecuaciones de cesión o captura de H⁺ no son ecuaciones de reacción: solo ponen de manifiesto la liberación o captura, es decir, la transferencia de H⁺.",
+   "pagina_pdf": 39
+  },
+  {
+   "fr": "Acide ≠ solution acide",
+   "es": "No confundir un ácido (especie química) con una disolución ácida: una disolución con una especie ácida puede ser ácida o básica según la cantidad introducida y las demás especies presentes.",
+   "pagina_pdf": 39
+  },
+  {
+   "fr": "Couple acide-base AH / A⁻",
+   "es": "Dos especies que se transforman una en otra por intercambio de un H⁺ son conjugadas. AH cede H⁺ y da A⁻; A⁻ capta H⁺ y da AH. Se describe con la semiecuación ácido-base AH = A⁻ + H⁺.",
+   "pagina_pdf": 39
+  },
+  {
+   "fr": "Demi-équation acide-base",
+   "es": "Se escribe con signo = porque puede leerse en ambos sentidos (de izquierda a derecha el ácido cede H⁺; de derecha a izquierda la base lo capta).",
+   "pagina_pdf": 39
+  },
+  {
+   "fr": "Couples de l'eau",
+   "es": "El agua pertenece a dos pares: H₃O⁺(aq)/H₂O(ℓ) (el agua es la base) y H₂O(ℓ)/HO⁻(aq) (el agua es el ácido).",
+   "pagina_pdf": 40
+  },
+  {
+   "fr": "Espèce amphotère",
+   "es": "Especie que se comporta como ácido o como base según las especies presentes: es el ácido de un par y la base de otro. Ejemplos: H₂O y HCO₃⁻.",
+   "pagina_pdf": 40
+  },
+  {
+   "fr": "Couple du dioxyde de carbone dissous",
+   "es": "CO₂(aq),H₂O(ℓ)/HCO₃⁻(aq); se prefiere esta notación a H₂CO₃(aq), porque la molécula H₂CO₃ es poco estable y se deshidrata fácilmente. HCO₃⁻ forma además el par HCO₃⁻(aq)/CO₃²⁻(aq).",
+   "pagina_pdf": 40
+  },
+  {
+   "fr": "Acides carboxyliques RCO₂H / ion carboxylate RCO₂⁻",
+   "es": "El ácido carboxílico (grupo carboxilo) cede H⁺ y da el ion carboxilato. La base conjugada se nombra cambiando la terminación -oïque del ácido por -oate (ácido butanoico / ion butanoato). El O que queda con un doblete no ligante extra lleva carga negativa.",
+   "pagina_pdf": 41
+  },
+  {
+   "fr": "Amines R-NH₂ : bases",
+   "es": "Las aminas (NH₃ con 1, 2 o 3 H sustituidos por grupos alquilo R) tienen un doblete no ligante en el N y captan H⁺: son bases. El ácido conjugado se nombra cambiando -amine por -ammonium (metanamina / ion metanamonio) y el N queda con carga positiva.",
+   "pagina_pdf": 41
+  },
+  {
+   "fr": "Doublets liants et non liants",
+   "es": "Para dibujar el esquema de Lewis de un par ácido-base se cuentan los dobletes: H 1 liante y 0 no liantes; C 4 y 0; N 3 y 1; O 2 y 2. Al ceder H⁺, el doblete liante O–H pasa a doblete no liante del O; al captar H⁺, el doblete no liante del N pasa a doblete liante.",
+   "pagina_pdf": 41
+  },
+  {
+   "fr": "Réaction acide-base",
+   "es": "Una transformación química ácido-base pone en juego dos pares ácido-base diferentes: el ácido A₁H del primer par cede un H⁺ a la base A₂⁻ del segundo par. Se modela como una transferencia de ion hidrógeno H⁺.",
+   "pagina_pdf": 42
+  },
+  {
+   "fr": "Double flèche ⇌",
+   "es": "La doble flecha indica que la transformación no siempre es total. Ejemplo: ácido etanoico + agua no es total; HCl(g) + agua sí es total (flecha simple).",
+   "pagina_pdf": 42
+  },
+  {
+   "fr": "Ion spectateur",
+   "es": "Ion que no participa en la reacción química (p. ej. Cl⁻ y Na⁺ en la observación de NH₄⁺ + HO⁻).",
+   "pagina_pdf": 37
+  },
+  {
+   "fr": "Solution acide, basique, neutre; pH",
+   "es": "Una disolución es ácida si contiene más H₃O⁺ que HO⁻, básica si contiene menos, neutra si contiene igual cantidad. A 25 °C el pH (sin unidad) va de 0 a 14: ácida < 7, neutra = 7, básica > 7.",
+   "pagina_pdf": 34
+  },
+  {
+   "fr": "Évolution historique des définitions",
+   "es": "Boyle (1650): sabor agrio, enrojece el tornasol. Arrhenius (1884): ácido libera H⁺ en agua, base libera HO⁻. Brønsted (1923): cesión/captura de H⁺. Lewis: ácido acepta un doblete de electrones, base lo cede. Lux-Flood (1939/1947): intercambio del anión óxido O²⁻.",
+   "pagina_pdf": 36
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "\\mathrm{AH} = \\mathrm{A}^{-} + \\mathrm{H}^{+}",
+   "nombre": "Semiecuación ácido-base (par AH/A⁻)",
+   "nombre_fr": "Demi-équation acide-base",
+   "variables": [
+    {
+     "simbolo": "AH",
+     "significado": "ácido (cede H⁺)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "A⁻",
+     "significado": "base conjugada (capta H⁺)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "H⁺",
+     "significado": "ion hidrógeno transferido",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Un ácido AH y su base conjugada A⁻ difieren en un ion H⁺. De izquierda a derecha el ácido cede H⁺; de derecha a izquierda la base lo capta (por eso se usa =).",
+   "ejemplo": {
+    "enunciado": "Par ácido etanoico / ion etanoato",
+    "resultado": "CH₃CO₂H(aq) = CH₃CO₂⁻(aq) + H⁺",
+    "pagina_pdf": 39
+   },
+   "pagina_pdf": 39,
+   "animacion": {
+    "preset": "acido-base",
+    "params": {},
+    "leyenda": "Un ácido AH suelta un protón H⁺ y se convierte en su base A⁻; con el deslizador de pH se ve cuál de las dos formas predomina."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "\\mathrm{BH}^{+} = \\mathrm{B} + \\mathrm{H}^{+}",
+   "nombre": "Par BH⁺/B (forma alternativa de la semiecuación)",
+   "nombre_fr": "Couple BH⁺ / B",
+   "variables": [
+    {
+     "simbolo": "BH⁺",
+     "significado": "ácido conjugado (cede H⁺)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "B",
+     "significado": "base (capta H⁺)",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Cuando el ácido está cargado positivamente se escribe BH⁺/B. Es el caso de los iones amonio y de las aminas protonadas.",
+   "ejemplo": {
+    "enunciado": "Par NH₄⁺(aq)/NH₃(aq)",
+    "resultado": "NH₄⁺(aq) = NH₃(aq) + H⁺",
+    "pagina_pdf": 40
+   },
+   "pagina_pdf": 40,
+   "animacion": {
+    "preset": "acido-base",
+    "params": {},
+    "leyenda": "El ion amonio BH⁺ pierde un H⁺ y queda el amoníaco B; el diagrama de predominio muestra qué forma domina."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "\\mathrm{RCO_2H} = \\mathrm{RCO_2^{-}} + \\mathrm{H}^{+}",
+   "nombre": "Par ácido carboxílico / ion carboxilato",
+   "nombre_fr": "Couple acide carboxylique / ion carboxylate",
+   "variables": [
+    {
+     "simbolo": "R",
+     "significado": "grupo alquilo −CₙH₂ₙ₊₁ o átomo de H",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "RCO₂H",
+     "significado": "ácido carboxílico",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "RCO₂⁻",
+     "significado": "ion carboxilato (base conjugada)",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "El H del grupo carboxilo está unido al O, más electronegativo; se va dejando su electrón y el O queda con un doblete no ligante adicional y carga negativa.",
+   "ejemplo": {
+    "enunciado": "Ácido butanoico / ion butanoato",
+    "resultado": "H₃C–CH₂–CH₂–CO₂H = H₃C–CH₂–CH₂–CO₂⁻ + H⁺",
+    "pagina_pdf": 41
+   },
+   "pagina_pdf": 41,
+   "animacion": {
+    "preset": "acido-base",
+    "params": {},
+    "leyenda": "Un ácido carboxílico suelta el H del grupo carboxilo y se vuelve ion carboxilato; el deslizador de pH cambia la forma predominante."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "\\mathrm{H_3O^{+}} = \\mathrm{H_2O} + \\mathrm{H}^{+}\\quad ;\\quad \\mathrm{H_2O} = \\mathrm{HO^{-}} + \\mathrm{H}^{+}",
+   "nombre": "Los dos pares del agua",
+   "nombre_fr": "Couples de l'eau",
+   "variables": [
+    {
+     "simbolo": "H₃O⁺",
+     "significado": "ion oxonio (ácido del par 1)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "H₂O",
+     "significado": "agua: base del par 1 y ácido del par 2",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "HO⁻",
+     "significado": "ion hidróxido (base del par 2)",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "El agua es una especie anfótera: es la base del par H₃O⁺/H₂O y el ácido del par H₂O/HO⁻. El H⁺ no está libre en agua: H⁺ + H₂O → H₃O⁺.",
+   "ejemplo": null,
+   "pagina_pdf": 40,
+   "animacion": {
+    "preset": "ph",
+    "params": {},
+    "leyenda": "Se ven los iones H₃O⁺ y HO⁻ del agua y cómo cambia su proporción con el pH (ácida, neutra o básica)."
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "\\mathrm{CO_2(aq),H_2O(\\ell)} = \\mathrm{HCO_3^{-}(aq)} + \\mathrm{H}^{+}",
+   "nombre": "Par CO₂(aq),H₂O(ℓ) / HCO₃⁻(aq)",
+   "nombre_fr": "Couple de l'acide carbonique",
+   "variables": [
+    {
+     "simbolo": "CO₂(aq),H₂O(ℓ)",
+     "significado": "dióxido de carbono disuelto (ácido)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "HCO₃⁻",
+     "significado": "ion hidrogenocarbonato (base)",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Se prefiere la notación CO₂(aq),H₂O(ℓ) a H₂CO₃(aq) porque la molécula H₂CO₃ es poco estable y se deshidrata con facilidad.",
+   "ejemplo": null,
+   "pagina_pdf": 40,
+   "animacion": {
+    "preset": "acido-base",
+    "params": {},
+    "leyenda": "El CO₂ disuelto cede un H⁺ y se convierte en hidrogenocarbonato; el diagrama muestra qué forma predomina según el pH."
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "\\mathrm{HCO_3^{-}(aq)} = \\mathrm{CO_3^{2-}(aq)} + \\mathrm{H}^{+}",
+   "nombre": "Par HCO₃⁻(aq) / CO₃²⁻(aq) (anfoterismo del hidrogenocarbonato)",
+   "nombre_fr": "Couple HCO₃⁻ / CO₃²⁻",
+   "variables": [
+    {
+     "simbolo": "HCO₃⁻",
+     "significado": "ion hidrogenocarbonato (ácido de este par)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "CO₃²⁻",
+     "significado": "ion carbonato (base)",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "HCO₃⁻ pertenece a dos pares: es la base de CO₂,H₂O/HCO₃⁻ y el ácido de HCO₃⁻/CO₃²⁻; por eso es una especie anfótera.",
+   "ejemplo": null,
+   "pagina_pdf": 40,
+   "animacion": {
+    "preset": "acido-base",
+    "params": {},
+    "leyenda": "El hidrogenocarbonato puede soltar un H⁺ (ácido) o captarlo (base): se ve su doble papel en el diagrama de predominio."
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "\\mathrm{A_1H} + \\mathrm{A_2^{-}} \\rightleftharpoons \\mathrm{A_1^{-}} + \\mathrm{A_2H}",
+   "nombre": "Ecuación de una reacción ácido-base",
+   "nombre_fr": "Équation d'une réaction acide-base",
+   "variables": [
+    {
+     "simbolo": "A₁H",
+     "significado": "ácido del par 1 (cede H⁺)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "A₂⁻",
+     "significado": "base del par 2 (capta H⁺)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "A₁⁻",
+     "significado": "base conjugada de A₁H",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "A₂H",
+     "significado": "ácido conjugado de A₂⁻",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Se suman las dos semiecuaciones escritas en el sentido de la reacción (A₁H = A₁⁻ + H⁺ y A₂⁻ + H⁺ = A₂H); el H⁺ intercambiado no aparece en la ecuación. La doble flecha indica que la transformación no siempre es total.",
+   "ejemplo": {
+    "enunciado": "Ácido etanoico + agua (pares CH₃CO₂H/CH₃CO₂⁻ y H₃O⁺/H₂O)",
+    "resultado": "CH₃CO₂H(aq) + H₂O(ℓ) ⇌ CH₃CO₂⁻(aq) + H₃O⁺(aq)  (no total)",
+    "pagina_pdf": 42
+   },
+   "pagina_pdf": 42,
+   "animacion": {
+    "preset": "avance",
+    "params": {},
+    "leyenda": "Los reactivos A₁H y A₂⁻ se transforman en A₁⁻ y A₂H al transferirse el H⁺; se ve cómo avanza la reacción hacia los productos."
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "\\mathrm{HCl(g)} + \\mathrm{H_2O(\\ell)} \\rightarrow \\mathrm{Cl^{-}(aq)} + \\mathrm{H_3O^{+}(aq)}",
+   "nombre": "Reacción total del cloruro de hidrógeno con el agua",
+   "nombre_fr": "Réaction de HCl(g) avec l'eau",
+   "variables": [
+    {
+     "simbolo": "HCl(g)",
+     "significado": "ácido del par HCl(g)/Cl⁻(aq)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "H₂O(ℓ)",
+     "significado": "base del par H₃O⁺/H₂O",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Los dos pares son HCl(g)/Cl⁻(aq) y H₃O⁺(aq)/H₂O(ℓ). La reacción es total, por eso se usa una flecha simple.",
+   "ejemplo": {
+    "enunciado": "Semiecuaciones: HCl(g) = Cl⁻(aq) + H⁺ y H₂O(ℓ) + H⁺ = H₃O⁺(aq)",
+    "resultado": "HCl(g) + H₂O(ℓ) → Cl⁻(aq) + H₃O⁺(aq)",
+    "pagina_pdf": 42
+   },
+   "pagina_pdf": 42,
+   "animacion": {
+    "preset": "avance",
+    "params": {},
+    "leyenda": "Todo el HCl cede su H⁺ al agua: el reactivo se agota y aparecen Cl⁻ y H₃O⁺ (reacción total)."
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "V(\\mathrm{CO_2}) = n(\\mathrm{CO_2})\\times V_m",
+   "nombre": "Volumen de gas formado (ejercicio «lámpara de lava»)",
+   "nombre_fr": "Volume de gaz dégagé",
+   "variables": [
+    {
+     "simbolo": "V(CO₂)",
+     "significado": "volumen de gas desprendido",
+     "unidad": "L"
+    },
+    {
+     "simbolo": "n(CO₂)",
+     "significado": "cantidad de CO₂ formada (= x_f en la reacción 1:1)",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "V_m",
+     "significado": "volumen molar en las condiciones del experimento",
+     "unidad": "L·mol⁻¹"
+    }
+   ],
+   "explicacion": "Aparece al resolver el ejercicio 41 (CH₃CO₂H + HCO₃⁻ → CH₃CO₂⁻ + CO₂(g) + H₂O): el gas formado es CO₂ y su volumen se obtiene multiplicando la cantidad por el volumen molar V_m = 24,1 L·mol⁻¹.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 41: x_f = 4,4×10⁻³ mol, V_m = 24,1 L·mol⁻¹",
+    "resultado": "V(CO₂) ≈ 1,1×10⁻¹ L",
+    "pagina_pdf": 55
+   },
+   "pagina_pdf": 55,
+   "animacion": {
+    "preset": "gas-ideal-quimico",
+    "params": {},
+    "leyenda": "Más cantidad de gas ocupa más volumen a igual volumen molar: se ve el gas producido en la reacción ácido-base."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "Número de dobletes liantes / no liantes — H (Z = 1)",
+   "valor": "1 liante ; 0 no liantes",
+   "unidad": "—",
+   "pagina_pdf": 41
+  },
+  {
+   "nombre": "Número de dobletes liantes / no liantes — C (Z = 6)",
+   "valor": "4 liantes ; 0 no liantes",
+   "unidad": "—",
+   "pagina_pdf": 41
+  },
+  {
+   "nombre": "Número de dobletes liantes / no liantes — N (Z = 7)",
+   "valor": "3 liantes ; 1 no liante",
+   "unidad": "—",
+   "pagina_pdf": 41
+  },
+  {
+   "nombre": "Número de dobletes liantes / no liantes — O (Z = 8)",
+   "valor": "2 liantes ; 2 no liantes",
+   "unidad": "—",
+   "pagina_pdf": 41
+  },
+  {
+   "nombre": "Rango del pH a 25 °C",
+   "valor": "0 a 14 (neutro = 7)",
+   "unidad": "sin unidad",
+   "pagina_pdf": 34
+  },
+  {
+   "nombre": "V_m (ejercicio 41)",
+   "valor": "24,1",
+   "unidad": "L·mol⁻¹",
+   "pagina_pdf": 55
+  },
+  {
+   "nombre": "M(CH₃CO₂H) (ejercicio 41)",
+   "valor": "60,0",
+   "unidad": "g·mol⁻¹",
+   "pagina_pdf": 55
+  },
+  {
+   "nombre": "M(NaHCO₃) (ejercicio 41)",
+   "valor": "84,0",
+   "unidad": "g·mol⁻¹",
+   "pagina_pdf": 55
+  },
+  {
+   "nombre": "Constantes numéricas universales del capítulo (Ka, Ke, etc.)",
+   "valor": "no está en el cours",
+   "unidad": "—",
+   "pagina_pdf": 34
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Establecer la ecuación de una reacción ácido-base",
+   "pasos": [
+    "Identificar los dos pares ácido-base en juego.",
+    "Localizar en cada par cuál es el reactivo (el ácido de un par, la base del otro).",
+    "Escribir las dos semiecuaciones ácido-base en el sentido de la reacción.",
+    "Sumar las dos semiecuaciones: el H⁺ intercambiado desaparece y se obtiene A₁H + A₂⁻ ⇌ A₁⁻ + A₂H."
+   ],
+   "pagina_pdf": 42
+  },
+  {
+   "titulo": "Hallar la especie conjugada (escribir la semiecuación)",
+   "pasos": [
+    "Determinar si la especie es ácida o básica (¿puede ceder o captar H⁺?).",
+    "Escribir la semiecuación del par: AH = A⁻ + H⁺.",
+    "Leer en ella la fórmula de la especie conjugada."
+   ],
+   "pagina_pdf": 48
+  },
+  {
+   "titulo": "Representar el esquema de Lewis de un par ácido carboxílico / carboxilato",
+   "pasos": [
+    "Contar dobletes liantes y no liantes de cada átomo (H 1/0, C 4/0, N 3/1, O 2/2).",
+    "Ácido: O–H con el H unido al O. Al perder H⁺, el doblete liante O–H pasa a doblete no ligante del O.",
+    "El O de la base conjugada recibe un electrón más: lleva carga negativa (–)."
+   ],
+   "pagina_pdf": 41
+  },
+  {
+   "titulo": "Representar el esquema de Lewis de un par amina / amonio",
+   "pasos": [
+    "La amina tiene un doblete no ligante en el N (base).",
+    "Al captar H⁺, ese doblete se convierte en doblete liante N–H.",
+    "El N queda con un electrón menos en su capa externa: lleva carga positiva (+) en el ion amonio."
+   ],
+   "pagina_pdf": 48
+  },
+  {
+   "titulo": "Determinar el carácter ácido o básico de una molécula y su familia",
+   "pasos": [
+    "Escribir la fórmula semidesarrollada y el esquema de Lewis (dobletes liantes y no liantes).",
+    "Grupo carboxilo → ácido carboxílico (ácido, cede H⁺). Doblete no ligante en N → amina (base, capta H⁺).",
+    "Identificar los reactivos de la reacción en los pares ácido-base."
+   ],
+   "pagina_pdf": 49
+  },
+  {
+   "titulo": "Nombrar moléculas orgánicas (ficha método 15)",
+   "pasos": [
+    "Alcanos lineales: prefijo (nº de carbonos) + terminación -ano. Fórmula de los alcanos no cíclicos CₙH₂ₙ₊₂.",
+    "Alcanos ramificados: cadena principal más larga, numerar para que las ramificaciones lleven los números más pequeños, nombrar los grupos alquilo por orden alfabético."
+   ],
+   "pagina_pdf": 568
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Confundir ácido con disolución ácida",
+   "correccion": "Un ácido es una especie química; una disolución es ácida según [H₃O⁺] y [HO⁻].",
+   "pagina_pdf": 39
+  },
+  {
+   "id": "err2",
+   "nombre": "H⁺ libre en la ecuación",
+   "correccion": "El H⁺ no existe libre en agua y se simplifica al sumar las semiecuaciones.",
+   "pagina_pdf": 42
+  },
+  {
+   "id": "err3",
+   "nombre": "Dos ácidos que reaccionan",
+   "correccion": "Reacciona el ácido de un par con la base de otro par distinto.",
+   "pagina_pdf": 50
+  },
+  {
+   "id": "err4",
+   "nombre": "Flecha en vez de signo =",
+   "correccion": "La semiecuación se escribe con = (puede leerse en ambos sentidos).",
+   "pagina_pdf": 37
+  },
+  {
+   "id": "err5",
+   "nombre": "Olvidar el estado físico",
+   "correccion": "Indicar siempre (aq), (ℓ), (g) o (s) en cada especie.",
+   "pagina_pdf": 50
+  },
+  {
+   "id": "err6",
+   "nombre": "Agua en la disolución de un sólido iónico",
+   "correccion": "Disolución: NaHCO₃(s) → Na⁺(aq) + HCO₃⁻(aq), sin H₂O en la ecuación.",
+   "pagina_pdf": 50
+  },
+  {
+   "id": "err7",
+   "nombre": "Usar H₂CO₃ en lugar de CO₂,H₂O",
+   "correccion": "Escribir el par CO₂(aq),H₂O(ℓ)/HCO₃⁻(aq).",
+   "pagina_pdf": 40
+  },
+  {
+   "id": "err8",
+   "nombre": "Doble flecha mal usada",
+   "correccion": "⇌ si la reacción no es total, → si lo es (p. ej. HCl + H₂O).",
+   "pagina_pdf": 42
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "Observaciones HCl(g) + NH₃(g) y NH₄Cl + HO⁻ (actividad 2)",
+   "descripcion": "Los vapores incoloros de HCl y NH₃ forman al mezclarse humo blanco de cloruro de amonio NH₄Cl(s). Al calentar una disolución de NH₄⁺, Cl⁻, Na⁺ y HO⁻ aparece el olor desagradable del amoníaco NH₃: se modela con un H⁺ transferido de NH₄⁺ (ácido) a HO⁻ (base); Cl⁻ y Na⁺ son iones espectadores.",
+   "pagina_pdf": 37
+  },
+  {
+   "titulo": "Esquema de Lewis de un par ácido-base (tarea compleja)",
+   "descripcion": "A partir del ácido metanoico (CH₂O₂, ácido de hormiga) y de la N-metilmetanamina (CH₃)₂NH, pasar de la forma ácida a la base conjugada y viceversa con los dobletes de Lewis.",
+   "pagina_pdf": 38
+  },
+  {
+   "titulo": "Ejercicio 41: lámpara de lava efímera",
+   "descripcion": "Gotitas de vinagre (CH₃CO₂H) en aceite caen sobre bicarbonato de sodio: se forma CO₂(g), las burbujas suben las gotitas y se repite el ciclo hasta agotarse el reactivo limitante.",
+   "pagina_pdf": 55
+  },
+  {
+   "titulo": "Preparación ECE: la vainillina",
+   "descripcion": "Verificar con espectrofotometría que un extracto de vainilla contiene al menos 2 g de vainillina por kg, usando que el ion vainillinato A⁻ predomina a pH > 7,40 y absorbe a λmax = 340 nm (A = 2,75×10⁴ × c).",
+   "pagina_pdf": 56
+  },
+  {
+   "titulo": "Pista Grand oral: ¿es inocua la aspirina?",
+   "descripcion": "Par ácido acetilsalicílico / base conjugada: sus dos formas según el pH (estómago pH 1,5–2, intestino 7,2–7,5) y tres formulaciones.",
+   "pagina_pdf": 57
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Ejercicio resuelto 27: representación de Lewis de un par ácido-base. La N-etiletanamina (CH₃CH₂)₂NH; Z(H)=1, Z(C)=6, Z(N)=7. 1.a) Fórmula semidesarrollada. 1.b) Esquema de Lewis. 2) ¿Es ácido o base según Brønsted? Justificar. 3) Deducir la fórmula de su especie conjugada. 4) Explicar cómo establecer el esquema de Lewis del par ácido-base.",
+   "datos": {
+    "Z(H)": "1",
+    "Z(C)": "6",
+    "Z(N)": "7"
+   },
+   "respuesta": "1.a) H₃C–CH₂–NH–CH₂–CH₃. 2) Es una amina: el esquema de Lewis muestra un doblete no ligante en N, capaz de captar un ion H⁺: es una base. 3) (C₂H₅)₂NH + H⁺ = (C₂H₅)₂NH₂⁺; la especie conjugada es el ácido (C₂H₅)₂NH₂⁺. 4) Al captar H⁺, el doblete no ligante del N pasa a doblete ligante (enlace N–H); el N pierde un electrón en su capa externa y lleva carga positiva.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Escribir la fórmula semidesarrollada con los datos de Z.",
+    "Dibujar Lewis (dobletes liantes y no liantes).",
+    "Doblete no ligante en N → base; escribir la semiecuación para hallar el ácido conjugado.",
+    "Dibujar el esquema del par con N⁺ en el ácido."
+   ],
+   "pagina_pdf": 48,
+   "corrige_pagina_pdf": 48
+  },
+  {
+   "id": "e2",
+   "enunciado": "Ejercicio resuelto 29: eliminar el mal olor del pescado. La N,N-dimetilmetanamina (CH₃)₃N es volátil y su especie conjugada es soluble en agua y no volátil. 1) Escribir el par ácido-base de esta amina. 2) El vinagre contiene ácido etanoico: escribir su par. 3) Explicar el papel del vinagre (reacción supuesta total). 4) Deducir por qué el limón cumple el mismo papel.",
+   "datos": {},
+   "respuesta": "1) (CH₃)₃NH⁺(aq)/(CH₃)₃N(aq): la amina es una base (doblete no ligante del N). 2) CH₃CO₂H(aq)/CH₃CO₂⁻(aq). 3) CH₃CO₂H(aq) + (CH₃)₃N(aq) → CH₃CO₂⁻(aq) + (CH₃)₃NH⁺(aq): el vinagre transforma la amina olorosa y volátil en su ácido conjugado, soluble en agua y no volátil. 4) El limón contiene un ácido (ácido cítrico, AH) que hace lo mismo: AH(aq) + (CH₃)₃N(aq) → A⁻(aq) + (CH₃)₃NH⁺(aq).",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Determinar el carácter ácido o base de la molécula.",
+    "Identificar la familia del ácido etanoico (ácido carboxílico).",
+    "Identificar los reactivos en los pares y escribir las semiecuaciones.",
+    "Sumarlas."
+   ],
+   "pagina_pdf": 49,
+   "corrige_pagina_pdf": 49
+  },
+  {
+   "id": "e3",
+   "enunciado": "Ejercicio 24: el fosfato de amonio. Pares: ion hidrogenofosfato HPO₄²⁻(aq)/ion fosfato PO₄³⁻(aq); ion amonio NH₄⁺(aq)/amoníaco NH₃(aq). 1) Fórmula bruta. 2) Ecuación de disolución en agua. 3) Mostrar que puede producirse una reacción ácido-base entre los iones del abono. 4) Escribir su ecuación.",
+   "datos": {},
+   "respuesta": "1) (NH₄)₃PO₄(s). 2) (NH₄)₃PO₄(s) → 3 NH₄⁺(aq) + PO₄³⁻(aq). 3) NH₄⁺(aq) es el ácido del par NH₄⁺/NH₃ y PO₄³⁻(aq) es la base del par HPO₄²⁻/PO₄³⁻: puede haber reacción ácido-base entre ambos. 4) NH₄⁺(aq) + PO₄³⁻(aq) ⇌ NH₃(aq) + HPO₄²⁻(aq).",
+   "respuesta_numerica": null,
+   "pasos": [],
+   "pagina_pdf": 47,
+   "corrige_pagina_pdf": 610
+  },
+  {
+   "id": "e4",
+   "enunciado": "Ejercicio 30: disminuir la acidez de un plato. Se añade bicarbonato de sodio NaHCO₃(s). Pares: CO₂(g),H₂O(ℓ)/HCO₃⁻(aq) y HCO₃⁻(aq)/CO₃²⁻(aq). 1) Ecuación de disolución en agua. 2) Explicar el papel del hidrogenocarbonato.",
+   "datos": {},
+   "respuesta": "1) NaHCO₃(s) → Na⁺(aq) + HCO₃⁻(aq). 2) El ácido AH del plato reacciona con HCO₃⁻(aq): AH(aq) + HCO₃⁻(aq) ⇌ A⁻(aq) + CO₂(aq),H₂O(ℓ). El hidrogenocarbonato de sodio transforma el ácido AH en su base conjugada A⁻.",
+   "respuesta_numerica": null,
+   "pasos": [],
+   "pagina_pdf": 49,
+   "corrige_pagina_pdf": 610
+  },
+  {
+   "id": "e5",
+   "enunciado": "Ejercicio 31: corregir la solución de un alumno. Comprimidos efervescentes de vitamina C (ácido ascórbico C₆H₈O₆) e hidrogenocarbonato de sodio NaHCO₃. 1) Fórmula del ion ascorbato y par. 2) Disolución de NaHCO₃(s). 3) Pares de HCO₃⁻. 4) Pares en juego en la reacción. 5) Ecuación (supuesta total) y naturaleza del gas.",
+   "datos": {},
+   "respuesta": "1) C₆H₇O₆⁻(aq); par C₆H₈O₆(aq)/C₆H₇O₆⁻(aq). 2) NaHCO₃(s) → Na⁺(aq) + HCO₃⁻(aq) (sin H₂O en la ecuación). 3) CO₂(g),H₂O(ℓ)/HCO₃⁻(aq) y HCO₃⁻(aq)/CO₃²⁻(aq). 4) Los reactivos son el ácido ascórbico C₆H₈O₆(aq) y HCO₃⁻(aq): pares C₆H₈O₆/C₆H₇O₆⁻ y CO₂(g),H₂O(ℓ)/HCO₃⁻. 5) C₆H₈O₆ + HCO₃⁻ → C₆H₇O₆⁻ + CO₂(g),H₂O(ℓ); el gas es dióxido de carbono.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Dos ácidos no pueden reaccionar entre sí: usar el par en que HCO₃⁻ actúa como base.",
+    "Indicar el estado físico de cada especie."
+   ],
+   "pagina_pdf": 50,
+   "corrige_pagina_pdf": 610
+  },
+  {
+   "id": "e6",
+   "enunciado": "Ejercicio 41: «lámpara de lava» efímera. Se deposita bicarbonato NaHCO₃ (m = 5,0 g, M = 84,0 g·mol⁻¹) al fondo y se añaden N = 120 gotitas de vinagre, cada una con n = 3,7×10⁻⁵ mol de CH₃CO₂H; V_m = 24,1 L·mol⁻¹. 1) Ecuación (total) y nombre del gas. 2) ¿Por qué suben y bajan las gotitas? 3) Volumen de gas desprendido. Síntesis: ¿por qué es efímera?",
+   "datos": {
+    "m(NaHCO₃)": "5,0 g",
+    "M(NaHCO₃)": "84,0 g·mol⁻¹",
+    "N": "120 gotitas",
+    "n por gotita": "3,7×10⁻⁵ mol",
+    "V_m": "24,1 L·mol⁻¹"
+   },
+   "respuesta": "1) CH₃CO₂H(aq) + HCO₃⁻(aq) → CH₃CO₂⁻(aq) + CO₂(g) + H₂O(ℓ); el gas es dióxido de carbono. 2) Las burbujas de CO₂ se forman en la interfaz gotita/hidrogenocarbonato y se adhieren a la gotita; el volumen de gas aumenta hasta que la gotita sube, las burbujas estallan en la superficie y la gotita desciende. 3) x_f = 4,4×10⁻³ mol, n(CO₂) = x_f, V(CO₂) = n·V_m = 1,1×10⁻¹ L. Síntesis: la lámpara es efímera porque el fenómeno cesa al agotarse el reactivo limitante.",
+   "respuesta_numerica": {
+    "valor": 0.107,
+    "unidad": "L",
+    "tolerancia_rel": 0.05
+   },
+   "pasos": [
+    "n(CH₃CO₂H) = 120 × 3,7×10⁻⁵ = 4,4×10⁻³ mol (reactivo limitante; n(NaHCO₃) = 5,0/84,0 = 5,95×10⁻² mol).",
+    "x_f = 4,4×10⁻³ mol y n(CO₂) = x_f.",
+    "V(CO₂) = n(CO₂)·V_m = 4,4×10⁻³ × 24,1 ≈ 0,107 L."
+   ],
+   "pagina_pdf": 55,
+   "corrige_pagina_pdf": 611
+  },
+  {
+   "id": "e7",
+   "enunciado": "Ejercicio 23: escribir la ecuación de la reacción entre el ácido de la primera columna y la base de la primera fila, con los pares CH₃CO₂H/CH₃CO₂⁻; CH₃NH₃⁺/CH₃NH₂; H₃O⁺/H₂O; H₂O/HO⁻. Casos 1 a 12 de la tabla.",
+   "datos": {},
+   "respuesta": "1) CH₃NH₃⁺ + CH₃CO₂⁻ ⇌ CH₃NH₂ + CH₃CO₂H. 2) H₃O⁺ + CH₃CO₂⁻ ⇌ H₂O + CH₃CO₂H. 3) H₂O + CH₃CO₂⁻ ⇌ HO⁻ + CH₃CO₂H. 4) CH₃CO₂H + CH₃NH₂ ⇌ CH₃CO₂⁻ + CH₃NH₃⁺. 5) H₃O⁺ + CH₃NH₂ ⇌ H₂O + CH₃NH₃⁺. 6) H₂O + CH₃NH₂ ⇌ HO⁻ + CH₃NH₃⁺. 7) CH₃CO₂H + H₂O ⇌ CH₃CO₂⁻ + H₃O⁺. 8) CH₃NH₃⁺ + H₂O ⇌ CH₃NH₂ + H₃O⁺. 9) H₂O + H₂O ⇌ HO⁻ + H₃O⁺. 10) CH₃CO₂H + HO⁻ ⇌ CH₃CO₂⁻ + H₂O. 11) CH₃NH₃⁺ + HO⁻ ⇌ CH₃NH₂ + H₂O. 12) H₃O⁺ + HO⁻ ⇌ H₂O + H₂O.",
+   "respuesta_numerica": null,
+   "pasos": [],
+   "pagina_pdf": 46,
+   "corrige_pagina_pdf": 610
+  },
+  {
+   "id": "e8",
+   "enunciado": "Ejercicio 35 (démarche avancée, verdunización): CO₂(g),H₂O(ℓ)/HCO₃⁻(aq) y HClO(aq)/ClO⁻(aq). 1.a) Ecuación entre el CO₂ disuelto y el agua. b) Deducir por qué disminuye el pH. 2.a) Ecuación entre CO₂ disuelto e ion hipoclorito ClO⁻. b) Deducir por qué se vuelve más eficaz la desinfección.",
+   "datos": {},
+   "respuesta": "1.a) CO₂(aq),H₂O(ℓ) + H₂O(ℓ) ⇌ H₃O⁺(aq) + HCO₃⁻(aq). b) La reacción produce iones H₃O⁺: su concentración aumenta, la disolución se vuelve más ácida y el pH disminuye. 2.a) CO₂(aq),H₂O(ℓ) + ClO⁻(aq) ⇌ HCO₃⁻(aq) + HClO(aq). b) Se favorece la formación de ácido hipocloroso HClO, desinfectante más eficaz que ClO⁻ porque su poder bactericida es mayor.",
+   "respuesta_numerica": null,
+   "pasos": [],
+   "pagina_pdf": 51,
+   "corrige_pagina_pdf": 610
+  },
+  {
+   "id": "e9",
+   "enunciado": "Ejercicio 19: el ácido malónico (ácido propanodioico). 1) Justificar el nombre. 2) Fórmula semidesarrollada. 3) ¿Por qué es un diácido? 4) Lewis del ion hidrogenomalonato. 5) Lewis del ion malonato. 6) ¿Hay una especie anfótera entre las citadas?",
+   "datos": {},
+   "respuesta": "1) La cadena principal tiene 3 átomos de carbono (propano) y dos grupos carboxilo (terminación -dioico). 3) Posee dos grupos carboxilo: puede liberar dos H⁺. 6) El ion hidrogenomalonato C₃O₄H₃⁻ es la base del par C₃O₄H₄/C₃O₄H₃⁻ y el ácido del par C₃O₄H₃⁻/C₃O₄H₂²⁻: es una especie anfótera.",
+   "respuesta_numerica": null,
+   "pasos": [],
+   "pagina_pdf": 46,
+   "corrige_pagina_pdf": 610
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "acido-base",
+   "params": {},
+   "titulo": "Par ácido-base y predominio",
+   "relacion": "Semiecuación AH = A⁻ + H⁺: qué forma predomina según el pH."
+  },
+  {
+   "preset": "ph",
+   "params": {},
+   "titulo": "Iones H₃O⁺ y HO⁻ del agua",
+   "relacion": "Pares del agua y carácter ácido, neutro o básico de una disolución."
+  },
+  {
+   "preset": "avance",
+   "params": {},
+   "titulo": "Avance de una reacción ácido-base",
+   "relacion": "Reactivos A₁H + A₂⁻ → productos A₁⁻ + A₂H; reactivo limitante."
+  },
+  {
+   "preset": "gas-ideal-quimico",
+   "params": {},
+   "titulo": "Volumen de gas formado",
+   "relacion": "V = n·V_m en el ejercicio 41 (CO₂ de la lámpara de lava)."
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "lava-fortaleza",
+  "mecanica_especial": "Transferencia de H⁺: zonas de campo que empujan, plataformas oscilantes (equilibrio ácido⇌base), resortes y un puente sobre lava que cae al accionar la palanca de Entropía"
+ },
+ "estilo_intro_sugerido": "quimica3d"
+}

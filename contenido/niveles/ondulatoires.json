@@ -1,0 +1,349 @@
+{
+ "capitulo_id": "ondulatoires",
+ "tipo_nivel": "fortaleza",
+ "tema_visual": "lava-fortaleza",
+ "fisica_juego": {
+  "gravedad": 0.9,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 180,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 18
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 6,
+   "y": 12,
+   "ref": "f2",
+   "latex": "L = 10\\,\\log\\dfrac{I}{I_0}",
+   "nombre": "Nivel de intensidad sonora"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 13,
+   "y": 13,
+   "enemigo": "suma_db",
+   "nombre": "Sumar niveles sonoros en dB",
+   "correccion": "Se suman las intensidades (W·m⁻²), no los dB; luego se vuelve a L = 10 log(I/I₀)."
+  },
+  {
+   "tipo": "foso",
+   "x": 18,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 22,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 27,
+   "y": 12,
+   "ref": "f3",
+   "latex": "I = I_0\\cdot 10^{\\frac{L}{10}}",
+   "nombre": "Intensidad a partir del nivel sonoro"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 30,
+   "y": 13,
+   "enemigo": "sin_metros",
+   "nombre": "No convertir a metros",
+   "correccion": "Pasa nm, µm y cm a m antes de usar θ = λ/a o i = λD/e."
+  },
+  {
+   "tipo": "foso",
+   "x": 34,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 38,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "resorte",
+   "x": 41,
+   "y": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 44,
+   "y": 12,
+   "largo": 12
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 50,
+   "y": 10,
+   "ref": "f4",
+   "latex": "L(x) = L_{(\\text{à }1\\text{ m})} - 20\\,\\log x",
+   "nombre": "Atenuación geométrica del nivel sonoro"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 52,
+   "y": 11,
+   "enemigo": "falta_factor_2",
+   "nombre": "Olvidar que θ es un semiángulo",
+   "correccion": "θ delimita los primeros mínimos: tan θ ≈ L/(2D), no L/D."
+  },
+  {
+   "tipo": "foso",
+   "x": 56,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 56,
+   "y": 12,
+   "largo": 4,
+   "recorrido": 2,
+   "eje": "x",
+   "periodo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 60,
+   "y": 12,
+   "largo": 10
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 62
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 65,
+   "y": 10,
+   "ref": "f6",
+   "latex": "\\theta = \\dfrac{\\lambda}{a}",
+   "nombre": "Ángulo característico de difracción"
+  },
+  {
+   "tipo": "foso",
+   "x": 70,
+   "largo": 4
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 70,
+   "y": 5,
+   "w": 4,
+   "h": 9,
+   "fx": 0,
+   "fy": -0.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 74,
+   "y": 12,
+   "largo": 12
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 79,
+   "y": 10,
+   "ref": "f7",
+   "latex": "\\tan\\theta \\approx \\theta = \\dfrac{L}{2D} = \\dfrac{\\lambda}{a} \\;\\Rightarrow\\; a = \\dfrac{2\\lambda\\cdot D}{L}",
+   "nombre": "Tamaño de la abertura a partir de la mancha central"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 82,
+   "y": 11,
+   "enemigo": "destructiva_mal",
+   "nombre": "Condición destructiva mal escrita",
+   "correccion": "Destructivas: δ = (k+½)λ; constructivas: δ = kλ."
+  },
+  {
+   "tipo": "foso",
+   "x": 86,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 86,
+   "y": 12,
+   "largo": 4,
+   "recorrido": 2,
+   "eje": "x",
+   "periodo": 2.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 90,
+   "y": 12,
+   "largo": 10
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 94,
+   "y": 10,
+   "ref": "f9",
+   "latex": "\\delta = e\\cdot\\dfrac{x}{D}",
+   "nombre": "Diferencia de camino óptico (trous de Young)"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 97,
+   "y": 11,
+   "enemigo": "signo_doppler",
+   "nombre": "Signo equivocado en Doppler",
+   "correccion": "Se acerca: c − v (f_R > f_e); se aleja: c + v (f_R < f_e)."
+  },
+  {
+   "tipo": "puente",
+   "x": 100,
+   "y": 12,
+   "largo": 14,
+   "cae_con": "palanca_entropia"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 107,
+   "y": 10,
+   "ref": "f10",
+   "latex": "i = \\dfrac{\\lambda\\cdot D}{e}",
+   "nombre": "Interfranja"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 114,
+   "y": 12,
+   "largo": 14
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 116
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 119,
+   "y": 10,
+   "ref": "f11",
+   "latex": "\\delta = k\\cdot\\lambda \\;\\; (\\text{constructivas})\\qquad \\delta = \\left(k+\\tfrac{1}{2}\\right)\\lambda \\;\\; (\\text{destructivas})",
+   "nombre": "Condiciones de interferencia"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 121,
+   "y": 11,
+   "enemigo": "afirmar_sin_justificar",
+   "nombre": "Afirmar en vez de justificar",
+   "correccion": "Cita la relación del cours y explica el razonamiento; evita «sé que...»."
+  },
+  {
+   "tipo": "palanca",
+   "x": 124,
+   "y": 11,
+   "id": "palanca_entropia",
+   "nombre": "Palanca de Entropía",
+   "efecto": "cae_puente"
+  },
+  {
+   "tipo": "foso",
+   "x": 128,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 128,
+   "y": 12,
+   "largo": 4,
+   "recorrido": 2,
+   "eje": "x",
+   "periodo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 132,
+   "y": 12,
+   "largo": 44
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 133
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 138,
+   "y": 10,
+   "ref": "f13",
+   "latex": "\\Delta f = f_R - f_e = \\dfrac{f_e\\cdot v}{c}",
+   "nombre": "Desfase Doppler (v ≪ c)"
+  },
+  {
+   "tipo": "jefe",
+   "x": 156,
+   "y": 11,
+   "jefe": "rey_entropia",
+   "titulo": "Rey Entropía: guardián de la fortaleza «Ondes et signaux»",
+   "preguntas": [
+    {
+     "pregunta": "Le niveau d'intensité sonore L, exprimé en décibels (dB), est défini par :",
+     "opciones": [
+      "L = 10 log(I / I₀)",
+      "L = I / I₀",
+      "L = 20 log(I × I₀)",
+      "L = 10 (I − I₀)"
+     ],
+     "correcta": 0,
+     "explicacion": "L = 10 log(I/I₀) avec I₀ = 1,0×10⁻¹² W·m⁻² : échelle logarithmique adaptée à l'oreille.",
+     "pagina_pdf": 453
+    },
+    {
+     "pregunta": "Deux ondes de même longueur d'onde λ sont en opposition de phase (interférences destructives) lorsqu'elles sont décalées de :",
+     "opciones": [
+      "k × λ (k entier)",
+      "(k + ½) × λ (k entier)",
+      "toujours λ/4",
+      "exactement 2λ"
+     ],
+     "correcta": 1,
+     "explicacion": "Décalage de (k + ½)·λ : les amplitudes s'annulent. Décalage de k·λ : ondes en phase, interférences constructives.",
+     "pagina_pdf": 454
+    },
+    {
+     "pregunta": "L'angle caractéristique de diffraction d'une fente de largeur a, éclairée par une onde de longueur d'onde λ, vaut :",
+     "opciones": [
+      "θ = a / λ",
+      "θ = λ × a",
+      "θ = λ / a",
+      "θ = 2a / λ"
+     ],
+     "correcta": 2,
+     "explicacion": "θ = λ/a (en radians) : plus la fente est étroite, plus la diffraction est marquée.",
+     "pagina_pdf": 454
+    },
+    {
+     "pregunta": "Un train qui klaxonne s'approche de vous à vitesse importante. Par effet Doppler, le son perçu est :",
+     "opciones": [
+      "plus grave, car f_R < f_e",
+      "inchangé, seul le niveau sonore augmente",
+      "plus grave puis plus aigu",
+      "plus aigu, car f_R > f_e"
+     ],
+     "correcta": 3,
+     "explicacion": "Source qui se rapproche : f_R = f_e·c/(c − v) > f_e, donc son plus aigu ; il devient plus grave quand la source s'éloigne.",
+     "pagina_pdf": 456
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 172,
+   "y": 12
+  }
+ ]
+}

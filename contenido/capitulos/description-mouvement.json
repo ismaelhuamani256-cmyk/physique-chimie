@@ -1,0 +1,1058 @@
+{
+ "id": "description-mouvement",
+ "titulo": "Description d'un mouvement",
+ "materia": "physique",
+ "mundo": "mouvement",
+ "pdf_ini": 262,
+ "pdf_fin": 285,
+ "resumen": "Para describir un movimiento se usan tres vectores: la posición OM(t), la velocidad v = dOM/dt (tangente a la trayectoria) y la aceleración a = dv/dt. El repère de Frenet (τ tangente, n hacia el centro de curvatura) descompone a en a_τ = dv/dt y a_n = v²/R. Con ello se caracterizan los movimientos rectilíneos (uniforme, acelerado, ralentizado) y circulares (uniforme: v ⟂ a y a = v²/R, ¡no nula!).",
+ "resumen_fr": "Vecteurs position, vitesse et accélération ; repère de Frenet ; mouvements rectilignes (uniforme, accéléré, ralenti) et circulaire uniforme.",
+ "nociones_clave": [
+  {
+   "fr": "Trajectoire : rectiligne, circulaire, curviligne ; mouvement uniforme ou non uniforme",
+   "es": "Para describir un movimiento hay que decir la forma de la trayectoria (recta, circunferencia o curva cualquiera) y cómo se recorre (uniforme: a velocidad constante; no uniforme).",
+   "pagina_pdf": 262
+  },
+  {
+   "fr": "Vecteur position OM(t)",
+   "es": "Coordenadas x(t), y(t), z(t) del punto M en un repère ortonormado; contiene toda la información del movimiento.",
+   "pagina_pdf": 267
+  },
+  {
+   "fr": "Vecteur vitesse",
+   "es": "Derivada del vector posición. Dirección tangente a la trayectoria, sentido del movimiento, norma = valor de la velocidad en m·s⁻¹.",
+   "pagina_pdf": 267
+  },
+  {
+   "fr": "Vecteur accélération",
+   "es": "Derivada del vector velocidad (evolución de v⃗ con el tiempo). Su norma se expresa en m·s⁻².",
+   "pagina_pdf": 267
+  },
+  {
+   "fr": "L'accélération n'est pas seulement l'augmentation de la vitesse",
+   "es": "Si cambia la norma de v (sube o baja) o si solo cambia su dirección, a⃗ no es nulo. Puede ser distinto de cero incluso en un movimiento uniforme.",
+   "pagina_pdf": 268
+  },
+  {
+   "fr": "Repère de Frenet (τ⃗, n⃗)",
+   "es": "Base local de dos vectores ortogonales de norma 1: τ⃗ tangente a la trayectoria y en el sentido del movimiento; n⃗ ortogonal a τ⃗ y dirigido hacia el centro de curvatura. Depende del punto de la curva.",
+   "pagina_pdf": 268
+  },
+  {
+   "fr": "Décomposition de v et a dans le repère de Frenet",
+   "es": "v⃗ = v·τ⃗ (colineal con τ⃗); a⃗ = (dv/dt)·τ⃗ + (v²/R)·n⃗, válido en trayectorias de cualquier tipo.",
+   "pagina_pdf": 268
+  },
+  {
+   "fr": "Signe de a_τ",
+   "es": "a_τ es nula si la velocidad es constante (movimiento uniforme), positiva si el movimiento se acelera y negativa si se ralentiza.",
+   "pagina_pdf": 268
+  },
+  {
+   "fr": "Mouvement rectiligne",
+   "es": "La trayectoria es una recta; v⃗ y a⃗ conservan la dirección de la trayectoria. Con a⃗ constante: uniforme (a=0), uniformemente acelerado (a·v>0) o uniformemente ralentizado (a·v<0).",
+   "pagina_pdf": 269
+  },
+  {
+   "fr": "Mouvement circulaire",
+   "es": "La trayectoria es un círculo: v⃗ y a⃗ ya no son colineales. Si el movimiento es uniforme, a⃗ = (v²/R)·n⃗, constante en valor y ortogonal a v⃗.",
+   "pagina_pdf": 269
+  },
+  {
+   "fr": "Chronophotographie et pointage vidéo",
+   "es": "Se registra el movimiento (cada imagen = un Δt fijo), se apuntan las posiciones sucesivas del centro del objeto y se exportan (t, x, y) a un tableur o a python para calcular v⃗ y a⃗.",
+   "pagina_pdf": 604
+  },
+  {
+   "fr": "Équations horaires (représentation paramétrique)",
+   "es": "Las ecuaciones de x(t), y(t), z(t) y de v(t) son ecuaciones paramétricas en función del tiempo; se obtienen integrando a⃗ con las condiciones iniciales.",
+   "pagina_pdf": 554
+  },
+  {
+   "fr": "Dérivation de vecteurs",
+   "es": "Si se pueden derivar las coordenadas de un vector u⃗, las coordenadas de u⃗' son simplemente sus derivadas (ej.: OM=(x,y,z) ⇒ v=(ẋ,ẏ,ż)).",
+   "pagina_pdf": 553
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "\\overrightarrow{OM}(t)=x(t)\\,\\vec i+y(t)\\,\\vec j+z(t)\\,\\vec k=\\begin{pmatrix}x(t)\\\\y(t)\\\\z(t)\\end{pmatrix}",
+   "nombre": "Vector posición",
+   "nombre_fr": "Vecteur position",
+   "variables": [
+    {
+     "simbolo": "\\overrightarrow{OM}",
+     "significado": "vector posición del punto M",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "x(t), y(t), z(t)",
+     "significado": "coordenadas de M en el instante t (repère orthonormé)",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "\\vec i,\\vec j,\\vec k",
+     "significado": "vectores unitarios de la base cartesiana",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Para describir el movimiento de un punto M hay que conocer, en cada instante, sus coordenadas x(t), y(t), z(t) en un repère ortonormado; el vector posición reúne esa información.",
+   "ejemplo": null,
+   "pagina_pdf": 267,
+   "animacion": {
+    "preset": "cinematica",
+    "params": {},
+    "leyenda": "Verás un móvil moviéndose y su posición cambiando con el tiempo."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "\\vec v(t_i)=\\dfrac{\\Delta\\overrightarrow{OM}(t_i)}{\\Delta t}=\\dfrac{\\overrightarrow{OM}(t_{i+1})-\\overrightarrow{OM}(t_{i-1})}{t_{i+1}-t_{i-1}}",
+   "nombre": "Vector velocidad a partir de las posiciones (construcción en un punto)",
+   "nombre_fr": "Vecteur vitesse (construction à partir des positions)",
+   "variables": [
+    {
+     "simbolo": "\\vec v(t_i)",
+     "significado": "vector velocidad en el instante t_i",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "\\Delta\\overrightarrow{OM}(t_i)",
+     "significado": "variación del vector posición entre el instante anterior y el siguiente",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "\\Delta t",
+     "significado": "= t_{i+1} − t_{i−1}",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "En una cronofotografía se calcula v en M_i con la variación del vector posición entre el punto anterior y el siguiente. Variante del libro (Pont vers les maths): v_x,i = (x_{i+1} − x_i)/(t_{i+1} − t_i).",
+   "ejemplo": null,
+   "pagina_pdf": 267,
+   "animacion": {
+    "preset": "cinematica",
+    "params": {},
+    "leyenda": "Verás la velocidad como desplazamiento entre dos instantes, dividido por el tiempo transcurrido."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "\\vec v(t)=\\dfrac{d\\overrightarrow{OM}(t)}{dt}",
+   "nombre": "Vector velocidad (derivada del vector posición)",
+   "nombre_fr": "Vecteur vitesse",
+   "variables": [
+    {
+     "simbolo": "\\vec v",
+     "significado": "vector velocidad",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "\\overrightarrow{OM}",
+     "significado": "vector posición",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "t",
+     "significado": "tiempo",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "Cuando Δt tiende a 0, el vector velocidad tiende a la derivada del vector posición. Dirección: tangente a la trayectoria; sentido: el del movimiento; norma: el valor de la velocidad, en m·s⁻¹.",
+   "ejemplo": null,
+   "pagina_pdf": 267,
+   "animacion": {
+    "preset": "cinematica",
+    "params": {},
+    "leyenda": "Verás el vector velocidad siempre tangente a la trayectoria y apuntando en el sentido del movimiento."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "\\vec v(t)=\\dfrac{dx}{dt}\\,\\vec i+\\dfrac{dy}{dt}\\,\\vec j+\\dfrac{dz}{dt}\\,\\vec k=\\begin{pmatrix}dx/dt\\\\dy/dt\\\\dz/dt\\end{pmatrix}",
+   "nombre": "Coordenadas del vector velocidad",
+   "nombre_fr": "Coordonnées du vecteur vitesse",
+   "variables": [
+    {
+     "simbolo": "v_x,v_y,v_z",
+     "significado": "componentes de la velocidad",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "x,y,z",
+     "significado": "coordenadas del vector posición",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Cada componente del vector velocidad es la derivada de la componente correspondiente del vector posición.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 11: x(t)=3,39·t ; y(t)=−4,9·t²+5,87·t+2,0 (SI). Derivando: v_x=3,39 ; v_y=−9,8·t+5,87.",
+    "resultado": "v⃗ = (3,39 ; −9,8·t+5,87) m·s⁻¹",
+    "pagina_pdf": 272
+   },
+   "pagina_pdf": 267,
+   "animacion": {
+    "preset": "proyectil",
+    "params": {
+     "v0": 6.78,
+     "alpha": 60,
+     "g": 9.8
+    },
+    "leyenda": "Verás un salto parabólico: la componente horizontal de v no cambia y la vertical sí."
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "\\vec a(t_i)=\\dfrac{\\Delta\\vec v(t_i)}{\\Delta t}=\\dfrac{\\vec v(t_{i+1})-\\vec v(t_{i-1})}{t_{i+1}-t_{i-1}}",
+   "nombre": "Vector aceleración a partir de las velocidades (construcción en un punto)",
+   "nombre_fr": "Vecteur accélération (construction)",
+   "variables": [
+    {
+     "simbolo": "\\vec a(t_i)",
+     "significado": "vector aceleración en el instante t_i",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "\\Delta\\vec v(t_i)",
+     "significado": "variación del vector velocidad = v(t_{i+1}) − v(t_{i−1})",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "\\Delta t",
+     "significado": "= t_{i+1} − t_{i−1}",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "La aceleración describe la evolución de la velocidad: se construye Δv⃗ en M_i, y a⃗ tiene su misma dirección y sentido (Fiche méthode 18: a₅ = Δv₅ / 2Δt si Δt es el intervalo entre dos puntos consecutivos).",
+   "ejemplo": null,
+   "pagina_pdf": 267,
+   "animacion": {
+    "preset": "cinematica",
+    "params": {},
+    "leyenda": "Verás cómo la variación del vector velocidad entre dos instantes da la dirección y sentido de la aceleración."
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "\\vec a(t)=\\dfrac{d\\vec v(t)}{dt}",
+   "nombre": "Vector aceleración (derivada del vector velocidad)",
+   "nombre_fr": "Vecteur accélération",
+   "variables": [
+    {
+     "simbolo": "\\vec a",
+     "significado": "vector aceleración",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "\\vec v",
+     "significado": "vector velocidad",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "t",
+     "significado": "tiempo",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "Cuando Δt tiende a 0, el vector aceleración tiende a la derivada del vector velocidad. Su norma se expresa en m·s⁻². Puede ser no nulo aunque el movimiento sea uniforme (cambia la dirección de v⃗).",
+   "ejemplo": null,
+   "pagina_pdf": 267,
+   "animacion": {
+    "preset": "cinematica",
+    "params": {},
+    "leyenda": "Verás el vector aceleración apuntando hacia donde se curva la velocidad."
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "\\vec a=\\begin{pmatrix}dv_x/dt\\\\dv_y/dt\\\\dv_z/dt\\end{pmatrix}=\\begin{pmatrix}d^2x/dt^2\\\\d^2y/dt^2\\\\d^2z/dt^2\\end{pmatrix}",
+   "nombre": "Coordenadas del vector aceleración",
+   "nombre_fr": "Coordonnées du vecteur accélération",
+   "variables": [
+    {
+     "simbolo": "a_x,a_y,a_z",
+     "significado": "componentes de la aceleración",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "d^2x/dt^2",
+     "significado": "derivada segunda de la coordenada respecto al tiempo",
+     "unidad": "m·s⁻²"
+    }
+   ],
+   "explicacion": "Cada componente de a⃗ es la derivada de la componente de v⃗, es decir, la derivada segunda de la coordenada de posición.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 11 (2.a): con v_y = −9,8·t+5,87, a_y = dv_y/dt = −9,8 m·s⁻² y a_x = 0.",
+    "resultado": "a⃗ = (0 ; −9,8) m·s⁻², vector constante, vertical, hacia abajo, de valor 9,8 m·s⁻²",
+    "pagina_pdf": 617
+   },
+   "pagina_pdf": 270,
+   "animacion": {
+    "preset": "proyectil",
+    "params": {
+     "v0": 6.78,
+     "alpha": 60,
+     "g": 9.8
+    },
+    "leyenda": "Verás un salto parabólico: la aceleración es vertical y constante (hacia abajo)."
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "\\vec v=v\\,\\vec\\tau=\\begin{pmatrix}v\\\\0\\end{pmatrix}",
+   "nombre": "Velocidad en el repère de Frenet",
+   "nombre_fr": "Vecteur vitesse dans le repère de Frenet",
+   "variables": [
+    {
+     "simbolo": "\\vec\\tau",
+     "significado": "vector unitario tangente a la trayectoria, en el sentido del movimiento",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "v",
+     "significado": "valor de la velocidad",
+     "unidad": "m·s⁻¹"
+    }
+   ],
+   "explicacion": "El vector velocidad es colineal con τ⃗, por definición: no tiene componente según n⃗. Esta expresión vale para cualquier tipo de movimiento y de trayectoria.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 33: v⃗_M = −4,8·sin(5,0·t) i⃗ + 4,8·cos(5,0·t) j⃗ ; v_M = √(4,8²·sin² + 4,8²·cos²) = 4,8 m·s⁻¹.",
+    "resultado": "v⃗ = 4,8·τ⃗",
+    "pagina_pdf": 617
+   },
+   "pagina_pdf": 268,
+   "animacion": {
+    "preset": "cinematica",
+    "params": {
+     "v": 4.8
+    },
+    "leyenda": "Verás la velocidad siempre tangente a la trayectoria: cambia de dirección pero apunta según τ⃗."
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "\\vec a=a_\\tau\\,\\vec\\tau+a_n\\,\\vec n\\quad\\text{con}\\quad a_\\tau=\\dfrac{dv}{dt},\\;\\; a_n=\\dfrac{v^2}{R}",
+   "nombre": "Aceleración en el repère de Frenet",
+   "nombre_fr": "Accélération dans le repère de Frenet",
+   "variables": [
+    {
+     "simbolo": "a_\\tau",
+     "significado": "componente tangencial de la aceleración",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "a_n",
+     "significado": "componente normal (hacia el centro de curvatura)",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "v",
+     "significado": "valor de la velocidad",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "R",
+     "significado": "radio de la trayectoria",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Las componentes de a⃗ dependen del valor de la velocidad (la norma) y no del vector velocidad. a_τ es nula si la velocidad es constante, positiva si el movimiento se acelera y negativa si se frena.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 28 (disco de piedra, D = 40 cm): a_M = dv_M/dt τ⃗ + v_M²/(D/2) n⃗.",
+    "resultado": "a_n = 5²/0,2 = 125 m·s⁻² ≈ 1,2×10² m·s⁻²",
+    "pagina_pdf": 276
+   },
+   "pagina_pdf": 268,
+   "animacion": {
+    "preset": "cinematica",
+    "params": {},
+    "leyenda": "Verás la aceleración descompuesta en una parte tangente (cambio de rapidez) y una normal (cambio de dirección)."
+   }
+  },
+  {
+   "id": "f10",
+   "latex": "a=\\dfrac{v^{2}}{R}\\qquad \\vec a=\\dfrac{v^{2}}{R}\\,\\vec n",
+   "nombre": "Aceleración en el movimiento circular uniforme",
+   "nombre_fr": "Accélération d'un mouvement circulaire uniforme",
+   "variables": [
+    {
+     "simbolo": "a",
+     "significado": "valor de la aceleración (constante)",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "v",
+     "significado": "valor de la velocidad (constante)",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "R",
+     "significado": "radio de la trayectoria circular",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Si el movimiento es circular y uniforme, a_τ = dv/dt = 0: a⃗ es colineal con n⃗, apunta al centro, y es ortogonal a v⃗. Su valor es constante.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 33: v = 4,8 m·s⁻¹ ; a = 24 m·s⁻² ⇒ R = v²/a.",
+    "resultado": "R = 0,96 m = 96 cm",
+    "pagina_pdf": 617
+   },
+   "pagina_pdf": 269,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x*x/R",
+     "xmin": 0,
+     "xmax": 25,
+     "vars": {
+      "R": {
+       "min": 1,
+       "max": 20,
+       "step": 0.5,
+       "def": 8.0,
+       "label": "Radio R",
+       "unit": "m"
+      }
+     }
+    },
+    "leyenda": "Verás la gráfica de a = v²/R en función de v: crece como una parábola y baja si aumentas el radio."
+   }
+  },
+  {
+   "id": "f11",
+   "latex": "\\vec a\\cdot\\vec v>0\\Rightarrow\\text{rectiligne uniform\\'ement acc\\'el\\'er\\'e}\\quad;\\quad \\vec a\\cdot\\vec v<0\\Rightarrow\\text{rectiligne uniform\\'ement ralenti}",
+   "nombre": "Clasificación del movimiento rectilíneo con aceleración constante",
+   "nombre_fr": "Mouvements rectilignes à accélération constante",
+   "variables": [
+    {
+     "simbolo": "\\vec a\\cdot\\vec v",
+     "significado": "producto escalar de aceleración y velocidad",
+     "unidad": "m²·s⁻³"
+    },
+    {
+     "simbolo": "\\vec a=\\vec 0",
+     "significado": "caso rectilíneo uniforme (v constante)",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "En un movimiento rectilíneo (v⃗ y a⃗ mantienen la dirección de la trayectoria) con a⃗ constante hay 3 casos: a⃗ = 0 (uniforme), a⃗·v⃗ > 0 (uniformemente acelerado), a⃗·v⃗ < 0 (uniformemente ralentizado).",
+   "ejemplo": {
+    "enunciado": "Proyectil lanzado verticalmente hacia arriba (cours p. 269): a⃗ vertical hacia abajo constante.",
+    "resultado": "Subida: a⃗·v⃗ < 0 (ralentizado). En la cima v = 0. Bajada: a⃗·v⃗ > 0 (acelerado).",
+    "pagina_pdf": 269
+   },
+   "pagina_pdf": 269,
+   "animacion": {
+    "preset": "cinematica",
+    "params": {},
+    "leyenda": "Verás qué pasa con la rapidez según a y v tengan el mismo sentido o sentidos opuestos."
+   }
+  },
+  {
+   "id": "f12",
+   "latex": "v(t)=k\\times t=a\\,t\\quad(v_0=0)",
+   "nombre": "Velocidad en un movimiento rectilíneo uniformemente acelerado (v₀ = 0)",
+   "nombre_fr": "Vitesse d'un mouvement rectiligne uniformément accéléré",
+   "variables": [
+    {
+     "simbolo": "v",
+     "significado": "velocidad",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "a",
+     "significado": "aceleración constante (k = a)",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "t",
+     "significado": "tiempo",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "Ejercicio resuelto 30: como v⃗ y a⃗ son colineales, v = dd/dt y a = dv/dt; si a = k = constante y v₀ = 0, entonces v = k·t.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 30: a = 49,0 m·s⁻² (5 g); t = 3,44×10⁵ s.",
+    "resultado": "v = 49,0 × 3,44×10⁵ = 1,69×10⁷ m·s⁻¹",
+    "pagina_pdf": 277
+   },
+   "pagina_pdf": 277,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "a*x",
+     "xmin": 0,
+     "xmax": 10,
+     "vars": {
+      "a": {
+       "min": 1,
+       "max": 60,
+       "step": 1,
+       "def": 49.0,
+       "label": "Aceleración a",
+       "unit": "m·s⁻²"
+      }
+     }
+    },
+    "leyenda": "Verás la velocidad creciendo linealmente con el tiempo para la aceleración elegida."
+   }
+  },
+  {
+   "id": "f13",
+   "latex": "d=\\dfrac12\\,k\\,t^{2}=\\dfrac12\\,a\\,t^{2}\\;\\Longrightarrow\\; t=\\sqrt{\\dfrac{2d}{k}}",
+   "nombre": "Distancia recorrida en un movimiento rectilíneo uniformemente acelerado (v₀ = 0)",
+   "nombre_fr": "Distance parcourue (MRUA, v₀ = 0)",
+   "variables": [
+    {
+     "simbolo": "d",
+     "significado": "distancia recorrida",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "k = a",
+     "significado": "aceleración constante",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "t",
+     "significado": "tiempo",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "Se recupera integrando dos veces la aceleración constante. Para un movimiento uniformemente acelerado: d = ½·a·t² (Activité 3, pregunta 1).",
+   "ejemplo": {
+    "enunciado": "Ejercicio 30 (2.a): d = 2,9×10¹² m, k = 49,0 m·s⁻².",
+    "resultado": "t = √(2×2,9×10¹²/49,0) = 3,44×10⁵ s = 3 j 23 h 30 min",
+    "pagina_pdf": 277
+   },
+   "pagina_pdf": 277,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "0.5*a*x*x",
+     "xmin": 0,
+     "xmax": 10,
+     "vars": {
+      "a": {
+       "min": 1,
+       "max": 60,
+       "step": 1,
+       "def": 49.0,
+       "label": "Aceleración a",
+       "unit": "m·s⁻²"
+      }
+     }
+    },
+    "leyenda": "Verás la distancia recorrida creciendo como una parábola con el tiempo."
+   }
+  },
+  {
+   "id": "f14",
+   "latex": "\\|\\vec v\\|=\\sqrt{v_x^{2}+v_y^{2}}",
+   "nombre": "Norma del vector velocidad a partir de sus coordenadas",
+   "nombre_fr": "Norme du vecteur vitesse",
+   "variables": [
+    {
+     "simbolo": "v_x,v_y",
+     "significado": "coordenadas del vector velocidad",
+     "unidad": "m·s⁻¹"
+    }
+   ],
+   "explicacion": "Pont vers les maths (Activité 2): la norma de v⃗ de coordenadas (v_x, v_y) es u = √(v_x² + v_y²).",
+   "ejemplo": {
+    "enunciado": "Ejercicio 11 a t = 1,0 s: v⃗ = (3,39 ; −3,93) m·s⁻¹.",
+    "resultado": "v = 5,19 m·s⁻¹",
+    "pagina_pdf": 617
+   },
+   "pagina_pdf": 265,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "sqrt(x*x+vy*vy)",
+     "xmin": 0,
+     "xmax": 6,
+     "vars": {
+      "vy": {
+       "min": -6,
+       "max": 6,
+       "step": 0.01,
+       "def": -3.93,
+       "label": "Componente vy",
+       "unit": "m·s⁻¹"
+      }
+     }
+    },
+    "leyenda": "Verás la norma de v en función de vx para un vy fijo (como un triángulo rectángulo)."
+   }
+  },
+  {
+   "id": "f15",
+   "latex": "u=\\dfrac{\\sigma_n}{\\sqrt n}",
+   "nombre": "Incertidumbre-tipo de la media de n medidas",
+   "nombre_fr": "Incertitude-type sur la moyenne",
+   "variables": [
+    {
+     "simbolo": "u",
+     "significado": "incertidumbre-tipo",
+     "unidad": "misma unidad que la medida"
+    },
+    {
+     "simbolo": "\\sigma_n",
+     "significado": "desviación estándar de las n medidas",
+     "unidad": "misma unidad que la medida"
+    },
+    {
+     "simbolo": "n",
+     "significado": "número de medidas",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Activité 2 (Pont vers les maths): si σ es la desviación estándar para n medidas, la incertidumbre-tipo es U = σ_n/√n. Con python: n.mean() y n.std(ddof=1).",
+   "ejemplo": null,
+   "pagina_pdf": 265,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "s/sqrt(x)",
+     "xmin": 1,
+     "xmax": 50,
+     "vars": {
+      "s": {
+       "min": 0.1,
+       "max": 5,
+       "step": 0.1,
+       "def": 1.0,
+       "label": "Desviación σ",
+       "unit": "u. de la medida"
+      }
+     }
+    },
+    "leyenda": "Verás cómo la incertidumbre baja al aumentar el número de medidas n."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "g (intensidad de la pesantez, valor usado en los ejercicios)",
+   "valor": "9,8",
+   "unidad": "m·s⁻²",
+   "pagina_pdf": 272
+  },
+  {
+   "nombre": "Radio de la órbita terrestre R",
+   "valor": "1,49×10¹¹",
+   "unidad": "m",
+   "pagina_pdf": 265
+  },
+  {
+   "nombre": "Radio de la Tierra (ejercicio 24)",
+   "valor": "6,4×10³",
+   "unidad": "km",
+   "pagina_pdf": 274
+  },
+  {
+   "nombre": "Masa de un protón mₚ (ejercicio 43)",
+   "valor": "1,67×10⁻²⁷",
+   "unidad": "kg",
+   "pagina_pdf": 281
+  },
+  {
+   "nombre": "Carga de un protón qₚ (ejercicio 43)",
+   "valor": "1,60×10⁻¹⁹",
+   "unidad": "C",
+   "pagina_pdf": 281
+  },
+  {
+   "nombre": "Aceleración 1 g (ejercicio 26: 1 g = 9,8 m·s⁻²)",
+   "valor": "9,8",
+   "unidad": "m·s⁻²",
+   "pagina_pdf": 275
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Construir el vector velocidad en un punto de una cronofotografía",
+   "pasos": [
+    "Medir (o trazar) el vector desplazamiento ΔOM(t_i) = OM(t_{i+1}) − OM(t_{i−1}) entre el punto anterior y el siguiente.",
+    "Dividir por Δt = t_{i+1} − t_{i−1}: v⃗(t_i) = ΔOM(t_i)/Δt.",
+    "Dibujarlo en M_i: dirección de la tangente, sentido del movimiento, longitud según una escala de velocidades."
+   ],
+   "pagina_pdf": 267
+  },
+  {
+   "titulo": "Construir el vector aceleración (Fiche méthode 18)",
+   "pasos": [
+    "Dibujar v⃗_{i−1} y v⃗_{i+1} desde un mismo punto y construir Δv⃗_i = v⃗_{i+1} − v⃗_{i−1} (se traslada −v⃗_{i−1} al extremo de v⃗_{i+1}).",
+    "a⃗_i tiene la dirección y el sentido de Δv⃗_i; su valor es a_i = Δv_i / (2Δt) con Δt = intervalo entre dos puntos consecutivos (en m·s⁻²).",
+    "Dibujar a⃗_i en M_i con una escala propia de aceleraciones."
+   ],
+   "pagina_pdf": 572
+  },
+  {
+   "titulo": "Determinar las coordenadas de v⃗ y a⃗ derivando (Fiche méthode 4)",
+   "pasos": [
+    "Escribir las coordenadas x(t), y(t), z(t) de OM.",
+    "Derivar cada una respecto al tiempo para obtener v_x, v_y, v_z; derivar otra vez para a_x, a_y, a_z.",
+    "Usar las derivadas usuales: (a·t²)' = 2a·t ; (a·t)' = a ; (a)' = 0 ; (k·sin x)' = k·cos x ; (k·cos x)' = −k·sin x ; (ln x)' = 1/x ; (eˣ)' = eˣ.",
+    "Notación de Newton: ḟ y f̈ para las derivadas primera y segunda respecto al tiempo."
+   ],
+   "pagina_pdf": 553
+  },
+  {
+   "titulo": "Establecer las ecuaciones horarias (Fiche méthode 5)",
+   "pasos": [
+    "Elegir un repère cartesiano con z vertical y v⃗₀ sin componente según Ox u Oy; poner el origen en la posición inicial.",
+    "Escribir a⃗(t); integrar a = dv/dt para obtener tres primitivas v_x, v_y, v_z (cada una con una constante).",
+    "Usar las condiciones iniciales (v⃗₀ por proyección) para fijar las constantes.",
+    "Integrar de nuevo v⃗ = dOM/dt para x(t), y(t), z(t) y fijar las constantes con la posición inicial.",
+    "Primitivas: de df/dt = 0 → f = C ; de df/dt = D → f = D·t + E ; de df/dt = F·t → f = ½F·t² + G.",
+    "Para la trayectoria: eliminar t entre x(t) e y(t); la cima se halla con v_z(t) = 0; la altura h con z(t) = h."
+   ],
+   "pagina_pdf": 554
+  },
+  {
+   "titulo": "Descomponer v⃗ y a⃗ en el repère de Frenet",
+   "pasos": [
+    "Dibujar en el punto estudiado τ⃗ (tangente, sentido del movimiento) y n⃗ (hacia el centro de curvatura).",
+    "Escribir v⃗ = v·τ⃗ y a⃗ = (dv/dt)·τ⃗ + (v²/R)·n⃗; convertir los diámetros a radios (R = D/2) y las unidades a SI.",
+    "Interpretar: a_τ = 0 → v constante; a_τ > 0 → acelera; a_τ < 0 → frena; a_n ≠ 0 → la trayectoria se curva."
+   ],
+   "pagina_pdf": 268
+  },
+  {
+   "titulo": "Caracterizar un movimiento con v⃗ y a⃗",
+   "pasos": [
+    "Rectilíneo con a⃗ constante: a⃗ = 0 → uniforme; a⃗·v⃗ > 0 → uniformemente acelerado; a⃗·v⃗ < 0 → uniformemente ralentizado.",
+    "Circular: a_τ = dv/dt; si es 0, el movimiento es uniforme y a⃗ = (v²/R)·n⃗ ⟂ v⃗; si no, circular acelerado o ralentizado.",
+    "Trayectoria rectilínea o circular uniforme (ejercicio 22): v⃗·a⃗ = 0 en el circular uniforme; a⃗ = 0⃗ en el rectilíneo uniforme."
+   ],
+   "pagina_pdf": 269
+  },
+  {
+   "titulo": "Pointage vidéo y exportación de datos (Fiche pratique 23)",
+   "pasos": [
+    "Grabar con el movimiento en un plano perpendicular al eje óptico y con una regla graduada (o un objeto de dimensiones conocidas) en ese plano.",
+    "Étalonnage: relacionar una longitud en pantalla con su valor real; elegir un repère con origen (p. ej. la posición inicial) y dos ejes.",
+    "Pointage: marcar imagen por imagen la posición del centro del objeto.",
+    "Exportar (t, X, Y) a un tableur-grapheur o a python para calcular v⃗ y a⃗."
+   ],
+   "pagina_pdf": 604
+  },
+  {
+   "titulo": "Exprimir una incertidumbre de medida (Fiche méthode 7)",
+   "pasos": [
+    "La medida nunca da un valor verdadero exacto: se usa la incertidumbre-tipo u, redondeada a 1 cifra significativa.",
+    "Varias medidas → evaluación de tipo A (σ y media); una sola medida → tipo B.",
+    "Para comparar con un valor de referencia: Q = |x_mes − x_ref| / u(x); ambos son compatibles a Q·u(x) cerca."
+   ],
+   "pagina_pdf": 556
+  },
+  {
+   "titulo": "Redactar un ejercicio de cinemática (ejercicio resuelto 28)",
+   "pasos": [
+    "«Décrire» una trayectoria: circular o rectilínea; «décrire qualitativement»: dar tendencias sin valor numérico.",
+    "«En déduire»: usar la respuesta anterior; «Déterminer»/«Vérifier»: calcular con la expresión dada.",
+    "Explotar los valores del gráfico, no olvidar que Frenet tiene 2 vectores de base, y convertir D a m (R = D/2).",
+    "La precisión de un gráfico no permite más de 2 cifras significativas."
+   ],
+   "pagina_pdf": 276
+  },
+  {
+   "titulo": "Tratar datos de posición con python (Activité 2)",
+   "pasos": [
+    "Leer el fichero csv (t, x, y) y construir las listas x, y con Δt entre dos puntos.",
+    "Calcular vx[i] = (x[i+1] − x[i−1])/(2·Δt) y análogamente vy, y v = (vx²+vy²)^0,5.",
+    "Calcular ax, ay de la misma forma a partir de vx, vy; trazar con plt.quiver() los vectores v⃗ y a⃗ en cada punto.",
+    "Calcular la media y la desviación estándar (n.mean(), n.std(ddof=1)) y la incertidumbre-tipo U = σ_n/√n."
+   ],
+   "pagina_pdf": 265
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Creer que aceleración = «solo aumenta la rapidez»",
+   "correccion": "a⃗ ≠ 0 también si v frena o solo cambia de dirección; a⃗ = dv⃗/dt (vector).",
+   "pagina_pdf": 268
+  },
+  {
+   "id": "err2",
+   "nombre": "Movimiento uniforme ⇒ aceleración nula",
+   "correccion": "En el circular uniforme a = v²/R ≠ 0 (a⃗ ⟂ v⃗, hacia el centro).",
+   "pagina_pdf": 269
+  },
+  {
+   "id": "err3",
+   "nombre": "No convertir unidades (cm, km, min decimales)",
+   "correccion": "Pasar todo a SI: D = 40 cm = 0,40 m; 2,9·10⁹ km = 2,9·10¹² m; 1,33 min = 79,8 s (no 1 min 33 s).",
+   "pagina_pdf": 278
+  },
+  {
+   "id": "err4",
+   "nombre": "v = 0 ⇒ a = 0",
+   "correccion": "En la cima de un lanzamiento vertical v = 0 pero a⃗ = g⃗ (constante, hacia abajo).",
+   "pagina_pdf": 269
+  },
+  {
+   "id": "err5",
+   "nombre": "Aceleración media tomada por la instantánea",
+   "correccion": "Δv/Δt sobre todo el intervalo es una media; para una fase hay que usar los valores de esa fase.",
+   "pagina_pdf": 278
+  },
+  {
+   "id": "err6",
+   "nombre": "Usar el diámetro en lugar del radio en v²/R",
+   "correccion": "R = D/2: a_n = v²/(D/2).",
+   "pagina_pdf": 276
+  },
+  {
+   "id": "err7",
+   "nombre": "Ignorar el signo de a_τ o de la aceleración",
+   "correccion": "a_τ < 0 (o a opuesto a v) significa que el móvil se ralentiza, no que «vaya hacia atrás».",
+   "pagina_pdf": 277
+  },
+  {
+   "id": "err8",
+   "nombre": "Olvidar un vector del repère de Frenet o derivar la norma de OM sin comprobar la colinealidad",
+   "correccion": "Frenet tiene dos vectores (τ⃗ y n⃗); solo se deriva la norma si todos los vectores son colineales.",
+   "pagina_pdf": 276
+  },
+  {
+   "id": "err9",
+   "nombre": "Dar más cifras significativas de las que permite el gráfico",
+   "correccion": "Lectura gráfica ⇒ máximo 2 cifras significativas (a ≈ 1,2×10² m·s⁻², no 125,0).",
+   "pagina_pdf": 276
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "Activité 1 — Étude d'un mouvement (lanzamiento de peso)",
+   "descripcion": "Grabar en vídeo el lanzamiento de un proyectil, apuntar con un software de pointage las posiciones del centro, exportar a un tableur, construir v⃗ y a⃗ en subida, cima y bajada, y calcular sus componentes con las derivadas (Un pont vers les maths: v⃗ = dOM/dt, a⃗ = dv⃗/dt). Describir el tipo de movimiento en cada eje.",
+   "pagina_pdf": 264
+  },
+  {
+   "titulo": "Activité 2 (TP) — Mouvement de la Terre sur son orbite",
+   "descripcion": "A partir de posiciones de la Terre (una imagen cada 10 jours, R = 1,49×10¹¹ m) y de un programa python: calcular v⃗ y a⃗, trazarlos (quiver), calcular medias e incertidumbre-tipo, comentar dirección y norma, y hallar k en a = k·v²/R.",
+   "pagina_pdf": 265
+  },
+  {
+   "titulo": "Activité 3 (TP) — Descente olympique en bobsleigh",
+   "descripcion": "Resolución de problema: con d = ½at² (1.), vitesse atteinte à la prise d'élan (6 s, 50 m, 40 km·h⁻¹), accélération dans le virage de la zone 2 (v = 110 km·h⁻¹) y en la zona de freno; representar el vector aceleración en cada zona.",
+   "pagina_pdf": 266
+  },
+  {
+   "titulo": "ECE — Mouvement sur un plan incliné",
+   "descripcion": "Proponer un protocolo, grabar un cilindro en un plano inclinado, hacer el pointage, y con python calcular vx, vy y las componentes de a⃗ (medias aₓ, a_y); concluir sobre el tipo de movimiento.",
+   "pagina_pdf": 284
+  },
+  {
+   "titulo": "Ejercicio 41 — La physique dans une essoreuse à salade",
+   "descripcion": "Un smartphone (acelerómetro y giroscopio, app phyphox) en rotación: se mide la aceleración en función de la velocidad angular ω y de ω²; se explica cómo ilustra a = v²/R.",
+   "pagina_pdf": 280
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Ejercicio 11 — Saut d'un tremplin en vélo. Un cycliste s'élance d'un tremplin de 2,0 m de haut. Les coordonnées du centre de masse de {vélo + cycliste} sont modélisées par x(t)=3,39·t et y(t)=−4,9·t²+5,87·t+2,0 (m, t en s). 1.a Déterminer les composantes de v⃗ au cours du temps. b En déduire la valeur de la vitesse à t = 1,0 s. 2.a Composantes de a⃗. b Remarques sur ce vecteur. c Valeur de l'accélération.",
+   "datos": {
+    "x(t)": "3,39·t",
+    "y(t)": "−4,9·t²+5,87·t+2,0",
+    "t": "1,0 s"
+   },
+   "respuesta": "1.a v⃗ = (3,39 ; −9,8·t+5,87). b À t = 1,0 s : v⃗ = (3,39 ; −3,93), v = 5,19 m·s⁻¹. 2.a a⃗ = (0 ; −9,8). b Vecteur constant, vertical, vers le bas. c a = 9,8 m·s⁻².",
+   "respuesta_numerica": {
+    "valor": 5.19,
+    "unidad": "m·s⁻¹",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "v_x = dx/dt = 3,39 ; v_y = dy/dt = −9,8·t + 5,87",
+    "t = 1,0 s : v_y = −9,8 + 5,87 = −3,93",
+    "v = √(3,39² + 3,93²) = 5,19 m·s⁻¹",
+    "a_x = 0 ; a_y = −9,8 ⇒ a = 9,8 m·s⁻²"
+   ],
+   "pagina_pdf": 272,
+   "corrige_pagina_pdf": 617
+  },
+  {
+   "id": "e2",
+   "enunciado": "Ejercicio resuelto 28 — Mouvement circulaire particulier. Un disque en pierre de diamètre D = 40 cm est mis en rotation par un moteur électrique. M est un point à la périphérie; la courbe de ‖v⃗_M‖ en fonction de t monte jusqu'à ≈ 5 m·s⁻¹ vers t = 5 s puis se stabilise. 1.a Décrire la trajectoire de M. b Comment évoluent les composantes de v⃗_M dans le repère de Frenet ? 2.a Exprimer a⃗_M. b Décrire qualitativement l'évolution des composantes de a⃗ puis calculer la valeur de l'accélération à t = 10 s. c En déduire le type de mouvement au cours du temps.",
+   "datos": {
+    "D": "40 cm",
+    "v_M (t ≥ 5 s)": "5 m·s⁻¹",
+    "t": "10 s"
+   },
+   "respuesta": "1.a Trajectoire circulaire (M en périphérie d'un disque en rotation autour d'un axe fixe). b v⃗_M = v_M·τ⃗: la composante sur τ⃗ augmente (≈ 5 m·s⁻¹ vers t = 5 s), la composante sur n⃗ est nulle. 2.a a⃗_M = (dv_M/dt)·τ⃗ + (v_M²/(D/2))·n⃗. b a_τ (pente de la tangente) est importante au début puis diminue et devient nulle vers 5 s; a_n évolue comme v_M. À t = 10 s, a_τ = 0 : a_M = v_M²/(D/2) = 5²/0,2 = 125 m·s⁻² = 1,2×10² m·s⁻². c De 0 à 5 s environ : mouvement circulaire accéléré; ensuite circulaire uniforme.",
+   "respuesta_numerica": {
+    "valor": 125,
+    "unidad": "m·s⁻²",
+    "tolerancia_rel": 0.05
+   },
+   "pasos": [
+    "Convertir D = 40 cm = 0,40 m, R = D/2 = 0,20 m",
+    "t = 10 s : dv/dt = 0 ⇒ a = a_n",
+    "a_n = v²/R = 5²/0,20 = 125 m·s⁻²",
+    "Resultado con 2 cifras significativas: 1,2×10² m·s⁻²"
+   ],
+   "pagina_pdf": 276,
+   "corrige_pagina_pdf": 276
+  },
+  {
+   "id": "e3",
+   "enunciado": "Ejercicio resuelto 30 — Vol spatiaux. Un vaisseau capable d'accélérer à 5 g (a = 49,0 m·s⁻²), navette en mouvement rectiligne uniformément accéléré, v₀ = 0. 1. Vérifier que d = ½·k·t² avec k constante (valeur ?). 2. Uranus, 8ᵉ planète, est à ≈ 2,9×10⁹ km de la Terre: a. temps nécessaire pour l'atteindre; b. vitesse atteinte. 3. Accélération jusqu'à mi-parcours puis mouvement uniformément ralenti jusqu'à l'arrivée (v = 0): a. comparer les vecteurs accélération des deux phases; b. durée du voyage; c. vitesse maximale.",
+   "datos": {
+    "a": "49,0 m·s⁻²",
+    "d": "2,9×10⁹ km"
+   },
+   "respuesta": "1. k = 49,0 m·s⁻² (v⃗ et a⃗ colinéaires, v = k·t et a = k). 2.a t = √(2d/k) = √(2×2,9×10¹²/49,0) = 3,44×10⁵ s = 3 j 23 h 30 min. b v = 49,0 × 3,44×10⁵ = 1,69×10⁷ m·s⁻¹. 3.a Même direction, même norme, sens opposés. b t = 2·√(2(d/2)/k) = 4,87×10⁵ s = 5 j 15 h 09 min. c v_max = 49,0 × 4,87×10⁵/2 = 1,19×10⁷ m·s⁻¹.",
+   "respuesta_numerica": {
+    "valor": 344000,
+    "unidad": "s",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Convertir d = 2,9×10⁹ km = 2,9×10¹² m",
+    "t = √(2d/k) = 3,44×10⁵ s",
+    "v = k·t = 1,69×10⁷ m·s⁻¹",
+    "Phases symétriques: durée totale 2 × temps pour d/2 = 4,87×10⁵ s ; v_max = k × (t_total/2) = 1,19×10⁷ m·s⁻¹"
+   ],
+   "pagina_pdf": 277,
+   "corrige_pagina_pdf": 277
+  },
+  {
+   "id": "e4",
+   "enunciado": "Ejercicio 31 — Le plan incliné en roller. Ambre s'élance en roller dans la pente d'un plan incliné avec v₀ = 2,2 m·s⁻¹ (à t = 0). Trajectoire rectiligne ralentie uniformément, a = 4,9 m·s⁻². 1. Vérifier d = 2,2×t − ½·k·t² avec k constante; justifier le signe négatif. 2.a Temps pour que sa vitesse devienne nulle. b Distance parcourue alors. 3. La longueur du plan incliné est 60 cm: Ambre redescend en marche arrière avec la même accélération; durée de la descente du tremplin et vitesse au bas ?",
+   "datos": {
+    "v0": "2,2 m·s⁻¹",
+    "a": "4,9 m·s⁻²",
+    "longueur plan": "60 cm"
+   },
+   "respuesta": "1. v = 2,2 − k·t, donc à t = 0 v = 2,2 m·s⁻¹; a = −k ⇒ k = 4,9 m·s⁻². Le signe négatif signifie que a⃗ est dirigé vers le bas de la pente alors qu'Ambre monte. 2.a t = 0,45 s. b d = 49 cm. 3. t = 0,45 s et v = 2,2 m·s⁻¹.",
+   "respuesta_numerica": {
+    "valor": 0.45,
+    "unidad": "s",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "v(t) = 2,2 − 4,9·t = 0",
+    "t = 2,2/4,9 = 0,45 s",
+    "d = 2,2×0,45 − ½×4,9×0,45² = 0,49 m = 49 cm"
+   ],
+   "pagina_pdf": 277,
+   "corrige_pagina_pdf": 617
+  },
+  {
+   "id": "e5",
+   "enunciado": "Ejercicio 33 — Du repère cartésien au repère de Frenet. Un point M tourne autour d'un axe fixe; v⃗_M = −4,8·sin(5,0·t) i⃗ + 4,8·cos(5,0·t) j⃗ (SI). 1.a Norme de la vitesse. b Que dire du mouvement ? 2. Exprimer a⃗_M. 3. Avec τ⃗ = −sin(5,0 t) i⃗ + cos(5,0 t) j⃗ et n⃗ = −cos(5,0 t) i⃗ − sin(5,0 t) j⃗: a. retrouver v⃗ dans Frenet; b. norme de la vitesse; c. exprimer a⃗_M dans Frenet; d. rayon de la trajectoire.",
+   "datos": {
+    "v_M(t)": "(−4,8·sin(5,0t) ; 4,8·cos(5,0t))"
+   },
+   "respuesta": "1.a v_M = 4,8 m·s⁻¹. b Mouvement circulaire uniforme. 2. a⃗_M = (−24·cos(5,0 t) ; −24·sin(5,0 t)). 3.a v⃗_M = 4,8·τ⃗. b v = 4,8 m·s⁻¹. c a⃗_M = 24·n⃗. d R = v²/a = 4,8²/24 = 0,96 m = 96 cm.",
+   "respuesta_numerica": {
+    "valor": 0.96,
+    "unidad": "m",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "v = √(4,8²(sin²+cos²)) = 4,8 m·s⁻¹ constante ⇒ uniforme, trajectoire circulaire",
+    "a = dv/dt = (−24 cos(5,0t) ; −24 sin(5,0t)), norme 24 m·s⁻², a⃗ = 24·n⃗",
+    "R = v²/a = 23,04/24 = 0,96 m"
+   ],
+   "pagina_pdf": 278,
+   "corrige_pagina_pdf": 617
+  },
+  {
+   "id": "e6",
+   "enunciado": "Ejercicio 29 — La balançoire. Une balançoire est lâchée à t = 0 avec une amplitude de 30°. Sa vitesse dans Frenet: v⃗ = (L/2)·sin(6,28 t)·τ⃗ (L = longueur de la corde). 1. Vitesse à t = 0 ? 2.a-c Type de mouvement entre 0 et 0,5 s, entre 0,5 et 1 s, période des oscillations. 3.a Expression de a⃗ dans la base de Frenet. b Montrer que le mouvement n'est pas uniforme.",
+   "datos": {
+    "v(t)": "(L/2)·sin(6,28·t)",
+    "amplitude": "30°"
+   },
+   "respuesta": "1. v(0) = 0. 2.a Circulaire accéléré (0 à 0,5 s). b Circulaire ralenti (0,5 à 1 s). c T = 2 s. 3.a a⃗ = π·L·cos(2πt)·τ⃗ + (L·sin²(2πt)/4)·n⃗. b dv/dt ≠ 0, donc le mouvement n'est pas uniforme.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "dv/dt = (L/2)·2π·cos(2πt) = π·L·cos(2πt)",
+    "v²/R avec R = L : (L²/4)·sin²(2πt)/L = L·sin²(2πt)/4",
+    "dv/dt ≠ 0 ⇒ mouvement non uniforme"
+   ],
+   "pagina_pdf": 276,
+   "corrige_pagina_pdf": 617
+  },
+  {
+   "id": "e7",
+   "enunciado": "Ejercicio 14 — Différents mouvements. Trois mouvements rectilignes sont représentés par six graphiques temporels: A (v croissante, droite), B (x(t) droite), C (v constante), D (a constante), E (x(t) parabole), F (v décroissante, droite). Regrouper ceux qui correspondent à un même mouvement.",
+   "datos": {
+    "graphiques": "A, B, C, D, E, F"
+   },
+   "respuesta": "Uniforme : B, C ; accéléré : E, A, D ; ralenti : F.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "x(t) droite ⇒ v constante ⇒ uniforme (B, C)",
+    "v croissante, a constante positive, x en parabole ⇒ accéléré (A, D, E)",
+    "v décroissante ⇒ ralenti (F)"
+   ],
+   "pagina_pdf": 272,
+   "corrige_pagina_pdf": 617
+  },
+  {
+   "id": "e8",
+   "enunciado": "Ejercicio 22 — Caractériser une trajectoire. 1. Caractéristiques des vecteurs vitesse et accélération dans un mouvement rectiligne ? 2. Pour un mouvement uniforme : trajectoire rectiligne ? trajectoire circulaire ? Que dire du produit scalaire a⃗·v⃗ dans les deux cas ?",
+   "datos": {},
+   "respuesta": "1. v⃗ et a⃗ sont colinéaires, de même direction que la trajectoire. 2.a Rectiligne uniforme : a⃗ = 0⃗. Circulaire uniforme : v⃗ et a⃗ sont orthogonaux. b v⃗·a⃗ = 0 dans les deux cas.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Rectiligne ⇒ colinéarité",
+    "Uniforme rectiligne ⇒ v constant en direction et norme ⇒ a⃗ = 0⃗",
+    "Circulaire uniforme : a⃗ = (v²/R)·n⃗ ⟂ τ⃗ ⇒ a⃗·v⃗ = 0"
+   ],
+   "pagina_pdf": 274,
+   "corrige_pagina_pdf": 617
+  },
+  {
+   "id": "e9",
+   "enunciado": "Ejercicio 18 — Mouvement circulaire uniformément accéléré. 1.a Composantes de v⃗ dans Frenet. b Comment évoluent-elles ? 2.a Composantes de a⃗ dans Frenet. b Comment évoluent-elles ?",
+   "datos": {},
+   "respuesta": "1.a v⃗ = v·τ⃗ + 0·n⃗. b La composante sur τ⃗ augmente et celle sur n⃗ reste nulle. 2.a a⃗ = (dv/dt)·τ⃗ + (v²/R)·n⃗. b La composante sur τ⃗ est constante et la composante sur n⃗ augmente.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Uniformément accéléré ⇒ dv/dt constante",
+    "a_n = v²/R augmente car v augmente"
+   ],
+   "pagina_pdf": 273,
+   "corrige_pagina_pdf": 617
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "cinematica",
+   "params": {
+    "v": 4.8
+   },
+   "titulo": "Posición, velocidad y aceleración",
+   "relacion": "Vectores v⃗ = dOM/dt y a⃗ = dv⃗/dt, y su construcción por diferencias finitas."
+  },
+  {
+   "preset": "proyectil",
+   "params": {
+    "v0": 6.78,
+    "alpha": 60,
+    "g": 9.8
+   },
+   "titulo": "Salto del tremplín (ejercicio 11)",
+   "relacion": "Coordenadas de v⃗ (v_x constante, v_y = −g t + v₀ sen α) y a⃗ = (0 ; −g)."
+  },
+  {
+   "preset": "gravitacion",
+   "params": {},
+   "titulo": "Movimiento de la Tierra sobre su órbita",
+   "relacion": "Activité 2: movimiento casi circular donde a⃗ apunta al centro y a = k·v²/R."
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "lava-fortaleza",
+  "mecanica_especial": "Zonas de aceleración constante (zona_campo): dentro de una zona el empuje horizontal da una aceleración constante que acelera o ralentiza al jugador, como un movimiento rectilíneo uniformemente acelerado/ralentizado; plataformas móviles oscilantes y un puente sobre lava que cae con la palanca de Entropía."
+ },
+ "estilo_intro_sugerido": "monigotes"
+}

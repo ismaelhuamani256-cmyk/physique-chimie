@@ -1,0 +1,404 @@
+{
+ "capitulo_id": "methodes-chimiques",
+ "tipo_nivel": "normal",
+ "tema_visual": "laboratorio-neon",
+ "fisica_juego": {
+  "gravedad": 1.0,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 196,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 18
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 5,
+   "y": 12,
+   "ref": "f_w",
+   "latex": "w = \\dfrac{m_{\\text{soluté}}}{m_{\\text{solution}}}\\times 100",
+   "nombre": "Titre massique"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 12,
+   "y": 13,
+   "enemigo": "confusion_rho_d",
+   "nombre": "Confundir masa volúmica y densidad",
+   "correccion": "ρ tiene unidad (g·L⁻¹, kg·m⁻³); d = ρ/ρ_eau no tiene unidad."
+  },
+  {
+   "tipo": "foso",
+   "x": 18,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 22,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 26,
+   "y": 12,
+   "ref": "f_rho",
+   "latex": "\\rho = \\dfrac{m}{V}",
+   "nombre": "Masse volumique"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 30,
+   "y": 13,
+   "enemigo": "masa_disolvente",
+   "nombre": "Usar la masa del disolvente en w",
+   "correccion": "w = m_soluté / m_solución (de la solución entera) × 100."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 33,
+   "y": 12,
+   "ref": "f_d",
+   "latex": "d = \\dfrac{\\rho}{\\rho_{\\text{eau}}}",
+   "nombre": "Densité d'une solution"
+  },
+  {
+   "tipo": "foso",
+   "x": 36,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 40,
+   "y": 13,
+   "largo": 10
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 44
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 45,
+   "y": 11,
+   "ref": "f_cc",
+   "latex": "c = \\dfrac{\\rho_{\\text{eau}}\\cdot d\\cdot w}{M}",
+   "nombre": "Concentration d'une solution commerciale"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 47,
+   "y": 12,
+   "enemigo": "dilucion_cambia_n",
+   "nombre": "Creer que diluir cambia n",
+   "correccion": "n se conserva: c·V = c_diluée·V_diluée."
+  },
+  {
+   "tipo": "foso",
+   "x": 50,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 52,
+   "y": 12,
+   "largo": 4,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 64,
+   "y": 12,
+   "largo": 10
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 68,
+   "y": 10,
+   "ref": "f_dil",
+   "latex": "c\\cdot V = c_{\\text{diluée}}\\cdot V_{\\text{diluée}}",
+   "nombre": "Conservation de la quantité de matière lors d'une dilution"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 71,
+   "y": 11,
+   "enemigo": "siempre_color",
+   "nombre": "Esperar siempre un cambio de color",
+   "correccion": "La equivalencia también se halla por pH-metría o conductimetría."
+  },
+  {
+   "tipo": "foso",
+   "x": 74,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 77,
+   "y": 10,
+   "largo": 9
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 80,
+   "y": 8,
+   "ref": "f_eq",
+   "latex": "n_A = n_B \\;\\Longleftrightarrow\\; c_A\\cdot V_A = c_B\\cdot V_E",
+   "nombre": "Relation à l'équivalence"
+  },
+  {
+   "tipo": "resorte",
+   "x": 84,
+   "y": 10
+  },
+  {
+   "tipo": "foso",
+   "x": 86,
+   "largo": 4
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 88,
+   "y": 5,
+   "w": 12,
+   "h": 9,
+   "fx": 0.4,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 90,
+   "y": 10,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 92
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 94,
+   "y": 8,
+   "ref": "f_cA",
+   "latex": "c_A = \\dfrac{n_A}{V_A} = \\dfrac{c_B\\cdot V_E}{V_A}",
+   "nombre": "Concentration de l'espèce titrée"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 96,
+   "y": 9,
+   "enemigo": "titrante_titrado",
+   "nombre": "Confundir titrante y titrado como limitante",
+   "correccion": "Hasta V_E el titrante es limitante; después lo es el titrado."
+  },
+  {
+   "tipo": "foso",
+   "x": 98,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 102,
+   "y": 12,
+   "largo": 12
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 107,
+   "y": 10,
+   "ref": "f_x",
+   "latex": "c_A\\cdot V_A - x_E = 0 \\quad\\text{et}\\quad c_B\\cdot V_E - x_E = 0",
+   "nombre": "Tableau d'avancement à l'équivalence"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 110,
+   "y": 11,
+   "enemigo": "rectas_sin_prolongar",
+   "nombre": "No prolongar las dos rectas",
+   "correccion": "Prolongar ambas rectas: V_E es la abscisa de su intersección."
+  },
+  {
+   "tipo": "foso",
+   "x": 114,
+   "largo": 12
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 114,
+   "y": 6,
+   "w": 14,
+   "h": 8,
+   "fx": 0,
+   "fy": -0.6
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 116,
+   "y": 12,
+   "largo": 4,
+   "recorrido": 4,
+   "eje": "x",
+   "periodo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 126,
+   "y": 11,
+   "largo": 12
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 128
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 131,
+   "y": 9,
+   "ref": "f_n",
+   "latex": "n = \\dfrac{m}{M}",
+   "nombre": "Quantité de matière à partir de la masse"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 134,
+   "y": 10,
+   "enemigo": "olvidar_densidad",
+   "nombre": "Olvidar la densidad de la solución",
+   "correccion": "Usar d para pasar de volumen a masa de solución."
+  },
+  {
+   "tipo": "foso",
+   "x": 138,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 142,
+   "y": 12,
+   "largo": 12
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 147,
+   "y": 10,
+   "ref": "f_u",
+   "latex": "\\dfrac{u_c}{c}=\\sqrt{\\left(\\dfrac{u_{V_E}}{V_E}\\right)^2+\\left(\\dfrac{u_{V_A}}{V_A}\\right)^2+\\left(\\dfrac{u_{c_B}}{c_B}\\right)^2}",
+   "nombre": "Incertitude-type sur la concentration"
+  },
+  {
+   "tipo": "resorte",
+   "x": 151,
+   "y": 12
+  },
+  {
+   "tipo": "foso",
+   "x": 154,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 156,
+   "y": 11,
+   "largo": 4,
+   "recorrido": 4,
+   "eje": "x",
+   "periodo": 3.5
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 166,
+   "y": 6,
+   "w": 10,
+   "h": 8,
+   "fx": -0.3,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 166,
+   "y": 11,
+   "largo": 30
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 168
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 171,
+   "y": 9,
+   "ref": "f_V0",
+   "latex": "V_0 = \\dfrac{c_1\\cdot V_1}{c_0}",
+   "nombre": "Volume de solution-mère à prélever"
+  },
+  {
+   "tipo": "jefe",
+   "x": 187,
+   "jefe": "ejercicio_bac_1",
+   "titulo": "Ejercicio bac: el titrage del examinador",
+   "preguntas": [
+    {
+     "pregunta": "¿Qué caracteriza la equivalencia de un titrage?",
+     "opciones": [
+      "El titrante y la especie titrada se han mezclado en proporciones estequiométricas y se consumen totalmente",
+      "Solo queda la especie titrante en la solución",
+      "El pH vale siempre 7",
+      "La conductividad es siempre nula"
+     ],
+     "correcta": 0,
+     "explicacion": "Equivalencia: estado en que titrante y titrada se mezclaron en proporciones estequiométricas (y hay cambio de reactivo limitante).",
+     "pagina_pdf": 88
+    },
+    {
+     "pregunta": "En un seguimiento conductimétrico, ¿cómo se halla el volumen equivalente V_E?",
+     "opciones": [
+      "En el máximo de pH",
+      "En la abscisa de la intersección de las dos rectas (cambio de pendiente)",
+      "Cuando la conductividad vale cero",
+      "Cuando se vierten 10 mL"
+     ],
+     "correcta": 1,
+     "explicacion": "La equivalencia se repère por el cambio de pendiente; V_E es la abscisa del punto de intersección de las dos rectas.",
+     "pagina_pdf": 90
+    },
+    {
+     "pregunta": "Al titular un ácido con una base y trazar dpH/dV frente a V, ¿qué indica V_E?",
+     "opciones": [
+      "Un mínimo de la derivada",
+      "Un cruce con el eje de abscisas",
+      "Un máximo de la derivada",
+      "Un valor constante"
+     ],
+     "correcta": 2,
+     "explicacion": "Método de la derivada: el extremo es un máximo al titular un ácido con una base y un mínimo al titular una base con un ácido.",
+     "pagina_pdf": 89
+    },
+    {
+     "pregunta": "Una solución comercial tiene ρ = 1,18×10³ g·L⁻¹ y ρ_eau = 1,00×10³ g·L⁻¹. ¿Cuál es su densidad?",
+     "opciones": [
+      "1,18 g·L⁻¹",
+      "1,18 (sin unidad)",
+      "0,85",
+      "1,18×10³"
+     ],
+     "correcta": 1,
+     "explicacion": "d = ρ/ρ_eau = 1,18, sin unidad porque las dos masas volúmicas están en la misma unidad.",
+     "pagina_pdf": 87
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 193
+  }
+ ]
+}

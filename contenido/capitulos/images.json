@@ -1,0 +1,1060 @@
+{
+ "id": "images",
+ "titulo": "Formation d'images",
+ "materia": "physique",
+ "mundo": "ondes",
+ "pdf_ini": 472,
+ "pdf_fin": 493,
+ "resumen": "Una lunette astronómica se modeliza con dos lentes convergentes: el objetivo (gran distancia focal) y el ocular (lupa de pequeña focal). Cuando es afocale, F'₁ = F₂: de un objeto en el infinito da una imagen intermedia en el plano focal imagen del objetivo y una imagen final en el infinito, virtual e invertida. Su grossissement G = θ'/θ = −f'₁/f'₂ mide cuánto más cerca parece el astro, y el diámetro del objetivo fija la luz recogida (círculo ocular).",
+ "resumen_fr": "Lunette astronomique modélisée par deux lentilles convergentes (objectif, oculaire) ; lunette afocale : F'₁ = F₂ ; image intermédiaire dans le plan focal image de l'objectif ; grossissement G = θ'/θ = −f'₁/f'₂ ; diamètre de l'objectif et cercle oculaire.",
+ "nociones_clave": [
+  {
+   "id": "n1",
+   "fr": "Lunette astronomique",
+   "es": "Instrumento óptico destinado a observar los astros u objetos muy lejanos. Está formada por dos sistemas ópticos: un objetivo (hacia el objeto) y un ocular (delante del cual se pone el ojo).",
+   "pagina_pdf": 478
+  },
+  {
+   "id": "n2",
+   "fr": "Objectif et oculaire",
+   "es": "El objetivo es una lente convergente de gran distancia focal (del orden del metro); el ocular juega el papel de lupa y su distancia focal es del orden del centímetro (f'₁ ≫ f'₂).",
+   "pagina_pdf": 481
+  },
+  {
+   "id": "n3",
+   "fr": "Lunette afocale",
+   "es": "Lunette que da de un objeto en el infinito una imagen en el infinito, observable sin acomodación por un ojo normal. Para modelarla, el foco imagen F'₁ del objetivo coincide con el foco objeto F₂ del ocular.",
+   "pagina_pdf": 478
+  },
+  {
+   "id": "n4",
+   "fr": "Modélisation par deux lentilles convergentes",
+   "es": "La lunette se modeliza con dos lentillas convergentes alineadas sobre el mismo eje óptico: L₁ (objetivo, f'₁ grande) y L₂ (ocular, f'₂ mucho menor). Etapas: AB → (L₁) → A₁B₁ → (L₂) → A'B'.",
+   "pagina_pdf": 478
+  },
+  {
+   "id": "n5",
+   "fr": "Image intermédiaire A₁B₁",
+   "es": "Imagen que da el objetivo; sirve de objeto para el ocular. En la lunette afocale se forma en el plano focal imagen del objetivo, que coincide con el plano focal objeto del ocular.",
+   "pagina_pdf": 479
+  },
+  {
+   "id": "n6",
+   "fr": "Plan focal",
+   "es": "Plano perpendicular al eje óptico de la lente que pasa por un foco.",
+   "pagina_pdf": 479
+  },
+  {
+   "id": "n7",
+   "fr": "Diamètre apparent θ",
+   "es": "Ángulo bajo el cual se ve un astro desde el lugar de observación (θ para el objeto a simple vista; θ' para la imagen vista a través de la lunette).",
+   "pagina_pdf": 480
+  },
+  {
+   "id": "n8",
+   "fr": "Grossissement G (≠ grandissement γ)",
+   "es": "A través de la lunette el astro se ve como si estuviera a una distancia menor que la real. Como ni el tamaño del objeto (lejano) ni el de la imagen (virtual) son accesibles, se determina el grossissement G (sin unidad) y no el grandissement γ.",
+   "pagina_pdf": 480
+  },
+  {
+   "id": "n9",
+   "fr": "Cercle oculaire",
+   "es": "Imagen de la montura del objetivo dada por el ocular. Es donde hay que colocar el ojo para recibir el máximo de luz procedente del objeto en el infinito.",
+   "pagina_pdf": 480
+  },
+  {
+   "id": "n10",
+   "fr": "Diamètre de l'objectif et collecteur de lumière",
+   "es": "Los haces están limitados por la montura del objetivo: cuanto mayor es su diámetro, mayor es la cantidad de luz recogida. La lunette recoge luz y permite ver estrellas invisibles a simple vista.",
+   "pagina_pdf": 480
+  },
+  {
+   "id": "n11",
+   "fr": "Image réelle / image virtuelle ; grandissement γ",
+   "es": "Una imagen es real si puede visualizarse sobre una pantalla; si no, es virtual. El grandissement γ = A'B'/AB = OA'/OA (sin unidad) depende de la lente y de la posición del objeto.",
+   "pagina_pdf": 472
+  },
+  {
+   "id": "n12",
+   "fr": "Image finale A'B' : virtuelle et renversée",
+   "es": "La imagen observada a través de la lunette afocale es virtual (y en el infinito) y está invertida respecto al objeto; por eso G es negativo.",
+   "pagina_pdf": 482
+  },
+  {
+   "id": "n13",
+   "fr": "Convention des angles",
+   "es": "Los ángulos se orientan entre el eje óptico y los rayos luminosos: θ' está orientado en sentido trigonométrico (se cuenta positivo), θ es negativo.",
+   "pagina_pdf": 479
+  },
+  {
+   "id": "n14",
+   "fr": "Pouvoir séparateur de l'œil",
+   "es": "Ángulo límite α bajo el cual el ojo distingue dos puntos: vale alrededor de un minuto de arco (1' = 1/60° ≈ 0,017°). Sirve para saber si una lunette separa dos estrellas.",
+   "pagina_pdf": 492
+  },
+  {
+   "id": "n15",
+   "fr": "Aberration chromatique",
+   "es": "Problema mayor de la lunette de Kepler: las imágenes de colores de un mismo astro se forman a distancias distintas; para limitarlo hay que disminuir la curvatura de las lentes (lunettes muy largas).",
+   "pagina_pdf": 486
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "\\dfrac{1}{\\overline{OA'}}=\\dfrac{1}{\\overline{OA}}+\\dfrac{1}{f'}",
+   "nombre": "Relación de conjugación de Descartes",
+   "nombre_fr": "Relation de conjugaison (Descartes)",
+   "variables": [
+    {
+     "simbolo": "\\overline{OA'}",
+     "significado": "posición de la imagen A' respecto al centro óptico O (medida algebraica)",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "\\overline{OA}",
+     "significado": "posición del objeto A respecto a O (medida algebraica)",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "f'",
+     "significado": "distancia focal imagen de la lente convergente",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Une la posición del objeto con la de su imagen conjugada a través de una lente delgada. Se aplica al objetivo y al ocular de la lunette.",
+   "ejemplo": {
+    "enunciado": "Ej. 31: ocular de distancia focal f'₂ = 10 cm; la imagen definitiva A'B' está a O₂A' = −40 cm.",
+    "resultado": "1/O₂A₁ = 1/O₂A' − 1/f'₂ = 1/(−40) − 1/10 = −0,125 cm⁻¹, es decir O₂A₁ = −8,0 cm (imagen intermedia 8,0 cm antes del ocular).",
+    "pagina_pdf": 487
+   },
+   "pagina_pdf": 472,
+   "animacion": {
+    "preset": "lente",
+    "params": {
+     "f": 10,
+     "OA": 8
+    },
+    "leyenda": "Una lente de f' = 10 cm con el objeto a 8 cm (dentro del foco): la imagen sale virtual y ampliada, como en el ocular del ejercicio 31."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "\\overline{\\gamma}=\\dfrac{\\overline{A'B'}}{\\overline{AB}}=\\dfrac{\\overline{OA'}}{\\overline{OA}}",
+   "nombre": "Grandissement de una lente",
+   "nombre_fr": "Grandissement",
+   "variables": [
+    {
+     "simbolo": "\\overline{\\gamma}",
+     "significado": "grandissement algebraico (sin unidad)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "\\overline{A'B'}",
+     "significado": "tamaño algebraico de la imagen",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "\\overline{AB}",
+     "significado": "tamaño algebraico del objeto",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Relación entre el tamaño de la imagen y el del objeto; también es igual al cociente OA'/OA. γ < 0 indica imagen invertida, γ > 0 imagen derecha.",
+   "ejemplo": {
+    "enunciado": "Ej. 31: ocular, O₂A' = −40 cm y O₂A₁ = −8 cm.",
+    "resultado": "γ_ocular = O₂A'/O₂A₁ = (−40)/(−8) = 5 (imagen derecha respecto a A₁B₁, cinco veces mayor).",
+    "pagina_pdf": 487
+   },
+   "pagina_pdf": 472,
+   "animacion": {
+    "preset": "lente",
+    "params": {
+     "f": 10,
+     "OA": 8
+    },
+    "leyenda": "Con f' = 10 cm y el objeto a 8 cm, la imagen es 5 veces mayor y derecha: γ = OA'/OA = (−40)/(−8) = 5."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "\\overline{FA}\\times\\overline{F'A'}=-f'^{2}",
+   "nombre": "Relación de conjugación de Newton",
+   "nombre_fr": "Relation de conjugaison de Newton",
+   "variables": [
+    {
+     "simbolo": "\\overline{FA}",
+     "significado": "posición del objeto respecto al foco objeto F",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "\\overline{F'A'}",
+     "significado": "posición de la imagen respecto al foco imagen F'",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "f'",
+     "significado": "distancia focal imagen",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Otra forma de conjugación, a veces más fácil que la de Descartes cuando se miden posiciones respecto a los focos (actividad 2: objeto poco alejado del objetivo).",
+   "ejemplo": null,
+   "pagina_pdf": 475,
+   "animacion": {
+    "preset": "lente",
+    "params": {},
+    "leyenda": "Acerca el objeto al foco de la lente y observa cómo la imagen se aleja del foco imagen: el producto FA × F'A' se mantiene igual a −f'²."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "\\dfrac{1}{\\overline{O_1A}}\\to 0\\ \\Rightarrow\\ \\overline{O_1A_1}=f'_1",
+   "nombre": "Imagen intermedia de un objeto en el infinito",
+   "nombre_fr": "Image intermédiaire dans le plan focal image",
+   "variables": [
+    {
+     "simbolo": "\\overline{O_1A_1}",
+     "significado": "posición de la imagen intermedia respecto al centro óptico del objetivo",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "f'_1",
+     "significado": "distancia focal del objetivo",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Con el objeto AB en el infinito, 1/O₁A → 0 (límite lim 1/x = 0), de modo que O₁A₁ = f'₁: A₁ es el foco imagen F'₁ y A₁B₁ se forma en el plano focal imagen del objetivo. Lo mismo para el ocular: A₁B₁ está en su plano focal objeto.",
+   "ejemplo": null,
+   "pagina_pdf": 479,
+   "animacion": {
+    "preset": "lente",
+    "params": {},
+    "leyenda": "Lleva el objeto al máximo de distancia: la imagen se pega al foco imagen de la lente (O₁A₁ → f'₁)."
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "\\overline{O_1O_2}=\\overline{O_1F'_1}+\\overline{F'_1F_2}+\\overline{F_2O_2}=f'_1+f'_2",
+   "nombre": "Distancia objetivo-ocular de una lunette afocale",
+   "nombre_fr": "Distance entre l'objectif et l'oculaire (afocale)",
+   "variables": [
+    {
+     "simbolo": "\\overline{O_1O_2}",
+     "significado": "distancia entre los centros ópticos de objetivo y ocular",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "f'_1",
+     "significado": "distancia focal del objetivo",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "f'_2",
+     "significado": "distancia focal del ocular",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Como F'₁ = F₂ (lunette afocale), la separación de las dos lentes es la suma de sus distancias focales.",
+   "ejemplo": {
+    "enunciado": "Ej. resuelto 23: objetivo f'₁ = 50 cm, ocular f'₂ = 10 cm.",
+    "resultado": "O₁O₂ = 50 + 10 = 60 cm (otro ejemplo, ej. 14: 100 cm + 5 cm = 105 cm).",
+    "pagina_pdf": 485
+   },
+   "pagina_pdf": 485,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x + b",
+     "xmin": 20,
+     "xmax": 120,
+     "vars": {
+      "b": {
+       "min": 1,
+       "max": 20,
+       "step": 0.5,
+       "label": "f'₂ (ocular)",
+       "unit": "cm",
+       "def": 10
+      }
+     }
+    },
+    "leyenda": "Gráfica de O₁O₂ (cm) en función de f'₁ (eje x); con f'₂ = 10 cm y f'₁ = 50 cm la separación es 60 cm. (Ningún preset específico trata la distancia entre dos lentes.)"
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "\\theta\\approx\\tan\\theta=\\dfrac{\\overline{A_1B_1}}{\\overline{O_1A_1}}=\\dfrac{\\overline{A_1B_1}}{f'_1}\\qquad \\theta'\\approx\\tan\\theta'=\\dfrac{\\overline{A_1B_1}}{\\overline{O_2A_1}}=\\dfrac{\\overline{A_1B_1}}{-f'_2}",
+   "nombre": "Ángulos θ y θ' (aproximación de ángulos pequeños)",
+   "nombre_fr": "Angles θ et θ' dans les triangles rectangles O₁A₁B₁ et O₂A₁B₁",
+   "variables": [
+    {
+     "simbolo": "\\overline{A_1B_1}",
+     "significado": "tamaño de la imagen intermedia",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "\\theta,\\ \\theta'",
+     "significado": "ángulo bajo el que se ve el objeto a simple vista / la imagen a través de la lunette",
+     "unidad": "rad"
+    },
+    {
+     "simbolo": "f'_1, f'_2",
+     "significado": "distancias focales de objetivo y ocular",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "En los triángulos rectángulos O₁A₁B₁ y O₂A₁B₁ (rectos en A₁), con tan θ ≈ θ para ángulos pequeños. De aquí sale el tamaño de la imagen intermedia, A₁B₁ = f'₁ × tan θ, y el grossissement.",
+   "ejemplo": {
+    "enunciado": "Ej. 22: lunette de f'₁ = 17,89 m; objeto en el infinito de diámetro aparente θ = 1″ = (1/3600)°.",
+    "resultado": "A₁B₁ = f'₁ × tan θ = 17,89 × tan(1/3600°) = 8,7×10⁻⁵ m = 87 µm.",
+    "pagina_pdf": 622
+   },
+   "pagina_pdf": 480,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "f1*1e6*tan(x*PI/648000)",
+     "xmin": 0,
+     "xmax": 10,
+     "vars": {
+      "f1": {
+       "min": 1,
+       "max": 20,
+       "step": 0.01,
+       "label": "f'₁ (objetivo)",
+       "unit": "m",
+       "def": 17.89
+      }
+     }
+    },
+    "leyenda": "Tamaño de la imagen intermedia A₁B₁ (µm) en función del ángulo θ en segundos de arco: con f'₁ = 17,89 m y θ = 1″ sale 87 µm. (Ningún preset específico trata esta relación.)"
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "\\overline{G}=\\dfrac{\\theta'}{\\theta}",
+   "nombre": "Grossissement de una lunette",
+   "nombre_fr": "Grossissement d'une lunette",
+   "variables": [
+    {
+     "simbolo": "\\overline{G}",
+     "significado": "grossissement (sin unidad)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "\\theta'",
+     "significado": "ángulo bajo el cual se ve la imagen definitiva A'B' a través de la lunette",
+     "unidad": "rad"
+    },
+    {
+     "simbolo": "\\theta",
+     "significado": "ángulo bajo el cual se ve el objeto AB a simple vista",
+     "unidad": "rad"
+    }
+   ],
+   "explicacion": "Un G = 20 significa que el astro se ve como si estuviera 20 veces más cerca. Es una razón de ángulos, no de tamaños.",
+   "ejemplo": {
+    "enunciado": "Ej. 39 (con lente vehículo): torre de 210 m a 6 km; el libro da G = 5.",
+    "resultado": "θ = h/D = 210/6000 = 0,035 rad y θ' = G × θ = 5 × 210/6000 ≈ 0,18 rad.",
+    "pagina_pdf": 623
+   },
+   "pagina_pdf": 480,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "G*x",
+     "xmin": 0,
+     "xmax": 0.1,
+     "vars": {
+      "G": {
+       "min": 1,
+       "max": 15,
+       "step": 1,
+       "label": "Grossissement (valor absoluto)",
+       "unit": "",
+       "def": 5
+      }
+     }
+    },
+    "leyenda": "Gráfica de θ' (rad) frente a θ (rad): la pendiente es el grossissement; con G = 5 y θ = 0,035 rad sale θ' ≈ 0,18 rad. (Ningún preset específico trata el grossissement.)"
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "\\overline{G}=-\\dfrac{f'_1}{f'_2}",
+   "nombre": "Grossissement de una lunette afocale",
+   "nombre_fr": "Grossissement d'une lunette afocale",
+   "variables": [
+    {
+     "simbolo": "\\overline{G}",
+     "significado": "grossissement (sin unidad, negativo)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "f'_1",
+     "significado": "distancia focal del objetivo",
+     "unidad": "cm"
+    },
+    {
+     "simbolo": "f'_2",
+     "significado": "distancia focal del ocular",
+     "unidad": "cm"
+    }
+   ],
+   "explicacion": "Resulta de dividir θ'/θ con tan θ ≈ θ y tan θ' ≈ θ'. Es una cantidad negativa (imagen invertida); para |G| máximo hace falta f'₁ ≫ f'₂.",
+   "ejemplo": {
+    "enunciado": "Ej. resuelto 23: objetivo f'₁ = 50 cm y ocular f'₂ = 10 cm.",
+    "resultado": "G = −50/10 = −5 (ej. 19: f'₁ = 50 cm, f'₂ = 1,0 cm → G = −50).",
+    "pagina_pdf": 485
+   },
+   "pagina_pdf": 480,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "-x/f2",
+     "xmin": 10,
+     "xmax": 100,
+     "vars": {
+      "f2": {
+       "min": 1,
+       "max": 20,
+       "step": 0.5,
+       "label": "f'₂ (ocular)",
+       "unit": "cm",
+       "def": 10
+      }
+     }
+    },
+    "leyenda": "Gráfica de G en función de f'₁ (cm): con f'₂ = 10 cm y f'₁ = 50 cm, G = −5; baja f'₂ y la lunette amplía más. (Ningún preset específico trata el grossissement.)"
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "\\overline{G}=-\\dfrac{D}{a}",
+   "nombre": "Grossissement y círculo ocular",
+   "nombre_fr": "Grossissement et cercle oculaire",
+   "variables": [
+    {
+     "simbolo": "D",
+     "significado": "diámetro de la montura del objetivo",
+     "unidad": "mm"
+    },
+    {
+     "simbolo": "a",
+     "significado": "diámetro del círculo ocular",
+     "unidad": "mm"
+    },
+    {
+     "simbolo": "\\overline{G}",
+     "significado": "grossissement (negativo)",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Por el teorema de Tales en los triángulos L₁F'₁L₂F₂ resulta G = −f'₁/f'₂ = −D/a. Para que toda la luz entre en la pupila, a debe ser ≤ al diámetro de la pupila.",
+   "ejemplo": {
+    "enunciado": "Ej. 34: objetivo D = 9,0 cm, f'₁ = 60 cm; pupila en la oscuridad de 6 mm.",
+    "resultado": "Hace falta a = 6 mm, luego |G| = 90/6 = 15, G = −15 y f'₂ = 60/15 = 4,0 cm.",
+    "pagina_pdf": 623
+   },
+   "pagina_pdf": 488,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "-x/a",
+     "xmin": 20,
+     "xmax": 120,
+     "vars": {
+      "a": {
+       "min": 1,
+       "max": 10,
+       "step": 0.5,
+       "label": "a (círculo ocular)",
+       "unit": "mm",
+       "def": 6
+      }
+     }
+    },
+    "leyenda": "Gráfica de G en función de D (mm): con a = 6 mm, un objetivo de D = 90 mm da G = −15. (Ningún preset específico trata esta relación.)"
+   }
+  },
+  {
+   "id": "f10",
+   "latex": "\\dfrac{1}{\\overline{O_2C}}=\\dfrac{1}{\\overline{O_2O_1}}+\\dfrac{1}{f'_2}\\qquad d_{CO}=\\left|\\overline{\\gamma}\\right|\\times D=\\left|\\dfrac{\\overline{O_2C}}{\\overline{O_2O_1}}\\right|\\times D",
+   "nombre": "Posición y diámetro del círculo ocular",
+   "nombre_fr": "Cercle oculaire : conjugaison et grandissement appliqués à l'oculaire",
+   "variables": [
+    {
+     "simbolo": "\\overline{O_2C}",
+     "significado": "posición del círculo ocular C respecto al ocular",
+     "unidad": "cm"
+    },
+    {
+     "simbolo": "\\overline{O_2O_1}",
+     "significado": "posición del objetivo (su montura) respecto al ocular",
+     "unidad": "cm"
+    },
+    {
+     "simbolo": "d_{CO}",
+     "significado": "diámetro del círculo ocular",
+     "unidad": "mm"
+    }
+   ],
+   "explicacion": "El círculo ocular es la imagen de la montura del objetivo dada por el ocular: se calcula con la relación de conjugación y la de grandissement aplicadas al ocular.",
+   "ejemplo": {
+    "enunciado": "Ej. 28: lentes de 4,0 cm de diámetro con f'₁ = 1,0 m y f'₂ = 10 cm (O₂O₁ = −110 cm).",
+    "resultado": "1/O₂C = 1/(−110) + 1/10 ≈ 0,091 cm⁻¹ → O₂C = 11 cm; d_CO = |11/(−110)| × 4,0 = 0,40 cm = 4,0 mm.",
+    "pagina_pdf": 623
+   },
+   "pagina_pdf": 487,
+   "animacion": {
+    "preset": "lente",
+    "params": {
+     "f": 10
+    },
+    "leyenda": "El ocular (f' = 10 cm) forma la imagen de la montura del objetivo, que está lejos: la imagen queda cerca de su foco imagen (el círculo ocular)."
+   }
+  },
+  {
+   "id": "f11",
+   "latex": "\\overline{G}=\\dfrac{f'_1}{f'_2}\\quad(\\text{con lente vehículo, lunette terrestre})",
+   "nombre": "Grossissement de una lunette terrestre",
+   "nombre_fr": "Lunette terrestre avec lentille « véhicule »",
+   "variables": [
+    {
+     "simbolo": "\\overline{G}",
+     "significado": "grossissement (positivo: imagen derecha)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "f'_1, f'_2",
+     "significado": "distancias focales de objetivo y ocular",
+     "unidad": "cm"
+    }
+   ],
+   "explicacion": "Una lente vehículo L_V (γ = −1) colocada entre objetivo y ocular endereza la imagen: el grossissement pasa a ser positivo.",
+   "ejemplo": {
+    "enunciado": "Ej. 39: f'₁ = 10 cm, f'₂ = 2,0 cm, lente vehículo de f'_V = 2,0 cm.",
+    "resultado": "G = f'₁/f'₂ = 10/2,0 = 5.",
+    "pagina_pdf": 623
+   },
+   "pagina_pdf": 491,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x/f2",
+     "xmin": 2,
+     "xmax": 30,
+     "vars": {
+      "f2": {
+       "min": 1,
+       "max": 10,
+       "step": 0.5,
+       "label": "f'₂ (ocular)",
+       "unit": "cm",
+       "def": 2
+      }
+     }
+    },
+    "leyenda": "Gráfica de G en función de f'₁ (cm): con f'₂ = 2,0 cm y f'₁ = 10 cm, G = +5 (imagen derecha). (Ningún preset específico trata esta relación.)"
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "Pouvoir séparateur de l'œil (1′ = 1/60° ≈ 0,017°)",
+   "valor": "1",
+   "unidad": "minute d'arc (≈ 2,9×10⁻⁴ rad)",
+   "pagina_pdf": 492
+  },
+  {
+   "nombre": "Diamètre de la pupille de l'œil (plein jour / dans l'obscurité)",
+   "valor": "3 / 6",
+   "unidad": "mm",
+   "pagina_pdf": 488
+  },
+  {
+   "nombre": "Diamètre apparent du Soleil depuis la Terre",
+   "valor": "9,3×10⁻³",
+   "unidad": "rad",
+   "pagina_pdf": 487
+  },
+  {
+   "nombre": "Diamètre du Soleil",
+   "valor": "1,39×10⁶",
+   "unidad": "km",
+   "pagina_pdf": 487
+  },
+  {
+   "nombre": "Diamètre de la Lune ; distance Terre-Lune au périgée / à l'apogée",
+   "valor": "3 474 ; 356 500 / 406 700",
+   "unidad": "km",
+   "pagina_pdf": 490
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Tracer la marche d'un faisceau à travers une lunette afocale (méthode des rayons)",
+   "pasos": [
+    "Dibujar las dos lentes convergentes L₁ (objetivo) y L₂ (ocular) sobre el mismo eje, con F'₁ = F₂ (separación O₁O₂ = f'₁ + f'₂).",
+    "El punto A del objeto en el infinito está sobre el eje; B, a un ángulo θ del eje. Trazar el rayo que viene de B y pasa por el centro óptico O₁: no se desvía.",
+    "Todos los rayos de B convergen en B₁, sobre el rayo anterior, en el plano focal imagen del objetivo (A₁ = F'₁ sobre el eje).",
+    "Desde B₁ trazar el rayo que atraviesa el ocular por O₂ sin desviarse: da la dirección θ' de salida. Todos los rayos que salen del ocular son paralelos a esa dirección (imagen B' en el infinito).",
+    "Marcar los ángulos θ y θ' entre el eje óptico y los rayos (θ' en sentido trigonométrico, θ negativo)."
+   ],
+   "pagina_pdf": 479
+  },
+  {
+   "titulo": "Establecer el grossissement de una lunette afocale",
+   "pasos": [
+    "Partir de la definición G = θ'/θ.",
+    "En los triángulos rectángulos O₁A₁B₁ y O₂A₁B₁ (rectos en A₁), usar la aproximación de ángulos pequeños: θ ≈ tan θ = A₁B₁/f'₁ y θ' ≈ tan θ' = A₁B₁/(−f'₂).",
+    "Dividir: θ'/θ = (A₁B₁/(−f'₂)) × (f'₁/A₁B₁) = −f'₁/f'₂.",
+    "Comprobar el resultado: G es negativo y, para tener |G| grande, f'₁ debe ser mucho mayor que f'₂."
+   ],
+   "pagina_pdf": 480
+  },
+  {
+   "titulo": "Aplicar la relación de conjugación al objetivo y al ocular",
+   "pasos": [
+    "Objetivo: 1/O₁A₁ = 1/O₁A + 1/f'₁. Con el objeto en el infinito, 1/O₁A → 0 y O₁A₁ = f'₁ (A₁ = F'₁).",
+    "Ocular: 1/O₂A' = 1/O₂A₁ + 1/f'₂. Con la imagen A'B' en el infinito, 1/O₂A' → 0 y O₂A₁ = −f'₂ = O₂F₂ (A₁ = F₂).",
+    "Concluir que A₁B₁ está en el plano focal imagen del objetivo y en el plano focal objeto del ocular."
+   ],
+   "pagina_pdf": 479
+  },
+  {
+   "titulo": "Resolver un ejercicio de modelización de una lunette (ej. resuelto 23)",
+   "pasos": [
+    "Calificar la lunette: da de un objeto en el infinito una imagen en el infinito → afocale.",
+    "Explicar cualitativamente: el objetivo da, de un objeto en el infinito, una imagen intermedia en su foco imagen; como el ocular debe dar una imagen en el infinito, esa imagen debe estar también en su foco objeto.",
+    "Deducir la distancia entre lentes: O₁O₂ = f'₁ + f'₂.",
+    "Hacer el esquema a la escala pedida (p. ej. 1/10 en el eje), mostrando los focos.",
+    "Establecer G = −f'₁/f'₂ y calcularlo respetando las cifras significativas de los datos."
+   ],
+   "pagina_pdf": 485
+  },
+  {
+   "titulo": "Construir el círculo ocular (ej. 28)",
+   "pasos": [
+    "Hacer el esquema a escala (1/10 en el eje, 1 en la dirección perpendicular).",
+    "Trazar un haz paralelo al eje que cubra todo el objetivo (el que toca el borde de la montura).",
+    "El círculo ocular es la imagen de la montura del objetivo por el ocular: se sitúa donde el haz que sale del ocular es más estrecho.",
+    "Calcular su posición con la conjugación aplicada al ocular y su diámetro con el grandissement: d_CO = |γ| × D."
+   ],
+   "pagina_pdf": 487
+  },
+  {
+   "titulo": "Saber si una lunette separa dos estrellas (ej. 21 y ficha ECE)",
+   "pasos": [
+    "Calcular el ángulo con que se ve el par a través de la lunette: θ' = G × θ.",
+    "Comparar θ' con el poder separador del ojo (≈ 1′ = 1/60°).",
+    "Si θ' ≥ 1′ las dos estrellas se ven separadas; el grossissement mínimo es G_min = (poder separador)/θ."
+   ],
+   "pagina_pdf": 484
+  },
+  {
+   "titulo": "Protocolo ECE: caracterizar una lunette astronómica (Geste ECE n° 8)",
+   "pasos": [
+    "Proponer una experiencia que permita determinar la distancia focal de las dos lentes disponibles y evaluar la incertidumbre tipo del método.",
+    "Hacer aparecer el foco imagen F'ob del objetivo y el foco objeto F_oc del ocular en el esquema; deducir la distancia que debe separar las lentes en el banco de óptica.",
+    "Montar la lunette afocale sin tocar el dispositivo «objeto en el infinito» y buscar la imagen intermedia A₁B₁ sobre una pantalla para calcular θ'.",
+    "Explotar el resultado: ¿permite distinguir dos estrellas separadas 0,5 minuto de arco?"
+   ],
+   "pagina_pdf": 492
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Distancias focales sin pasar a la misma unidad",
+   "correccion": "Convierte f'₁ y f'₂ a la misma unidad antes de operar (p. ej. f'₁ = 60 cm y f'₂ = 20 mm → 62 cm, no 80).",
+   "pagina_pdf": 486
+  },
+  {
+   "id": "err2",
+   "nombre": "Objetivo con focal menor que el ocular",
+   "correccion": "El objetivo tiene la mayor distancia focal (del orden del metro); el ocular, la menor (del orden del centímetro): f'₁ > f'₂.",
+   "pagina_pdf": 483
+  },
+  {
+   "id": "err3",
+   "nombre": "Afocale ≠ «distancia > f'₁»",
+   "correccion": "Una lunette afocale tiene F'₁ = F₂: la distancia entre lentes es exactamente f'₁ + f'₂.",
+   "pagina_pdf": 486
+  },
+  {
+   "id": "err4",
+   "nombre": "Conversiones y cifras significativas olvidadas",
+   "correccion": "Convierte las unidades y da G con las cifras significativas de los datos (no 1,6666…); recuerda también que G es negativo.",
+   "pagina_pdf": 486
+  },
+  {
+   "id": "err5",
+   "nombre": "Confundir grossissement y grandissement",
+   "correccion": "Con objeto lejano e imagen virtual no se mide γ (tamaños) sino G = θ'/θ (ángulos).",
+   "pagina_pdf": 480
+  },
+  {
+   "id": "err6",
+   "nombre": "«El grossissement depende del diámetro del objetivo»",
+   "correccion": "G = −f'₁/f'₂ depende solo de las distancias focales; el diámetro del objetivo fija la luz recogida (luminosidad).",
+   "pagina_pdf": 484
+  },
+  {
+   "id": "err7",
+   "nombre": "Imagen intermedia = un punto",
+   "correccion": "El haz de un punto en el infinito fuera del eje converge en el plano focal imagen del objetivo (no en el foco F'₁, salvo sobre el eje).",
+   "pagina_pdf": 482
+  },
+  {
+   "id": "err8",
+   "nombre": "Ángulos sin la aproximación de ángulos pequeños",
+   "correccion": "tan θ ≈ θ solo vale en radianes y para ángulos pequeños; usa tan θ = A₁B₁/O₁A₁ y la calculadora en el modo correcto.",
+   "pagina_pdf": 485
+  },
+  {
+   "id": "err9",
+   "nombre": "Mirar el Sol con un instrumento óptico",
+   "correccion": "Nunca observes el Sol a través de una lunette: concentra la energía en el círculo ocular; para verlo, proyecta su imagen sobre una pantalla.",
+   "pagina_pdf": 487
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "Actividad 1 (TP) — Maqueta de una lunette afocale",
+   "descripcion": "Sobre el banco de óptica, con lentes de f' = 5,0 cm y f' = 33 cm y un objeto «en el infinito», construir una lunette afocale: hacer un esquema a escala con los focos, construir la imagen intermedia A₁B₁ y la imagen final A'B', identificar objetivo y ocular y la distancia que debe separarlos.",
+   "pagina_pdf": 474
+  },
+  {
+   "titulo": "Actividad 2 (documentos) — «L'infini, c'est loin ?»",
+   "descripcion": "Estudiar la posición de la imagen intermedia para un objeto en el infinito o a distancia finita (1,0 km, 100 m, 10 m, 1,0 m) con las relaciones de Descartes y de Newton, y decidir a partir de qué distancia la aproximación «objeto en el infinito» es aceptable (incertidumbre de medida).",
+   "pagina_pdf": 475
+  },
+  {
+   "titulo": "Actividad 3 — Características de una lunette afocale",
+   "descripcion": "Con el montaje objeto-objetivo-ocular-ojo reducido (f' = 33 cm, 5,0 cm, 10 cm): verificar que la imagen intermedia está en el plano focal imagen del objetivo (pantalla), establecer G = −f'₁/f'₂, localizar el círculo ocular y comparar la luminosidad de una «estrella» con y sin lunette. El aviso comercial «250 y 80» se interpreta como grossissement y diámetro del objetivo en mm.",
+   "pagina_pdf": 476
+  },
+  {
+   "titulo": "ECE — Características de una lunette astronómica",
+   "descripcion": "Determinar las distancias focales de dos lentes, identificar objetivo y ocular, montar la lunette afocale, buscar A₁B₁ en una pantalla para medir θ' y comprobar si permitiría distinguir dos estrellas separadas 0,5′ (dispositivo con α = −5×10⁻² rad).",
+   "pagina_pdf": 492
+  },
+  {
+   "titulo": "Proyección de la imagen solar (ej. 30)",
+   "descripcion": "El Sol se observa sin peligro proyectando su imagen sobre una pantalla a O₂A' = 30 cm del ocular (técnica con la que Galileo descubrió las manchas solares).",
+   "pagina_pdf": 487
+  },
+  {
+   "titulo": "Gran oral — «Comment observer… l'infini ?»",
+   "descripcion": "Comparar el funcionamiento de la lunette astronómica y del telescopio, dificultades de ajuste (luz, contaminación), limitaciones del grossissement y elección del instrumento según el astro.",
+   "pagina_pdf": 493
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Exercice résolu 23 — Modélisation d'une lunette astronomique : objectif f'₁ = 50 cm (monture 40 mm), oculaire f'₂ = 10 cm (monture 80 mm), réglée pour que l'objet AB situé à l'infini donne une image définitive observable sans accommodation. 1. Qualifier la lunette, expliquer où se forme l'image intermédiaire, en déduire la distance entre les lentilles. 2. Schéma à l'échelle 1/10. 3. Établir G en fonction de f'₁ et f'₂ et le calculer.",
+   "datos": {
+    "f'1": "50 cm",
+    "f'2": "10 cm"
+   },
+   "respuesta": "Lunette afocale ; l'image intermédiaire se forme au foyer image de l'objectif (= foyer objet de l'oculaire) ; O₁O₂ = f'₁ + f'₂ = 60 cm ; G = −f'₁/f'₂ = −50/10 = −5.",
+   "respuesta_numerica": {
+    "valor": -5,
+    "unidad": "",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Un instrument qui donne d'un objet à l'infini une image à l'infini est afocale.",
+    "L'objectif donne une image intermédiaire dans son plan focal image ; l'oculaire doit avoir cette image dans son plan focal objet.",
+    "O₁O₂ = O₁F'₁ + F'₁F₂ + F₂O₂ = f'₁ + 0 + f'₂ = 50 + 10 = 60 cm",
+    "tan α ≈ α = A₁B₁/f'₁ et tan α' ≈ α' = A₁B₁/(−f'₂) → G = α'/α = −f'₁/f'₂",
+    "G = −50/10 = −5 (2 chiffres significatifs)"
+   ],
+   "pagina_pdf": 485,
+   "corrige_pagina_pdf": 485
+  },
+  {
+   "id": "e2",
+   "enunciado": "Exercice 14 — Lunette afocale : objectif de distance focale 100 cm et de diamètre 10 cm ; oculaire de distance focale 5 cm et de diamètre 6 cm. 1. Quelle distance O₁O₂ doit séparer les centres optiques pour que la lunette soit afocale ? 2. Réaliser le schéma à l'échelle 1/10 sur l'axe et 1/2 perpendiculairement, avec les foyers.",
+   "datos": {
+    "f'1": "100 cm",
+    "f'2": "5 cm"
+   },
+   "respuesta": "Pour que la lunette soit afocale, il faut que O₁O₂ = f'₁ + f'₂ = 105 cm.",
+   "respuesta_numerica": {
+    "valor": 105,
+    "unidad": "cm",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "F'₁ = F₂ pour une lunette afocale",
+    "O₁O₂ = f'₁ + f'₂ = 100 + 5 = 105 cm"
+   ],
+   "pagina_pdf": 483,
+   "corrige_pagina_pdf": 622
+  },
+  {
+   "id": "e3",
+   "enunciado": "Exercice 19 — Grossissement d'une lunette afocale : f'₁ = 50 cm, f'₂ = 1,0 cm. 1. Rappeler la définition du grossissement. 2. À l'aide du schéma, montrer que G s'exprime en fonction de f'₁ et f'₂. 3. En déduire la valeur du grossissement.",
+   "datos": {
+    "f'1": "50 cm",
+    "f'2": "1,0 cm"
+   },
+   "respuesta": "G = α'/α ; dans O₁A₁B₁ et O₂A₁B₁ : tan α ≈ α = A₁B₁/f'₁ et tan α' ≈ α' = A₁B₁/(−f'₂), soit G = −f'₁/f'₂ = −50,0/1,0 = −50.",
+   "respuesta_numerica": {
+    "valor": -50,
+    "unidad": "",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "G = α'/α",
+    "α = A₁B₁/f'₁ ; α' = A₁B₁/(−f'₂)",
+    "G = −f'₁/f'₂ = −50,0/1,0 = −50"
+   ],
+   "pagina_pdf": 484,
+   "corrige_pagina_pdf": 622
+  },
+  {
+   "id": "e4",
+   "enunciado": "Exercice 22 — L'Universarium de Nice : grande lunette de 76 cm, 17,89 m de distance focale, échelle au foyer de 87 µm par 1,0″ ; oculaires donnant des grossissements de −1 800 à −2 200. 1. À quelle grandeur caractéristique correspond 76 cm ? 2. Construire A₁B₁ pour un objet à l'infini de diamètre apparent θ et vérifier que 1″ ↔ 87 µm dans le plan focal. 3. Calculer les distances focales des oculaires.",
+   "datos": {
+    "f'1": "17,89 m",
+    "θ": "1″ = (1/3600)°",
+    "G": "−1 800 à −2 200"
+   },
+   "respuesta": "76 cm est le diamètre de l'objectif. A₁B₁ = f'₁ × tan θ = 17,89 × tan(1/3600°) = 8,7×10⁻⁵ m = 87 µm. f'₂ = −f'₁/G : 9,9 mm pour G = −1 800 et 8,1 mm pour G = −2 200.",
+   "respuesta_numerica": {
+    "valor": 8.7e-05,
+    "unidad": "m",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "A₁B₁ = f'₁ × tan θ",
+    "A₁B₁ = 17,89 × tan(1/3600°) = 8,7×10⁻⁵ m",
+    "G = −f'₁/f'₂ donc f'₂ = −f'₁/G",
+    "f'₂ = 17,89/1 800 = 9,9 mm ; f'₂ = 17,89/2 200 = 8,1 mm"
+   ],
+   "pagina_pdf": 484,
+   "corrige_pagina_pdf": 622
+  },
+  {
+   "id": "e5",
+   "enunciado": "Exercice 28 — Construction du cercle oculaire : deux lentilles de même diamètre 4,0 cm et de distances focales 10 cm et 1,0 m. Trouver la position et le diamètre du cercle oculaire en appliquant les relations de conjugaison et de grandissement.",
+   "datos": {
+    "f'1": "1,0 m",
+    "f'2": "10 cm",
+    "D": "4,0 cm"
+   },
+   "respuesta": "1/O₂C = 1/O₂O₁ + 1/f'₂ = 1/(−110) + 1/10 ≈ 0,091 cm⁻¹, soit O₂C = 11 cm ; d_CO = |γ| × d_objectif = |11/(−110)| × 4,0 = 0,40 cm : le cercle oculaire mesure 4,0 mm.",
+   "respuesta_numerica": {
+    "valor": 11,
+    "unidad": "cm",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Cercle oculaire = image de la monture de l'objectif par l'oculaire",
+    "1/O₂C = 1/(−110) + 1/10 = 0,091 cm⁻¹ → O₂C = 11 cm",
+    "d_CO = |O₂C/O₂O₁| × 4,0 = 0,40 cm = 4,0 mm"
+   ],
+   "pagina_pdf": 487,
+   "corrige_pagina_pdf": 623
+  },
+  {
+   "id": "e6",
+   "enunciado": "Exercice 31 — Œil myope utilisant une lunette : lunette afocale de focales 60 cm et 10 cm. L'élève myope place son œil au foyer image de l'oculaire (cercle oculaire) et voit nettement les objets situés à 50 cm devant lui sans accommoder. 2.a Calculer la distance à laquelle l'image intermédiaire doit se former. 3. L'objet AB est vu sous θ = 2,0×10⁻² rad : calculer A₁B₁, A'B' et θ'. 4. Grossissement.",
+   "datos": {
+    "f'1": "60 cm",
+    "f'2": "10 cm",
+    "O₂A'": "−40 cm",
+    "θ": "2,0×10⁻² rad"
+   },
+   "respuesta": "O₂A₁ = −8,0 cm (il faut rapprocher l'oculaire de 2,0 cm de l'objectif) ; A₁B₁ = −f'₁ tan θ = −1,2 cm ; A'B' = −6,0 cm ; θ' = 0,12 rad ; G = −6, identique à celui de la lunette afocale constituée des mêmes lentilles (−f'₁/f'₂ = −6).",
+   "respuesta_numerica": {
+    "valor": -6,
+    "unidad": "",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "1/O₂A₁ = 1/O₂A' − 1/f'₂ = 1/(−40) − 1/10 = −0,125 cm⁻¹ → O₂A₁ = −8,0 cm",
+    "A₁B₁ = −f'₁ × tan θ = −60 × tan(2,0×10⁻²) = −1,2 cm",
+    "A'B' = γ_oculaire × A₁B₁ = (−40/−8) × (−1,2) = −6,0 cm ; θ' = A'B'/F'₂A' = −6,0/−50 = 0,12 rad",
+    "G = θ'/θ = 0,12/(−2,0×10⁻²) = −6"
+   ],
+   "pagina_pdf": 487,
+   "corrige_pagina_pdf": 623
+  },
+  {
+   "id": "e7",
+   "enunciado": "Exercice 34 — Cercle oculaire et grossissement : faisceau parallèle à l'axe optique traversant une lunette ; pupille de l'œil dans l'obscurité estimée à 6 mm ; objectif de diamètre 9,0 cm et de distance focale 60 cm. 2.a Montrer (Thalès) que G = −D/a. b. Grossissement minimal pour que toute la lumière entre dans l'œil. c. Distance focale de l'oculaire.",
+   "datos": {
+    "D": "9,0 cm",
+    "f'1": "60 cm",
+    "a": "6 mm"
+   },
+   "respuesta": "G = −f'₁/f'₂ = −D/a ; il faut a = 6 mm donc G = −90/6 = −15 ; f'₂ = −f'₁/G = 60/15 = 4,0 cm.",
+   "respuesta_numerica": {
+    "valor": 4.0,
+    "unidad": "cm",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Théorème de Thalès dans L₁F'₁L₂ et F₂L₂ : f'₁/D = f'₂/a, soit G = −f'₁/f'₂ = −D/a",
+    "a = 6 mm → |G| = 90/6 = 15",
+    "f'₂ = −f'₁/G = 60/15 = 4,0 cm"
+   ],
+   "pagina_pdf": 488,
+   "corrige_pagina_pdf": 623
+  },
+  {
+   "id": "e8",
+   "enunciado": "Exercice 39 — Observations terrestres : lunette de f'₁ = 10 cm (objectif), f'₂ = 2,0 cm (oculaire) et lentille « véhicule » L_V de f'_V = 2,0 cm placée à 14 cm de l'objectif ; objet AB à l'infini (Tour Montparnasse, 210 m de haut, à 6 km). 4.a Exprimer G et le calculer. b. Calculer l'angle sous lequel on verrait la tour Montparnasse.",
+   "datos": {
+    "f'1": "10 cm",
+    "f'2": "2,0 cm",
+    "h": "210 m",
+    "D": "6 km"
+   },
+   "respuesta": "Le véhicule redresse l'image (γ_V = −1) : G = f'₁/f'₂ = 10/2,0 = 5 ; θ' = G × θ = 5 × 210/6000 ≈ 0,18 rad.",
+   "respuesta_numerica": {
+    "valor": 0.18,
+    "unidad": "rad",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "tan θ ≈ θ = A₁B₁/f'₁ ; tan θ' ≈ θ' = A_VB_V/(−f'₂) = −A₁B₁/(−f'₂)",
+    "G = θ'/θ = f'₁/f'₂ = 10/2,0 = 5",
+    "θ' = G × θ = 5 × 210/6000 = 0,18 rad"
+   ],
+   "pagina_pdf": 491,
+   "corrige_pagina_pdf": 623
+  },
+  {
+   "id": "e9",
+   "enunciado": "Exercice 24 — Message à déchiffrer : un observateur utilise une lunette (objectif f'₁ = 300 mm, oculaire de distance focale 50 mm) pour lire un panneau. Un grossissement de −10 est nécessaire pour que les inscriptions soient visibles. L'oculaire de 50 mm convient-il ?",
+   "datos": {
+    "f'1": "300 mm",
+    "f'2": "50 mm"
+   },
+   "respuesta": "G = −f'₁/f'₂ = −300/50 = −6 : l'indication ne sera pas suffisamment grossie pour être déchiffrée.",
+   "respuesta_numerica": {
+    "valor": -6,
+    "unidad": "",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "G = −f'₁/f'₂ = −300/50 = −6",
+    "|G| = 6 < 10 : il faudrait un oculaire de distance focale plus courte (30 mm)"
+   ],
+   "pagina_pdf": 485,
+   "corrige_pagina_pdf": 623
+  },
+  {
+   "id": "e10",
+   "enunciado": "Vérifier l'essentiel (QCM) : 3. La distance qui sépare l'objectif (f'₁ = 60 cm) de l'oculaire (f'₂ = 20 mm) d'une lunette afocale vaut : 80 cm, 62 cm ou 58 cm ?",
+   "datos": {
+    "f'1": "60 cm",
+    "f'2": "20 mm"
+   },
+   "respuesta": "62 cm (B) : O₁O₂ = f'₁ + f'₂ = 60 + 2 = 62 cm. Autres réponses du QCM : 1 B et C ; 2 B ; 4 C ; 5 B ; 6 A et B ; 7 B et C ; 8 B ; 9 B et C ; 10 B.",
+   "respuesta_numerica": {
+    "valor": 62,
+    "unidad": "cm",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Convertir : f'₂ = 20 mm = 2,0 cm",
+    "O₁O₂ = f'₁ + f'₂ = 60 + 2,0 = 62 cm"
+   ],
+   "pagina_pdf": 482,
+   "corrige_pagina_pdf": 622
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "lente",
+   "params": {
+    "f": 10,
+    "OA": 8
+   },
+   "titulo": "Ocular como lupa (ej. 31)",
+   "relacion": "Relación de conjugación y γ: f' = 10 cm con el objeto a 8 cm da una imagen virtual a −40 cm y γ = 5."
+  },
+  {
+   "preset": "lente",
+   "params": {
+    "f": 7.5,
+    "OA": 6.0
+   },
+   "titulo": "Lupa del gemólogo (Situación 3)",
+   "relacion": "Piedra a 6,0 cm de una lupa de f' = 75 mm: la imagen es virtual (O A' = −30 cm) y γ = 5 (calculado con la conjugación)."
+  },
+  {
+   "preset": "generico",
+   "params": {
+    "expr": "-x/f2",
+    "xmin": 10,
+    "xmax": 100,
+    "vars": {
+     "f2": {
+      "min": 1,
+      "max": 20,
+      "step": 0.5,
+      "label": "f'₂ (ocular)",
+      "unit": "cm",
+      "def": 10
+     }
+    }
+   },
+   "titulo": "Grossissement G = −f'₁/f'₂",
+   "relacion": "Grossissement de la lunette afocale en función de f'₁ (ej. 23: −5; ej. 19: −50)."
+  },
+  {
+   "preset": "generico",
+   "params": {
+    "expr": "x + b",
+    "xmin": 20,
+    "xmax": 120,
+    "vars": {
+     "b": {
+      "min": 1,
+      "max": 20,
+      "step": 0.5,
+      "label": "f'₂ (ocular)",
+      "unit": "cm",
+      "def": 10
+     }
+    }
+   },
+   "titulo": "Separación objetivo-ocular",
+   "relacion": "O₁O₂ = f'₁ + f'₂ para que la lunette sea afocale (ej. 23: 60 cm)."
+  },
+  {
+   "preset": "generico",
+   "params": {
+    "expr": "-x/a",
+    "xmin": 20,
+    "xmax": 120,
+    "vars": {
+     "a": {
+      "min": 1,
+      "max": 10,
+      "step": 0.5,
+      "label": "a (círculo ocular)",
+      "unit": "mm",
+      "def": 6
+     }
+    }
+   },
+   "titulo": "Grossissement y círculo ocular",
+   "relacion": "G = −D/a: para a = 6 mm y D = 90 mm, G = −15 (ej. 34)."
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "cielo-ondas",
+  "mecanica_especial": "Observatorio nocturno: gravedad reducida (cielo), rayos de luz paralelos (zona_campo) que empujan, lentes-resorte que lanzan hacia el foco y plataformas móviles que oscilan como el ocular de una lunette."
+ },
+ "estilo_intro_sugerido": "minimalista"
+}

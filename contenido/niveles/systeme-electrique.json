@@ -1,0 +1,421 @@
+{
+ "capitulo_id": "systeme-electrique",
+ "tipo_nivel": "fortaleza",
+ "tema_visual": "lava-fortaleza",
+ "fisica_juego": {
+  "gravedad": 0.9,
+  "friccion": 0.8,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 190,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 16
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 5,
+   "y": 12,
+   "ref": "f1",
+   "latex": "i(t)=\\dfrac{\\mathrm{d}q(t)}{\\mathrm{d}t}",
+   "nombre": "Intensidad como derivada de la carga"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 11,
+   "y": 13,
+   "enemigo": "diferencia_i_q",
+   "nombre": "Dejar i = dq/dt en corriente continua",
+   "correccion": "Con I constante la derivada es una diferencia: I = q/Δt."
+  },
+  {
+   "tipo": "foso",
+   "x": 16,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 20,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 24,
+   "y": 12,
+   "ref": "f2",
+   "latex": "q=C\\cdot u",
+   "nombre": "Carga y capacidad del condensador"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 27,
+   "y": 13,
+   "enemigo": "voltimetro_serie",
+   "nombre": "Voltímetro en serie",
+   "correccion": "El voltímetro va en derivación y el amperímetro en serie."
+  },
+  {
+   "tipo": "foso",
+   "x": 30,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 30,
+   "y": 14,
+   "largo": 4,
+   "recorrido": 2,
+   "eje": "x",
+   "periodo": 3.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 34,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "resorte",
+   "x": 38,
+   "y": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 42,
+   "y": 12,
+   "largo": 10
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 46,
+   "y": 10,
+   "ref": "f3",
+   "latex": "i=C\\cdot\\dfrac{\\mathrm{d}u}{\\mathrm{d}t}",
+   "nombre": "Comportamiento capacitivo: i = C·du/dt"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 49,
+   "y": 11,
+   "enemigo": "u_i_en_fase",
+   "nombre": "u e i en fase",
+   "correccion": "i = C·du/dt: la intensidad i está en avance de fase sobre u."
+  },
+  {
+   "tipo": "foso",
+   "x": 52,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 52,
+   "y": 12,
+   "largo": 4,
+   "recorrido": 2,
+   "eje": "x",
+   "periodo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 56,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 58
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 60,
+   "y": 10,
+   "ref": "f4",
+   "latex": "C=\\varepsilon\\times\\dfrac{S}{d}",
+   "nombre": "Capacidad de un condensador plano"
+  },
+  {
+   "tipo": "foso",
+   "x": 64,
+   "largo": 4
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 64,
+   "y": 6,
+   "w": 4,
+   "h": 8,
+   "fx": 0,
+   "fy": -0.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 68,
+   "y": 10,
+   "largo": 10
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 72,
+   "y": 8,
+   "ref": "f5",
+   "latex": "\\dfrac{\\mathrm{d}u_C}{\\mathrm{d}t}+\\dfrac{1}{R\\cdot C}\\cdot u_C=\\dfrac{E}{R\\cdot C}",
+   "nombre": "Ecuación diferencial de la carga del condensador"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 75,
+   "y": 9,
+   "enemigo": "q_i_en_ecuacion",
+   "nombre": "Dejar q e i en la ecuación diferencial",
+   "correccion": "Elimina q e i de la ley de mallas: solo debe quedar u_C."
+  },
+  {
+   "tipo": "foso",
+   "x": 78,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 78,
+   "y": 10,
+   "largo": 4,
+   "recorrido": 2,
+   "eje": "x",
+   "periodo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 82,
+   "y": 10,
+   "largo": 8
+  },
+  {
+   "tipo": "resorte",
+   "x": 86,
+   "y": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 90,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 94,
+   "y": 10,
+   "ref": "f6",
+   "latex": "u_C(t)=E\\cdot\\left(1-e^{-\\frac{t}{R\\cdot C}}\\right)",
+   "nombre": "Tensión durante la carga"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 96,
+   "y": 11,
+   "enemigo": "cargado_en_tau",
+   "nombre": "Creer que está cargado en t = τ",
+   "correccion": "En t = τ solo se alcanza el 63 % de E; carga total hacia 5τ."
+  },
+  {
+   "tipo": "foso",
+   "x": 98,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 98,
+   "y": 12,
+   "largo": 4,
+   "recorrido": 2,
+   "eje": "x",
+   "periodo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 102,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 104
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 106,
+   "y": 10,
+   "ref": "f7",
+   "latex": "\\dfrac{\\mathrm{d}u_C}{\\mathrm{d}t}+\\dfrac{1}{R\\cdot C}\\cdot u_C=0",
+   "nombre": "Ecuación diferencial de la descarga"
+  },
+  {
+   "tipo": "puente",
+   "x": 110,
+   "y": 12,
+   "largo": 14,
+   "cae_con": "palanca_entropia"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 116,
+   "y": 10,
+   "ref": "f8",
+   "latex": "u_C(t)=E\\cdot e^{-\\frac{t}{R\\cdot C}}",
+   "nombre": "Tensión durante la descarga"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 120,
+   "y": 11,
+   "enemigo": "carga_vs_descarga",
+   "nombre": "Confundir carga con descarga",
+   "correccion": "Carga: u_C crece de 0 a E. Descarga: u_C decrece de E a 0."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 124,
+   "y": 12,
+   "largo": 12
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 126
+  },
+  {
+   "tipo": "palanca",
+   "x": 130,
+   "y": 11,
+   "id": "palanca_entropia",
+   "nombre": "Palanca de Entropía",
+   "efecto": "cae_puente"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 133,
+   "y": 10,
+   "ref": "f9",
+   "latex": "\\tau=R\\cdot C",
+   "nombre": "Constante de tiempo del circuito RC"
+  },
+  {
+   "tipo": "foso",
+   "x": 136,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 136,
+   "y": 12,
+   "largo": 4,
+   "recorrido": 2,
+   "eje": "x",
+   "periodo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 140,
+   "y": 12,
+   "largo": 46
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 146,
+   "y": 10,
+   "ref": "f10",
+   "latex": "u_C(\\tau)=0{,}63\\,E\\ \\text{(carga)}\\qquad u_C(\\tau)=0{,}37\\,E\\ \\text{(descarga)}",
+   "nombre": "Valor de u_C en t = τ (63 % / 37 %)"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 150,
+   "y": 11,
+   "enemigo": "tau_solo_c",
+   "nombre": "τ depende solo de C",
+   "correccion": "τ = R·C depende de R y de C, no de E."
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 154
+  },
+  {
+   "tipo": "jefe",
+   "x": 170,
+   "y": 11,
+   "jefe": "rey_entropia",
+   "titulo": "Rey Entropía: guardián del circuito RC",
+   "preguntas": [
+    {
+     "pregunta": "Un condensateur de capacité C est soumis à une tension u. La charge q portée par son armature s'écrit :",
+     "opciones": [
+      "q = C · u",
+      "q = C / u",
+      "q = u / C",
+      "q = C · u²"
+     ],
+     "correcta": 0,
+     "explicacion": "La charge est proportionnelle à la tension, le coefficient de proportionnalité étant la capacité : q = C·u.",
+     "pagina_pdf": 522
+    },
+    {
+     "pregunta": "Lors de la charge d'un condensateur dans un circuit RC série alimenté par un générateur idéal de tension continue E, la tension u_C :",
+     "opciones": [
+      "tend vers 0",
+      "augmente progressivement jusqu'à E",
+      "reste constante",
+      "diminue puis s'annule"
+     ],
+     "correcta": 1,
+     "explicacion": "u_C(t) = E·(1 − e^(−t/RC)) est croissante et tend vers la valeur imposée par le générateur.",
+     "pagina_pdf": 524
+    },
+    {
+     "pregunta": "Avec R = 10 kΩ et C = 100 nF, l'ordre de grandeur du temps caractéristique du circuit RC série vaut :",
+     "opciones": [
+      "τ = 10³ s",
+      "τ = 10⁻³ s",
+      "τ = 10¹ s",
+      "τ = 10⁻⁶ s"
+     ],
+     "correcta": 1,
+     "explicacion": "τ = R·C = 10×10³ × 100×10⁻⁹ = 1×10⁻³ s.",
+     "pagina_pdf": 527
+    },
+    {
+     "pregunta": "Un dipôle a un comportement capacitif lorsque :",
+     "opciones": [
+      "la tension u est en avance de phase sur l'intensité i",
+      "l'intensité i est en avance de phase sur la tension u",
+      "i et u sont toujours en phase",
+      "i est nulle quel que soit u"
+     ],
+     "correcta": 1,
+     "explicacion": "i = C·du/dt : u et i ne peuvent pas être en phase, c'est i qui est en avance de phase sur u.",
+     "pagina_pdf": 523
+    },
+    {
+     "pregunta": "Dans la charge d'un condensateur initialement déchargé, à la date t = τ la tension u_C vaut :",
+     "opciones": [
+      "0,37 × E",
+      "0,63 × E",
+      "E",
+      "0,5 × E"
+     ],
+     "correcta": 1,
+     "explicacion": "u_C(τ) = E(1 − e^(−1)) = 0,63·E ; on considère le condensateur chargé au bout de 5τ.",
+     "pagina_pdf": 525
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 184,
+   "y": 12
+  }
+ ]
+}

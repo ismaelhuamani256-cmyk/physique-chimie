@@ -1,0 +1,349 @@
+{
+ "capitulo_id": "acide-base",
+ "tipo_nivel": "fortaleza",
+ "tema_visual": "lava-fortaleza",
+ "fisica_juego": {
+  "gravedad": 0.9,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 180,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 18
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 6,
+   "y": 12,
+   "ref": "f1",
+   "latex": "\\mathrm{AH} = \\mathrm{A}^{-} + \\mathrm{H}^{+}",
+   "nombre": "Semiecuación ácido-base (par AH/A⁻)"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 13,
+   "y": 13,
+   "enemigo": "acido_vs_solucion",
+   "nombre": "Confundir ácido con disolución ácida",
+   "correccion": "Un ácido es una especie química; una disolución es ácida según [H₃O⁺] y [HO⁻]."
+  },
+  {
+   "tipo": "foso",
+   "x": 18,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 22,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 27,
+   "y": 12,
+   "ref": "f2",
+   "latex": "\\mathrm{BH}^{+} = \\mathrm{B} + \\mathrm{H}^{+}",
+   "nombre": "Par BH⁺/B (forma alternativa de la semiecuación)"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 30,
+   "y": 13,
+   "enemigo": "h_libre",
+   "nombre": "H⁺ libre en la ecuación",
+   "correccion": "El H⁺ no existe libre en agua y se simplifica al sumar las semiecuaciones."
+  },
+  {
+   "tipo": "foso",
+   "x": 34,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 38,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "resorte",
+   "x": 41,
+   "y": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 44,
+   "y": 12,
+   "largo": 12
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 50,
+   "y": 10,
+   "ref": "f3",
+   "latex": "\\mathrm{RCO_2H} = \\mathrm{RCO_2^{-}} + \\mathrm{H}^{+}",
+   "nombre": "Par ácido carboxílico / ion carboxilato"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 52,
+   "y": 11,
+   "enemigo": "dos_acidos",
+   "nombre": "Dos ácidos que reaccionan",
+   "correccion": "Reacciona el ácido de un par con la base de otro par distinto."
+  },
+  {
+   "tipo": "foso",
+   "x": 56,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 56,
+   "y": 12,
+   "largo": 4,
+   "recorrido": 2,
+   "eje": "x",
+   "periodo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 60,
+   "y": 12,
+   "largo": 10
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 62
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 65,
+   "y": 10,
+   "ref": "f4",
+   "latex": "\\mathrm{H_3O^{+}} = \\mathrm{H_2O} + \\mathrm{H}^{+}\\quad ;\\quad \\mathrm{H_2O} = \\mathrm{HO^{-}} + \\mathrm{H}^{+}",
+   "nombre": "Los dos pares del agua"
+  },
+  {
+   "tipo": "foso",
+   "x": 70,
+   "largo": 4
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 70,
+   "y": 5,
+   "w": 4,
+   "h": 9,
+   "fx": 0,
+   "fy": -0.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 74,
+   "y": 12,
+   "largo": 12
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 79,
+   "y": 10,
+   "ref": "f5",
+   "latex": "\\mathrm{CO_2(aq),H_2O(\\ell)} = \\mathrm{HCO_3^{-}(aq)} + \\mathrm{H}^{+}",
+   "nombre": "Par CO₂(aq),H₂O(ℓ) / HCO₃⁻(aq)"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 82,
+   "y": 11,
+   "enemigo": "flecha_igual",
+   "nombre": "Flecha en vez de signo =",
+   "correccion": "La semiecuación se escribe con = (puede leerse en ambos sentidos)."
+  },
+  {
+   "tipo": "foso",
+   "x": 86,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 86,
+   "y": 12,
+   "largo": 4,
+   "recorrido": 2,
+   "eje": "x",
+   "periodo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 90,
+   "y": 12,
+   "largo": 10
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 94,
+   "y": 10,
+   "ref": "f6",
+   "latex": "\\mathrm{HCO_3^{-}(aq)} = \\mathrm{CO_3^{2-}(aq)} + \\mathrm{H}^{+}",
+   "nombre": "Par HCO₃⁻(aq) / CO₃²⁻(aq) (anfoterismo del hidrogenocarbonato)"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 97,
+   "y": 11,
+   "enemigo": "sin_estado",
+   "nombre": "Olvidar el estado físico",
+   "correccion": "Indicar siempre (aq), (ℓ), (g) o (s) en cada especie."
+  },
+  {
+   "tipo": "puente",
+   "x": 100,
+   "y": 12,
+   "largo": 14,
+   "cae_con": "palanca_entropia"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 107,
+   "y": 10,
+   "ref": "f7",
+   "latex": "\\mathrm{A_1H} + \\mathrm{A_2^{-}} \\rightleftharpoons \\mathrm{A_1^{-}} + \\mathrm{A_2H}",
+   "nombre": "Ecuación de una reacción ácido-base"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 114,
+   "y": 12,
+   "largo": 14
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 116
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 119,
+   "y": 10,
+   "ref": "f8",
+   "latex": "\\mathrm{HCl(g)} + \\mathrm{H_2O(\\ell)} \\rightarrow \\mathrm{Cl^{-}(aq)} + \\mathrm{H_3O^{+}(aq)}",
+   "nombre": "Reacción total del cloruro de hidrógeno con el agua"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 121,
+   "y": 11,
+   "enemigo": "agua_disolucion",
+   "nombre": "Agua en la disolución de un sólido iónico",
+   "correccion": "Disolución: NaHCO₃(s) → Na⁺(aq) + HCO₃⁻(aq), sin H₂O en la ecuación."
+  },
+  {
+   "tipo": "palanca",
+   "x": 124,
+   "y": 11,
+   "id": "palanca_entropia",
+   "nombre": "Palanca de Entropía",
+   "efecto": "cae_puente"
+  },
+  {
+   "tipo": "foso",
+   "x": 128,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 128,
+   "y": 12,
+   "largo": 4,
+   "recorrido": 2,
+   "eje": "x",
+   "periodo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 132,
+   "y": 12,
+   "largo": 44
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 133
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 138,
+   "y": 10,
+   "ref": "f9",
+   "latex": "V(\\mathrm{CO_2}) = n(\\mathrm{CO_2})\\times V_m",
+   "nombre": "Volumen de gas formado (ejercicio «lámpara de lava»)"
+  },
+  {
+   "tipo": "jefe",
+   "x": 156,
+   "y": 11,
+   "jefe": "rey_entropia",
+   "titulo": "Rey Entropía: guardián de la fortaleza ácido-base",
+   "preguntas": [
+    {
+     "pregunta": "Selon Brønsted, une base est une espèce chimique capable de :",
+     "opciones": [
+      "céder un ion hydrogène H⁺",
+      "capter un ion hydrogène H⁺",
+      "libérer des ions HO⁻ dans l'eau",
+      "accepter un doublet d'électrons"
+     ],
+     "correcta": 1,
+     "explicacion": "Brønsted : acide = cède H⁺, base = capte H⁺.",
+     "pagina_pdf": 39
+    },
+    {
+     "pregunta": "L'équation de la réaction acide-base entre l'acide A₁H et la base A₂⁻ s'écrit :",
+     "opciones": [
+      "A₁H + A₂⁻ ⇌ A₁⁻ + A₂H",
+      "A₁H + A₂H ⇌ A₁⁻ + A₂⁻",
+      "A₁⁻ + A₂⁻ ⇌ A₁H + A₂H",
+      "A₁H + H⁺ ⇌ A₁⁻ + A₂H"
+     ],
+     "correcta": 0,
+     "explicacion": "On additionne A₁H = A₁⁻ + H⁺ et A₂⁻ + H⁺ = A₂H : le H⁺ échangé disparaît.",
+     "pagina_pdf": 42
+    },
+    {
+     "pregunta": "Pourquoi l'eau est-elle une espèce amphotère ?",
+     "opciones": [
+      "Elle est un acide dans H₃O⁺/H₂O et une base dans H₂O/HO⁻",
+      "Elle est la base dans H₃O⁺/H₂O et l'acide dans H₂O/HO⁻",
+      "Elle ne participe à aucun couple acide-base",
+      "Elle est toujours neutre"
+     ],
+     "correcta": 1,
+     "explicacion": "H₂O est la base du couple H₃O⁺/H₂O et l'acide du couple H₂O/HO⁻.",
+     "pagina_pdf": 40
+    },
+    {
+     "pregunta": "Quelle est la base conjuguée de l'acide butanoïque CH₃CH₂CH₂CO₂H ?",
+     "opciones": [
+      "L'ion butanamide",
+      "L'ion butanoate CH₃CH₂CH₂CO₂⁻",
+      "L'ion butanammonium",
+      "Le butanal"
+     ],
+     "correcta": 1,
+     "explicacion": "On remplace la terminaison -oïque par -oate : acide butanoïque / ion butanoate.",
+     "pagina_pdf": 41
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 172,
+   "y": 12
+  }
+ ]
+}

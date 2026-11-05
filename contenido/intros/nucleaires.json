@@ -1,0 +1,298 @@
+{
+ "titulo": "El hueso que se desintegra",
+ "estilo": "fisica3d",
+ "duracion_seg": 28,
+ "actores": [
+  {
+   "id": "arq",
+   "tipo": "humano",
+   "pos": [
+    0.12,
+    0.74
+   ],
+   "color": "#ffb703",
+   "escala": 1.1
+  },
+  {
+   "id": "perro",
+   "tipo": "perro",
+   "pos": [
+    0.24,
+    0.8
+   ],
+   "color": "#c8895a",
+   "escala": 0.9
+  },
+  {
+   "id": "hueso",
+   "tipo": "bloque",
+   "pos": [
+    0.45,
+    0.82
+   ],
+   "color": "#e9e2d0",
+   "escala": 0.7
+  },
+  {
+   "id": "nucleo",
+   "tipo": "atomo",
+   "pos": [
+    0.72,
+    0.38
+   ],
+   "color": "#ff3da6",
+   "escala": 1.5
+  },
+  {
+   "id": "beta",
+   "tipo": "electron",
+   "pos": [
+    0.72,
+    0.38
+   ],
+   "color": "#00d4ff",
+   "escala": 0.6
+  },
+  {
+   "id": "hijo",
+   "tipo": "atomo",
+   "pos": [
+    0.88,
+    0.38
+   ],
+   "color": "#2ee59d",
+   "escala": 1.3
+  },
+  {
+   "id": "gamma",
+   "tipo": "rayo",
+   "pos": [
+    0.72,
+    0.38
+   ],
+   "color": "#ffd166",
+   "escala": 0.8
+  }
+ ],
+ "pasos": [
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "nucleo"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "beta"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "hijo"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "gamma"
+  },
+  {
+   "t": 0,
+   "accion": "subtitulo",
+   "texto": "Una arqueóloga y su perro encuentran un hueso antiguo… ¿cuántos años tiene?"
+  },
+  {
+   "t": 0.5,
+   "accion": "mueve",
+   "actor": "arq",
+   "a": [
+    0.32,
+    0.74
+   ],
+   "dur": 3
+  },
+  {
+   "t": 1,
+   "accion": "mueve",
+   "actor": "perro",
+   "a": [
+    0.42,
+    0.8
+   ],
+   "dur": 2.5
+  },
+  {
+   "t": 3.5,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "¡Guau! (huele a miles de años)"
+  },
+  {
+   "t": 4,
+   "accion": "resalta",
+   "actor": "hueso"
+  },
+  {
+   "t": 4.5,
+   "accion": "camara",
+   "zoom": 1.4,
+   "centro": [
+    0.65,
+    0.45
+   ],
+   "dur": 2
+  },
+  {
+   "t": 5,
+   "accion": "subtitulo",
+   "texto": "Dentro del hueso hay núcleos inestables, como el carbono 14."
+  },
+  {
+   "t": 5,
+   "accion": "aparece",
+   "actor": "nucleo",
+   "dur": 1
+  },
+  {
+   "t": 6.5,
+   "accion": "habla",
+   "actor": "nucleo",
+   "texto": "Me sobran neutrones… ¡no aguanto más!"
+  },
+  {
+   "t": 7.5,
+   "accion": "gira",
+   "actor": "nucleo",
+   "grados": 360,
+   "dur": 2
+  },
+  {
+   "t": 7.5,
+   "accion": "particulas",
+   "tipo": "chispas",
+   "pos": [
+    0.72,
+    0.38
+   ]
+  },
+  {
+   "t": 9.5,
+   "accion": "subtitulo",
+   "texto": "Se transforma solo, al azar: radiactividad β⁻ (emite un electrón)."
+  },
+  {
+   "t": 9.5,
+   "accion": "aparece",
+   "actor": "beta",
+   "dur": 0.3
+  },
+  {
+   "t": 9.5,
+   "accion": "mueve",
+   "actor": "beta",
+   "a": [
+    0.95,
+    0.12
+   ],
+   "dur": 2
+  },
+  {
+   "t": 10,
+   "accion": "aparece",
+   "actor": "hijo",
+   "dur": 1
+  },
+  {
+   "t": 10,
+   "accion": "reaccion",
+   "de": [
+    "nucleo"
+   ],
+   "a": [
+    "hijo"
+   ]
+  },
+  {
+   "t": 12,
+   "accion": "formula",
+   "latex": "{}^{14}_{6}\\mathrm{C}\\to{}^{14}_{7}\\mathrm{N}+{}^{\\,0}_{-1}\\mathrm{e}"
+  },
+  {
+   "t": 14,
+   "accion": "subtitulo",
+   "texto": "Se conservan la carga y los nucleones: Z = Z′ + Z″ y A = A′ + A″."
+  },
+  {
+   "t": 15.5,
+   "accion": "aparece",
+   "actor": "gamma",
+   "dur": 0.5
+  },
+  {
+   "t": 16,
+   "accion": "vector",
+   "actor": "gamma",
+   "dx": 0.1,
+   "dy": -0.05,
+   "etiqueta": "γ"
+  },
+  {
+   "t": 16.5,
+   "accion": "subtitulo",
+   "texto": "Si el núcleo hijo queda excitado, se relaja emitiendo fotones γ."
+  },
+  {
+   "t": 18,
+   "accion": "camara",
+   "zoom": 1,
+   "centro": [
+    0.5,
+    0.5
+   ],
+   "dur": 1.5
+  },
+  {
+   "t": 18.5,
+   "accion": "valor",
+   "id": "N",
+   "desde": 100,
+   "hasta": 50,
+   "dur": 3,
+   "etiqueta": "N / N₀ (%) tras una semivida"
+  },
+  {
+   "t": 18.5,
+   "accion": "subtitulo",
+   "texto": "Cada tiempo de semivida t½, se desintegra la mitad de los núcleos que quedan."
+  },
+  {
+   "t": 22,
+   "accion": "formula",
+   "latex": "N(t)=N_0\\,e^{-\\lambda t}\\qquad t_{1/2}=\\dfrac{\\ln 2}{\\lambda}"
+  },
+  {
+   "t": 24,
+   "accion": "subtitulo",
+   "texto": "Midiendo cuántos núcleos quedan se calcula la edad: ¡datación por carbono 14!"
+  },
+  {
+   "t": 25,
+   "accion": "habla",
+   "actor": "arq",
+   "texto": "¡Datado! Tiene miles de años."
+  },
+  {
+   "t": 25.5,
+   "accion": "particulas",
+   "tipo": "burbujas",
+   "pos": [
+    0.32,
+    0.7
+   ]
+  },
+  {
+   "t": 27,
+   "accion": "pausa",
+   "dur": 1
+  }
+ ]
+}

@@ -1,0 +1,437 @@
+{
+ "capitulo_id": "champ-gravitation",
+ "tipo_nivel": "normal",
+ "tema_visual": "espacio-orbital",
+ "fisica_juego": {
+  "gravedad": 0.7,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 170,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "foso",
+   "x": 22,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 25,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 39,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 43,
+   "y": 14,
+   "largo": 13
+  },
+  {
+   "tipo": "foso",
+   "x": 56,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 60,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "foso",
+   "x": 72,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 76,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 90,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 93,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "foso",
+   "x": 103,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 106,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "foso",
+   "x": 118,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 121,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 135,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 138,
+   "y": 14,
+   "largo": 31
+  },
+  {
+   "tipo": "plataforma",
+   "x": 30,
+   "y": 11,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 47,
+   "y": 11,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 64,
+   "y": 11,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 80,
+   "y": 11,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 86,
+   "y": 9,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 96,
+   "y": 11,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 56,
+   "y": 11,
+   "largo": 4,
+   "recorrido": 4,
+   "eje": "x",
+   "periodo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 72,
+   "y": 11,
+   "largo": 4,
+   "recorrido": 4,
+   "eje": "x",
+   "periodo": 3.5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 90,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 3,
+   "eje": "x",
+   "periodo": 3
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 103,
+   "y": 12,
+   "largo": 3,
+   "recorrido": 3,
+   "eje": "x",
+   "periodo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 118,
+   "y": 12,
+   "largo": 3,
+   "recorrido": 3,
+   "eje": "x",
+   "periodo": 3.5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 135,
+   "y": 10,
+   "largo": 3,
+   "recorrido": 3,
+   "eje": "y",
+   "periodo": 3
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 88,
+   "y": 5,
+   "w": 8,
+   "h": 9,
+   "fx": 0,
+   "fy": -0.45
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 106,
+   "y": 4,
+   "w": 30,
+   "h": 10,
+   "fx": 0,
+   "fy": 0.7
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 8,
+   "y": 12,
+   "ref": "f7",
+   "latex": "\\vec F_{A/B} = -\\vec F_{B/A} = G\\,\\dfrac{m_A\\cdot m_B}{d^{2}}\\;\\vec u_{BA}",
+   "nombre": "Force d'interaction gravitationnelle"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 18,
+   "y": 12,
+   "ref": "f11",
+   "latex": "\\vec a = G\\,\\dfrac{M}{r^{2}}\\,\\vec n",
+   "nombre": "Accélération d'un satellite"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 31,
+   "y": 9,
+   "ref": "f1",
+   "latex": "PF + PF' = 2a",
+   "nombre": "1re loi de Kepler : loi des orbites"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 48,
+   "y": 9,
+   "ref": "f2",
+   "latex": "\\Delta t_1 = \\Delta t_2 \\;\\Rightarrow\\; \\mathcal{A}_1 = \\mathcal{A}_2",
+   "nombre": "2e loi de Kepler : loi des aires"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 66,
+   "y": 9,
+   "ref": "f3",
+   "latex": "\\dfrac{T^{2}}{a^{3}} = k = \\text{constante}",
+   "nombre": "3e loi de Kepler : loi des périodes"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 82,
+   "y": 9,
+   "ref": "f4",
+   "latex": "k = \\dfrac{4\\pi^{2}}{G\\cdot M}",
+   "nombre": "Constante de la 3e loi de Kepler"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 87,
+   "y": 7,
+   "ref": "f13",
+   "latex": "v = \\sqrt{\\dfrac{G\\cdot M}{r}}",
+   "nombre": "Vitesse d'un satellite en orbite circulaire"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 97,
+   "y": 9,
+   "ref": "f15",
+   "latex": "T = 2\\pi\\sqrt{\\dfrac{r^{3}}{G\\cdot M}}",
+   "nombre": "Période de révolution"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 110,
+   "y": 12,
+   "ref": "f17",
+   "latex": "r = R_T + h",
+   "nombre": "Rayon d'orbite d'un satellite terrestre"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 125,
+   "y": 12,
+   "ref": "f18",
+   "latex": "h = \\left(\\dfrac{T^{2}}{4\\pi^{2}}\\,G\\cdot M\\right)^{\\!1/3} - R_T",
+   "nombre": "Altitude d'un satellite géostationnaire"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 130,
+   "y": 12,
+   "ref": "f16",
+   "latex": "T^{2} = 4\\pi^{2}\\,\\dfrac{r^{3}}{G\\cdot M}",
+   "nombre": "De la période à la 3e loi de Kepler"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 133,
+   "y": 12,
+   "ref": "f8",
+   "latex": "\\vec g = -G\\,\\dfrac{M}{R^{2}}\\,\\vec u_r",
+   "nombre": "Champ de gravitation"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 14,
+   "y": 13,
+   "enemigo": "error_referencial",
+   "nombre": "Referencial incompleto",
+   "correccion": "Decir «referencial geocéntrico» y su definición: centro de la Tierra y ejes hacia estrellas lejanas fijas."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 36,
+   "y": 13,
+   "enemigo": "error_unidades_km",
+   "nombre": "No convertir km a m",
+   "correccion": "Pasar r y h a metros antes de aplicar v = √(GM/r); 6 840 km = 6,84×10⁶ m."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 52,
+   "y": 13,
+   "enemigo": "error_altitud_radio",
+   "nombre": "Confundir altitud h con radio de órbita r",
+   "correccion": "La altitud se mide desde la superficie: r = R_astro + h."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 68,
+   "y": 13,
+   "enemigo": "error_t3_a2",
+   "nombre": "Escribir mal la 3.ª ley (T³ = k·a²)",
+   "correccion": "Es T² = k·a³: período al cuadrado y semieje al cubo."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 84,
+   "y": 13,
+   "enemigo": "error_aceleracion_nula",
+   "nombre": "Pensar que v constante implica aceleración nula",
+   "correccion": "En órbita circular uniforme a = v²/r ≠ 0: es radial y centrípeta."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 99,
+   "y": 13,
+   "enemigo": "error_vector_unitario",
+   "nombre": "Olvidar el vector unitario y el esquema de la fuerza",
+   "correccion": "F = G·m·M/r²·n con n unitario hacia el astro; dibujar siempre la flecha en un esquema."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 114,
+   "y": 13,
+   "enemigo": "error_sin_critica",
+   "nombre": "No juzgar si el resultado es razonable",
+   "correccion": "Comprobar el orden de magnitud: T = 178 s para la ISS es absurdo (≈ 93 min = 5,6×10³ s)."
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 60
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 121
+  },
+  {
+   "tipo": "jefe",
+   "x": 154,
+   "jefe": "ejercicio_bac_1",
+   "titulo": "Ejercicio bac: el satélite en órbita",
+   "preguntas": [
+    {
+     "pregunta": "Un satélite artificial de la Tierra describe una orbite circulaire autour de la Terre. Que peut-on dire de son mouvement dans le référentiel géocentrique ?",
+     "opciones": [
+      "Circulaire et uniforme : v est constante et l'accélération est radiale et centripète",
+      "Circulaire et uniforme : l'accélération est nulle",
+      "Circulaire mais accéléré : v augmente le long de l'orbite",
+      "Rectiligne uniforme, car la gravitation compense l'inertie"
+     ],
+     "correcta": 0,
+     "explicacion": "Avec la 2e loi de Newton, dv/dt = 0 : la vitesse est constante, mais l'accélération a = v²/r·n est radiale et centripète (non nulle).",
+     "pagina_pdf": 341
+    },
+    {
+     "pregunta": "Quelle est l'expression de la vitesse d'un satellite en orbite circulaire de rayon r autour d'un astre de masse M ?",
+     "opciones": [
+      "v = √(G·M/r)",
+      "v = √(r/(G·M))",
+      "v = G·M/r²",
+      "v = (G·M·r)²"
+     ],
+     "correcta": 0,
+     "explicacion": "De a = G·M/r² = v²/r on tire v² = G·M/r, soit v = √(G·M/r) : indépendante de la masse du satellite.",
+     "pagina_pdf": 341
+    },
+    {
+     "pregunta": "Pour un satellite de la Terre, le rayon de l'orbite vaut r = 7,2×10⁶ m, avec R_T = 6,4×10⁶ m. Quelle est son altitude h ?",
+     "opciones": [
+      "h = 0,8×10⁶ m (r = R_T + h)",
+      "h = 13,6×10⁶ m (r + R_T)",
+      "h = 7,2×10⁶ m (h = r)",
+      "h = 46×10¹² m (r × R_T)"
+     ],
+     "correcta": 0,
+     "explicacion": "r = R_T + h donc h = r − R_T = 7,2×10⁶ − 6,4×10⁶ = 8×10⁵ m = 800 km.",
+     "pagina_pdf": 341
+    },
+    {
+     "pregunta": "Comment s'écrit la 3e loi de Kepler pour un satellite sur une orbite de demi-grand axe a et de période T autour d'un astre de masse M ?",
+     "opciones": [
+      "T²/a³ = 4π²/(G·M)",
+      "T³/a² = 4π²/(G·M)",
+      "T²·a³ = 4π²/(G·M)",
+      "T/a = 4π²/(G·M)"
+     ],
+     "correcta": 0,
+     "explicacion": "La 3e loi de Kepler donne T²/a³ = k avec k = 4π²/(G·M) ; la constante ne dépend que de l'astre attracteur.",
+     "pagina_pdf": 340
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 166
+  }
+ ]
+}

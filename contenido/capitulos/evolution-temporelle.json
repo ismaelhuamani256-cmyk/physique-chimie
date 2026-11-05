@@ -1,0 +1,943 @@
+{
+ "id": "evolution-temporelle",
+ "titulo": "Évolution temporelle d'un système chimique",
+ "materia": "chimie",
+ "mundo": "constitucion",
+ "pdf_ini": 106,
+ "pdf_fin": 130,
+ "resumen": "Se caracteriza la duración de una transformación química: lenta o rápida, sus factores cinéticos (temperatura, concentración) y los catalizadores. Se sigue en el tiempo con sensores, se define la velocidad volúmica, el tiempo de semirreacción y la ley de velocidad de orden 1. A nivel microscópico, el mecanismo reaccional (actos elementales, intermediarios, flecha curva) explica el papel del catalizador y de los choques eficaces.",
+ "resumen_fr": "Durée d'une transformation, facteurs cinétiques, catalyse, vitesse volumique, temps de demi-réaction, loi d'ordre 1, mécanisme réactionnel et flèche courbe.",
+ "nociones_clave": [
+  {
+   "id": "n1",
+   "fr": "Transformation lente / rapide",
+   "es": "Una transformación es lenta si se puede seguir a ojo o con un aparato de medida corriente; es rápida si no dura más que la persistencia retiniana (1/10 s).",
+   "pagina_pdf": 112
+  },
+  {
+   "id": "n2",
+   "fr": "Suivi temporel et capteur",
+   "es": "Seguir una transformación es seguir la cantidad de materia de reactivos y productos en el tiempo, con un sensor de una magnitud ligada a ella (espectrofotómetro si hay especie coloreada, manómetro si hay gas, conductímetro si hay iones).",
+   "pagina_pdf": 112
+  },
+  {
+   "id": "n3",
+   "fr": "Facteurs cinétiques",
+   "es": "Parámetros experimentales que modifican la duración de la transformación: la temperatura y la concentración en cantidad de materia de los reactivos. Si aumentan, la transformación es más rápida.",
+   "pagina_pdf": 112
+  },
+  {
+   "id": "n4",
+   "fr": "Catalyseur",
+   "es": "Especie química que acelera u orienta una transformación sin modificar el estado final. Se consume y luego se regenera en igual proporción; no aparece en la ecuación de reacción.",
+   "pagina_pdf": 112
+  },
+  {
+   "id": "n5",
+   "fr": "Catalyse homogène, hétérogène, enzymatique",
+   "es": "Homogénea: reactivos y catalizador en la misma fase fluida. Heterogénea: dos fases distintas (catalizador sólido, reacción en su superficie; se usa en polvo o estructura alveolar). Enzimática: el catalizador es una enzima. Catalizador selectivo (orienta) y específico (un solo reactivo).",
+   "pagina_pdf": 112
+  },
+  {
+   "id": "n6",
+   "fr": "Vitesse volumique",
+   "es": "Se define para transformaciones a volumen constante del medio; se expresa en mol·L⁻¹·s⁻¹ y es positiva: derivada de la concentración del producto, o menos la derivada de la del reactivo.",
+   "pagina_pdf": 113
+  },
+  {
+   "id": "n7",
+   "fr": "Temps de demi-réaction t1/2",
+   "es": "Duración al cabo de la cual el avance de la reacción vale la mitad del avance final x_f. Da la duración característica de la transformación; la reacción se considera terminada tras 6 a 7 t1/2.",
+   "pagina_pdf": 113
+  },
+  {
+   "id": "n8",
+   "fr": "Réaction d'ordre 1",
+   "es": "Una reacción es de orden 1 respecto a un reactivo A si la velocidad volúmica de desaparición de A (o de aparición de un producto) es proporcional a la concentración de A. El orden se deduce solo de la experiencia.",
+   "pagina_pdf": 113
+  },
+  {
+   "id": "n9",
+   "fr": "Mécanisme réactionnel, acte élémentaire",
+   "es": "Una reacción compleja se descompone a nivel molecular en etapas (actos) elementales; el conjunto es el mecanismo reaccional. La ecuación de la reacción se obtiene sumando las etapas.",
+   "pagina_pdf": 113
+  },
+  {
+   "id": "n10",
+   "fr": "Intermédiaire réactionnel vs catalyseur",
+   "es": "Intermediario: se forma y luego se consume. Catalizador: se consume en una etapa y se regenera en una etapa posterior. El catalizador permite intermediarios más reactivos y modifica el mecanismo.",
+   "pagina_pdf": 114
+  },
+  {
+   "id": "n11",
+   "fr": "Site donneur / site accepteur de doublet d'électrons",
+   "es": "Donor: sitio de alta densidad electrónica (doblete no enlazante o doble enlace). Aceptor: sitio de baja densidad electrónica (laguna electrónica o átomo con carga parcial positiva δ+).",
+   "pagina_pdf": 114
+  },
+  {
+   "id": "n12",
+   "fr": "Flèche courbe",
+   "es": "Modela el desplazamiento de un doblete de electrones en una etapa elemental: parte de un sitio donor y apunta a un sitio aceptor. A veces se dibujan dos flechas en una etapa porque el intermediario de una sola es demasiado inestable.",
+   "pagina_pdf": 114
+  },
+  {
+   "id": "n13",
+   "fr": "Chocs efficaces",
+   "es": "Un choque entre dos entidades reactivas es eficaz si modifica los enlaces químicos de ambas. Más temperatura (más agitación térmica) o más concentración implican más choques eficaces por unidad de tiempo.",
+   "pagina_pdf": 114
+  },
+  {
+   "id": "n14",
+   "fr": "Vitesse et tangente",
+   "es": "La velocidad volúmica de aparición de un producto en un instante es el coeficiente director (pendiente) de la tangente a la curva [producto](t) en ese instante (derivada en un punto).",
+   "pagina_pdf": 113
+  },
+  {
+   "id": "n15",
+   "fr": "Enzyme, substrat, site actif",
+   "es": "La enzima es una proteína catalizadora de reacciones biológicas; el reactivo (sustrato) se fija en el sitio activo, se transforma, y la enzima queda intacta al final (complejo enzima-sustrato).",
+   "pagina_pdf": 112
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "v_{\\text{Produit}} = \\dfrac{\\mathrm{d}[\\text{Produit}]}{\\mathrm{d}t}",
+   "nombre": "Velocidad volúmica de aparición de un producto",
+   "nombre_fr": "Vitesse volumique d'apparition d'un produit",
+   "variables": [
+    {
+     "simbolo": "v_Produit",
+     "significado": "velocidad volúmica de aparición del producto",
+     "unidad": "mol·L⁻¹·s⁻¹"
+    },
+    {
+     "simbolo": "[Produit]",
+     "significado": "concentración en cantidad de materia del producto",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "t",
+     "significado": "tiempo",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "Es la derivada temporal de la concentración del producto (volumen del medio constante). Gráficamente es la pendiente de la tangente a la curva [producto](t).",
+   "ejemplo": {
+    "enunciado": "Reacción S₂O₈²⁻(aq) + 2 I⁻(aq) → I₂(aq) + 2 SO₄²⁻(aq): v_I₂ = d[I₂]/dt, determinable gráficamente con las tangentes a t = 0, 20 y 80 min (Fig. 3).",
+    "resultado": "La pendiente de la tangente disminuye con el tiempo: la velocidad baja.",
+    "pagina_pdf": 113
+   },
+   "pagina_pdf": 113,
+   "animacion": {
+    "preset": "cinetica",
+    "params": {},
+    "leyenda": "Mueve el tiempo y verás la concentración subir y la pendiente de la tangente (la velocidad) disminuir."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "v_{\\text{Réactif}} = -\\dfrac{\\mathrm{d}[\\text{Réactif}]}{\\mathrm{d}t}",
+   "nombre": "Velocidad volúmica de desaparición de un reactivo",
+   "nombre_fr": "Vitesse volumique de disparition d'un réactif",
+   "variables": [
+    {
+     "simbolo": "v_Réactif",
+     "significado": "velocidad volúmica de desaparición del reactivo",
+     "unidad": "mol·L⁻¹·s⁻¹"
+    },
+    {
+     "simbolo": "[Réactif]",
+     "significado": "concentración en cantidad de materia del reactivo",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "t",
+     "significado": "tiempo",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "La concentración del reactivo disminuye, su derivada es negativa; se añade el signo menos para que la velocidad sea positiva.",
+   "ejemplo": {
+    "enunciado": "Cuestión del libro (ej. 18, urea): reacción de orden 1 OC(NH₂)₂ → OCN⁻ + NH₄⁺.",
+    "resultado": "v_urée = k''·[urée] (ver corrigé).",
+    "pagina_pdf": 612
+   },
+   "pagina_pdf": 113,
+   "animacion": {
+    "preset": "cinetica",
+    "params": {},
+    "leyenda": "El reactivo se gasta con el tiempo: la velocidad (−pendiente) es positiva y decrece."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "x(t_{1/2}) = \\dfrac{x_\\mathrm{f}}{2}",
+   "nombre": "Tiempo de semirreacción",
+   "nombre_fr": "Temps de demi-réaction",
+   "variables": [
+    {
+     "simbolo": "t_{1/2}",
+     "significado": "tiempo de semirreacción",
+     "unidad": "s"
+    },
+    {
+     "simbolo": "x(t_{1/2})",
+     "significado": "avance en t_{1/2}",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "x_f",
+     "significado": "avance final",
+     "unidad": "mol"
+    }
+   ],
+   "explicacion": "t1/2 es la abscisa del punto de ordenada x_f/2 en la curva x(t). Mide la duración característica; la reacción termina tras 6 a 7 t1/2.",
+   "ejemplo": {
+    "enunciado": "Ej. 23: descomposición de N₂O₅ a 50 °C; reactivo limitante totalmente consumido, así t1/2 es la abscisa del punto de ordenada [N₂O₅]₀/2.",
+    "resultado": "t1/2 ≈ 23 min.",
+    "pagina_pdf": 120
+   },
+   "pagina_pdf": 113,
+   "animacion": {
+    "preset": "cinetica",
+    "params": {},
+    "leyenda": "Observa cuándo la concentración del reactivo cae a la mitad: ese tiempo es t1/2."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "v_\\mathrm{A} = k \\cdot [\\mathrm{A}]",
+   "nombre": "Ley de velocidad de orden 1 (reactivo)",
+   "nombre_fr": "Loi de vitesse d'ordre 1 (réactif)",
+   "variables": [
+    {
+     "simbolo": "v_A",
+     "significado": "velocidad volúmica de desaparición de A",
+     "unidad": "mol·L⁻¹·s⁻¹"
+    },
+    {
+     "simbolo": "k",
+     "significado": "constante de proporcionalidad",
+     "unidad": "s⁻¹"
+    },
+    {
+     "simbolo": "[A]",
+     "significado": "concentración en cantidad de materia de A",
+     "unidad": "mol·L⁻¹"
+    }
+   ],
+   "explicacion": "Si la reacción es de orden 1 respecto a A, la velocidad es proporcional a [A]: la gráfica v en función de [A] es una recta que pasa por el origen.",
+   "ejemplo": {
+    "enunciado": "Ej. 18 (urea): reacción de orden 1.",
+    "resultado": "v_OCN⁻ = k·[urée] ; v_NH₄⁺ = k'·[urée] ; v_urée = k''·[urée].",
+    "pagina_pdf": 612
+   },
+   "pagina_pdf": 115,
+   "animacion": {
+    "preset": "cinetica",
+    "params": {},
+    "leyenda": "Cambia k: la concentración decae más deprisa y la velocidad es siempre proporcional a [A]."
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "v_\\mathrm{P} = k' \\cdot [\\mathrm{A}]",
+   "nombre": "Ley de velocidad de orden 1 (producto)",
+   "nombre_fr": "Loi de vitesse d'ordre 1 (produit)",
+   "variables": [
+    {
+     "simbolo": "v_P",
+     "significado": "velocidad volúmica de aparición de un producto P",
+     "unidad": "mol·L⁻¹·s⁻¹"
+    },
+    {
+     "simbolo": "k'",
+     "significado": "constante de proporcionalidad",
+     "unidad": "s⁻¹"
+    },
+    {
+     "simbolo": "[A]",
+     "significado": "concentración del reactivo A",
+     "unidad": "mol·L⁻¹"
+    }
+   ],
+   "explicacion": "También la velocidad de aparición de un producto es proporcional a la concentración del reactivo A cuando la reacción es de orden 1 respecto a A.",
+   "ejemplo": null,
+   "pagina_pdf": 115,
+   "animacion": {
+    "preset": "cinetica",
+    "params": {},
+    "leyenda": "El producto aparece al ritmo marcado por [A]: cuanto menos reactivo queda, más lenta es su formación."
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "n_{\\text{réactif}}(t_{1/2}) = \\dfrac{n_0}{2}",
+   "nombre": "Cantidad de reactivo en t1/2",
+   "nombre_fr": "Quantité de réactif à t1/2",
+   "variables": [
+    {
+     "simbolo": "n_réactif(t_{1/2})",
+     "significado": "cantidad de reactivo en t1/2",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "n_0",
+     "significado": "cantidad inicial de reactivo",
+     "unidad": "mol"
+    }
+   ],
+   "explicacion": "Equivale a x(t1/2) = x_f/2 solo si la reacción es total Y el número estequiométrico del reactivo limitante vale 1 (corrigé del ej. 17).",
+   "ejemplo": null,
+   "pagina_pdf": 612,
+   "animacion": {
+    "preset": "cinetica",
+    "params": {},
+    "leyenda": "La curva n(t) del reactivo cae a n₀/2 en t1/2."
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "[\\mathrm{C_3H_6O}] = \\dfrac{5x}{V} \\;\\Rightarrow\\; v_{\\mathrm{C_3H_6O}} = \\dfrac{5}{V}\\dfrac{\\mathrm{d}x}{\\mathrm{d}t}",
+   "nombre": "Velocidad en función del avance (ej. 27)",
+   "nombre_fr": "Vitesse en fonction de l'avancement",
+   "variables": [
+    {
+     "simbolo": "x",
+     "significado": "avance de la reacción",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen del medio (constante)",
+     "unidad": "L"
+    },
+    {
+     "simbolo": "5",
+     "significado": "número estequiométrico de la propanona",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Con el tabla de avance, n(C₃H₆O)=5x; como V es constante, la velocidad es proporcional a dx/dt. No olvidar el número estequiométrico.",
+   "ejemplo": {
+    "enunciado": "5 C₃H₈O + 2 MnO₄⁻ + 6 H⁺ → 5 C₃H₆O + 2 Mn²⁺ + 8 H₂O, V constante.",
+    "resultado": "v = (5/V)·dx/dt",
+    "pagina_pdf": 613
+   },
+   "pagina_pdf": 613,
+   "animacion": {
+    "preset": "avance",
+    "params": {},
+    "leyenda": "Al avanzar x, los reactivos bajan y la propanona sube 5 veces más rápido que x."
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "n(\\mathrm{H_3O^+}) = n_0(\\mathrm{H_3O^+}) - 2x \\;\\Rightarrow\\; v_{\\mathrm{H_3O^+}} = \\dfrac{2}{V}\\dfrac{\\mathrm{d}x}{\\mathrm{d}t}",
+   "nombre": "Desaparición de H₃O⁺ y avance (ej. 28)",
+   "nombre_fr": "Disparition de H3O+ et avancement",
+   "variables": [
+    {
+     "simbolo": "x",
+     "significado": "avance",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "n_0(H₃O⁺)",
+     "significado": "cantidad inicial de iones oxonio",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen constante",
+     "unidad": "L"
+    }
+   ],
+   "explicacion": "CaCO₃ + 2 H₃O⁺ → Ca²⁺ + CO₂ + 3 H₂O: cada avance x consume 2 H₃O⁺; la velocidad de desaparición es (2/V)·dx/dt.",
+   "ejemplo": {
+    "enunciado": "Ej. 28, roca calcárea con HCl a 20 °C.",
+    "resultado": "n(H₃O⁺)=n₀−2x ; v = (2/V)·dx/dt ; t1/2 = 55 s.",
+    "pagina_pdf": 613
+   },
+   "pagina_pdf": 613,
+   "animacion": {
+    "preset": "avance",
+    "params": {},
+    "leyenda": "Cada unidad de avance gasta dos iones oxonio: ve cómo caen los reactivos."
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "A \\propto [\\text{espèce colorée}]",
+   "nombre": "Ley de Beer-Lambert (proporcionalidad)",
+   "nombre_fr": "Loi de Beer-Lambert",
+   "variables": [
+    {
+     "simbolo": "A",
+     "significado": "absorbancia",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "c",
+     "significado": "concentración en cantidad de materia de la especie coloreada",
+     "unidad": "mol·L⁻¹"
+    }
+   ],
+   "explicacion": "La absorbancia de una disolución coloreada es proporcional a la concentración de la especie coloreada: permite seguir [I₂] por espectrofotometría.",
+   "ejemplo": {
+    "enunciado": "Act. 4: se mide la absorbancia de soluciones patrón de I₂ (5 soluciones) y se traza A en función de la concentración.",
+    "resultado": "Recta que pasa por el origen: A proporcional a c.",
+    "pagina_pdf": 111
+   },
+   "pagina_pdf": 111,
+   "animacion": {
+    "preset": "beer-lambert",
+    "params": {},
+    "leyenda": "Más concentración de la especie coloreada: más absorbancia."
+   }
+  },
+  {
+   "id": "f10",
+   "latex": "\\sigma_{\\text{solution}} = \\sum_i \\lambda_i \\cdot [\\mathrm{X}_i]",
+   "nombre": "Ley de Kohlrausch",
+   "nombre_fr": "Loi de Kohlrausch",
+   "variables": [
+    {
+     "simbolo": "σ",
+     "significado": "conductividad de la disolución",
+     "unidad": "S·m⁻¹"
+    },
+    {
+     "simbolo": "λ_i",
+     "significado": "conductividad molar iónica",
+     "unidad": "S·m²·mol⁻¹"
+    },
+    {
+     "simbolo": "[X_i]",
+     "significado": "concentración del ion (en mol·m⁻³)",
+     "unidad": "mol·m⁻³"
+    }
+   ],
+   "explicacion": "Permite seguir una transformación con iones por conductimetría (ej. 38, hidrólisis del 2-cloro-2-metilpropano que produce H₃O⁺ y Cl⁻).",
+   "ejemplo": {
+    "enunciado": "Ej. 38: λ(H₃O⁺)=349,8×10⁻⁴ y λ(Cl⁻)=76,3×10⁻⁴ S·m²·mol⁻¹; σ final medida ≈ 0,384 S·m⁻¹.",
+    "resultado": "Con c=9,0 mmol·L⁻¹ de cada ion: σ=(349,8+76,3)×10⁻⁴×9,0≈0,384 S·m⁻¹ (cálculo nuestro con datos del libro).",
+    "pagina_pdf": 126
+   },
+   "pagina_pdf": 126,
+   "animacion": {
+    "preset": "conductimetria",
+    "params": {
+     "c": 9
+    },
+    "leyenda": "Los iones H₃O⁺ y Cl⁻ que aparecen suben la conductividad de la disolución."
+   }
+  },
+  {
+   "id": "f11",
+   "latex": "[\\mathrm{HO^-}](t) = c_0 \\cdot \\dfrac{\\sigma_t - \\sigma_\\infty}{\\sigma_0 - \\sigma_\\infty}",
+   "nombre": "Concentración de HO⁻ por conductimetría",
+   "nombre_fr": "Concentration en ions hydroxyde par conductimétrie",
+   "variables": [
+    {
+     "simbolo": "[HO⁻]",
+     "significado": "concentración de iones hidróxido en t",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "c_0",
+     "significado": "concentración inicial de HO⁻",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "σ_t",
+     "significado": "conductividad en t",
+     "unidad": "S·m⁻¹"
+    },
+    {
+     "simbolo": "σ_0",
+     "significado": "conductividad inicial",
+     "unidad": "S·m⁻¹"
+    },
+    {
+     "simbolo": "σ_∞",
+     "significado": "conductividad al final de la reacción",
+     "unidad": "S·m⁻¹"
+    }
+   ],
+   "explicacion": "Relación dada en la ECE de saponificación del etanoato de etilo con hidróxido de sodio: permite trazar [HO⁻](t) a partir de σ(t).",
+   "ejemplo": null,
+   "pagina_pdf": 128,
+   "animacion": {
+    "preset": "conductimetria",
+    "params": {},
+    "leyenda": "La conductividad baja al consumirse los iones HO⁻ y deja trazar [HO⁻](t)."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "Persistencia retiniana (límite de transformación rápida)",
+   "valor": "1/10 (0,1)",
+   "unidad": "s",
+   "pagina_pdf": 112
+  },
+  {
+   "nombre": "Reacción terminada tras",
+   "valor": "6 a 7 × t1/2",
+   "unidad": "—",
+   "pagina_pdf": 113
+  },
+  {
+   "nombre": "λ(H₃O⁺) a 25 °C",
+   "valor": "349,8×10⁻⁴",
+   "unidad": "S·m²·mol⁻¹",
+   "pagina_pdf": 126
+  },
+  {
+   "nombre": "λ(Cl⁻) a 25 °C",
+   "valor": "76,3×10⁻⁴",
+   "unidad": "S·m²·mol⁻¹",
+   "pagina_pdf": 126
+  },
+  {
+   "nombre": "M del 2-cloro-2-metilpropano",
+   "valor": "92,0",
+   "unidad": "g·mol⁻¹",
+   "pagina_pdf": 126
+  },
+  {
+   "nombre": "ρ del 2-cloro-2-metilpropano",
+   "valor": "0,85",
+   "unidad": "g·mL⁻¹",
+   "pagina_pdf": 126
+  },
+  {
+   "nombre": "M del etanoato de etilo (ECE)",
+   "valor": "88",
+   "unidad": "g·mol⁻¹",
+   "pagina_pdf": 128
+  },
+  {
+   "nombre": "Densidad del etanoato de etilo (ECE)",
+   "valor": "0,90",
+   "unidad": "—",
+   "pagina_pdf": 128
+  },
+  {
+   "nombre": "Electronegatividades comparadas",
+   "valor": "χ(O) > χ(Cl) > χ(N) > χ(C) ≈ χ(H)",
+   "unidad": "—",
+   "pagina_pdf": 109
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Elegir un sensor para el seguimiento temporal",
+   "pasos": [
+    "Identificar qué especies están implicadas en la ecuación.",
+    "Especie coloreada: espectrofotómetro. Gas: manómetro (presión). Ion: conductímetro.",
+    "Justificar con la ecuación (p. ej. 'se forma un gas, luego se usa un manómetro')."
+   ],
+   "pagina_pdf": 112
+  },
+  {
+   "titulo": "Determinar una velocidad volúmica gráficamente",
+   "pasos": [
+    "Trazar la tangente a la curva [especie](t) en el instante pedido.",
+    "Calcular su coeficiente director (pendiente).",
+    "Reactivo: v = −pendiente de [R](t); producto: v = pendiente de [P](t)."
+   ],
+   "pagina_pdf": 113
+  },
+  {
+   "titulo": "Determinar t1/2 gráficamente",
+   "pasos": [
+    "Leer en la curva x(t) el avance final x_f (asíntota).",
+    "Marcar la ordenada x_f/2.",
+    "Leer la abscisa de ese punto: es t1/2. Si el reactivo limitante se consume del todo, equivale a [R]₀/2 (ej. 23)."
+   ],
+   "pagina_pdf": 113
+  },
+  {
+   "titulo": "Justificar una reacción de orden 1",
+   "pasos": [
+    "Comprobar que v (de desaparición o aparición) es proporcional a [A].",
+    "Gráfica v en función de [A]: recta que pasa por el origen.",
+    "Recordar que el orden solo se deduce de la experiencia."
+   ],
+   "pagina_pdf": 120
+  },
+  {
+   "titulo": "Representar una flecha curva",
+   "pasos": [
+    "Localizar el sitio donor (doblete no enlazante o doble enlace) y el sitio aceptor (laguna electrónica o carga parcial δ+).",
+    "Dibujar la flecha desde el donor hacia el aceptor.",
+    "Justificar el sentido con las electronegatividades; un doblete no enlazante puede pasar a ser enlazante y al revés."
+   ],
+   "pagina_pdf": 114
+  },
+  {
+   "titulo": "Identificar intermediarios y catalizador en un mecanismo",
+   "pasos": [
+    "Intermediario: especie producida en una etapa y consumida en una etapa posterior.",
+    "Catalizador: consumido en una etapa y regenerado en una posterior (p. ej. H⁺).",
+    "La ecuación global suma las etapas: solo reactivos y productos, nunca intermediarios."
+   ],
+   "pagina_pdf": 114
+  },
+  {
+   "titulo": "Interpretar los factores cinéticos a nivel microscópico",
+   "pasos": [
+    "Un choque es eficaz si modifica enlaces de las entidades.",
+    "Si T aumenta: más agitación térmica, choques más frecuentes y violentos.",
+    "Si la concentración aumenta: más entidades por unidad de volumen, más choques, más choques eficaces."
+   ],
+   "pagina_pdf": 114
+  },
+  {
+   "titulo": "Representar la forma de un gráfico (savoir rédiger)",
+   "pasos": [
+    "Cuidar la forma y los pocos puntos particulares conocidos (valor inicial, final).",
+    "Verificar la homogeneidad de las relaciones (t1/2 es un tiempo; x_f/2 un avance).",
+    "No olvidar el número estequiométrico al pasar de x a concentración."
+   ],
+   "pagina_pdf": 122
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Olvidar el signo menos",
+   "correccion": "En v de un reactivo se pone −d[R]/dt para que sea positiva.",
+   "pagina_pdf": 113
+  },
+  {
+   "id": "err2",
+   "nombre": "Olvidar el nº estequiométrico",
+   "correccion": "[producto] = (coeficiente·x)/V, no x/V.",
+   "pagina_pdf": 122
+  },
+  {
+   "id": "err3",
+   "nombre": "Confundir catalizador e intermediario",
+   "correccion": "Intermediario: formado y consumido; catalizador: consumido y regenerado.",
+   "pagina_pdf": 114
+  },
+  {
+   "id": "err4",
+   "nombre": "El catalizador cambia el balance",
+   "correccion": "No aparece en la ecuación y no cambia el estado final.",
+   "pagina_pdf": 112
+  },
+  {
+   "id": "err5",
+   "nombre": "Escribir t1/2 = x_f/2",
+   "correccion": "Es x(t1/2) = x_f/2: t1/2 es un tiempo, x_f/2 un avance.",
+   "pagina_pdf": 122
+  },
+  {
+   "id": "err6",
+   "nombre": "Flecha curva al revés",
+   "correccion": "Parte del sitio donor y apunta al sitio aceptor.",
+   "pagina_pdf": 114
+  },
+  {
+   "id": "err7",
+   "nombre": "Poner intermediarios en el balance",
+   "correccion": "El balance global solo lleva reactivos y productos.",
+   "pagina_pdf": 124
+  },
+  {
+   "id": "err8",
+   "nombre": "Reacción terminada en t1/2",
+   "correccion": "Termina tras unos 6 a 7 t1/2, no en t1/2.",
+   "pagina_pdf": 113
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "TP Act. 1: La catálisis",
+   "descripcion": "Descomposición de H₂O₂ (2 H₂O₂ → 2 H₂O + O₂) sin catalizador y con Fe²⁺, hilo de platino o catalasa (nabo, hígado). Se observa el desprendimiento gaseoso en cada tubo; catálisis homogénea (Fe²⁺), heterogénea (Pt) y enzimática (catalasa).",
+   "pagina_pdf": 108
+  },
+  {
+   "titulo": "Act. 2: Formalismo de la flecha curva",
+   "descripcion": "Sitios donores y aceptores en reacciones elementales A–D (doc. 3): localizar lagunas electrónicas, dibujar flechas curvas y justificar su sentido con electronegatividades.",
+   "pagina_pdf": 109
+  },
+  {
+   "titulo": "TP Act. 3: Factores cinéticos",
+   "descripcion": "S₂O₃²⁻ + H⁺ forma azufre S(s) opaco. Mezclas de 40 mL de tiosulfato (0,1 o 0,02 mol·L⁻¹) y 10 mL de HCl (1 o 0,1 mol·L⁻¹); se cronometra el tiempo hasta opacar y se repite a 0 °C y 40 °C para estudiar concentración y temperatura.",
+   "pagina_pdf": 110
+  },
+  {
+   "titulo": "TP Act. 4: Seguimiento cinético por espectrofotometría",
+   "descripcion": "Mezcla de 10,0 mL de KI 0,25 mol·L⁻¹ y 10,0 mL de peroxodisulfato de sodio 2,5×10⁻³ mol·L⁻¹; absorbancia durante 15 min tras establecer la relación A–[I₂] con I₂ de 5,0×10⁻³ mol·L⁻¹. Programa Python para trazar [I₂](t), calcular velocidades y decidir si es de orden 1 respecto a S₂O₈²⁻.",
+   "pagina_pdf": 111
+  },
+  {
+   "titulo": "ECE: Seguimiento conductimétrico de una saponificación",
+   "descripcion": "Etanoato de etilo + HO⁻ → CH₃CO₂⁻ + C₂H₅OH; proponer protocolo, trazar [HO⁻](t) con Python usando [HO⁻]=c₀(σt−σ∞)/(σ0−σ∞), comprobar el exceso de éster y si es de orden 1 respecto a HO⁻ (t1/2 ≈ 2 min).",
+   "pagina_pdf": 128
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Ej. 23 (resuelto): 2 N₂O₅(g) → 4 NO₂(g) + O₂(g) a 50 °C en enceinte de volumen constante, seguido con manómetro. 1. Justificar el sensor. 2. a. Definir t1/2, b. determinarlo gráficamente, c. dibujar la concentración a 100 °C. 3. Dibujar la velocidad de desaparición de N₂O₅ en función de [N₂O₅].",
+   "datos": {
+    "T": "50 °C",
+    "orden": "1"
+   },
+   "respuesta": "1. Hay gases: se sigue por medida de presión. 2.a. t1/2: duración al cabo de la cual el avance vale la mitad del final. b. Como el reactivo limitante se consume del todo, t1/2 es la abscisa del punto de ordenada [N₂O₅]₀/2: ≈ 23 min. c. La temperatura es un factor cinético: a 100 °C el estado final se alcanza más rápido que a 50 °C. 3. Orden 1: v proporcional a [N₂O₅]: recta que pasa por el origen.",
+   "respuesta_numerica": {
+    "valor": 23,
+    "unidad": "min",
+    "tolerancia_rel": 0.1
+   },
+   "pasos": [
+    "Sensor: manómetro (hay gas).",
+    "t1/2 = abscisa de [N₂O₅]₀/2.",
+    "A 100 °C, curva más abrupta.",
+    "v vs [N₂O₅]: recta por el origen."
+   ],
+   "pagina_pdf": 120,
+   "corrige_pagina_pdf": 120
+  },
+  {
+   "id": "e2",
+   "enunciado": "Ej. 25 (resuelto): síntesis del 2-metilpropan-2-ol a partir de isobuteno por un mecanismo en 3 etapas. 1. Ecuación de la reacción modelada. 2. Sitio donor y aceptor en la etapa 1. 3. Etapa 2: flechas curvas y fórmula de A. 4. Intermediarios reaccionales. 5. ¿Qué dice del ion H⁺?",
+   "datos": {
+    "mecanismo": "3 etapas con H⁺"
+   },
+   "respuesta": "1. (CH₃)₂C=CH₂ + H₂O ⇌ (CH₃)₃C–OH. 2. El doble enlace C=C es sitio donor y el ion H⁺ sitio aceptor. 3. Flecha desde un doblete no enlazante del oxígeno de H₂O hacia el C⁺; A = (CH₃)₃C–OH₂⁺. 4. Intermediarios: (CH₃)₃C⁺ y (CH₃)₃C–OH₂⁺ (producidos y luego consumidos). 5. H⁺ se consume en la etapa 1 y se regenera en la 3: es un catalizador.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Balance sin intermediarios.",
+    "Donor: C=C; aceptor: H⁺.",
+    "Flecha: doblete no enlazante O → C⁺.",
+    "H⁺ consumido y regenerado: catalizador."
+   ],
+   "pagina_pdf": 121,
+   "corrige_pagina_pdf": 121
+  },
+  {
+   "id": "e3",
+   "enunciado": "Ej. 24: CH₃CHO(g) → CH₄(g) + CO(g), orden 1, 477 °C, volumen constante, manómetro. 1. Justificar el sensor. 2. Definir y determinar t1/2. 3. Dibujar [CH₃CHO] a 400 °C. 4. Dibujar v en función de [CH₃CHO].",
+   "datos": {
+    "T": "477 °C"
+   },
+   "respuesta": "1. Reacción con gases. 2. Duración al cabo de la cual el avance vale la mitad del final: t1/2 = 63 min. 3. A 400 °C la concentración decrece más lentamente (la temperatura es factor cinético). 4. Recta que pasa por el origen (orden 1).",
+   "respuesta_numerica": {
+    "valor": 63,
+    "unidad": "min",
+    "tolerancia_rel": 0.08
+   },
+   "pasos": [
+    "Gas: manómetro.",
+    "Leer t1/2 en [CH₃CHO]₀/2.",
+    "Menor T: curva más lenta.",
+    "v ∝ [CH₃CHO]."
+   ],
+   "pagina_pdf": 120,
+   "corrige_pagina_pdf": 613
+  },
+  {
+   "id": "e4",
+   "enunciado": "Ej. 26: síntesis del MTBE. 1. Ecuación de la reacción. 2. Sitios donores y aceptores en las etapas 1 y 2. 3. Flechas curvas y fórmula de A. 4. Intermediarios. 5. ¿Qué dice de H⁺?",
+   "datos": {
+    "mecanismo": "3 etapas con H⁺"
+   },
+   "respuesta": "1. (CH₃)₂C=CH₂ + CH₃OH ⇌ (CH₃)₃C–O–CH₃. 2. Etapa 1: C=C donor, H⁺ aceptor. Etapa 2: dobletes no enlazantes del oxígeno donor, C⁺ aceptor. 3. A = (CH₃)₃C–O⁺(H)–CH₃. 4. Intermediarios: (CH₃)₃C⁺ y A. 5. H⁺ es catalizador.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Sumar etapas.",
+    "Localizar donor y aceptor.",
+    "Dibujar flechas.",
+    "H⁺ regenerado."
+   ],
+   "pagina_pdf": 121,
+   "corrige_pagina_pdf": 613
+  },
+  {
+   "id": "e5",
+   "enunciado": "Ej. 27 (savoir rédiger): 5 C₃H₈O + 2 MnO₄⁻ + 6 H⁺ → 5 C₃H₆O + 2 Mn²⁺ + 8 H₂O, V constante. 1.a. Relación entre [C₃H₆O] y x. b. v de aparición en función de x. 2.a. Evolución de v. b. Factor cinético. 3. Definir y determinar t1/2.",
+   "datos": {
+    "V": "constante"
+   },
+   "respuesta": "1.a. n(C₃H₆O)=5x, luego [C₃H₆O]=5x/V. b. v = d(5x/V)/dt = (5/V)·dx/dt porque V es constante. 2.a. v es proporcional a la pendiente de la tangente a x(t); esa pendiente disminuye: v disminuye. b. Quedan cada vez menos reactivos: su concentración es el factor cinético. 3. x(t1/2)=x_f/2; t1/2 ≈ 2,8 min.",
+   "respuesta_numerica": {
+    "valor": 2.8,
+    "unidad": "min",
+    "tolerancia_rel": 0.1
+   },
+   "pasos": [
+    "n=5x.",
+    "Derivar con V constante.",
+    "Pendiente decrece.",
+    "Leer x_f/2 en la curva."
+   ],
+   "pagina_pdf": 122,
+   "corrige_pagina_pdf": 613
+  },
+  {
+   "id": "e6",
+   "enunciado": "Ej. 28: CaCO₃(s) + 2 H₃O⁺(aq) → Ca²⁺(aq) + CO₂(g) + 3 H₂O(ℓ) con HCl a 20 °C. 1. Relación n(H₃O⁺), n₀ y x; v de desaparición. 2. Evolución de v, avance a 50 °C y 0 °C, interpretación microscópica. 3. Definir y determinar t1/2 a 20 °C.",
+   "datos": {
+    "T": "20 °C"
+   },
+   "respuesta": "1.a. n(H₃O⁺)=n₀(H₃O⁺)−2x. b. v = (2/V)·dx/dt. 2.a. v disminuye con el tiempo. b. Al variar la temperatura el avance final no cambia (a 50 °C más rápido, a 0 °C más lento). c. Si T aumenta, la agitación térmica aumenta y los choques eficaces son más frecuentes. 3. t1/2 = 55 s.",
+   "respuesta_numerica": {
+    "valor": 55,
+    "unidad": "s",
+    "tolerancia_rel": 0.1
+   },
+   "pasos": [
+    "Tabla de avance.",
+    "Derivar.",
+    "T: factor cinético.",
+    "Leer x_f/2."
+   ],
+   "pagina_pdf": 122,
+   "corrige_pagina_pdf": 613
+  },
+  {
+   "id": "e7",
+   "enunciado": "Ej. 29: 5 H₂O₂ + C₄H₄O₆²⁻ + 2 H₃O⁺ → 4 CO₂ + 10 H₂O; con Co²⁺ se descompone en dos reacciones rápidas (1) y (2); Co³⁺ coloreado. Papel del ácido, balance de 1 y 2, papel de Co²⁺ y Co³⁺, colores, ajuste del espectrofotómetro.",
+   "datos": {
+    "Co²⁺": "verdoso",
+    "Co³⁺": "rosado"
+   },
+   "respuesta": "1. El ácido sulfúrico aporta H₃O⁺. 2.a. Suma: 5 H₂O₂ + C₄H₄O₆²⁻ + 2 H₃O⁺ → 4 CO₂ + 10 H₂O. b. Co²⁺ es catalizador (consumido en (1), regenerado en (2)). Co³⁺ es intermediario reaccional. d. Solución rosada (con Co³⁺). e. Verdosa (Co²⁺). f. Los iones Co³⁺ son coloreados; hay que regular el espectrofotómetro a λ_max del Co³⁺.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Sumar (1)+(2).",
+    "Catalizador: consumido y regenerado.",
+    "Intermediario: formado y consumido.",
+    "λ_max de Co³⁺."
+   ],
+   "pagina_pdf": 123,
+   "corrige_pagina_pdf": 613
+  },
+  {
+   "id": "e8",
+   "enunciado": "Ej. 12: Zn(s) + 2 H₃O⁺(aq) → Zn²⁺(aq) + H₂(g) + 2 H₂O(ℓ). Tres experimentos con 0,50 g de Zn: [H₃O⁺] = 0,50; 0,25; 0,40 mol·L⁻¹ a 25 °C; curvas x(t) A, B, C. 1. Sensor. 2. Factor cinético. 3. Asociar curvas.",
+   "datos": {
+    "[H₃O⁺]": "0,50 / 0,25 / 0,40 mol·L⁻¹"
+   },
+   "respuesta": "1. Se forma un gas durante la transformación: manómetro. 2. La concentración en reactivos. 3. A ↔ experimento 1; C ↔ experimento 2; B ↔ experimento 3.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Gas: manómetro.",
+    "T igual: varía la concentración.",
+    "Más concentración, curva más rápida."
+   ],
+   "pagina_pdf": 117,
+   "corrige_pagina_pdf": 612
+  },
+  {
+   "id": "e9",
+   "enunciado": "Ej. 39: dimerización del butadieno 2 B(g) → V(g) a 330 °C seguida por manometría; t1/2 en función de [B]₀. Justificar el sensor, definir t1/2, evolución de la duración, factor cinético y papel microscópico.",
+   "datos": {
+    "T": "330 °C"
+   },
+   "respuesta": "1. Reactivo y producto son gases. 2.a. Duración al cabo de la cual el avance vale la mitad del final. b. La duración de la transformación y t1/2 evolucionan en el mismo sentido. Síntesis: factor en evidencia, la concentración en reactivos: a mayor concentración inicial, menor t1/2 y transformación más rápida; a nivel microscópico, más choques entre reactivos, más choques eficaces y mayor velocidad.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Gases: manómetro.",
+    "t1/2 baja si [B]₀ sube.",
+    "Más concentración, más choques eficaces."
+   ],
+   "pagina_pdf": 127,
+   "corrige_pagina_pdf": 613
+  },
+  {
+   "id": "e10",
+   "enunciado": "Ej. 18: OC(NH₂)₂(aq) → OCN⁻(aq) + NH₄⁺(aq), orden 1. 1. Definir orden 1. 2.a. Expresar las velocidades. b. Decir cuáles de los gráficos A–D son justos/falsos. c. Corregir.",
+   "datos": {
+    "orden": "1"
+   },
+   "respuesta": "1. Reacción de orden 1 respecto a A: velocidad volúmica de aparición de productos o de desaparición de A proporcional a la concentración de A. 2.a. v_OCN⁻ = k·[urée]; v_NH₄⁺ = k'·[urée]; v_urée = k''·[urée]. b. A falso; B justo; C falso; D falso. c. A: −v_urée([urée]); C: [NH₄⁺](t); D: [urée](t).",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Definición.",
+    "Cada velocidad ∝ [urée].",
+    "Revisar signo y magnitud en ordenadas."
+   ],
+   "pagina_pdf": 118,
+   "corrige_pagina_pdf": 612
+  },
+  {
+   "id": "e11",
+   "enunciado": "Ej. 22: mecanismo ácido-catalizado (5 etapas) con R–OH. 1. ¿Cómo reconocer un intermediario y un catalizador? 2. Calificar cada especie, escribir la ecuación. c. Influencia de T y concentración. 3. Flechas curvas.",
+   "datos": {
+    "etapas": "5"
+   },
+   "respuesta": "1.a. Intermediario: se forma y luego se consume. b. Catalizador: se consume y luego se regenera. 2.b. CH₃COOH + R–OH ⇌ CH₃COOR + H₂O (con H⁺ como catalizador). c. T y concentración de los reactivos son factores cinéticos: su aumento incrementa la frecuencia de choques eficaces y disminuye la duración. 3. Flechas del sitio donor al aceptor en cada etapa.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Intermediario: formado y consumido.",
+    "Catalizador: consumido y regenerado.",
+    "Sumar las etapas.",
+    "Más T o concentración: más choques eficaces."
+   ],
+   "pagina_pdf": 119,
+   "corrige_pagina_pdf": 612
+  },
+  {
+   "id": "e12",
+   "enunciado": "Ej. 13: 2 ClO⁻(aq) → O₂(g) + 2 Cl⁻(aq) (eau de Javel), acelerada por Co²⁺ o por metales como Zn, Fe, Cu. 1. ¿Por qué son catalizadores? 2. ¿Cuáles dan catálisis homogénea y heterogénea? 3. ¿Por qué desaconsejar guardar lejía en recipientes metálicos?",
+   "datos": {},
+   "respuesta": "1. Aceleran la reacción sin aparecer en el balance reaccional. 2. Co²⁺: catálisis homogénea. Zn, Fe y Cu: catálisis heterogénea. 3. La reacción de descomposición de la lejía sería acelerada.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Catalizador no aparece en el balance.",
+    "Misma fase: homogénea.",
+    "Metal sólido: heterogénea."
+   ],
+   "pagina_pdf": 117,
+   "corrige_pagina_pdf": 612
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "cinetica",
+   "params": {},
+   "titulo": "Velocidad, t1/2 y orden 1",
+   "relacion": "v = −d[R]/dt, t1/2 y v = k·[A] (cours §2, p. 113)"
+  },
+  {
+   "preset": "avance",
+   "params": {},
+   "titulo": "Avance y reactivos/productos",
+   "relacion": "Relación entre x, cantidades y velocidades (ej. 27 y 28, p. 121)"
+  },
+  {
+   "preset": "beer-lambert",
+   "params": {},
+   "titulo": "Seguimiento por absorbancia",
+   "relacion": "A proporcional a la concentración de I₂ (Act. 4, p. 111)"
+  },
+  {
+   "preset": "conductimetria",
+   "params": {
+    "c": 9
+   },
+   "titulo": "Seguimiento conductimétrico",
+   "relacion": "σ = Σ λᵢ[Xᵢ] (ej. 38 y ECE, p. 126 y 128)"
+  },
+  {
+   "preset": "concentracion",
+   "params": {},
+   "titulo": "Concentración de reactivos",
+   "relacion": "Más concentración, más choques eficaces (cours §3, p. 114)"
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "laboratorio-neon",
+  "mecanica_especial": "Corrientes de catalizador (zona_campo) que impulsan a Ato hacia delante sin gastarse, y plataformas oscilantes que simulan la agitación térmica."
+ },
+ "estilo_intro_sugerido": "quimica3d"
+}

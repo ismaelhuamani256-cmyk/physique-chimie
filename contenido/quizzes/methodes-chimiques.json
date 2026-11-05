@@ -1,0 +1,221 @@
+{
+ "capitulo_id": "methodes-chimiques",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "opcion",
+   "enunciado": "Le titre massique w d'une solution est :",
+   "opciones": [
+    "le quotient de la masse de soluté par la masse de la solution",
+    "le produit de la masse de soluté par la masse de la solution",
+    "le quotient de la masse de solution par la masse de soluté",
+    "la masse de soluté par litre de solution"
+   ],
+   "correcta": 0,
+   "explicacion": "w = m_soluté / m_solution × 100 (en %, sans unité).",
+   "pagina_pdf": 87
+  },
+  {
+   "id": "q2",
+   "tipo": "opcion",
+   "enunciado": "La masse volumique et la densité d'une solution :",
+   "opciones": [
+    "ont la même unité",
+    "n'ont pas d'unité",
+    "sont deux grandeurs différentes",
+    "sont toujours égales"
+   ],
+   "correcta": 2,
+   "explicacion": "ρ a une unité (kg·m⁻³, g·L⁻¹) ; d = ρ/ρ_eau n'en a pas.",
+   "pagina_pdf": 92
+  },
+  {
+   "id": "q3",
+   "tipo": "opcion",
+   "enunciado": "¿Qué características debe tener la réaction support d'un titrage?",
+   "opciones": [
+    "Lente, parcial y múltiple",
+    "Rápida, total y única",
+    "Lenta, total y única",
+    "Rápida, reversible y múltiple"
+   ],
+   "correcta": 1,
+   "explicacion": "Debe ser totale, rapide et unique: el titrante solo reacciona con la especie a titular.",
+   "pagina_pdf": 88
+  },
+  {
+   "id": "q4",
+   "tipo": "opcion",
+   "enunciado": "Lors d'un titrage, à l'équivalence :",
+   "opciones": [
+    "la solution est toujours neutre",
+    "les espèces titrante et titrée ont été mélangées dans les proportions stœchiométriques",
+    "il ne reste que l'espèce titrante",
+    "le réactif limitant ne change pas"
+   ],
+   "correcta": 1,
+   "explicacion": "A la equivalencia los reactivos se consumen totalmente y hay cambio de réactif limitant.",
+   "pagina_pdf": 88
+  },
+  {
+   "id": "q5",
+   "tipo": "opcion",
+   "enunciado": "Dans un titrage pH-métrique d'un acide par une base, la courbe dérivée dpH/dV présente à l'équivalence :",
+   "opciones": [
+    "un minimum",
+    "un maximum",
+    "une valeur nulle",
+    "une pente constante"
+   ],
+   "correcta": 1,
+   "explicacion": "Méthode de la dérivée: extremum maximum pour un acide titré par une base (minimum pour une base titrée par un acide).",
+   "pagina_pdf": 89
+  },
+  {
+   "id": "q6",
+   "tipo": "opcion",
+   "enunciado": "Dans un titrage conductimétrique, l'équivalence est repérée par :",
+   "opciones": [
+    "un changement de couleur uniquement",
+    "le changement de pente de la courbe de titrage",
+    "un pH égal à 7",
+    "une conductivité constante"
+   ],
+   "correcta": 1,
+   "explicacion": "V_E est l'abscisse de l'intersection des deux droites (changement de pente).",
+   "pagina_pdf": 90
+  },
+  {
+   "id": "q7",
+   "tipo": "opcion",
+   "enunciado": "Lors du titrage de l'acide chlorhydrique par la soude, après l'équivalence la conductivité augmente car :",
+   "opciones": [
+    "les ions H₃O⁺ se forment à nouveau",
+    "les ions HO⁻ versés ne réagissent plus et s'accumulent",
+    "l'eau se dissocie",
+    "les ions Na⁺ disparaissent"
+   ],
+   "correcta": 1,
+   "explicacion": "Après V_E, les HO⁻ et Na⁺ ajoutés ne réagissent pas, donc σ augmente.",
+   "pagina_pdf": 90
+  },
+  {
+   "id": "q8",
+   "tipo": "opcion",
+   "enunciado": "Pour étalonner un pH-mètre, on utilise :",
+   "opciones": [
+    "de l'eau distillée seule",
+    "deux solutions tampons de pH connu",
+    "une solution de KCl étalon",
+    "une solution de soude quelconque"
+   ],
+   "correcta": 1,
+   "explicacion": "Fiche pratique 11: étalonnage avec deux solutions tampons (pH = 4, 7 ou 10).",
+   "pagina_pdf": 590
+  },
+  {
+   "id": "q9",
+   "tipo": "opcion",
+   "enunciado": "Lors du titrage des ions chlorure d'un lait par Ag⁺ (suivi conductimétrique), avant l'équivalence la conductivité σ :",
+   "opciones": [
+    "augmente fortement",
+    "diminue légèrement",
+    "reste nulle",
+    "passe par un maximum"
+   ],
+   "correcta": 1,
+   "explicacion": "Les Cl⁻ (76,3×10⁻⁴ S·m²·mol⁻¹) sont remplacés par des NO₃⁻ (71,4×10⁻⁴), de λ plus faible: σ diminue légèrement, puis augmente après V_E (graphe C).",
+   "pagina_pdf": 95
+  },
+  {
+   "id": "q10",
+   "tipo": "numerico",
+   "enunciado": "Solution commerciale de HCl: d = 1,18 ; w = 37 % ; M = 36,5 g·mol⁻¹ ; ρ_eau = 1,00×10³ g·L⁻¹. Calculer sa concentration c en quantité de matière.",
+   "valor": 11.96,
+   "unidad": "mol·L⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "c = ρ_eau·d·w/M",
+    "c = 1,00×10³ × 1,18 × 0,37 / 36,5",
+    "c ≈ 12 mol·L⁻¹"
+   ],
+   "pagina_pdf": 88
+  },
+  {
+   "id": "q11",
+   "tipo": "numerico",
+   "enunciado": "On veut préparer V_diluée = 500 mL d'une solution à 0,1 mol·L⁻¹ à partir de la solution commerciale à 12 mol·L⁻¹. Quel volume V (en mL) faut-il prélever ?",
+   "valor": 4.17,
+   "unidad": "mL",
+   "tolerancia_rel": 0.05,
+   "cifras_sig": 2,
+   "pasos": [
+    "n se conserve: c·V = c_diluée·V_diluée",
+    "V = 0,1 × 500 / 12",
+    "V ≈ 4,2 mL (le cours arrondit à 4 mL, à la burette graduée)"
+   ],
+   "pagina_pdf": 88
+  },
+  {
+   "id": "q12",
+   "tipo": "numerico",
+   "enunciado": "Titrage de V_A = 10 mL d'acide éthanoïque par la soude c_B = 1,0×10⁻² mol·L⁻¹ ; V_E = 20 mL. Calculer c_A.",
+   "valor": 0.02,
+   "unidad": "mol·L⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "À l'équivalence c_A·V_A = c_B·V_E",
+    "c_A = 1,0×10⁻² × 20 / 10",
+    "c_A = 2,0×10⁻² mol·L⁻¹"
+   ],
+   "pagina_pdf": 90
+  },
+  {
+   "id": "q13",
+   "tipo": "numerico",
+   "enunciado": "Ex. 26: on dose 5,0 mL de larmes artificielles par Ag⁺ (c = 5,00×10⁻² mol·L⁻¹) ; V_E = 15 mL. Calculer la masse de NaCl dissous (M = 58,5 g·mol⁻¹), en g.",
+   "valor": 0.0439,
+   "unidad": "g",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "n(Cl⁻) = c·V_E = 5,00×10⁻² × 15×10⁻³ = 7,5×10⁻⁴ mol",
+    "m = n·M = 7,5×10⁻⁴ × 58,5",
+    "m ≈ 4,4×10⁻² g"
+   ],
+   "pagina_pdf": 97
+  },
+  {
+   "id": "q14",
+   "tipo": "numerico",
+   "enunciado": "Ex. 21 (cheval): solution S de V_S = 50,00 mL obtenue à partir de 1,00 mL de sang, titrée par c₁ = 1,00×10⁻³ mol·L⁻¹ avec V_E = 4,0 mL. Calculer la concentration en acide lactique dans le sang (mol·L⁻¹).",
+   "valor": 0.004,
+   "unidad": "mol·L⁻¹",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "c_S = c₁·V_E/V_S = 1,00×10⁻³×4,0/50,00 = 8,0×10⁻⁵ mol·L⁻¹",
+    "c_sang = c_S·V_S/V = 8,0×10⁻⁵ × 50,00/1,00",
+    "c_sang = 4,0×10⁻³ mol·L⁻¹ > 3,5×10⁻³: le cheval n'est pas en forme"
+   ],
+   "pagina_pdf": 94
+  },
+  {
+   "id": "q15",
+   "tipo": "numerico",
+   "enunciado": "Ex. 38 (vinaigre): V_A = 10,0 mL de vinaigre dilué 10 fois, c_B = 0,100 mol·L⁻¹, V_E = 13,3 mL, M = 60,0 g·mol⁻¹, d = 1,0. Quelle masse d'acide éthanoïque (en g) pour 100 g de vinaigre ?",
+   "valor": 7.98,
+   "unidad": "g",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "c_dilué = 0,100 × 13,3 / 10,0 = 0,133 mol·L⁻¹",
+    "c₀ = 10 × 0,133 = 1,33 mol·L⁻¹ ; 1,33 × 60,0 = 79,8 g·L⁻¹",
+    "pour 100 mL (d = 1,0 ⇒ 100 g): m ≈ 8,0 g"
+   ],
+   "pagina_pdf": 103
+  }
+ ]
+}

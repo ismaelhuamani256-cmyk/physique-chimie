@@ -1,0 +1,1295 @@
+{
+ "id": "champ-uniforme",
+ "titulo": "Mouvement dans un champ uniforme",
+ "materia": "physique",
+ "mundo": "mouvement",
+ "pdf_ini": 310,
+ "pdf_fin": 333,
+ "resumen": "Un sistema sometido solo al peso (campo de gravedad uniforme) o a la fuerza eléctrica de un condensador plano (campo eléctrico uniforme) tiene aceleración constante: a = g₀ o a = (q/m)E. Integrando con las condiciones iniciales se obtienen las ecuaciones horarias, un movimiento plano y una trayectoria parabólica. El capítulo cierra con el aspecto energético: conservación de E_m, teorema de E_c y el principio del acelerador lineal de partículas (ΔE_c = qU_AB).",
+ "resumen_fr": "Dans un champ uniforme (pesanteur ou électrique), l'accélération est constante : le mouvement est plan et la trajectoire est une parabole. Aspects énergétiques : conservation de l'énergie mécanique, théorème de l'énergie cinétique et accélérateur linéaire de particules.",
+ "nociones_clave": [
+  {
+   "fr": "Champ de pesanteur uniforme",
+   "es": "Al pie de la Tierra y en un dominio restringido, el campo de gravedad g₀ se considera uniforme (mismo vector en todo punto); las demás acciones distintas del peso se desprecian.",
+   "pagina_pdf": 316
+  },
+  {
+   "fr": "Chute libre",
+   "es": "Caída en la que el sistema solo está sometido a su peso: a(t) = g₀, independiente de la masa.",
+   "pagina_pdf": 313
+  },
+  {
+   "fr": "Vecteur accélération (champ de pesanteur)",
+   "es": "El vector aceleración del centro de masa de un objeto sometido solo al peso es constante e igual al campo de gravedad g₀.",
+   "pagina_pdf": 316
+  },
+  {
+   "fr": "Équations horaires du mouvement",
+   "es": "Expresiones de las coordenadas de v(t) y OG(t); se obtienen por primitivas y con las condiciones iniciales (valores a t = 0).",
+   "pagina_pdf": 316
+  },
+  {
+   "fr": "Équation différentielle et conditions initiales",
+   "es": "Ecuación diferencial: ecuación cuyas incógnitas son funciones. Condiciones iniciales: valores de las magnitudes (vectores) a t = 0; permiten elegir la única primitiva posible.",
+   "pagina_pdf": 313
+  },
+  {
+   "fr": "Mouvement plan",
+   "es": "El movimiento del centro de masa en un campo uniforme es plano; el plano queda definido por los vectores v₀ y g₀ (o v₀ y E).",
+   "pagina_pdf": 317
+  },
+  {
+   "fr": "Trajectoire parabolique, flèche et portée",
+   "es": "La trayectoria en un campo uniforme es una porción de parábola; la flecha es la altura máxima y la portée la distancia entre el punto de lanzamiento y el de impacto.",
+   "pagina_pdf": 317
+  },
+  {
+   "fr": "Condensateur plan",
+   "es": "Dos armaduras metálicas planas y paralelas, próximas y separadas por un aislante (aire o vacío); entre ellas hay un campo eléctrico uniforme perpendicular a las armaduras y orientado hacia la armadura negativa.",
+   "pagina_pdf": 317
+  },
+  {
+   "fr": "Particule chargée dans un champ électrique uniforme",
+   "es": "El peso es despreciable frente a la fuerza eléctrica F_e = qE; a = (q/m)E es paralelo a E y su sentido depende del signo de q y de la orientación de E.",
+   "pagina_pdf": 317
+  },
+  {
+   "fr": "Forces conservatives et énergie potentielle",
+   "es": "El peso y la fuerza eléctrica son constantes en estos campos, luego conservativas: se asocian a E_pp = m·g·y y E_p(élec) = q·V. El potencial eléctrico caracteriza un estado eléctrico (en voltios).",
+   "pagina_pdf": 318
+  },
+  {
+   "fr": "Conservation de l'énergie mécanique / théorème de l'énergie cinétique",
+   "es": "Dos variantes del balance energético: E_m = E_c + E_p = cte sin fuerzas no conservativas, o ΔE_c = ΣW(F) en general.",
+   "pagina_pdf": 318
+  },
+  {
+   "fr": "Accélérateur linéaire de particules",
+   "es": "Uno o varios condensadores planos asociados en serie; el trabajo motor de la fuerza eléctrica aumenta la energía cinética de las partículas (investigación, imagen, usos terapéuticos).",
+   "pagina_pdf": 318
+  },
+  {
+   "fr": "Micropesanteur en vol parabolique",
+   "es": "En el vuelo parabólico de un avión (que se mueve en el campo de gravedad terrestre), los pasajeros y el avión caen igual: pregunta de apertura y Ej. 32 (a preparar como exposición oral).",
+   "pagina_pdf": 311
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "\\vec{a}_G = \\vec{g}_0",
+   "nombre": "Aceleración en un campo de gravedad uniforme",
+   "nombre_fr": "Vecteur accélération dans un champ de pesanteur uniforme",
+   "variables": [
+    {
+     "simbolo": "\\vec a_G",
+     "significado": "vector aceleración del centro de masa",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "\\vec g_0",
+     "significado": "vector campo de gravedad (uniforme: constante, vertical, hacia abajo)",
+     "unidad": "m·s⁻²"
+    }
+   ],
+   "explicacion": "Si solo actúa el peso, la 2.ª ley de Newton m·a = P = m·g₀ da a = g₀: la aceleración es constante e igual al campo de gravedad (caída libre).",
+   "ejemplo": {
+    "enunciado": "Ej. 9 (caída libre vertical de una bola soltada sin velocidad desde h = 1,00 m): a = g₀, luego z(t) = ½·g₀·t².",
+    "resultado": "t_C = √(2h/g₀) = 0,452 s y v_z(t_C) = 4,43 m·s⁻¹",
+    "pagina_pdf": 321
+   },
+   "pagina_pdf": 316,
+   "animacion": {
+    "preset": "proyectil",
+    "params": {
+     "v0": 10,
+     "alpha": 60,
+     "g": 9.81
+    },
+    "leyenda": "Cambia g y verás que el vector aceleración (verde) siempre apunta hacia abajo y vale g, sea cual sea la velocidad."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "\\vec{v}(t)\\begin{cases} v_x(t)=v_0\\cos\\alpha \\\\ v_y(t)=-g_0\\,t+v_0\\sin\\alpha \\\\ v_z(t)=0 \\end{cases}",
+   "nombre": "Ecuaciones horarias de la velocidad (lanzamiento oblicuo)",
+   "nombre_fr": "Équations horaires de la vitesse",
+   "variables": [
+    {
+     "simbolo": "v_x",
+     "significado": "componente horizontal de la velocidad (constante)",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "v_y",
+     "significado": "componente vertical (función afín decreciente del tiempo)",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "v_0",
+     "significado": "velocidad inicial",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "\\alpha",
+     "significado": "ángulo de v₀ con la horizontal",
+     "unidad": "°"
+    },
+    {
+     "simbolo": "g_0",
+     "significado": "intensidad de la gravedad",
+     "unidad": "m·s⁻²"
+    }
+   ],
+   "explicacion": "Se obtienen integrando a = dv/dt (primitivas) y fijando las constantes con la velocidad inicial v(0)=v₀. Horizontal: movimiento uniforme; vertical: uniformemente variado.",
+   "ejemplo": null,
+   "pagina_pdf": 316,
+   "animacion": {
+    "preset": "proyectil",
+    "params": {
+     "v0": 10,
+     "alpha": 60,
+     "g": 9.81
+    },
+    "leyenda": "Observa cómo la componente horizontal de la velocidad no cambia mientras la vertical disminuye de forma lineal."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "\\overrightarrow{OG}(t)\\begin{cases} x(t)=v_0\\cos\\alpha\\times t \\\\ y(t)=-\\tfrac12 g_0 t^2+v_0\\sin\\alpha\\times t \\\\ z(t)=0 \\end{cases}",
+   "nombre": "Ecuaciones horarias de la posición (lanzamiento oblicuo)",
+   "nombre_fr": "Équations horaires de la position",
+   "variables": [
+    {
+     "simbolo": "x(t)",
+     "significado": "abscisa del centro de masa (afín en t)",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "y(t)",
+     "significado": "altitud (parabólica en t)",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "z(t)",
+     "significado": "tercera coordenada: nula, el movimiento es plano",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "t",
+     "significado": "tiempo",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "Se integra v = dOG/dt con O (origen) a t = 0. Como z(t) = 0, el movimiento ocurre en el plano (Oxy) formado por v₀ y g₀.",
+   "ejemplo": {
+    "enunciado": "Ej. 12 (v₀ = 10,0 m·s⁻¹, α = 60°): ¿cuándo toca el suelo? y(t_p) = 0.",
+    "resultado": "t_p = 2·v₀·sin α/g₀ ≈ 1,8 s (misma idea en el Ej. 20: 1,8 s)",
+    "pagina_pdf": 321
+   },
+   "pagina_pdf": 316,
+   "animacion": {
+    "preset": "proyectil",
+    "params": {
+     "v0": 10,
+     "alpha": 60,
+     "g": 9.81
+    },
+    "leyenda": "La pelota avanza a ritmo constante en x mientras sube y baja en y, dibujando su posición en cada instante."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "y(x)=\\dfrac{-g_0}{2\\,v_0^2\\cos^2\\alpha}\\,x^2+x\\tan\\alpha",
+   "nombre": "Ecuación de la trayectoria en un campo de gravedad uniforme",
+   "nombre_fr": "Équation de la trajectoire",
+   "variables": [
+    {
+     "simbolo": "y",
+     "significado": "altitud",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "x",
+     "significado": "abscisa",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "v_0",
+     "significado": "velocidad inicial",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "\\alpha",
+     "significado": "ángulo de lanzamiento",
+     "unidad": "°"
+    },
+    {
+     "simbolo": "g_0",
+     "significado": "intensidad de la gravedad",
+     "unidad": "m·s⁻²"
+    }
+   ],
+   "explicacion": "Se despeja t = x/(v₀ cos α) de x(t) y se sustituye en y(t). La trayectoria es una porción de parábola.",
+   "ejemplo": {
+    "enunciado": "Ej. 35 (salto de esquí, v_T = 83,3 km·h⁻¹, α = 11°, pista y = −0,59·x): y(x) = −9,5×10⁻³·x² − 1,9×10⁻¹·x.",
+    "resultado": "Sin rozamiento, el aterrizaje sería en x_L = 42 m (el real es 97 m: el aire actúa).",
+    "pagina_pdf": 331
+   },
+   "pagina_pdf": 317,
+   "animacion": {
+    "preset": "proyectil",
+    "params": {
+     "v0": 10,
+     "alpha": 60,
+     "g": 9.81
+    },
+    "leyenda": "Mueve v₀ y α y mira cómo la parábola cambia de altura (flecha) y de alcance (portée)."
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "y_{\\max}=\\dfrac{v_0^2\\sin^2\\alpha}{2\\,g_0}",
+   "nombre": "Flecha (altura máxima) del proyectil",
+   "nombre_fr": "Flèche y_max",
+   "variables": [
+    {
+     "simbolo": "y_max",
+     "significado": "altitud máxima alcanzada",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "v_0",
+     "significado": "velocidad inicial",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "\\alpha",
+     "significado": "ángulo de lanzamiento",
+     "unidad": "°"
+    },
+    {
+     "simbolo": "g_0",
+     "significado": "intensidad de la gravedad",
+     "unidad": "m·s⁻²"
+    }
+   ],
+   "explicacion": "Resultado que el libro pide demostrar (ejercicios 12 y 24): en la cima v_y = 0, es decir t_s = v₀ sin α/g₀, y se reemplaza en y(t).",
+   "ejemplo": {
+    "enunciado": "Ej. 12: v₀ = 10,0 m·s⁻¹, α = 60°, g₀ = 9,81 m·s⁻².",
+    "resultado": "y_max = 3,8 m",
+    "pagina_pdf": 321
+   },
+   "pagina_pdf": 321,
+   "animacion": {
+    "preset": "proyectil",
+    "params": {
+     "v0": 10,
+     "alpha": 60,
+     "g": 9.81
+    },
+    "leyenda": "La altura máxima crece con el cuadrado de v₀·sin α: prueba subir α hasta 90°."
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "x_{\\max}=\\dfrac{v_0^2\\sin 2\\alpha}{g_0}=\\dfrac{2v_0^2\\sin\\alpha\\cos\\alpha}{g_0}",
+   "nombre": "Alcance (portée) del proyectil",
+   "nombre_fr": "Portée x_max",
+   "variables": [
+    {
+     "simbolo": "x_max",
+     "significado": "distancia horizontal entre lanzamiento e impacto (a la misma altura)",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "v_0",
+     "significado": "velocidad inicial",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "\\alpha",
+     "significado": "ángulo de lanzamiento",
+     "unidad": "°"
+    },
+    {
+     "simbolo": "g_0",
+     "significado": "intensidad de la gravedad",
+     "unidad": "m·s⁻²"
+    }
+   ],
+   "explicacion": "Resultado que el libro pide demostrar (ejercicios 10, 12 y 24): se resuelve y(t_p) = 0 y se evalúa x(t_p). Con sin 2α = 2 sin α cos α, es máximo para α = 45°.",
+   "ejemplo": {
+    "enunciado": "Ej. 12: v₀ = 10,0 m·s⁻¹, α = 60°.",
+    "resultado": "x_max = 8,8 m",
+    "pagina_pdf": 321
+   },
+   "pagina_pdf": 308,
+   "animacion": {
+    "preset": "proyectil",
+    "params": {
+     "v0": 10,
+     "alpha": 45,
+     "g": 9.81
+    },
+    "leyenda": "Con α = 45° el alcance es máximo; si lo cambias, el mismo alcance se logra con dos ángulos complementarios."
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "E=\\dfrac{U_{AB}}{d}",
+   "nombre": "Campo eléctrico en un condensador plano",
+   "nombre_fr": "Champ électrique dans un condensateur plan",
+   "variables": [
+    {
+     "simbolo": "E",
+     "significado": "valor del campo eléctrico uniforme (perpendicular a las armaduras, hacia la armadura negativa)",
+     "unidad": "V·m⁻¹"
+    },
+    {
+     "simbolo": "U_{AB}",
+     "significado": "tensión entre las armaduras A y B",
+     "unidad": "V"
+    },
+    {
+     "simbolo": "d",
+     "significado": "distancia entre las armaduras",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Entre las dos armaduras de un condensador plano reina un campo eléctrico uniforme. Es proporcional a la tensión e inversamente proporcional a la distancia.",
+   "ejemplo": {
+    "enunciado": "Ej. 13: si se divide por 2 la tensión entre las armaduras (d fija), ¿qué pasa con E?",
+    "resultado": "E se divide por 2 (QCM del corrigé: 13.3 → c)",
+    "pagina_pdf": 322
+   },
+   "pagina_pdf": 317,
+   "animacion": {
+    "preset": "carga-campo",
+    "params": {
+     "E": 5200,
+     "v0": 10000000
+    },
+    "leyenda": "Sube el campo E y observa cómo se curva más la trayectoria del electrón entre las armaduras."
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "\\vec{a}=\\dfrac{q}{m}\\,\\vec{E}",
+   "nombre": "Aceleración de una partícula cargada en un campo eléctrico uniforme",
+   "nombre_fr": "Vecteur accélération d'une particule chargée",
+   "variables": [
+    {
+     "simbolo": "\\vec a",
+     "significado": "vector aceleración",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "q",
+     "significado": "carga de la partícula (negativa para un electrón: q = −e)",
+     "unidad": "C"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa de la partícula",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "\\vec E",
+     "significado": "vector campo eléctrico",
+     "unidad": "V·m⁻¹"
+    }
+   ],
+   "explicacion": "El peso es despreciable frente a la fuerza eléctrica F_e = q·E; la 2.ª ley de Newton da m·a = qE. a es paralelo a E y su sentido depende del signo de q.",
+   "ejemplo": {
+    "enunciado": "Ej. 19 (resuelto): un electrón en un campo E = 5 200 V·m⁻¹ entre dos armaduras (A₁ negativa, A₂ positiva).",
+    "resultado": "a = (−e/m)·E: perpendicular a las armaduras y orientada hacia +y, a_y = −eE/m",
+    "pagina_pdf": 324
+   },
+   "pagina_pdf": 317,
+   "animacion": {
+    "preset": "carga-campo",
+    "params": {
+     "E": 5200,
+     "v0": 10000000
+    },
+    "leyenda": "La aceleración del electrón (verde) es opuesta al campo E por ser negativo; si cambias E, cambia la desviación."
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "\\vec{v}(t)\\begin{cases} v_x=v_0\\cos\\alpha \\\\ v_y=\\dfrac{-qE}{m}\\,t+v_0\\sin\\alpha \\end{cases}\\qquad \\overrightarrow{OG}(t)\\begin{cases} x=v_0\\cos\\alpha\\, t \\\\ y=\\dfrac12\\dfrac{-qE}{m}\\,t^2+v_0\\sin\\alpha\\, t \\end{cases}",
+   "nombre": "Ecuaciones horarias en un campo eléctrico uniforme (q > 0)",
+   "nombre_fr": "Équations horaires dans un champ électrique uniforme",
+   "variables": [
+    {
+     "simbolo": "q",
+     "significado": "carga de la partícula",
+     "unidad": "C"
+    },
+    {
+     "simbolo": "E",
+     "significado": "campo eléctrico (vertical, hacia la armadura negativa)",
+     "unidad": "V·m⁻¹"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "v_0",
+     "significado": "velocidad de entrada",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "\\alpha",
+     "significado": "ángulo de v₀ con el eje x",
+     "unidad": "°"
+    }
+   ],
+   "explicacion": "Misma estructura que en el campo de gravedad, cambiando g₀ por qE/m. El movimiento es plano, uniforme según x y uniformemente variado según y.",
+   "ejemplo": {
+    "enunciado": "Ej. 19 (electrón, v₀ paralela a las placas, α = 0): v_x = v₀, v_y = (−eE/m)·t, x = v₀ t, y = (−eE/2m)·t² + y₀.",
+    "resultado": "Con E = 5 200 V·m⁻¹, v₀ = 1,0×10⁷ m·s⁻¹ y ℓ = 10 cm: el electrón sale por S(0,10 ; 4,3×10⁻³ ; 0) m.",
+    "pagina_pdf": 324
+   },
+   "pagina_pdf": 317,
+   "animacion": {
+    "preset": "carga-campo",
+    "params": {
+     "E": 5200,
+     "v0": 10000000
+    },
+    "leyenda": "La velocidad horizontal no cambia y la vertical crece linealmente: movimiento plano con dos componentes."
+   }
+  },
+  {
+   "id": "f10",
+   "latex": "y(x)=\\dfrac{-q\\,E}{2\\,m\\,v_0^2\\cos^2\\alpha}\\,x^2+x\\tan\\alpha",
+   "nombre": "Ecuación de la trayectoria en un campo eléctrico uniforme",
+   "nombre_fr": "Équation de la trajectoire dans un champ électrique uniforme",
+   "variables": [
+    {
+     "simbolo": "q",
+     "significado": "carga",
+     "unidad": "C"
+    },
+    {
+     "simbolo": "E",
+     "significado": "campo eléctrico",
+     "unidad": "V·m⁻¹"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "v_0",
+     "significado": "velocidad de entrada",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "\\alpha",
+     "significado": "ángulo de entrada",
+     "unidad": "°"
+    }
+   ],
+   "explicacion": "Se elimina t entre x(t) e y(t). La trayectoria es una porción de parábola cuya concavidad depende del signo de q.",
+   "ejemplo": {
+    "enunciado": "Ej. 19: electrón con α = 0 y ordenada inicial y₀ = 5,0 cm; y(x) = (−eE/(2m v₀²))·x² + y₀, con ℓ = 10 cm, E = 5 200 V·m⁻¹, v₀ = 1,0×10⁷ m·s⁻¹.",
+    "resultado": "y(x_S) = 4,3×10⁻³ m > 0: el electrón sale del condensador",
+    "pagina_pdf": 324
+   },
+   "pagina_pdf": 317,
+   "animacion": {
+    "preset": "carga-campo",
+    "params": {
+     "E": 5200,
+     "v0": 10000000
+    },
+    "leyenda": "La trayectoria del electrón es un arco de parábola; una v₀ mayor la deja más plana."
+   }
+  },
+  {
+   "id": "f11",
+   "latex": "E_{p}(\\text{pesanteur})=m\\times g\\times y",
+   "nombre": "Energía potencial de gravedad",
+   "nombre_fr": "Énergie potentielle de pesanteur",
+   "variables": [
+    {
+     "simbolo": "m",
+     "significado": "masa",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "g",
+     "significado": "intensidad de la gravedad",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "y",
+     "significado": "altitud",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Como el peso es constante, es una fuerza conservativa a la que se asocia una energía potencial (con eje y vertical hacia arriba).",
+   "ejemplo": {
+    "enunciado": "Ej. 16: boule de pétanque de 710 g lanzada desde h = 1,35 m con v₀ = 6,0 m·s⁻¹.",
+    "resultado": "E_pp inicial = m·g₀·h ≈ 9,4 J (calculado con la fórmula del cours)",
+    "pagina_pdf": 323
+   },
+   "pagina_pdf": 319,
+   "animacion": {
+    "preset": "energia-mecanica",
+    "params": {
+     "m": 0.71,
+     "h": 1.35,
+     "v": 6
+    },
+    "leyenda": "Al subir la bola gana energía potencial y pierde cinética; la suma (Em) se mantiene."
+   }
+  },
+  {
+   "id": "f12",
+   "latex": "E_{p(\\text{électrique})}=q\\times V",
+   "nombre": "Energía potencial eléctrica",
+   "nombre_fr": "Énergie potentielle électrique",
+   "variables": [
+    {
+     "simbolo": "q",
+     "significado": "carga de la partícula",
+     "unidad": "C"
+    },
+    {
+     "simbolo": "V",
+     "significado": "potencial eléctrico (definido salvo una constante)",
+     "unidad": "V"
+    }
+   ],
+   "explicacion": "La fuerza eléctrica constante es conservativa: se le asocia E_p(élec) = q·V (el libro recomienda elegir una constante adaptada para representar E_c, E_p y E_m en el mismo gráfico).",
+   "ejemplo": {
+    "enunciado": "Ej. 21 (resuelto): núcleo de He²⁺ en un campo E = 400 kV·m⁻¹; E_p(élec)(B) − E_c(B) tras AB = 0,50 m.",
+    "resultado": "E_p(B) = −E_c(B) = −6,4×10⁻¹⁴ J (E_p es función afín de x)",
+    "pagina_pdf": 325
+   },
+   "pagina_pdf": 319,
+   "animacion": {
+    "preset": "carga-campo",
+    "params": {},
+    "leyenda": "Al avanzar la partícula a favor de la fuerza eléctrica, su energía cinética aumenta a costa de la potencial."
+   }
+  },
+  {
+   "id": "f13",
+   "latex": "E_m=E_c+E_p=\\text{cte}\\quad(\\Delta E_m=0)",
+   "nombre": "Conservación de la energía mecánica",
+   "nombre_fr": "Conservation de l'énergie mécanique",
+   "variables": [
+    {
+     "simbolo": "E_m",
+     "significado": "energía mecánica",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "E_c",
+     "significado": "energía cinética",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "E_p",
+     "significado": "energía potencial (gravedad o eléctrica)",
+     "unidad": "J"
+    }
+   ],
+   "explicacion": "En ausencia de fuerza no conservativa, la energía mecánica se conserva: hay conversión íntegra de energía cinética en potencial y recíprocamente. Con rozamiento no se conserva (ΔE_m = ΣW de las fuerzas no conservativas).",
+   "ejemplo": {
+    "enunciado": "Cañón de electrones (Fig. 8, p. 300): electrones producidos sin velocidad inicial en O y acelerados hasta B con U_AB = −5,0 kV. Como E_m se conserva, ΔE_c = −ΔE_p(élec).",
+    "resultado": "v_B = 4,2×10⁷ m·s⁻¹ (el libro lo obtiene con E_m y con el teorema de E_c)",
+    "pagina_pdf": 318
+   },
+   "pagina_pdf": 318,
+   "animacion": {
+    "preset": "energia-mecanica",
+    "params": {
+     "m": 0.71,
+     "h": 1.35,
+     "v": 6
+    },
+    "leyenda": "Ec y Ep intercambian energía en cada instante, pero su suma Em (línea constante) no varía."
+   }
+  },
+  {
+   "id": "f14",
+   "latex": "\\Delta E_c=\\sum W_{AB}(\\vec F)",
+   "nombre": "Teorema de la energía cinética",
+   "nombre_fr": "Théorème de l'énergie cinétique",
+   "variables": [
+    {
+     "simbolo": "\\Delta E_c",
+     "significado": "variación de energía cinética entre A y B",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "W_{AB}(\\vec F)",
+     "significado": "trabajo de cada fuerza entre A y B",
+     "unidad": "J"
+    }
+   ],
+   "explicacion": "Segunda variante del balance energético: la variación de E_c de un sistema entre A y B es la suma de los trabajos de las fuerzas que actúan sobre él.",
+   "ejemplo": {
+    "enunciado": "Ej. 22 (lanzamiento de peso: v_A = 12 m·s⁻¹, z_A − z_B = 2,05 m, g₀ = 9,8 m·s⁻²): ΔE_c = W_AB(P).",
+    "resultado": "v_B = √(v_A² + 2g(z_A − z_B)) ≈ 14 m·s⁻¹",
+    "pagina_pdf": 325
+   },
+   "pagina_pdf": 318,
+   "animacion": {
+    "preset": "energia-mecanica",
+    "params": {
+     "m": 0.71,
+     "h": 1.35,
+     "v": 6
+    },
+    "leyenda": "La energía cinética que gana la bola al caer es exactamente el trabajo de su peso."
+   }
+  },
+  {
+   "id": "f15",
+   "latex": "\\Delta E_c=W_{AB}(\\vec F_e)=\\vec F_e\\cdot\\overrightarrow{AB}=q\\,\\vec E\\cdot\\overrightarrow{AB}=q\\,U_{AB}",
+   "nombre": "Trabajo de la fuerza eléctrica en un condensador plano (acelerador lineal)",
+   "nombre_fr": "Principe de l'accélérateur linéaire",
+   "variables": [
+    {
+     "simbolo": "\\Delta E_c",
+     "significado": "variación de energía cinética",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "q",
+     "significado": "carga de la partícula",
+     "unidad": "C"
+    },
+    {
+     "simbolo": "U_{AB}",
+     "significado": "tensión entre las armaduras A y B",
+     "unidad": "V"
+    }
+   ],
+   "explicacion": "En un condensador plano el trabajo de F_e hace variar la E_c de la partícula. Si q·U_AB > 0 el trabajo es motor y la partícula se acelera: es el principio de los aceleradores lineales (condensadores en serie).",
+   "ejemplo": {
+    "enunciado": "Cañón de electrones: U_AB = −5,0 kV entre las armaduras (p. 300).",
+    "resultado": "W_AB = −1,6×10⁻¹⁹ × (−5 000) = 8,0×10⁻¹⁶ J (trabajo motor: E_c aumenta)",
+    "pagina_pdf": 318
+   },
+   "pagina_pdf": 318,
+   "animacion": {
+    "preset": "carga-campo",
+    "params": {},
+    "leyenda": "Entre las armaduras la partícula gana velocidad: su energía cinética aumenta lo que vale q·U_AB."
+   }
+  },
+  {
+   "id": "f16",
+   "latex": "v_B=\\sqrt{\\dfrac{2\\,(-e)\\,U_{AB}}{m}}=\\sqrt{\\dfrac{-2\\,e\\,U_{AB}}{m}}",
+   "nombre": "Velocidad de salida de un electrón acelerado desde el reposo",
+   "nombre_fr": "Vitesse de sortie d'un électron accéléré",
+   "variables": [
+    {
+     "simbolo": "v_B",
+     "significado": "velocidad en B",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "e",
+     "significado": "carga elemental",
+     "unidad": "C"
+    },
+    {
+     "simbolo": "U_{AB}",
+     "significado": "tensión (negativa si A es la armadura negativa)",
+     "unidad": "V"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa del electrón",
+     "unidad": "kg"
+    }
+   ],
+   "explicacion": "De E_c(B) − 0 = q(V_A − V_B) = −e·U_AB se obtiene ½·m·v_B². Es el caso particular v_A = 0 de la conservación de E_m (o del teorema de E_c).",
+   "ejemplo": {
+    "enunciado": "Cañón de electrones (Fig. 8, p. 300): U_AB = −5,0 kV, m = 9,11×10⁻³¹ kg.",
+    "resultado": "v_B = 4,2×10⁷ m·s⁻¹",
+    "pagina_pdf": 318
+   },
+   "pagina_pdf": 318,
+   "animacion": {
+    "preset": "carga-campo",
+    "params": {},
+    "leyenda": "Cuanto mayor es la tensión, más rápido sale el electrón del cañón; la velocidad crece como la raíz de U."
+   }
+  },
+  {
+   "id": "f17",
+   "latex": "\\dfrac{e}{m}=\\dfrac{2\\,y\\,v_0^2}{E\\,x^2}",
+   "nombre": "Relación e/m del electrón por identificación de la parábola",
+   "nombre_fr": "Rapport e/m par identification",
+   "variables": [
+    {
+     "simbolo": "e/m",
+     "significado": "carga elemental sobre masa del electrón",
+     "unidad": "C·kg⁻¹"
+    },
+    {
+     "simbolo": "v_0",
+     "significado": "velocidad de entrada",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "E",
+     "significado": "campo eléctrico entre las armaduras",
+     "unidad": "V·m⁻¹"
+    },
+    {
+     "simbolo": "x, y",
+     "significado": "coordenadas de un punto de la trayectoria",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "De y(x) = (eE/(2 m v₀²))·x² (trayectoria del electrón entrando con α = 0) y de la curva experimental y = f(x), se identifica el coeficiente para despejar e/m (Act. 3 y Ej. 30). Es un despeje de la fórmula del cours.",
+   "ejemplo": {
+    "enunciado": "Act. 3 (tubo catódico): v₀ = 4,2×10⁷ m·s⁻¹, tensión U = 3,0 kV entre las armaduras; Ej. 30 (Thomson): valor de referencia e/m = 1,75882×10¹¹ C·kg⁻¹.",
+    "resultado": "Se compara el e/m medido con el de referencia.",
+    "pagina_pdf": 314
+   },
+   "pagina_pdf": 314,
+   "animacion": {
+    "preset": "carga-campo",
+    "params": {
+     "v0": 42000000
+    },
+    "leyenda": "La curvatura de la trayectoria del electrón depende de e/m: mide la desviación y despeja la relación."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "g₀ (intensidad de la gravedad)",
+   "valor": "9,81",
+   "unidad": "m·s⁻²",
+   "pagina_pdf": 321
+  },
+  {
+   "nombre": "g (valor usado en otros ejercicios)",
+   "valor": "9,8",
+   "unidad": "m·s⁻²",
+   "pagina_pdf": 310
+  },
+  {
+   "nombre": "e (carga elemental)",
+   "valor": "1,6×10⁻¹⁹",
+   "unidad": "C",
+   "pagina_pdf": 312
+  },
+  {
+   "nombre": "m (masa del electrón)",
+   "valor": "9,11×10⁻³¹",
+   "unidad": "kg",
+   "pagina_pdf": 318
+  },
+  {
+   "nombre": "m (masa de un protón / nucleón)",
+   "valor": "1,7×10⁻²⁷",
+   "unidad": "kg",
+   "pagina_pdf": 322
+  },
+  {
+   "nombre": "m (masa de un átomo de hidrógeno)",
+   "valor": "1,67×10⁻²⁷",
+   "unidad": "kg",
+   "pagina_pdf": 312
+  },
+  {
+   "nombre": "m (masa del núcleo de helio He²⁺)",
+   "valor": "6,6×10⁻²⁷",
+   "unidad": "kg",
+   "pagina_pdf": 310
+  },
+  {
+   "nombre": "e/m del electrón (valor de referencia)",
+   "valor": "1,75882×10¹¹",
+   "unidad": "C·kg⁻¹",
+   "pagina_pdf": 328
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Establecer las ecuaciones horarias en un campo de gravedad uniforme",
+   "pasos": [
+    "Definir el sistema (centro de masa G), el repere (O; i, j, k) con Oy vertical hacia arriba, y las condiciones iniciales (v₀, α, posición inicial).",
+    "Aplicar la 2.ª ley de Newton con solo el peso: m·a = m·g₀, luego a = g₀ y escribir sus componentes (0 ; −g₀ ; 0).",
+    "Integrar (primitivas): v_x = k₁, v_y = −g₀·t + k₂, v_z = k₃.",
+    "Fijar las constantes con v(0) = v₀ (k₁ = v₀ cos α, k₂ = v₀ sin α, k₃ = 0).",
+    "Integrar de nuevo con la posición inicial para obtener x(t), y(t), z(t); si z(t) = 0, el movimiento es plano."
+   ],
+   "pagina_pdf": 316
+  },
+  {
+   "titulo": "Establecer las ecuaciones horarias de una partícula cargada en un condensador plano",
+   "pasos": [
+    "Representar E en el esquema (de la armadura positiva a la negativa) y recordar que para un electrón q = −e.",
+    "Justificar que el peso es despreciable frente a F_e = qE (cociente F_e/P).",
+    "2.ª ley de Newton: m·a = qE, luego a = (q/m)E; proyectar sobre los ejes (a_x = a_z = 0, a_y = ±qE/m según la orientación).",
+    "Integrar dos veces usando coordenadas de v(0) y de OG(0) como condiciones iniciales (p. ej. v(0) = (v₀ ; 0 ; 0), OG(0) = (0 ; y₀ ; 0)).",
+    "Comprobar que z(t) = 0 (movimiento plano)."
+   ],
+   "pagina_pdf": 324
+  },
+  {
+   "titulo": "Obtener la ecuación de la trayectoria y = f(x)",
+   "pasos": [
+    "Despejar t en x(t): t = x/(v₀ cos α).",
+    "Sustituir t en y(t).",
+    "Reconocer una parábola y(x) = A·x² + B·x (+ y₀) e identificar sus coeficientes con los de una curva experimental o con una condición (p. ej. ¿sale del condensador? evaluar y(x_S) = y(ℓ) y comprobar y_S > 0)."
+   ],
+   "pagina_pdf": 317
+  },
+  {
+   "titulo": "Resolver un problema energético en un campo uniforme",
+   "pasos": [
+    "Elegir la variante: conservación de E_m (solo si no hay fuerzas no conservativas) o teorema de la energía cinética ΔE_c = ΣW(F).",
+    "Con E_m: escribir E_m(A) = E_m(B) con E_pp = m·g·y o E_p(élec) = q·V (ΔE_c = −ΔE_p).",
+    "Con el teorema: calcular el trabajo W_AB(F_e) = q·U_AB (o el del peso) entre A y B.",
+    "Despejar v_B (p. ej. v_B = √(2eU/m) si parte del reposo) y comprobar que ambas variantes dan el mismo resultado."
+   ],
+   "pagina_pdf": 318
+  },
+  {
+   "titulo": "Representar E_c, E_p y E_m en función del tiempo o de x",
+   "pasos": [
+    "Si E_p es afín en x, E_c también lo es (E_m constante).",
+    "Elegir una constante adaptada en E_p = qV + cte para que E_c, E_p y E_m se vean en el mismo gráfico.",
+    "Comprobar la coherencia: E_c(A) = 0 y E_m(A) = 0 si se toma E_p(A) = 0; con rozamiento, E_m decrece."
+   ],
+   "pagina_pdf": 325
+  },
+  {
+   "titulo": "Medir g o e/m modelizando una curva experimental (pointage de vídeo)",
+   "pasos": [
+    "Filmar el movimiento y hacer el pointage con un software; exportar x, y, t a un tableur-grapheur.",
+    "Trazar x(t) e y(t) y derivar numéricamente para obtener v_x(t), v_y(t) y a_x, a_y.",
+    "Modelizar y(t) (o y(x)) con una función adecuada (parábola) y deducir g (o e/m) por identificación; comparar con el valor de referencia mediante |g_mes − g₀|/u(g_mes).",
+    "La ficha-método de modelización (p. 564) y la de incertidumbres (p. 538) están fuera de las páginas de este capítulo: no está en el cours."
+   ],
+   "pagina_pdf": 313
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Olvidar la condición inicial z(0) = z₀",
+   "correccion": "Al integrar, las constantes salen de v(0) y OG(0): si z(0) ≠ 0 hay que sumar z₀ en z(t).",
+   "pagina_pdf": 326
+  },
+  {
+   "id": "err2",
+   "nombre": "Razonar sin ecuaciones («el peso baja, luego frena»)",
+   "correccion": "Justificar con las ecuaciones horarias: v_z(t) = −g₀t + v₀ es afín decreciente, no con la dirección del peso.",
+   "pagina_pdf": 326
+  },
+  {
+   "id": "err3",
+   "nombre": "Dar un valor numérico cuando piden «exprimer»",
+   "correccion": "Exprimer = dar la relación literal entre las magnitudes; el cálculo numérico viene después.",
+   "pagina_pdf": 324
+  },
+  {
+   "id": "err4",
+   "nombre": "Calcular h_max sin sumar la altura inicial",
+   "correccion": "h_max = z(t_a) con z(t) = −½g₀t² + v₀t + z₀: incluir z₀ y usar el t_a correcto.",
+   "pagina_pdf": 326
+  },
+  {
+   "id": "err5",
+   "nombre": "Olvidar el signo de q al orientar a",
+   "correccion": "a = (q/m)E: para un electrón q = −e, por tanto a tiene sentido opuesto a E.",
+   "pagina_pdf": 324
+  },
+  {
+   "id": "err6",
+   "nombre": "Escribir a = (m/e)·E (cociente invertido)",
+   "correccion": "La aceleración es a = (q/m)E: la carga arriba, la masa abajo.",
+   "pagina_pdf": 320
+  },
+  {
+   "id": "err7",
+   "nombre": "Despreciar el peso sin justificarlo",
+   "correccion": "Comparar F_e/P: para partículas cargadas es enorme (≈10¹⁰ para un protón), por eso el peso se desprecia.",
+   "pagina_pdf": 325
+  },
+  {
+   "id": "err8",
+   "nombre": "Escribir ΔE_c = ΔE_p",
+   "correccion": "Si E_m se conserva, ΔE_m = 0 y ΔE_c = −ΔE_p; E_c se gana cuando E_p se pierde.",
+   "pagina_pdf": 320
+  },
+  {
+   "id": "err9",
+   "nombre": "Aplicar E_m = cte con rozamiento",
+   "correccion": "La conservación exige ausencia de fuerzas no conservativas; con rozamiento ΔE_m = ΣW(F no conservativas).",
+   "pagina_pdf": 310
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "Act. 1 (documentaria) · Un acelerador lineal",
+   "descripcion": "Acelerador tipo tándem (AGLAE del Louvre, 2 MV): iones H⁻ (q = −e) acelerados en un primer condensador plano (U_AB = −2,0 MV), «despojados» de electrones y vueltos positivos, y reacelerados en un segundo condensador (U_CD = 2,0 MV). Se discute qué campo actúa (el eléctrico; el peso se desprecia), el signo de la tensión, E_p(élec) = q·V, la velocidad en B por conservación de E_m y la velocidad en D.",
+   "pagina_pdf": 312
+  },
+  {
+   "titulo": "Act. 2 (TP) · Movimiento de un proyectil",
+   "descripcion": "Filmar una pelota de golf lanzada a mano con v₀ y ángulo α; pointage de la vídeo y tableur-grapheur para x(t), y(t). Dos métodos para medir g: (1) a partir de a_y(t) derivada de v_y(t) con incertidumbre-tipo y comparación con g₀ = 9,81 m·s⁻²; (2) modelizando la curva y(t) con la ecuación horaria. Se comparan ambos métodos.",
+   "pagina_pdf": 313
+  },
+  {
+   "titulo": "Act. 3 (démarche différenciée) · Electrón y carga elemental",
+   "descripcion": "Desviación de un haz de electrones por un campo eléctrico uniforme en un tubo catódico (v₀ = 4,2×10⁷ m·s⁻¹, U = 3,0 kV entre armaduras). Demostrar que y(x) = (eE/(2mv₀²))·x², trazar y = f(x) experimental sobre la imagen y deducir e/m por identificación.",
+   "pagina_pdf": 314
+  },
+  {
+   "titulo": "Act. 4 (TP) · Caída de una bola en un líquido",
+   "descripcion": "Una bola soltada sin velocidad en una probeta con aceite; vídeo y pointage de y(t); un programa Python calcula v, E_c, E_p y E_m a cada instante y las traza. Se discute el balance de fuerzas, el trabajo de la fuerza de rozamiento (no conservativa) y los intercambios de energía.",
+   "pagina_pdf": 315
+  },
+  {
+   "titulo": "ECE · Lanzar un balón de baloncesto",
+   "descripcion": "Proponer un protocolo, realizar el pointage de un lanzamiento franco, modelizar la trayectoria con y(x) = (−g₀/(2v₀²cos²α))x² + x·tan α, deducir v₀ y α, y decidir si el tiro entra en la canasta (aro a 0,53 m; abscisa entre 3,50 y 3,95 m).",
+   "pagina_pdf": 332
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Ej. 9 · Caída libre vertical: una bola de masa m se suelta sin velocidad inicial desde h = 1,00 m, solo bajo su peso. Eje Oz vertical hacia abajo con origen en la posición inicial. 1. Relación entre a y g₀. 2. Ecuaciones horarias v_z(t), z(t). 3. ¿Es plano el movimiento? 4. Duración de la caída. 5. Velocidad máxima alcanzada.",
+   "datos": {
+    "h": "1,00 m",
+    "g0": "9,81 m·s⁻²"
+   },
+   "respuesta": "1. 2.ª ley de Newton: a = g₀. 2. dv_z/dt = g₀ ⇒ v_z = g₀·t (v_z(0)=0), z(t) = ½·g₀·t². 3. La trayectoria es según Oz: el movimiento es plano. 4. En el impacto z(t_C) = h: t_C = √(2h/g₀) = 0,452 s. 5. v_z(t_C) = g₀·t_C = 4,43 m·s⁻¹.",
+   "respuesta_numerica": {
+    "valor": 0.452,
+    "unidad": "s",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "a = g₀",
+    "v_z = g₀t ; z = ½ g₀ t²",
+    "z(t_C) = h ⇒ t_C = √(2h/g₀)",
+    "v = g₀·t_C"
+   ],
+   "pagina_pdf": 321,
+   "corrige_pagina_pdf": 618
+  },
+  {
+   "id": "e2",
+   "enunciado": "Ej. 12 · Ecuación de la trayectoria: un proyectil lanzado desde el suelo tiene x(t) = v₀ cos α·t, y(t) = −½g₀t² + v₀ sin α·t, z(t) = 0. 1. Establecer y(x). 2. Esquema de la trayectoria. 3. Mostrar que y_max = v₀² sin²α/(2g₀) y calcularla. 4. Expresar y calcular la portée x_max.",
+   "datos": {
+    "v0": "10,0 m·s⁻¹",
+    "alpha": "60°"
+   },
+   "respuesta": "1. y(x) = (−g₀/(2v₀²cos²α))·x² + x·tan α. 3. La flecha se alcanza cuando v_y(t_s) = 0: t_s = v₀ sin α/g₀, de donde y_max = v₀² sin²α/(2g₀) = 3,8 m. 4. y(t_p) = 0 ⇒ t_p = 2v₀ sin α/g₀; x_max = x(t_p) = 2v₀² sin α cos α/g₀ = 8,8 m.",
+   "respuesta_numerica": {
+    "valor": 3.8,
+    "unidad": "m",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Sustituir t = x/(v₀ cos α)",
+    "v_y(t_s)=0 ⇒ t_s = v₀ sin α/g₀",
+    "y_max = y(t_s)",
+    "y(t_p)=0 ⇒ t_p = 2 t_s, x_max = x(t_p)"
+   ],
+   "pagina_pdf": 321,
+   "corrige_pagina_pdf": 618
+  },
+  {
+   "id": "e3",
+   "enunciado": "Ej. 14 · Ecuaciones horarias de un protón: un protón entra en un condensador plano con velocidad inicial v₀ perpendicular a las armaduras; el campo es E = 2,0 kV·m⁻¹. 1. Comparar F_e y el peso. 2. Establecer a, v_x(t) y x(t). 3. Instante de salida (d = 18,0 cm) y velocidad final.",
+   "datos": {
+    "m": "1,7×10⁻²⁷ kg",
+    "v0": "2,0×10³ m·s⁻¹",
+    "E": "2,0×10³ V·m⁻¹",
+    "d": "18,0 cm",
+    "e": "1,6×10⁻¹⁹ C"
+   },
+   "respuesta": "1. F_e/P = eE/(mg₀) ≈ 1,9×10¹⁰: el peso es despreciable. 2. a = (e/m)·E; a_x = eE/m; v_x(t) = (eE/m)·t + v₀; x(t) = (eE/2m)·t² + v₀·t. 3. El protón sale cuando x(t_s) = d: t_s = 1,4×10⁻⁶ s; v_f = (eE/m)·t_s + v₀ = 2,6×10⁵ m·s⁻¹. El condensador acelera el protón (acelerador lineal).",
+   "respuesta_numerica": {
+    "valor": 260000.0,
+    "unidad": "m·s⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "F_e/P = eE/(m g₀) ≫ 1",
+    "a_x = eE/m",
+    "x(t_s) = d ⇒ t_s",
+    "v_f = a·t_s + v₀"
+   ],
+   "pagina_pdf": 322,
+   "corrige_pagina_pdf": 618
+  },
+  {
+   "id": "e4",
+   "enunciado": "Ej. 18 · Aceleración lineal de partículas y energía: un electrón entra entre las armaduras A y B de un condensador plano con v₀ perpendicular a ellas. 1. Condiciones para acelerar una partícula en trayectoria rectilínea. 2. a. Conservación de E_m entre O y la salida; b. v_f en función de v₀, e, m, U_AB. 3. a. Trabajo de F_e; b. recuperar v_f con el teorema de E_c.",
+   "datos": {
+    "U_AB": "−1,0 kV",
+    "v0": "1,0×10³ m·s⁻¹",
+    "e": "1,6×10⁻¹⁹ C",
+    "m": "9,1×10⁻³¹ kg"
+   },
+   "respuesta": "2. a. E_m(f) = E_m(O). b. v_f = √(v₀² − 2eU_AB/m) = 1,9×10⁷ m·s⁻¹. 3. a. W_AB(F_e) = F·AB = −e·U_AB con U_AB < 0. b. E_cB − E_cA = W_AB(F_e) ⇒ ½mv_f² − ½mv₀² = −eU_AB ⇒ v_f = √(v₀² − 2eU_AB/m).",
+   "respuesta_numerica": {
+    "valor": 19000000.0,
+    "unidad": "m·s⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "E_m(f) = E_m(O)",
+    "ΔE_c = −e U_AB",
+    "v_f = √(v₀² − 2eU_AB/m)"
+   ],
+   "pagina_pdf": 323,
+   "corrige_pagina_pdf": 618
+  },
+  {
+   "id": "e5",
+   "enunciado": "Ej. 19 (resuelto) · Deflexión en un campo eléctrico: campo uniforme E = 5 200 V·m⁻¹ entre dos armaduras A₁ (negativa) y A₂ (positiva) separadas 10 cm y de longitud ℓ = 10 cm. Un electrón entra en y₀ = 5,0 cm con v₀ = 1,0×10⁷ m·s⁻¹ paralela a las placas. 1. Componentes de a. 2. a. Ecuaciones horarias; b. ecuación de la trayectoria y plano; c. ¿Sale del condensador? Coordenadas de S.",
+   "datos": {
+    "E": "5 200 V·m⁻¹",
+    "l": "10 cm",
+    "y0": "5,0 cm",
+    "v0": "1,0×10⁷ m·s⁻¹",
+    "m": "9,11×10⁻³¹ kg"
+   },
+   "respuesta": "1. a = (−e/m)·E: a_x = a_z = 0, a_y = −eE/m. 2. a. v_x = v₀, v_y = (−eE/m)t; x = v₀t, y = (−eE/2m)t² + y₀, z = 0. b. y(x) = −eE·x²/(2mv₀²) + y₀; z(t) = 0 ⇒ plano (Oxy). c. x_S = ℓ: y(x_S) = −eEℓ²/(2mv₀²) + y₀ = 4,3×10⁻³ m > 0: el electrón sale por S(0,10 ; 4,3×10⁻³ ; 0).",
+   "respuesta_numerica": {
+    "valor": 0.0043,
+    "unidad": "m",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Newton con solo F_e = −eE",
+    "Dos integraciones con v(0) = (v₀;0;0), OG(0) = (0;y₀;0)",
+    "Sustituir t = x/v₀",
+    "Evaluar y(ℓ) y comprobar y_S > 0"
+   ],
+   "pagina_pdf": 324,
+   "corrige_pagina_pdf": 324
+  },
+  {
+   "id": "e6",
+   "enunciado": "Ej. 21 (resuelto) · Acelerador de partícula: un núcleo de helio He²⁺ (Z = 2, A = 4) con velocidad despreciable entra en una cavidad de longitud AB = 0,50 m con campo E = 400 kV·m⁻¹. 1. Justificar que se puede despreciar el peso y el signo de las armaduras. 2. Trabajo de F_e y v_B (teorema de E_c). 3. Mostrar que E_p(élec) es afín en la distancia y representar E_c, E_p, E_m en función de x.",
+   "datos": {
+    "m_nucleon": "1,7×10⁻²⁷ kg",
+    "E": "400 kV·m⁻¹",
+    "AB": "0,50 m",
+    "e": "1,6×10⁻¹⁹ C"
+   },
+   "respuesta": "1. P = 4·m_n·g₀ ≪ F_e = 2eE: el peso es despreciable; los núcleos son atraídos por la armadura B negativa. 2. W_AB(F_e) = 2eE·AB = 2eU_AB; ΔE_c = W_AB ⇒ ½·4m_n·v_B² = 2eU_AB ⇒ v_B = √(4eE·AB/(4m_n)) = 4,3×10⁶ m·s⁻¹. 3. U_AX = E·x = V_A − V ⇒ V afín en x ⇒ E_p(élec) = qV + cte es afín en x; con E_p(A) = 0: E_m = 0, E_c(B) = 6,4×10⁻¹⁴ J, E_p(B) = −6,4×10⁻¹⁴ J.",
+   "respuesta_numerica": {
+    "valor": 4300000.0,
+    "unidad": "m·s⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Comparar F_e y P",
+    "W_AB = qEAB",
+    "Teorema de E_c con v_A ≈ 0",
+    "E_p afín en x; E_m = 0 con E_p(A)=0"
+   ],
+   "pagina_pdf": 325,
+   "corrige_pagina_pdf": 325
+  },
+  {
+   "id": "e7",
+   "enunciado": "Ej. 20 · Movimiento de un balón («chandelle» de rugby): a t = 0, v₀ = 10,0 m·s⁻¹ forma 60° con Ox. 1. Establecer las ecuaciones horarias. 2. Probar que y(x) = (−g₀/(2v₀²cos²α))·x² + x·tan α. 3. Calcular el tiempo del que dispone el jugador para recuperar el balón antes de que toque el suelo.",
+   "datos": {
+    "v0": "10,0 m·s⁻¹",
+    "alpha": "60°"
+   },
+   "respuesta": "1. a = g₀; v(t) = (v₀cos α ; −g₀t + v₀sin α), OG(t) = (v₀cos α·t ; −½g₀t² + v₀sin α·t). 2. Sustituyendo t = x/(v₀cos α). 3. El balón vuelve al suelo cuando y(t_f) = 0: t_f = 2v₀ sin α/g₀ = 1,8 s.",
+   "respuesta_numerica": {
+    "valor": 1.8,
+    "unidad": "s",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "y(t_f) = 0",
+    "t_f = 2v₀ sin α/g₀"
+   ],
+   "pagina_pdf": 324,
+   "corrige_pagina_pdf": 618
+  },
+  {
+   "id": "e8",
+   "enunciado": "Ej. 22 · Lanzamiento de peso: el boulet (peso de atletismo) se lanza con v_A = 12 m·s⁻¹ desde h = 2,05 m, despreciando el aire. 1. a. Enunciar el teorema de E_c; b. aplicarlo para expresar la velocidad v_B de impacto. 2. Representar E_c, E_pp y E_m en el tiempo.",
+   "datos": {
+    "v_A": "12 m·s⁻¹",
+    "h": "2,05 m",
+    "g0": "9,8 m·s⁻²"
+   },
+   "respuesta": "1. a. ΔE_c = ΣW_AB(F). b. ΔE_c = E_cB − E_cA = W_AB(P) ⇒ v_B = √(v_A² + 2g₀(z_A − z_B)) ≈ 14 m·s⁻¹. 2. E_m constante, E_c y E_pp con evoluciones opuestas (E_c baja al subir y sube al caer).",
+   "respuesta_numerica": {
+    "valor": 14,
+    "unidad": "m·s⁻¹",
+    "tolerancia_rel": 0.05
+   },
+   "pasos": [
+    "ΔE_c = W(P)",
+    "W(P) = m g₀ (z_A − z_B)",
+    "v_B = √(v_A² + 2g₀ h)"
+   ],
+   "pagina_pdf": 325,
+   "corrige_pagina_pdf": 618
+  },
+  {
+   "id": "e9",
+   "enunciado": "Ej. 23 · Corregir la solución de un alumno (gimnasta en trampolín): se lanza desde z₀ = 1,50 m con v₀ = 7,0 m·s⁻¹ vertical hacia arriba (Oz hacia arriba). 1. a. Ecuaciones horarias; b. mostrar que el movimiento es rectilíneo decelerado en la subida. 2. a. Duración de la ascensión t_a; b. altura máxima h_max.",
+   "datos": {
+    "z0": "1,50 m",
+    "v0": "7,0 m·s⁻¹",
+    "g0": "9,81 m·s⁻²"
+   },
+   "respuesta": "1. a. v_z = −g₀t + v₀ y z(t) = −½g₀t² + v₀t + z₀ (z(0) = z₀ ≠ 0). b. v_z es afín decreciente y positiva: movimiento rectilíneo decelerado. 2. a. v_z(t_a) = 0 ⇒ t_a = v₀/g₀ = 0,71 s. b. h_max = z(t_a) = 4,0 m.",
+   "respuesta_numerica": {
+    "valor": 4.0,
+    "unidad": "m",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "z(0)=z₀ ≠ 0: no olvidarlo",
+    "v_z(t_a) = 0 ⇒ t_a = v₀/g₀",
+    "h_max = z(t_a)"
+   ],
+   "pagina_pdf": 326,
+   "corrige_pagina_pdf": 618
+  },
+  {
+   "id": "e10",
+   "enunciado": "Ej. 35 · Salto de esquí (démarche différenciée): el saltador (punto material) sale del trampolín en T con v_T = 83,3 km·h⁻¹ y α = 11°; la pista de aterrizaje es y = −0,59·x. Aterrizó en L a 113 m, abscisa x_L = 97 m. Despreciando el aire: 1. vector aceleración; 2. ecuaciones horarias; 3. ecuación de la trayectoria; 4. abscisa teórica de aterrizaje y conclusión sobre la acción del aire.",
+   "datos": {
+    "v_T": "83,3 km·h⁻¹",
+    "alpha": "11°",
+    "g0": "9,81 m·s⁻²"
+   },
+   "respuesta": "Ecuaciones: x(t) = v_T cos α·t ; y(t) = −(g₀/2)t² − v_T sin α·t. Trayectoria: y(x) = −9,5×10⁻³·x² − 1,9×10⁻¹·x. Aterrizaje teórico: −9,5×10⁻³·x_L² − 0,19·x_L = −0,59·x_L ⇒ x_L = 42 m < 97 m real: sin aire el salto sería mucho más corto, luego el aire ejerce una acción (sustentación) que no puede despreciarse.",
+   "respuesta_numerica": {
+    "valor": 42,
+    "unidad": "m",
+    "tolerancia_rel": 0.05
+   },
+   "pasos": [
+    "a = g₀ ⇒ componentes por integración",
+    "y(x) por sustitución de t",
+    "Igualar y(x) a la recta de la pista",
+    "Comparar con 97 m"
+   ],
+   "pagina_pdf": 331,
+   "corrige_pagina_pdf": 618
+  },
+  {
+   "id": "e11",
+   "enunciado": "Ej. 16 · Boule y conservación de la energía mecánica: una boule de pétanque (710 g) se lanza desde h = 1,35 m con v₀ = 6,0 m·s⁻¹. 1. Exprimer su E_m en el lanzamiento. 2. a. ¿Bajo qué hipótesis se aplica la conservación de E_m? b. Usarla para calcular la velocidad v_f de impacto en el suelo.",
+   "datos": {
+    "m": "710 g",
+    "h": "1,35 m",
+    "v0": "6,0 m·s⁻¹",
+    "g0": "9,81 m·s⁻²"
+   },
+   "respuesta": "Respuesta no impresa en el corrigé del libro; calculada con las fórmulas del cours: 1. E_m = ½m·v₀² + m·g₀·h ≈ 22 J. 2. a. Sin fuerzas no conservativas (se desprecia el aire). b. ½mv_f² = E_m ⇒ v_f = √(v₀² + 2g₀h) ≈ 7,9 m·s⁻¹.",
+   "respuesta_numerica": {
+    "valor": 7.9,
+    "unidad": "m·s⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "E_m = ½mv₀² + mg₀h",
+    "E_m(sol) = ½mv_f²",
+    "v_f = √(v₀² + 2g₀h)"
+   ],
+   "pagina_pdf": 323,
+   "corrige_pagina_pdf": null
+  },
+  {
+   "id": "e12",
+   "enunciado": "Ej. 33 · Espectrómetro de masas «a tiempo de vuelo»: fragmentos ionizados F_i⁺ son acelerados entre la diana y la rejilla (distancia D = 40 mm) por una tensión U, y luego recorren L = 1 300 mm sin campo hasta el detector. 2. Mostrar que v = √(2eU/m) en la rejilla y calcularla para U = 20 kV y m = 7,1×10⁻²⁶ kg. 4. Mostrar que Δt = D·√(2m/(eU)) + L·√(m/(2eU)) y calcularlo.",
+   "datos": {
+    "U": "20 kV",
+    "m": "7,1×10⁻²⁶ kg",
+    "D": "40 mm",
+    "L": "1 300 mm",
+    "e": "1,6×10⁻¹⁹ C"
+   },
+   "respuesta": "Respuesta no impresa en el corrigé del libro; calculada con las fórmulas del enunciado y del cours: v = √(2eU/m) = 3,0×10⁵ m·s⁻¹ (teorema de E_c con v_A = 0); Δt = D√(2m/(eU)) + L√(m/(2eU)) ≈ 4,6×10⁻⁶ s.",
+   "respuesta_numerica": {
+    "valor": 300000.0,
+    "unidad": "m·s⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "ΔE_c = qU ⇒ ½mv² = eU",
+    "v = √(2eU/m)",
+    "Δt = tiempo acelerado + tiempo a velocidad constante"
+   ],
+   "pagina_pdf": 329,
+   "corrige_pagina_pdf": null
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "proyectil",
+   "params": {
+    "v0": 10,
+    "alpha": 60,
+    "g": 9.81
+   },
+   "titulo": "Lanzamiento oblicuo en campo de gravedad",
+   "relacion": "Ecuaciones horarias, trayectoria parabólica, flecha y portée (cours §1, p. 316-317)"
+  },
+  {
+   "preset": "carga-campo",
+   "params": {
+    "E": 5200,
+    "v0": 10000000
+   },
+   "titulo": "Electrón en un condensador plano",
+   "relacion": "a = (q/m)E y trayectoria parabólica de la partícula cargada (cours §2, p. 317; Ej. 19)"
+  },
+  {
+   "preset": "energia-mecanica",
+   "params": {
+    "m": 0.71,
+    "h": 1.35,
+    "v": 6
+   },
+   "titulo": "Ec, Ep y Em",
+   "relacion": "Conservación de la energía mecánica en un campo uniforme (cours §3, p. 318)"
+  },
+  {
+   "preset": "newton2",
+   "params": {},
+   "titulo": "2.ª ley de Newton",
+   "relacion": "m·a = ΣF aplicada al peso y a la fuerza eléctrica (base de todo el capítulo)"
+  },
+  {
+   "preset": "cinematica",
+   "params": {},
+   "titulo": "Velocidad y aceleración",
+   "relacion": "Componentes v_x constante y v_y variable; integración de a para obtener v y OG (cours §1, p. 316)"
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "pista-campo-uniforme",
+  "mecanica_especial": "Zonas de campo uniforme (zona_campo) sobre dos fosos: un campo hacia arriba que aligera la caída como un condensador plano y un empuje horizontal de «acelerador lineal»; además plataformas oscilantes y resortes para dibujar arcos parabólicos."
+ },
+ "estilo_intro_sugerido": "fisica3d"
+}

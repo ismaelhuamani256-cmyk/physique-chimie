@@ -1,0 +1,1322 @@
+{
+ "id": "methodes-chimiques",
+ "titulo": "Méthodes chimiques d'analyse",
+ "materia": "chimie",
+ "mundo": "constitucion",
+ "pdf_ini": 82,
+ "pdf_fin": 105,
+ "resumen": "Se caracteriza una solución con su título másico w, su masa volúmica ρ y su densidad d, y se prepara una solución diluida conservando la cantidad de materia. Un titrage (dosaje) usa una reacción total, rápida y única; la equivalencia se detecta por un salto de pH (tangentes o derivada) o por el cambio de pendiente de la conductividad. En V_E se cumple c_A·V_A = c_B·V_E.",
+ "resumen_fr": "Caractériser une solution (titre massique, densité), préparer une solution diluée, réaliser un titrage et repérer l'équivalence par pH-métrie ou conductimétrie pour déterminer une concentration.",
+ "nociones_clave": [
+  {
+   "id": "n1",
+   "fr": "Titre massique w",
+   "es": "Cociente entre la masa de soluto de una muestra y la masa de esa muestra de disolución; en % y sin unidad (p. ej. HCl comercial w = 34 %).",
+   "pagina_pdf": 87
+  },
+  {
+   "id": "n2",
+   "fr": "Masse volumique ρ",
+   "es": "Masa de la disolución por unidad de volumen (kg·m⁻³); caracteriza la disolución y permite identificar la especie.",
+   "pagina_pdf": 87
+  },
+  {
+   "id": "n3",
+   "fr": "Densité d",
+   "es": "Cociente ρ/ρ_eau con ambas masas volúmicas en la misma unidad; no tiene unidad. Distinta de la masa volúmica.",
+   "pagina_pdf": 87
+  },
+  {
+   "id": "n4",
+   "fr": "Dilution",
+   "es": "Para obtener una concentración dada se diluye una solución-mère: la cantidad de materia de soluto no cambia (c·V = c_diluée·V_diluée).",
+   "pagina_pdf": 88
+  },
+  {
+   "id": "n5",
+   "fr": "Solution-mère / solution-fille",
+   "es": "La solución concentrada se pipetea (pipette jaugée) y se completa con agua destilada en una fiole jaugée para obtener la solución diluida.",
+   "pagina_pdf": 589
+  },
+  {
+   "id": "n6",
+   "fr": "Titrage",
+   "es": "Método de dosaje: determinar la cantidad de materia (o la concentración o la masa) de una especie química mediante una transformación química.",
+   "pagina_pdf": 88
+  },
+  {
+   "id": "n7",
+   "fr": "Réaction support du titrage",
+   "es": "Debe ser totale, rápida y única: la especie titrante solo reacciona con la especie a titular.",
+   "pagina_pdf": 88
+  },
+  {
+   "id": "n8",
+   "fr": "Solution titrante / solution titrée / prise d'essai",
+   "es": "Titrante: de concentración conocida, en la bureta. Titrada: en el erlenmeyer o vaso. Prise d'essai: volumen preciso de solución titrada tomado con pipette jaugée.",
+   "pagina_pdf": 88
+  },
+  {
+   "id": "n9",
+   "fr": "Équivalence",
+   "es": "Estado en que titrante y titrada se han mezclado en proporciones estequiométricas y se consumen totalmente; coincide con el cambio de reactivo limitante.",
+   "pagina_pdf": 88
+  },
+  {
+   "id": "n10",
+   "fr": "Réactif limitant en un titrage",
+   "es": "Antes de la equivalencia el titrante es limitante; después de la equivalencia ya no lo es y queda en exceso (sigue añadiéndose).",
+   "pagina_pdf": 88
+  },
+  {
+   "id": "n11",
+   "fr": "Volume équivalent V_E y avancement x_E",
+   "es": "V_E es el volumen de titrante vertido para alcanzar la equivalencia; x_E es el avance de la reacción en ese momento.",
+   "pagina_pdf": 89
+  },
+  {
+   "id": "n12",
+   "fr": "Évolution des quantités de matière",
+   "es": "La cantidad de la especie titrada disminuye hasta anularse en la equivalencia; la del titrante es nula hasta V_E y luego aumenta. En V_E las dos son nulas.",
+   "pagina_pdf": 89
+  },
+  {
+   "id": "n13",
+   "fr": "Courbe de titrage pH-métrique",
+   "es": "Si se titula un ácido con una base la curva pH = f(V) es creciente; si se titula una base con un ácido, decreciente. La equivalencia corresponde a un salto de pH importante.",
+   "pagina_pdf": 89
+  },
+  {
+   "id": "n14",
+   "fr": "Méthode des tangentes",
+   "es": "Se trazan dos tangentes paralelas a ambos lados del salto de pH y una recta paralela y equidistante; corta la curva en el punto de abscisa V_E.",
+   "pagina_pdf": 89
+  },
+  {
+   "id": "n15",
+   "fr": "Méthode de la dérivée",
+   "es": "Con un programa se traza dpH/dV; la abscisa del extremo es V_E: un máximo al titular un ácido con una base, un mínimo al titular una base con un ácido.",
+   "pagina_pdf": 89
+  },
+  {
+   "id": "n16",
+   "fr": "Titrage conductimétrique",
+   "es": "Se mide la conductividad σ (S·m⁻¹) de la solución; la equivalencia es el cambio de pendiente y V_E la abscisa de la intersección de las dos rectas.",
+   "pagina_pdf": 90
+  },
+  {
+   "id": "n17",
+   "fr": "Conductivités molaires ioniques λ",
+   "es": "Expresadas en S·m²·mol⁻¹, junto con las concentraciones de los iones explican la evolución de la pendiente de la curva (p. ej. H₃O⁺ 35,0×10⁻³; Na⁺ 5,0×10⁻³).",
+   "pagina_pdf": 90
+  },
+  {
+   "id": "n18",
+   "fr": "Conductividad y conductance",
+   "es": "La conductividad es proporcional a la conductance G (en siemens, S), que traduce la capacidad de una solución para conducir la corriente eléctrica.",
+   "pagina_pdf": 86
+  },
+  {
+   "id": "n19",
+   "fr": "Dilución despreciable en conductimetría",
+   "es": "Cuando la dilución por la adición del titrante es despreciable, los puntos experimentales siguen dos rectas.",
+   "pagina_pdf": 90
+  },
+  {
+   "id": "n20",
+   "fr": "Titrage colorimétrique y virage",
+   "es": "La equivalencia puede detectarse por desaparición o aparición persistente de una coloración (virage); pero no siempre se puede repérer por cambio de color.",
+   "pagina_pdf": 592
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f_c",
+   "latex": "c = \\dfrac{n}{V}",
+   "nombre": "Concentration en quantité de matière",
+   "nombre_fr": "Concentration en quantité de matière",
+   "variables": [
+    {
+     "simbolo": "c",
+     "significado": "concentración en cantidad de materia del soluto",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "n",
+     "significado": "cantidad de materia de soluto",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen de la disolución",
+     "unidad": "L"
+    }
+   ],
+   "explicacion": "Es un acquis de seconde: la concentración es la cantidad de soluto disuelta por litro de disolución. Es la magnitud que se busca al titular.",
+   "ejemplo": null,
+   "pagina_pdf": 82,
+   "animacion": {
+    "preset": "concentracion",
+    "params": {},
+    "leyenda": "Al mover n y V verás cuántas moléculas hay en el vaso y cómo cambia la concentración."
+   }
+  },
+  {
+   "id": "f_w",
+   "latex": "w = \\dfrac{m_{\\text{soluté}}}{m_{\\text{solution}}}\\times 100",
+   "nombre": "Titre massique",
+   "nombre_fr": "Titre massique",
+   "variables": [
+    {
+     "simbolo": "w",
+     "significado": "título másico (en %, sin unidad)",
+     "unidad": "%"
+    },
+    {
+     "simbolo": "m_{soluté}",
+     "significado": "masa de soluto",
+     "unidad": "g"
+    },
+    {
+     "simbolo": "m_{solution}",
+     "significado": "masa de la disolución",
+     "unidad": "g"
+    }
+   ],
+   "explicacion": "Cociente entre la masa de soluto contenida en una muestra y la masa de esa muestra de disolución; se expresa en porcentaje.",
+   "ejemplo": {
+    "enunciado": "Solución comercial de cloruro de hidrógeno (ácido clorhídrico) con w = 34 %.",
+    "resultado": "34 g de HCl por cada 100 g de disolución",
+    "pagina_pdf": 87
+   },
+   "pagina_pdf": 87,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "100*a/x",
+     "xmin": 100,
+     "xmax": 300,
+     "vars": {
+      "a": {
+       "min": 10,
+       "max": 100,
+       "step": 1,
+       "def": 34,
+       "label": "m soluté",
+       "unit": "g"
+      }
+     }
+    },
+    "leyenda": "La curva muestra w en % según la masa de disolución (eje x, g); con 34 g de soluto en 100 g sale w = 34 %."
+   }
+  },
+  {
+   "id": "f_rho",
+   "latex": "\\rho = \\dfrac{m}{V}",
+   "nombre": "Masse volumique",
+   "nombre_fr": "Masse volumique",
+   "variables": [
+    {
+     "simbolo": "ρ",
+     "significado": "masa volúmica de la disolución",
+     "unidad": "kg·m⁻³"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa de la disolución",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen de la disolución",
+     "unidad": "m³"
+    }
+   ],
+   "explicacion": "La masa volúmica es la masa por unidad de volumen y caracteriza una disolución (permite identificar la especie).",
+   "ejemplo": null,
+   "pagina_pdf": 87,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "a*x",
+     "xmin": 0,
+     "xmax": 2,
+     "vars": {
+      "a": {
+       "min": 500,
+       "max": 2000,
+       "step": 10,
+       "def": 1180,
+       "label": "ρ",
+       "unit": "g/L"
+      }
+     }
+    },
+    "leyenda": "Gráfica de la masa m (g) frente al volumen V (L, eje x): la pendiente es la masa volúmica ρ."
+   }
+  },
+  {
+   "id": "f_d",
+   "latex": "d = \\dfrac{\\rho}{\\rho_{\\text{eau}}}",
+   "nombre": "Densité d'une solution",
+   "nombre_fr": "Densité",
+   "variables": [
+    {
+     "simbolo": "d",
+     "significado": "densidad (sin unidad)",
+     "unidad": ""
+    },
+    {
+     "simbolo": "ρ",
+     "significado": "masa volúmica de la disolución",
+     "unidad": "kg·m⁻³"
+    },
+    {
+     "simbolo": "ρ_{eau}",
+     "significado": "masa volúmica del agua",
+     "unidad": "kg·m⁻³"
+    }
+   ],
+   "explicacion": "Compara la masa volúmica de la disolución con la del agua; ambas deben expresarse en la misma unidad, por eso d no tiene unidad.",
+   "ejemplo": {
+    "enunciado": "ρ_eau = 1,00×10³ g·L⁻¹ y ρ(HCl) = 1,18×10³ g·L⁻¹.",
+    "resultado": "d = 1,18",
+    "pagina_pdf": 87
+   },
+   "pagina_pdf": 87,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x/a",
+     "xmin": 500,
+     "xmax": 2000,
+     "vars": {
+      "a": {
+       "min": 500,
+       "max": 2000,
+       "step": 10,
+       "def": 1000,
+       "label": "ρ_eau",
+       "unit": "g/L"
+      }
+     }
+    },
+    "leyenda": "d frente a ρ (g/L, eje x) con ρ_eau = 1000 g/L: con ρ = 1180 g/L sale d = 1,18."
+   }
+  },
+  {
+   "id": "f_msol",
+   "latex": "m_{\\text{soluté}} = \\rho_{\\text{eau}}\\cdot d\\cdot V\\cdot w",
+   "nombre": "Masse de soluté dans un volume V de solution commerciale",
+   "nombre_fr": "Masse de soluté",
+   "variables": [
+    {
+     "simbolo": "m_{soluté}",
+     "significado": "masa de soluto",
+     "unidad": "g"
+    },
+    {
+     "simbolo": "ρ_{eau}",
+     "significado": "masa volúmica del agua",
+     "unidad": "g·L⁻¹"
+    },
+    {
+     "simbolo": "d",
+     "significado": "densidad de la disolución",
+     "unidad": ""
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen de disolución",
+     "unidad": "L"
+    },
+    {
+     "simbolo": "w",
+     "significado": "título másico expresado como fracción (p. ej. 0,37 para 37 %)",
+     "unidad": ""
+    }
+   ],
+   "explicacion": "Se deduce de w = m_soluté/m_solución, m = ρ·V y ρ = ρ_eau·d. Permite saber cuánto soluto hay en un volumen dado de disolución comercial.",
+   "ejemplo": null,
+   "pagina_pdf": 87,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "1000*a*x*b",
+     "xmin": 0,
+     "xmax": 1,
+     "vars": {
+      "a": {
+       "min": 1,
+       "max": 1.5,
+       "step": 0.01,
+       "def": 1.18,
+       "label": "d",
+       "unit": ""
+      },
+      "b": {
+       "min": 0.05,
+       "max": 1,
+       "step": 0.01,
+       "def": 0.37,
+       "label": "w (fracción)",
+       "unit": ""
+      }
+     }
+    },
+    "leyenda": "Masa de soluto (g) en función del volumen V (L, eje x), con d = 1,18 y w = 0,37 (valores del cours)."
+   }
+  },
+  {
+   "id": "f_cc",
+   "latex": "c = \\dfrac{\\rho_{\\text{eau}}\\cdot d\\cdot w}{M}",
+   "nombre": "Concentration d'une solution commerciale",
+   "nombre_fr": "Concentration à partir de d et w",
+   "variables": [
+    {
+     "simbolo": "c",
+     "significado": "concentración en cantidad de materia del soluto",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "ρ_{eau}",
+     "significado": "masa volúmica del agua (1,00×10³)",
+     "unidad": "g·L⁻¹"
+    },
+    {
+     "simbolo": "d",
+     "significado": "densidad",
+     "unidad": ""
+    },
+    {
+     "simbolo": "w",
+     "significado": "título másico (fracción)",
+     "unidad": ""
+    },
+    {
+     "simbolo": "M",
+     "significado": "masa molar del soluto",
+     "unidad": "g·mol⁻¹"
+    }
+   ],
+   "explicacion": "Se obtiene dividiendo m_soluté por M·V. Da la concentración de una disolución comercial a partir de su densidad y su título másico.",
+   "ejemplo": {
+    "enunciado": "HCl comercial: d = 1,18, w = 37 %, M(HCl) = 36,5 g·mol⁻¹, ρ_eau = 1,00×10³ g·L⁻¹.",
+    "resultado": "c = 12 mol·L⁻¹",
+    "pagina_pdf": 88
+   },
+   "pagina_pdf": 87,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "1000*x*a/b",
+     "xmin": 1,
+     "xmax": 1.4,
+     "vars": {
+      "a": {
+       "min": 0.05,
+       "max": 1,
+       "step": 0.01,
+       "def": 0.37,
+       "label": "w (fracción)",
+       "unit": ""
+      },
+      "b": {
+       "min": 30,
+       "max": 100,
+       "step": 0.5,
+       "def": 36.5,
+       "label": "M",
+       "unit": "g/mol"
+      }
+     }
+    },
+    "leyenda": "c (mol/L) en función de la densidad d (eje x): con d = 1,18, w = 0,37 y M = 36,5 sale c ≈ 12 mol/L."
+   }
+  },
+  {
+   "id": "f_n",
+   "latex": "n = \\dfrac{m}{M}",
+   "nombre": "Quantité de matière à partir de la masse",
+   "nombre_fr": "Quantité de matière",
+   "variables": [
+    {
+     "simbolo": "n",
+     "significado": "cantidad de materia",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa",
+     "unidad": "g"
+    },
+    {
+     "simbolo": "M",
+     "significado": "masa molar",
+     "unidad": "g·mol⁻¹"
+    }
+   ],
+   "explicacion": "Relación usada para pasar de masa de soluto a cantidad de materia (y a la inversa en los ejercicios: m = n·M).",
+   "ejemplo": {
+    "enunciado": "Ex. 26: n(Cl⁻) = 7,5×10⁻⁴ mol de NaCl, M(NaCl) = 58,5 g·mol⁻¹ (m = n·M).",
+    "resultado": "m(NaCl) = 4,4×10⁻² g",
+    "pagina_pdf": 97
+   },
+   "pagina_pdf": 87,
+   "animacion": {
+    "preset": "masa-molar",
+    "params": {
+     "m": 0.044,
+     "M": 58.5
+    },
+    "leyenda": "Con 0,044 g de NaCl (M = 58,5 g/mol) verás la cantidad de materia n ≈ 7,5×10⁻⁴ mol."
+   }
+  },
+  {
+   "id": "f_dil",
+   "latex": "c\\cdot V = c_{\\text{diluée}}\\cdot V_{\\text{diluée}}",
+   "nombre": "Conservation de la quantité de matière lors d'une dilution",
+   "nombre_fr": "Dilution",
+   "variables": [
+    {
+     "simbolo": "c",
+     "significado": "concentración de la disolución madre",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen de disolución madre que se toma",
+     "unidad": "L"
+    },
+    {
+     "simbolo": "c_{diluée}",
+     "significado": "concentración de la disolución hija",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "V_{diluée}",
+     "significado": "volumen de la disolución hija",
+     "unidad": "L"
+    }
+   ],
+   "explicacion": "Al diluir, la cantidad de materia de soluto no cambia (n = n_diluée), así que c·V = c_diluée·V_diluée; de ahí V = c_diluée·V_diluée / c.",
+   "ejemplo": {
+    "enunciado": "Preparar V_diluée = 500 mL a c_diluée = 0,1 mol·L⁻¹ desde c = 12 mol·L⁻¹.",
+    "resultado": "V = 4×10⁻³ L = 4 mL (con bureta graduada, no existe pipeta aforada de 4 mL)",
+    "pagina_pdf": 88
+   },
+   "pagina_pdf": 88,
+   "animacion": {
+    "preset": "dilucion",
+    "params": {
+     "C0": 12,
+     "V0": 4,
+     "Vf": 500
+    },
+    "leyenda": "Se toman 4 mL de la disolución madre (12 mol/L) y se completan hasta 500 mL: la concentración baja a ≈ 0,1 mol/L."
+   }
+  },
+  {
+   "id": "f_V0",
+   "latex": "V_0 = \\dfrac{c_1\\cdot V_1}{c_0}",
+   "nombre": "Volume de solution-mère à prélever",
+   "nombre_fr": "Volume de solution-mère à prélever",
+   "variables": [
+    {
+     "simbolo": "V_0",
+     "significado": "volumen de disolución madre a tomar",
+     "unidad": "L"
+    },
+    {
+     "simbolo": "c_1",
+     "significado": "concentración de la disolución hija deseada",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "V_1",
+     "significado": "volumen de disolución hija a preparar",
+     "unidad": "L"
+    },
+    {
+     "simbolo": "c_0",
+     "significado": "concentración de la disolución madre",
+     "unidad": "mol·L⁻¹"
+    }
+   ],
+   "explicacion": "Fiche pratique 10: se toma V₀ con pipeta aforada y se completa con agua destilada en una fiola aforada de volumen V₁. Con concentraciones en masa: V₀ = c_m1·V₁/c_m0.",
+   "ejemplo": null,
+   "pagina_pdf": 589,
+   "animacion": {
+    "preset": "dilucion",
+    "params": {
+     "C0": 12,
+     "V0": 4,
+     "Vf": 500
+    },
+    "leyenda": "Ajusta el volumen final y mira qué volumen de disolución madre V₀ hay que pipetear."
+   }
+  },
+  {
+   "id": "f_eq",
+   "latex": "n_A = n_B \\;\\Longleftrightarrow\\; c_A\\cdot V_A = c_B\\cdot V_E",
+   "nombre": "Relation à l'équivalence",
+   "nombre_fr": "Relation à l'équivalence",
+   "variables": [
+    {
+     "simbolo": "n_A, n_B",
+     "significado": "cantidades de materia de la especie titrada y titrante (a la equivalencia)",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "c_A",
+     "significado": "concentración de la especie titrada",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "V_A",
+     "significado": "volumen de la muestra (prise d'essai)",
+     "unidad": "mL"
+    },
+    {
+     "simbolo": "c_B",
+     "significado": "concentración de la solución titrante",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "V_E",
+     "significado": "volumen equivalente",
+     "unidad": "mL"
+    }
+   ],
+   "explicacion": "A la equivalencia, las cantidades de ácido A y de base B son iguales (coeficientes estequiométricos 1:1 en el ejemplo del cours). Es la relación que se debe conocer para el bac.",
+   "ejemplo": {
+    "enunciado": "Titulación de V_A = 10 mL de ácido etanoico por sosa c_B = 1,0×10⁻² mol·L⁻¹; V_E = 20 mL.",
+    "resultado": "n_A = c_B·V_E = 2,0×10⁻⁴ mol",
+    "pagina_pdf": 90
+   },
+   "pagina_pdf": 90,
+   "animacion": {
+    "preset": "titrage",
+    "params": {
+     "Ca": 0.02,
+     "Va": 10,
+     "Cb": 0.01
+    },
+    "leyenda": "Añade titrante hasta la equivalencia: ahí c_A·V_A = c_B·V_E (V_E = 20 mL en este ejemplo)."
+   }
+  },
+  {
+   "id": "f_cA",
+   "latex": "c_A = \\dfrac{n_A}{V_A} = \\dfrac{c_B\\cdot V_E}{V_A}",
+   "nombre": "Concentration de l'espèce titrée",
+   "nombre_fr": "Concentration de l'espèce titrée",
+   "variables": [
+    {
+     "simbolo": "c_A",
+     "significado": "concentración buscada de la especie titrada",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "c_B",
+     "significado": "concentración de la solución titrante",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "V_E",
+     "significado": "volumen equivalente",
+     "unidad": "mL"
+    },
+    {
+     "simbolo": "V_A",
+     "significado": "volumen de la muestra titulada",
+     "unidad": "mL"
+    }
+   ],
+   "explicacion": "Despejando c_A de la relación de equivalencia (misma unidad de volumen arriba y abajo) se obtiene la concentración desconocida.",
+   "ejemplo": {
+    "enunciado": "V_A = 10 mL, c_B = 1,0×10⁻² mol·L⁻¹, V_E = 20 mL.",
+    "resultado": "c_A = 2,0×10⁻² mol·L⁻¹",
+    "pagina_pdf": 90
+   },
+   "pagina_pdf": 90,
+   "animacion": {
+    "preset": "titrage",
+    "params": {
+     "Ca": 0.02,
+     "Va": 10,
+     "Cb": 0.01
+    },
+    "leyenda": "Compara c_A con c_B·V_E/V_A: el resultado del ejemplo es 2,0×10⁻² mol/L."
+   }
+  },
+  {
+   "id": "f_x",
+   "latex": "c_A\\cdot V_A - x_E = 0 \\quad\\text{et}\\quad c_B\\cdot V_E - x_E = 0",
+   "nombre": "Tableau d'avancement à l'équivalence",
+   "nombre_fr": "Avancement à l'équivalence",
+   "variables": [
+    {
+     "simbolo": "x_E",
+     "significado": "avance a la equivalencia",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "c_A·V_A",
+     "significado": "cantidad inicial de la especie titrada",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "c_B·V_E",
+     "significado": "cantidad de titrante añadida",
+     "unidad": "mol"
+    }
+   ],
+   "explicacion": "En la tabla de avance, a la equivalencia los dos reactivos se consumen por completo: de ahí c_A·V_A = c_B·V_E = x_E. Antes de V_E el titrante es limitante; después lo es la especie titrada.",
+   "ejemplo": {
+    "enunciado": "Ejemplo de la tabla: CH₃CO₂H + HO⁻ → CH₃CO₂⁻ + H₂O con V_A = 10 mL, c_B = 1,0×10⁻² mol·L⁻¹, V_E = 20 mL.",
+    "resultado": "x_E = 2,0×10⁻⁴ mol",
+    "pagina_pdf": 90
+   },
+   "pagina_pdf": 90,
+   "animacion": {
+    "preset": "avance",
+    "params": {
+     "x": 0.0002,
+     "n1": 0.0002,
+     "n2": 0.0002
+    },
+    "leyenda": "Los dos reactivos llegan a cero a la vez en x = x_E: es la equivalencia."
+   }
+  },
+  {
+   "id": "f_u",
+   "latex": "\\dfrac{u_c}{c}=\\sqrt{\\left(\\dfrac{u_{V_E}}{V_E}\\right)^2+\\left(\\dfrac{u_{V_A}}{V_A}\\right)^2+\\left(\\dfrac{u_{c_B}}{c_B}\\right)^2}",
+   "nombre": "Incertitude-type sur la concentration",
+   "nombre_fr": "Incertitude-type sur c",
+   "variables": [
+    {
+     "simbolo": "u_c",
+     "significado": "incertidumbre típica sobre c",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "u_{V_E}, u_{V_A}, u_{c_B}",
+     "significado": "incertidumbres típicas de V_E, V_A y c_B",
+     "unidad": "mL, mL, mol·L⁻¹"
+    }
+   ],
+   "explicacion": "Cada fuente de error aporta su incertidumbre relativa al cuadrado; el término mayor domina el resultado. Aparece en el ejercicio resuelto 24 (y en el 33 para la masa).",
+   "ejemplo": {
+    "enunciado": "Ex. 24: c = 6,0×10⁻² mol·L⁻¹, u_VE = 0,16 mL (V_E = 20,0), u_VA = 0,10 mL (V_A = 10,0), u_cB = 0,010 mol·L⁻¹ (c_B = 3,00×10⁻²).",
+    "resultado": "u_c = 0,020 mol·L⁻¹",
+    "pagina_pdf": 96
+   },
+   "pagina_pdf": 96,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "sqrt((a/x)^2+b^2+c^2)",
+     "xmin": 5,
+     "xmax": 40,
+     "vars": {
+      "a": {
+       "min": 0.05,
+       "max": 0.5,
+       "step": 0.01,
+       "def": 0.16,
+       "label": "u(V_E)",
+       "unit": "mL"
+      },
+      "b": {
+       "min": 0,
+       "max": 0.1,
+       "step": 0.005,
+       "def": 0.01,
+       "label": "u(V_A)/V_A",
+       "unit": ""
+      },
+      "c": {
+       "min": 0,
+       "max": 0.5,
+       "step": 0.01,
+       "def": 0.333,
+       "label": "u(c_B)/c_B",
+       "unit": ""
+      }
+     }
+    },
+    "leyenda": "Incertidumbre relativa u_c/c según V_E (eje x, mL): domina el término mayor (aquí u(c_B)/c_B del ex. 24)."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "ρ_eau (masa volúmica del agua)",
+   "valor": "1,00×10³",
+   "unidad": "g·L⁻¹",
+   "pagina_pdf": 84
+  },
+  {
+   "nombre": "M(HCl)",
+   "valor": "36,5",
+   "unidad": "g·mol⁻¹",
+   "pagina_pdf": 84
+  },
+  {
+   "nombre": "M(ácido láctico AH)",
+   "valor": "90",
+   "unidad": "g·mol⁻¹",
+   "pagina_pdf": 85
+  },
+  {
+   "nombre": "M(NaOH)",
+   "valor": "40",
+   "unidad": "g·mol⁻¹",
+   "pagina_pdf": 86
+  },
+  {
+   "nombre": "M(NaCl)",
+   "valor": "58,5",
+   "unidad": "g·mol⁻¹",
+   "pagina_pdf": 97
+  },
+  {
+   "nombre": "λ(H₃O⁺) a 25 °C",
+   "valor": "35,0×10⁻³",
+   "unidad": "S·m²·mol⁻¹",
+   "pagina_pdf": 90
+  },
+  {
+   "nombre": "λ(Na⁺) a 25 °C",
+   "valor": "5,0×10⁻³",
+   "unidad": "S·m²·mol⁻¹",
+   "pagina_pdf": 90
+  },
+  {
+   "nombre": "λ(K⁺) a 25 °C",
+   "valor": "7,4×10⁻³",
+   "unidad": "S·m²·mol⁻¹",
+   "pagina_pdf": 90
+  },
+  {
+   "nombre": "λ(HO⁻) a 25 °C",
+   "valor": "19,8×10⁻³",
+   "unidad": "S·m²·mol⁻¹",
+   "pagina_pdf": 90
+  },
+  {
+   "nombre": "λ(Cl⁻) a 25 °C",
+   "valor": "7,6×10⁻³",
+   "unidad": "S·m²·mol⁻¹",
+   "pagina_pdf": 90
+  },
+  {
+   "nombre": "λ(Br⁻) a 25 °C",
+   "valor": "7,8×10⁻³",
+   "unidad": "S·m²·mol⁻¹",
+   "pagina_pdf": 90
+  },
+  {
+   "nombre": "λ(Cl⁻), λ(NO₃⁻), λ(Ag⁺) a 25 °C (datos ex. 23)",
+   "valor": "76,3×10⁻⁴ ; 71,4×10⁻⁴ ; 61,9×10⁻⁴",
+   "unidad": "S·m²·mol⁻¹",
+   "pagina_pdf": 95
+  },
+  {
+   "nombre": "Conductividad de la solución patrón KCl 1,0×10⁻¹ mol·L⁻¹ a 25 °C",
+   "valor": "12,97",
+   "unidad": "mS·cm⁻¹",
+   "pagina_pdf": 591
+  },
+  {
+   "nombre": "Conductividad de la solución patrón KCl 1,0×10⁻² mol·L⁻¹ a 25 °C",
+   "valor": "1 412",
+   "unidad": "µS·cm⁻¹",
+   "pagina_pdf": 591
+  },
+  {
+   "nombre": "Soluciones tampón usuales para calibrar el pH-metro",
+   "valor": "pH = 4, 7 y 10",
+   "unidad": "",
+   "pagina_pdf": 590
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Preparar una solución de concentración dada por dilución (fiche pratique 10)",
+   "pasos": [
+    "Calcular el volumen de solución-mère a tomar: V₀ = c₁·V₁/c₀ (o V₀ = c_m1·V₁/c_m0 con concentraciones en masa).",
+    "Material: pipette jaugée de contenance V₀, fiole jaugée de volumen V₁ con su tapón; además pipeteador, vaso, cuentagotas o pipeta.",
+    "Verter la solución a tomar en un vaso, enjuagar la pipette jaugée con un poco de esa solución y pipetear V₀ alineando la parte baja del menisco con el trazo de aforo.",
+    "Introducir el volumen en la fiole jaugée; no soplar en la pipeta para recuperar las últimas gotas (su volumen no cuenta en V₀).",
+    "Añadir agua destilada sin llenar más de la mitad, tapar y agitar suavemente para homogeneizar.",
+    "Completar con agua destilada hasta 1 cm bajo el trazo, ajustar con cuentagotas hasta el trazo de aforo, tapar y agitar: la solución-fille está lista."
+   ],
+   "pagina_pdf": 589
+  },
+  {
+   "titulo": "Calcular la concentración de una solución comercial",
+   "pasos": [
+    "Identificar d y w en el enunciado (son las magnitudes que caracterizan una solución comercial).",
+    "m_soluté = m_solution·w = ρ·V·w = ρ_eau·d·V·w.",
+    "c = m_soluté/(M·V) = ρ_eau·d·w / M, con ρ_eau = 1,00×10³ g·L⁻¹ y w en fracción.",
+    "Para diluirla, calcular el factor de dilución c_com/c y elegir pipette jaugée y fiole jaugée compatibles."
+   ],
+   "pagina_pdf": 96
+  },
+  {
+   "titulo": "Realizar un titrage direct (fiche pratique 13)",
+   "pasos": [
+    "Montaje: bureta graduada con la solución titrante (concentración conocida), soporte, erlenmeyer o vaso con la solución titrada y agitador magnético con barreau aimanté.",
+    "Enjuagar la bureta con la solución titrante, llenarla pasando el cero y ajustar a cero abriendo el grifo; la parte bajo el grifo debe quedar llena.",
+    "Tomar la prise d'essai con pipette jaugée enjuagada con la solución a tomar e introducirla en un vaso limpio y seco.",
+    "Regular la agitación (si es demasiado rápida salpica y las gotas en las paredes no se dosifican).",
+    "Verter el titrante progresivamente hasta la equivalencia: el reactivo titrado se consume (reactivo limitante) hasta V_E.",
+    "Leer la graduación por encima o debajo del menisco según la solución sea transparente u opaca; la lectura de V_E se hace igual."
+   ],
+   "pagina_pdf": 592
+  },
+  {
+   "titulo": "Utilizar un pH-metro (fiche pratique 11)",
+   "pasos": [
+    "Manipular la sonda con precaución; aclararla con agua destilada antes y después de cada medida y devolverla a su solución de conservación entre usos.",
+    "Calibrar con dos soluciones tampón (valores usuales pH = 4, 7 y 10): sumergir, validar el valor, aclarar, sumergir en la segunda y validar.",
+    "Medir con la sonda bien sumergida y esperar la estabilización de la lectura (se da a 0,1 unidad de pH)."
+   ],
+   "pagina_pdf": 590
+  },
+  {
+   "titulo": "Utilizar un conductímetro (fiche pratique 12)",
+   "pasos": [
+    "Calibrar con una solución patrón de KCl cuya conductividad se conoce según la temperatura (tabla del libro).",
+    "Con sonda y termómetro en la solución, agitar, esperar el equilibrio térmico y ajustar la lectura al valor de la tabla.",
+    "Medir de la solución más diluida a la más concentrada; aclarar con agua destilada y secar con papel absorbente entre medidas.",
+    "Regular la altura de la sonda para que esté bien sumergida y esperar la estabilización."
+   ],
+   "pagina_pdf": 591
+  },
+  {
+   "titulo": "Determinar V_E en un titrage pH-métrique (tangentes o derivada)",
+   "pasos": [
+    "Trazar pH = f(V). La equivalencia se ve como una variación brusca (salto) de pH.",
+    "Método de las tangentes: dos tangentes paralelas a ambos lados del salto (1 y 2) y una recta paralela y equidistante (3); su corte con la curva da V_E.",
+    "Método de la derivada: con un programa trazar dpH/dV; la abscisa del extremo es V_E (máximo si se titula un ácido con una base; mínimo si se titula una base con un ácido)."
+   ],
+   "pagina_pdf": 593
+  },
+  {
+   "titulo": "Determinar V_E en un titrage conductimétrico",
+   "pasos": [
+    "Medir la conductividad σ (o la conductancia G) en función del volumen V de titrante vertido.",
+    "Trazar una recta de regresión antes de la equivalencia y otra después; hay que prolongar las dos portions de droite.",
+    "La abscisa del punto de intersección es V_E.",
+    "Interpretar la pendiente con λ y las concentraciones de los iones (los iones sustituidos o añadidos cambian la conductividad)."
+   ],
+   "pagina_pdf": 593
+  },
+  {
+   "titulo": "Exploitation d'un titrage con tabla de avance",
+   "pasos": [
+    "Escribir la ecuación de la reacción soporte y construir la tabla: inicial (n_A = c_A·V_A, n_B = c_B·V), antes de V_E (x), en V_E (x_E).",
+    "A la equivalencia los reactivos se consumen: c_A·V_A − x_E = 0 y c_B·V_E − x_E = 0.",
+    "Deducir c_A·V_A = c_B·V_E y despejar c_A = c_B·V_E/V_A."
+   ],
+   "pagina_pdf": 90
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Confundir masa volúmica y densidad",
+   "correccion": "ρ tiene unidad (g·L⁻¹, kg·m⁻³); d = ρ/ρ_eau no tiene unidad.",
+   "pagina_pdf": 87
+  },
+  {
+   "id": "err2",
+   "nombre": "Usar la masa del disolvente en w",
+   "correccion": "w = m_soluté / m_solución (de la solución entera) × 100.",
+   "pagina_pdf": 87
+  },
+  {
+   "id": "err3",
+   "nombre": "Creer que diluir cambia n",
+   "correccion": "n se conserva: c·V = c_diluée·V_diluée.",
+   "pagina_pdf": 88
+  },
+  {
+   "id": "err4",
+   "nombre": "Esperar siempre un cambio de color",
+   "correccion": "La equivalencia también se halla por pH-metría o conductimetría.",
+   "pagina_pdf": 88
+  },
+  {
+   "id": "err5",
+   "nombre": "Confundir titrante y titrado como limitante",
+   "correccion": "Hasta V_E el titrante es limitante; después lo es el titrado.",
+   "pagina_pdf": 88
+  },
+  {
+   "id": "err6",
+   "nombre": "No prolongar las dos rectas",
+   "correccion": "Prolongar ambas rectas: V_E es la abscisa de su intersección.",
+   "pagina_pdf": 593
+  },
+  {
+   "id": "err7",
+   "nombre": "Olvidar la densidad de la solución",
+   "correccion": "Usar d para pasar de volumen a masa de solución.",
+   "pagina_pdf": 97
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "TP 1 — Dilution d'une solution",
+   "descripcion": "A partir de HCl comercial (w = 34 %, d = 1,17, M = 36,5 g·mol⁻¹) preparar una solución diluida de c = 2×10⁻¹ mol·L⁻¹: listar el material, calcular la masa de un litro de solución comercial, la masa de soluto y su concentración, y respetar las consignas de seguridad. Gesto: dilución con pipette jaugée y fiole jaugée.",
+   "pagina_pdf": 84
+  },
+  {
+   "titulo": "TP 2 — Titrage suivi par pH-métrie",
+   "descripcion": "Determinar el contenido en ácido láctico de un detartrante comercial (55 % en masa, ρ = 1,1 kg·L⁻¹, M(AH) = 90 g·mol⁻¹): diluir 10 veces, titular V_A = 5,0 mL con NaOH c_B = 0,20 mol·L⁻¹, hallar V_E y comparar con la indicación del título másico. Incluye un programa Python que traza n(AH), n(A⁻) y n(HO⁻) frente a V.",
+   "pagina_pdf": 85
+  },
+  {
+   "titulo": "Tâche complexe — Titrage par conductimétrie",
+   "descripcion": "Verificar el contenido de hidróxido de sodio de un desatascador (10 % de NaOH, d = 1,23, M(NaOH) = 40 g·mol⁻¹) diluido 10 veces: calibrar el conductímetro con KCl patrón, medir σ de la más diluida a la más concentrada y proponer una estrategia de resolución.",
+   "pagina_pdf": 86
+  },
+  {
+   "titulo": "Ex. 36 — Analizar una mantequilla (acide butanoïque)",
+   "descripcion": "Titulación conductimétrica del ácido butanoico de 8,0 g de mantequilla con NaOH 4,0×10⁻¹ mol·L⁻¹ para saber si está rancia (rancia si w en ácido butanoico ≥ 4 %).",
+   "pagina_pdf": 101
+  },
+  {
+   "titulo": "Ex. 37 — Un soda universal",
+   "descripcion": "Titulación pH-métrica del ácido fosfórico de 10,0 mL de soda degasada con NaOH 1,0×10⁻² mol·L⁻¹ y comparación con la dosis journalière admissible.",
+   "pagina_pdf": 102
+  },
+  {
+   "titulo": "Pour préparer l'ECE — Élevage d'artémies",
+   "descripcion": "Determinar por titulación conductimétrica con nitrato de plata (1,00×10⁻¹ mol·L⁻¹) la concentración en iones cloruro de agua de marisma diluida 10 veces; las artemias necesitan una concentración en masa de Cl⁻ superior a 30 g·L⁻¹ (M(Cl) = 35,5 g·mol⁻¹).",
+   "pagina_pdf": 104
+  },
+  {
+   "titulo": "Grand oral — Comment établir la composition d'une eau ?",
+   "descripcion": "Propuesta de plan: el agua contiene iones; los pares A/B del agua y su pH; métodos físicos de análisis; métodos químicos de análisis. Palabras clave: conductancia, conductividad molar iónica, pH, pares A/B, titrage, equivalencia.",
+   "pagina_pdf": 105
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e24",
+   "enunciado": "Ex. 24 (résolu) Solución comercial S de HCl, d = 1,19 y w = 37 %. Una muestra diluida de V_A = 10,0 mL se titula con seguimiento pH-métrico con sosa c_B = 3,00×10⁻² mol·L⁻¹; V_E = 20,0 mL. 1. Determinar c_com de S. 2. Ecuación de la reacción soporte. 3. Concentración c de la solución diluida. 4. Incertidumbre u_c (u_VE = 0,16 mL, u_VA = 0,10 mL, u_cB = 0,010 mol·L⁻¹). 5. Material para la dilución.",
+   "datos": {
+    "d": "1,19",
+    "w": "37 %",
+    "M(HCl)": "36,5 g·mol⁻¹",
+    "V_A": "10,0 mL",
+    "c_B": "3,00×10⁻² mol·L⁻¹",
+    "V_E": "20,0 mL"
+   },
+   "respuesta": "c_com = ρ_eau·d·w/M = 12 mol·L⁻¹; H₃O⁺(aq) + HO⁻(aq) → 2 H₂O(ℓ); c = c_B·V_E/V_A = 6,0×10⁻² mol·L⁻¹; u_c = 0,020 mol·L⁻¹; factor de dilución 12/6,00×10⁻² = 200: pipette jaugée de 1 mL y fiole jaugée de 200 mL.",
+   "respuesta_numerica": {
+    "valor": 12,
+    "unidad": "mol·L⁻¹",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "c_com = 1,00×10³×1,19×0,37/36,5 = 12 mol·L⁻¹",
+    "H₃O⁺ + HO⁻ → 2 H₂O",
+    "n(H₃O⁺) = n(HO⁻) ⇒ c = c_B·V_E/V_A = 3,00×10⁻²×20,0/10,0 = 6,0×10⁻² mol·L⁻¹",
+    "u_c = c·√[(0,16/20,0)²+(0,10/10,0)²+(0,010/3,00×10⁻²)²] = 0,020 mol·L⁻¹",
+    "facteur de dilution = c_com/c = 200"
+   ],
+   "pagina_pdf": 96,
+   "corrige_pagina_pdf": 96
+  },
+  {
+   "id": "e26",
+   "enunciado": "Ex. 26 (résolu) Unidosis de lágrimas artificiales: solución acuosa de NaCl de w = 0,9 % y d = 1,0. Se dosifican 5,0 mL con nitrato de plata c = 5,00×10⁻² mol·L⁻¹ (Ag⁺ + Cl⁻ → AgCl(s)). La curva σ = f(V) da el volumen equivalente. 1. Tipo de titrage. 2. V_E. 3. n(Cl⁻). 4. Masa de NaCl y comparación con la del fabricante.",
+   "datos": {
+    "c(Ag⁺)": "5,00×10⁻² mol·L⁻¹",
+    "M(NaCl)": "58,5 g·mol⁻¹",
+    "V": "5,0 mL",
+    "d": "1,0",
+    "w": "0,9 %"
+   },
+   "respuesta": "Titrage conductimétrico; V_E = 15 mL (intersección de las dos rectas); n(Cl⁻) = c·V_E = 7,5×10⁻⁴ mol; m(NaCl) = 4,4×10⁻² g; el fabricante indica 0,9 %×5,0 g = 4,5×10⁻² g: valor cercano.",
+   "respuesta_numerica": {
+    "valor": 0.0439,
+    "unidad": "g",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Conductividad σ en ordenadas ⇒ titrage conductimétrico",
+    "Prolongar los dos segmentos de recta: V_E = 15 mL",
+    "n(Cl⁻) = c·V_E = 5,00×10⁻²×15×10⁻³ = 7,5×10⁻⁴ mol",
+    "m(NaCl) = n·M = 7,5×10⁻⁴×58,5 = 4,4×10⁻² g",
+    "Fabricante: m = w·m_solution = 0,9×10⁻²×5,0 = 4,5×10⁻² g (teniendo en cuenta d = 1,0)"
+   ],
+   "pagina_pdf": 97,
+   "corrige_pagina_pdf": 97
+  },
+  {
+   "id": "e15",
+   "enunciado": "Ex. 15 Solución comercial de ácido fosfórico de densidad d = 1,6 y título másico w = 75 %. 1. Calcular su concentración. 2. Material para una dilución. 3. Cómo preparar 1,0 L a 0,10 mol·L⁻¹.",
+   "datos": {
+    "M(H₃PO₄)": "98 g·mol⁻¹",
+    "d": "1,6",
+    "w": "75 %"
+   },
+   "respuesta": "c = 12 mol·L⁻¹; fiole jaugée, pipette jaugée y pipeteador, vasos; tomar con bureta graduada 8,3 mL de la solución comercial, verterlos en una fiole jaugée de 1,0 L y completar con agua destilada hasta 1,0 L.",
+   "respuesta_numerica": {
+    "valor": 12,
+    "unidad": "mol·L⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "c = ρ_eau·d·w/M = 1,00×10³×1,6×0,75/98 ≈ 12 mol·L⁻¹",
+    "V₀ = c₁·V₁/c₀ = 0,10×1,0/12 ≈ 8,3×10⁻³ L"
+   ],
+   "pagina_pdf": 93,
+   "corrige_pagina_pdf": 612
+  },
+  {
+   "id": "e17",
+   "enunciado": "Ex. 17 Titulación de ibuprofeno RCO₂H por sosa (HO⁻) de concentración c_B. 1. Ecuación. 2. Características de la reacción. 3. Completar con <, > o = el estado antes, en y después de la equivalencia.",
+   "datos": {
+    "Pares ácido-base": "RCO₂H/RCO₂⁻ ; H₂O/HO⁻"
+   },
+   "respuesta": "RCO₂H(aq) + HO⁻(aq) → RCO₂⁻(aq) + H₂O(ℓ). La reacción debe ser rápida, total y única. Antes de V_E: n(RCO₂H_inicial) − x > 0, n(HO⁻_vertido) − x = 0, n(HO⁻_vertido) < n(RCO₂H_inicial). En V_E: n(RCO₂H_inicial) − x = 0, n(HO⁻_vertido) − x = 0, n(HO⁻_vertido) = n(RCO₂H_inicial). Después de V_E: n(RCO₂H_inicial) − x = 0, n(HO⁻_vertido) − x > 0, n(HO⁻_vertido) > n(RCO₂H_inicial).",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Escribir la ecuación con los pares dados",
+    "Antes de V_E el ácido está en exceso (el titrante es limitante)",
+    "En V_E ambos reactivos se consumen",
+    "Después de V_E el HO⁻ está en exceso"
+   ],
+   "pagina_pdf": 93,
+   "corrige_pagina_pdf": 612
+  },
+  {
+   "id": "e21",
+   "enunciado": "Ex. 21 Condición física de un caballo: umbral de fatiga 3,5×10⁻³ mol·L⁻¹ de ácido láctico en sangre. Se extrae V = 1,00 mL de sangre y se disuelve en agua para obtener V_S = 50,00 mL (solución S), que se titula con sosa c₁ = 1,00×10⁻³ mol·L⁻¹ (curva pH y dpH/dV, V_E ≈ 4 mL). 1. Ecuación (AH). 2. Determinar V_E. 3. c_S. 4. ¿Estado físico del caballo?",
+   "datos": {
+    "V": "1,00 mL",
+    "V_S": "50,00 mL",
+    "c₁": "1,00×10⁻³ mol·L⁻¹",
+    "V_E": "4,0 mL"
+   },
+   "respuesta": "AH(aq) + HO⁻(aq) → A⁻(aq) + H₂O(ℓ); V_E corresponde al máximo de la curva derivada de pH = f(V); c_S = 8,0×10⁻⁵ mol·L⁻¹; la concentración en la sangre (4,0×10⁻³ mol·L⁻¹) supera 3,5×10⁻³: el caballo no está en forma.",
+   "respuesta_numerica": {
+    "valor": 8e-05,
+    "unidad": "mol·L⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "V_E = máximo de dpH/dV = 4,0 mL",
+    "c_S = c₁·V_E/V_S = 1,00×10⁻³×4,0/50,00 = 8,0×10⁻⁵ mol·L⁻¹",
+    "c_sangre = c_S·V_S/V = 8,0×10⁻⁵×50,00/1,00 = 4,0×10⁻³ mol·L⁻¹ > 3,5×10⁻³ mol·L⁻¹"
+   ],
+   "pagina_pdf": 94,
+   "corrige_pagina_pdf": 612
+  },
+  {
+   "id": "e23",
+   "enunciado": "Ex. 23 Titulación de los iones cloruro de 20,0 mL de leche mezclados con 200 mL de agua desmineralizada con Ag⁺ de c = 5,00×10⁻² mol·L⁻¹; reacción Ag⁺(aq) + Cl⁻(aq) → AgCl(s); seguimiento conductimétrico. 1. Esquema. 2. ¿Qué gráfica A–D representa σ(V)? 3. V_E.",
+   "datos": {
+    "λ(Cl⁻)": "76,3×10⁻⁴ S·m²·mol⁻¹",
+    "λ(NO₃⁻)": "71,4×10⁻⁴ S·m²·mol⁻¹",
+    "λ(Ag⁺)": "61,9×10⁻⁴ S·m²·mol⁻¹"
+   },
+   "respuesta": "Esquema: bureta con nitrato de plata, 20,0 mL de leche + 200 mL de agua con sonda conductimétrica sobre agitador magnético; la gráfica correcta es la C (σ disminuye ligeramente y luego aumenta); V_E = 11,6 mL.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Antes de V_E los Cl⁻ se sustituyen por NO₃⁻ (λ menor): σ baja un poco",
+    "Después de V_E se añaden Ag⁺ y NO₃⁻ que no reaccionan: σ aumenta",
+    "Intersección de las dos rectas: V_E = 11,6 mL"
+   ],
+   "pagina_pdf": 95,
+   "corrige_pagina_pdf": 612
+  },
+  {
+   "id": "e25",
+   "enunciado": "Ex. 25 (similar) Solución comercial S de ácido sulfúrico d = 1,82 y w = 92 %. Una muestra diluida de V_A = 20,0 mL se titula con sosa c_B = 5,00×10⁻² mol·L⁻¹ con seguimiento pH-métrico; V_E = 10,0 mL. Repetir las preguntas 1 a 4 del ex. 24.",
+   "datos": {
+    "M(H₂SO₄)": "98 g·mol⁻¹",
+    "u_VE": "0,15 mL",
+    "u_VA": "0,10 mL",
+    "u_cB": "0,010 mol·L⁻¹"
+   },
+   "respuesta": "c_com = 17 mol·L⁻¹; H₃O⁺(aq) + HO⁻(aq) → 2 H₂O(ℓ); c = 2,5×10⁻² mol·L⁻¹; u_c = 0,005 mol·L⁻¹.",
+   "respuesta_numerica": {
+    "valor": 17,
+    "unidad": "mol·L⁻¹",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "c_com = 1,00×10³×1,82×0,92/98 = 17 mol·L⁻¹",
+    "c = c_B·V_E/V_A = 5,00×10⁻²×10,0/20,0 = 2,5×10⁻² mol·L⁻¹"
+   ],
+   "pagina_pdf": 96,
+   "corrige_pagina_pdf": 612
+  },
+  {
+   "id": "e27",
+   "enunciado": "Ex. 27 Loción capilar (w indicado 0,1 % de NaCl, d = 0,98). Titulación conductimétrica de 10 mL con Ag⁺ de c = 2,00×10⁻² mol·L⁻¹. 1. V_E. 2. n(Cl⁻). 3. Masa de NaCl y comparación con el fabricante.",
+   "datos": {
+    "M(NaCl)": "58,5 g·mol⁻¹",
+    "d": "0,98",
+    "c(Ag⁺)": "2,00×10⁻² mol·L⁻¹"
+   },
+   "respuesta": "V_E = 8,0 mL; n(Cl⁻) = 1,6×10⁻⁴ mol; m(NaCl)_calculada = 9,4×10⁻³ g frente a m(NaCl)_fabricante = 9,8×10⁻³ g: las dos masas son casi iguales.",
+   "respuesta_numerica": {
+    "valor": 0.0094,
+    "unidad": "g",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "V_E = 8,0 mL (intersección de rectas)",
+    "n(Cl⁻) = c·V_E = 2,00×10⁻²×8,0×10⁻³ = 1,6×10⁻⁴ mol",
+    "m = n·M = 1,6×10⁻⁴×58,5 = 9,4×10⁻³ g",
+    "Fabricante: 0,1 % × 10 mL × 0,98 = 9,8×10⁻³ g"
+   ],
+   "pagina_pdf": 97,
+   "corrige_pagina_pdf": 612
+  },
+  {
+   "id": "e28",
+   "enunciado": "Ex. 28 Corregir la solución de un alumno: HNO₃ comercial de w = 90 % y masa volúmica ρ = 1,4×10³ g·L⁻¹; M(HNO₃) = 63 g·mol⁻¹. 1. ¿Qué es el título másico? 2. Concentración en HNO₃. 3. Material para obtener una solución diluida a 2,0×10⁻¹ mol·L⁻¹.",
+   "datos": {
+    "w": "90 %",
+    "ρ": "1,4×10³ g·L⁻¹",
+    "M(HNO₃)": "63 g·mol⁻¹"
+   },
+   "respuesta": "Corrigé: el título másico es la masa de HNO₃ contenida en un litro de solución dividida por la masa de un litro de solución; n = 1 260/63 mol, c = 20 mol·L⁻¹; hay que diluir un factor 100: pipette jaugée de 1 mL y fiole jaugée de 100 mL.",
+   "respuesta_numerica": {
+    "valor": 20,
+    "unidad": "mol·L⁻¹",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Mismas unidades: 1 L pesa 1,4 kg y contiene 0,90×1,4 = 1,26 kg de HNO₃",
+    "n = 1 260/63 = 20 mol ⇒ c = 20 mol·L⁻¹",
+    "factor = 20/0,20 = 100"
+   ],
+   "pagina_pdf": 98,
+   "corrige_pagina_pdf": 612
+  },
+  {
+   "id": "e30",
+   "enunciado": "Ex. 30 Se titula por conductimetría V = 100,0 mL de solución S de ácido benzoico con sosa c_B = 1,0×10⁻¹ mol·L⁻¹ (C₆H₅CO₂H + HO⁻ → C₆H₅CO₂⁻ + H₂O). Calcular la concentración c_S.",
+   "datos": {
+    "V": "100,0 mL",
+    "c_B": "1,0×10⁻¹ mol·L⁻¹"
+   },
+   "respuesta": "V_E = 10,0 mL; n(C₆H₅CO₂H) = n(HO⁻) a la equivalencia; c_S = 1,0×10⁻² mol·L⁻¹.",
+   "respuesta_numerica": {
+    "valor": 0.01,
+    "unidad": "mol·L⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Determinar V_E en la curva σ(V): 10,0 mL",
+    "n(C₆H₅CO₂H) = n(HO⁻)",
+    "c_S = c_B·V_E/V = 1,0×10⁻¹×10,0/100,0 = 1,0×10⁻² mol·L⁻¹"
+   ],
+   "pagina_pdf": 98,
+   "corrige_pagina_pdf": 612
+  },
+  {
+   "id": "e32",
+   "enunciado": "Ex. 32 Titulación de una solución de ácido AH por sosa; programa Python (c_B = 0,1 mol/L, V_A = 20 mL, V_E = 20 mL, c_A = c_B·V_E/V_A) que traza n(AH) y n(A⁻) frente al volumen. 1. Ecuación. 2. Línea que codifica c_A y valor. 3. Instrucciones de las líneas 20 y 23. 4. Curva de n(HO⁻).",
+   "datos": {
+    "c_B": "0,1 mol/L",
+    "V_A": "20 mL",
+    "V_E": "20 mL"
+   },
+   "respuesta": "AH(aq) + HO⁻(aq) → A⁻(aq) + H₂O(ℓ); los reactivos se introdujeron en proporciones estequiométricas (línea 7); c_A = 0,1 mol·L⁻¹; línea 20: plt.plot(V_B1,n_a1,color=\"green\"); línea 23: plt.plot(V_B2,n_a2,color=\"green\"); n(HO⁻) es nula hasta V_E y luego crece linealmente.",
+   "respuesta_numerica": {
+    "valor": 0.1,
+    "unidad": "mol·L⁻¹",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "c_A = c_B·V_E/V_A = 0,1×20/20 = 0,1 mol·L⁻¹",
+    "Antes de V_E: n(HO⁻) = 0; después: n(HO⁻) = c_B·(V − V_E)"
+   ],
+   "pagina_pdf": 99,
+   "corrige_pagina_pdf": 612
+  },
+  {
+   "id": "e38",
+   "enunciado": "Ex. 38 Vinagre blanco (ρ = 1,0 g·mL⁻¹, M = 60,0 g·mol⁻¹, d = 1,0). Se titulan V_A = 10,0 mL de vinagre diluido 10 veces con sosa c_B = 0,100 mol·L⁻¹; V_E = 13,3 mL. ¿Está validado el grado indicado en la etiqueta (8°, 8 g de ácido etanoico por 100 g)?",
+   "datos": {
+    "c_B": "0,100 mol·L⁻¹",
+    "V_E": "13,3 mL",
+    "M": "60,0 g·mol⁻¹",
+    "V_A": "10,0 mL"
+   },
+   "respuesta": "Protocolo: pipetear 10,0 mL de vinagre puro, verterlos en fiole jaugée de 100,0 mL y completar con agua destilada hasta el trazo. Reacción: CH₃CO₂H(aq) + H₂O(ℓ) → CH₃CO₂⁻(aq) + H₃O⁺(aq). Síntesis: se obtienen m = 8,0 g de ácido etanoico por 100 g de vinagre: la inscripción de la etiqueta queda validada.",
+   "respuesta_numerica": {
+    "valor": 7.98,
+    "unidad": "g",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "c_diluido = c_B·V_E/V_A = 0,100×13,3/10,0 = 0,133 mol·L⁻¹",
+    "c₀ = 10×c_diluido = 1,33 mol·L⁻¹",
+    "1,33×60,0 = 79,8 g·L⁻¹ ⇒ 7,98 g por 100 mL (d = 1,0): ≈ 8,0 g por 100 g"
+   ],
+   "pagina_pdf": 103,
+   "corrige_pagina_pdf": 612
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "dilucion",
+   "params": {
+    "C0": 12,
+    "V0": 4,
+    "Vf": 500
+   },
+   "titulo": "Preparar una dilución",
+   "relacion": "c·V = c_diluée·V_diluée y V₀ = c₁·V₁/c₀ (fiche pratique 10, p. 88)"
+  },
+  {
+   "preset": "titrage",
+   "params": {
+    "Ca": 0.02,
+    "Va": 10,
+    "Cb": 0.01
+   },
+   "titulo": "Curva de titulación y equivalencia",
+   "relacion": "Relación de equivalencia c_A·V_A = c_B·V_E y método de las tangentes (p. 89-90)"
+  },
+  {
+   "preset": "conductimetria",
+   "params": {},
+   "titulo": "Seguimiento conductimétrico",
+   "relacion": "Cambio de pendiente en la equivalencia y conductividades molares iónicas (p. 90)"
+  },
+  {
+   "preset": "concentracion",
+   "params": {},
+   "titulo": "Concentración de una disolución",
+   "relacion": "c = n/V (acquis, p. 82)"
+  },
+  {
+   "preset": "masa-molar",
+   "params": {
+    "m": 0.044,
+    "M": 58.5
+   },
+   "titulo": "Masa y cantidad de materia",
+   "relacion": "n = m/M para pasar de masa de soluto a n (p. 87, ex. 26)"
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "laboratorio-neon",
+  "mecanica_especial": "Agitador magnético: zonas de campo que empujan (barreau aimanté), plataformas oscilantes como el menisco de la bureta y resortes de propipeta."
+ },
+ "estilo_intro_sugerido": "monigotes"
+}

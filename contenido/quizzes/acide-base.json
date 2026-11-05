@@ -1,0 +1,263 @@
+{
+ "capitulo_id": "acide-base",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "opcion",
+   "enunciado": "Un acide, selon la définition de Brønsted, est une espèce chimique qui peut :",
+   "opciones": [
+    "capter un ion hydrogène H⁺",
+    "capter un ion hydroxyde HO⁻",
+    "céder un ion hydrogène H⁺",
+    "céder un doublet d'électrons"
+   ],
+   "correcta": 2,
+   "explicacion": "Brønsted (1923) : un acide est une espèce capable de céder un ion H⁺ ; une base est capable d'en capter un. Céder un doublet d'électrons est la définition de Lewis (une base chez Lewis).",
+   "pagina_pdf": 44
+  },
+  {
+   "id": "q2",
+   "tipo": "opcion",
+   "enunciado": "L'acide méthanoïque HCO₂H(aq) est un acide. Sa base conjuguée est :",
+   "opciones": [
+    "l'ion HCO₃⁻(aq)",
+    "l'ion HCO₂⁻(aq)",
+    "l'ion HCO₂H₂⁺(aq)",
+    "l'ion CO₂²⁻(aq)"
+   ],
+   "correcta": 1,
+   "explicacion": "La demi-équation HCO₂H = HCO₂⁻ + H⁺ montre que la base conjuguée est l'ion méthanoate HCO₂⁻ (acide carboxylique → ion carboxylate).",
+   "pagina_pdf": 44
+  },
+  {
+   "id": "q3",
+   "tipo": "opcion",
+   "enunciado": "L'ammoniac NH₃(aq) est une base. Il appartient au couple :",
+   "opciones": [
+    "NH₃(aq) / NH₄⁺(aq)",
+    "NH₄⁺(aq) / NH₃(aq)",
+    "NH₂⁻(aq) / NH₃(aq)",
+    "NH₃(aq) / NH₂⁻(aq)"
+   ],
+   "correcta": 1,
+   "explicacion": "On note le couple acide / base : NH₄⁺ / NH₃, avec NH₄⁺ = NH₃ + H⁺. L'ammoniac capte H⁺ pour donner l'ion ammonium.",
+   "pagina_pdf": 44
+  },
+  {
+   "id": "q4",
+   "tipo": "opcion",
+   "enunciado": "Quelle est la demi-équation acide-base du couple NH₃OH⁺(aq) / NH₂OH(aq) ?",
+   "opciones": [
+    "NH₂OH + H⁺ = NH₃OH⁺",
+    "NH₃OH⁺ = NH₂OH + H⁺",
+    "NH₃OH⁺ + H⁺ = NH₂OH",
+    "NH₃OH⁺ → NH₂OH + H⁺ (avec une flèche simple)"
+   ],
+   "correcta": 1,
+   "explicacion": "AH = A⁻ + H⁺ : l'acide NH₃OH⁺ est à gauche et la base NH₂OH à droite avec H⁺. Une demi-équation s'écrit avec le signe = car elle se lit dans les deux sens.",
+   "pagina_pdf": 44
+  },
+  {
+   "id": "q5",
+   "tipo": "opcion",
+   "enunciado": "Une espèce amphotère est une espèce chimique qui :",
+   "opciones": [
+    "n'est ni un acide ni une base",
+    "appartient à deux couples acide-base différents et se comporte tantôt comme acide, tantôt comme base",
+    "porte une charge positive et une charge négative",
+    "est toujours un acide fort"
+   ],
+   "correcta": 1,
+   "explicacion": "Une espèce amphotère est l'acide d'un couple et la base d'un autre : l'eau (H₃O⁺/H₂O et H₂O/HO⁻) et l'ion hydrogénocarbonate HCO₃⁻ en sont des exemples.",
+   "pagina_pdf": 43
+  },
+  {
+   "id": "q6",
+   "tipo": "opcion",
+   "enunciado": "Dans la réaction entre l'acide éthanoïque CH₃CO₂H(aq) et l'eau, les deux couples acide-base mis en jeu sont :",
+   "opciones": [
+    "CH₃CO₂H / CH₃CO₂⁻ et H₃O⁺ / H₂O",
+    "CH₃CO₂H / CH₃CO₂⁻ et H₂O / HO⁻",
+    "CH₃CO₂⁻ / CH₃CO₂H et H₂O / H₃O⁺",
+    "CH₃CO₂H / H₃O⁺ et CH₃CO₂⁻ / H₂O"
+   ],
+   "correcta": 0,
+   "explicacion": "L'acide éthanoïque est l'acide du couple 1 ; l'eau doit jouer le rôle de la base, donc couple H₃O⁺ / H₂O. Équation : CH₃CO₂H + H₂O ⇌ CH₃CO₂⁻ + H₃O⁺ (non totale).",
+   "pagina_pdf": 42
+  },
+  {
+   "id": "q7",
+   "tipo": "opcion",
+   "enunciado": "Réaction entre l'acide méthanoïque HCO₂H(aq) et l'ammoniac NH₃(aq) (supposée totale) : quelle est l'équation ?",
+   "opciones": [
+    "HCO₂H + NH₄⁺ → HCO₂⁻ + NH₃",
+    "HCO₂H + NH₃ → HCO₂⁻ + NH₄⁺",
+    "HCO₂⁻ + NH₃ → HCO₂H + NH₄⁺",
+    "HCO₂H + NH₃ → HCO₂⁻ + NH₂⁻ + H₃O⁺"
+   ],
+   "correcta": 1,
+   "explicacion": "Couples : HCO₂H/HCO₂⁻ et NH₄⁺/NH₃. L'acide HCO₂H cède H⁺ à la base NH₃ : HCO₂H + NH₃ → HCO₂⁻ + NH₄⁺ (le H⁺ n'apparaît pas dans l'équation).",
+   "pagina_pdf": 44
+  },
+  {
+   "id": "q8",
+   "tipo": "opcion",
+   "enunciado": "Une solution aqueuse de NH₄Cl contient les ions NH₄⁺ et Cl⁻. On y ajoute HO⁻(aq) (soude). Que se passe-t-il ?",
+   "opciones": [
+    "Rien : Cl⁻ est l'acide et HO⁻ est la base",
+    "NH₄⁺ cède un H⁺ à HO⁻ : on forme NH₃(aq) (odeur d'ammoniac) et H₂O ; Cl⁻ est spectateur",
+    "HO⁻ cède un H⁺ à NH₄⁺ : on forme NH₅²⁺",
+    "Cl⁻ capte un H⁺ de NH₄⁺ et forme HCl(g)"
+   ],
+   "correcta": 1,
+   "explicacion": "NH₄⁺ (acide du couple NH₄⁺/NH₃) cède H⁺ à HO⁻ (base du couple H₂O/HO⁻). Les ions Cl⁻ et Na⁺ sont spectateurs. L'ammoniac NH₃ explique l'odeur.",
+   "pagina_pdf": 37
+  },
+  {
+   "id": "q9",
+   "tipo": "opcion",
+   "enunciado": "Parmi ces propositions sur les couples du dioxyde de carbone dissous, laquelle est correcte ?",
+   "opciones": [
+    "CO₂(aq),H₂O(ℓ) / HCO₃⁻(aq) et HCO₃⁻(aq) / CO₃²⁻(aq) : HCO₃⁻ est amphotère",
+    "HCO₃⁻ n'appartient qu'au couple CO₂,H₂O / HCO₃⁻",
+    "CO₃²⁻ est l'acide du couple HCO₃⁻ / CO₃²⁻",
+    "H₂CO₃(aq) est très stable et se déshydrate difficilement"
+   ],
+   "correcta": 0,
+   "explicacion": "HCO₃⁻ est la base de CO₂,H₂O/HCO₃⁻ et l'acide de HCO₃⁻/CO₃²⁻ : c'est une espèce amphotère. H₂CO₃ est peu stable, on préfère la notation CO₂(aq),H₂O(ℓ).",
+   "pagina_pdf": 40
+  },
+  {
+   "id": "q10",
+   "tipo": "opcion",
+   "enunciado": "Ion butanoate et acide butanoïque : quel est le schéma de passage de l'acide à sa base conjuguée ?",
+   "opciones": [
+    "L'atome d'hydrogène du groupe carboxyle part avec son électron ; l'oxygène reste avec un doublet liant en moins",
+    "L'hydrogène du groupe carboxyle part en laissant son électron : l'oxygène reçoit un doublet non liant supplémentaire et porte une charge négative",
+    "L'azote capte un H⁺ et porte une charge positive",
+    "Le carbone perd un doublet non liant"
+   ],
+   "correcta": 1,
+   "explicacion": "Dans RCO₂H, H est lié à O (plus électronégatif). H⁺ part en laissant son électron : le doublet liant O–H devient doublet non liant, O porte une charge négative → ion carboxylate RCO₂⁻.",
+   "pagina_pdf": 41
+  },
+  {
+   "id": "q11",
+   "tipo": "opcion",
+   "enunciado": "Dans la liste ci-dessous, quelle paire d'espèces peut réagir selon une réaction acide-base (selon Brønsted) ?",
+   "opciones": [
+    "Deux acides, par exemple C₆H₈O₆(aq) et CH₃CO₂H(aq)",
+    "L'acide ascorbique C₆H₈O₆(aq) et l'ion hydrogénocarbonate HCO₃⁻(aq) (base du couple CO₂,H₂O/HCO₃⁻)",
+    "Deux bases, par exemple NH₃(aq) et HO⁻(aq)",
+    "Un acide et sa propre base conjuguée, par exemple NH₄⁺ et NH₃"
+   ],
+   "correcta": 1,
+   "explicacion": "Une réaction acide-base met en jeu l'acide d'un couple et la base d'un AUTRE couple. Deux acides ne peuvent pas réagir ensemble (erreur corrigée à l'exercice 31) : C₆H₈O₆ + HCO₃⁻ → C₆H₇O₆⁻ + CO₂(g),H₂O(ℓ).",
+   "pagina_pdf": 50
+  },
+  {
+   "id": "q12",
+   "tipo": "numerico",
+   "enunciado": "Lampe à lave : on introduit N = 120 gouttelettes de vinaigre contenant chacune n = 3,7×10⁻⁵ mol d'acide éthanoïque CH₃CO₂H. Calculer la quantité de matière totale d'acide éthanoïque introduite.",
+   "valor": 0.00444,
+   "unidad": "mol",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "n = N × n_gouttelette",
+    "n = 120 × 3,7×10⁻⁵ mol = 4,4×10⁻³ mol"
+   ],
+   "pagina_pdf": 55
+  },
+  {
+   "id": "q13",
+   "tipo": "numerico",
+   "enunciado": "Lampe à lave : on introduit m = 5,0 g de bicarbonate de sodium NaHCO₃ (M = 84,0 g·mol⁻¹). Calculer la quantité de matière n(NaHCO₃). (Comparer ensuite avec 4,4×10⁻³ mol d'acide : quel est le réactif limitant ?)",
+   "valor": 0.0595,
+   "unidad": "mol",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "n = m / M",
+    "n = 5,0 / 84,0 = 5,95×10⁻² mol",
+    "Le réactif limitant est l'acide éthanoïque (4,4×10⁻³ mol < 5,95×10⁻² mol)"
+   ],
+   "pagina_pdf": 55
+  },
+  {
+   "id": "q14",
+   "tipo": "numerico",
+   "enunciado": "Lampe à lave : la réaction CH₃CO₂H + HCO₃⁻ → CH₃CO₂⁻ + CO₂(g) + H₂O(ℓ) est supposée totale, x_f = 4,4×10⁻³ mol, V_m = 24,1 L·mol⁻¹. Calculer le volume de gaz CO₂ dégagé.",
+   "valor": 0.107,
+   "unidad": "L",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "n(CO₂) = x_f = 4,44×10⁻³ mol",
+    "V(CO₂) = n(CO₂) × V_m",
+    "V = 4,44×10⁻³ × 24,1 ≈ 0,107 L (≈ 1,1×10⁻¹ L)"
+   ],
+   "pagina_pdf": 55
+  },
+  {
+   "id": "q15",
+   "tipo": "numerico",
+   "enunciado": "Détartrant (exercice 40) : l'étiquette indique « acide chlorhydrique à 9 % », soit 9,0 g de HCl(g) dans 100 g de solution ; ρ = 1,04×10³ g·L⁻¹ ; M(HCl) = 36,5 g·mol⁻¹. Calculer la concentration en quantité de matière d'acide chlorhydrique de la solution commerciale.",
+   "valor": 2.564,
+   "unidad": "mol·L⁻¹",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "n(HCl) = 9,0 / 36,5 = 0,247 mol",
+    "V = m_solution / ρ = 100 / 1,04×10³ = 9,6×10⁻² L",
+    "c = n / V = 0,247 / 9,6×10⁻² ≈ 2,6 mol·L⁻¹"
+   ],
+   "pagina_pdf": 54
+  },
+  {
+   "id": "q16",
+   "tipo": "numerico",
+   "enunciado": "Détartrant : la solution commerciale est diluée 20 fois pour donner S. Dans V_S = 10,0 mL de S, on dose n(H₃O⁺) = 1,2×10⁻³ mol. Quelle est la concentration en H₃O⁺ de la solution commerciale ?",
+   "valor": 2.4,
+   "unidad": "mol·L⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "c_S = n / V_S = 1,2×10⁻³ / 10,0×10⁻³ = 0,12 mol·L⁻¹",
+    "c = 20 × c_S = 2,4 mol·L⁻¹ (écart relatif d'environ 6 % avec 2,6 mol·L⁻¹ : compatible)"
+   ],
+   "pagina_pdf": 54
+  },
+  {
+   "id": "q17",
+   "tipo": "numerico",
+   "enunciado": "Tambour de lave-linge (exercice 40) : R = 40 cm, h = 40 cm ; aire de la surface 𝒜 = 2πR² + 2πRh ; épaisseur de calcaire e = 10 µm ; ρ(CaCO₃) = 2,65×10⁶ g·m⁻³ ; M(CaCO₃) = 100,1 g·mol⁻¹. La réaction est 2 H₃O⁺(aq) + CaCO₃(s) → Ca²⁺(aq) + CO₂(g) + 3 H₂O(ℓ). Quelle quantité de matière d'ions H₃O⁺ faut-il pour dissoudre tout le calcaire ?",
+   "valor": 1.06,
+   "unidad": "mol",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 3,
+   "pasos": [
+    "𝒜 = 2π(0,40)² + 2π(0,40)(0,40) ≈ 2,01 m²",
+    "V = 𝒜 × e = 2,01 × 10×10⁻⁶ ≈ 2,0×10⁻⁵ m³ ; m = ρ·V ≈ 53,3 g",
+    "n(CaCO₃) = 53,3 / 100,1 ≈ 0,532 mol",
+    "n(H₃O⁺) = 2 × 0,532 ≈ 1,06 mol"
+   ],
+   "pagina_pdf": 54
+  },
+  {
+   "id": "q18",
+   "tipo": "numerico",
+   "enunciado": "Calculs urinaires (exercice 36, partie 2) : on dose 50,0 mL d'urine avec un volume minimum V_A = 10,2 mL d'acide chlorhydrique de concentration c_A = 2,00×10⁻² mol·L⁻¹ (réaction urate + H₃O⁺ → acide urique + H₂O, 1 pour 1). Quelle masse d'acide urique (M = 168 g·mol⁻¹) contiennent les 1,50 L d'urine des 24 heures ?",
+   "valor": 1.03,
+   "unidad": "g",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 3,
+   "pasos": [
+    "n(H₃O⁺) = c_A × V_A = 2,00×10⁻² × 10,2×10⁻³ = 2,04×10⁻⁴ mol = n(urate) dans 50,0 mL",
+    "Dans 1,50 L : n = 2,04×10⁻⁴ × 1500/50,0 = 6,12×10⁻³ mol",
+    "m = n × M = 6,12×10⁻³ × 168 ≈ 1,03 g (supérieur à la plage normale 250–750 mg)"
+   ],
+   "pagina_pdf": 52
+  }
+ ]
+}

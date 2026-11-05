@@ -1,0 +1,278 @@
+{
+ "titulo": "Matrix ondulatoria: cuando las ondas se encuentran",
+ "estilo": "matrix",
+ "duracion_seg": 27,
+ "actores": [
+  {
+   "id": "ato",
+   "tipo": "humano",
+   "pos": [
+    0.12,
+    0.72
+   ],
+   "color": "#2ee59d",
+   "escala": 1
+  },
+  {
+   "id": "onda1",
+   "tipo": "onda",
+   "pos": [
+    0.3,
+    0.45
+   ],
+   "color": "#00d4ff",
+   "escala": 1.2
+  },
+  {
+   "id": "onda2",
+   "tipo": "onda",
+   "pos": [
+    0.3,
+    0.62
+   ],
+   "color": "#9b5de5",
+   "escala": 1.2
+  },
+  {
+   "id": "laser",
+   "tipo": "rayo",
+   "pos": [
+    0.14,
+    0.3
+   ],
+   "color": "#ff4d6d",
+   "escala": 1
+  },
+  {
+   "id": "ambulancia",
+   "tipo": "auto",
+   "pos": [
+    0.08,
+    0.86
+   ],
+   "color": "#ffd23f",
+   "escala": 1.2
+  },
+  {
+   "id": "oyente",
+   "tipo": "humano",
+   "pos": [
+    0.88,
+    0.86
+   ],
+   "color": "#00d4ff",
+   "escala": 1
+  },
+  {
+   "id": "rey",
+   "tipo": "bola",
+   "pos": [
+    0.82,
+    0.2
+   ],
+   "color": "#ff6b4a",
+   "escala": 2
+  }
+ ],
+ "pasos": [
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "ato",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "subtitulo",
+   "texto": "Las ondas no chocan: ¡se suman! Bienvenido a la Matrix ondulatoria."
+  },
+  {
+   "t": 1.8,
+   "accion": "habla",
+   "actor": "ato",
+   "texto": "Dos ondas, misma longitud de onda... ¿qué pasará?"
+  },
+  {
+   "t": 2.5,
+   "accion": "aparece",
+   "actor": "onda1",
+   "dur": 0.8
+  },
+  {
+   "t": 2.5,
+   "accion": "aparece",
+   "actor": "onda2",
+   "dur": 0.8
+  },
+  {
+   "t": 3.5,
+   "accion": "mueve",
+   "actor": "onda1",
+   "a": [
+    0.6,
+    0.52
+   ],
+   "dur": 3
+  },
+  {
+   "t": 3.5,
+   "accion": "mueve",
+   "actor": "onda2",
+   "a": [
+    0.6,
+    0.56
+   ],
+   "dur": 3
+  },
+  {
+   "t": 4,
+   "accion": "subtitulo",
+   "texto": "Para interferir deben ser coherentes: misma λ y desfase constante."
+  },
+  {
+   "t": 6.5,
+   "accion": "resalta",
+   "actor": "onda1"
+  },
+  {
+   "t": 7,
+   "accion": "formula",
+   "latex": "\\delta = k\\lambda \\Rightarrow \\text{constructivas}\\ ;\\ \\delta=\\left(k+\\tfrac{1}{2}\\right)\\lambda \\Rightarrow \\text{destructivas}"
+  },
+  {
+   "t": 7.2,
+   "accion": "subtitulo",
+   "texto": "En fase (δ = kλ) se refuerzan; en oposición de fase (δ = (k+½)λ) se anulan."
+  },
+  {
+   "t": 9.5,
+   "accion": "particulas",
+   "tipo": "chispas",
+   "pos": [
+    0.6,
+    0.54
+   ]
+  },
+  {
+   "t": 9.5,
+   "accion": "color",
+   "actor": "onda1",
+   "color": "#2ee59d"
+  },
+  {
+   "t": 10.5,
+   "accion": "habla",
+   "actor": "ato",
+   "texto": "¡Así funcionan los cascos antirruido: onda contra onda!"
+  },
+  {
+   "t": 11.5,
+   "accion": "subtitulo",
+   "texto": "Un micro capta el ruido y el casco emite una onda en oposición de fase: se anula."
+  },
+  {
+   "t": 13,
+   "accion": "desaparece",
+   "actor": "onda1"
+  },
+  {
+   "t": 13,
+   "accion": "desaparece",
+   "actor": "onda2"
+  },
+  {
+   "t": 13.5,
+   "accion": "aparece",
+   "actor": "laser",
+   "dur": 0.6
+  },
+  {
+   "t": 14,
+   "accion": "subtitulo",
+   "texto": "Luz por una rendija muy fina: se abre en varias manchas (difracción, θ = λ/a)."
+  },
+  {
+   "t": 15.5,
+   "accion": "desaparece",
+   "actor": "laser"
+  },
+  {
+   "t": 16,
+   "accion": "aparece",
+   "actor": "ambulancia",
+   "dur": 0.6
+  },
+  {
+   "t": 16,
+   "accion": "aparece",
+   "actor": "oyente",
+   "dur": 0.6
+  },
+  {
+   "t": 16.5,
+   "accion": "mueve",
+   "actor": "ambulancia",
+   "a": [
+    0.7,
+    0.86
+   ],
+   "dur": 4.5
+  },
+  {
+   "t": 16.5,
+   "accion": "vector",
+   "actor": "ambulancia",
+   "dx": 0.12,
+   "dy": 0,
+   "etiqueta": "v"
+  },
+  {
+   "t": 17,
+   "accion": "subtitulo",
+   "texto": "Efecto Doppler: si la fuente se acerca, el sonido que oyes es más agudo."
+  },
+  {
+   "t": 19,
+   "accion": "habla",
+   "actor": "oyente",
+   "texto": "¡Más agudo! f_R > f_e"
+  },
+  {
+   "t": 20,
+   "accion": "formula",
+   "latex": "\\Delta f = f_R - f_e = \\dfrac{f_e\\cdot v}{c}"
+  },
+  {
+   "t": 21,
+   "accion": "mueve",
+   "actor": "ambulancia",
+   "a": [
+    0.97,
+    0.86
+   ],
+   "dur": 2.5
+  },
+  {
+   "t": 21.5,
+   "accion": "subtitulo",
+   "texto": "Al alejarse el sonido se vuelve más grave. Δf crece con la velocidad v de la fuente."
+  },
+  {
+   "t": 23.5,
+   "accion": "aparece",
+   "actor": "rey",
+   "dur": 0.8
+  },
+  {
+   "t": 24,
+   "accion": "habla",
+   "actor": "rey",
+   "texto": "¡Responde mis preguntas sobre ondas si quieres pasar!"
+  },
+  {
+   "t": 24.5,
+   "accion": "subtitulo",
+   "texto": "Interferencias, difracción, Doppler y decibelios: ¡al castillo del Rey Entropía!"
+  }
+ ]
+}

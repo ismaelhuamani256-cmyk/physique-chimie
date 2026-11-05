@@ -1,0 +1,415 @@
+{
+ "capitulo_id": "thermodynamique",
+ "tipo_nivel": "normal",
+ "tema_visual": "horno-termico",
+ "fisica_juego": {
+  "gravedad": 1.0,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 175,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "foso",
+   "x": 22,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 25,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 35,
+   "y": 13,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 41,
+   "y": 12,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 46,
+   "y": 14,
+   "largo": 13
+  },
+  {
+   "tipo": "foso",
+   "x": 59,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 59,
+   "y": 13,
+   "largo": 3,
+   "recorrido": 2,
+   "eje": "x",
+   "periodo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 64,
+   "y": 14,
+   "largo": 16
+  },
+  {
+   "tipo": "foso",
+   "x": 80,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 84,
+   "y": 14,
+   "largo": 16
+  },
+  {
+   "tipo": "foso",
+   "x": 100,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 104,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "foso",
+   "x": 116,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 120,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 134,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 138,
+   "y": 14,
+   "largo": 37
+  },
+  {
+   "tipo": "plataforma",
+   "x": 48,
+   "y": 11,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 66,
+   "y": 11,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 86,
+   "y": 10,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 91,
+   "y": 6,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 124,
+   "y": 8,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 106,
+   "y": 10,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5
+  },
+  {
+   "tipo": "resorte",
+   "x": 126,
+   "y": 13
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 85,
+   "y": 2,
+   "w": 10,
+   "h": 12,
+   "fx": 0,
+   "fy": -0.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 6,
+   "y": 12,
+   "ref": "f1",
+   "latex": "U = E_{c,\\text{micro}} + E_{pp,\\text{micro}}",
+   "nombre": "Énergie interne U"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 18,
+   "y": 12,
+   "ref": "f2",
+   "latex": "E_{tot} = E_c + E_{pp} + U",
+   "nombre": "Énergie totale"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 29,
+   "y": 12,
+   "ref": "f4",
+   "latex": "\\Delta U = W + Q",
+   "nombre": "Premier principe: ΔU = W + Q"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 37,
+   "y": 11,
+   "ref": "f5",
+   "latex": "\\Delta U = Q = C\\cdot\\Delta T",
+   "nombre": "ΔU = Q = C·ΔT"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 43,
+   "y": 10,
+   "ref": "f6",
+   "latex": "C = m\\cdot c",
+   "nombre": "C = m·c"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 49,
+   "y": 9,
+   "ref": "f7",
+   "latex": "\\Phi = \\dfrac{Q}{\\Delta t}",
+   "nombre": "Flux thermique"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 70,
+   "y": 12,
+   "ref": "f8",
+   "latex": "\\Phi = \\dfrac{T_c - T_f}{R_{th}}",
+   "nombre": "Flux et résistance thermique"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 68,
+   "y": 9,
+   "ref": "f9",
+   "latex": "R_{th} = \\dfrac{e}{\\lambda\\cdot S}",
+   "nombre": "R_th = e/(λ·S)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 93,
+   "y": 4,
+   "ref": "f10",
+   "latex": "F = \\sigma\\cdot T^{4}",
+   "nombre": "Loi de Stefan-Boltzmann"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 96,
+   "y": 12,
+   "ref": "f11",
+   "latex": "F\\cdot \\pi R_{atm}^{2} = F'\\cdot 4\\pi R_{atm}^{2}\\ \\Rightarrow\\ F' = \\dfrac{F}{4}",
+   "nombre": "F' = F/4"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 108,
+   "y": 8,
+   "ref": "f12",
+   "latex": "\\dfrac{dT}{dt} = -\\gamma\\,(T - T_{th})",
+   "nombre": "Loi thermique de Newton"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 126,
+   "y": 6,
+   "ref": "f13",
+   "latex": "T(t) = (T_0 - T_{th})\\,e^{-\\gamma t} + T_{th}",
+   "nombre": "T(t) = (T₀ − T_th)·e^(−γt) + T_th"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 14,
+   "y": 13,
+   "enemigo": "temperatura_en_celsius",
+   "nombre": "Usar T en °C en la ley de Stefan-Boltzmann",
+   "correccion": "La ley F = σ·T⁴ exige T en kelvin: T(K) = θ(°C) + 273. En cambio, para una variación ΔT (Q = C·ΔT) se puede razonar directamente en °C."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 30,
+   "y": 13,
+   "enemigo": "energia_destruida",
+   "nombre": "Creer que la energía se destruye al frenar o enfriar",
+   "correccion": "No se destruye: se transfiere del sistema al medio exterior (Exercice 17: «Faux. L'énergie est transférée»)."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 38,
+   "y": 12,
+   "enemigo": "unidades_sin_convertir",
+   "nombre": "Olvidar convertir unidades y cifras significativas",
+   "correccion": "Pasar el espesor a m (3,6 cm = 3,6×10⁻² m), MJ a J y kWh a J (1 kWh = 3,6×10⁶ J), y dar el resultado con las cifras significativas de los datos."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 55,
+   "y": 13,
+   "enemigo": "solo_calor_cambia_U",
+   "nombre": "Pensar que solo el calor puede aumentar U",
+   "correccion": "El trabajo W también aumenta la energía interna: el agua agitada de la experiencia de Joule se calienta. W y Q pueden producir la misma ΔU."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 72,
+   "y": 13,
+   "enemigo": "phi_vs_Q",
+   "nombre": "Confundir transferencia térmica Q (J) y flujo Φ (W)",
+   "correccion": "Φ = Q/Δt: Q es una energía (J) y Φ una potencia (W). La energía perdida en un tiempo es Q = Φ·Δt (con unidades coherentes)."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 88,
+   "y": 13,
+   "enemigo": "sin_albedo",
+   "nombre": "Ignorar el albedo en el balance radiativo de la Tierra",
+   "correccion": "La Tierra no es un cuerpo negro: refleja ≈ 30 % de la energía recibida. Sin albedo ni efecto invernadero se obtiene 279 K = 6 °C en vez de 15 °C."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 110,
+   "y": 13,
+   "enemigo": "tth_vs_t0",
+   "nombre": "Confundir T_th con la temperatura inicial T_0 en la ley de Newton",
+   "correccion": "T_th es la temperatura del termostato (lo que alcanza T cuando t → ∞, p. ej. T_cuis o T_amb), no la de partida: T(t) = (T_0 − T_th)·e^{−γt} + T_th."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 130,
+   "y": 13,
+   "enemigo": "convection_ignorada",
+   "nombre": "Olvidar la convección al razonar sobre transferencias térmicas",
+   "correccion": "En la nevera el aire frío desciende y el caliente asciende (convección): el tubo metálico va arriba, no en el centro (Exercice 33)."
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 30
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 70
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 108
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 140
+  },
+  {
+   "tipo": "jefe",
+   "x": 155,
+   "jefe": "ejercicio_bac_1",
+   "titulo": "Ejercicio BAC : premier principe et lois thermiques",
+   "preguntas": [
+    {
+     "pregunta": "Pour un système fermé au repos, le premier principe de la thermodynamique s'écrit :",
+     "opciones": [
+      "ΔE_tot = 0 toujours",
+      "ΔU = W + Q",
+      "ΔU = C·ΔT dans tous les cas",
+      "ΔU = W − Q"
+     ],
+     "correcta": 1,
+     "explicacion": "Si un système fermé au repos a une énergie qui varie, c'est qu'il échange de l'énergie avec l'extérieur : travail W ou transfert thermique Q, donc ΔU = W + Q.",
+     "pagina_pdf": 421
+    },
+    {
+     "pregunta": "Pour un système fermé, au repos et incompressible, la variation d'énergie interne vaut :",
+     "opciones": [
+      "ΔU = Q = C·ΔT",
+      "ΔU = W + Q + C",
+      "ΔU = σ·T⁴",
+      "ΔU = C/ΔT"
+     ],
+     "correcta": 0,
+     "explicacion": "Pour un système fermé au repos et incompressible : ΔU = Q = C·ΔT, avec C = m·c en J·K⁻¹.",
+     "pagina_pdf": 421
+    },
+    {
+     "pregunta": "Quelle est l'expression du flux thermique Φ, et son unité ?",
+     "opciones": [
+      "Φ = Δt/Q, en W·s⁻¹",
+      "Φ = Q·Δt, en joule (J)",
+      "Φ = C·ΔT, en J·K⁻¹",
+      "Φ = Q/Δt, en watt (W)"
+     ],
+     "correcta": 3,
+     "explicacion": "Le flux thermique est le transfert thermique Q par unité de temps entre deux milieux : Φ = Q/Δt, en watt. Il a la dimension d'une puissance.",
+     "pagina_pdf": 422
+    },
+    {
+     "pregunta": "Un système en contact avec un thermostat de température T_th (loi de Newton, dT/dt = −γ(T − T_th)) voit sa température évoluer selon :",
+     "opciones": [
+      "T(t) = T₀ + γ·t, croissance linéaire",
+      "T(t) = T_th·e^(−γt), qui tend vers 0",
+      "T(t) = (T₀ − T_th)·e^(−γt) + T_th, qui tend vers T_th",
+      "T(t) = T_th, constante dès t = 0"
+     ],
+     "correcta": 2,
+     "explicacion": "La solution est T(t) = (T₀ − T_th)·e^(−γt) + T_th : exponentielle décroissante (ou croissante) qui tend vers la température du thermostat quand t → ∞.",
+     "pagina_pdf": 424
+    },
+    {
+     "pregunta": "Dans la loi de Stefan-Boltzmann F = σ·T⁴, la température 15 °C du sol terrestre doit s'utiliser sous la forme :",
+     "opciones": [
+      "T = 15 K",
+      "T = 288 K",
+      "T = 15 °C directement",
+      "T = 258 K"
+     ],
+     "correcta": 1,
+     "explicacion": "T(K) = θ(°C) + 273 = 15 + 273 = 288 K ; alors F_s = 5,67×10⁻⁸ × 288⁴ ≈ 390 W·m⁻² (exercice de synthèse 1).",
+     "pagina_pdf": 440
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 171
+  }
+ ]
+}

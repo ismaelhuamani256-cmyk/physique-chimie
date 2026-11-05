@@ -1,0 +1,277 @@
+{
+ "titulo": "ΔU = W + Q: el té del humano y el perro del fuego",
+ "estilo": "monigotes",
+ "duracion_seg": 24,
+ "actores": [
+  {
+   "id": "humano",
+   "tipo": "humano",
+   "pos": [
+    0.18,
+    0.72
+   ],
+   "escala": 1,
+   "color": "#00d4ff"
+  },
+  {
+   "id": "perro",
+   "tipo": "perro",
+   "pos": [
+    0.86,
+    0.76
+   ],
+   "escala": 1,
+   "color": "#c98a4b"
+  },
+  {
+   "id": "vaso",
+   "tipo": "vaso",
+   "pos": [
+    0.5,
+    0.7
+   ],
+   "escala": 1.2,
+   "color": "#4cc9f0"
+  },
+  {
+   "id": "term",
+   "tipo": "termometro",
+   "pos": [
+    0.62,
+    0.66
+   ],
+   "escala": 1,
+   "color": "#2f6bff"
+  },
+  {
+   "id": "cuchara",
+   "tipo": "bola",
+   "pos": [
+    0.5,
+    0.52
+   ],
+   "escala": 0.35,
+   "color": "#cfd8dc"
+  },
+  {
+   "id": "llama",
+   "tipo": "flecha",
+   "pos": [
+    0.5,
+    0.9
+   ],
+   "escala": 0.9,
+   "color": "#ff7a00"
+  },
+  {
+   "id": "etq",
+   "tipo": "texto",
+   "pos": [
+    0.5,
+    0.28
+   ],
+   "escala": 1,
+   "color": "#ffffff",
+   "texto": "Sistema: el agua del vaso"
+  }
+ ],
+ "pasos": [
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "vaso",
+   "dur": 0.8
+  },
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "etq",
+   "dur": 0.8
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "llama"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "cuchara"
+  },
+  {
+   "t": 0.4,
+   "accion": "resalta",
+   "actor": "vaso"
+  },
+  {
+   "t": 0.6,
+   "accion": "subtitulo",
+   "texto": "El agua del vaso es nuestro sistema: guarda una energía interna U."
+  },
+  {
+   "t": 2,
+   "accion": "habla",
+   "actor": "humano",
+   "texto": "Mi té está frío… ¡a calentarlo!"
+  },
+  {
+   "t": 3.5,
+   "accion": "mueve",
+   "actor": "humano",
+   "a": [
+    0.36,
+    0.72
+   ],
+   "dur": 1
+  },
+  {
+   "t": 4.5,
+   "accion": "aparece",
+   "actor": "cuchara",
+   "dur": 0.4
+  },
+  {
+   "t": 4.7,
+   "accion": "gira",
+   "actor": "cuchara",
+   "grados": 720,
+   "dur": 3
+  },
+  {
+   "t": 4.7,
+   "accion": "vector",
+   "actor": "cuchara",
+   "dx": 0.0,
+   "dy": 0.12,
+   "etiqueta": "W > 0 (trabajo)"
+  },
+  {
+   "t": 4.9,
+   "accion": "particulas",
+   "tipo": "burbujas",
+   "pos": [
+    0.5,
+    0.68
+   ]
+  },
+  {
+   "t": 5.2,
+   "accion": "subtitulo",
+   "texto": "Agitar el agua le da trabajo W: la energía interna aumenta."
+  },
+  {
+   "t": 8,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "¡Yo pongo el fuego! ¡Guau!"
+  },
+  {
+   "t": 8.4,
+   "accion": "aparece",
+   "actor": "llama",
+   "dur": 0.5
+  },
+  {
+   "t": 8.4,
+   "accion": "vector",
+   "actor": "llama",
+   "dx": 0.0,
+   "dy": -0.1,
+   "etiqueta": "Q > 0 (calor)"
+  },
+  {
+   "t": 8.6,
+   "accion": "particulas",
+   "tipo": "chispas",
+   "pos": [
+    0.5,
+    0.86
+   ]
+  },
+  {
+   "t": 9,
+   "accion": "color",
+   "actor": "term",
+   "color": "#ff3d3d"
+  },
+  {
+   "t": 9,
+   "accion": "valor",
+   "id": "T",
+   "desde": 20,
+   "hasta": 60,
+   "dur": 3,
+   "etiqueta": "T del agua (°C)"
+  },
+  {
+   "t": 9.5,
+   "accion": "subtitulo",
+   "texto": "El calor Q también cambia U. Sistema cerrado y en reposo: ΔU = W + Q."
+  },
+  {
+   "t": 11,
+   "accion": "formula",
+   "latex": "\\Delta U = W + Q"
+  },
+  {
+   "t": 13.5,
+   "accion": "desaparece",
+   "actor": "llama"
+  },
+  {
+   "t": 13.5,
+   "accion": "desaparece",
+   "actor": "cuchara"
+  },
+  {
+   "t": 13.8,
+   "accion": "color",
+   "actor": "term",
+   "color": "#2f6bff"
+  },
+  {
+   "t": 13.8,
+   "accion": "vector",
+   "actor": "vaso",
+   "dx": 0.14,
+   "dy": 0.0,
+   "etiqueta": "Q < 0 (cede calor al aire)"
+  },
+  {
+   "t": 14,
+   "accion": "valor",
+   "id": "T2",
+   "desde": 60,
+   "hasta": 25,
+   "dur": 4,
+   "etiqueta": "T del té (°C)"
+  },
+  {
+   "t": 14.2,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "¡Brrr! ¡Al principio se enfría rápido!"
+  },
+  {
+   "t": 15.5,
+   "accion": "subtitulo",
+   "texto": "Un transfert thermique va siempre del medio caliente al frío; cuanto mayor es la diferencia, más rápido."
+  },
+  {
+   "t": 17,
+   "accion": "formula",
+   "latex": "\\dfrac{dT}{dt} = -\\gamma\\,(T - T_{th})"
+  },
+  {
+   "t": 19.5,
+   "accion": "subtitulo",
+   "texto": "Ley de Newton: T tiende exponencialmente a la temperatura T_th del exterior."
+  },
+  {
+   "t": 21,
+   "accion": "habla",
+   "actor": "humano",
+   "texto": "Premier principe: ΔU = W + Q… ¡y a beber!"
+  }
+ ]
+}

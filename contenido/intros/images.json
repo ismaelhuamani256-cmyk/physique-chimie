@@ -1,0 +1,230 @@
+{
+ "titulo": "Lunette afocale: el perro y la Luna",
+ "estilo": "minimalista",
+ "duracion_seg": 26,
+ "actores": [
+  {
+   "id": "luna",
+   "tipo": "luna",
+   "pos": [
+    0.07,
+    0.22
+   ],
+   "escala": 1.1,
+   "color": "#cfd8ff"
+  },
+  {
+   "id": "perro",
+   "tipo": "perro",
+   "pos": [
+    0.93,
+    0.74
+   ],
+   "escala": 1,
+   "color": "#c98a4b"
+  },
+  {
+   "id": "obj",
+   "tipo": "lente",
+   "pos": [
+    0.3,
+    0.55
+   ],
+   "escala": 1.7,
+   "color": "#00d4ff"
+  },
+  {
+   "id": "ocu",
+   "tipo": "lente",
+   "pos": [
+    0.62,
+    0.55
+   ],
+   "escala": 0.7,
+   "color": "#ff3da6"
+  },
+  {
+   "id": "rayo",
+   "tipo": "rayo",
+   "pos": [
+    0.12,
+    0.4
+   ],
+   "escala": 1,
+   "color": "#ffd166"
+  },
+  {
+   "id": "imagen",
+   "tipo": "flecha",
+   "pos": [
+    0.585,
+    0.6
+   ],
+   "escala": 0.6,
+   "color": "#2ee59d"
+  },
+  {
+   "id": "t_obj",
+   "tipo": "texto",
+   "pos": [
+    0.3,
+    0.88
+   ],
+   "escala": 1,
+   "color": "#00d4ff",
+   "texto": "objectif f'₁ (grande)"
+  },
+  {
+   "id": "t_ocu",
+   "tipo": "texto",
+   "pos": [
+    0.66,
+    0.88
+   ],
+   "escala": 1,
+   "color": "#ff3da6",
+   "texto": "oculaire f'₂ (petite)"
+  }
+ ],
+ "pasos": [
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "luna",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "perro",
+   "dur": 1
+  },
+  {
+   "t": 0.5,
+   "accion": "subtitulo",
+   "texto": "El perro astrónomo quiere ver la Luna... ¡de cerca!"
+  },
+  {
+   "t": 1.5,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "¡Guau! ¡Está lejísimos!"
+  },
+  {
+   "t": 3,
+   "accion": "aparece",
+   "actor": "obj",
+   "dur": 1
+  },
+  {
+   "t": 3,
+   "accion": "aparece",
+   "actor": "t_obj",
+   "dur": 1
+  },
+  {
+   "t": 3.5,
+   "accion": "subtitulo",
+   "texto": "Primera lente convergente: el objetivo, de gran distancia focal."
+  },
+  {
+   "t": 5,
+   "accion": "aparece",
+   "actor": "rayo",
+   "dur": 0.8
+  },
+  {
+   "t": 5.5,
+   "accion": "mueve",
+   "actor": "rayo",
+   "a": [
+    0.3,
+    0.55
+   ],
+   "dur": 2.2
+  },
+  {
+   "t": 7.7,
+   "accion": "aparece",
+   "actor": "imagen",
+   "dur": 1
+  },
+  {
+   "t": 7.7,
+   "accion": "gira",
+   "actor": "imagen",
+   "grados": 180,
+   "dur": 1
+  },
+  {
+   "t": 8.5,
+   "accion": "resalta",
+   "actor": "imagen"
+  },
+  {
+   "t": 8.5,
+   "accion": "subtitulo",
+   "texto": "Da una imagen intermedia, invertida, en su plano focal imagen."
+  },
+  {
+   "t": 10.5,
+   "accion": "aparece",
+   "actor": "ocu",
+   "dur": 1
+  },
+  {
+   "t": 10.5,
+   "accion": "aparece",
+   "actor": "t_ocu",
+   "dur": 1
+  },
+  {
+   "t": 11,
+   "accion": "subtitulo",
+   "texto": "Segunda lente, el ocular: una lupa que mira esa imagen. Lunette afocale: F'₁ = F₂."
+  },
+  {
+   "t": 13,
+   "accion": "formula",
+   "latex": "\\overline{O_1O_2}=f'_1+f'_2"
+  },
+  {
+   "t": 15,
+   "accion": "mueve",
+   "actor": "rayo",
+   "a": [
+    0.9,
+    0.64
+   ],
+   "dur": 1.8
+  },
+  {
+   "t": 16,
+   "accion": "escala",
+   "actor": "luna",
+   "a": 1.8,
+   "dur": 2.5
+  },
+  {
+   "t": 16.5,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "¡Ahora la veo enorme!"
+  },
+  {
+   "t": 18,
+   "accion": "subtitulo",
+   "texto": "El grossissement compara los ángulos: la Luna parece estar mucho más cerca."
+  },
+  {
+   "t": 19,
+   "accion": "formula",
+   "latex": "\\overline{G}=\\dfrac{\\theta'}{\\theta}=-\\dfrac{f'_1}{f'_2}"
+  },
+  {
+   "t": 23,
+   "accion": "subtitulo",
+   "texto": "Cuanto mayor es f'₁ frente a f'₂, mayor es el aumento (y la imagen sale invertida)."
+  }
+ ]
+}

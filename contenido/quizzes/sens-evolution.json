@@ -1,0 +1,235 @@
+{
+ "capitulo_id": "sens-evolution",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "opcion",
+   "enunciado": "Une transformation a un taux d'avancement final τ = 0,20. Que peut-on dire ?",
+   "opciones": [
+    "La transformation est totale",
+    "20 % du réactif limitant ont réagi",
+    "80 % du réactif limitant ont réagi",
+    "Il n'y a plus de réactifs à l'état final"
+   ],
+   "correcta": 1,
+   "explicacion": "τ = xf/xmax = 0,20 : 20 % du réactif limitant ont réagi, la transformation n'est donc pas totale (QCM 1, Vérifier l'essentiel).",
+   "pagina_pdf": 164
+  },
+  {
+   "id": "q2",
+   "tipo": "opcion",
+   "enunciado": "Lorsque l'état d'équilibre dynamique est atteint :",
+   "opciones": [
+    "il reste 50 % des réactifs et 50 % des produits",
+    "tout s'arrête, il n'y a plus de transformation chimique",
+    "les deux réactions opposées se poursuivent à vitesses égales",
+    "la transformation devient totale"
+   ],
+   "correcta": 2,
+   "explicacion": "À l'équilibre dynamique v1 = v2 : les quantités n'évoluent plus mais les deux réactions continuent.",
+   "pagina_pdf": 160
+  },
+  {
+   "id": "q3",
+   "tipo": "opcion",
+   "enunciado": "Pour A + 2 B ⇌ C + 2 D, le quotient de réaction s'écrit :",
+   "opciones": [
+    "Qr = [C]·[D]² / ([A]·[B]²)",
+    "Qr = [A]·[B]² / ([C]·[D]²)",
+    "Qr = [C]·[D] / ([A]·[B])",
+    "Qr = [C]²·[D] / ([A]²·[B])"
+   ],
+   "correcta": 0,
+   "explicacion": "Qr = [C]^c·[D]^d / ([A]^a·[B]^b) : produits au numérateur, chacun à la puissance de son coefficient.",
+   "pagina_pdf": 160
+  },
+  {
+   "id": "q4",
+   "tipo": "opcion",
+   "enunciado": "Pour BaSO₄(s) ⇌ Ba²⁺(aq) + SO₄²⁻(aq), l'expression de Qr est :",
+   "opciones": [
+    "Qr = [Ba²⁺]·[SO₄²⁻] / [BaSO₄]",
+    "Qr = [Ba²⁺]·[SO₄²⁻]",
+    "Qr = 1 / ([Ba²⁺]·[SO₄²⁻])",
+    "Qr = [BaSO₄] / ([Ba²⁺]·[SO₄²⁻])"
+   ],
+   "correcta": 1,
+   "explicacion": "Un solide est remplacé par le nombre 1 dans Qr, donc Qr = [Ba²⁺]·[SO₄²⁻] (exercice 19c).",
+   "pagina_pdf": 160
+  },
+  {
+   "id": "q5",
+   "tipo": "opcion",
+   "enunciado": "La constante d'équilibre K(T) d'une réaction dépend :",
+   "opciones": [
+    "de la température",
+    "des concentrations initiales",
+    "de l'avancement à chaque instant",
+    "de la quantité de réactif limitant"
+   ],
+   "correcta": 0,
+   "explicacion": "K(T) ne dépend que de la température (et de l'équation de la réaction), pas de la composition initiale.",
+   "pagina_pdf": 161
+  },
+  {
+   "id": "q6",
+   "tipo": "opcion",
+   "enunciado": "Un système chimique évolue dans le sens direct si :",
+   "opciones": [
+    "Qr,i > K(T)",
+    "Qr,i = K(T)",
+    "Qr,i < K(T)",
+    "K(T) = 1"
+   ],
+   "correcta": 2,
+   "explicacion": "Si Qr,i < K(T), [C] et [D] augmentent : sens direct. Si Qr,i > K, sens opposé.",
+   "pagina_pdf": 161
+  },
+  {
+   "id": "q7",
+   "tipo": "opcion",
+   "enunciado": "Dans une pile, le pont salin sert à :",
+   "opciones": [
+    "augmenter la capacité de la pile",
+    "assurer la neutralité électrique des solutions et fermer le circuit",
+    "accélérer la réaction chimique",
+    "faire passer les électrons"
+   ],
+   "correcta": 1,
+   "explicacion": "Le pont salin ferme le circuit électrique et assure la neutralité des solutions (les électrons passent par les fils).",
+   "pagina_pdf": 162
+  },
+  {
+   "id": "q8",
+   "tipo": "opcion",
+   "enunciado": "Pour la pile de la page 144 (Zn/Cu), à l'extérieur de la pile :",
+   "opciones": [
+    "les électrons vont de la borne + vers la borne −",
+    "le courant va de la borne + vers la borne − et les électrons dans le sens opposé",
+    "courant et électrons vont de la borne − vers la borne +",
+    "le courant est nul"
+   ],
+   "correcta": 1,
+   "explicacion": "À l'extérieur, le courant circule de la borne + vers la borne − ; les électrons dans le sens opposé.",
+   "pagina_pdf": 162
+  },
+  {
+   "id": "q9",
+   "tipo": "opcion",
+   "enunciado": "Système 1 de l'exercice 22 : Qr = 4,1×10⁵ et K(T) = 5,0×10⁴. Dans quel sens évolue-t-il ?",
+   "opciones": [
+    "Sens direct",
+    "Sens opposé",
+    "Il est à l'équilibre",
+    "Il ne peut pas évoluer"
+   ],
+   "correcta": 1,
+   "explicacion": "Qr > K(T) : le système évolue dans le sens opposé (corrigé de l'exercice 22).",
+   "pagina_pdf": 166
+  },
+  {
+   "id": "q10",
+   "tipo": "opcion",
+   "enunciado": "Une pile est un système chimique :",
+   "opciones": [
+    "à l'équilibre",
+    "hors équilibre, qui s'use quand Qr atteint K(T)",
+    "toujours totalement consommé",
+    "dont la tension à vide ne dépend que de la température"
+   ],
+   "correcta": 1,
+   "explicacion": "Une pile est hors équilibre; lorsque Qr = K(T) ou que le réactif limitant est consommé, elle est usée.",
+   "pagina_pdf": 163
+  },
+  {
+   "id": "q11",
+   "tipo": "numerico",
+   "enunciado": "Exercice 28 : à t₁, n(E) = n(eau) = 0,030 mol et n(acide) = n(alcool) = 0,070 mol. Calculer Qr (le volume se simplifie).",
+   "valor": 0.18,
+   "unidad": "",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "Qr = n(E)·n(eau) / (n(acide)·n(alcool))",
+    "Qr = 0,030×0,030 / (0,070×0,070)",
+    "Qr ≈ 0,18"
+   ],
+   "pagina_pdf": 168
+  },
+  {
+   "id": "q12",
+   "tipo": "numerico",
+   "enunciado": "Exercice 17 : xf = 1,26×10⁻³ mol et xmax = 0,15 mol. Calculer le taux d'avancement final τ.",
+   "valor": 0.0084,
+   "unidad": "",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "τ = xf/xmax",
+    "τ = 1,26×10⁻³ / 0,15",
+    "τ = 0,0084"
+   ],
+   "pagina_pdf": 165
+  },
+  {
+   "id": "q13",
+   "tipo": "numerico",
+   "enunciado": "Pile cuivre-zinc contenant 0,20 mol de zinc (réactif limitant, Zn = Zn²⁺ + 2 e⁻). Calculer sa capacité électrique qmax (N_A = 6,02×10²³ mol⁻¹, e = 1,6×10⁻¹⁹ C).",
+   "valor": 38600.0,
+   "unidad": "C",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "n(e⁻) = 2 × 0,20 = 0,40 mol",
+    "qmax = n(e⁻)·N_A·e",
+    "qmax = 0,40 × 6,02×10²³ × 1,6×10⁻¹⁹ ≈ 3,86×10⁴ C"
+   ],
+   "pagina_pdf": 162
+  },
+  {
+   "id": "q14",
+   "tipo": "numerico",
+   "enunciado": "Une pile commerciale porte l'indication qmax = 2 600 mA·h. Exprimer cette capacité en coulombs (1 mA·h = 3,6 C).",
+   "valor": 9360,
+   "unidad": "C",
+   "tolerancia_rel": 0.01,
+   "cifras_sig": 3,
+   "pasos": [
+    "1 A·h = 3,6×10³ C donc 1 mA·h = 3,6 C",
+    "q = 2 600 × 3,6",
+    "q = 9 360 C"
+   ],
+   "pagina_pdf": 162
+  },
+  {
+   "id": "q15",
+   "tipo": "numerico",
+   "enunciado": "Exercice 20 : acide benzoïque dans V = 2,0 L ; à l'équilibre n(C₆H₅CO₂H) = 0,294 mol et n(C₆H₅CO₂⁻) = n(H₃O⁺) = 0,0061 mol. Calculer K(T) (l'eau est le solvant).",
+   "valor": 6.3e-05,
+   "unidad": "",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "Concentrations : [A⁻] = [H₃O⁺] = 0,0061/2,0 = 3,05×10⁻³ mol·L⁻¹ ; [AH] = 0,294/2,0 = 0,147 mol·L⁻¹",
+    "K = [A⁻]·[H₃O⁺] / [AH]",
+    "K = (3,05×10⁻³)² / 0,147 ≈ 6,3×10⁻⁵"
+   ],
+   "pagina_pdf": 166
+  },
+  {
+   "id": "q16",
+   "tipo": "numerico",
+   "enunciado": "Exercice 30 : pile argent-nickel avec m(Ni) = 10,0 g (M = 58,7 g·mol⁻¹), Ni = Ni²⁺ + 2 e⁻. Calculer qmax (N_A = 6,02×10²³ mol⁻¹, e = 1,6×10⁻¹⁹ C).",
+   "valor": 33000.0,
+   "unidad": "C",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "n(Ni) = 10,0/58,7 = 0,170 mol",
+    "n(e⁻) = 2 × 0,170 = 0,341 mol",
+    "qmax = 0,341 × 6,02×10²³ × 1,6×10⁻¹⁹ ≈ 3,3×10⁴ C"
+   ],
+   "pagina_pdf": 169
+  }
+ ]
+}

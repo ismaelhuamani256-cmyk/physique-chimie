@@ -1,0 +1,61 @@
+/* =====================================================================================
+   intro.css — Pantalla 3: motor de introducción (overlay DOM, barra de control, tarjeta final)
+   Todo lleva el prefijo .intro- ; --u = 1% de la altura del escenario (la fija el motor).
+   ===================================================================================== */
+.intro-host{background:#04060d}
+.intro-root{position:absolute;inset:0;display:flex;flex-direction:column;background:radial-gradient(ellipse at 50% 40%,#0d1427 0%,#04060d 75%)}
+.intro-area{position:relative;flex:1;min-height:0}
+.intro-stage{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);overflow:hidden;background:#000;
+  box-shadow:0 0 0 1px #1d2748,0 16px 60px #000c;border-radius:6px;animation:intro-in .5s ease-out both}
+@keyframes intro-in{from{opacity:0}}
+.intro-lienzo{position:absolute;inset:0}
+.intro-overlay{position:absolute;inset:0;pointer-events:none;font-family:var(--f-ui)}
+
+/* Subtítulo estilo película */
+.intro-subs{position:absolute;left:0;right:0;bottom:5%;display:flex;justify-content:center}
+.intro-sub{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:max-content;max-width:84%;text-align:center;
+  font-weight:600;font-size:calc(var(--u,7px)*3.9);line-height:1.28;color:#fff;
+  background:rgba(6,9,20,.72);padding:.32em .8em .38em;border-radius:.45em;
+  text-shadow:0 1px 2px #000a;box-shadow:0 4px 18px #0006;text-wrap:balance}
+
+/* Fórmula KaTeX grande con fade */
+.intro-formulas{position:absolute;inset:0}
+.intro-formula{position:absolute;max-width:94%;color:#f4f7ff;
+  font-size:calc(var(--u,7px)*5.4*var(--fit,1));
+  background:rgba(8,12,30,.9);border:calc(var(--u,7px)*.28) solid rgba(111,194,255,.85);border-radius:calc(var(--u,7px)*2);
+  padding:.35em .7em;box-shadow:0 8px 30px #0008,0 0 24px rgba(0,212,255,.25);backdrop-filter:blur(3px);will-change:opacity,transform}
+.intro-formula-in{display:block;white-space:nowrap}
+.intro-formula .katex-display{margin:0}
+.intro-formula .katex{font-size:1em}
+
+/* Contadores `valor` */
+.intro-valores{position:absolute;top:3.5%;right:2.5%;display:flex;flex-direction:column;gap:calc(var(--u,7px)*1.2);align-items:flex-end}
+.intro-valor{display:flex;align-items:baseline;gap:.5em;background:rgba(8,12,30,.78);border:1px solid rgba(255,209,102,.6);border-radius:calc(var(--u,7px)*1.4);
+  padding:.25em .7em;color:#fff;font-size:calc(var(--u,7px)*3.4);box-shadow:0 4px 16px #0006}
+.intro-valor-et{color:#9fb0d9;font-size:.72em}
+.intro-valor-num{font-weight:700;color:#ffd166;font-variant-numeric:tabular-nums;font-size:1.35em;min-width:2ch;text-align:right}
+.intro-valor-un{color:#9fb0d9;font-size:.78em}
+
+/* Tarjeta final */
+.intro-fin{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(4,6,16,.52);
+  opacity:0;pointer-events:none;transition:opacity .5s;backdrop-filter:blur(1px)}
+.intro-fin.on{opacity:1;pointer-events:auto}
+.intro-fin-card{text-align:center;padding:calc(var(--u,7px)*3.5) calc(var(--u,7px)*6);background:rgba(14,20,44,.9);border:1px solid var(--borde,#2a376b);
+  border-radius:calc(var(--u,7px)*2.4);box-shadow:0 18px 60px #000a;transform:translateY(12px) scale(.97);transition:transform .5s cubic-bezier(.2,.9,.3,1.2)}
+.intro-fin.on .intro-fin-card{transform:none}
+.intro-fin-tit{font-weight:700;font-size:calc(var(--u,7px)*3.4);color:#eaf0ff;margin-bottom:calc(var(--u,7px)*2.2)}
+.intro-fin-btns{display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap}
+.intro-ir{font-size:calc(var(--u,7px)*3.4);padding:.7em 1.6em;border-radius:.8em;box-shadow:0 6px 24px rgba(0,212,255,.35)}
+.intro-rep{font-size:calc(var(--u,7px)*2.7);padding:.7em 1.1em}
+.intro-fin-hint{margin-top:calc(var(--u,7px)*1.8);font-size:calc(var(--u,7px)*2);color:#7f90bd}
+
+/* Barra de control inferior */
+.intro-bar{flex:none;height:54px;display:flex;align-items:center;gap:10px;padding:0 14px;background:rgba(9,13,28,.96);border-top:1px solid var(--borde,#2a376b)}
+.intro-btn{width:40px;height:34px;padding:0;font-size:16px;line-height:1}
+.intro-prog{position:relative;flex:1;height:22px;cursor:pointer;touch-action:none}
+.intro-prog::before{content:"";position:absolute;left:0;right:0;top:9px;height:5px;border-radius:3px;background:#222d57}
+.intro-prog-fill{position:absolute;left:0;top:9px;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--c-fisica,#2f6bff),var(--c-fisica2,#00d4ff))}
+.intro-prog-thumb{position:absolute;top:4px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:#fff;box-shadow:0 0 8px #00d4ffaa}
+.intro-tiempo{font-size:12px;color:var(--txt2,#9fb0d9);font-variant-numeric:tabular-nums;min-width:74px;text-align:right}
+.intro-estilo{background:var(--panel2,#1d2850);color:var(--txt,#eaf0ff);border:1px solid var(--borde,#2a376b);border-radius:8px;padding:5px 6px;font:12px var(--f-ui)}
+@media (max-width:640px){.intro-estilo{display:none}.intro-tiempo{min-width:0}}

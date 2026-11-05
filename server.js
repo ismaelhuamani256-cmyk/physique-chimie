@@ -37,7 +37,11 @@ function listaContenido() {
 const json = (res, code, obj) => { res.writeHead(code, { 'Content-Type': MIME['.json'], 'Cache-Control': 'no-store' }); res.end(JSON.stringify(obj)); };
 
 http.createServer((req, res) => {
-  const url = new URL(req.url, 'http://x'); let p = decodeURIComponent(url.pathname);
+  // Una URL mal formada (p. ej. "//" o "%zz") no debe tumbar el servidor: respondemos 400.
+  let url, p;
+  try { url = new URL(req.url, 'http://x'); p = decodeURIComponent(url.pathname); }
+  catch (e) { res.writeHead(400); return res.end('Petición no válida'); }
+  p = p.replace(/^\/{2,}/, '/');
   if (p === '/api/scripts') return json(res, 200, { js: listaScripts(), css: listaCss() });
   if (p === '/api/contenido') return json(res, 200, listaContenido());
   if (p === '/api/progreso') {

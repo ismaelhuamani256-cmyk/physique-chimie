@@ -1,0 +1,215 @@
+{
+ "capitulo_id": "_demo",
+ "tipo_nivel": "normal",
+ "tema_visual": "laboratorio-neon",
+ "fisica_juego": {
+  "gravedad": 1.0,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 140,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 8,
+   "y": 12,
+   "ref": "f1",
+   "latex": "C = \\dfrac{n}{V}",
+   "nombre": "Concentration molaire"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 16,
+   "y": 13,
+   "enemigo": "error_unidades",
+   "nombre": "Error de unités",
+   "correccion": "Convertir les mL en L avant de calculer C."
+  },
+  {
+   "tipo": "foso",
+   "x": 24,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 28,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 33,
+   "y": 11,
+   "ref": "f2",
+   "latex": "n = \\dfrac{m}{M}",
+   "nombre": "Quantité de matière"
+  },
+  {
+   "tipo": "resorte",
+   "x": 36,
+   "y": 13
+  },
+  {
+   "tipo": "plataforma",
+   "x": 40,
+   "y": 8,
+   "largo": 6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 42,
+   "y": 6,
+   "ref": "f3",
+   "latex": "\\mathrm{pH} = -\\log\\dfrac{[\\mathrm{H_3O^+}]}{c^\\circ}",
+   "nombre": "pH d'une solution"
+  },
+  {
+   "tipo": "foso",
+   "x": 48,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 48,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 56,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 60
+  },
+  {
+   "tipo": "enemigo",
+   "x": 66,
+   "y": 13,
+   "enemigo": "oubli_log",
+   "nombre": "Oubli du logarithme",
+   "correccion": "pH = −log[H₃O⁺] : ne pas oublier le log ni le signe moins."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 70,
+   "y": 11,
+   "ref": "f4",
+   "latex": "A = \\varepsilon\\,\\ell\\,c",
+   "nombre": "Loi de Beer-Lambert"
+  },
+  {
+   "tipo": "foso",
+   "x": 80,
+   "largo": 5
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 79,
+   "y": 6,
+   "w": 7,
+   "h": 9,
+   "fx": 0,
+   "fy": -0.45
+  },
+  {
+   "tipo": "plataforma",
+   "x": 85,
+   "y": 14,
+   "largo": 55
+  },
+  {
+   "tipo": "plataforma",
+   "x": 90,
+   "y": 11,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 95,
+   "y": 8,
+   "largo": 4
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 96,
+   "y": 6,
+   "ref": "f5",
+   "latex": "C_1V_1 = C_2V_2",
+   "nombre": "Conservation de la matière (dilution)"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 92,
+   "y": 13,
+   "enemigo": "signe_inverse",
+   "nombre": "Réactifs et produits inversés",
+   "correccion": "Les réactifs sont à gauche de la flèche, les produits à droite."
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 110
+  },
+  {
+   "tipo": "jefe",
+   "x": 126,
+   "jefe": "ejercicio_bac_1",
+   "titulo": "Gran Ejercicio · Concentrations et pH",
+   "preguntas": [
+    {
+     "pregunta": "Quelle est la concentration molaire d'une solution contenant $0{,}10\\ \\mathrm{mol}$ de soluté dans $0{,}50\\ \\mathrm{L}$ ?",
+     "opciones": [
+      "0,05 mol·L⁻¹",
+      "0,20 mol·L⁻¹",
+      "0,60 mol·L⁻¹",
+      "5,0 mol·L⁻¹"
+     ],
+     "correcta": 1,
+     "explicacion": "$C = n/V = 0{,}10 / 0{,}50 = 0{,}20\\ \\mathrm{mol\\cdot L^{-1}}$.",
+     "pagina_pdf": 70
+    },
+    {
+     "pregunta": "Quel est le pH d'une solution où $[\\mathrm{H_3O^+}]=1{,}0\\times10^{-3}\\ \\mathrm{mol\\cdot L^{-1}}$ ?",
+     "opciones": [
+      "3,0",
+      "−3,0",
+      "11,0",
+      "0,001"
+     ],
+     "correcta": 0,
+     "explicacion": "$\\mathrm{pH}=-\\log(1{,}0\\times10^{-3}) = 3{,}0$.",
+     "pagina_pdf": 71
+    },
+    {
+     "pregunta": "On dilue 10 fois une solution. Sa concentration est…",
+     "opciones": [
+      "multipliée par 10",
+      "divisée par 10",
+      "inchangée",
+      "divisée par 100"
+     ],
+     "correcta": 1,
+     "explicacion": "La quantité de matière se conserve : $C_f = C_i/10$.",
+     "pagina_pdf": 72
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 136
+  }
+ ]
+}

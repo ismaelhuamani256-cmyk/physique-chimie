@@ -1,0 +1,285 @@
+{
+ "titulo": "El puente del equilibrio: ¿hacia dónde evoluciona?",
+ "estilo": "monigotes",
+ "duracion_seg": 26,
+ "actores": [
+  {
+   "id": "a1",
+   "tipo": "molecula",
+   "pos": [
+    0.12,
+    0.5
+   ],
+   "color": "#2ee59d",
+   "escala": 1
+  },
+  {
+   "id": "a2",
+   "tipo": "molecula",
+   "pos": [
+    0.2,
+    0.66
+   ],
+   "color": "#2ee59d",
+   "escala": 1
+  },
+  {
+   "id": "c1",
+   "tipo": "molecula",
+   "pos": [
+    0.88,
+    0.5
+   ],
+   "color": "#ff3da6",
+   "escala": 1
+  },
+  {
+   "id": "c2",
+   "tipo": "molecula",
+   "pos": [
+    0.8,
+    0.66
+   ],
+   "color": "#ff3da6",
+   "escala": 1
+  },
+  {
+   "id": "coche1",
+   "tipo": "auto",
+   "pos": [
+    0.14,
+    0.86
+   ],
+   "color": "#e63946",
+   "escala": 1
+  },
+  {
+   "id": "coche2",
+   "tipo": "auto",
+   "pos": [
+    0.86,
+    0.93
+   ],
+   "color": "#2f6bff",
+   "escala": 1
+  },
+  {
+   "id": "vigilante",
+   "tipo": "humano",
+   "pos": [
+    0.5,
+    0.78
+   ],
+   "color": "#ffd166",
+   "escala": 1.1
+  }
+ ],
+ "pasos": [
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "a1",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "a2",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "c1",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "c2",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "coche1",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "coche2",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "vigilante",
+   "dur": 1
+  },
+  {
+   "t": 0.5,
+   "accion": "subtitulo",
+   "texto": "Dos islas unidas por un puente: la química también tiene tráfico en los dos sentidos."
+  },
+  {
+   "t": 3,
+   "accion": "habla",
+   "actor": "vigilante",
+   "texto": "¡Yo vigilo el cociente Qr!"
+  },
+  {
+   "t": 4,
+   "accion": "valor",
+   "id": "qr",
+   "desde": 0,
+   "hasta": 4,
+   "dur": 6,
+   "etiqueta": "Qr"
+  },
+  {
+   "t": 4,
+   "accion": "valor",
+   "id": "k",
+   "desde": 4,
+   "hasta": 4,
+   "dur": 1,
+   "etiqueta": "K"
+  },
+  {
+   "t": 4,
+   "accion": "formula",
+   "latex": "Q_{r,i} < K(T) \\Rightarrow \\text{sens direct}"
+  },
+  {
+   "t": 4.5,
+   "accion": "mueve",
+   "actor": "a1",
+   "a": [
+    0.4,
+    0.55
+   ],
+   "dur": 4
+  },
+  {
+   "t": 4.5,
+   "accion": "mueve",
+   "actor": "a2",
+   "a": [
+    0.46,
+    0.68
+   ],
+   "dur": 4
+  },
+  {
+   "t": 4.5,
+   "accion": "mueve",
+   "actor": "coche1",
+   "a": [
+    0.7,
+    0.86
+   ],
+   "dur": 5
+  },
+  {
+   "t": 5,
+   "accion": "vector",
+   "actor": "a1",
+   "dx": 0.12,
+   "dy": 0,
+   "etiqueta": "sens direct"
+  },
+  {
+   "t": 6,
+   "accion": "subtitulo",
+   "texto": "Si Qr es menor que K, el sistema forma más productos (sentido directo)."
+  },
+  {
+   "t": 10,
+   "accion": "reaccion",
+   "de": [
+    "a1",
+    "a2"
+   ],
+   "a": [
+    "c1",
+    "c2"
+   ]
+  },
+  {
+   "t": 11,
+   "accion": "particulas",
+   "tipo": "burbujas",
+   "pos": [
+    0.5,
+    0.45
+   ]
+  },
+  {
+   "t": 12,
+   "accion": "mueve",
+   "actor": "c1",
+   "a": [
+    0.6,
+    0.5
+   ],
+   "dur": 3
+  },
+  {
+   "t": 12,
+   "accion": "mueve",
+   "actor": "c2",
+   "a": [
+    0.55,
+    0.66
+   ],
+   "dur": 3
+  },
+  {
+   "t": 12,
+   "accion": "mueve",
+   "actor": "coche2",
+   "a": [
+    0.3,
+    0.93
+   ],
+   "dur": 5
+  },
+  {
+   "t": 12,
+   "accion": "formula",
+   "latex": "Q_r = K(T) \\Rightarrow v_1 = v_2"
+  },
+  {
+   "t": 13,
+   "accion": "habla",
+   "actor": "vigilante",
+   "texto": "Qr = K: ¡el tráfico es igual en ambos sentidos!"
+  },
+  {
+   "t": 14,
+   "accion": "subtitulo",
+   "texto": "Equilibrio dinámico: las dos reacciones siguen, pero las cantidades ya no cambian."
+  },
+  {
+   "t": 18,
+   "accion": "resalta",
+   "actor": "vigilante"
+  },
+  {
+   "t": 19,
+   "accion": "subtitulo",
+   "texto": "K solo depende de la temperatura, no de la composición inicial."
+  },
+  {
+   "t": 22,
+   "accion": "subtitulo",
+   "texto": "Una pila es un sistema fuera de equilibrio: da corriente mientras Qr tiende a K."
+  },
+  {
+   "t": 25,
+   "accion": "pausa",
+   "dur": 1
+  }
+ ]
+}

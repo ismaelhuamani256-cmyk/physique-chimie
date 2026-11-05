@@ -1,0 +1,138 @@
+/* =====================================================================================
+   mapa.css — Pantalla 1: mapa de mundos en 3D (js/mapa.js)
+   Todo está acotado bajo .pantalla-mapa para no afectar a otras pantallas.
+   ===================================================================================== */
+.pantalla-mapa{background:radial-gradient(ellipse at 50% 40%,#16204a 0%,#0a0f22 70%);color:var(--txt);user-select:none;-webkit-user-select:none}
+.pantalla-mapa .mapa-lienzo{position:absolute;inset:0}
+.pantalla-mapa .mapa-lienzo canvas{position:absolute;inset:0;width:100%;height:100%;display:block;outline:none;touch-action:none;cursor:grab}
+.pantalla-mapa .mapa-lienzo canvas:focus-visible{box-shadow:inset 0 0 0 3px var(--c-fisica2)}
+.pantalla-mapa.arrastrando .mapa-lienzo canvas{cursor:grabbing}
+.pantalla-mapa.sobre-nodo .mapa-lienzo canvas{cursor:pointer}
+.pantalla-mapa.sobre-bloqueado .mapa-lienzo canvas{cursor:help}
+.pantalla-mapa.viajando .mapa-lienzo canvas{cursor:progress}
+
+/* ---------- vidrio común para paneles ---------- */
+.pantalla-mapa .vidrio{background:rgba(18,26,51,.78);border:1px solid var(--borde);border-radius:var(--radio);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:var(--sombra)}
+
+/* ---------- panel lateral (colapsable) ---------- */
+.mapa-panel{position:absolute;top:12px;right:12px;width:272px;max-height:calc(100% - 24px);display:flex;flex-direction:column;z-index:6;transition:transform .25s ease}
+.mapa-panel .mp-cab{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--borde)}
+.mapa-panel .mp-cab h2{margin:0;flex:1;font:400 10px var(--f-hud);letter-spacing:.5px;color:var(--c-fisica2);line-height:1.5}
+.mapa-panel .mp-cuerpo{padding:12px;overflow:auto;display:flex;flex-direction:column;gap:14px}
+.mapa-panel.colapsado{width:auto}
+.mapa-panel.colapsado .mp-cuerpo,.mapa-panel.colapsado .mp-cab h2{display:none}
+.mapa-panel.colapsado .mp-cab{border-bottom:0;padding:6px}
+.mp-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mp-stat{background:var(--bg2);border:1px solid var(--borde);border-radius:10px;padding:8px 10px}
+.mp-stat small{display:block;font-size:11px;color:var(--txt2)}
+.mp-stat b{font-size:18px}
+.mp-stat.xp b{color:var(--aviso)}
+.mp-prog small{display:flex;justify-content:space-between;font-size:12px;color:var(--txt2);margin-bottom:5px}
+.mp-prog small b{color:var(--txt)}
+.mp-barra{height:9px;border-radius:99px;background:var(--bg2);border:1px solid var(--borde);overflow:hidden}
+.mp-barra i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--c-quimica),var(--c-fisica2),var(--c-ondas));transition:width .5s ease}
+.mp-mundos{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.mp-mundo{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--txt2)}
+.mp-mundo .pt{width:9px;height:9px;border-radius:50%;flex:none}
+.mp-mundo .barra{flex:1;height:5px;border-radius:99px;background:var(--bg2);overflow:hidden}
+.mp-mundo .barra i{display:block;height:100%;border-radius:99px}
+.mp-acciones{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mp-acciones .btn{font-size:12px;padding:7px 8px}
+.mp-acciones .ancho{grid-column:1/-1}
+.mp-leyenda{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--txt2)}
+.mp-leyenda li{display:flex;align-items:center;gap:9px}
+.mp-leyenda .ico{width:20px;height:20px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:11px;font-weight:700;border:2px solid;background:#0b1020}
+.ico.disponible{border-color:var(--c-fisica2);color:var(--txt)}
+.ico.completado{border-color:var(--ok);color:var(--ok)}
+.ico.dominado{border-color:var(--aviso);color:var(--aviso)}
+.ico.bloqueado{border-color:#59618a;color:#8790b5}
+.ico.fortaleza{border-color:var(--c-energia);color:var(--c-energia);border-radius:5px}
+.mp-sub{font:600 11px var(--f-ui);text-transform:uppercase;letter-spacing:.08em;color:var(--txt2);margin:0 0 6px}
+
+/* ---------- selector de mundos (abajo) ---------- */
+.mapa-mundos{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);display:flex;gap:6px;padding:6px;z-index:5;max-width:calc(100% - 24px);overflow-x:auto}
+.mapa-mundos .mm{--a:var(--c-fisica);--b:var(--c-fisica2);display:flex;align-items:center;gap:7px;padding:7px 12px;border-radius:10px;border:1px solid transparent;background:transparent;color:var(--txt2);font:600 13px var(--f-ui);cursor:pointer;white-space:nowrap;transition:background .15s,color .15s,border-color .15s}
+.mapa-mundos .mm:hover{background:#ffffff12;color:var(--txt)}
+.mapa-mundos .mm:focus-visible{outline:2px solid var(--c-fisica2);outline-offset:1px}
+.mapa-mundos .mm .pt{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--a),var(--b));box-shadow:0 0 8px var(--a)}
+.mapa-mundos .mm small{font-weight:400;opacity:.75}
+.mapa-mundos .mm.activo{color:var(--txt);border-color:var(--a);background:color-mix(in srgb,var(--a) 18%,transparent)}
+.mapa-mundos .mm.todo .pt{background:conic-gradient(var(--c-quimica),var(--c-fisica),var(--c-energia),var(--c-ondas),var(--c-quimica))}
+
+/* ---------- pistas y botón lista ---------- */
+.mapa-ayuda{position:absolute;left:14px;bottom:70px;font-size:12px;color:var(--txt2);line-height:1.5;z-index:4;pointer-events:none;text-shadow:0 1px 3px #000}
+.mapa-ayuda b{color:var(--txt)}
+.mapa-ayuda{animation:mapa-ayuda-fade 1.2s ease 14s forwards}
+@keyframes mapa-ayuda-fade{to{opacity:0}}
+.mapa-btn-lista{position:absolute;top:12px;left:12px;z-index:6}
+
+/* ---------- tooltip de nodo ---------- */
+.mapa-tooltip{position:absolute;left:0;top:0;z-index:8;width:min(300px,calc(100% - 20px));padding:12px 14px;opacity:0;pointer-events:none;
+  transform:translate(-50%,-100%);transition:opacity .14s;--a:var(--c-fisica);--b:var(--c-fisica2)}
+.mapa-tooltip.visible{opacity:1;pointer-events:auto}
+.mapa-tooltip.debajo{transform:translate(-50%,0)}
+.mapa-tooltip::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,var(--a),var(--b));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.mt-cab{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.mt-num{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:700 15px var(--f-ui);background:linear-gradient(135deg,var(--a),var(--b));color:#04122e}
+.mt-cab b{display:block;font-size:14px;line-height:1.25}
+.mt-cab small{display:block;font-size:11px;color:var(--txt2);margin-top:2px}
+.mt-estado{display:inline-block;margin-bottom:8px}
+.mt-estado.completado{border-color:var(--ok);color:var(--ok)}
+.mt-estado.dominado{border-color:var(--aviso);color:var(--aviso)}
+.mt-estado.bloqueado{border-color:#59618a;color:#8790b5}
+.mt-filas{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin:0 0 10px;font-size:12px}
+.mt-filas dt{color:var(--txt2)}
+.mt-filas dd{margin:0;text-align:right}
+.mt-filas .si{color:var(--ok)}
+.mt-filas .no{color:var(--txt2)}
+.mt-estrellas{color:var(--aviso);letter-spacing:2px}
+.mt-estrellas .off{color:#3a4573}
+.mt-acciones{display:flex;flex-direction:column;gap:6px}
+.mt-acciones .btn{width:100%;font-size:13px}
+.mt-prep{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--txt2);margin-top:2px}
+
+/* ---------- vista lista accesible ---------- */
+.mapa-lista{position:absolute;inset:0;z-index:12;overflow:auto;padding:20px 16px 40px;background:linear-gradient(#0b1020f4,#0b1020fa);display:none}
+.pantalla-mapa.ver-lista .mapa-lista{display:block}
+.pantalla-mapa.ver-lista .mapa-panel,.pantalla-mapa.ver-lista .mapa-btn-lista,.pantalla-mapa.ver-lista .mapa-lienzo,.pantalla-mapa.ver-lista .mapa-mundos,.pantalla-mapa.ver-lista .mapa-ayuda,.pantalla-mapa.ver-lista .mapa-tooltip{visibility:hidden}
+.ml-in{max-width:880px;margin:0 auto}
+.ml-cab{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.ml-cab h2{margin:0;flex:1;font-size:22px}
+.ml-nota{color:var(--txt2);font-size:13px;margin:0 0 18px}
+.ml-mundo{margin-bottom:22px;--a:var(--c-fisica);--b:var(--c-fisica2)}
+.ml-mundo h3{display:flex;align-items:center;gap:10px;margin:0 0 8px;font-size:15px;padding-bottom:6px;border-bottom:2px solid var(--a)}
+.ml-mundo h3 small{font-weight:400;color:var(--txt2);margin-left:auto}
+.ml-mundo ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.ml-fila{display:flex;gap:8px;align-items:stretch}
+.ml-fila .principal{flex:1;display:flex;align-items:center;gap:12px;text-align:left;padding:10px 12px;border-radius:12px;border:1px solid var(--borde);background:var(--panel);color:var(--txt);font:400 14px var(--f-ui);cursor:pointer}
+.ml-fila .principal:hover{background:var(--panel2);border-color:var(--a)}
+.ml-fila .principal:focus-visible,.ml-fila .directo:focus-visible{outline:2px solid var(--c-fisica2);outline-offset:2px}
+.ml-fila .principal[aria-disabled=true]{opacity:.55;cursor:not-allowed}
+.ml-fila .n{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:700;background:linear-gradient(135deg,var(--a),var(--b));color:#04122e}
+.ml-fila .principal[aria-disabled=true] .n{background:#39405e;color:#8790b5}
+.ml-fila .t{flex:1;min-width:0}
+.ml-fila .t b{display:block;font-weight:600}
+.ml-fila .t small{color:var(--txt2);font-size:12px}
+.ml-fila .st{flex:none;font-size:12px;color:var(--txt2);text-align:right}
+.ml-fila .st.completado{color:var(--ok)}.ml-fila .st.dominado{color:var(--aviso)}
+.ml-fila .directo{flex:none;padding:0 12px;border-radius:12px;border:1px solid var(--borde);background:var(--bg2);color:var(--txt2);font:600 12px var(--f-ui);cursor:pointer}
+.ml-fila .directo:hover{color:var(--txt);border-color:var(--a)}
+.sr-solo{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- aviso si no hay WebGL ---------- */
+.mapa-sin-webgl{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:13;padding:8px 14px;font-size:13px;color:var(--aviso)}
+
+/* ---------- pantallas estrechas ---------- */
+@media (max-width:720px){
+  .mapa-panel{width:min(272px,calc(100% - 24px))}
+  .mapa-ayuda{display:none}
+  .mapa-mundos .mm small{display:none}
+  .mapa-mundos .mm{padding:7px 9px;font-size:12px}
+  .mapa-btn-lista{top:auto;bottom:62px}
+  .ml-fila .st{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .mapa-tooltip,.mp-barra i,.mapa-panel{transition:none}
+}

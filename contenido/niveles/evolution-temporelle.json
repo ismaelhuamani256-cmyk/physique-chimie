@@ -1,0 +1,401 @@
+{
+ "capitulo_id": "evolution-temporelle",
+ "tipo_nivel": "normal",
+ "tema_visual": "laboratorio-neon",
+ "fisica_juego": {
+  "gravedad": 1.0,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 190,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "foso",
+   "x": 22,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 25,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 39,
+   "y": 12,
+   "largo": 10
+  },
+  {
+   "tipo": "foso",
+   "x": 49,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 52,
+   "y": 12,
+   "largo": 9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 61,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "foso",
+   "x": 69,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 72,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 86,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 90,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "foso",
+   "x": 102,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 105,
+   "y": 13,
+   "largo": 10
+  },
+  {
+   "tipo": "foso",
+   "x": 115,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 119,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 133,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 136,
+   "y": 12,
+   "largo": 10
+  },
+  {
+   "tipo": "foso",
+   "x": 146,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 150,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "foso",
+   "x": 160,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 163,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 175,
+   "y": 14,
+   "largo": 15
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 28,
+   "y": 12,
+   "largo": 4,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 69,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 2,
+   "eje": "y",
+   "periodo": 3
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 116,
+   "y": 12,
+   "largo": 3,
+   "recorrido": 2,
+   "eje": "x",
+   "periodo": 3
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 147,
+   "y": 12,
+   "largo": 3,
+   "recorrido": 1,
+   "eje": "x",
+   "periodo": 3
+  },
+  {
+   "tipo": "resorte",
+   "x": 84,
+   "y": 14
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 92,
+   "y": 8,
+   "w": 10,
+   "h": 6,
+   "fx": 0.6,
+   "fy": 0
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 152,
+   "y": 8,
+   "w": 8,
+   "h": 6,
+   "fx": 0.6,
+   "fy": 0
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 55
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 121
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 10,
+   "y": 12,
+   "ref": "f1",
+   "latex": "v_{\\text{Produit}} = \\dfrac{\\mathrm{d}[\\text{Produit}]}{\\mathrm{d}t}",
+   "nombre": "Velocidad volúmica de aparición de un producto"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 43,
+   "y": 10,
+   "ref": "f2",
+   "latex": "v_{\\text{Réactif}} = -\\dfrac{\\mathrm{d}[\\text{Réactif}]}{\\mathrm{d}t}",
+   "nombre": "Velocidad volúmica de desaparición de un reactivo"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 56,
+   "y": 10,
+   "ref": "f3",
+   "latex": "x(t_{1/2}) = \\dfrac{x_\\mathrm{f}}{2}",
+   "nombre": "Tiempo de semirreacción"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 64,
+   "y": 12,
+   "ref": "f4",
+   "latex": "v_\\mathrm{A} = k \\cdot [\\mathrm{A}]",
+   "nombre": "Ley de velocidad de orden 1 (reactivo)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 76,
+   "y": 12,
+   "ref": "f5",
+   "latex": "v_\\mathrm{P} = k' \\cdot [\\mathrm{A}]",
+   "nombre": "Ley de velocidad de orden 1 (producto)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 96,
+   "y": 12,
+   "ref": "f10",
+   "latex": "\\sigma_{\\text{solution}} = \\sum_i \\lambda_i \\cdot [\\mathrm{X}_i]",
+   "nombre": "Ley de Kohlrausch"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 110,
+   "y": 11,
+   "ref": "n7",
+   "latex": "\\text{Temps de demi-réaction t1/2}",
+   "nombre": "Temps de demi-réaction t1/2"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 126,
+   "y": 12,
+   "ref": "f6",
+   "latex": "n_{\\text{réactif}}(t_{1/2}) = \\dfrac{n_0}{2}",
+   "nombre": "Cantidad de reactivo en t1/2"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 141,
+   "y": 10,
+   "ref": "n4",
+   "latex": "\\text{Catalyseur}",
+   "nombre": "Catalyseur"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 155,
+   "y": 12,
+   "ref": "f11",
+   "latex": "[\\mathrm{HO^-}](t) = c_0 \\cdot \\dfrac{\\sigma_t - \\sigma_\\infty}{\\sigma_0 - \\sigma_\\infty}",
+   "nombre": "Concentración de HO⁻ por conductimetría"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 17,
+   "y": 13,
+   "enemigo": "error_signo",
+   "nombre": "Olvidar el signo menos",
+   "correccion": "En v de un reactivo se pone −d[R]/dt para que sea positiva."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 46,
+   "y": 11,
+   "enemigo": "error_estequiometria",
+   "nombre": "Olvidar el nº estequiométrico",
+   "correccion": "[producto] = (coeficiente·x)/V, no x/V."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 59,
+   "y": 11,
+   "enemigo": "confusion_catalizador",
+   "nombre": "Confundir catalizador e intermediario",
+   "correccion": "Intermediario: formado y consumido; catalizador: consumido y regenerado."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 99,
+   "y": 13,
+   "enemigo": "catalizador_en_balance",
+   "nombre": "El catalizador cambia el balance",
+   "correccion": "No aparece en la ecuación y no cambia el estado final."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 129,
+   "y": 13,
+   "enemigo": "error_homogeneidad",
+   "nombre": "Escribir t1/2 = x_f/2",
+   "correccion": "Es x(t1/2) = x_f/2: t1/2 es un tiempo, x_f/2 un avance."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 158,
+   "y": 13,
+   "enemigo": "flecha_al_reves",
+   "nombre": "Flecha curva al revés",
+   "correccion": "Parte del sitio donor y apunta al sitio aceptor."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 112,
+   "y": 12,
+   "enemigo": "fin_en_t12",
+   "nombre": "Reacción terminada en t1/2",
+   "correccion": "Termina tras unos 6 a 7 t1/2, no en t1/2."
+  },
+  {
+   "tipo": "jefe",
+   "x": 181,
+   "jefe": "ejercicio_bac_1",
+   "titulo": "Ejercicio Bac: cinética y catálisis",
+   "preguntas": [
+    {
+     "pregunta": "Un catalizador es una especie química que...",
+     "opciones": [
+      "aumenta la cantidad final de producto formado",
+      "acelera la transformación y no aparece en el balance reaccional",
+      "aparece en el balance reaccional",
+      "modifica el estado final del sistema"
+     ],
+     "correcta": 1,
+     "explicacion": "Acelera u orienta la transformación sin modificar el estado final; se consume y se regenera, así que no está en la ecuación.",
+     "pagina_pdf": 112
+    },
+    {
+     "pregunta": "La velocidad volúmica de desaparición de un reactivo se expresa:",
+     "opciones": [
+      "v = dn/dt",
+      "v = d[Réactif]/dt",
+      "v = −d[Réactif]/dt",
+      "v = [Réactif]·t"
+     ],
+     "correcta": 2,
+     "explicacion": "La concentración del reactivo disminuye; el signo menos hace positiva la velocidad.",
+     "pagina_pdf": 113
+    },
+    {
+     "pregunta": "El tiempo de semirreacción t1/2 es la duración al cabo de la cual...",
+     "opciones": [
+      "la reacción está terminada",
+      "el avance vale x_f/2",
+      "la velocidad vale cero",
+      "el catalizador se regenera"
+     ],
+     "correcta": 1,
+     "explicacion": "x(t1/2) = x_f/2.",
+     "pagina_pdf": 113
+    },
+    {
+     "pregunta": "Un intermediario reaccional es una especie...",
+     "opciones": [
+      "formada y luego consumida en el mecanismo",
+      "consumida y luego regenerada",
+      "presente en el balance global",
+      "que solo aparece en la última etapa"
+     ],
+     "correcta": 0,
+     "explicacion": "Intermediario: formado y luego consumido. Consumido y regenerado define al catalizador.",
+     "pagina_pdf": 114
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 186
+  }
+ ]
+}

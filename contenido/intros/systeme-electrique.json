@@ -1,0 +1,315 @@
+{
+ "titulo": "Matrix RC: el tiempo de un condensador",
+ "estilo": "matrix",
+ "duracion_seg": 30,
+ "actores": [
+  {
+   "id": "circ",
+   "tipo": "circuito",
+   "pos": [
+    0.55,
+    0.58
+   ],
+   "color": "#00d4ff",
+   "escala": 2.2
+  },
+  {
+   "id": "ato",
+   "tipo": "humano",
+   "pos": [
+    0.12,
+    0.72
+   ],
+   "color": "#2ee59d",
+   "escala": 1.1
+  },
+  {
+   "id": "e1",
+   "tipo": "electron",
+   "pos": [
+    0.4,
+    0.45
+   ],
+   "color": "#2ee59d",
+   "escala": 0.8
+  },
+  {
+   "id": "e2",
+   "tipo": "electron",
+   "pos": [
+    0.4,
+    0.58
+   ],
+   "color": "#2ee59d",
+   "escala": 0.8
+  },
+  {
+   "id": "e3",
+   "tipo": "electron",
+   "pos": [
+    0.4,
+    0.71
+   ],
+   "color": "#2ee59d",
+   "escala": 0.8
+  },
+  {
+   "id": "tau",
+   "tipo": "texto",
+   "pos": [
+    0.5,
+    0.1
+   ],
+   "texto": "τ = R·C",
+   "color": "#ffd23f",
+   "escala": 1.2
+  },
+  {
+   "id": "perro",
+   "tipo": "perro",
+   "pos": [
+    0.88,
+    0.82
+   ],
+   "color": "#b8ffe0",
+   "escala": 1.0
+  }
+ ],
+ "pasos": [
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "circ",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "subtitulo",
+   "texto": "Dentro de la Matrix hay un circuito RC: generador, resistencia y condensador."
+  },
+  {
+   "t": 1.2,
+   "accion": "aparece",
+   "actor": "ato",
+   "dur": 0.8
+  },
+  {
+   "t": 1.8,
+   "accion": "habla",
+   "actor": "ato",
+   "texto": "Veo la corriente como lluvia de código verde."
+  },
+  {
+   "t": 3,
+   "accion": "aparece",
+   "actor": "e1",
+   "dur": 0.4
+  },
+  {
+   "t": 3,
+   "accion": "aparece",
+   "actor": "e2",
+   "dur": 0.4
+  },
+  {
+   "t": 3,
+   "accion": "aparece",
+   "actor": "e3",
+   "dur": 0.4
+  },
+  {
+   "t": 3.6,
+   "accion": "mueve",
+   "actor": "e1",
+   "a": [
+    0.62,
+    0.5
+   ],
+   "dur": 3
+  },
+  {
+   "t": 3.6,
+   "accion": "mueve",
+   "actor": "e2",
+   "a": [
+    0.62,
+    0.58
+   ],
+   "dur": 3
+  },
+  {
+   "t": 3.6,
+   "accion": "mueve",
+   "actor": "e3",
+   "a": [
+    0.62,
+    0.66
+   ],
+   "dur": 3
+  },
+  {
+   "t": 4,
+   "accion": "vector",
+   "actor": "e2",
+   "dx": 0.12,
+   "dy": 0,
+   "etiqueta": "i"
+  },
+  {
+   "t": 4,
+   "accion": "subtitulo",
+   "texto": "La intensidad es el caudal de cargas: i = dq/dt. Se acumulan en las armaduras; no atraviesan el aislante."
+  },
+  {
+   "t": 7.5,
+   "accion": "resalta",
+   "actor": "circ"
+  },
+  {
+   "t": 7.5,
+   "accion": "formula",
+   "latex": "q = C\\cdot u_C"
+  },
+  {
+   "t": 7.8,
+   "accion": "subtitulo",
+   "texto": "El condensador guarda carga: cuanta más carga, más tensión entre sus armaduras."
+  },
+  {
+   "t": 10,
+   "accion": "valor",
+   "id": "circ",
+   "desde": 0,
+   "hasta": 3.8,
+   "dur": 3,
+   "etiqueta": "u_C (V)"
+  },
+  {
+   "t": 10.2,
+   "accion": "particulas",
+   "tipo": "chispas",
+   "pos": [
+    0.62,
+    0.58
+   ]
+  },
+  {
+   "t": 10.5,
+   "accion": "subtitulo",
+   "texto": "Con E = 6,0 V, al cabo de un tiempo τ la tensión llega al 63 % de E (3,8 V)."
+  },
+  {
+   "t": 13.5,
+   "accion": "aparece",
+   "actor": "tau",
+   "dur": 0.6
+  },
+  {
+   "t": 14,
+   "accion": "resalta",
+   "actor": "tau"
+  },
+  {
+   "t": 14,
+   "accion": "formula",
+   "latex": "u_C(t)=E\\left(1-e^{-t/\\tau}\\right)\\qquad \\tau=R\\cdot C"
+  },
+  {
+   "t": 14.3,
+   "accion": "subtitulo",
+   "texto": "Carga: u_C sube hacia E siguiendo 1 − e^(−t/τ); τ = R·C marca el ritmo."
+  },
+  {
+   "t": 16.5,
+   "accion": "valor",
+   "id": "circ",
+   "desde": 3.8,
+   "hasta": 6.0,
+   "dur": 3.5,
+   "etiqueta": "u_C (V)"
+  },
+  {
+   "t": 17,
+   "accion": "subtitulo",
+   "texto": "A los 5τ el condensador está prácticamente cargado: u_C ≈ E."
+  },
+  {
+   "t": 20.5,
+   "accion": "aparece",
+   "actor": "perro",
+   "dur": 0.6
+  },
+  {
+   "t": 21,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "Guau (traducción: τ grande = carga lenta)."
+  },
+  {
+   "t": 22,
+   "accion": "color",
+   "actor": "circ",
+   "color": "#ff3da6"
+  },
+  {
+   "t": 22.2,
+   "accion": "mueve",
+   "actor": "e1",
+   "a": [
+    0.4,
+    0.5
+   ],
+   "dur": 2.5
+  },
+  {
+   "t": 22.2,
+   "accion": "mueve",
+   "actor": "e2",
+   "a": [
+    0.4,
+    0.58
+   ],
+   "dur": 2.5
+  },
+  {
+   "t": 22.2,
+   "accion": "mueve",
+   "actor": "e3",
+   "a": [
+    0.4,
+    0.66
+   ],
+   "dur": 2.5
+  },
+  {
+   "t": 22.4,
+   "accion": "valor",
+   "id": "circ",
+   "desde": 6.0,
+   "hasta": 0,
+   "dur": 3,
+   "etiqueta": "u_C (V)"
+  },
+  {
+   "t": 22.5,
+   "accion": "subtitulo",
+   "texto": "En la descarga u_C = E·e^(−t/RC) cae hacia 0: las cargas vuelven por el circuito."
+  },
+  {
+   "t": 26,
+   "accion": "habla",
+   "actor": "ato",
+   "texto": "R y C deciden cuánto dura el transitorio."
+  },
+  {
+   "t": 26.5,
+   "accion": "subtitulo",
+   "texto": "Dos números, R y C, fijan cuánto tarda un condensador en cargarse o descargarse."
+  },
+  {
+   "t": 28.5,
+   "accion": "pausa",
+   "dur": 1
+  }
+ ]
+}

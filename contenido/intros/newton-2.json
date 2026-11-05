@@ -1,0 +1,210 @@
+{
+ "titulo": "ΣF = m·a: el auto que frena y el perro",
+ "estilo": "monigotes",
+ "duracion_seg": 22,
+ "actores": [
+  {
+   "id": "auto",
+   "tipo": "auto",
+   "pos": [
+    0.08,
+    0.72
+   ],
+   "escala": 1,
+   "color": "#2f6bff"
+  },
+  {
+   "id": "perro",
+   "tipo": "perro",
+   "pos": [
+    0.86,
+    0.74
+   ],
+   "escala": 1,
+   "color": "#c98a4b"
+  },
+  {
+   "id": "humano",
+   "tipo": "humano",
+   "pos": [
+    0.94,
+    0.72
+   ],
+   "escala": 1,
+   "color": "#00d4ff"
+  },
+  {
+   "id": "bola",
+   "tipo": "bola",
+   "pos": [
+    0.8,
+    0.78
+   ],
+   "escala": 0.6,
+   "color": "#ff3da6"
+  },
+  {
+   "id": "etq",
+   "tipo": "texto",
+   "pos": [
+    0.2,
+    0.45
+   ],
+   "escala": 1,
+   "color": "#ffffff",
+   "texto": "Masa m"
+  },
+  {
+   "id": "marca",
+   "tipo": "flecha",
+   "pos": [
+    0.62,
+    0.86
+   ],
+   "escala": 0.8,
+   "color": "#ffd166"
+  }
+ ],
+ "pasos": [
+  {
+   "t": 0,
+   "accion": "mueve",
+   "actor": "auto",
+   "a": [
+    0.62,
+    0.72
+   ],
+   "dur": 6
+  },
+  {
+   "t": 0.5,
+   "accion": "vector",
+   "actor": "auto",
+   "dx": 0.12,
+   "dy": 0,
+   "etiqueta": "v"
+  },
+  {
+   "t": 1,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "¡Guau! ¡Mi pelota!"
+  },
+  {
+   "t": 2.5,
+   "accion": "mueve",
+   "actor": "perro",
+   "a": [
+    0.76,
+    0.76
+   ],
+   "dur": 1.5
+  },
+  {
+   "t": 3.5,
+   "accion": "habla",
+   "actor": "humano",
+   "texto": "¡Frena, por favor!"
+  },
+  {
+   "t": 4.5,
+   "accion": "frena",
+   "actor": "auto"
+  },
+  {
+   "t": 4.7,
+   "accion": "vector",
+   "actor": "auto",
+   "dx": -0.12,
+   "dy": 0,
+   "etiqueta": "ΣF (roce)"
+  },
+  {
+   "t": 5.2,
+   "accion": "particulas",
+   "tipo": "polvo",
+   "pos": [
+    0.5,
+    0.78
+   ]
+  },
+  {
+   "t": 6,
+   "accion": "vector",
+   "actor": "auto",
+   "dx": -0.07,
+   "dy": 0,
+   "etiqueta": "a"
+  },
+  {
+   "t": 7,
+   "accion": "formula",
+   "latex": "\\sum \\vec F = m\\,\\vec a_G"
+  },
+  {
+   "t": 8.5,
+   "accion": "subtitulo",
+   "texto": "La fuerza neta (roce) apunta hacia atrás, igual que la aceleración: el auto frena."
+  },
+  {
+   "t": 11,
+   "accion": "resalta",
+   "actor": "auto"
+  },
+  {
+   "t": 11,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "¿Y si el auto pesara el doble?"
+  },
+  {
+   "t": 11.5,
+   "accion": "escala",
+   "actor": "auto",
+   "a": 1.4,
+   "dur": 1.5
+  },
+  {
+   "t": 13,
+   "accion": "subtitulo",
+   "texto": "Con la misma fuerza, el doble de masa da la mitad de aceleración."
+  },
+  {
+   "t": 13.5,
+   "accion": "formula",
+   "latex": "\\vec a_G=\\dfrac{\\sum \\vec F}{m}"
+  },
+  {
+   "t": 16,
+   "accion": "mueve",
+   "actor": "perro",
+   "a": [
+    0.74,
+    0.76
+   ],
+   "dur": 0.5
+  },
+  {
+   "t": 16.5,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "¡Guau! ¡Recuperé mi pelota!"
+  },
+  {
+   "t": 18,
+   "accion": "subtitulo",
+   "texto": "Y si ΣF = 0, no hay aceleración: reposo o movimiento rectilíneo uniforme."
+  },
+  {
+   "t": 19,
+   "accion": "formula",
+   "latex": "\\sum \\vec F=\\vec 0 \\Rightarrow \\vec a_G=\\vec 0"
+  },
+  {
+   "t": 20.5,
+   "accion": "habla",
+   "actor": "humano",
+   "texto": "¡Qué susto!"
+  }
+ ]
+}

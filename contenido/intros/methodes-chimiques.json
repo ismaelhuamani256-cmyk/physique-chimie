@@ -1,0 +1,225 @@
+{
+ "titulo": "Titrage: ¿cuánto hay en la solución?",
+ "estilo": "monigotes",
+ "duracion_seg": 27,
+ "actores": [
+  {
+   "id": "quim",
+   "tipo": "humano",
+   "pos": [
+    0.14,
+    0.62
+   ],
+   "color": "#2ee59d",
+   "escala": 1.1
+  },
+  {
+   "id": "perro",
+   "tipo": "perro",
+   "pos": [
+    0.08,
+    0.8
+   ],
+   "color": "#ffb347",
+   "escala": 0.9
+  },
+  {
+   "id": "buret",
+   "tipo": "tubo_ensayo",
+   "pos": [
+    0.55,
+    0.3
+   ],
+   "color": "#ff3da6",
+   "escala": 1.7
+  },
+  {
+   "id": "erlen",
+   "tipo": "vaso",
+   "pos": [
+    0.55,
+    0.72
+   ],
+   "color": "#8fd3ff",
+   "escala": 1.3
+  },
+  {
+   "id": "h3o",
+   "tipo": "ion",
+   "pos": [
+    0.52,
+    0.74
+   ],
+   "color": "#ff6b6b",
+   "escala": 0.7
+  },
+  {
+   "id": "ho",
+   "tipo": "ion",
+   "pos": [
+    0.55,
+    0.34
+   ],
+   "color": "#4dabff",
+   "escala": 0.7
+  },
+  {
+   "id": "agua1",
+   "tipo": "molecula",
+   "pos": [
+    0.52,
+    0.74
+   ],
+   "color": "#8fd3ff",
+   "escala": 0.8
+  },
+  {
+   "id": "agua2",
+   "tipo": "molecula",
+   "pos": [
+    0.58,
+    0.74
+   ],
+   "color": "#8fd3ff",
+   "escala": 0.8
+  },
+  {
+   "id": "indic",
+   "tipo": "flecha",
+   "pos": [
+    0.8,
+    0.55
+   ],
+   "color": "#ffd166",
+   "escala": 1
+  }
+ ],
+ "pasos": [
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "quim",
+   "dur": 0.6
+  },
+  {
+   "t": 0,
+   "accion": "subtitulo",
+   "texto": "Una solución de concentración desconocida: ¿cuánta especie química contiene?"
+  },
+  {
+   "t": 1,
+   "accion": "habla",
+   "actor": "quim",
+   "texto": "¿Cuál es su concentración?"
+  },
+  {
+   "t": 2.5,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "¡Guau! Hay que titular."
+  },
+  {
+   "t": 4,
+   "accion": "subtitulo",
+   "texto": "Titrage: añadir gota a gota una solución titrante de concentración conocida."
+  },
+  {
+   "t": 4,
+   "accion": "mueve",
+   "actor": "ho",
+   "a": [
+    0.55,
+    0.66
+   ],
+   "dur": 1.8
+  },
+  {
+   "t": 6,
+   "accion": "reaccion",
+   "de": [
+    "h3o",
+    "ho"
+   ],
+   "a": [
+    "agua1",
+    "agua2"
+   ]
+  },
+  {
+   "t": 6.2,
+   "accion": "particulas",
+   "tipo": "burbujas",
+   "pos": [
+    0.55,
+    0.7
+   ]
+  },
+  {
+   "t": 7,
+   "accion": "subtitulo",
+   "texto": "La reacción soporte debe ser totale, rapide et unique."
+  },
+  {
+   "t": 8.5,
+   "accion": "valor",
+   "id": "vol",
+   "desde": 0,
+   "hasta": 20,
+   "dur": 5,
+   "etiqueta": "V titrante (mL)"
+  },
+  {
+   "t": 9,
+   "accion": "subtitulo",
+   "texto": "Antes de la equivalencia el titrante es el reactivo limitante: se consume al caer."
+  },
+  {
+   "t": 13,
+   "accion": "resalta",
+   "actor": "erlen"
+  },
+  {
+   "t": 13.5,
+   "accion": "subtitulo",
+   "texto": "Equivalencia: reactivos mezclados en proporciones estequiométricas y totalmente consumidos."
+  },
+  {
+   "t": 14,
+   "accion": "formula",
+   "latex": "n_A = n_B \\;\\Leftrightarrow\\; c_A\\,V_A = c_B\\,V_E"
+  },
+  {
+   "t": 17.5,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "¿Y si no cambia de color?"
+  },
+  {
+   "t": 18.5,
+   "accion": "aparece",
+   "actor": "indic",
+   "dur": 0.5
+  },
+  {
+   "t": 18.5,
+   "accion": "subtitulo",
+   "texto": "Se detecta con un salto de pH (pH-metría) o un cambio de pendiente de la conductividad."
+  },
+  {
+   "t": 21.5,
+   "accion": "formula",
+   "latex": "c_A=\\dfrac{c_B\\,V_E}{V_A}"
+  },
+  {
+   "t": 22.5,
+   "accion": "habla",
+   "actor": "quim",
+   "texto": "¡Con V_E conozco c_A!"
+  },
+  {
+   "t": 25,
+   "accion": "subtitulo",
+   "texto": "Los métodos químicos de análisis dosifican gracias a la equivalencia."
+  }
+ ]
+}

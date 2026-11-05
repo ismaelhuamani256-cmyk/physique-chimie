@@ -1,0 +1,1354 @@
+{
+ "id": "force-acides-bases",
+ "titulo": "Force des acides et des bases",
+ "materia": "chimie",
+ "mundo": "constitucion",
+ "pdf_ini": 178,
+ "pdf_fin": 203,
+ "resumen": "Se estudia la reacción de un ácido o una base con el agua: el producto iónico Ke del agua, la constante de acidez KA y el pKA de un par. Los ácidos/bases fuertes reaccionan totalmente (pH = −log c ó pH = pKe + log c); los débiles establecen un equilibrio que se resuelve con la tasa de avance τ y una ecuación de segundo grado. Se añaden los diagramas de predominancia y de distribución, los indicadores coloreados, los ácidos alfa-aminados y las soluciones tampón.",
+ "resumen_fr": "Réaction d'un acide ou d'une base avec l'eau : Ke, KA, pKA ; acides et bases forts ou faibles ; composition d'une solution ; diagrammes de prédominance et de distribution ; indicateurs colorés, acides alpha-aminés et solutions tampons.",
+ "nociones_clave": [
+  {
+   "id": "n1",
+   "fr": "Le pH",
+   "es": "El pH se define como pH = −log([H₃O⁺]/c°), con c° = 1 mol·L⁻¹ la concentración estándar (repaso de «Les acquis indispensables»).",
+   "pagina_pdf": 178
+  },
+  {
+   "id": "n2",
+   "fr": "Espèce amphotère; l'eau",
+   "es": "Una especie anfótera puede liberar o captar un ion H⁺; el agua pertenece a dos pares: H₃O⁺/H₂O y H₂O/HO⁻.",
+   "pagina_pdf": 178
+  },
+  {
+   "id": "n3",
+   "fr": "Autoprotolyse de l'eau",
+   "es": "Dos moléculas de agua pueden reaccionar entre sí (una hace de ácido, otra de base): 2 H₂O ⇌ H₃O⁺ + HO⁻. Es un equilibrio químico.",
+   "pagina_pdf": 184
+  },
+  {
+   "id": "n4",
+   "fr": "Produit ionique de l'eau Ke",
+   "es": "Constante de equilibrio de la autoprotólisis: Ke = [H₃O⁺]f·[HO⁻]f. A 25 °C, Ke = 1,0×10⁻¹⁴ y pKe = 14. Si [H₃O⁺] aumenta, [HO⁻] disminuye y viceversa.",
+   "pagina_pdf": 184
+  },
+  {
+   "id": "n5",
+   "fr": "Acide faible / base faible",
+   "es": "Un ácido débil (AH) o una base débil (A⁻) no reacciona totalmente con el agua: la transformación conduce a un equilibrio químico. Los ácidos carboxílicos son ácidos débiles y las aminas son bases débiles.",
+   "pagina_pdf": 184
+  },
+  {
+   "id": "n6",
+   "fr": "Constante d'acidité KA et pKA d'un couple",
+   "es": "KA es la constante de equilibrio de AH(aq) + H₂O(ℓ) ⇌ A⁻(aq) + H₃O⁺(aq); pKA = −log KA. Cada par ácido-base tiene su KA y pKA, característicos del par y de la temperatura (no del medio). Para un ácido/base débil, 0 ≤ pKA ≤ pKe.",
+   "pagina_pdf": 184
+  },
+  {
+   "id": "n7",
+   "fr": "Force d'un acide ou d'une base",
+   "es": "La fuerza corresponde a su capacidad de reaccionar con el agua. Cuanto mayor es el pKA, menos reacciona el ácido (más débil) y más reacciona su base conjugada (más fuerte).",
+   "pagina_pdf": 185
+  },
+  {
+   "id": "n8",
+   "fr": "Acide fort / base forte",
+   "es": "Su transformación con el agua es cuasi-total. Ácido fuerte: pKA ≤ 0 (negativo o nulo); ejemplos HNO₃ y HCl. Base fuerte: pKA ≥ pKe; ejemplo HO⁻ de la sosa. La base conjugada de un ácido fuerte es indiferente (Cl⁻, NO₃⁻).",
+   "pagina_pdf": 185
+  },
+  {
+   "id": "n9",
+   "fr": "Concentration apportée vs concentrations effectives",
+   "es": "La concentración en cantidad de materia de soluto apportée c (indicada en el frasco) no es necesariamente la de las especies realmente presentes en la solución (concentraciones efectivas).",
+   "pagina_pdf": 185
+  },
+  {
+   "id": "n10",
+   "fr": "Taux d'avancement final τ",
+   "es": "τ = xf/xmax. Para un ácido débil τ < 1. Cuanto mayor es KA, mayor es τ a igual concentración (FIG. 5: HCO₂H 32,7 %, CH₃CO₂H 11,8 %, NH₄⁺ 0,08 % para c = 1,0×10⁻³ mol·L⁻¹).",
+   "pagina_pdf": 187
+  },
+  {
+   "id": "n11",
+   "fr": "Solution tampon",
+   "es": "Solución cuyo pH varía poco por adición de una pequeña cantidad de ácido o de base y por dilución moderada. Ejemplo: mezcla equimolar de ácido etanoico y ion etanoato. Sirve para calibrar un pH-metro.",
+   "pagina_pdf": 187
+  },
+  {
+   "id": "n12",
+   "fr": "Diagramme de prédominance",
+   "es": "Eje de pH con el pKA del par: la especie X predomina sobre Y si [X] > [Y]. AH predomina si pH < pKA; A⁻ predomina si pH > pKA; [AH] = [A⁻] en pH = pKA.",
+   "pagina_pdf": 187
+  },
+  {
+   "id": "n13",
+   "fr": "Diagramme de distribution",
+   "es": "Gráfico del porcentaje de ácido y de base conjugada en función del pH. Se cortan en 50 % cuando pH = pKA.",
+   "pagina_pdf": 188
+  },
+  {
+   "id": "n14",
+   "fr": "Indicateur coloré et zone de virage",
+   "es": "Solución con un par ácido-base cuyas formas ácida y básica tienen colores distintos. La zona de viraje es el intervalo de pH donde pasa de un color a otro. Sirve en un titrage si el pH en la equivalencia está dentro de su zona de viraje.",
+   "pagina_pdf": 188
+  },
+  {
+   "id": "n15",
+   "fr": "Acides alpha-aminés",
+   "es": "Moléculas orgánicas (proteínas) con un grupo carboxilo (carácter ácido) y un grupo amino —NH₂ (carácter básico) sobre el mismo carbono. Pertenecen a al menos dos pares ácido-base con pKA1 < pKA2; el diagrama de predominancia tiene tres dominios.",
+   "pagina_pdf": 188
+  },
+  {
+   "id": "n16",
+   "fr": "Acide carboxylique et amine (repaso)",
+   "es": "Ácido carboxílico R–CO₂H / R–CO₂⁻; amina R₃N⁺H / R₃N. Un ácido AH libera H⁺; una base A⁻ capta H⁺; juntos forman un par ácido-base.",
+   "pagina_pdf": 178
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "\\mathrm{pH} = -\\log\\left(\\dfrac{[\\mathrm{H_3O^+}]}{c^\\circ}\\right)",
+   "nombre": "Definición del pH",
+   "nombre_fr": "Définition du pH",
+   "variables": [
+    {
+     "simbolo": "[H₃O⁺]",
+     "significado": "concentración en iones oxonio",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "c°",
+     "significado": "concentración estándar (1 mol·L⁻¹)",
+     "unidad": "mol·L⁻¹"
+    }
+   ],
+   "explicacion": "El pH mide la acidez de una solución. Un pH bajo significa mucha concentración de H₃O⁺.",
+   "ejemplo": {
+    "enunciado": "Le pH d'un jus de citron est d'environ 2,5. Quelle est [H₃O⁺] ? (situation 3, «Pour vérifier les acquis»)",
+    "resultado": "no está en el cours (se pide al alumno); con la definición: [H₃O⁺] = 10⁻²·⁵ ≈ 3,2×10⁻³ mol·L⁻¹",
+    "pagina_pdf": 178
+   },
+   "pagina_pdf": 178,
+   "animacion": {
+    "preset": "ph",
+    "params": {
+     "pH": 2.5
+    },
+    "leyenda": "Escala de pH con iones H₃O⁺ para pH = 2,5 (jugo de limón): al mover el pH cambia la cantidad de iones."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "K_e = [\\mathrm{H_3O^+}]_f \\cdot [\\mathrm{HO^-}]_f",
+   "nombre": "Producto iónico del agua",
+   "nombre_fr": "Produit ionique de l'eau",
+   "variables": [
+    {
+     "simbolo": "Ke",
+     "significado": "producto iónico del agua (sin unidad); Ke = 1,0×10⁻¹⁴ a 25 °C",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "[H₃O⁺]f",
+     "significado": "concentración en el equilibrio",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "[HO⁻]f",
+     "significado": "concentración de iones hidróxido en el equilibrio",
+     "unidad": "mol·L⁻¹"
+    }
+   ],
+   "explicacion": "Constante del equilibrio de autoprotólisis 2 H₂O ⇌ H₃O⁺ + HO⁻. Si sube [H₃O⁺], baja [HO⁻].",
+   "ejemplo": {
+    "enunciado": "Agua destilada a 25 °C: [HO⁻]f = 1,0×10⁻⁷ mol·L⁻¹. Valor del pH.",
+    "resultado": "[H₃O⁺]f = Ke/[HO⁻]f = 1,0×10⁻⁷ mol·L⁻¹, pH = 7,0",
+    "pagina_pdf": 196
+   },
+   "pagina_pdf": 184,
+   "animacion": {
+    "preset": "ph",
+    "params": {
+     "pH": 7
+    },
+    "leyenda": "En agua pura el pH es 7: [H₃O⁺] y [HO⁻] valen 10⁻⁷ mol·L⁻¹; la escala muestra cómo uno sube cuando el otro baja."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "\\mathrm{p}K_e = -\\log K_e \\qquad K_e = 10^{-\\mathrm{p}K_e}",
+   "nombre": "pKe y convención pX",
+   "nombre_fr": "pKe et convention pX",
+   "variables": [
+    {
+     "simbolo": "pKe",
+     "significado": "−log Ke; vale 14 a 25 °C",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "X",
+     "significado": "una magnitud cualquiera; pX = −log X y X = 10^(−pX)",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Convención matemática del libro: pX = −log X, de donde X = 10^(−pX). A 25 °C, pKe = 14.",
+   "ejemplo": {
+    "enunciado": "A 25 °C, Ke = 1,0×10⁻¹⁴.",
+    "resultado": "pKe = 14",
+    "pagina_pdf": 184
+   },
+   "pagina_pdf": 184,
+   "animacion": {
+    "preset": "ph",
+    "params": {
+     "pH": 7
+    },
+    "leyenda": "pKe = 14: el pH neutro de 7 es el punto medio de la escala 0–14."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "K_A = \\dfrac{[\\mathrm{A^-}]_f \\cdot [\\mathrm{H_3O^+}]_f}{[\\mathrm{AH}]_f}",
+   "nombre": "Constante de acidez de un par",
+   "nombre_fr": "Constante d'acidité KA",
+   "variables": [
+    {
+     "simbolo": "KA",
+     "significado": "constante de acidez (sin unidad)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "[A⁻]f",
+     "significado": "base conjugada en el equilibrio",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "[H₃O⁺]f",
+     "significado": "iones oxonio en el equilibrio",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "[AH]f",
+     "significado": "ácido en el equilibrio",
+     "unidad": "mol·L⁻¹"
+    }
+   ],
+   "explicacion": "Constante de equilibrio de AH(aq) + H₂O(ℓ) ⇌ A⁻(aq) + H₃O⁺(aq). Cuanto mayor es KA, más reacciona el ácido con el agua.",
+   "ejemplo": {
+    "enunciado": "Par CH₃CO₂H/CH₃CO₂⁻ a 25 °C (Doc 3 de la actividad 1).",
+    "resultado": "KA = 1,58×10⁻⁵ (pKA = 4,8)",
+    "pagina_pdf": 180
+   },
+   "pagina_pdf": 184,
+   "animacion": {
+    "preset": "acido-base",
+    "params": {
+     "pKa": 4.8,
+     "pH": 4.8
+    },
+    "leyenda": "Par ácido etanoico/ion etanoato (pKA = 4,8): con el pH en el pKA hay mitad ácido, mitad base."
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "\\mathrm{p}K_A = -\\log K_A \\qquad K_A = 10^{-\\mathrm{p}K_A}",
+   "nombre": "pKA de un par",
+   "nombre_fr": "pKA d'un couple acide-base",
+   "variables": [
+    {
+     "simbolo": "pKA",
+     "significado": "−log KA",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "KA",
+     "significado": "constante de acidez",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Se asocia a cada par un pKA. Para un par ácido débil/base débil, pKA está entre 0 y pKe. Es característico de cada par y solo depende de la temperatura (los valores del libro son a 25 °C).",
+   "ejemplo": {
+    "enunciado": "Couple NH₄⁺/NH₃, pKA = 9,2 à 25 °C. Calculer KA.",
+    "resultado": "KA = 10^(−9,2) = 6,3×10⁻¹⁰",
+    "pagina_pdf": 191
+   },
+   "pagina_pdf": 184,
+   "animacion": {
+    "preset": "acido-base",
+    "params": {
+     "pKa": 9.2,
+     "pH": 9.2
+    },
+    "leyenda": "Par amonio/amoníaco (pKA = 9,2): un pKA grande indica un ácido débil y una base más fuerte."
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "\\mathrm{pH} = -\\log c",
+   "nombre": "pH de una solución de ácido fuerte",
+   "nombre_fr": "pH d'une solution d'acide fort",
+   "variables": [
+    {
+     "simbolo": "c",
+     "significado": "concentración en cantidad de materia de ácido aportado",
+     "unidad": "mol·L⁻¹"
+    }
+   ],
+   "explicacion": "Válida solo si la transformación del ácido con el agua es total: entonces [H₃O⁺]f = c. Si el pH medido no cumple la igualdad, el ácido es débil.",
+   "ejemplo": {
+    "enunciado": "Ácido clorhídrico, c = 1,0×10⁻² mol·L⁻¹.",
+    "resultado": "[Cl⁻]f = [H₃O⁺]f = c = 1,0×10⁻² mol·L⁻¹ y pH = 2,0",
+    "pagina_pdf": 185
+   },
+   "pagina_pdf": 185,
+   "animacion": {
+    "preset": "ph",
+    "params": {
+     "pH": 2
+    },
+    "leyenda": "Ácido fuerte a c = 1,0×10⁻² mol·L⁻¹: el pH es 2,0 y todos los H₃O⁺ vienen de la reacción total."
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "\\mathrm{pH} = \\mathrm{p}K_e + \\log c",
+   "nombre": "pH de una solución de base fuerte",
+   "nombre_fr": "pH d'une solution de base forte",
+   "variables": [
+    {
+     "simbolo": "pKe",
+     "significado": "−log Ke = 14 a 25 °C",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "c",
+     "significado": "concentración de base aportada",
+     "unidad": "mol·L⁻¹"
+    }
+   ],
+   "explicacion": "Válida si la base reacciona totalmente con el agua: [HO⁻]f = c y [H₃O⁺]f = Ke/c. Si la medida no la cumple, la base es débil.",
+   "ejemplo": {
+    "enunciado": "Sosa (Na⁺, HO⁻), c = 1,0×10⁻² mol·L⁻¹ a 25 °C.",
+    "resultado": "[Na⁺] = [HO⁻]f = 1,0×10⁻² mol·L⁻¹; pH = 14 − 2 = 12",
+    "pagina_pdf": 186
+   },
+   "pagina_pdf": 186,
+   "animacion": {
+    "preset": "ph",
+    "params": {
+     "pH": 12
+    },
+    "leyenda": "Base fuerte (sosa) a c = 1,0×10⁻² mol·L⁻¹: el pH sube hasta 12."
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "x_{max}=c\\cdot V \\qquad \\tau = \\dfrac{x_f}{x_{max}} \\;\\Rightarrow\\; x_f = x_{max}\\cdot\\tau",
+   "nombre": "Avance máximo y tasa de avance final",
+   "nombre_fr": "Avancement maximal et taux d'avancement final",
+   "variables": [
+    {
+     "simbolo": "xmax",
+     "significado": "avance máximo",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "xf",
+     "significado": "avance final",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "τ",
+     "significado": "tasa de avance final (0 ≤ τ ≤ 1)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "c",
+     "significado": "concentración aportada",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen de solución",
+     "unidad": "L"
+    }
+   ],
+   "explicacion": "Para un ácido débil AH, el reactivo limitante es AH (el agua está en exceso): xmax = c·V. τ < 1 indica transformación no total.",
+   "ejemplo": {
+    "enunciado": "Tableau d'avancement de AH + H₂O ⇌ A⁻ + H₃O⁺ (état initial c·V, final c·V − xf).",
+    "resultado": "xf = xmax·τ",
+    "pagina_pdf": 186
+   },
+   "pagina_pdf": 186,
+   "animacion": {
+    "preset": "avance",
+    "params": {},
+    "leyenda": "Tabla de avance: AH se transforma en A⁻ y H₃O⁺ solo hasta xf < xmax en un ácido débil."
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "[\\mathrm{A^-}]_f=[\\mathrm{H_3O^+}]_f = c\\cdot\\tau \\qquad [\\mathrm{AH}]_f = c\\,(1-\\tau)",
+   "nombre": "Concentraciones efectivas en función de τ",
+   "nombre_fr": "Concentrations effectives",
+   "variables": [
+    {
+     "simbolo": "[A⁻]f, [H₃O⁺]f",
+     "significado": "concentraciones finales de la base y de los iones oxonio",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "[AH]f",
+     "significado": "concentración final del ácido",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "τ",
+     "significado": "tasa de avance final",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "c",
+     "significado": "concentración aportada",
+     "unidad": "mol·L⁻¹"
+    }
+   ],
+   "explicacion": "Resultado de dividir la tabla de avance por V: permite hallar la composición de la solución en el equilibrio.",
+   "ejemplo": {
+    "enunciado": "Ácido etanoico, c = 1,0×10⁻³ mol·L⁻¹, τ = 0,118.",
+    "resultado": "[CH₃CO₂⁻]f = [H₃O⁺]f = 1,2×10⁻⁴ mol·L⁻¹ y [CH₃CO₂H]f = 8,8×10⁻⁴ mol·L⁻¹",
+    "pagina_pdf": 186
+   },
+   "pagina_pdf": 186,
+   "animacion": {
+    "preset": "avance",
+    "params": {},
+    "leyenda": "Con τ pequeño casi todo el ácido queda sin disociar: [AH]f = c(1−τ)."
+   }
+  },
+  {
+   "id": "f10",
+   "latex": "K_A = \\dfrac{(c\\cdot\\tau)^2}{c\\,(1-\\tau)}",
+   "nombre": "KA en función de τ",
+   "nombre_fr": "KA en fonction de τ",
+   "variables": [
+    {
+     "simbolo": "KA",
+     "significado": "constante de acidez",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "c",
+     "significado": "concentración aportada",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "τ",
+     "significado": "tasa de avance final",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Se obtiene sustituyendo las concentraciones efectivas en la expresión de KA; es el paso previo a la ecuación de segundo grado.",
+   "ejemplo": {
+    "enunciado": "Ácido láctico, c = 1,0×10⁻² mol·L⁻¹ y τ = 13 %.",
+    "resultado": "KA = 1,9×10⁻⁴ ; pKA = 3,7 (valor de referencia 3,8)",
+    "pagina_pdf": 615
+   },
+   "pagina_pdf": 186,
+   "animacion": {
+    "preset": "quotient-equilibre",
+    "params": {},
+    "leyenda": "En el equilibrio el cociente de reacción iguala a KA: la animación muestra hacia dónde evoluciona el sistema hasta Qr = K."
+   }
+  },
+  {
+   "id": "f11",
+   "latex": "c\\cdot\\tau^2 + K_A\\cdot\\tau - K_A = 0",
+   "nombre": "Ecuación de segundo grado del ácido débil",
+   "nombre_fr": "Équation du second degré en τ",
+   "variables": [
+    {
+     "simbolo": "c",
+     "significado": "concentración aportada",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "τ",
+     "significado": "incógnita: tasa de avance final",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "KA",
+     "significado": "constante de acidez",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Se deduce de KA = c·τ²/(1−τ). Resolverla da τ y, con él, la composición de la solución.",
+   "ejemplo": {
+    "enunciado": "Ácido glicólico, c = 1,0×10⁻³ mol·L⁻¹, pKA = 3,8 (ejercicio resuelto 25).",
+    "resultado": "KA = 1,58×10⁻⁴ ; τ = 0,33 (33 %)",
+    "pagina_pdf": 194
+   },
+   "pagina_pdf": 186,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "(c*x*x+Ka*x-Ka)/Ka",
+     "xmin": 0,
+     "xmax": 1,
+     "vars": {
+      "c": {
+       "min": 0.0005,
+       "max": 0.05,
+       "step": 0.0005,
+       "def": 0.001,
+       "label": "c",
+       "unit": "mol/L"
+      },
+      "Ka": {
+       "min": 1e-05,
+       "max": 0.0002,
+       "step": 1e-05,
+       "def": 0.000158,
+       "label": "KA",
+       "unit": ""
+      }
+     }
+    },
+    "leyenda": "Curva de (cτ²+KAτ−KA)/KA en función de τ: la raíz entre 0 y 1 es la tasa de avance final."
+   }
+  },
+  {
+   "id": "f12",
+   "latex": "\\tau = \\dfrac{-K_A+\\sqrt{\\Delta}}{2c} \\qquad \\Delta = K_A^2+4\\,c\\,K_A",
+   "nombre": "Solución de la ecuación (τ > 0)",
+   "nombre_fr": "Solution de l'équation du second degré",
+   "variables": [
+    {
+     "simbolo": "τ",
+     "significado": "tasa de avance final",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "Δ",
+     "significado": "discriminante",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "KA",
+     "significado": "constante de acidez",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "c",
+     "significado": "concentración aportada",
+     "unidad": "mol·L⁻¹"
+    }
+   ],
+   "explicacion": "Como Δ > 0, hay dos soluciones matemáticas; se conserva la positiva (τ debe ser > 0). Mayor KA (o menor c) → τ mayor.",
+   "ejemplo": {
+    "enunciado": "Ácido glicólico: KA = 1,58×10⁻⁴, c = 1,0×10⁻³ mol·L⁻¹.",
+    "resultado": "Δ = 6,6×10⁻⁷ (el libro imprime 10⁻⁶); τ = 0,33 → 33 %",
+    "pagina_pdf": 194
+   },
+   "pagina_pdf": 186,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "(-Ka+sqrt(Ka*Ka+4*x*Ka))/(2*x)",
+     "xmin": 0.0005,
+     "xmax": 0.05,
+     "vars": {
+      "Ka": {
+       "min": 1e-05,
+       "max": 0.0002,
+       "step": 1e-05,
+       "def": 0.000158,
+       "label": "KA",
+       "unit": ""
+      }
+     }
+    },
+    "leyenda": "τ en función de la concentración c para un KA dado: mueve KA y ve que un ácido con KA grande se disocia más."
+   }
+  },
+  {
+   "id": "f13",
+   "latex": "\\Delta = B^2 - 4AC \\qquad X=\\dfrac{-B\\pm\\sqrt{\\Delta}}{2A}",
+   "nombre": "Ecuación de segundo grado A·X² + B·X + C = 0",
+   "nombre_fr": "Résolution d'une équation du second degré",
+   "variables": [
+    {
+     "simbolo": "A, B, C",
+     "significado": "coeficientes de la ecuación",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "Δ",
+     "significado": "discriminante",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "X",
+     "significado": "incógnita",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Δ = 0: una solución X = −B/(2A); Δ > 0: dos soluciones (−B ± √Δ)/(2A); Δ < 0: sin soluciones reales. En química el signo de X suele ser conocido y permite descartar una raíz.",
+   "ejemplo": {
+    "enunciado": "Aplicada al ácido débil: A = c, B = KA, C = −KA.",
+    "resultado": "Δ = KA² + 4·KA·c > 0 → una raíz positiva",
+    "pagina_pdf": 182
+   },
+   "pagina_pdf": 182,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x*x-4*A*C",
+     "xmin": -5,
+     "xmax": 5,
+     "vars": {
+      "A": {
+       "min": 0.5,
+       "max": 3,
+       "step": 0.5,
+       "def": 1,
+       "label": "A",
+       "unit": ""
+      },
+      "C": {
+       "min": -3,
+       "max": 3,
+       "step": 0.5,
+       "def": -1,
+       "label": "C",
+       "unit": ""
+      }
+     }
+    },
+    "leyenda": "Parábola Δ(B) = B² − 4AC: cambia A y C y observa cuándo Δ es positivo, nulo o negativo."
+   }
+  },
+  {
+   "id": "f14",
+   "latex": "\\mathrm{pH} = \\mathrm{p}K_A + \\log\\dfrac{[\\mathrm{A^-}]_f}{[\\mathrm{AH}]_f}",
+   "nombre": "pH de una solución de un par ácido-base",
+   "nombre_fr": "Relation entre pH et pKA",
+   "variables": [
+    {
+     "simbolo": "pH",
+     "significado": "pH de la solución",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "pKA",
+     "significado": "−log KA",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "[A⁻]f/[AH]f",
+     "significado": "relación base/ácido en el equilibrio",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Se obtiene de la expresión de KA aplicando logaritmos (log(D×E) = log D + log E). Es la base de los diagramas de predominancia y de distribución.",
+   "ejemplo": {
+    "enunciado": "Ácido etanoico 0,1 mol·L⁻¹ / etanoato de sodio 0,1 mol·L⁻¹ (ejercicio 34): pH = 4,8.",
+    "resultado": "[A⁻] = [AH] → log 1 = 0 → pKA = pH = 4,8",
+    "pagina_pdf": 615
+   },
+   "pagina_pdf": 187,
+   "animacion": {
+    "preset": "acido-base",
+    "params": {
+     "pKa": 4.8,
+     "pH": 4.8
+    },
+    "leyenda": "Mueve el pH: la proporción de AH y de A⁻ cambia y, con pH = pKA, valen lo mismo (50 %/50 %)."
+   }
+  },
+  {
+   "id": "f15",
+   "latex": "\\mathrm{pH}<\\mathrm{p}K_A:\\ \\mathrm{AH}\\ \\text{predomina} \\qquad \\mathrm{pH}>\\mathrm{p}K_A:\\ \\mathrm{A^-}\\ \\text{predomina} \\qquad \\mathrm{pH}=\\mathrm{p}K_A:\\ [\\mathrm{AH}]=[\\mathrm{A^-}]",
+   "nombre": "Criterio de predominancia",
+   "nombre_fr": "Condition de prédominance",
+   "variables": [
+    {
+     "simbolo": "pH",
+     "significado": "pH de la solución",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "pKA",
+     "significado": "pKA del par",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Una especie X predomina sobre Y si [X] > [Y]. Si el ácido predomina, [A⁻]/[AH] < 1, log < 0 y por tanto pH < pKA.",
+   "ejemplo": {
+    "enunciado": "Aspirina, par AH/A⁻ de pKA = 3,5: ¿qué forma predomina a pH 7,0 y a pH 1,5?",
+    "resultado": "pH = 7,0: predomina A⁻ ; pH = 1,5: predomina AH",
+    "pagina_pdf": 615
+   },
+   "pagina_pdf": 187,
+   "animacion": {
+    "preset": "acido-base",
+    "params": {
+     "pKa": 3.5,
+     "pH": 7
+    },
+    "leyenda": "Diagrama de predominancia del par de la aspirina (pKA = 3,5): arriba del pKA domina la base, abajo el ácido."
+   }
+  },
+  {
+   "id": "f16",
+   "latex": "\\mathrm{pH} = \\mathrm{p}K_A \\pm 1 \\ \\text{(zona de viraje)}",
+   "nombre": "Zona de viraje de un indicador (ejercicio 35)",
+   "nombre_fr": "Zone de virage d'un indicateur",
+   "variables": [
+    {
+     "simbolo": "pKA",
+     "significado": "pKA del par IndH/Ind⁻ del indicador",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Deducción del ejercicio 35: el indicador toma la tinta ácida si [Ind⁻]/[HInd] < 0,1 y la básica si > 10; con pH = pKA + log([Ind⁻]/[HInd]) la zona de viraje queda en pKA ± 1. (No aparece como fórmula general en el cours, solo en el ejercicio.)",
+   "ejemplo": {
+    "enunciado": "Verde de bromocresol, pKA = 4,9 (ejercicio 35).",
+    "resultado": "zona de viraje 3,9 – 5,9 (cálculo a partir de los umbrales 0,1 y 10 del enunciado)",
+    "pagina_pdf": 197
+   },
+   "pagina_pdf": 197,
+   "animacion": {
+    "preset": "acido-base",
+    "params": {
+     "pKa": 4.9,
+     "pH": 4.9
+    },
+    "leyenda": "Cerca de pH = pKA = 4,9 el indicador pasa de una tinta a la otra; fuera de ±1 predomina claramente una forma."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "Ke (producto iónico del agua) a 25 °C",
+   "valor": "1,0×10⁻¹⁴",
+   "unidad": "—",
+   "pagina_pdf": 184
+  },
+  {
+   "nombre": "pKe a 25 °C",
+   "valor": "14",
+   "unidad": "—",
+   "pagina_pdf": 184
+  },
+  {
+   "nombre": "c° (concentración estándar)",
+   "valor": "1",
+   "unidad": "mol·L⁻¹",
+   "pagina_pdf": 178
+  },
+  {
+   "nombre": "KA de HCO₂H/HCO₂⁻ (pKA 3,8)",
+   "valor": "1,58×10⁻⁴",
+   "unidad": "—",
+   "pagina_pdf": 184
+  },
+  {
+   "nombre": "KA de CH₃CO₂H/CH₃CO₂⁻ (pKA 4,8)",
+   "valor": "1,58×10⁻⁵",
+   "unidad": "—",
+   "pagina_pdf": 184
+  },
+  {
+   "nombre": "KA de NH₄⁺/NH₃ (pKA 9,2)",
+   "valor": "6,31×10⁻¹⁰",
+   "unidad": "—",
+   "pagina_pdf": 184
+  },
+  {
+   "nombre": "KA y pKA de H₃O⁺/H₂O",
+   "valor": "KA = 1,0 ; pKA = 0,0",
+   "unidad": "—",
+   "pagina_pdf": 184
+  },
+  {
+   "nombre": "pKA de H₂O/HO⁻ (FIG. 3)",
+   "valor": "14,0",
+   "unidad": "—",
+   "pagina_pdf": 185
+  },
+  {
+   "nombre": "pKA de CH₃NH₃⁺/CH₃NH₂ (FIG. 3)",
+   "valor": "10,7",
+   "unidad": "—",
+   "pagina_pdf": 185
+  },
+  {
+   "nombre": "Zona de viraje: hélianthine",
+   "valor": "3,1 – 4,4 (rojo → amarillo)",
+   "unidad": "pH",
+   "pagina_pdf": 188
+  },
+  {
+   "nombre": "Zona de viraje: rouge de méthyle",
+   "valor": "4,2 – 6,2 (rojo → amarillo)",
+   "unidad": "pH",
+   "pagina_pdf": 188
+  },
+  {
+   "nombre": "Zona de viraje: bleu de bromothymol (BBT)",
+   "valor": "6,0 – 7,6 (amarillo → azul)",
+   "unidad": "pH",
+   "pagina_pdf": 188
+  },
+  {
+   "nombre": "Zona de viraje: thymolphtaléine",
+   "valor": "9,3 – 10,5 (incoloro → azul)",
+   "unidad": "pH",
+   "pagina_pdf": 188
+  },
+  {
+   "nombre": "Zona de viraje: rouge de phénol",
+   "valor": "6,6 – 8,4 (amarillo → rojo)",
+   "unidad": "pH",
+   "pagina_pdf": 200
+  },
+  {
+   "nombre": "Zona de viraje: rouge de crésol",
+   "valor": "7,2 – 8,8 (amarillo → rojo)",
+   "unidad": "pH",
+   "pagina_pdf": 198
+  },
+  {
+   "nombre": "Zona de viraje: jaune d'alizarine R",
+   "valor": "10,1 – 12,1 (amarillo → violeta)",
+   "unidad": "pH",
+   "pagina_pdf": 198
+  },
+  {
+   "nombre": "pKA del rojo de metilo",
+   "valor": "5,0",
+   "unidad": "—",
+   "pagina_pdf": 183
+  },
+  {
+   "nombre": "Masa volúmica del vinagre blanco",
+   "valor": "1,01",
+   "unidad": "g·mL⁻¹",
+   "pagina_pdf": 182
+  },
+  {
+   "nombre": "Masas molares atómicas",
+   "valor": "M(H) = 1,0 ; M(C) = 12,0 ; M(O) = 16,0 ; M(Na) = 23,0",
+   "unidad": "g·mol⁻¹",
+   "pagina_pdf": 182
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Determinar si un ácido (o base) es fuerte o débil a partir del pH medido",
+   "pasos": [
+    "Escribir la reacción con el agua y la concentración aportada c.",
+    "Ácido: calcular −log c. Base: calcular pKe + log c (con pKe = 14 a 25 °C).",
+    "Si el pH medido coincide con el valor calculado → transformación total: ácido (base) fuerte.",
+    "Si no coincide → transformación no total (equilibrio): ácido (base) débil, hay que usar KA y τ."
+   ],
+   "pagina_pdf": 185
+  },
+  {
+   "titulo": "Composición de una solución de ácido débil (tabla de avance + ecuación de 2.º grado)",
+   "pasos": [
+    "Escribir AH(aq) + H₂O(ℓ) ⇌ A⁻(aq) + H₃O⁺(aq) y la tabla de avance (inicial c·V, final c·V − xf).",
+    "Expresar xmax = c·V, τ = xf/xmax y las concentraciones efectivas: [A⁻]f = [H₃O⁺]f = c·τ, [AH]f = c(1−τ).",
+    "Escribir KA = (c·τ)² / (c(1−τ)) y deducir c·τ² + KA·τ − KA = 0.",
+    "Calcular KA = 10^(−pKA) y el discriminante Δ = KA² + 4·c·KA; conservar la única solución positiva τ = (−KA + √Δ)/(2c).",
+    "Deducir las concentraciones y, si se pide, el pH = −log [H₃O⁺]f."
+   ],
+   "pagina_pdf": 186
+  },
+  {
+   "titulo": "Resolver una ecuación de segundo grado (ficha Maths del libro)",
+   "pasos": [
+    "Poner la ecuación en la forma A·X² + B·X + C = 0 y calcular Δ = B² − 4AC.",
+    "Δ > 0: dos soluciones (−B ± √Δ)/(2A); Δ = 0: una sola, −B/(2A); Δ < 0: sin solución real.",
+    "En química, usar el signo conocido de X (p. ej. τ > 0) para descartar una de las raíces."
+   ],
+   "pagina_pdf": 182
+  },
+  {
+   "titulo": "Trazar el diagrama de predominancia de un par ácido-base",
+   "pasos": [
+    "Dibujar un eje de pH de 0 a 14 y marcar el pKA del par.",
+    "A la izquierda del pKA (pH < pKA) escribir AH predomina; a la derecha (pH > pKA), A⁻ predomina.",
+    "En pH = pKA se cumple [AH] = [A⁻]."
+   ],
+   "pagina_pdf": 187
+  },
+  {
+   "titulo": "Exploitar un diagrama de distribución",
+   "pasos": [
+    "Leer el pKA en la abscisa donde se cruzan las dos curvas (50 % / 50 %).",
+    "Para un pH dado, leer el porcentaje de cada especie en las curvas.",
+    "La concentración de cada especie se obtiene multiplicando c por su porcentaje (ejercicio 27)."
+   ],
+   "pagina_pdf": 195
+  },
+  {
+   "titulo": "Elegir un indicador coloreado para un titrage ácido-base",
+   "pasos": [
+    "Conocer o leer el pH en la equivalencia (en la curva de titrage).",
+    "Buscar un indicador cuya zona de viraje contenga ese pH.",
+    "Indicar el cambio de color: antes de la equivalencia, tinta de la forma que predomina al pH inicial; después, la otra."
+   ],
+   "pagina_pdf": 188
+  },
+  {
+   "titulo": "Reconocer una solución tampón",
+   "pasos": [
+    "Comparar el pH inicial (pH₀), tras añadir poco ácido o base (pH₁) y tras diluir moderadamente (pH₂).",
+    "Si el pH varía poco en ambos casos, la solución es un tampón (ejemplo: ácido etanoico / ion etanoato, pH 4,8 → 4,7 → 4,8)."
+   ],
+   "pagina_pdf": 187
+  },
+  {
+   "titulo": "Determinar el taux d'avancement final con Python",
+   "pasos": [
+    "Pedir c y KA y comprobar que son estrictamente positivos (while c <= 0 …).",
+    "Calcular delta = KA**2 + 4*c*KA (siempre positivo) y tomar la raíz positiva to = (−KA + math.sqrt(delta))/(2*c).",
+    "Imprimir el taux d'avancement final to."
+   ],
+   "pagina_pdf": 182
+  },
+  {
+   "titulo": "Redactar bien una respuesta de ejercicio (verbos de acción)",
+   "pasos": [
+    "Exprimer: dar la relación literal de una magnitud en función de otras.",
+    "Établir: llevar a cabo un razonamiento para encontrar un resultado.",
+    "Résoudre une équation: encontrar la(s) solución(es) con el método adecuado al tipo de ecuación.",
+    "Calculer: hallar el valor de una magnitud mediante operaciones matemáticas.",
+    "Consejo del libro: escribir primero la ecuación y el avance máximo/final (la tabla ayuda) y luego exprimer KA con τ."
+   ],
+   "pagina_pdf": 194
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Aplicar pH = −log c a un ácido débil",
+   "correccion": "Esa relación solo vale si la transformación es total; para un ácido débil hay que usar KA, τ y [H₃O⁺]f = c·τ.",
+   "pagina_pdf": 196
+  },
+  {
+   "id": "err2",
+   "nombre": "Escribir xf = c·V en la tabla de un ácido débil",
+   "correccion": "La transformación no es total: xf = xmax·τ < xmax y [AH]f = c(1−τ) ≠ 0.",
+   "pagina_pdf": 196
+  },
+  {
+   "id": "err3",
+   "nombre": "Confundir concentración aportada con concentración efectiva",
+   "correccion": "c (la del frasco) no es la de las especies presentes: calcular [A⁻]f, [AH]f y [H₃O⁺]f con la tabla de avance.",
+   "pagina_pdf": 185
+  },
+  {
+   "id": "err4",
+   "nombre": "Confundir diagrama de predominancia con diagrama de distribución",
+   "correccion": "Predominancia = eje de pH con dominios; distribución = curvas de % de cada especie en función del pH.",
+   "pagina_pdf": 190
+  },
+  {
+   "id": "err5",
+   "nombre": "Conservar la raíz negativa de la ecuación de 2.º grado",
+   "correccion": "Δ > 0 da dos raíces; τ es positivo (y menor que 1): conservar solo τ = (−KA + √Δ)/(2c).",
+   "pagina_pdf": 182
+  },
+  {
+   "id": "err6",
+   "nombre": "Elegir un indicador cuya zona de viraje no contiene el pH de equivalencia",
+   "correccion": "El indicador sirve si el pH en la equivalencia está dentro de su zona de viraje (FIG. 9–10).",
+   "pagina_pdf": 188
+  },
+  {
+   "id": "err7",
+   "nombre": "Escribir Ke o KA como la reacción inversa",
+   "correccion": "Ke corresponde a 2 H₂O ⇌ H₃O⁺ + HO⁻ y KA a AH + H₂O ⇌ A⁻ + H₃O⁺ (productos en el numerador).",
+   "pagina_pdf": 190
+  },
+  {
+   "id": "err8",
+   "nombre": "Creer que la base conjugada de un ácido fuerte capta protones",
+   "correccion": "Es una base indiferente (Cl⁻, NO₃⁻): no reacciona con el agua; en la solución no queda ninguna molécula del ácido fuerte.",
+   "pagina_pdf": 185
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "Actividad 1 (TP): Constante de acidez de un par ácido-base",
+   "descripcion": "Medir el pH de una solución A de ácido etanoico (cA = 1,00×10⁻¹ mol·L⁻¹) y de una solución B (1,00×10⁻² mol·L⁻¹, preparada por dilución con matraz aforado de 100 mL y pipeta de 10,0 mL); deducir [H₃O⁺]f, [CH₃CO₂H]f, [CH₃CO₂⁻]f y KA; comparar con los valores del documento 3 y concluir de qué depende KA.",
+   "pagina_pdf": 180
+  },
+  {
+   "titulo": "Actividad 2 (TP): Fuerza de los ácidos y de las bases",
+   "descripcion": "Medir con pH-metro el pH de soluciones de c = 1,0×10⁻² mol·L⁻¹: ácido etanoico S₁, clorhídrico S₂, nítrico S₃, sosa S₄, amoníaco S₅; calcular τ y deducir el carácter fuerte o débil; escribir las ecuaciones con el agua.",
+   "pagina_pdf": 181
+  },
+  {
+   "titulo": "Actividad 3 (démarche d'investigation): Composición de un vinagre",
+   "descripcion": "Vinagre de 10° (10 g de ácido etanoico por 100 g de vinagre, ρ = 1,01 g·mL⁻¹, KA = 1,58×10⁻⁵): hallar c, demostrar c·τ² + KA·τ − KA = 0, resolverla (a mano y con el programa Python del documento 3) y deducir las concentraciones efectivas.",
+   "pagina_pdf": 182
+  },
+  {
+   "titulo": "Actividad 4 (TP): Diagramas de un par ácido-base",
+   "descripcion": "Representar el diagrama de predominancia del rojo de metilo (pKA = 5,0; ácido rojo, base amarilla), trazar con Python su diagrama de distribución, hallar su zona de viraje (20 % – 90 % de base) y justificar su uso en un titrage con pH de equivalencia 5,3.",
+   "pagina_pdf": 183
+  },
+  {
+   "titulo": "Tarea compleja 40: Electroforesis de una mezcla de ácidos alfa-aminados",
+   "descripcion": "Elegir la solución tampón (pH 2,0, 7,0 o 12,0) que permite separar serina y ácido glutámico usando sus diagramas de predominancia y distribución.",
+   "pagina_pdf": 199
+  },
+  {
+   "titulo": "Tarea compleja 41: Control de calidad de la leche (grado Dornic)",
+   "descripcion": "Titrage de 10,0 mL de leche con sosa Dornic (cb = 0,111 mol·L⁻¹), equivalencia con rojo de fenol en VE = 2,1 mL; decidir si la leche es fresca (acidez ≤ 18 °D; 1 °D = 0,1 g de ácido láctico por litro).",
+   "pagina_pdf": 200
+  },
+  {
+   "titulo": "Tarea 42: pH del agua de un acuario",
+   "descripcion": "Análisis de documentos: CO₂ disuelto, pKA (6,3 y 10,3), fotosíntesis y respiración; explicar la variación diaria del pH y proponer cómo regularlo.",
+   "pagina_pdf": 201
+  },
+  {
+   "titulo": "ECE: Control de calidad de un comprimido de aspirina",
+   "descripcion": "Proponer y realizar un titrage colorimétrico del ácido acetilsalicílico (pKA = 3,5) con sosa de 1,00×10⁻² mol·L⁻¹ y comparar la masa con la del fabricante.",
+   "pagina_pdf": 202
+  },
+  {
+   "titulo": "Grand oral: acidificación de los océanos",
+   "descripcion": "Cómo el aumento del CO₂ atmosférico amenaza a los animales marinos: equilibrios ácido-base del CO₂, bajada del pH y de [CO₃²⁻].",
+   "pagina_pdf": 203
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Ex. 25 (résolu) — Composition d'une solution d'acide glycolique C₂H₄O₃ (acide faible), c = 1,0×10⁻³ mol·L⁻¹ à 25 °C. 1. Exprimer [C₂H₄O₃]f et [C₂H₃O₃⁻]f en fonction de τ. 2. Établir l'équation à laquelle obéit τ. 3. La résoudre. 4. Calculer les concentrations effectives.",
+   "datos": {
+    "c": "1,0×10⁻³ mol·L⁻¹",
+    "pKA": "3,8 (C₂H₄O₃/C₂H₃O₃⁻)",
+    "T": "25 °C"
+   },
+   "respuesta": "1. [C₂H₃O₃⁻]f = c·τ ; [C₂H₄O₃]f = c(1−τ). 2. KA = (cτ)²/(c(1−τ)) → c·τ² + KA·τ − KA = 0. 3. KA = 10⁻³·⁸ = 1,58×10⁻⁴ ; Δ ≈ 6,6×10⁻⁷ ; τ = (−KA+√Δ)/(2c) = 0,33 (33 %). 4. [C₂H₃O₃⁻]f = 3,3×10⁻⁴ mol·L⁻¹ ; [C₂H₄O₃]f = 6,7×10⁻⁴ mol·L⁻¹.",
+   "respuesta_numerica": {
+    "valor": 0.33,
+    "unidad": "",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Tabla de avance y xmax = c·V",
+    "KA = 10^(−pKA) = 1,58×10⁻⁴",
+    "Δ = KA² + 4cKA",
+    "τ = (−KA + √Δ)/(2c) = 0,33",
+    "[A⁻]f = c·τ = 3,3×10⁻⁴ ; [AH]f = c(1−τ) = 6,7×10⁻⁴ mol·L⁻¹"
+   ],
+   "pagina_pdf": 194,
+   "corrige_pagina_pdf": 615
+  },
+  {
+   "id": "e2",
+   "enunciado": "Ex. 27 (résolu) — L'eau de Javel : le diagramme de distribution du couple HClO(aq)/ClO⁻(aq) est donné. 1. Déterminer le pKA. 2. a. Pour une eau de Javel de pH = 8,5 et c = 6,0×10⁻⁵ mol·L⁻¹, déterminer le pourcentage de chaque espèce. b. En déduire les concentrations.",
+   "datos": {
+    "pH": "8,5",
+    "c": "6,0×10⁻⁵ mol·L⁻¹"
+   },
+   "respuesta": "1. À 50 % acide / 50 % base, [HClO] = [ClO⁻] donc KA = [H₃O⁺] et pKA = pH = 7,3 (lecture graphique). 2. a. À pH 8,5 : 8 % de HClO et 92 % de ClO⁻. b. [HClO]f = 0,08×6,0×10⁻⁵ = 4,8×10⁻⁶ mol·L⁻¹ ; [ClO⁻]f = 0,92×6,0×10⁻⁵ = 5,5×10⁻⁵ mol·L⁻¹.",
+   "respuesta_numerica": {
+    "valor": 5.5e-05,
+    "unidad": "mol·L⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Cruce de las curvas en 50 % → pKA = pH = 7,3",
+    "Leer % en pH 8,5: 8 % y 92 %",
+    "Multiplicar c por cada porcentaje"
+   ],
+   "pagina_pdf": 195,
+   "corrige_pagina_pdf": 615
+  },
+  {
+   "id": "e3",
+   "enunciado": "Ex. 10 — Constante d'acidité d'un couple acide-base. L'ammoniac NH₃(aq) est une base faible. 1. Écrire l'équation de l'équilibre dont KA est la constante. 2. Exprimer KA du couple NH₄⁺/NH₃. 3. Calculer KA à 25 °C sachant que pKA = 9,2.",
+   "datos": {
+    "pKA": "9,2 (NH₄⁺/NH₃)"
+   },
+   "respuesta": "1. NH₄⁺(aq) + H₂O(ℓ) ⇌ NH₃(aq) + H₃O⁺(aq). 2. KA = [NH₃]f·[H₃O⁺]f / [NH₄⁺]f. 3. KA = 6,3×10⁻¹⁰.",
+   "respuesta_numerica": {
+    "valor": 6.3e-10,
+    "unidad": "",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Ácido NH₄⁺ cede H⁺ al agua",
+    "KA con productos en el numerador",
+    "KA = 10^(−9,2)"
+   ],
+   "pagina_pdf": 191,
+   "corrige_pagina_pdf": 615
+  },
+  {
+   "id": "e4",
+   "enunciado": "Ex. 13 — L'acide des fourmis. L'acide méthanoïque HCO₂H est un acide faible. 1. a. Base conjuguée ? b. Qu'est-ce qu'un acide faible ? 2. Équation de la réaction avec l'eau. 3. Nom et expression de la constante de cet équilibre.",
+   "datos": {},
+   "respuesta": "1. a. L'ion méthanoate HCO₂⁻. b. Un acide faible ne réagit pas totalement avec l'eau : la transformation conduit à un équilibre chimique. 2. HCO₂H(aq) + H₂O(ℓ) ⇌ HCO₂⁻(aq) + H₃O⁺(aq). 3. Constante d'acidité KA = [HCO₂⁻]f·[H₃O⁺]f / [HCO₂H]f.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Base conjugada = ácido − H⁺",
+    "Escribir equilibrio con ⇌",
+    "KA = productos/reactivo ácido"
+   ],
+   "pagina_pdf": 191,
+   "corrige_pagina_pdf": 615
+  },
+  {
+   "id": "e5",
+   "enunciado": "Ex. 15 — Solution d'acide nitrique. HNO₃(ℓ) + H₂O(ℓ) → NO₃⁻(aq) + H₃O⁺(aq), c = 5,0×10⁻³ mol·L⁻¹. 1. La solution contient-elle des molécules HNO₃ ? 2. Valeur de [NO₃⁻]f et [H₃O⁺]f. 3. Valeur du pH.",
+   "datos": {
+    "c": "5,0×10⁻³ mol·L⁻¹"
+   },
+   "respuesta": "1. La transformation avec l'eau étant totale, la solution ne contient pas de molécules d'acide nitrique. 2. [NO₃⁻]f = [H₃O⁺]f = c = 5,0×10⁻³ mol·L⁻¹. 3. pH = 2,3.",
+   "respuesta_numerica": {
+    "valor": 2.3,
+    "unidad": "",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Ácido fuerte: reacción total, flecha simple",
+    "[H₃O⁺]f = c",
+    "pH = −log c = 2,3"
+   ],
+   "pagina_pdf": 191,
+   "corrige_pagina_pdf": 615
+  },
+  {
+   "id": "e6",
+   "enunciado": "Ex. 21 — L'aspirine. L'acide acétylsalicylique AH/A⁻ a pKA = 3,5. 1. Représenter le diagramme de prédominance. 2. Quelle forme prédomine à pH 7,0 et dans l'estomac (pH = 1,5) ?",
+   "datos": {
+    "pKA": "3,5"
+   },
+   "respuesta": "1. Eje de pH con HA para pH < 3,5 y A⁻ para pH > 3,5. 2. À pH = 7,0 c'est la base conjuguée A⁻ qui prédomine ; à pH = 1,5 c'est la forme acide AH.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Marcar pKA = 3,5 en el eje",
+    "pH > pKA → A⁻",
+    "pH < pKA → AH"
+   ],
+   "pagina_pdf": 192,
+   "corrige_pagina_pdf": 615
+  },
+  {
+   "id": "e7",
+   "enunciado": "Ex. 23 — Solutions tampons (propriétés). 1. Comment varie le pH d'une solution tampon par dilution ? 2. Par addition modérée d'acide ou de base ? 3. Intérêt d'une gamme de pKA de 6 à 8 pour des applications biologiques.",
+   "datos": {},
+   "respuesta": "1. Le pH d'une solution tampon varie peu par dilution. 2. Il varie peu par addition modérée d'acide ou de base. 3. De nombreux milieux biologiques, dont le sang, ont un pH compris entre 6 et 8.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Definición de tampón",
+    "Dilución moderada y adición pequeña casi no cambian el pH",
+    "pH biológico 6–8"
+   ],
+   "pagina_pdf": 193,
+   "corrige_pagina_pdf": 615
+  },
+  {
+   "id": "e8",
+   "enunciado": "Ex. 26 (similaire) — Acide benzoïque C₇H₆O₂ (acide faible), c = 2,0×10⁻³ mol·L⁻¹, pKA = 4,2 à 25 °C. 1. Exprimer [C₇H₆O₂]f et [C₇H₅O₂⁻]f en fonction de τ. 2. Équation de τ. 3. La résoudre. 4. Calculer les concentrations.",
+   "datos": {
+    "c": "2,0×10⁻³ mol·L⁻¹",
+    "pKA": "4,2"
+   },
+   "respuesta": "1. [C₇H₅O₂⁻]f = c·τ ; [C₇H₆O₂]f = c(1−τ). 2. c·τ² + KA·τ − KA = 0. 3. τ = (−KA+√Δ)/(2c) = 0,16 soit 16 %. 4. [C₇H₅O₂⁻]f = 3,2×10⁻⁴ mol·L⁻¹ ; [C₇H₆O₂]f = 1,7×10⁻³ mol·L⁻¹.",
+   "respuesta_numerica": {
+    "valor": 0.16,
+    "unidad": "",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "KA = 10^(−4,2) = 6,3×10⁻⁵",
+    "Δ = KA² + 4cKA",
+    "τ = 0,16",
+    "Concentraciones con cτ y c(1−τ)"
+   ],
+   "pagina_pdf": 194,
+   "corrige_pagina_pdf": 615
+  },
+  {
+   "id": "e9",
+   "enunciado": "Ex. 28 (similaire) — Acide caprique C₁₀H₂₀O₂ : diagramme de distribution du couple C₁₀H₂₀O₂/C₁₀H₁₉O₂⁻. 1. Déterminer le pKA. 2. a. Pourcentage de chaque espèce dans un lait de chèvre de pH = 6,0 et c = 1,52×10⁻² mol·L⁻¹. b. Concentration de chaque espèce.",
+   "datos": {
+    "pH": "6,0",
+    "c": "1,52×10⁻² mol·L⁻¹"
+   },
+   "respuesta": "1. pKA = 4,9. 2. a. 7 % de C₁₀H₂₀O₂ et 93 % de C₁₀H₁₉O₂⁻. b. [C₁₀H₂₀O₂]f = 1×10⁻³ mol·L⁻¹ ; [C₁₀H₁₉O₂⁻]f = 1,4×10⁻² mol·L⁻¹.",
+   "respuesta_numerica": {
+    "valor": 0.0141,
+    "unidad": "mol·L⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Leer pKA en el cruce de curvas",
+    "Leer 7 % y 93 % a pH 6,0",
+    "0,93 × 1,52×10⁻² = 1,4×10⁻² mol·L⁻¹"
+   ],
+   "pagina_pdf": 195,
+   "corrige_pagina_pdf": 615
+  },
+  {
+   "id": "e10",
+   "enunciado": "Ex. 29 — Correction d'une solution (acide lactique AH, c = 1,0×10⁻² mol·L⁻¹, τ = 13 %). 1. Déterminer le pH. 2. Exprimer KA en fonction de τ. 3. Déterminer le pKA du couple et comparer à la valeur de référence 3,8.",
+   "datos": {
+    "c": "1,0×10⁻² mol·L⁻¹",
+    "τ": "13 %",
+    "pKA ref": "3,8"
+   },
+   "respuesta": "1. [H₃O⁺]f = xf/V = xmax·τ/V = c·τ ; pH = −log(c·τ) = 2,9. 2. KA = (c·τ)²/(c(1−τ)). 3. KA = 1,9×10⁻⁴ d'où pKA = 3,7, valeur proche de la valeur de référence. (Le pH ≠ −log c car l'acide est faible.)",
+   "respuesta_numerica": {
+    "valor": 2.9,
+    "unidad": "",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Corregir al alumno: −log c solo para ácido fuerte",
+    "[H₃O⁺]f = c·τ = 1,3×10⁻³ mol·L⁻¹",
+    "KA = (cτ)²/(c(1−τ)) = 1,9×10⁻⁴",
+    "pKA = 3,7"
+   ],
+   "pagina_pdf": 196,
+   "corrige_pagina_pdf": 615
+  },
+  {
+   "id": "e11",
+   "enunciado": "Ex. 30 — Le pH de l'eau distillée. 1. a. Équation d'autoprotolyse et expression de Ke. b. À 25 °C, [HO⁻]f = 1,0×10⁻⁷ mol·L⁻¹ : valeur du pH. 2. Eau fraîchement distillée laissée à l'air : pH diminue jusqu'à 5,7 (CO₂, H₂O/HCO₃⁻ et HCO₃⁻/CO₃²⁻). a. Équation CO₂ + eau. b. Peut-on négliger la réaction entre CO₃²⁻ et l'eau ? c. Pourquoi le pH diminue-t-il ?",
+   "datos": {
+    "[HO⁻]f": "1,0×10⁻⁷ mol·L⁻¹",
+    "pH final": "5,7"
+   },
+   "respuesta": "1. a. 2 H₂O(ℓ) ⇌ H₃O⁺(aq) + HO⁻(aq) ; Ke = [H₃O⁺]f·[HO⁻]f. b. pH = 7,0. 2. a. CO₂(aq), H₂O(ℓ) + H₂O(ℓ) ⇌ HCO₃⁻(aq) + H₃O⁺(aq). b. À pH = 5,7 le pourcentage d'ions carbonate est nul : on peut négliger la réaction des ions carbonate avec l'eau. c. Le CO₂ de l'air se dissout, est un acide faible et réagit avec l'eau pour former des ions oxonium : le pH diminue.",
+   "respuesta_numerica": {
+    "valor": 7.0,
+    "unidad": "",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Ke = [H₃O⁺][HO⁻] → [H₃O⁺] = 1,0×10⁻⁷",
+    "pH = 7,0",
+    "CO₂ disuelto: ácido débil → más H₃O⁺"
+   ],
+   "pagina_pdf": 196,
+   "corrige_pagina_pdf": 615
+  },
+  {
+   "id": "e12",
+   "enunciado": "Ex. 34 — Acide et base conjugués. Un litre de solution contient 0,20 mol d'acide éthanoïque et 0,20 mol d'éthanoate de sodium ; pH = 4,8. 1. Déterminer le pKA. 2. Pourquoi est-ce une solution tampon ? 3. On dissout 0,40 g de soude dans un litre de cette solution (pH devient 4,9) ; quel serait le pH dans un litre d'eau pure de pH = 7,0 ?",
+   "datos": {
+    "M(Na)": "23,0 g·mol⁻¹",
+    "M(O)": "16,0 g·mol⁻¹",
+    "M(H)": "1,0 g·mol⁻¹"
+   },
+   "respuesta": "1. pKA = 4,8. 2. Une solution tampon est une solution dont le pH varie peu par addition d'une petite quantité d'acide ou de base, ou par dilution modérée. 3. n = 1,0×10⁻² mol, [HO⁻] = 1,0×10⁻² mol·L⁻¹ d'où [H₃O⁺]f = 1,0×10⁻¹² mol·L⁻¹ et pH = 12,0 : le pH de l'eau varie beaucoup (de 7,0 à 12,0) : l'eau n'est pas une solution tampon.",
+   "respuesta_numerica": {
+    "valor": 12.0,
+    "unidad": "",
+    "tolerancia_rel": 0.01
+   },
+   "pasos": [
+    "[A⁻] = [AH] → pH = pKA = 4,8",
+    "n(NaOH) = 0,40/40,0 = 1,0×10⁻² mol",
+    "[H₃O⁺] = Ke/[HO⁻] = 10⁻¹² → pH 12,0"
+   ],
+   "pagina_pdf": 197,
+   "corrige_pagina_pdf": 615
+  },
+  {
+   "id": "e13",
+   "enunciado": "Ex. 37 — Un traitement à base d'acide fumarique. Gélule dissoute dans V = 100,0 mL ; dosage de VA = 10,0 mL par la soude cB = 1,0×10⁻¹ mol·L⁻¹ ; courbe pH = f(V). 1. Choisir l'indicateur coloré le plus approprié (hélianthine, rouge de crésol 7,2–8,8, jaune d'alizarine R). 2. a. Déterminer mexp et son incertitude. b. Comparer à mfab = 500 mg avec |mexp − mfab|/u(mexp).",
+   "datos": {
+    "VA": "10,0 mL",
+    "cB": "1,0×10⁻¹ mol·L⁻¹",
+    "u(VE)=u(VA)": "0,1 mL",
+    "u(cB)": "0,3×10⁻² mol·L⁻¹",
+    "mfab": "500 mg"
+   },
+   "respuesta": "1. Le rouge de crésol, dont la zone de virage contient la valeur du pH à l'équivalence (environ 8,5). 2. a. Méthode des tangentes : VE = 8,4 mL. À l'équivalence n(AH₂)titré/1 = n(HO⁻)versée/2 donc n(AH₂)titré = cB·VE/2 et m(AH₂)titrée = cB·VE·M(AH₂)/2 = 4,9×10⁻² g ; mexp = 10×m = 0,49 g ; u(mexp) = 0,017 g ≈ 0,02 g ; mexp = (0,49 ± 0,02) g. b. |mexp−mfab|/u = 0,50 < 1 : la valeur expérimentale correspond à celle du fabricant aux incertitudes près.",
+   "respuesta_numerica": {
+    "valor": 0.49,
+    "unidad": "g",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Indicador: pH de equivalencia ≈ 8,5 ∈ zona de viraje del rojo de cresol",
+    "n(AH₂) = cB·VE/2 (estequiometría 1 : 2)",
+    "mexp = 10 × 4,9×10⁻² g = 0,49 g",
+    "Cociente 0,50 < 1 → compatible con el fabricante"
+   ],
+   "pagina_pdf": 198,
+   "corrige_pagina_pdf": 615
+  },
+  {
+   "id": "e14",
+   "enunciado": "Ex. 42 — Adaptation du pH de l'eau d'un aquarium. Données : CO₂(aq), H₂O(ℓ)/HCO₃⁻(aq) pKA = 6,3 ; HCO₃⁻(aq)/CO₃²⁻(aq) pKA = 10,3. 1. Équation de la réaction du CO₂ dissous avec l'eau. 2. Effet d'une injection de CO₂ sur le pH. 3. Diagramme de prédominance ; espèce prédominante le matin (pH 6,7) et le soir (pH 7,5).",
+   "datos": {
+    "pKA1": "6,3",
+    "pKA2": "10,3",
+    "pH matin": "6,7",
+    "pH soir": "7,5"
+   },
+   "respuesta": "1. CO₂(aq), H₂O(ℓ) + H₂O(ℓ) ⇌ HCO₃⁻(aq) + H₃O⁺(aq). 2. Lorsque l'on injecte du CO₂ dans l'eau, il s'y dissout en partie et l'équilibre précédent s'y établit ; la concentration en ions oxonium augmente, le pH diminue. 3. CO₂,H₂O pour pH < 6,3 ; HCO₃⁻ entre 6,3 et 10,3 ; CO₃²⁻ pour pH > 10,3. L'espèce prédominante est l'ion hydrogénocarbonate le matin (pH = 6,7) et le soir (pH = 7,5).",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Dibujar eje con pKA 6,3 y 10,3",
+    "pH 6,7 y 7,5 están entre 6,3 y 10,3 → HCO₃⁻",
+    "Más CO₂ → más H₃O⁺ → baja el pH"
+   ],
+   "pagina_pdf": 201,
+   "corrige_pagina_pdf": 615
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "ph",
+   "params": {},
+   "titulo": "Escala de pH",
+   "relacion": "pH = −log c de un ácido fuerte y pH = pKe + log c de una base fuerte (pág. 185–186)."
+  },
+  {
+   "preset": "acido-base",
+   "params": {},
+   "titulo": "Par ácido-base, KA y predominancia",
+   "relacion": "KA, pKA, pH = pKA + log([A⁻]/[AH]) y diagrama de predominancia (pág. 184–188)."
+  },
+  {
+   "preset": "avance",
+   "params": {},
+   "titulo": "Tabla de avance de un ácido débil",
+   "relacion": "xmax = cV, τ = xf/xmax y concentraciones efectivas (pág. 186)."
+  },
+  {
+   "preset": "quotient-equilibre",
+   "params": {},
+   "titulo": "Equilibrio y constante KA",
+   "relacion": "Un ácido débil alcanza un equilibrio en el que Qr = KA (pág. 184, 186)."
+  },
+  {
+   "preset": "titrage",
+   "params": {},
+   "titulo": "Curva de titrage e indicador coloreado",
+   "relacion": "Elegir un indicador cuya zona de viraje contiene el pH de equivalencia (pág. 188)."
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "laboratorio-neon",
+  "mecanica_especial": "Zonas de campo (zona_campo) que empujan como medios ácido y básico y plataformas oscilantes que representan el vaivén ⇌ del equilibrio de los ácidos débiles; jefe: ejercicio de bac sobre fuerza de ácidos y bases."
+ },
+ "estilo_intro_sugerido": "quimica3d"
+}

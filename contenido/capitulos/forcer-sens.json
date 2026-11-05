@@ -1,0 +1,1005 @@
+{
+ "id": "forcer-sens",
+ "titulo": "Forcer le sens d'évolution d'un système",
+ "materia": "chimie",
+ "mundo": "constitucion",
+ "pdf_ini": 204,
+ "pdf_fin": 225,
+ "resumen": "Un sistema químico evoluciona solo en el sentido directo si Qr,i < K(T). Un generador de tensión continua puede forzarlo a ir en el sentido opuesto: es la electrólisis, que ocurre en un electrolizador (oxidación en el ánodo, reducción en el cátodo). La carga que circula (q = I·Δt = n(e⁻)·N_A·e) permite calcular las cantidades de materia formadas. El capítulo termina con el almacenamiento y la conversión de energía química: pilas, acumuladores, pila de combustible y fotosíntesis.",
+ "resumen_fr": "Un générateur de tension continue force un système à évoluer dans le sens opposé à son sens spontané : c'est l'électrolyse. On relie la charge q = I·Δt à n(e⁻) et aux quantités de produits formés, puis on étudie piles, accumulateurs et stockage d'énergie chimique.",
+ "nociones_clave": [
+  {
+   "id": "n1",
+   "fr": "Évolution spontanée / sens direct : si Qr,i < K(T), le système évolue spontanément dans le sens direct de l'équation jusqu'à l'équilibre.",
+   "es": "Un sistema evoluciona solo en el sentido directo si Qr,i < K(T) (ejemplo: Zn + I2, Qr,i = 2,5×10⁻⁵ frente a K = 10^46).",
+   "pagina_pdf": 209
+  },
+  {
+   "id": "n2",
+   "fr": "Évolution forcée : un générateur de tension continue peut forcer un système chimique à évoluer dans le sens opposé à son sens d'évolution spontanée.",
+   "es": "Un generador de tensión continua obliga al sistema a ir en el sentido contrario al espontáneo: en el ejemplo, Zn²⁺ + 2 I⁻ ⇌ Zn + I2.",
+   "pagina_pdf": 209
+  },
+  {
+   "id": "n3",
+   "fr": "Électrolyseur et électrolyse : cuve contenant deux électrodes reliées à un générateur ; transformation d'oxydoréduction forcée appelée électrolyse.",
+   "es": "Un electrolizador es una cuba con dos electrodos conectados a un generador de tensión continua; en él ocurre una transformación redox forzada (electrólisis).",
+   "pagina_pdf": 210
+  },
+  {
+   "id": "n4",
+   "fr": "Anode : électrode où se produit l'oxydation, reliée à la borne + du générateur.",
+   "es": "Ánodo: aquí ocurre la oxidación (ej. 2 I⁻ = I2 + 2 e⁻); está unido al borne positivo, que capta los electrones liberados.",
+   "pagina_pdf": 210
+  },
+  {
+   "id": "n5",
+   "fr": "Cathode : électrode où se produit la réduction, reliée à la borne − du générateur.",
+   "es": "Cátodo: aquí ocurre la reducción (ej. Zn²⁺ + 2 e⁻ = Zn); está unido al borne negativo, que aporta los electrones.",
+   "pagina_pdf": 210
+  },
+  {
+   "id": "n6",
+   "fr": "Porteurs de charge : les ions en solution, les électrons dans le circuit extérieur.",
+   "es": "En la disolución se desplazan los iones (aniones hacia el ánodo, cationes hacia el cátodo); por el circuito exterior circulan los electrones, en sentido opuesto al de la corriente I.",
+   "pagina_pdf": 210
+  },
+  {
+   "id": "n7",
+   "fr": "Quantité de charges q et quantité de matière d'électrons n(e⁻) : q = I·Δt = n(e⁻)·N_A·e.",
+   "es": "La carga que circula permite obtener los moles de electrones y, con las semiecuaciones, las variaciones de cantidad de materia.",
+   "pagina_pdf": 211
+  },
+  {
+   "id": "n8",
+   "fr": "Stocker de l'énergie : conserver une quantité d'énergie pour une utilisation future.",
+   "es": "Almacenar energía = conservarla para usarla más tarde; permite ajustar producción y consumo.",
+   "pagina_pdf": 211
+  },
+  {
+   "id": "n9",
+   "fr": "Pile : dispositif chimique qui convertit l'énergie chimique en énergie électrique grâce à une réaction d'oxydoréduction spontanée.",
+   "es": "Pila: convierte energía química en eléctrica mediante una reacción redox espontánea (ej. pila de combustible H2/O2, que solo expulsa agua).",
+   "pagina_pdf": 212
+  },
+  {
+   "id": "n10",
+   "fr": "Accumulateur : pile pouvant être rechargée grâce à une électrolyse (décharge = pile ; charge = électrolyseur).",
+   "es": "Un acumulador funciona como pila al descargarse y como electrolizador al cargarse; las reacciones de carga y descarga en los electrodos son opuestas (ej. litio-ion).",
+   "pagina_pdf": 212
+  },
+  {
+   "id": "n11",
+   "fr": "Photosynthèse / respiration : transformation non spontanée (CO2 + H2O → glucose + O2, grâce à la lumière) et son inverse spontanée.",
+   "es": "La respiración (glucosa + O2 → CO2 + H2O) es espontánea; la fotosíntesis es la transformación inversa, forzada por la energía luminosa captada con la clorofila.",
+   "pagina_pdf": 212
+  },
+  {
+   "id": "n12",
+   "fr": "Pile à combustible : pile fondée sur la réaction spontanée entre le dioxygène et le dihydrogène ; couples H⁺(aq)/H2(g) et O2(g)/H2O(ℓ).",
+   "es": "Dos compartimentos separados alimentados con H2 y O2 y un electrolito que deja circular los iones; H2 es el reductor y O2 el oxidante; el electrolizador del agua produce el H2 que la pila consume.",
+   "pagina_pdf": 208
+  },
+  {
+   "id": "n13",
+   "fr": "Production du dihydrogène : vaporeformage, gazéification du charbon, électrolyse de l'eau.",
+   "es": "Tres procesos: vaporeformado (el más usado y barato), gasificación del carbón y electrólisis del agua (la más cara, pero sin CO2 si la electricidad es renovable).",
+   "pagina_pdf": 207
+  },
+  {
+   "id": "n14",
+   "fr": "Acquis : oxydoréduction = transfert d'électrons entre l'oxydant et le réducteur de deux couples ; intensité I = q/Δt ; conversion d'énergie.",
+   "es": "Repaso previo: redox = transferencia de electrones; I = q/Δt; transferencia vs conversión de energía.",
+   "pagina_pdf": 204
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "Q_{r,i} < K(T) \\;\\Rightarrow\\; \\text{évolution spontanée dans le sens direct}",
+   "nombre": "Critère d'évolution spontanée (Qr,i frente a K)",
+   "nombre_fr": "Critère d'évolution spontanée d'un système",
+   "variables": [
+    {
+     "simbolo": "Q_{r,i}",
+     "significado": "cociente de reacción en el estado inicial",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "K(T)",
+     "significado": "constante de equilibrio de la reacción a la temperatura T",
+     "unidad": "sin unidad"
+    }
+   ],
+   "explicacion": "Si Qr,i < K(T) el sistema evoluciona solo en el sentido directo de la ecuación hasta el equilibrio; si Qr,i > K(T) lo haría en el sentido opuesto (rappel p.204). Un generador de tensión continua puede forzar el sentido contrario al espontáneo.",
+   "ejemplo": {
+    "enunciado": "Zn(s) + I2(aq) ⇌ Zn²⁺(aq) + 2 I⁻(aq), K(T) = 10^46 a 25 °C y Qr,i = 2,5×10⁻⁵.",
+    "resultado": "Qr,i < K(T): evolución espontánea en el sentido directo hasta el equilibrio.",
+    "pagina_pdf": 209
+   },
+   "pagina_pdf": 209,
+   "animacion": {
+    "preset": "quotient-equilibre",
+    "params": {},
+    "leyenda": "Compara Qr con K: la flecha y las moléculas muestran hacia dónde evoluciona el sistema (Qr < K, sentido directo; Qr > K, sentido opuesto)."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "Q_{r,i} = \\dfrac{[\\mathrm{Zn^{2+}(aq)}]_i\\,[\\mathrm{I^-(aq)}]_i^{2}}{[\\mathrm{I_2(aq)}]_i}",
+   "nombre": "Cociente de reacción inicial (ejemplo Zn / I2)",
+   "nombre_fr": "Quotient de réaction à l'état initial Qr,i",
+   "variables": [
+    {
+     "simbolo": "[Zn^{2+}]_i",
+     "significado": "concentración inicial de Zn²⁺",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "[I^-]_i",
+     "significado": "concentración inicial de I⁻",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "[I_2]_i",
+     "significado": "concentración inicial de I2",
+     "unidad": "mol·L⁻¹"
+    }
+   ],
+   "explicacion": "Productos (con sus coeficientes como exponentes) entre reactivos disueltos; el Zn(s) sólido no aparece. Se calcula con las concentraciones del estado inicial.",
+   "ejemplo": {
+    "enunciado": "[Zn²⁺]i = [I2]i = [I⁻]i = 0,0050 mol·L⁻¹",
+    "resultado": "Qr,i = 0,0050×0,0050² / 0,0050 = 2,5×10⁻⁵",
+    "pagina_pdf": 209
+   },
+   "pagina_pdf": 209,
+   "animacion": {
+    "preset": "quotient-equilibre",
+    "params": {},
+    "leyenda": "Mueve Qr hacia K y observa cómo cambia el reparto reactivos/productos y el sentido de evolución."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "[\\mathrm{X}]_i = \\dfrac{n_i}{V_{total}} = \\dfrac{c\\cdot V}{V_{total}}",
+   "nombre": "Concentración inicial tras mezclar",
+   "nombre_fr": "Concentration initiale en quantité de matière",
+   "variables": [
+    {
+     "simbolo": "n_i",
+     "significado": "cantidad de materia inicial de la especie",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "c",
+     "significado": "concentración de la solución de partida",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen tomado de cada solución",
+     "unidad": "L"
+    },
+    {
+     "simbolo": "V_{total}",
+     "significado": "volumen total de la mezcla",
+     "unidad": "L"
+    }
+   ],
+   "explicacion": "Al mezclar varias soluciones, la concentración de cada especie se calcula con el volumen total de la mezcla.",
+   "ejemplo": {
+    "enunciado": "3 soluciones de c = 0,015 mol·L⁻¹ y V = 20 mL cada una; Vtotal = 60 mL",
+    "resultado": "[Zn²⁺]i = 0,015×0,020/0,060 = 0,0050 mol·L⁻¹",
+    "pagina_pdf": 209
+   },
+   "pagina_pdf": 209,
+   "animacion": {
+    "preset": "concentracion",
+    "params": {},
+    "leyenda": "Cambia n y V: el vaso muestra más o menos moléculas disueltas y la concentración resultante."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "q = I\\cdot\\Delta t",
+   "nombre": "Carga eléctrica y corriente",
+   "nombre_fr": "Quantité de charges électriques mise en jeu",
+   "variables": [
+    {
+     "simbolo": "q",
+     "significado": "cantidad de carga eléctrica",
+     "unidad": "C"
+    },
+    {
+     "simbolo": "I",
+     "significado": "intensidad de la corriente (constante) del generador",
+     "unidad": "A"
+    },
+    {
+     "simbolo": "\\Delta t",
+     "significado": "duración de la electrólisis",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "La carga que atraviesa el sistema durante una electrólisis a intensidad constante. En «Avant d'aborder» aparece como I = q/Δt.",
+   "ejemplo": {
+    "enunciado": "Electrolisis del agua: I = 250 mA durante Δt = 3,0 min",
+    "resultado": "q = 0,250 × 180 = 45 C",
+    "pagina_pdf": 214
+   },
+   "pagina_pdf": 211,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "I*x",
+     "xmin": 0,
+     "xmax": 600,
+     "vars": {
+      "I": {
+       "min": 0.05,
+       "max": 1.0,
+       "step": 0.05,
+       "def": 0.5,
+       "label": "Intensidad I",
+       "unit": "A"
+      }
+     }
+    },
+    "leyenda": "Gráfica de q (C) frente a la duración Δt (s): la pendiente es la intensidad I, que puedes mover con el slider. (Ningún preset específico trata la carga eléctrica.)"
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "q = n(e^-)\\cdot N_A\\cdot e",
+   "nombre": "Carga y cantidad de electrones",
+   "nombre_fr": "Lien entre q et n(e⁻)",
+   "variables": [
+    {
+     "simbolo": "q",
+     "significado": "cantidad de carga eléctrica",
+     "unidad": "C"
+    },
+    {
+     "simbolo": "n(e^-)",
+     "significado": "cantidad de materia de electrones intercambiados",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "N_A",
+     "significado": "constante de Avogadro",
+     "unidad": "mol⁻¹"
+    },
+    {
+     "simbolo": "e",
+     "significado": "carga elemental",
+     "unidad": "C"
+    }
+   ],
+   "explicacion": "Relaciona la carga que pasa con los moles de electrones intercambiados en la electrólisis. Con N_A = 6,02×10²³ mol⁻¹ y e = 1,6×10⁻¹⁹ C.",
+   "ejemplo": {
+    "enunciado": "q = 45 C (Vérifier l'essentiel, nº 6)",
+    "resultado": "n(e⁻) = 45/(6,02×10²³×1,6×10⁻¹⁹) = 4,7×10⁻⁴ mol",
+    "pagina_pdf": 214
+   },
+   "pagina_pdf": 211,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x*6.02e23*1.6e-19",
+     "xmin": 0,
+     "xmax": 0.01
+    },
+    "leyenda": "Gráfica de q (C) frente a n(e⁻) (mol): una recta de pendiente N_A·e. (Ningún preset específico trata la carga eléctrica.)"
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "n(\\mathrm{I_2})_{\\text{formé}}=n(\\mathrm{Zn})_{\\text{formé}}=\\dfrac{1}{2}\\,n(e^-)=\\dfrac{I\\cdot\\Delta t}{2\\,N_A\\cdot e}",
+   "nombre": "Balance de materia de la electrólisis (Zn²⁺ / I⁻)",
+   "nombre_fr": "Variations de quantité de matière pendant l'électrolyse",
+   "variables": [
+    {
+     "simbolo": "n(\\mathrm{I_2})_{\\text{formé}}",
+     "significado": "cantidad de diyodo formado en el ánodo",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "n(\\mathrm{Zn})_{\\text{formé}}",
+     "significado": "cantidad de zinc formado en el cátodo",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "n(e^-)",
+     "significado": "cantidad de electrones intercambiados",
+     "unidad": "mol"
+    }
+   ],
+   "explicacion": "Con las semiecuaciones 2 I⁻ = I2 + 2 e⁻ y Zn²⁺ + 2 e⁻ = Zn se sigue el avance de la reacción forzada; además n(I⁻)consommé = 2·n(I2)formé y n(Zn²⁺)consommé = n(Zn)formé.",
+   "ejemplo": {
+    "enunciado": "I = 500 mA durante Δt = 10 min",
+    "resultado": "n(I2)formé = n(Zn)formé = 1,6×10⁻³ mol; n(I⁻)consommé = 3,2×10⁻³ mol; n(Zn²⁺)consommé = 1,6×10⁻³ mol",
+    "pagina_pdf": 211
+   },
+   "pagina_pdf": 211,
+   "animacion": {
+    "preset": "avance",
+    "params": {},
+    "leyenda": "El avance x crece con la carga que circula: ves cuánto zinc y diyodo se forman a costa de Zn²⁺ y I⁻."
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "\\Delta t = \\dfrac{n(e^-)\\cdot N_A\\cdot e}{I}",
+   "nombre": "Duración de la electrólisis",
+   "nombre_fr": "Durée de l'électrolyse",
+   "variables": [
+    {
+     "simbolo": "\\Delta t",
+     "significado": "duración",
+     "unidad": "s"
+    },
+    {
+     "simbolo": "n(e^-)",
+     "significado": "electrones necesarios",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "I",
+     "significado": "intensidad constante",
+     "unidad": "A"
+    }
+   ],
+   "explicacion": "Se despeja de q = I·Δt = n(e⁻)·N_A·e para saber cuánto tiempo hay que electrolizar para depositar una cantidad dada.",
+   "ejemplo": {
+    "enunciado": "Cromado (ej. 20): n(e⁻) = 8,1×10⁻² mol e I = 2,5 A",
+    "resultado": "Δt = 3,1×10³ s = 52 min",
+    "pagina_pdf": 218
+   },
+   "pagina_pdf": 218,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x*6.02e23*1.6e-19/I",
+     "xmin": 0,
+     "xmax": 0.2,
+     "vars": {
+      "I": {
+       "min": 0.5,
+       "max": 5,
+       "step": 0.5,
+       "def": 2.5,
+       "label": "Intensidad I",
+       "unit": "A"
+      }
+     }
+    },
+    "leyenda": "Gráfica de Δt (s) frente a n(e⁻) (mol): a mayor intensidad, menos tiempo hace falta."
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "E = U\\cdot I\\cdot\\Delta t",
+   "nombre": "Energía eléctrica",
+   "nombre_fr": "Énergie électrique",
+   "variables": [
+    {
+     "simbolo": "E",
+     "significado": "energía eléctrica",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "U",
+     "significado": "tensión",
+     "unidad": "V"
+    },
+    {
+     "simbolo": "I",
+     "significado": "intensidad",
+     "unidad": "A"
+    },
+    {
+     "simbolo": "\\Delta t",
+     "significado": "duración",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "Dato de la tarea ECE «Production de dihydrogène»: permite calcular el coste de la electricidad consumida (1 kWh = 3,6×10⁶ J).",
+   "ejemplo": null,
+   "pagina_pdf": 224,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "U*I*x",
+     "xmin": 0,
+     "xmax": 600,
+     "vars": {
+      "U": {
+       "min": 1,
+       "max": 12,
+       "step": 1,
+       "def": 6,
+       "label": "Tensión U",
+       "unit": "V"
+      },
+      "I": {
+       "min": 0.1,
+       "max": 2,
+       "step": 0.1,
+       "def": 0.5,
+       "label": "Intensidad I",
+       "unit": "A"
+      }
+     }
+    },
+    "leyenda": "Gráfica de E (J) frente a Δt (s) con U e I ajustables (el generador del montaje ECE es de 6 V). Ningún preset trata la energía eléctrica."
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "m = \\rho\\cdot V = \\rho\\cdot S\\cdot e",
+   "nombre": "Masa de un depósito metálico",
+   "nombre_fr": "Masse de métal déposé",
+   "variables": [
+    {
+     "simbolo": "m",
+     "significado": "masa del metal depositado",
+     "unidad": "g"
+    },
+    {
+     "simbolo": "\\rho",
+     "significado": "masa volúmica del metal",
+     "unidad": "g·cm⁻³"
+    },
+    {
+     "simbolo": "S",
+     "significado": "superficie de la pieza",
+     "unidad": "cm²"
+    },
+    {
+     "simbolo": "e",
+     "significado": "espesor de la capa",
+     "unidad": "cm"
+    }
+   ],
+   "explicacion": "En el cromado: V = S×e y m = ρ·V. Cuidado con las unidades (µm → cm).",
+   "ejemplo": {
+    "enunciado": "Cromado: S = 50 cm², e = 40 µm, ρ(Cr) = 7,2 g·cm⁻³",
+    "resultado": "m(Cr) = 7,2×50×40×10⁻⁴ = 1,4 g",
+    "pagina_pdf": 218
+   },
+   "pagina_pdf": 218,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "rho*S*x*1e-4",
+     "xmin": 0,
+     "xmax": 100,
+     "vars": {
+      "rho": {
+       "min": 2,
+       "max": 12,
+       "step": 0.1,
+       "def": 7.2,
+       "label": "Masa volúmica ρ",
+       "unit": "g/cm³"
+      },
+      "S": {
+       "min": 10,
+       "max": 100,
+       "step": 5,
+       "def": 50,
+       "label": "Superficie S",
+       "unit": "cm²"
+      }
+     }
+    },
+    "leyenda": "Gráfica de la masa depositada (g) frente al espesor (µm): crece linealmente con ρ y con la superficie."
+   }
+  },
+  {
+   "id": "f10",
+   "latex": "n = \\dfrac{m}{M}",
+   "nombre": "Cantidad de materia a partir de la masa",
+   "nombre_fr": "Quantité de matière d'un solide",
+   "variables": [
+    {
+     "simbolo": "n",
+     "significado": "cantidad de materia",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa",
+     "unidad": "g"
+    },
+    {
+     "simbolo": "M",
+     "significado": "masa molar",
+     "unidad": "g·mol⁻¹"
+    }
+   ],
+   "explicacion": "Se usa en los ejercicios resueltos para pasar de la masa de metal depositada a moles antes de usar la semiecuación.",
+   "ejemplo": {
+    "enunciado": "Cromado (ej. 20): m(Cr) = 1,4 g, M(Cr) = 52 g·mol⁻¹",
+    "resultado": "n(Cr) = 1,4/52 = 2,7×10⁻² mol",
+    "pagina_pdf": 218
+   },
+   "pagina_pdf": 218,
+   "animacion": {
+    "preset": "masa-molar",
+    "params": {
+     "m": 1.4,
+     "M": 52
+    },
+    "leyenda": "Mueve m y M: se ve cuántos moles representa la masa de metal depositada."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "N_A (constante de Avogadro)",
+   "valor": "6,02×10²³",
+   "unidad": "mol⁻¹",
+   "pagina_pdf": 211
+  },
+  {
+   "nombre": "e (carga elemental)",
+   "valor": "1,6×10⁻¹⁹",
+   "unidad": "C",
+   "pagina_pdf": 211
+  },
+  {
+   "nombre": "K(T) de Zn(s) + I2(aq) ⇌ Zn²⁺(aq) + 2 I⁻(aq) a 25 °C",
+   "valor": "10^46",
+   "unidad": "sin unidad",
+   "pagina_pdf": 209
+  },
+  {
+   "nombre": "K(T) de la reacción Cu / I2 de la actividad 1",
+   "valor": "1,2×10²⁵",
+   "unidad": "sin unidad",
+   "pagina_pdf": 206
+  },
+  {
+   "nombre": "V_m (volumen molar de un gas, valor dado en los ejercicios)",
+   "valor": "24 (25 a 25 °C y 10⁵ Pa en el ej. 25)",
+   "unidad": "L·mol⁻¹",
+   "pagina_pdf": 218
+  },
+  {
+   "nombre": "1 kWh",
+   "valor": "3,6×10⁶",
+   "unidad": "J",
+   "pagina_pdf": 224
+  },
+  {
+   "nombre": "Constante de Faraday (N_A·e)",
+   "valor": "no está en el cours (se usa el producto N_A·e)",
+   "unidad": "C·mol⁻¹",
+   "pagina_pdf": 211
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Prévoir le sens d'évolution spontanée d'un système",
+   "pasos": [
+    "Écrire l'équation de la réaction à partir des demi-équations des deux couples.",
+    "Calculer les concentrations initiales (avec le volume total du mélange).",
+    "Calculer Qr,i (solides et solvant n'y figurent pas) et le comparer à K(T).",
+    "Qr,i < K(T) : sens direct ; Qr,i > K(T) : sens opposé. Un générateur permet de forcer le sens opposé."
+   ],
+   "pagina_pdf": 209
+  },
+  {
+   "titulo": "Écrire les demi-équations et l'équation d'une électrolyse",
+   "pasos": [
+    "Anode (borne +) : oxydation du réducteur ; cathode (borne −) : réduction de l'oxydant.",
+    "Écrire chaque demi-équation avec les électrons du bon côté.",
+    "Multiplier pour égaliser les électrons et additionner : équation de la transformation forcée, qui est l'inverse de la réaction spontanée."
+   ],
+   "pagina_pdf": 210
+  },
+  {
+   "titulo": "Schématiser un électrolyseur",
+   "pasos": [
+    "Représenter la cuve avec deux électrodes et le générateur G (borne + côté anode, borne − côté cathode).",
+    "Les électrons circulent dans le circuit extérieur de l'anode vers la borne + et de la borne − vers la cathode ; le courant I a le sens contraire.",
+    "Dans la solution, les anions se déplacent vers l'anode et les cations vers la cathode.",
+    "Indiquer sur chaque électrode la demi-équation (oxydation / réduction)."
+   ],
+   "pagina_pdf": 210
+  },
+  {
+   "titulo": "Bilan de matière d'une électrolyse à intensité constante",
+   "pasos": [
+    "Calculer q = I·Δt (Δt en secondes).",
+    "En déduire n(e⁻) = q / (N_A·e).",
+    "Utiliser la demi-équation pour relier n(e⁻) à la quantité de produit formé (ex. n(Zn) = n(e⁻)/2).",
+    "Convertir : m = n·M pour un solide ; V = n·V_m pour un gaz (V_m donné dans l'énoncé)."
+   ],
+   "pagina_pdf": 217
+  },
+  {
+   "titulo": "Déterminer la durée ou l'intensité à partir d'une quantité déposée",
+   "pasos": [
+    "Masse → quantité de matière : n = m/M (avec m = ρ·S·e si on connaît l'épaisseur).",
+    "Demi-équation → n(e⁻).",
+    "Δt = n(e⁻)·N_A·e / I  ou  I = n(e⁻)·N_A·e / Δt, en unités cohérentes."
+   ],
+   "pagina_pdf": 218
+  },
+  {
+   "titulo": "Programmer le bilan d'une électrolyse en Python (ex. 28)",
+   "pasos": [
+    "Définir N_A et e comme constantes.",
+    "Si on cherche I : q = N_A·e·n(e⁻) puis I = q/Δt.",
+    "Si on cherche Δt : q = I·Δt puis n(e⁻) = q/(N_A·e) (le programme fourni affiche q, I et n(e⁻))."
+   ],
+   "pagina_pdf": 221
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Confundir ánodo y cátodo",
+   "correccion": "Cátodo = reducción (borne −); ánodo = oxidación (borne +).",
+   "pagina_pdf": 217
+  },
+  {
+   "id": "err2",
+   "nombre": "Unidades incoherentes",
+   "correccion": "Pasar Δt a segundos y µm/cm² a cm antes de calcular (q en C, I en A).",
+   "pagina_pdf": 218
+  },
+  {
+   "id": "err3",
+   "nombre": "Usar el volumen de una solución en vez del total",
+   "correccion": "Tras mezclar, [X]i = ni / Vtotal de la mezcla.",
+   "pagina_pdf": 219
+  },
+  {
+   "id": "err4",
+   "nombre": "Confundir iones y electrones como portadores",
+   "correccion": "Iones en la disolución; electrones solo en el circuito exterior.",
+   "pagina_pdf": 214
+  },
+  {
+   "id": "err5",
+   "nombre": "Creer que la electrólisis es espontánea",
+   "correccion": "Es una transformación forzada por el generador, en sentido opuesto al espontáneo; la pila es la espontánea.",
+   "pagina_pdf": 212
+  },
+  {
+   "id": "err6",
+   "nombre": "Olvidar la estequiometría de la semiecuación",
+   "correccion": "n(Zn) = n(e⁻)/2; para Cr³⁺, n(e⁻) = 3·n(Cr).",
+   "pagina_pdf": 218
+  },
+  {
+   "id": "err7",
+   "nombre": "Invertir el sentido de I y de los e⁻",
+   "correccion": "Los electrones circulan en sentido contrario al de la corriente I.",
+   "pagina_pdf": 210
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "Activité 1 · Principe de l'électrolyse (classe inversée)",
+   "descripcion": "Exp. 1: 50 mL de I2(aq) 0,10 mol·L⁻¹ + 0,50 g de cobre en copos; se agita y se anota el cambio de color (de amarillo-naranja a azul del Cu²⁺). Exp. 2: se vierte la mezcla en un tubo en U, se introduce un electrodo de grafito en cada rama, se conectan a un generador de 6,0 V durante ≈10 min y se observan los cambios de color junto a los electrodos y sobre ellos. Datos: pares I2/I⁻ y Cu²⁺/Cu; K(T) = 1,2×10²⁵. Objetivo: explicar cómo invertir el sentido de una transformación.",
+   "pagina_pdf": 206
+  },
+  {
+   "titulo": "Activité 2 · TP Le dihydrogène, une solution d'avenir",
+   "descripcion": "Parte 1: procesos de producción de H2 (vaporeformado, gasificación del carbón, electrólisis del agua), pila de combustible en los transportes y micro-red de Mafate. Parte 2: electrólisis del agua con una célula fotovoltaica, amperímetro en serie y voltímetro; se detiene a 10 mL de H2; luego se alimenta una pila de combustible con H2 y O2 para mover un motor. Se calcula q, n(e⁻) y n(H2) (N_A = 6,02×10²³ mol⁻¹, e = 1,6×10⁻¹⁹ C).",
+   "pagina_pdf": 207
+  },
+  {
+   "titulo": "Pour préparer l'ECE · Production de dihydrogène",
+   "descripcion": "Proponer y realizar un protocolo (generador 6 V, electrolizador, amperímetro, voltímetro, cronómetro, tubos de 25 mL) para producir 20 mL de H2; calcular el coste de la electricidad (E = U·I·Δt; 1 kWh = 3,6×10⁶ J; 0,10 €/kWh) y el precio de venta del H2 formado (12 €/kg; V_m = 24 L·mol⁻¹; M_H = 1,0 g·mol⁻¹) para decidir si es rentable.",
+   "pagina_pdf": 224
+  },
+  {
+   "titulo": "Piste pour le grand oral · ¿Cómo funciona el acumulador litio-ion de mi smartphone?",
+   "descripcion": "Plan sugerido: funcionamiento (descarga y carga), tecnologías empleadas, retos industriales y medioambientales. Palabras clave: oxidorreducción, transformación forzada, pila, litio, carga eléctrica, electrón.",
+   "pagina_pdf": 225
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Ejercicio resuelto 18 · Purificación del cobre. Electrólisis de una solución de sulfato de cobre acidificada: cátodo de cobre puro y ánodo de cobre impuro; el níquel puede oxidarse pero los iones Ni²⁺ no se reducen. Dura 21 días y da 300 kg de cobre. 1) Semiecuaciones posibles en cada electrodo y por qué se obtiene cobre puro. 2) n(Cu) formado y n(e⁻). 3) Intensidad I constante.",
+   "datos": {
+    "M(Cu)": "63,5 g·mol⁻¹",
+    "N_A": "6,02×10²³ mol⁻¹",
+    "e": "1,6×10⁻¹⁹ C",
+    "m(Cu)": "300 kg",
+    "Δt": "21 jours"
+   },
+   "respuesta": "1) Ánodo (oxidación): Cu(s) = Cu²⁺(aq) + 2 e⁻ y Ni(s) = Ni²⁺(aq) + 2 e⁻; cátodo (reducción): Cu²⁺(aq) + 2 e⁻ = Cu(s). El níquel se elimina en el ánodo y el cátodo queda de cobre puro. 2) n(Cu) = 300×10³/63,5 = 4,7×10³ mol; n(e⁻) = 2 n(Cu) = 9,4×10³ mol. 3) q = I·Δt = n(e⁻)·N_A·e, I = n(e⁻)·N_A·e/Δt = 9,4×10³×6,02×10²³×1,6×10⁻¹⁹/(21×24×3600) = 5,0×10² A.",
+   "respuesta_numerica": {
+    "valor": 500,
+    "unidad": "A",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Semiecuaciones: ánodo oxidación, cátodo reducción.",
+    "n(Cu) = m/M = 4,7×10³ mol; n(e⁻) = 2 n(Cu) = 9,4×10³ mol.",
+    "I = n(e⁻)·N_A·e/Δt con Δt = 21×24×3600 s → I = 5,0×10² A."
+   ],
+   "pagina_pdf": 217,
+   "corrige_pagina_pdf": 217
+  },
+  {
+   "id": "e2",
+   "enunciado": "Ejercicio resuelto 20 · Cromado de una pieza metálica. Superficie S = 50 cm², capa de espesor e = 40 µm, solución con iones Cr³⁺(aq), intensidad constante I = 2,5 A. 1) ¿En qué electrodo se coloca la pieza? 2) Cantidad de cromo a depositar. 3) n(e⁻). 4) Duración de la electrólisis.",
+   "datos": {
+    "M(Cr)": "52 g·mol⁻¹",
+    "ρ(Cr)": "7,2 g·cm⁻³",
+    "N_A": "6,02×10²³ mol⁻¹",
+    "e": "1,6×10⁻¹⁹ C"
+   },
+   "respuesta": "1) Se forma cromo por una reducción: la pieza es el cátodo. 2) m(Cr) = ρ·S·e = 7,2×50×40×10⁻⁴ = 1,4 g; n(Cr) = 1,4/52 = 2,7×10⁻² mol. 3) Cr³⁺ + 3 e⁻ = Cr, n(e⁻) = 3 n(Cr) = 8,1×10⁻² mol. 4) Δt = n(e⁻)·N_A·e/I = 8,1×10⁻²×6,02×10²³×1,6×10⁻¹⁹/2,5 = 3,1×10³ s = 52 min.",
+   "respuesta_numerica": {
+    "valor": 3120,
+    "unidad": "s",
+    "tolerancia_rel": 0.04
+   },
+   "pasos": [
+    "Reducción → cátodo.",
+    "m = ρ·S·e = 1,4 g → n(Cr) = 2,7×10⁻² mol.",
+    "n(e⁻) = 3·n(Cr) = 8,1×10⁻² mol.",
+    "Δt = n(e⁻)·N_A·e/I = 3,1×10³ s ≈ 52 min."
+   ],
+   "pagina_pdf": 218,
+   "corrige_pagina_pdf": 218
+  },
+  {
+   "id": "e3",
+   "enunciado": "Ejercicio 22 (Savoir rédiger) · 50 mL de CuSO4 (c1 = 0,10 mol·L⁻¹) + 50 mL de ZnSO4 (c2 = 0,10 mol·L⁻¹) + 5 mg de Cu y 5 mg de Zn; Cu²⁺ + Zn ⇌ Cu + Zn²⁺, K(T) = 2,0×10³⁷. 1) Qr,i y sentido de evolución. 2) Se electroliza 30 min con I = 200 mA: ¿qué metal se forma? 3) q. 4) Masa de metal formado.",
+   "datos": {
+    "M(Cu)": "63,5 g·mol⁻¹",
+    "M(Zn)": "65,4 g·mol⁻¹",
+    "N_A": "6,02×10²³ mol⁻¹",
+    "e": "1,6×10⁻¹⁹ C"
+   },
+   "respuesta": "1) [Cu²⁺]i = [Zn²⁺]i = 0,10×0,050/0,100 = 0,05 mol·L⁻¹ (volumen total de la mezcla); Qr,i = [Zn²⁺]i/[Cu²⁺]i = 1 < K: sentido directo. 2) El generador fuerza el sentido opuesto: se forma zinc. 3) q = I·Δt = 0,200×30×60 = 360 C. 4) n(Zn) = q/(2·N_A·e) = 1,9×10⁻³ mol; m(Zn) = n·M = 0,12 g.",
+   "respuesta_numerica": {
+    "valor": 0.1222,
+    "unidad": "g",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Concentraciones con Vtotal = 100 mL → 0,05 mol·L⁻¹ cada una; Qr,i = 1.",
+    "Qr,i < K → sentido directo; forzada → sentido opuesto: se forma Zn.",
+    "q = 0,200×1800 = 360 C (Δt en s).",
+    "n(Zn) = q/(2 N_A e) = 1,9×10⁻³ mol → m = 0,12 g."
+   ],
+   "pagina_pdf": 219,
+   "corrige_pagina_pdf": 616
+  },
+  {
+   "id": "e4",
+   "enunciado": "Ejercicio 19 · Electrólisis del titanio: I = 200 mA durante 1,0 h con iones Ti^(α+)(aq); se forman 179 mg de titanio en uno de los electrodos. 1) ¿En qué electrodo? 2) n(e⁻). 3) n(Ti). 4) Semiecuación y carga α de los iones.",
+   "datos": {
+    "M(Ti)": "47,9 g·mol⁻¹",
+    "N_A": "6,02×10²³ mol⁻¹",
+    "e": "1,6×10⁻¹⁹ C"
+   },
+   "respuesta": "1) El titanio se reduce: cátodo. 2) n(e⁻) = 7,5×10⁻³ mol. 3) n(Ti) = 3,7×10⁻³ mol. 4) Ti^(α+)(aq) + α e⁻ = Ti(s); α = 2, luego Ti²⁺(aq).",
+   "respuesta_numerica": {
+    "valor": 0.007475,
+    "unidad": "mol",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "q = I·Δt = 0,200×3600 = 720 C.",
+    "n(e⁻) = q/(N_A e) = 7,5×10⁻³ mol.",
+    "n(Ti) = 0,179/47,9 = 3,7×10⁻³ mol.",
+    "α = n(e⁻)/n(Ti) = 2."
+   ],
+   "pagina_pdf": 217,
+   "corrige_pagina_pdf": 616
+  },
+  {
+   "id": "e5",
+   "enunciado": "Ejercicio 16 · Producción de dicloro Cl2. Electrólisis de NaCl(aq) con U = 3,8 V e intensidad constante I = 45 kA. 1) Semiecuación (¿en qué electrodo?). 2) q en un día. 3) n(e⁻). 4) n(Cl2). 5) Volumen de Cl2 por día.",
+   "datos": {
+    "Par": "Cl2(g)/Cl⁻(aq)",
+    "V_m": "24 L·mol⁻¹",
+    "I": "45 kA"
+   },
+   "respuesta": "1) 2 Cl⁻(aq) = Cl2(g) + 2 e⁻, en el ánodo. 2) q = 3,9×10⁹ C. 3) n(e⁻) = 4,0×10⁴ mol. 4) n(Cl2) = 2,0×10⁴ mol. 5) V(Cl2) = 4,8×10⁵ L = 480 m³.",
+   "respuesta_numerica": {
+    "valor": 484385,
+    "unidad": "L",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Oxidación → ánodo.",
+    "q = I·Δt = 45×10³×86 400 = 3,9×10⁹ C.",
+    "n(e⁻) = q/(N_A e) = 4,0×10⁴ mol; n(Cl2) = n(e⁻)/2 = 2,0×10⁴ mol.",
+    "V = n·V_m = 4,8×10⁵ L."
+   ],
+   "pagina_pdf": 216,
+   "corrige_pagina_pdf": 615
+  },
+  {
+   "id": "e6",
+   "enunciado": "Ejercicio 21 · Limpieza de una antigüedad: se electroliza un cañón (electrodo en el que se forma H2) en solución de KOH durante 36 h con I = 80 mA. 1) ¿Ánodo o cátodo? Semiecuación. 2) n(e⁻). 3) Volumen de H2 formado.",
+   "datos": {
+    "Par": "H2O(ℓ)/H2(g)",
+    "V_m": "24 L·mol⁻¹",
+    "N_A": "6,02×10²³ mol⁻¹",
+    "e": "1,6×10⁻¹⁹ C"
+   },
+   "respuesta": "1) a. Cátodo (reducción). b. 2 H2O(ℓ) + 2 e⁻ = H2(g) + 2 HO⁻(aq). 2) n(e⁻) = 0,11 mol. 3) n(H2) = 5,5×10⁻² mol; V(H2) = 1,3 L.",
+   "respuesta_numerica": {
+    "valor": 1.29,
+    "unidad": "L",
+    "tolerancia_rel": 0.04
+   },
+   "pasos": [
+    "Se forma H2 por reducción: cátodo.",
+    "q = 0,080×36×3600 ≈ 1,04×10⁴ C → n(e⁻) ≈ 0,11 mol.",
+    "n(H2) = n(e⁻)/2 = 5,5×10⁻² mol; V = n·V_m ≈ 1,3 L."
+   ],
+   "pagina_pdf": 218,
+   "corrige_pagina_pdf": 616
+  },
+  {
+   "id": "e7",
+   "enunciado": "Ejercicio 24 · Principio de la pila de hidrógeno (2 H2 + O2 → 2 H2O). Preguntas 1–7, entre ellas: 5) expresión de ni(H2) del reactivo limitante en función de I, Δt, N_A y e; 6) volumen de H2 consumido en 200 h con I = 200 A (V_m = 24 L·mol⁻¹); 7) inconveniente de usar la pila en condiciones usuales.",
+   "datos": {
+    "Pares": "H⁺/H2 ; O2/H2O",
+    "V_m": "24 L·mol⁻¹",
+    "I": "200 A",
+    "Δt": "200 h"
+   },
+   "respuesta": "1) Solo rechaza agua: no contamina. 2) H2(g) = 2 H⁺ + 2 e⁻ ; O2(g) + 4 H⁺ + 4 e⁻ = 2 H2O. 3) n(e⁻) = 2·ni(H2). 4) El O2 viene del aire (cantidad ilimitada). 5) ni(H2) = I·Δt/(2·N_A·e). 6) V(H2) = 1,8×10⁴ L. 7) Haría falta un enorme depósito para almacenarlo.",
+   "respuesta_numerica": {
+    "valor": 17940,
+    "unidad": "L",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "n(e⁻) = 2·n(H2) → n(H2) = I·Δt/(2 N_A e).",
+    "Δt = 200×3600 s; n(H2) ≈ 7,5×10² mol.",
+    "V = n·V_m ≈ 1,8×10⁴ L."
+   ],
+   "pagina_pdf": 220,
+   "corrige_pagina_pdf": 616
+  },
+  {
+   "id": "e8",
+   "enunciado": "Ejercicio 27 · Estañado de latas: electrólisis con I = 6,0 A de iones Sn²⁺; se estaña el interior y el exterior de una lata (Ø 73 mm, h = 109 mm) a razón de 0,50 g de estaño por m². 1) Cantidad de estaño a depositar. 2) Duración Δt.",
+   "datos": {
+    "M(Sn)": "118,7 g·mol⁻¹",
+    "I": "6,0 A",
+    "Par": "Sn²⁺/Sn"
+   },
+   "respuesta": "1) m(Sn) = 3,4×10⁻² g, es decir n(Sn) ≈ 2,9×10⁻⁴ mol. 2) Δt = 9,2 s.",
+   "respuesta_numerica": {
+    "valor": 9.2,
+    "unidad": "s",
+    "tolerancia_rel": 0.05
+   },
+   "pasos": [
+    "Superficie a estañar: S = 2 × (2πR² + 2πRh) (dos discos y superficie lateral, por dentro y por fuera; con las áreas dadas en el «coup de pouce»).",
+    "m = 0,50 g·m⁻² × S → 3,4×10⁻² g → n(Sn).",
+    "n(e⁻) = 2 n(Sn); q = n(e⁻) N_A e; Δt = q/I ≈ 9,2 s."
+   ],
+   "pagina_pdf": 221,
+   "corrige_pagina_pdf": 616
+  },
+  {
+   "id": "e9",
+   "enunciado": "Ejercicio 32 · El primer contador eléctrico de Edison: cuba con dos electrodos de zinc en solución de sulfato de zinc; un 10 % de la corriente pasa por el contador. Relevé mensual: 52 g de zinc depositados. ¿Consumo de electricidad (en A·h) del mes?",
+   "datos": {
+    "M(Zn)": "65,4 g·mol⁻¹",
+    "N_A": "6,02×10²³ mol⁻¹",
+    "e": "1,6×10⁻¹⁹ C"
+   },
+   "respuesta": "n(Zn) = 0,80 mol; n(e⁻) = 2 n(Zn) = 1,6 mol; q = n(e⁻)·N_A·e = 1,5×10⁵ C = 41,7 A·h, que es el 10 % del consumo total; el abonado consumió q = 90×41,7/10 = 375 A·h.",
+   "respuesta_numerica": {
+    "valor": 375,
+    "unidad": "A·h",
+    "tolerancia_rel": 0.04
+   },
+   "pasos": [
+    "n(Zn) = 52/65,4 = 0,80 mol; Zn²⁺ + 2 e⁻ = Zn → n(e⁻) = 1,6 mol.",
+    "q = 1,5×10⁵ C; 1 A·h = 3 600 C → 41,7 A·h.",
+    "Esa carga es el 10 %: el 90 % restante da 375 A·h."
+   ],
+   "pagina_pdf": 223,
+   "corrige_pagina_pdf": 616
+  },
+  {
+   "id": "e10",
+   "enunciado": "Ejercicio 12 · ¿En qué sentido? Equilibrios (1) Cu + 2 Ag⁺ ⇌ Cu²⁺ + 2 Ag y (2) Cu²⁺ + 2 Ag ⇌ Cu + 2 Ag⁺. Se mezclan CuSO4(aq) (azul) y AgNO3(aq) (incoloro) y se introducen una lámina de plata y una de cobre: depósito gris y color azul más intenso. 1) ¿Qué reacción corresponde? 2) Se vierte la solución en un electrolizador conectado a un generador: a) ecuación; b) ¿qué se observa?",
+   "datos": {},
+   "respuesta": "1) La reacción (1) (espontánea). 2) a. Se fuerza el sentido opuesto: Cu²⁺(aq) + 2 Ag(s) ⇌ Cu(s) + 2 Ag⁺(aq). b. La solución se decolora y aparece un depósito metálico anaranjado de cobre sobre el cátodo (electrodo unido al borne − del generador).",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Depósito gris (Ag) y más azul (Cu²⁺): reacción (1).",
+    "Electrólisis = sentido opuesto: reacción (2).",
+    "Cu²⁺ se reduce en el cátodo (borne −)."
+   ],
+   "pagina_pdf": 215,
+   "corrige_pagina_pdf": 615
+  },
+  {
+   "id": "e11",
+   "enunciado": "Ejercicio 25 · Viaje a Marte (démarche avancée). Electrólisis del agua para fabricar O2: se necesitan V = 0,30 L de O2 por minuto para un astronauta (V_m = 25 L·mol⁻¹). Pares O2/H2O y H2O/H2. Calcular la intensidad I (supuesta constante) para un día.",
+   "datos": {
+    "V_m": "25 L·mol⁻¹",
+    "V(O2)": "0,30 L·min⁻¹",
+    "Δt": "1 jour"
+   },
+   "respuesta": "Ecuación: 2 H2O(ℓ) ⇌ O2(g) + 2 H2(g) (2 H2O = O2 + 4 H⁺ + 4 e⁻ y 2 H2O + 2 e⁻ = H2 + 2 HO⁻, ×2). n(O2) = 17,3 mol por día; n(e⁻) = 69 mol; q = 6,7×10⁶ C; I = 78 A.",
+   "respuesta_numerica": {
+    "valor": 77.5,
+    "unidad": "A",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "n(O2) = 0,30×1440/25 = 17,3 mol.",
+    "n(e⁻) = 4·n(O2) = 69 mol.",
+    "q = n(e⁻)·N_A·e = 6,7×10⁶ C.",
+    "I = q/Δt = 6,7×10⁶/86 400 ≈ 78 A."
+   ],
+   "pagina_pdf": 220,
+   "corrige_pagina_pdf": 616
+  },
+  {
+   "id": "e12",
+   "enunciado": "Ejercicio 17 · Hacia la autonomía energética (proyecto MYRTE, Córcega). 1) ¿Qué conversión de energía hace una pila de combustible? 2) Explicar cómo el dispositivo MYRTE permite ser autónomo en energía. 3) ¿Cuál es su carácter innovador?",
+   "datos": {},
+   "respuesta": "1) Convierte energía química en energía eléctrica. 2) Los paneles fotovoltaicos dan electricidad de día; el excedente alimenta un electrolizador que fabrica H2, almacenado en cisternas; de noche o con mal tiempo, la pila de combustible alimentada con ese H2 devuelve electricidad, sin contaminar. 3) Produce energía limpia (sin residuos radiactivos ni gases de efecto invernadero) y permite almacenar el excedente.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Pila: energía química → eléctrica.",
+    "Día: paneles + electrólisis → H2 almacenado.",
+    "Noche: pila de combustible → electricidad."
+   ],
+   "pagina_pdf": 216,
+   "corrige_pagina_pdf": 616
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "quotient-equilibre",
+   "params": {},
+   "titulo": "Qr frente a K: ¿hacia dónde evoluciona?",
+   "relacion": "Criterio de evolución espontánea Qr,i < K(T) y sentido opuesto forzado (p. 209)."
+  },
+  {
+   "preset": "avance",
+   "params": {},
+   "titulo": "Avance de la transformación forzada",
+   "relacion": "Balance de materia de la electrólisis Zn²⁺ / I⁻ (p. 211)."
+  },
+  {
+   "preset": "pila",
+   "params": {},
+   "titulo": "Pila: electrones, ánodo y cátodo",
+   "relacion": "Reacción redox espontánea que convierte energía química en eléctrica; contraste con el electrolizador (p. 212)."
+  },
+  {
+   "preset": "concentracion",
+   "params": {},
+   "titulo": "Concentración inicial tras mezclar",
+   "relacion": "[X]i = c·V/Vtotal para calcular Qr,i (p. 209)."
+  },
+  {
+   "preset": "gas-ideal-quimico",
+   "params": {},
+   "titulo": "Volumen de gas formado (H2, O2, Cl2)",
+   "relacion": "Paso de n(gas) a volumen con V_m en los ejercicios 16, 21, 24 y 25 (pp. 216–220)."
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "laboratorio-neon",
+  "mecanica_especial": "Zonas de campo: en las primeras zonas la corriente empuja a Ato hacia delante (sentido espontáneo, Qr < K); tras el generador las zonas lo empujan hacia atrás (sentido forzado) y hay que avanzar contra ellas; una zona de baja gravedad y plataformas móviles hacen de electrones en el circuito."
+ },
+ "estilo_intro_sugerido": "minimalista"
+}

@@ -35,6 +35,15 @@
     rad: { f: 1, d: D() }, '°': { f: Math.PI / 180, d: D() }, '%': { f: 0.01, d: D() }, dB: { f: 1, d: D() }, pH: { f: 1, d: D() },
     '°C': { f: 1, d: D(0, 0, 0, 0, 1), off: 273.15 },
   };
+  // Unidades de tiempo en palabras (cours en francés/español) y "unidades de cuenta" sin dimensión (noyaux, núcleos…)
+  ['an', 'ans', 'año', 'años', 'année', 'années'].forEach((k) => (UNI[k] = { f: 3.15576e7, d: D(0, 0, 1) }));
+  ['jour', 'jours', 'd', 'día', 'días'].forEach((k) => (UNI[k] = { f: 86400, d: D(0, 0, 1) }));
+  ['heure', 'heures', 'hora', 'horas'].forEach((k) => (UNI[k] = { f: 3600, d: D(0, 0, 1) }));
+  ['minute', 'minutes', 'minuto', 'minutos'].forEach((k) => (UNI[k] = { f: 60, d: D(0, 0, 1) }));
+  ['seconde', 'secondes', 'segundo', 'segundos'].forEach((k) => (UNI[k] = { f: 1, d: D(0, 0, 1) }));
+  UNI['°D'] = { f: 1, d: D() }; // grado Dornic (acidez de la leche)
+  ['noyau', 'noyaux', 'núcleo', 'núcleos', 'nucléide', 'atome', 'atomes', 'átomo', 'átomos', 'molécule', 'molécules', 'molécula', 'moléculas', 'ion', 'ions', 'iones', 'photon', 'photons', 'fotón', 'fotones', 'électron', 'électrons', 'electrón', 'electrones']
+    .forEach((k) => (UNI[k] = { f: 1, d: D() }));
   // Prefijos SI (sensibles a mayúsculas). 'u' se acepta como micro (conflicto con la unidad 'u': se resuelve primero la exacta).
   const PREF = { Y: 24, Z: 21, E: 18, P: 15, T: 12, G: 9, M: 6, k: 3, h: 2, da: 1, d: -1, c: -2, m: -3, 'µ': -6, 'μ': -6, u: -6, n: -9, p: -12, f: -15, a: -18 };
   const PREF_ORD = Object.keys(PREF).sort((a, b) => b.length - a.length); // 'da' antes que 'd'
@@ -96,7 +105,7 @@
       let base;
       if (s[i] === '(') { i++; base = expr(); if (!base || s[i] !== ')') return null; i++; }
       else {
-        const m = /^[A-Za-zµμΩ°Å%]+/.exec(s.slice(i)); if (!m) return null;
+        const m = /^[\p{L}µ°%]+/u.exec(s.slice(i)); if (!m) return null;
         base = resolver(m[0]); if (!base) return null; i += m[0].length;
         base = { f: base.f, d: base.d.slice(), off: base.off };
       }

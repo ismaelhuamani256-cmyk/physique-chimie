@@ -1216,7 +1216,7 @@
         n.grupo.scale.setScalar(n.escala * (1 + n.lift * 0.07));
         // las insignias crecen con la distancia para seguir siendo legibles
         _wp.copy(n.torrePos); const d = camera.position.distanceTo(_wp);
-        const s = 1.4 * clamp(Math.pow(d / 38, 0.58), 0.85, 2.1);
+        const s = 1.4 * clamp(Math.pow(d / 38, 0.58), 0.5, 2.1);
         n.badge.scale.set(s, s, 1); n.badge.position.y = n.altura + 0.75 + s * 0.45;
         const ss = s * 0.34;
         n.estrellasSpr.forEach((e, i) => { e.scale.set(ss, ss, 1); e.position.set((i - 1) * ss * 1.05, n.badge.position.y + s * 0.5 + ss * 0.55, 0); });

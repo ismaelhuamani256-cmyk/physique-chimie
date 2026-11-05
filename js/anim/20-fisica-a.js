@@ -157,7 +157,10 @@
     } else if (o.label) {
       ctx.font = FONT(o.lsize || 12);
       const tw = ctx.measureText(o.label).width;
-      txt(ctx, o.label, x1 + ux * (8 + tw / 2 * Math.abs(ux)), y1 + uy * 10 - (Math.abs(uy) < 0.3 ? 9 : 0),
+      // lside = ±1: etiqueta a la izquierda/derecha de la punta (para flechas verticales juntas)
+      const lx = o.lside ? x1 + o.lside * (tw / 2 + 8) : x1 + ux * (8 + tw / 2 * Math.abs(ux));
+      const ly = o.lside ? y1 + uy * 4 : y1 + uy * 10 - (Math.abs(uy) < 0.3 ? 9 : 0);
+      txt(ctx, o.label, lx, ly,
         { align: 'center', color: o.lcolor || color, size: o.lsize || 12, bg: 'rgba(10,15,32,0.65)' });
     }
   }
@@ -667,7 +670,7 @@
       if (!parada) flecha(ctx, bx, by, bx + vx * kv, by - vy * kv * 1, C.vel, { lw: 3 * k, label: 'v', lsize: 12 * k + 1 });
       if (dentro) {
         const LF = 0.26 * D * Sx;
-        flecha(ctx, bx, by, bx, by + (f.sig < 0 ? -LF : LF), C.fuerza, { lw: 3.4 * k, label: 'F = qE', lsize: 11 * k + 1 });
+        flecha(ctx, bx, by, bx, by + (f.sig < 0 ? -LF : LF), C.fuerza, { lw: 3.4 * k, label: 'F = qE', lsize: 11 * k + 1, lside: -1 });
         flecha(ctx, bx + 12 * k, by, bx + 12 * k, by + (f.sig < 0 ? -LF * 1.55 : LF * 1.55), C.acel, { lw: 3.4 * k, label: 'a', lsize: 12 * k + 1 });
       }
       if (parada) txt(ctx, 'impacto en la placa', bx, by + (f.sig < 0 ? -28 : 28) * k, { align: 'center', size: 12 * k, color: C.ambar, bg: 'rgba(10,15,32,.75)' });
@@ -720,7 +723,7 @@
   reg('gravitacion', {
     titulo: 'Gravitación: F = G·M·m/r² y órbitas',
     params: [
-      { id: 'M', label: 'Masa del astro M', min: 1, max: 100, step: 0.1, def: 5.97, unit: '×10²⁴ kg' },
+      { id: 'M', label: 'Masa del astro M', min: 1, max: 100, step: 0.01, def: 5.97, unit: '×10²⁴ kg' },
       { id: 'r', label: 'Radio orbital r', min: 7, max: 100, step: 0.1, def: 42.2, unit: '×10⁶ m' },
       { id: 'm', label: 'Masa del satélite m (opcional)', min: 100, max: 5000, step: 100, def: 1000, unit: 'kg' },
       { id: 'e', label: 'Excentricidad e (opcional)', min: 0, max: 0.8, step: 0.05, def: 0, unit: '' },
@@ -777,7 +780,7 @@
       const barM = pasoNice((f.a * 0.5) / 1e6, 3), bpx = barM * 1e6 * sc;
       ctx.strokeStyle = C.tenue; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(w - 12 - bpx, h - 16); ctx.lineTo(w - 12, h - 16);
       ctx.moveTo(w - 12 - bpx, h - 20); ctx.lineTo(w - 12 - bpx, h - 12); ctx.moveTo(w - 12, h - 20); ctx.lineTo(w - 12, h - 12); ctx.stroke();
-      txt(ctx, `${num(barM, barM < 1 ? 1 : 0)} ×10⁶ m`, w - 12 - bpx / 2, h - 28, { align: 'center', size: 11 * k, color: C.tenue, weight: 400 });
+      txt(ctx, `${num(barM, barM < 1 ? 1 : 0)} ×10⁶ m`, w - 12, h - 28, { align: 'right', size: 11 * k, color: C.tenue, weight: 400 });
       txt(ctx, `T = ${fmtT(f.T)}`, 10, 14, { size: 13 * k, color: C.ambar });
       txt(ctx, `v = ${num(v / 1000, 2)} km/s`, 10, 14 + 17 * k, { size: 12 * k, color: C.vel });
       txt(ctx, `r = ${num(r / 1e6, 1)} ×10⁶ m`, 10, 14 + 33 * k, { size: 12 * k, color: C.tenue, weight: 400 });

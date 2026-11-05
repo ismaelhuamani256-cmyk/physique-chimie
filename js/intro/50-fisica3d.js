@@ -51,7 +51,7 @@
       obj: raiz, radio: 1.35, tint: [mB, mCab],
       update(a, S, dt) {
         const vx = (a.vx || 0) * W, v = Math.abs(vx);
-        if (v > 0.15) cara = vx < 0 ? PI : 0; raiz.rotation.y = aproxAng(raiz.rotation.y, cara, Math.min(1, dt * 7));
+        cara = (a.dir != null ? a.dir : vx < 0 ? -1 : 1) < 0 ? PI : 0; raiz.rotation.y = aproxAng(raiz.rotation.y, cara, Math.min(1, dt * 7));
         giro -= (v * dt) / 0.3; ruedas.forEach((r) => { r.rotation.z = giro; });
         const fr = !!a.frenando; fren.visible = fr;
         cab += ((fr ? -0.07 : 0) - cab) * Math.min(1, dt * 8); // el morro "se hunde" al frenar
@@ -79,7 +79,7 @@
       obj: raiz, radio: 0.9, tint: [mP],
       update(a, S, dt) {
         const vx = (a.vx || 0) * W, vy = (a.vy || 0) * H, v = Math.hypot(vx, vy);
-        if (Math.abs(vx) > 0.15) cara = vx < 0 ? PI : 0; raiz.rotation.y = aproxAng(raiz.rotation.y, cara, Math.min(1, dt * 8));
+        cara = (a.dir != null ? a.dir : vx < 0 ? -1 : 1) < 0 ? PI : 0; raiz.rotation.y = aproxAng(raiz.rotation.y, cara, Math.min(1, dt * 8));
         const amp = clamp(v * 0.28, 0, 0.8); fase += dt * (2 + v * 3.2);
         patas.forEach((p, i) => { p.rotation.z = Math.sin(fase + (i === 0 || i === 3 ? 0 : PI)) * amp; });
         g.position.y = Math.abs(Math.sin(fase)) * 0.05 * (amp > 0.05 ? 1 : 0) + (amp < 0.05 ? Math.sin(S.i * 2.4) * 0.012 : 0);
@@ -106,7 +106,7 @@
       obj: raiz, radio: 1.2, tint: [mC],
       update(a, S, dt) {
         const vx = (a.vx || 0) * W, v = Math.abs(vx);
-        if (v > 0.15) cara = vx < 0 ? PI : 0; raiz.rotation.y = aproxAng(raiz.rotation.y, cara, Math.min(1, dt * 8));
+        cara = (a.dir != null ? a.dir : vx < 0 ? -1 : 1) < 0 ? PI : 0; raiz.rotation.y = aproxAng(raiz.rotation.y, cara, Math.min(1, dt * 8));
         const amp = clamp(v * 0.3, 0, 0.75); fase += dt * (2 + v * 2.6);
         piernas[0].rotation.z = Math.sin(fase) * amp; piernas[1].rotation.z = -Math.sin(fase) * amp;
         brazos[0].rotation.z = -Math.sin(fase) * amp * 0.9; brazos[1].rotation.z = Math.sin(fase) * amp * 0.9;
@@ -132,7 +132,7 @@
     // llama: dos conos aditivos + chorro de partículas
     const llama = new T.Group(); llama.position.y = -1.2; g.add(llama);
     const mF1 = lib.basic('#ff8a1f', { additive: true, opacity: 0.85 }), mF2 = lib.basic('#fff2a8', { additive: true, opacity: 0.95 });
-    const f1 = lib.mesh(G.cone(), mF1, 0, -0.55, 0, 0.32, 1.1, 0.32), f2 = lib.mesh(G.cone(), mF2, 0, -0.35, 0, 0.17, 0.7, 0.17); f1.rotation.x = f2.rotation.x = PI; llama.add(f1, f2);
+    const f1 = lib.mesh(G.cone(), mF1, 0, -0.55, 0, 0.32, 1.1, 0.32), f2 = lib.mesh(G.cone(), mF2, 0, -0.35, 0, 0.17, 0.7, 0.17); f1.rotation.x = f2.rotation.x = PI; f1.userData.noBox = f2.userData.noBox = true; llama.add(f1, f2);
     const NP = reducedMotion() ? 10 : 30, pos = new Float32Array(NP * 3), col = new Float32Array(NP * 3), geo = new T.BufferGeometry();
     geo.setAttribute('position', new T.BufferAttribute(pos, 3)); geo.setAttribute('color', new T.BufferAttribute(col, 3));
     const chorro = new T.Points(geo, new T.PointsMaterial({ size: 0.3, map: lib.puntoTex(), vertexColors: true, transparent: true, depthWrite: false, blending: T.AdditiveBlending })); chorro.frustumCulled = false; llama.add(chorro);
@@ -193,10 +193,10 @@
     brazo.add(lib.mesh(G.cylLo(), mH, 0, -L / 2, 0, 0.02, L, 0.02), lib.mesh(G.sphere(), mBob, 0, -L - 0.3, 0, 0.38));
     raiz.add(lib.mesh(G.sphereLo(), mH, 0, 1.48, 0.1, 0.07));
     return {
-      obj: raiz, radio: 2.0, rotPropia: true, base: 1, tint: [mBob],
+      obj: raiz, radio: 2.0, rotPropia: true, ancla: [0, 1.48], tint: [mBob],
       update(a, S) {
         // si el guion no gira el péndulo, oscila solo (T ≈ 2.6 s)
-        const th = Math.abs(a.rot || 0) > 0.01 ? -(a.rot || 0) * lib.RAD : 0.5 * Math.sin(S.i * 2.4);
+        const th = a.tieneGiro ? -(a.rot || 0) : 0.5 * Math.sin(S.i * 2.4);
         brazo.rotation.z = th;
       },
     };
@@ -212,7 +212,7 @@
     const masa = caja(mM, 0.7, 0.7, 0.7, 0, 0, 0); grp.add(masa);
     const cuerda = lib.mesh(G.cylLo(), mR, 0, 0, 0, 0.04, 0.0001, 0.04); cuerda.rotation.z = PI / 2;
     return {
-      obj: grp, radio: 1.9, tint: [mM],
+      obj: grp, radio: 1.9, tint: [mM], caja: [3.5, 0.8], ancla: [-1.4, 0],
       update(a, S) {
         const len = 2.2 * (1 + 0.28 * Math.sin(S.i * 3.2)); // oscila (M.A.S.)
         hel.scale.x = len; masa.position.x = -1.3 + len + 0.35;
@@ -365,7 +365,7 @@
   // =====================================================================================
   //  Entorno y estilo 'fisica3d'
   // =====================================================================================
-  const TIPOS_SUELO = ['auto', 'perro', 'humano', 'bloque', 'cohete', 'termometro'];
+  const TIPOS_SUELO = ['auto', 'perro', 'humano', 'bloque', 'termometro', 'vaso', 'tubo_ensayo'];  // anclados por los pies
   function decidirModo(ctx) {
     const g = ctx.guion || {}, act = g.actores || [], tipos = act.map((a) => a.tipo), tiene = (...t) => t.some((x) => tipos.includes(x));
     const forzado = String(g.escenario || g.fondo || '').toLowerCase();
@@ -385,10 +385,10 @@
 
   function crearCfg(ctx) {
     const modo = decidirModo(ctx), act = (ctx.guion && ctx.guion.actores) || [];
-    // y del suelo: justo bajo el actor "de suelo" más bajo
-    let floorY = lib.mapY(0.82) - 0.6;
+    // y del suelo: el ancla de los actores "de suelo" son sus pies/ruedas -> el suelo pasa por el más bajo
+    let floorY = lib.mapY(0.85);
     const suelo = act.filter((a) => TIPOS_SUELO.includes(a.tipo) && a.pos);
-    if (suelo.length) { const a = suelo.reduce((m, x) => (x.pos[1] > m.pos[1] ? x : m)); floorY = lib.mapY(a.pos[1]) - (a.tipo === 'perro' ? 0.5 : a.tipo === 'humano' ? 0.95 : a.tipo === 'cohete' ? 1.1 : a.tipo === 'bloque' ? 0.55 : 0.6) * (a.escala || 1); }
+    if (suelo.length) floorY = lib.mapY(Math.max(...suelo.map((a) => a.pos[1])));
     const sombras = {};
     return {
       fondo: modo === 'espacio'
@@ -422,12 +422,12 @@
       frame(S, dt, api) {
         if (modo !== 'suelo') return;
         for (const id in api.ents) {
-          const e = api.ents[id]; if (!TIPOS_SUELO.includes(e.spec.tipo) && e.spec.tipo !== 'bola') continue;
+          const e = api.ents[id]; if (!TIPOS_SUELO.includes(e.spec.tipo)) continue;
           let s = sombras[id];
           if (!s) { s = sombras[id] = new T.Mesh(G.circle(), new T.MeshBasicMaterial({ map: sombraTex(), transparent: true, depthWrite: false })); s.rotation.x = -PI / 2; s.renderOrder = 1; api.scene.add(s); }
           s.visible = e.root.visible;
           if (!s.visible) continue;
-          const alto = Math.max(0, e.root.position.y - floorY), r = (e.b.radio || 1) * e.root.scale.x * 1.15;
+          const alto = Math.max(0, e.root.position.y - floorY), r = e.radio * e.root.scale.x * 1.1;
           s.position.set(e.root.position.x, floorY + 0.02, 0); s.scale.set(r, r * 0.55, 1); s.scale.z = 1;
           s.material.opacity = (0.8 / (1 + alto * 0.3)) * e.alpha;
         }
@@ -435,5 +435,5 @@
     };
   }
 
-  lib.registrar('fisica3d', { init(ctx) { return lib.crearEstilo3D(ctx, crearCfg(ctx)); } });
+  lib.registrar('fisica3d', { nombre: 'Física 3D', init(ctx) { return lib.crearEstilo3D(ctx, crearCfg(ctx)); } });
 })();

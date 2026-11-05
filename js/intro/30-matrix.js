@@ -220,6 +220,7 @@
   //  Estilo
   // =====================================================================================
   registrar('matrix', {
+    nombre: 'Matrix',
     init(ctx) {
       inicGlifos();
       const reduced = ctx.reduced !== undefined ? !!ctx.reduced : reducedMotion();

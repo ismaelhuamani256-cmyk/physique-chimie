@@ -1,0 +1,251 @@
+{
+ "capitulo_id": "_demo",
+ "tipo_nivel": "fortaleza",
+ "tema_visual": "lava-fortaleza",
+ "fisica_juego": {
+  "gravedad": 1.0,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 160,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 8,
+   "y": 12,
+   "ref": "f1",
+   "latex": "\\mathrm{AH} = \\mathrm{A}^{-} + \\mathrm{H}^{+}",
+   "nombre": "Semi-équation acide-base"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 14,
+   "y": 13,
+   "enemigo": "h_libre",
+   "nombre": "H⁺ libre",
+   "correccion": "Le proton H⁺ n'existe pas libre en solution : il est capté par l'eau (H₃O⁺)."
+  },
+  {
+   "tipo": "foso",
+   "x": 22,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 26,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 32,
+   "y": 11,
+   "ref": "f2",
+   "latex": "\\mathrm{pH} = -\\log\\dfrac{[\\mathrm{H_3O^+}]}{c^\\circ}",
+   "nombre": "Définition du pH"
+  },
+  {
+   "tipo": "resorte",
+   "x": 38,
+   "y": 13
+  },
+  {
+   "tipo": "foso",
+   "x": 46,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 47,
+   "y": 11,
+   "largo": 3
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 48,
+   "y": 9,
+   "ref": "f3",
+   "latex": "K_e = [\\mathrm{H_3O^+}][\\mathrm{HO^-}]",
+   "nombre": "Produit ionique de l'eau"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 51,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 58
+  },
+  {
+   "tipo": "enemigo",
+   "x": 56,
+   "y": 13,
+   "enemigo": "fleche_egal",
+   "nombre": "Flèche au lieu de =",
+   "correccion": "Une demi-équation s'écrit avec le signe = (ou ⇌ pour l'équilibre)."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 62,
+   "y": 11,
+   "ref": "f4",
+   "latex": "K_A = \\dfrac{[\\mathrm{A^-}][\\mathrm{H_3O^+}]}{[\\mathrm{AH}]\\,c^\\circ}",
+   "nombre": "Constante d'acidité"
+  },
+  {
+   "tipo": "foso",
+   "x": 71,
+   "largo": 8
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 70,
+   "y": 6,
+   "w": 9,
+   "h": 9,
+   "fx": 0,
+   "fy": -0.4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 71,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 79,
+   "y": 14,
+   "largo": 21
+  },
+  {
+   "tipo": "enemigo",
+   "x": 85,
+   "y": 13,
+   "enemigo": "sans_etat",
+   "nombre": "État physique oublié",
+   "correccion": "Indiquer (aq), (ℓ), (g) ou (s) pour chaque espèce."
+  },
+  {
+   "tipo": "puente",
+   "x": 100,
+   "y": 14,
+   "largo": 12,
+   "id": "puente1"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 105,
+   "y": 11,
+   "ref": "f5",
+   "latex": "\\mathrm{pK_A} = -\\log K_A",
+   "nombre": "pKA"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 112,
+   "y": 14,
+   "largo": 48
+  },
+  {
+   "tipo": "palanca",
+   "x": 115,
+   "y": 13,
+   "efecto": "cae_puente",
+   "objetivo": "puente1"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 120,
+   "y": 11,
+   "ref": "f6",
+   "latex": "\\mathrm{pH} = \\mathrm{pK_A} + \\log\\dfrac{[\\mathrm{A^-}]}{[\\mathrm{AH}]}",
+   "nombre": "Relation pH / pKA"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 124,
+   "y": 13,
+   "enemigo": "eau_solide",
+   "nombre": "H₂O dans une dissolution",
+   "correccion": "La dissolution d'un solide ionique n'implique pas H₂O dans l'équation."
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 127
+  },
+  {
+   "tipo": "jefe",
+   "x": 142,
+   "jefe": "rey_entropia",
+   "titulo": "Rey Entropía · guardián de la fortaleza",
+   "preguntas": [
+    {
+     "pregunta": "Selon Brønsted, un acide est une espèce chimique capable de…",
+     "opciones": [
+      "céder un proton H⁺",
+      "capter un proton H⁺",
+      "céder un électron",
+      "capter un électron"
+     ],
+     "correcta": 0,
+     "explicacion": "Un acide cède un ou plusieurs protons H⁺ ; une base en capte.",
+     "pagina_pdf": 0
+    },
+    {
+     "pregunta": "Quel est le couple acide/base de l'ion oxonium ?",
+     "opciones": [
+      "H₃O⁺ / H₂O",
+      "H₂O / HO⁻",
+      "HO⁻ / O²⁻",
+      "H⁺ / H₂"
+     ],
+     "correcta": 0,
+     "explicacion": "H₃O⁺ cède H⁺ pour donner H₂O : couple H₃O⁺/H₂O.",
+     "pagina_pdf": 0
+    },
+    {
+     "pregunta": "Une solution aqueuse de pH = 3 à 25 °C est…",
+     "opciones": [
+      "acide",
+      "basique",
+      "neutre",
+      "sans ions"
+     ],
+     "correcta": 0,
+     "explicacion": "pH < 7 à 25 °C : solution acide ($[\\mathrm{H_3O^+}] = 10^{-3}\\ \\mathrm{mol\\cdot L^{-1}}$).",
+     "pagina_pdf": 0
+    },
+    {
+     "pregunta": "Le pH est défini par…",
+     "opciones": [
+      "$-\\log([\\mathrm{H_3O^+}]/c^\\circ)$",
+      "$\\log[\\mathrm{HO^-}]$",
+      "$[\\mathrm{H_3O^+}]$",
+      "$14 - [\\mathrm{H_3O^+}]$"
+     ],
+     "correcta": 0,
+     "explicacion": "$\\mathrm{pH} = -\\log([\\mathrm{H_3O^+}]/c^\\circ)$ avec $c^\\circ = 1\\ \\mathrm{mol\\cdot L^{-1}}$.",
+     "pagina_pdf": 0
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 156
+  }
+ ]
+}

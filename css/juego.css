@@ -11,7 +11,7 @@
 .jg-items{justify-content:flex-end}
 .jg-tiempo{letter-spacing:calc(var(--s)*1px)}
 .jg-ico{display:inline-flex;filter:drop-shadow(calc(var(--s)*1px) calc(var(--s)*1px) 0 #000)}
-.jg-ico svg{display:block;width:calc(var(--s)*7*3px/2*0.67);height:auto}
+.jg-ico svg{display:block;width:calc(var(--s)*10px);height:auto}
 .jg-jefe{position:absolute;left:50%;top:calc(var(--s)*22px);transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:calc(var(--s)*3px);font-size:calc(var(--s)*7px);color:#ffd166}
 .jg-pips{display:flex;gap:calc(var(--s)*4px)}
 .jg-pip{width:calc(var(--s)*14px);height:calc(var(--s)*6px);background:#2a1a1a;border:calc(var(--s)*1px) solid #000;box-shadow:inset 0 0 0 calc(var(--s)*1px) #5a3030}

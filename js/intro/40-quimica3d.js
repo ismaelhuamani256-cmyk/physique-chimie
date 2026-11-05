@@ -837,6 +837,7 @@
     },
     camAz: (t, red) => (red ? 0.18 : Math.sin(t * 0.28) * 0.42),
     camEl: (t, red) => (red ? 0.08 : 0.1 + 0.05 * Math.sin(t * 0.21)),
+    init() { reaccionesEstado.vis = {}; reaccionesEstado.activas.length = 0; },
     antes(S, ents, api) { reaccionesAntes(S, ents, api); },
     despues(S, dt, api) { reaccionesDespues(S, dt, api); },
   };
@@ -903,17 +904,20 @@
       q.p.copy(from).lerp(to, ease);
       const s = Math.sin(Math.PI * ease), sg = k % 2 ? 1 : -1;
       q.p.y += s * 0.55 * sg; q.p.z += s * 0.7 * Math.sin(k * 1.7); q.p.x += s * 0.25 * Math.cos(k * 2.3);
-      const r0 = q.src ? q.src.at.r * q.src.e.root.scale.x : 0, r1 = q.dst ? q.dst.at.r * q.dst.e.root.scale.x : 0;
+      const esc = (e) => e.root.scale.x * e.holder.scale.x;
+      const s0 = q.src ? esc(q.src.e) : 0, s1 = q.dst ? esc(q.dst.e) : 0;
+      const r0 = q.src ? q.src.at.r * s0 : 0, r1 = q.dst ? q.dst.at.r * s1 : 0;
+      q.sc = lerp(s0 || s1, s1 || s0, ease);
       q.mesh.position.copy(q.p); q.mesh.scale.setScalar(Math.max(0.001, lerp(r0, r1, ease)));
       cx += q.p.x; cy += q.p.y; cz += q.p.z;
     });
     const n = Math.max(1, v.atomos.length);
     const kR = 1 - smooth(0.12, 0.5, p), kP = smooth(0.5, 0.88, p);
-    v.enR.forEach((b) => { b.mesh.visible = kR > 0.02; if (b.mesh.visible) lib.ponerVarilla(b.mesh, v.atomos[b.i].p, v.atomos[b.j].p, 0.08 * kR * (b.ord > 1 ? 1.4 : 1)); });
-    v.enP.forEach((b) => { b.mesh.visible = kP > 0.02; if (b.mesh.visible) lib.ponerVarilla(b.mesh, v.atomos[b.i].p, v.atomos[b.j].p, 0.08 * kP * (b.ord > 1 ? 1.4 : 1)); });
+    v.enR.forEach((b) => { b.mesh.visible = kR > 0.02; if (b.mesh.visible) lib.ponerVarilla(b.mesh, v.atomos[b.i].p, v.atomos[b.j].p, 0.08 * v.atomos[b.i].sc * kR * (b.ord > 1 ? 1.4 : 1)); });
+    v.enP.forEach((b) => { b.mesh.visible = kP > 0.02; if (b.mesh.visible) lib.ponerVarilla(b.mesh, v.atomos[b.i].p, v.atomos[b.j].p, 0.08 * v.atomos[b.i].sc * kP * (b.ord > 1 ? 1.4 : 1)); });
     v.flash.position.set(cx / n, cy / n, cz / n + 0.5);
     const f = Math.exp(-Math.pow((p - 0.5) / 0.12, 2)); v.flash.material.opacity = 0.85 * f; v.flash.scale.setScalar(2.5 + 2.5 * f);
   }
 
-  lib.registrar('quimica3d', { init(ctx) { return lib.crearEstilo3D(ctx, cfgQuimica); } });
+  lib.registrar('quimica3d', { nombre: 'Química 3D', init(ctx) { return lib.crearEstilo3D(ctx, cfgQuimica); } });
 })();

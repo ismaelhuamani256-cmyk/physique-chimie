@@ -1049,7 +1049,7 @@
  "ejercicios_bac": [
   {
    "id": "e1",
-   "enunciado": "Exercice résolu 24 — Capacité d'un condensateur : on charge un condensateur de capacité C avec un générateur de courant d'intensité constante I = 1,0 mA et on mesure u_C à différents instants : Δt = 0, 10, 20, 30, 60 s ; u_C = 0, 23, 51, 76, 152 V (la valeur 98 V à 40 s est aussi dans le tableau). Exprimer u_C en fonction de I, C et Δt, représenter u_C = f(t), la confronter au modèle et en déduire C.",
+   "enunciado": "Exercice résolu 24 — Capacité d'un condensateur : on charge un condensateur de capacité C avec un générateur de courant d'intensité constante I = 1,0 mA et on mesure u_C à différents instants : Δt = 0, 10, 20, 30, 40, 60 s ; u_C = 0, 23, 51, 76, 98, 152 V. Exprimer u_C en fonction de I, C et Δt, représenter u_C = f(t), la confronter au modèle et en déduire C.",
    "datos": {
     "I": "1,0 mA",
     "pente graphique": "2,5 V·s⁻¹"
@@ -1246,7 +1246,7 @@
   },
   {
    "id": "e10",
-   "enunciado": "Exercice de synthèse 2 — Étude d'un dipôle RC : on charge un condensateur de capacité inconnue C à travers R = 330 kΩ avec un générateur de tension constante u₀ = 12,0 V. Le tableau de mesures (t, u_C) donne : (0 ; 0), (5 ; 1,6), (10 ; 3,0), (15 ; 4,2), (20 ; 5,2), (30 ; 6,9), (40 ; 8,2), (50 ; 9,1), (70 ; 10,4), (100 ; 11,3), (150 ; 11,8), (200 ; 11,9), (250 ; 12,0). Déterminer la constante de temps, calculer C et dire si la valeur est en accord avec C = 100 µF à 20 % près.",
+   "enunciado": "Exercice de synthèse 2 — Étude d'un dipôle RC : on charge un condensateur de capacité inconnue C à travers R = 330 kΩ avec un générateur de tension constante u₀ = 12,0 V. Le tableau de mesures (t, u_C) donne : (0 ; 0,0), (5 ; 1,6), (10 ; 3,0), (15 ; 4,2), (20 ; 5,2), (30 ; 6,9), (40 ; 8,2), (50 ; 9,1), (70 ; 10,4), (100 ; 11,3), (150 ; 11,8), (200 ; 11,9), (220 ; 12,0), (250 ; 12,0). Déterminer la constante de temps, calculer C et dire si la valeur est en accord avec C = 100 µF à 20 % près.",
    "datos": {
     "R": "330 kΩ",
     "u₀": "12,0 V",

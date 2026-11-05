@@ -522,16 +522,24 @@
       const PX = (x) => (x - cam.cx) * cam.z * W + W / 2;
       const PY = (y) => (y - cam.cy) * cam.z * H + H / 2;
 
+      /** opacidad del suelo: visible mientras algún actor "de suelo" siga cerca de su altura inicial */
+      function alfaSuelo() {
+        let m = 0;
+        for (const id in S.actores) { const a = S.actores[id]; if (a.visible && SUELO.indexOf(a.tipo) >= 0) m = Math.max(m, K.smooth(1 - Math.abs(a.y - sueloY) / 0.08) * a.alpha); }
+        return m;
+      }
       function suelo() {
         if (sueloY == null) return;
+        const al = alfaSuelo(); if (al < 0.02) return;
         const y = PY(sueloY), x0 = PX(-0.1), x1 = PX(1.1);
-        pen.s = 1; pen.sd = 777; pen.alpha = 1; c.globalAlpha = 1;
+        pen.s = 1; pen.sd = 777; pen.alpha = al; c.globalAlpha = al;
         trazo([[x0, y], [PX(0.3), y + 1.5], [PX(0.6), y - 1], [x1, y + 1]], { w: Math.max(2.5, pen.lw * 0.9), amp: 1.2, c: '#3a3f4a' });
         for (let i = -4; i < 40; i++) {
           const x = PX(i * 0.035) + K.hrand(i * 7 + 3) * 8;
           if (x < -20 || x > W + 20) continue;
           linea(x, y + 5, x - 9, y + 5 + 9, { w: 1.6, c: 'rgba(60,70,100,.4)', amp: 0.5, dbl: false });
         }
+        c.globalAlpha = 1;
       }
 
       function actor(a) {

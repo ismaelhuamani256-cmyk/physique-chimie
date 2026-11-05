@@ -719,7 +719,7 @@
     });
     const etq = lib.textSprite(el, { color: '#fff', h: 0.42, px: 60 }); etq.position.set(0, -(0.95 + 0.7 * (capas.length - 1)) - 0.45, 0.3); grp.add(etq);
     return {
-      obj: grp, radio: 0.95 + 0.7 * (capas.length - 1) + 0.3, tint: null,
+      obj: grp, radio: 0.95 + 0.7 * (capas.length - 1) + 0.3, tint: null, caja: [2 * (0.95 + 0.7 * (capas.length - 1)), 2 * (0.95 + 0.7 * (capas.length - 1))], ancla: [0, 0],
       update(a, S) {
         for (const q of elec) { const th = q.ph + S.i * q.w; q.e.position.set(Math.cos(th) * q.R, Math.sin(th) * q.R, 0); }
         grp.rotation.y = 0.4 * Math.sin(S.i * 0.3);
@@ -729,22 +729,26 @@
 
   // ---------- ion: esfera + carga bien visible ----------
   B.ion = function (spec) {
-    const p = parseFormula(spec.formula || spec.texto || spec.etiqueta || spec.nombre || spec.id) || { orden: [], carga: 0, cuentas: {} };
-    const el = (spec.elemento && parseFormula(spec.elemento) && parseFormula(spec.elemento).orden[0]) || p.orden[0] || 'Na';
+    const ftxt = lib.formulaDeActor(spec) || spec.texto || spec.etiqueta || spec.nombre || spec.id;
+    const p = parseFormula(ftxt) || { orden: [], carga: 0, cuentas: {} };
+    const el = p.orden[0] || 'Na';
+    const poli = p.orden.length > 1 || (p.cuentas[el] || 1) > 1;
     let carga = spec.carga != null ? (typeof spec.carga === 'number' ? spec.carga : (parseFormula('X' + spec.carga) || {}).carga || 0) : p.carga;
-    if (!carga) carga = infoEl(el).c === ELEM.Cl[0] || el === 'Cl' || el === 'F' || el === 'O' ? -1 : 1;
+    if (!carga) carga = ['Cl', 'F', 'O', 'Br', 'I', 'S'].includes(el) ? -1 : 1;
     const inf = infoEl(el), grp = new T.Group();
-    const col = spec.color || inf.c, r = inf.r * (carga < 0 ? 1.45 : 1.15);
+    const col = spec.color || inf.c, r = poli ? 0.62 : inf.r * (carga < 0 ? 1.45 : 1.15);
     const mt = lib.mat(col, { shininess: 90, specular: 0x777777 });
     grp.add(lib.mesh(G.sphere(), mt, 0, 0, 0, r));
     const halo = lib.basic(carga > 0 ? '#ff4d6d' : '#4d7bff', { additive: true, opacity: 0.22, side: T.BackSide });
-    grp.add(lib.mesh(G.sphere(), halo, 0, 0, 0, r * 1.45));
-    const sim = lib.textSprite(el, { color: '#ffffff', h: 0.5 * Math.max(0.8, r * 1.2), px: 64 }); sim.position.set(0, 0, r + 0.1); grp.add(sim);
+    const hm = lib.mesh(G.sphere(), halo, 0, 0, 0, r * 1.45); hm.userData.noBox = true; grp.add(hm);
+    const SUB = '₀₁₂₃₄₅₆₇₈₉';
+    const etq = poli ? p.orden.map((e) => e + (p.cuentas[e] > 1 ? String(p.cuentas[e]).replace(/\d/g, (d) => SUB[d]) : '')).join('') : el;
+    const sim = lib.textSprite(etq, { color: '#ffffff', h: 0.5 * Math.max(0.8, r * 1.2) * (etq.length > 3 ? 0.8 : 1), px: 64 }); sim.position.set(0, 0, r + 0.1); grp.add(sim);
     const txt = (Math.abs(carga) > 1 ? Math.abs(carga) : '') + (carga > 0 ? '+' : '−');
     const bd = lib.textSprite(txt, { color: '#fff', bg: carga > 0 ? '#e5384f' : '#2f6bff', circle: true, h: 0.72, px: 56 });
     bd.position.set(r * 0.85, r * 0.85, 0.4); grp.add(bd);
     const mol = { atomos: [{ el, r: r, lp: new T.Vector3(), mesh: null }], enlaces: [], spin: grp };
-    return { obj: grp, radio: r * 1.5, tint: [mt], mol, update(a, S) { grp.position.y = Math.sin(S.i * 1.3 + r) * 0.05; } };
+    return { obj: grp, radio: r * 1.5, tint: [mt], mol, caja: [r * 2.4, r * 2.4], ancla: [0, 0], update(a, S) { grp.position.y = Math.sin(S.i * 1.3 + r) * 0.05; } };
   };
 
   // ---------- electrón: bolita brillante con estela ----------
@@ -833,22 +837,21 @@
     },
     camAz: (t, red) => (red ? 0.18 : Math.sin(t * 0.28) * 0.42),
     camEl: (t, red) => (red ? 0.08 : 0.1 + 0.05 * Math.sin(t * 0.21)),
-    reinicio(api) { reaccionesEstado.hechas.clear(); },
     antes(S, ents, api) { reaccionesAntes(S, ents, api); },
     despues(S, dt, api) { reaccionesDespues(S, dt, api); },
   };
 
   // ---------- reacciones: los átomos de 'de' viajan a las posiciones de 'a', se rompen y forman varillas ----------
-  const reaccionesEstado = { hechas: new Set(), vis: {}, activas: [] };
+  const reaccionesEstado = { vis: {}, activas: [] };
   function reaccionesAntes(S, ents, api) {
     const est = reaccionesEstado; est.activas.length = 0;
-    for (const id in ents) { ents[id].oculto = false; ents[id].forzarVisible = false; }
+    for (const id in ents) ents[id].oculto = false;
+    // El motor ya funde `de` (0..15 %) y `a` (85..100 %) con su alpha; aquí sólo cedemos el sitio
+    // a los átomos viajeros mientras 0 < progreso < 1.
     (S.reacciones || []).forEach((r, idx) => {
-      const key = (r.de || []).join(',') + '>' + (r.a || []).join(',') + '#' + idx, p = r.progreso || 0;
+      const p = r.progreso || 0, key = (r.de || []).join(',') + '>' + (r.a || []).join(',') + '#' + idx;
       const de = (r.de || []).map((i) => ents[i]).filter((e) => e && e.b.mol), pr = (r.a || []).map((i) => ents[i]).filter((e) => e && e.b.mol);
-      if (p >= 1) est.hechas.add(key);
-      if (p > 0 && p < 1) { de.concat(pr).forEach((e) => { e.oculto = true; }); est.activas.push({ key, p, de, pr }); }
-      else if (est.hechas.has(key)) { de.forEach((e) => { e.oculto = true; }); pr.forEach((e) => { e.forzarVisible = true; }); }
+      if (p > 0.002 && p < 1) { de.forEach((e) => { e.oculto = true; }); if (p < 0.88) pr.forEach((e) => { e.oculto = true; }); est.activas.push({ key, p, de, pr }); }
     });
   }
   const _wp = new T.Vector3();

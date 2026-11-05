@@ -333,7 +333,10 @@
         c.restore();
       }
       function suelo() {
-        const y = PY(sueloY); c.save(); c.strokeStyle = 'rgba(232,238,252,.35)'; c.lineWidth = 1.5; c.beginPath(); c.moveTo(PX(-0.1), y); c.lineTo(PX(1.1), y); c.stroke(); c.restore();
+        let al = 0;
+        for (const id in S.actores) { const a = S.actores[id]; if (a.visible && SUELO.indexOf(a.tipo) >= 0) al = Math.max(al, K.smooth(1 - Math.abs(a.y - sueloY) / 0.08) * a.alpha); }
+        if (al < 0.02) return;
+        const y = PY(sueloY); c.save(); c.globalAlpha = al; c.strokeStyle = 'rgba(232,238,252,.35)'; c.lineWidth = 1.5; c.beginPath(); c.moveTo(PX(-0.1), y); c.lineTo(PX(1.1), y); c.stroke(); c.restore();
       }
       function trayectorias() {
         for (const id in S.trayectorias) {

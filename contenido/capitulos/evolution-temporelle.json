@@ -603,7 +603,7 @@
     "Verificar la homogeneidad de las relaciones (t1/2 es un tiempo; x_f/2 un avance).",
     "No olvidar el número estequiométrico al pasar de x a concentración."
    ],
-   "pagina_pdf": 120
+   "pagina_pdf": 122
   }
  ],
  "errores_tipicos": [
@@ -758,7 +758,7 @@
     "Dibujar flechas.",
     "H⁺ regenerado."
    ],
-   "pagina_pdf": 103,
+   "pagina_pdf": 121,
    "corrige_pagina_pdf": 613
   },
   {
@@ -779,7 +779,7 @@
     "Pendiente decrece.",
     "Leer x_f/2 en la curva."
    ],
-   "pagina_pdf": 121,
+   "pagina_pdf": 122,
    "corrige_pagina_pdf": 613
   },
   {
@@ -800,7 +800,7 @@
     "T: factor cinético.",
     "Leer x_f/2."
    ],
-   "pagina_pdf": 121,
+   "pagina_pdf": 122,
    "corrige_pagina_pdf": 613
   },
   {
@@ -850,7 +850,7 @@
     "t1/2 baja si [B]₀ sube.",
     "Más concentración, más choques eficaces."
    ],
-   "pagina_pdf": 126,
+   "pagina_pdf": 127,
    "corrige_pagina_pdf": 613
   },
   {

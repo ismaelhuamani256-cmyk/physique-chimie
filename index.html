@@ -5,14 +5,46 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Super Claude Bros · Physique-Chimie</title>
 <link rel="stylesheet" href="lib/katex/katex.min.css">
-<!-- css/*.css y js/**/*.js los carga js/loader.js según /api/scripts (cada agente solo toca sus archivos) -->
-<script src="lib/three/three.min.js"></script>
-<script src="lib/katex/katex.min.js"></script>
-<script src="js/loader.js"></script>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/estudio.css">
+<link rel="stylesheet" href="css/intro.css">
+<link rel="stylesheet" href="css/juego.css">
+<link rel="stylesheet" href="css/mapa.css">
 </head>
 <body>
 <div id="topbar"></div>
 <div id="app"></div>
 <div id="overlay"></div>
+<script src="lib/three/three.min.js"></script>
+<script src="lib/katex/katex.min.js"></script>
+<script src="contenido/bundle.js"></script>
+<script src="js/core.js"></script>
+<script src="js/anim-core.js"></script>
+<script src="js/anim/10-quimica-a.js"></script>
+<script src="js/anim/11-quimica-b.js"></script>
+<script src="js/anim/20-fisica-a.js"></script>
+<script src="js/anim/21-fisica-b.js"></script>
+<script src="js/estudio/00-numerico.js"></script>
+<script src="js/estudio/10-nucleo.js"></script>
+<script src="js/estudio/20-teoria.js"></script>
+<script src="js/estudio/30-quiz.js"></script>
+<script src="js/estudio/40-pantalla.js"></script>
+<script src="js/intro/00-engine.js"></script>
+<script src="js/intro/10-monigotes.js"></script>
+<script src="js/intro/20-minimalista.js"></script>
+<script src="js/intro/30-matrix.js"></script>
+<script src="js/intro/40-quimica3d.js"></script>
+<script src="js/intro/50-fisica3d.js"></script>
+<script src="js/juego/00-base.js"></script>
+<script src="js/juego/10-sprites.js"></script>
+<script src="js/juego/20-temas.js"></script>
+<script src="js/juego/30-audio.js"></script>
+<script src="js/juego/40-mundo.js"></script>
+<script src="js/juego/50-jefes.js"></script>
+<script src="js/juego/60-ui.js"></script>
+<script src="js/juego/70-juego.js"></script>
+<script src="js/juego/validador.js"></script>
+<script src="js/mapa.js"></script>
+<script>window.PCB && PCB.boot && PCB.boot();</script>
 </body>
 </html>

@@ -4,15 +4,13 @@ App **100 % local y offline** para estudiar tu manual de physique-chimie Tle (Bo
 
 Sin API, sin claves, sin cuentas: todo el contenido ya está generado dentro de `contenido/`.
 
-## Cómo arrancar
+## Cómo abrirla
 
-1. Instala **Node.js** (botón LTS en https://nodejs.org). Solo se hace una vez.
-2. Doble clic en:
-   - Windows → `iniciar.bat`
-   - Mac → `iniciar.command` (la primera vez: clic derecho → Abrir)
-3. Se abre `http://127.0.0.1:3000`. Si no, ábrelo a mano. (No abras `index.html` con doble clic: necesita el servidor.)
+**Lo más fácil (sin instalar nada): doble clic en `index.html`.** Se abre en tu navegador (mejor Chrome, Edge o Firefox) y funciona offline. Tu progreso (XP, estrellas, racha…) se guarda en el propio navegador; usa **Exportar / Importar** en el panel del mapa para hacer respaldo o pasarlo a otro equipo.
 
-Tu progreso (XP, estrellas, racha…) se guarda en `data/progreso.json`. Cópialo para hacer respaldo, o usa Exportar/Importar en el panel del mapa.
+*Opcional — con servidor local:* si prefieres guardar el progreso en un archivo (`data/progreso.json`), instala **Node.js** (botón LTS en https://nodejs.org) y abre `iniciar.bat` (Windows) o `iniciar.command` (Mac; la primera vez clic derecho → Abrir). Se abre `http://127.0.0.1:3000`.
+
+*Si cambias algo en `contenido/`, `js/` o `css/`:* ejecuta `node tools/generar-estatico.js` para regenerar `index.html` y `contenido/bundle.js`.
 
 ## El ciclo
 
@@ -39,7 +37,7 @@ Hay 31 animaciones específicas (química y física) y una gráfica genérica pa
 ## Estructura
 
 ```
-index.html · server.js · iniciar.bat / iniciar.command
+index.html (la app, doble clic) · server.js + iniciar.* (opcionales) · tools/generar-estatico.js
 css/   js/   (js/mapa.js, js/juego/, js/intro/, js/estudio/, js/anim/, js/anim-core.js, js/core.js)
 contenido/  indice.json · capitulos/ · niveles/ · intros/ · quizzes/
 lib/   three, katex y fuentes en local

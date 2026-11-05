@@ -45,14 +45,23 @@
   };
 
   // ---------- datos (contenido ya generado, solo lectura) ----------
+  // Si existe contenido/bundle.js (window.PCB_CONTENIDO) se lee de ahí: la app funciona abriendo index.html sin servidor.
+  // Si no, se pide por fetch a contenido/*.json (modo servidor).
+  const B = () => window.PCB_CONTENIDO;
+  const del = (tipo, carpeta, id) => (B() ? Promise.resolve((B()[tipo] || {})[id] || null) : util.fetchJSON(`contenido/${carpeta}/${id}.json`));
   PCB.data = {
-    indice: () => util.fetchJSON('contenido/indice.json'),
-    capitulo: (id) => util.fetchJSON(`contenido/capitulos/${id}.json`),
-    nivel: (id) => util.fetchJSON(`contenido/niveles/${id}.json`),
-    intro: (id) => util.fetchJSON(`contenido/intros/${id}.json`),
-    quiz: (id) => util.fetchJSON(`contenido/quizzes/${id}.json`),
-    disponibles: () => util.fetchJSON('/api/contenido'), // {capitulos:[ids], niveles:[...], intros:[...], quizzes:[...]}
+    indice: () => (B() ? Promise.resolve(B().indice) : util.fetchJSON('contenido/indice.json')),
+    capitulo: (id) => del('capitulos', 'capitulos', id),
+    nivel: (id) => del('niveles', 'niveles', id),
+    intro: (id) => del('intros', 'intros', id),
+    quiz: (id) => del('quizzes', 'quizzes', id),
+    // {capitulos:[ids], niveles:[...], intros:[...], quizzes:[...]}
+    disponibles: () => (B()
+      ? Promise.resolve({ capitulos: Object.keys(B().capitulos), niveles: Object.keys(B().niveles), intros: Object.keys(B().intros), quizzes: Object.keys(B().quizzes) })
+      : util.fetchJSON('/api/contenido')),
   };
+  // /api/progreso solo existe con el servidor (http); abriendo index.html (file://) el progreso va a localStorage
+  const hayServidor = location.protocol === 'http:' || location.protocol === 'https:';
 
   // ---------- ajustes ----------
   PCB.settings = { reducirAnimaciones: false, estiloIntro: 'auto', musica: false, sfx: true };
@@ -63,7 +72,7 @@
   const persist = () => {
     const s = JSON.stringify(prog);
     try { localStorage.setItem('pcb_progreso', s); } catch (e) {}
-    fetch('/api/progreso', { method: 'POST', body: s }).catch(() => {});
+    if (hayServidor) fetch('/api/progreso', { method: 'POST', body: s }).catch(() => {});
   };
   PCB.store = {
     get: () => prog,
@@ -86,7 +95,7 @@
   };
   async function cargarProgreso() {
     let p = null;
-    try { p = await (await fetch('/api/progreso')).json(); } catch (e) {}
+    if (hayServidor) { try { p = await (await fetch('/api/progreso')).json(); } catch (e) {} }
     if (!p) { try { p = JSON.parse(localStorage.getItem('pcb_progreso')); } catch (e) {} }
     if (p && p.version) prog = Object.assign(vacio(), p);
     PCB.settings = Object.assign(PCB.settings, prog.ajustes || {});

@@ -1,0 +1,53 @@
+/* Tokens y componentes comunes. Cada pantalla tiene su propio css/<pantalla>.css */
+@font-face{font-family:PixelHUD;src:url(../lib/fonts/press-start-2p-latin-400-normal.woff2) format('woff2');font-display:swap}
+@font-face{font-family:UI;font-weight:400;src:url(../lib/fonts/inter-latin-400-normal.woff2) format('woff2');font-display:swap}
+@font-face{font-family:UI;font-weight:600;src:url(../lib/fonts/inter-latin-600-normal.woff2) format('woff2');font-display:swap}
+@font-face{font-family:UI;font-weight:700;src:url(../lib/fonts/inter-latin-700-normal.woff2) format('woff2');font-display:swap}
+@font-face{font-family:Estudio;font-weight:400;src:url(../lib/fonts/source-serif-4-latin-400-normal.woff2) format('woff2');font-display:swap}
+@font-face{font-family:Estudio;font-weight:600;src:url(../lib/fonts/source-serif-4-latin-600-normal.woff2) format('woff2');font-display:swap}
+:root{
+  --bg:#0b1020;--bg2:#121a33;--panel:#161f3d;--panel2:#1d2850;--txt:#eaf0ff;--txt2:#9fb0d9;--borde:#2a376b;
+  --c-fisica:#2f6bff;--c-fisica2:#00d4ff;--c-quimica:#2ee59d;--c-quimica2:#ff3da6;
+  --c-energia:#ff9f1c;--c-energia2:#ffd166;--c-ondas:#9b5de5;--c-ondas2:#4cc9f0;
+  --ok:#2ee59d;--mal:#ff4d6d;--aviso:#ffd166;--radio:14px;--sombra:0 10px 30px #0008;
+  --f-hud:PixelHUD,monospace;--f-ui:UI,system-ui,sans-serif;--f-estudio:Estudio,Georgia,serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--txt);font-family:var(--f-ui);overflow:hidden}
+#app{position:fixed;inset:44px 0 0 0}
+#app>.pantalla{position:absolute;inset:0;overflow:hidden}
+#topbar{position:fixed;top:0;left:0;right:0;height:44px;display:flex;align-items:center;gap:10px;padding:0 12px;
+  background:linear-gradient(#0b1020f0,#0b1020cc);border-bottom:1px solid var(--borde);z-index:50;font-size:14px}
+#topbar .sp{flex:1}
+#topbar .marca{font-family:var(--f-hud);font-size:11px;color:var(--c-fisica2);letter-spacing:.5px}
+#topbar .xp{font-weight:700;color:var(--aviso)}
+#overlay{position:fixed;inset:0;pointer-events:none;z-index:100}
+#overlay>*{pointer-events:auto}
+.btn{font:600 14px var(--f-ui);color:var(--txt);background:var(--panel2);border:1px solid var(--borde);border-radius:10px;padding:8px 14px;cursor:pointer;transition:transform .12s,background .12s}
+.btn:hover{background:#26356b;transform:translateY(-1px)}
+.btn:focus-visible,.slider:focus-visible{outline:2px solid var(--c-fisica2);outline-offset:2px}
+.btn.primario{background:linear-gradient(135deg,var(--c-fisica),var(--c-fisica2));border:0;color:#04122e}
+.btn.peligro{background:#4a1a2a;border-color:#7a2a44}
+.btn.mini{padding:4px 10px;font-size:12px}
+.card{background:var(--panel);border:1px solid var(--borde);border-radius:var(--radio);padding:16px;box-shadow:var(--sombra)}
+.katex{font-size:1.08em}
+.chip{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;background:var(--panel2);border:1px solid var(--borde)}
+.chip.quimica{border-color:var(--c-quimica);color:var(--c-quimica)}.chip.physique,.chip.fisica{border-color:var(--c-fisica2);color:var(--c-fisica2)}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:var(--panel2);border:1px solid var(--borde);padding:10px 18px;border-radius:12px;box-shadow:var(--sombra);z-index:200;animation:toast .25s}
+@keyframes toast{from{opacity:0;transform:translate(-50%,10px)}}
+/* Modal de animación de fórmula */
+.anim-modal{position:fixed;inset:0;background:#050912e6;display:flex;align-items:center;justify-content:center;z-index:150;padding:12px}
+.anim-box{width:min(1000px,100%);max-height:100%;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--borde);border-radius:18px;overflow:hidden;box-shadow:var(--sombra)}
+.anim-head{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--borde)}
+.anim-head h3{margin:0;font-size:16px;flex:1}
+.anim-formula{padding:10px 16px;text-align:center;font-size:1.25em;background:var(--bg2);min-height:3.2em;overflow-x:auto}
+.anim-canvas-wrap{position:relative;flex:1;min-height:260px;aspect-ratio:16/9;max-height:56vh;background:#0a0f20}
+.anim-canvas-wrap canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.anim-ctrl{padding:10px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 22px;border-top:1px solid var(--borde)}
+.anim-ctrl label{display:flex;flex-direction:column;gap:3px;font-size:13px;color:var(--txt2)}
+.anim-ctrl label b{color:var(--txt);font-weight:600}
+.anim-ctrl input[type=range]{width:100%;accent-color:var(--c-fisica2)}
+.anim-leyenda{padding:0 16px 8px;font-size:13px;color:var(--txt2)}
+.anim-lect{display:flex;gap:14px;flex-wrap:wrap;padding:4px 16px 10px;font-size:13px}
+.anim-lect span b{color:var(--aviso)}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}

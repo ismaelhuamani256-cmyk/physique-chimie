@@ -1,0 +1,338 @@
+{
+ "libro": "Physique-Chimie Tle spé — Bordas (collection Espace)",
+ "offset_pdf_vs_impreso": 18,
+ "nota": "pagina_pdf = pagina_impresa + 18. cours/ son 13 PDF escaneados (sin texto) de <=50 pag: 1..5.pdf = pdf 1-250, Livre-..._pNNN-MMM.pdf el resto. Para leer una pagina: pdftoppm -r 90 -f N -l N -jpeg <archivo> <salida> (N es relativo al archivo).",
+ "mundos": [
+  {
+   "id": "constitucion",
+   "nombre": "Constitution et transformations de la matière"
+  },
+  {
+   "id": "mouvement",
+   "nombre": "Mouvement et interactions"
+  },
+  {
+   "id": "energie",
+   "nombre": "Énergie : conversion et transferts"
+  },
+  {
+   "id": "ondes",
+   "nombre": "Ondes et signaux"
+  }
+ ],
+ "capitulos": [
+  {
+   "id": "acide-base",
+   "num": 1,
+   "titulo": "Transformations acide-base",
+   "materia": "chimie",
+   "mundo": "constitucion",
+   "impreso_ini": 16,
+   "impreso_fin": 39,
+   "pdf_ini": 34,
+   "pdf_fin": 57
+  },
+  {
+   "id": "methodes-physiques",
+   "num": 2,
+   "titulo": "Méthodes physiques d'analyse",
+   "materia": "chimie",
+   "mundo": "constitucion",
+   "impreso_ini": 40,
+   "impreso_fin": 63,
+   "pdf_ini": 58,
+   "pdf_fin": 81
+  },
+  {
+   "id": "methodes-chimiques",
+   "num": 3,
+   "titulo": "Méthodes chimiques d'analyse",
+   "materia": "chimie",
+   "mundo": "constitucion",
+   "impreso_ini": 64,
+   "impreso_fin": 87,
+   "pdf_ini": 82,
+   "pdf_fin": 105
+  },
+  {
+   "id": "evolution-temporelle",
+   "num": 4,
+   "titulo": "Évolution temporelle d'un système chimique",
+   "materia": "chimie",
+   "mundo": "constitucion",
+   "impreso_ini": 88,
+   "impreso_fin": 112,
+   "pdf_ini": 106,
+   "pdf_fin": 130
+  },
+  {
+   "id": "nucleaires",
+   "num": 5,
+   "titulo": "Transformations nucléaires",
+   "materia": "chimie",
+   "mundo": "constitucion",
+   "impreso_ini": 113,
+   "impreso_fin": 135,
+   "pdf_ini": 131,
+   "pdf_fin": 153
+  },
+  {
+   "id": "sens-evolution",
+   "num": 6,
+   "titulo": "Sens d'évolution spontanée d'un système",
+   "materia": "chimie",
+   "mundo": "constitucion",
+   "impreso_ini": 136,
+   "impreso_fin": 159,
+   "pdf_ini": 154,
+   "pdf_fin": 177
+  },
+  {
+   "id": "force-acides-bases",
+   "num": 7,
+   "titulo": "Force des acides et des bases",
+   "materia": "chimie",
+   "mundo": "constitucion",
+   "impreso_ini": 160,
+   "impreso_fin": 185,
+   "pdf_ini": 178,
+   "pdf_fin": 203
+  },
+  {
+   "id": "forcer-sens",
+   "num": 8,
+   "titulo": "Forcer le sens d'évolution d'un système",
+   "materia": "chimie",
+   "mundo": "constitucion",
+   "impreso_ini": 186,
+   "impreso_fin": 207,
+   "pdf_ini": 204,
+   "pdf_fin": 225
+  },
+  {
+   "id": "synthese-organique",
+   "num": 9,
+   "titulo": "Stratégies en synthèse organique",
+   "materia": "chimie",
+   "mundo": "constitucion",
+   "impreso_ini": 208,
+   "impreso_fin": 243,
+   "pdf_ini": 226,
+   "pdf_fin": 261
+  },
+  {
+   "id": "description-mouvement",
+   "num": 10,
+   "titulo": "Description d'un mouvement",
+   "materia": "physique",
+   "mundo": "mouvement",
+   "impreso_ini": 244,
+   "impreso_fin": 267,
+   "pdf_ini": 262,
+   "pdf_fin": 285
+  },
+  {
+   "id": "newton-2",
+   "num": 11,
+   "titulo": "Deuxième loi de Newton",
+   "materia": "physique",
+   "mundo": "mouvement",
+   "impreso_ini": 268,
+   "impreso_fin": 291,
+   "pdf_ini": 286,
+   "pdf_fin": 309
+  },
+  {
+   "id": "champ-uniforme",
+   "num": 12,
+   "titulo": "Mouvement dans un champ uniforme",
+   "materia": "physique",
+   "mundo": "mouvement",
+   "impreso_ini": 292,
+   "impreso_fin": 315,
+   "pdf_ini": 310,
+   "pdf_fin": 333
+  },
+  {
+   "id": "champ-gravitation",
+   "num": 13,
+   "titulo": "Mouvement dans un champ de gravitation",
+   "materia": "physique",
+   "mundo": "mouvement",
+   "impreso_ini": 316,
+   "impreso_fin": 339,
+   "pdf_ini": 334,
+   "pdf_fin": 357
+  },
+  {
+   "id": "ecoulement-fluide",
+   "num": 14,
+   "titulo": "Écoulement d'un fluide",
+   "materia": "physique",
+   "mundo": "mouvement",
+   "impreso_ini": 340,
+   "impreso_fin": 375,
+   "pdf_ini": 358,
+   "pdf_fin": 393
+  },
+  {
+   "id": "gaz-parfait",
+   "num": 15,
+   "titulo": "Modèle du gaz parfait",
+   "materia": "physique",
+   "mundo": "energie",
+   "impreso_ini": 376,
+   "impreso_fin": 395,
+   "pdf_ini": 394,
+   "pdf_fin": 413
+  },
+  {
+   "id": "thermodynamique",
+   "num": 16,
+   "titulo": "Premier principe de la thermodynamique",
+   "materia": "physique",
+   "mundo": "energie",
+   "impreso_ini": 396,
+   "impreso_fin": 427,
+   "pdf_ini": 414,
+   "pdf_fin": 445
+  },
+  {
+   "id": "ondulatoires",
+   "num": 17,
+   "titulo": "Les phénomènes ondulatoires",
+   "materia": "physique",
+   "mundo": "ondes",
+   "impreso_ini": 428,
+   "impreso_fin": 453,
+   "pdf_ini": 446,
+   "pdf_fin": 471
+  },
+  {
+   "id": "images",
+   "num": 18,
+   "titulo": "Formation d'images",
+   "materia": "physique",
+   "mundo": "ondes",
+   "impreso_ini": 454,
+   "impreso_fin": 475,
+   "pdf_ini": 472,
+   "pdf_fin": 493
+  },
+  {
+   "id": "photons",
+   "num": 19,
+   "titulo": "Description de la lumière par un flux de photons",
+   "materia": "physique",
+   "mundo": "ondes",
+   "impreso_ini": 476,
+   "impreso_fin": 497,
+   "pdf_ini": 494,
+   "pdf_fin": 515
+  },
+  {
+   "id": "systeme-electrique",
+   "num": 20,
+   "titulo": "Dynamique d'un système électrique",
+   "materia": "physique",
+   "mundo": "ondes",
+   "impreso_ini": 498,
+   "impreso_fin": 531,
+   "pdf_ini": 516,
+   "pdf_fin": 549
+  }
+ ],
+ "extras": [
+  {
+   "id": "fiches-methode",
+   "titulo": "Fiches méthode",
+   "impreso_ini": 532,
+   "impreso_fin": 557,
+   "pdf_ini": 550,
+   "pdf_fin": 575
+  },
+  {
+   "id": "fiches-pratiques",
+   "titulo": "Fiches pratiques",
+   "impreso_ini": 558,
+   "impreso_fin": 591,
+   "pdf_ini": 576,
+   "pdf_fin": 609
+  },
+  {
+   "id": "corriges",
+   "titulo": "Corrigés des exercices / Coups de pouce",
+   "impreso_ini": 592,
+   "impreso_fin": 610,
+   "pdf_ini": 610,
+   "pdf_fin": 628
+  }
+ ],
+ "archivos_pdf": [
+  {
+   "archivo": "cours/1.pdf",
+   "pdf_ini": 1,
+   "pdf_fin": 50
+  },
+  {
+   "archivo": "cours/2.pdf",
+   "pdf_ini": 51,
+   "pdf_fin": 100
+  },
+  {
+   "archivo": "cours/3.pdf",
+   "pdf_ini": 101,
+   "pdf_fin": 150
+  },
+  {
+   "archivo": "cours/4.pdf",
+   "pdf_ini": 151,
+   "pdf_fin": 200
+  },
+  {
+   "archivo": "cours/5.pdf",
+   "pdf_ini": 201,
+   "pdf_fin": 250
+  },
+  {
+   "archivo": "cours/Livre-Physique-Chimie-Terminale_p251-300.pdf",
+   "pdf_ini": 251,
+   "pdf_fin": 300
+  },
+  {
+   "archivo": "cours/Livre-Physique-Chimie-Terminale_p301-350.pdf",
+   "pdf_ini": 301,
+   "pdf_fin": 350
+  },
+  {
+   "archivo": "cours/Livre-Physique-Chimie-Terminale_p351-400.pdf",
+   "pdf_ini": 351,
+   "pdf_fin": 400
+  },
+  {
+   "archivo": "cours/Livre-Physique-Chimie-Terminale_p401-450.pdf",
+   "pdf_ini": 401,
+   "pdf_fin": 450
+  },
+  {
+   "archivo": "cours/Livre-Physique-Chimie-Terminale_p451-500.pdf",
+   "pdf_ini": 451,
+   "pdf_fin": 500
+  },
+  {
+   "archivo": "cours/Livre-Physique-Chimie-Terminale_p501-550.pdf",
+   "pdf_ini": 501,
+   "pdf_fin": 550
+  },
+  {
+   "archivo": "cours/Livre-Physique-Chimie-Terminale_p551-600.pdf",
+   "pdf_ini": 551,
+   "pdf_fin": 600
+  },
+  {
+   "archivo": "cours/Livre-Physique-Chimie-Terminale_p601-628.pdf",
+   "pdf_ini": 601,
+   "pdf_fin": 628
+  }
+ ]
+}

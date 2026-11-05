@@ -24,8 +24,7 @@ js/mapa.js                 Pantalla 1: mapa 3D                                 (
 js/juego/*.js              Pantalla 2: plataformas                             (agente JUEGO)
 js/intro/engine.js …       Pantalla 3: intros                                  (agentes INTRO-A / INTRO-B)
 js/estudio/*.js            Pantalla 4: capítulo, quiz, tracker                 (agente ESTUDIO)
-js/anim/quimica.js         presets de animación química                        (agente ANIM-QUIMICA)
-js/anim/fisica.js          presets de animación física                         (agente ANIM-FISICA)
+js/anim/*.js               presets de animación (4 archivos, ver §7 y §9)      (agentes ANIM-*)
 contenido/indice.json      20 capítulos + mundos + mapa de PDFs
 contenido/capitulos/<id>.json   cours estructurado (esquema §3)
 contenido/niveles/<id>.json     nivel de plataformas (esquema §4)
@@ -142,6 +141,19 @@ Coordenadas normalizadas `[0..1]` (x derecha, y abajo) sobre la escena. **Vocabu
 - Historia visual con **humor/narrativa** (perro en cohete, auto que frena…), actores genéricos propios. `subtitulo` siempre en español; `formula` en LaTeX.
 - Contenido fiel al capítulo: presenta **la idea central** del cours.
 
+### 5b. API de estilos de intro (INTRO-A implementa el motor; INTRO-A e INTRO-B la respetan)
+El **motor** (`js/intro/00-engine.js`) lee el guion, avanza el reloj `t` (play/pausa/saltar/repetir), **resuelve la línea de tiempo** en un estado de escena `S` por frame (interpolaciones de `mueve/gira/escala/...`) y dibuja él mismo el **overlay DOM**: `subtitulo`, `formula` (KaTeX) y `valor` (contadores). Los **estilos solo dibujan actores, vectores, trayectorias, partículas, bocadillos, fondo y cámara**.
+```js
+PCB.intro.registerStyle('monigotes', { init(ctx){ /* ctx:{host:div, guion, w, h, dpr, rng} */ return estilo } })
+estilo = { update(S, dt), resize(w,h), dispose() }     // update dibuja un frame
+S = { t, dur, camara:{zoom,cx,cy},
+      actores:{ id:{ id,tipo,x,y,rot,escala,alpha,color,visible,vx,vy,frenando,hablando:'texto'|null,resaltado:0..1 } },
+      vectores:[{actor,dx,dy,etiqueta,alpha}], trayectorias:{actorId:[[x,y],…]}, particulas:[{tipo,x,y,t0}],
+      reacciones:[{de:[ids],a:[ids],progreso:0..1}] }
+PCB.intro.play(host, guion, {onFin, estilo?}) -> {dispose(), pause(), resume(), replay()}   // lo usa PCB.screens.intro
+```
+Coordenadas de S: normalizadas 0..1 (x derecha, y abajo). El estilo debe mapearlas al tamaño del `host` (aspecto 16:9 con letterbox). Estilo desconocido → `monigotes`.
+
 ## 6. `contenido/quizzes/<id>.json`
 ```json
 { "capitulo_id":"…","preguntas":[
@@ -173,6 +185,9 @@ Modo 3D opcional: un preset puede definir `mount(host, p) -> {setParam(id,v), di
 **Presets obligatorios** (los content agents solo pueden referenciar estos ids; si un chapter necesita otro, usa `generico`):
 - Química (`js/anim/quimica.js`): `concentracion`, `dilucion` (C₁V₁=C₂V₂), `masa-molar` (n=m/M), `ph` (pH=−log[H₃O⁺], escala de color + iones), `acido-base` (par ácido/base, Ka, pKa, diagrama de predominio), `titrage` (curva pH vs V + equivalencia, color del indicador), `conductimetria` (σ=Σλᵢ[Xᵢ]), `beer-lambert` (A=εℓc), `avance` (tableau d'avancement x, reactivos↔productos), `quotient-equilibre` (Qr vs K, sentido de evolución, moléculas), `cinetica` (v, orden 1, t½, concentración vs t), `pila` (electrones, ánodo/cátodo, puente salino), `radioactividad` (N=N₀e^(−λt), t½, núcleos que decaen), `gas-ideal-quimico` (cantidad de gas, volumen molar) y `generico`.
 - Física (`js/anim/fisica.js`): `cinematica` (v=Δx/Δt, vectores v y a), `newton2` (ΣF=ma, bloque, fuerzas), `proyectil` (campo uniforme/tiro parabólico, g, v₀, α), `carga-campo` (electrón/protón en campo eléctrico uniforme, F=qE), `gravitacion` (F=GmM/r², órbitas, leyes de Kepler), `arquimedes` (Π=ρVg, flotación), `bernoulli` (continuidad + Bernoulli, tubo y velocidad), `torricelli` (chorro de agua), `gas-ideal` (PV=nRT, partículas en caja con pistón y T), `termodinamica` (ΔU=W+Q, pistón, transferencias), `enfriamiento-newton` (T(t) exponencial), `ondas` (λ=v/f, onda viajera, atenuación dB), `difraccion` (θ=λ/a, interferencias de dos fuentes), `doppler`, `lente` (relación de conjugación, rayos, imagen), `fotones` (E=hν, efecto fotoeléctrico), `condensador-rc` (circuito RC, τ=RC, carga/descarga) y `energia-mecanica` (Ec, Ep, Em).
+**IDs de parámetros canónicos** (los presets DEBEN aceptar estos ids; pueden añadir más opcionales; los capítulos solo usan estos en `animacion.params`):
+`concentracion{n mol,V L}` · `dilucion{C0 mol/L,V0 mL,Vf mL}` · `masa-molar{m g,M g/mol}` · `ph{pH}` · `acido-base{pKa,pH}` · `titrage{Ca,Va mL,Cb}` · `conductimetria{c mmol/L}` · `beer-lambert{eps,l cm,c}` · `avance{x mol,n1 mol,n2 mol}` · `quotient-equilibre{K,Q}` · `cinetica{c0,k,t}` · `radioactividad{N0,lam,t}` · `gas-ideal-quimico{n mol,T K,P kPa}` · `cinematica{v m/s,t s}` · `newton2{m kg,F N}` · `proyectil{v0 m/s,alpha °,g m/s²}` · `carga-campo{E V/m,v0 m/s}` · `gravitacion{M,r}` · `arquimedes{rho kg/m³,V m³}` · `bernoulli{v1,S1,S2}` · `torricelli{h m}` · `gas-ideal{n,T,V}` · `termodinamica{Q J,W J}` · `enfriamiento-newton{T0,Text,tau}` · `ondas{f Hz,v m/s}` · `difraccion{lam nm,a µm}` · `doppler{f0,vs}` · `lente{f cm,OA cm}` · `fotones{nu THz,W0 eV}` · `condensador-rc{R Ω,C µF,E V}` · `energia-mecanica{m,h,v}`.
+Los archivos de presets son 4: `js/anim/10-quimica-a.js`, `11-quimica-b.js`, `20-fisica-a.js`, `21-fisica-b.js` (cada uno autocontenido; copia los helpers pequeños que necesites). Cada agente de ANIM deja documentados en un comentario de cabecera los params exactos de sus presets.
 - `generico` (en anim-core.js): `params.expr` (JS seguro sobre variables), sliders para las variables, gráfica y vs x. Se usa cuando no hay preset específico.
 
 Cada preset: visual **atractivo y fiel a la física/química** (vaso con vidrio y menisco, moléculas con movimiento browniano, burbujas, colores…), 60 fps, ligero, respeta `PCB.util.reducedMotion()` (menos partículas, sin shake), legible en pantalla pequeña (canvas responsivo).
@@ -196,8 +211,10 @@ El orquestador ya aporta: barra superior global (← Mapa, "Saltar juego", "Salt
 | INTRO-A | js/intro/engine.js, js/intro/monigotes.js, js/intro/minimalista.js, css/intro.css |
 | INTRO-B | js/intro/matrix.js, js/intro/quimica3d.js, js/intro/fisica3d.js |
 | ESTUDIO | js/estudio/*, css/estudio.css |
-| ANIM-QUIMICA | js/anim/quimica.js |
-| ANIM-FISICA | js/anim/fisica.js |
+| ANIM-QUIM-A | js/anim/10-quimica-a.js: concentracion, dilucion, masa-molar, ph, acido-base, titrage, conductimetria |
+| ANIM-QUIM-B | js/anim/11-quimica-b.js: beer-lambert, avance, quotient-equilibre, cinetica, pila, radioactividad, gas-ideal-quimico |
+| ANIM-FIS-A | js/anim/20-fisica-a.js: cinematica, newton2, proyectil, carga-campo, gravitacion, energia-mecanica, arquimedes, torricelli, gas-ideal |
+| ANIM-FIS-B | js/anim/21-fisica-b.js: bernoulli, termodinamica, enfriamiento-newton, ondas, difraccion, doppler, lente, fotones, condensador-rc |
 | CONTENIDO-NN | contenido/{capitulos,niveles,intros,quizzes}/<sus ids>.json |
 
 Nunca edites archivos ajenos; si encuentras un bug en ellos, repórtalo en tu mensaje final. No hagas `git commit`/`push` (lo hace el orquestador). Prueba tu módulo con Playwright (ya instalado: `require('playwright')`, `chromium.launch()`), sirviendo la carpeta con `node server.js` o `python3 -m http.server`. Código **claro y comentado en español**.

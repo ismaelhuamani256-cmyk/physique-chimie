@@ -119,6 +119,7 @@ Unidades en **tiles** (1 tile = 1 unidad; el suelo "y" crece hacia abajo, y=0 ar
  ]
 }
 ```
+- **Segmentos de fortaleza** (usados ya por `acide-base`; el motor JUEGO debe soportarlos): `{"tipo":"puente","x":100,"y":14,"largo":12,"id":"puente1"}` (plataforma sólida sobre lava que puede caer) y `{"tipo":"palanca","x":115,"y":13,"efecto":"cae_puente","objetivo":"puente1"}` (al tocarla/interactuar con ↓ o E, el puente `objetivo` cae; si no hay `objetivo`, cae el último puente). En el modo fortaleza el jefe `rey_entropia` está sobre/junto al puente; derrotarlo (o accionar la palanca con el jefe encima) abre la meta. Los campos `cae_con` en un puente son equivalentes a `objetivo` inverso (el motor lee ambos).
 - Mecánica especial por capítulo vía `fisica_juego` + segmentos (hielo = `friccion` baja, gravedad reducida, `zona_campo` empuja, plataformas oscilantes = periodo, `resorte` = rebote elástico).
 - **Nivel `fortaleza`** (capítulos 1, 10, 15, 17, 20): tema lava/castillo, **puente** sobre lava, interruptor ("palanca de Entropía") que hace caer el puente, y jefe **"rey_entropia"** con 3 fases (esquiva ataques: bolas de fuego/ondas; cada fase se "stunnea" y respondes una pregunta del cours; 3 aciertos = derrotado). El segmento jefe lleva `jefe:"rey_entropia"` y `preguntas` (≥3).
 - El nivel debe ser **jugable**: ningún foso > salto máximo (el validador de `js/juego/validador.js` lo comprueba; `PCB.juego.validar(nivel) -> {ok, errores[]}`), toda plataforma alcanzable, meta accesible. Duración objetivo: 60–120 s para un nivel normal.

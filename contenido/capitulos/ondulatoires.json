@@ -860,7 +860,7 @@
    "titulo": "Determinar el tamaño de una abertura por difracción (protocolos 1 y 2)",
    "pasos": [
     "Iluminar la abertura con un láser de longitud de onda conocida (650 nm).",
-    "Protocolo 1: medir con una regla la distancia L entre los primeros mínimos secundarios (2L/2 + L + L/2 ...) y la distancia D abertura-pantalla.",
+    "Protocolo 1: medir con una regla la anchura L de la mancha central (la distancia entre los dos mínimos consecutivos se obtiene como L/2 + L + L/2) y la distancia D abertura-pantalla.",
     "Protocolo 2: fotografiar la mancha con una webcam (con escala de distancia) y medir L con un programa de tratamiento de imágenes.",
     "Aplicar tan θ ≈ θ = L/(2D) = λ/a y despejar a = 2λD/L.",
     "Convertir las distancias a metros antes de calcular."

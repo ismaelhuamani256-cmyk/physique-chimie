@@ -1,0 +1,1482 @@
+{
+ "id": "champ-gravitation",
+ "titulo": "Mouvement dans un champ de gravitation",
+ "materia": "physique",
+ "mundo": "mouvement",
+ "pdf_ini": 334,
+ "pdf_fin": 357,
+ "resumen": "Los planetas y satélites describen órbitas en el referencial ligado al astro atractor (heliocéntrico o geocéntrico). Las leyes de Kepler establecen que la órbita es una elipse con el astro en un foco (1.ª), que el radio vector barre áreas iguales en tiempos iguales (2.ª) y que T²/a³ = k = 4π²/(GM) (3.ª). En el caso circular, la 2.ª ley de Newton con la fuerza gravitatoria da una aceleración radial y centrípeta a = GM/r², un movimiento uniforme de velocidad v = √(GM/r) y un período T = 2π√(r³/GM). Un satélite geoestacionario se sitúa en el plano ecuatorial a unos 36 000 km de altitud, con el período de rotación sidérea de la Tierra.",
+ "resumen_fr": "Orbites elliptiques et lois de Kepler ; mouvement circulaire uniforme d'un satellite : a = GM/r², v = √(GM/r), T = 2π√(r³/GM) ; satellite géostationnaire.",
+ "nociones_clave": [
+  {
+   "id": "n1",
+   "fr": "Référentiel géocentrique",
+   "es": "Referencial con origen en el centro de la Tierra y tres ejes dirigidos hacia estrellas muy lejanas (se considera fijo). Es el referencial de los satélites terrestres.",
+   "pagina_pdf": 334
+  },
+  {
+   "id": "n2",
+   "fr": "Référentiel héliocentrique",
+   "es": "Referencial con origen en el centro del Sol y tres ejes dirigidos hacia estrellas muy lejanas. Es el referencial de los planetas del sistema solar.",
+   "pagina_pdf": 334
+  },
+  {
+   "id": "n3",
+   "fr": "Force d'interaction gravitationnelle",
+   "es": "Modela la interacción a distancia entre dos sistemas A y B de masas m_A y m_B; es atractiva y de igual valor en ambos sentidos: F_A/B = −F_B/A.",
+   "pagina_pdf": 334
+  },
+  {
+   "id": "n4",
+   "fr": "Modèles du système solaire (Aristote, Ptolémée, Copernic, Kepler)",
+   "es": "Aristóteles: Tierra en el centro y órbitas circulares; Ptolomeo: epiciclos y deferentes para explicar la retrogradación; Copérnico: modelo heliocéntrico con órbitas circulares (no explica los cambios de velocidad); Kepler: órbitas elípticas con el Sol en un foco. Newton validó después las leyes de Kepler.",
+   "pagina_pdf": 336
+  },
+  {
+   "id": "n5",
+   "fr": "Planète rétrograde",
+   "es": "Planeta cuyo movimiento aparente parece invertirse (vocabulario de la actividad 1).",
+   "pagina_pdf": 336
+  },
+  {
+   "id": "n6",
+   "fr": "Ellipse, foyers, demi-grand axe, excentricité",
+   "es": "Una elipse se define por su centro O, sus focos F y F′ y su semieje mayor a; la excentricidad es e = c/a con c = OF = OF′. El Sol ocupa un foco; el punto más cercano es el perihelio y el más lejano el afelio. Un círculo tiene e = 0.",
+   "pagina_pdf": 337
+  },
+  {
+   "id": "n7",
+   "fr": "Unité astronomique (U.A.)",
+   "es": "Unidad de distancia igual a la distancia media Tierra–Sol, es decir 150 millones de km.",
+   "pagina_pdf": 337
+  },
+  {
+   "id": "n8",
+   "fr": "Orbite",
+   "es": "La órbita de un planeta o satélite es la trayectoria de su centro de masa en el referencial ligado al centro del astro atractor (para el Sol, el referencial heliocéntrico).",
+   "pagina_pdf": 340
+  },
+  {
+   "id": "n9",
+   "fr": "Période de révolution",
+   "es": "Duración necesaria para recorrer toda la órbita.",
+   "pagina_pdf": 340
+  },
+  {
+   "id": "n10",
+   "fr": "1re loi de Kepler (loi des orbites)",
+   "es": "En el referencial heliocéntrico la órbita de un planeta es una elipse y el centro del Sol ocupa uno de sus focos. Para cada punto P de la elipse, PF + PF′ = 2a.",
+   "pagina_pdf": 340
+  },
+  {
+   "id": "n11",
+   "fr": "2e loi de Kepler (loi des aires)",
+   "es": "El segmento que une el Sol con el planeta barre áreas iguales durante duraciones iguales. La velocidad aumenta cuando el planeta se acerca al Sol y disminuye cuando se aleja.",
+   "pagina_pdf": 340
+  },
+  {
+   "id": "n12",
+   "fr": "3e loi de Kepler (loi des périodes)",
+   "es": "El cuadrado del período de revolución es proporcional al cubo del semieje mayor: T²/a³ = k. La constante k solo depende del astro atractor.",
+   "pagina_pdf": 340
+  },
+  {
+   "id": "n13",
+   "fr": "Orbite circulaire = cas particulier",
+   "es": "En una órbita circular el foco y el centro de la elipse coinciden; por la 2.ª ley las áreas iguales implican arcos iguales en tiempos iguales: la velocidad es constante en toda la órbita.",
+   "pagina_pdf": 340
+  },
+  {
+   "id": "n14",
+   "fr": "Périapside et apoapside",
+   "es": "Puntos de la órbita más cercano y más lejano del astro atractor. Para el Sol: perihelio y afelio; para la Tierra: perigeo y apogeo.",
+   "pagina_pdf": 340
+  },
+  {
+   "id": "n15",
+   "fr": "Accélération radiale et centripète",
+   "es": "Un planeta o satélite en órbita circular tiene un vector aceleración dirigido hacia el centro de su trayectoria (radial y centrípeto).",
+   "pagina_pdf": 341
+  },
+  {
+   "id": "n16",
+   "fr": "Mouvement circulaire et uniforme",
+   "es": "Con la 2.ª ley de Newton, dv/dt = 0: la velocidad es constante en valor (movimiento circular uniforme). El vector velocidad es perpendicular a la aceleración y tangente a la trayectoria.",
+   "pagina_pdf": 341
+  },
+  {
+   "id": "n17",
+   "fr": "Altitude et rayon d'orbite",
+   "es": "Para un satélite terrestre r = R_T + h, siendo h la altitud (se mide desde la superficie del astro) y R_T el radio terrestre.",
+   "pagina_pdf": 341
+  },
+  {
+   "id": "n18",
+   "fr": "Satellite géostationnaire",
+   "es": "Satélite siempre situado sobre el mismo punto de la superficie terrestre: gira con la misma velocidad que la Tierra y su órbita debe estar en el plano ecuatorial (≈ 36 000 km de altitud).",
+   "pagina_pdf": 342
+  },
+  {
+   "id": "n19",
+   "fr": "Période sidérale",
+   "es": "Duración necesaria para que un astro vuelva a la misma posición respecto a las estrellas consideradas fijas; es el período de rotación de la Tierra que se usa para el satélite geoestacionario.",
+   "pagina_pdf": 342
+  },
+  {
+   "id": "n20",
+   "fr": "Satellite géosynchrone",
+   "es": "Satélite en órbita circular con período de revolución igual a 86 164 s (el de rotación de la Tierra); si además está en el plano ecuatorial es geoestacionario.",
+   "pagina_pdf": 347
+  },
+  {
+   "id": "n21",
+   "fr": "Excentricité et forme de la trajectoire",
+   "es": "Cuanto más cerca de 1 está e, más elíptica es la trayectoria y más alejados del centro están los focos; cuanto más cerca de 0, más circular.",
+   "pagina_pdf": 353
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "PF + PF' = 2a",
+   "nombre": "1.ª ley de Kepler (leyes de las órbitas)",
+   "nombre_fr": "1re loi de Kepler : loi des orbites",
+   "variables": [
+    {
+     "simbolo": "P",
+     "significado": "punto de la órbita del planeta",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "F, F′",
+     "significado": "focos de la elipse (el Sol ocupa F)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "a",
+     "significado": "semieje mayor de la elipse",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "En el referencial heliocéntrico la órbita es una elipse y el Sol ocupa uno de los focos; en cada instante la suma de distancias del planeta a los dos focos vale 2a.",
+   "ejemplo": null,
+   "pagina_pdf": 340,
+   "animacion": {
+    "preset": "gravitacion",
+    "params": {},
+    "leyenda": "Un satélite recorre una órbita elíptica con el astro atractor en un foco; al variar la excentricidad se ve cómo cambia la forma de la elipse."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "\\Delta t_1 = \\Delta t_2 \\;\\Rightarrow\\; \\mathcal{A}_1 = \\mathcal{A}_2",
+   "nombre": "2.ª ley de Kepler (leyes de las áreas)",
+   "nombre_fr": "2e loi de Kepler : loi des aires",
+   "variables": [
+    {
+     "simbolo": "Δt₁, Δt₂",
+     "significado": "duraciones de recorrido de dos arcos de la órbita",
+     "unidad": "s"
+    },
+    {
+     "simbolo": "𝒜₁, 𝒜₂",
+     "significado": "áreas barradas por el segmento Sol–planeta",
+     "unidad": "m²"
+    }
+   ],
+   "explicacion": "Si dos duraciones son iguales, el segmento Sol–planeta barre áreas iguales: el planeta va más rápido cerca del Sol (perihelio) y más lento lejos (afelio).",
+   "ejemplo": {
+    "enunciado": "Cometa Halley (T = 76,09 años, e = 0,967, a = 17,83 U.A.): se comprueba con el programa que las áreas barridas en intervalos de tiempo iguales son iguales.",
+    "resultado": "Las variaciones de velocidad observadas son compatibles con la 2.ª ley de Kepler (actividad 3).",
+    "pagina_pdf": 338
+   },
+   "pagina_pdf": 340,
+   "animacion": {
+    "preset": "gravitacion",
+    "params": {},
+    "leyenda": "Al hacer la órbita elíptica, el satélite acelera al acercarse al astro y frena al alejarse, barriendo áreas iguales en tiempos iguales."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "\\dfrac{T^{2}}{a^{3}} = k = \\text{constante}",
+   "nombre": "3.ª ley de Kepler (leyes de los períodos)",
+   "nombre_fr": "3e loi de Kepler : loi des périodes",
+   "variables": [
+    {
+     "simbolo": "T",
+     "significado": "período de revolución",
+     "unidad": "s"
+    },
+    {
+     "simbolo": "a",
+     "significado": "semieje mayor",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "k",
+     "significado": "constante de la 3.ª ley (solo depende del astro atractor)",
+     "unidad": "s²·m⁻³"
+    }
+   ],
+   "explicacion": "El cuadrado del período es proporcional al cubo del semieje mayor. Se verifica con los datos planetarios por regresión lineal de T² en función de a³ (actividad 4 y 2).",
+   "ejemplo": {
+    "enunciado": "Ganímedes, satélite de Júpiter: T = 7,15 días y a = 1,07 millones de km.",
+    "resultado": "M_J ≈ 1,9×10²⁷ kg (ejercicio 16, calculado con la misma ley).",
+    "pagina_pdf": 345
+   },
+   "pagina_pdf": 340,
+   "animacion": {
+    "preset": "gravitacion",
+    "params": {},
+    "leyenda": "Mover el radio orbital cambia el período: órbitas más grandes tardan más, con T² proporcional a r³."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "k = \\dfrac{4\\pi^{2}}{G\\cdot M}",
+   "nombre": "Constante de la 3.ª ley de Kepler",
+   "nombre_fr": "Constante de la 3e loi de Kepler",
+   "variables": [
+    {
+     "simbolo": "k",
+     "significado": "constante de Kepler",
+     "unidad": "s²·m⁻³"
+    },
+    {
+     "simbolo": "G",
+     "significado": "constante de gravitación universal",
+     "unidad": "m³·kg⁻¹·s⁻²"
+    },
+    {
+     "simbolo": "M",
+     "significado": "masa del astro atractor",
+     "unidad": "kg"
+    }
+   ],
+   "explicacion": "La constante k solo depende del astro atractor. Permite determinar la masa del Sol, de Júpiter o de una estrella a partir de T y a.",
+   "ejemplo": {
+    "enunciado": "Sistema solar (ejercicio 19, M_S = 1,99×10³⁰ kg): T²/r³ de los planetas.",
+    "resultado": "T²/r³ ≈ 2,95×10⁻¹⁹ s²·m⁻³, casi constante para los 8 planetas (corrigé).",
+    "pagina_pdf": 346
+   },
+   "pagina_pdf": 340,
+   "animacion": {
+    "preset": "gravitacion",
+    "params": {},
+    "leyenda": "Con M mayor, el satélite a un mismo radio va más rápido y tarda menos: k = 4π²/(GM) disminuye al aumentar M."
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "e = \\dfrac{c}{a}",
+   "nombre": "Excentricidad de la elipse",
+   "nombre_fr": "Excentricité d'une ellipse",
+   "variables": [
+    {
+     "simbolo": "e",
+     "significado": "excentricidad (0 = círculo)",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "c",
+     "significado": "distancia centro–foco, c = OF = OF′",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "a",
+     "significado": "semieje mayor",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "La excentricidad mide cuánto se aleja la órbita de un círculo; los planetas del sistema solar tienen e pequeña (Mercurio 0,206; Venus 0,007; Tierra 0,017).",
+   "ejemplo": {
+    "enunciado": "Mercurio: a = 0,387 U.A., T = 0,240 años, e = 0,206.",
+    "resultado": "Órbita bastante excéntrica; Venus (e = 0,007) es casi circular.",
+    "pagina_pdf": 337
+   },
+   "pagina_pdf": 337,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x/a",
+     "xmin": 0,
+     "xmax": 1,
+     "vars": {
+      "a": {
+       "min": 0.2,
+       "max": 1,
+       "step": 0.05,
+       "def": 0.387,
+       "label": "a semieje mayor",
+       "unit": "U.A."
+      }
+     }
+    },
+    "leyenda": "La gráfica muestra e = c/a al variar c: cuanto mayor es c respecto de a, más alargada es la elipse."
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "p = \\dfrac{AF + AB + FB}{2}\\qquad \\mathcal{A} = \\sqrt{p\\,(p-AF)(p-AB)(p-FB)}",
+   "nombre": "Área barrida (fórmula de Herón)",
+   "nombre_fr": "Aire d'un triangle : formule de Héron",
+   "variables": [
+    {
+     "simbolo": "AF, AB, FB",
+     "significado": "longitudes de los lados del triángulo foco–A–B",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "p",
+     "significado": "semiperímetro",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "𝒜",
+     "significado": "área barrida aproximada (triángulo)",
+     "unidad": "m²"
+    }
+   ],
+   "explicacion": "Para calcular el área barrida en un intervalo corto se aproxima por un triángulo cuyos lados son las distancias al Sol; con puntos próximos la aproximación es correcta.",
+   "ejemplo": null,
+   "pagina_pdf": 338,
+   "animacion": {
+    "preset": "gravitacion",
+    "params": {},
+    "leyenda": "El área sombreada que barre el segmento Sol–satélite en intervalos de tiempo iguales es la misma (ley de las áreas)."
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "\\vec F_{A/B} = -\\vec F_{B/A} = G\\,\\dfrac{m_A\\cdot m_B}{d^{2}}\\;\\vec u_{BA}",
+   "nombre": "Fuerza de interacción gravitacional",
+   "nombre_fr": "Force d'interaction gravitationnelle",
+   "variables": [
+    {
+     "simbolo": "m_A, m_B",
+     "significado": "masas de A y B",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "d",
+     "significado": "distancia entre A y B",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "G",
+     "significado": "constante de gravitación, 6,67×10⁻¹¹",
+     "unidad": "N·m²·kg⁻²"
+    },
+    {
+     "simbolo": "u_BA",
+     "significado": "vector unitario de la recta (AB) orientado de B hacia A",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Atracción mutua entre dos masas: el mismo valor en ambos sentidos, proporcional a las masas e inversamente proporcional al cuadrado de la distancia.",
+   "ejemplo": null,
+   "pagina_pdf": 334,
+   "animacion": {
+    "preset": "gravitacion",
+    "params": {
+     "M": 5.97,
+     "r": 7.23
+    },
+    "leyenda": "Al acercar el satélite al astro, la fuerza gravitatoria (flecha roja) crece como 1/r²."
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "\\vec g = -G\\,\\dfrac{M}{R^{2}}\\,\\vec u_r",
+   "nombre": "Campo de gravitación",
+   "nombre_fr": "Champ de gravitation",
+   "variables": [
+    {
+     "simbolo": "g",
+     "significado": "campo de gravitación creado por el astro",
+     "unidad": "N·kg⁻¹"
+    },
+    {
+     "simbolo": "M",
+     "significado": "masa del astro (p. ej. la cometa)",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "R",
+     "significado": "distancia al centro del astro",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "u_r",
+     "significado": "vector unitario radial (hacia fuera)",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "De F = m·g se deduce el campo de gravitación del astro atractor, dirigido hacia su centro.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 33 (Rosetta y el cometa Tchouri): F = −G·m·M/R²·u_r = m_s·g.",
+    "resultado": "g = −G·M/R²·u_r (corrigé).",
+    "pagina_pdf": 352
+   },
+   "pagina_pdf": 352,
+   "animacion": {
+    "preset": "gravitacion",
+    "params": {},
+    "leyenda": "A mayor distancia R, la aceleración del satélite (campo g) disminuye con 1/R²."
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "\\sum \\vec F_{\\text{ext}/\\text{système}} = m\\cdot \\vec a_G",
+   "nombre": "2.ª ley de Newton",
+   "nombre_fr": "2e loi de Newton",
+   "variables": [
+    {
+     "simbolo": "ΣF",
+     "significado": "resultante de las fuerzas exteriores",
+     "unidad": "N"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa del sistema",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "a_G",
+     "significado": "aceleración del centro de masa",
+     "unidad": "m·s⁻²"
+    }
+   ],
+   "explicacion": "Se usa para establecer la aceleración y la velocidad de un satélite sometido solo a la fuerza gravitatoria del astro atractor.",
+   "ejemplo": null,
+   "pagina_pdf": 334,
+   "animacion": {
+    "preset": "newton2",
+    "params": {},
+    "leyenda": "La aceleración del bloque es proporcional a la fuerza e inversamente proporcional a la masa: ΣF = m·a."
+   }
+  },
+  {
+   "id": "f10",
+   "latex": "\\vec a = \\dfrac{\\mathrm{d}v}{\\mathrm{d}t}\\,\\vec\\tau + \\dfrac{v^{2}}{r}\\,\\vec n",
+   "nombre": "Aceleración en la base de Frenet",
+   "nombre_fr": "Accélération dans le repère de Frenet",
+   "variables": [
+    {
+     "simbolo": "dv/dt",
+     "significado": "variación del valor de la velocidad (componente tangencial)",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "v",
+     "significado": "valor de la velocidad",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "r",
+     "significado": "radio de la trayectoria circular",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "τ, n",
+     "significado": "vectores unitarios tangente y normal (centrípeto)",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "La componente tangencial depende de cómo cambia v; la normal v²/r siempre apunta al centro de la trayectoria circular.",
+   "ejemplo": null,
+   "pagina_pdf": 341,
+   "animacion": {
+    "preset": "cinematica",
+    "params": {},
+    "leyenda": "Se ven los vectores velocidad y aceleración sobre la trayectoria."
+   }
+  },
+  {
+   "id": "f11",
+   "latex": "\\vec a = G\\,\\dfrac{M}{r^{2}}\\,\\vec n",
+   "nombre": "Aceleración de un satélite por gravitación",
+   "nombre_fr": "Accélération d'un satellite",
+   "variables": [
+    {
+     "simbolo": "a",
+     "significado": "aceleración del satélite",
+     "unidad": "m·s⁻²"
+    },
+    {
+     "simbolo": "G",
+     "significado": "constante de gravitación",
+     "unidad": "m³·kg⁻¹·s⁻²"
+    },
+    {
+     "simbolo": "M",
+     "significado": "masa del astro atractor",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "r",
+     "significado": "distancia al centro del astro",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "n",
+     "significado": "vector unitario radial y centrípeto",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Con la 2.ª ley de Newton y F = G·m·M/r²: la aceleración es radial, centrípeta y no depende de la masa del satélite.",
+   "ejemplo": null,
+   "pagina_pdf": 341,
+   "animacion": {
+    "preset": "gravitacion",
+    "params": {
+     "M": 5.97,
+     "r": 42.2
+    },
+    "leyenda": "Un satélite en órbita circular siempre acelera hacia el centro del astro, sin cambiar su rapidez."
+   }
+  },
+  {
+   "id": "f12",
+   "latex": "\\vec a = \\dfrac{v^{2}}{r}\\,\\vec n",
+   "nombre": "Aceleración del movimiento circular uniforme",
+   "nombre_fr": "Accélération d'un mouvement circulaire uniforme",
+   "variables": [
+    {
+     "simbolo": "v",
+     "significado": "valor de la velocidad (constante)",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "r",
+     "significado": "radio del círculo",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "n",
+     "significado": "vector unitario centrípeto",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Como dv/dt = 0 en el movimiento circular uniforme, solo queda la componente centrípeta.",
+   "ejemplo": null,
+   "pagina_pdf": 341,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x*x/r",
+     "xmin": 1,
+     "xmax": 9,
+     "vars": {
+      "r": {
+       "min": 7,
+       "max": 45,
+       "step": 0.5,
+       "def": 7.23,
+       "label": "r radio de la órbita (×10⁶ m)",
+       "unit": "×10⁶ m"
+      }
+     }
+    },
+    "leyenda": "Gráfica de a en m·s⁻² en función de v (km/s): a crece como v²; con r mayor la aceleración baja."
+   }
+  },
+  {
+   "id": "f13",
+   "latex": "v = \\sqrt{\\dfrac{G\\cdot M}{r}}",
+   "nombre": "Velocidad en órbita circular",
+   "nombre_fr": "Vitesse d'un satellite en orbite circulaire",
+   "variables": [
+    {
+     "simbolo": "v",
+     "significado": "velocidad del satélite o planeta",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "G",
+     "significado": "constante de gravitación",
+     "unidad": "m³·kg⁻¹·s⁻²"
+    },
+    {
+     "simbolo": "M",
+     "significado": "masa del astro atractor",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "r",
+     "significado": "radio de la órbita",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "De a = G·M/r² = v²/r. Cuanto más lejos del astro (r mayor), menor es la velocidad; no depende de la masa del satélite.",
+   "ejemplo": {
+    "enunciado": "Cálculo con los datos del ejemplo de la p. 342 (r = 7,23×10⁶ m, M_T = 5,97×10²⁴ kg).",
+    "resultado": "v ≈ 7,42×10³ m·s⁻¹ (cálculo propio a partir de la fórmula).",
+    "pagina_pdf": 342
+   },
+   "pagina_pdf": 341,
+   "animacion": {
+    "preset": "gravitacion",
+    "params": {
+     "M": 5.97,
+     "r": 7.23
+    },
+    "leyenda": "El satélite recorre el círculo a velocidad constante; al subir r por el slider, la velocidad baja."
+   }
+  },
+  {
+   "id": "f14",
+   "latex": "v = \\dfrac{2\\pi r}{T}",
+   "nombre": "Velocidad y período en órbita circular",
+   "nombre_fr": "Vitesse sur une orbite circulaire",
+   "variables": [
+    {
+     "simbolo": "r",
+     "significado": "radio de la órbita",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "T",
+     "significado": "período de revolución",
+     "unidad": "s"
+    },
+    {
+     "simbolo": "v",
+     "significado": "velocidad",
+     "unidad": "m·s⁻¹"
+    }
+   ],
+   "explicacion": "En un período T la distancia recorrida es la circunferencia 2πr.",
+   "ejemplo": null,
+   "pagina_pdf": 342,
+   "animacion": {
+    "preset": "gravitacion",
+    "params": {
+     "M": 5.97,
+     "r": 7.23
+    },
+    "leyenda": "El satélite recorre la circunferencia 2πr en un período T con rapidez constante."
+   }
+  },
+  {
+   "id": "f15",
+   "latex": "T = 2\\pi\\sqrt{\\dfrac{r^{3}}{G\\cdot M}}",
+   "nombre": "Período de revolución",
+   "nombre_fr": "Période de révolution",
+   "variables": [
+    {
+     "simbolo": "T",
+     "significado": "período de revolución",
+     "unidad": "s"
+    },
+    {
+     "simbolo": "r",
+     "significado": "radio de la órbita circular",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "G",
+     "significado": "constante de gravitación",
+     "unidad": "m³·kg⁻¹·s⁻²"
+    },
+    {
+     "simbolo": "M",
+     "significado": "masa del astro atractor",
+     "unidad": "kg"
+    }
+   ],
+   "explicacion": "Se obtiene igualando v = 2πr/T con v = √(GM/r). Relaciona período, radio y masa del astro.",
+   "ejemplo": {
+    "enunciado": "Satélite terrestre con r = 7,23×10⁶ m y M_T = 5,97×10²⁴ kg.",
+    "resultado": "T = 6,12×10³ s, es decir 1,70 h.",
+    "pagina_pdf": 342
+   },
+   "pagina_pdf": 342,
+   "animacion": {
+    "preset": "gravitacion",
+    "params": {
+     "M": 5.97,
+     "r": 7.23
+    },
+    "leyenda": "El satélite completa una vuelta; el panel muestra T en tiempo real y crece con r^(3/2)."
+   }
+  },
+  {
+   "id": "f16",
+   "latex": "T^{2} = 4\\pi^{2}\\,\\dfrac{r^{3}}{G\\cdot M}",
+   "nombre": "Relación con la 3.ª ley de Kepler",
+   "nombre_fr": "De la période à la 3e loi de Kepler",
+   "variables": [
+    {
+     "simbolo": "T",
+     "significado": "período",
+     "unidad": "s"
+    },
+    {
+     "simbolo": "r",
+     "significado": "radio (= semieje mayor para una órbita circular)",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "G·M",
+     "significado": "producto de la constante de gravitación por la masa del astro",
+     "unidad": "m³·s⁻²"
+    }
+   ],
+   "explicacion": "Al elevar al cuadrado T = 2π√(r³/GM) se recupera T²/r³ = 4π²/(GM), la 3.ª ley de Kepler para un movimiento circular.",
+   "ejemplo": null,
+   "pagina_pdf": 342,
+   "animacion": {
+    "preset": "gravitacion",
+    "params": {
+     "M": 5.97,
+     "r": 42.2
+    },
+    "leyenda": "Dos órbitas de distinto radio tienen T²/r³ constante (misma pendiente en la gráfica T²–r³)."
+   }
+  },
+  {
+   "id": "f17",
+   "latex": "r = R_T + h",
+   "nombre": "Radio de la órbita de un satélite terrestre",
+   "nombre_fr": "Rayon d'orbite d'un satellite terrestre",
+   "variables": [
+    {
+     "simbolo": "r",
+     "significado": "distancia al centro de la Tierra",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "R_T",
+     "significado": "radio terrestre, 6,37×10⁶ m",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "h",
+     "significado": "altitud sobre la superficie",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "La altitud se mide desde la superficie del astro; hay que sumarle el radio del astro atractor para obtener r.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 23: sonda ETGO a 400 km de la superficie de Marte.",
+    "resultado": "r = R_M + h (el referencial es marsocéntrico).",
+    "pagina_pdf": 348
+   },
+   "pagina_pdf": 341,
+   "animacion": {
+    "preset": "gravitacion",
+    "params": {
+     "M": 5.97,
+     "r": 42.2
+    },
+    "leyenda": "El slider de r representa el radio total de la órbita; la altitud es r menos el radio del planeta."
+   }
+  },
+  {
+   "id": "f18",
+   "latex": "h = \\left(\\dfrac{T^{2}}{4\\pi^{2}}\\,G\\cdot M\\right)^{\\!1/3} - R_T",
+   "nombre": "Altitud de un satélite geoestacionario",
+   "nombre_fr": "Altitude d'un satellite géostationnaire",
+   "variables": [
+    {
+     "simbolo": "T",
+     "significado": "período de rotación sidérea de la Tierra",
+     "unidad": "s"
+    },
+    {
+     "simbolo": "M",
+     "significado": "masa de la Tierra",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "R_T",
+     "significado": "radio terrestre",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "h",
+     "significado": "altitud del satélite",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Se despeja h de T = 2π√((R_T+h)³/(GM)) con T = período sidéreo; resulta una altitud de unos 36 000 km sobre el plano ecuatorial.",
+   "ejemplo": {
+    "enunciado": "T = 86 204 s (valor impreso en el cours; 23 h 56 min 4 s = 86 164 s), M_T = 5,97×10²⁴ kg, R_T = 6,37×10⁶ m.",
+    "resultado": "h = 3,59×10⁷ m ≈ 36 000 km sobre el ecuador.",
+    "pagina_pdf": 342
+   },
+   "pagina_pdf": 342,
+   "animacion": {
+    "preset": "gravitacion",
+    "params": {
+     "M": 5.97,
+     "r": 42.2
+    },
+    "leyenda": "A r ≈ 42 200 km (h ≈ 36 000 km) el período del satélite coincide con la rotación terrestre."
+   }
+  },
+  {
+   "id": "f19",
+   "latex": "r_{\\text{péri}} = a\\,(1 - e)",
+   "nombre": "Distancia al periapsis",
+   "nombre_fr": "Distance au périastre",
+   "variables": [
+    {
+     "simbolo": "a",
+     "significado": "semieje mayor",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "e",
+     "significado": "excentricidad",
+     "unidad": "—"
+    }
+   ],
+   "explicacion": "Cuando e se acerca a 1 el astro pasa muy cerca del foco (doc. 4 del ejercicio 38, estrella S2).",
+   "ejemplo": null,
+   "pagina_pdf": 354,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "a*(1-x)",
+     "xmin": 0,
+     "xmax": 0.99,
+     "vars": {
+      "a": {
+       "min": 1,
+       "max": 10,
+       "step": 0.5,
+       "def": 5,
+       "label": "a semieje mayor",
+       "unit": "u.a."
+      }
+     }
+    },
+    "leyenda": "Gráfica de r_péri frente a e: a mayor excentricidad el periapsis se acerca al astro central."
+   }
+  },
+  {
+   "id": "f20",
+   "latex": "v = \\sqrt{G\\cdot M\\left(\\dfrac{2}{r} - \\dfrac{1}{a}\\right)}",
+   "nombre": "Velocidad en una órbita elíptica",
+   "nombre_fr": "Vitesse orbitale le long d'une orbite elliptique",
+   "variables": [
+    {
+     "simbolo": "v",
+     "significado": "velocidad en el punto a distancia r del astro",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "r",
+     "significado": "distancia al centro de fuerza",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "a",
+     "significado": "semieje mayor",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "G·M",
+     "significado": "producto G por masa del astro",
+     "unidad": "m³·s⁻²"
+    }
+   ],
+   "explicacion": "Expresión dada en el doc. 4 del ejercicio 38; para r = a recupera √(GM/a) (órbita circular) y es máxima en el periapsis.",
+   "ejemplo": null,
+   "pagina_pdf": 354,
+   "animacion": {
+    "preset": "gravitacion",
+    "params": {},
+    "leyenda": "El satélite va más rápido en el periapsis y más lento en el apoapsis, como indica la fórmula."
+   }
+  },
+  {
+   "id": "f21",
+   "latex": "r = \\dfrac{p}{1 + e\\cos\\theta}",
+   "nombre": "Ecuación polar de la elipse",
+   "nombre_fr": "Équation polaire de l'ellipse",
+   "variables": [
+    {
+     "simbolo": "r",
+     "significado": "distancia FM del foco al punto M",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "p",
+     "significado": "parámetro de la elipse",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "e",
+     "significado": "excentricidad",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "θ",
+     "significado": "ángulo orientado desde el periapsis P",
+     "unidad": "rad"
+    }
+   ],
+   "explicacion": "Permite hallar r_p = FP (θ = 0) y r_A = FA (θ = π) en el ejercicio «Vers le sup» sobre la órbita de transferencia.",
+   "ejemplo": null,
+   "pagina_pdf": 355,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "p/(1+e*cos(x))",
+     "xmin": 0,
+     "xmax": 6.2832,
+     "vars": {
+      "p": {
+       "min": 1,
+       "max": 10,
+       "step": 0.5,
+       "def": 4,
+       "label": "p parámetro",
+       "unit": "u.a."
+      },
+      "e": {
+       "min": 0,
+       "max": 0.9,
+       "step": 0.05,
+       "def": 0.4,
+       "label": "e excentricidad",
+       "unit": ""
+      }
+     }
+    },
+    "leyenda": "Gráfica de r en función del ángulo θ: es mínima en θ=0 (periapsis) y máxima en θ=π (apoapsis)."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "Constante de gravitación universal G",
+   "valor": "6,67×10⁻¹¹",
+   "unidad": "N·m²·kg⁻² (= m³·kg⁻¹·s⁻²)",
+   "pagina_pdf": 334
+  },
+  {
+   "nombre": "Radio terrestre R_T",
+   "valor": "6,37×10⁶",
+   "unidad": "m",
+   "pagina_pdf": 341
+  },
+  {
+   "nombre": "Masa de la Tierra M_T",
+   "valor": "5,97×10²⁴",
+   "unidad": "kg",
+   "pagina_pdf": 342
+  },
+  {
+   "nombre": "Período de rotación sidérea de la Tierra (impreso)",
+   "valor": "86 204 (23 h 56 min 4 s = 86 164 s)",
+   "unidad": "s",
+   "pagina_pdf": 342
+  },
+  {
+   "nombre": "Altitud de un satélite geoestacionario",
+   "valor": "≈ 3,59×10⁷ (≈ 36 000 km)",
+   "unidad": "m",
+   "pagina_pdf": 342
+  },
+  {
+   "nombre": "Unidad astronómica (U.A.)",
+   "valor": "1,50×10⁸ (150 millones de km)",
+   "unidad": "km",
+   "pagina_pdf": 337
+  },
+  {
+   "nombre": "Masa del Sol M_S (ej. 17)",
+   "valor": "1,99×10³⁰",
+   "unidad": "kg",
+   "pagina_pdf": 346
+  },
+  {
+   "nombre": "Masa del Sol M_S (ej. 26, 38)",
+   "valor": "2,0×10³⁰",
+   "unidad": "kg",
+   "pagina_pdf": 349
+  },
+  {
+   "nombre": "Masa de Júpiter",
+   "valor": "1,898×10²⁷",
+   "unidad": "kg",
+   "pagina_pdf": 339
+  },
+  {
+   "nombre": "Masa de la Luna M_L",
+   "valor": "7,34×10²²",
+   "unidad": "kg",
+   "pagina_pdf": 355
+  },
+  {
+   "nombre": "Radio de la Luna R_L",
+   "valor": "1 737",
+   "unidad": "km",
+   "pagina_pdf": 355
+  },
+  {
+   "nombre": "Radio de Marte R_M",
+   "valor": "3 390",
+   "unidad": "km",
+   "pagina_pdf": 349
+  },
+  {
+   "nombre": "Cometa Halley: T, e, a",
+   "valor": "76,09 años · 0,967 · 17,83 U.A.",
+   "unidad": "—",
+   "pagina_pdf": 338
+  },
+  {
+   "nombre": "Velocidad de la luz c",
+   "valor": "3,00×10⁸",
+   "unidad": "m·s⁻¹",
+   "pagina_pdf": 354
+  },
+  {
+   "nombre": "Datos planetarios (a en U.A. / T en años / e)",
+   "valor": "Mercurio 0,387/0,240/0,206 · Venus 0,723/0,615/0,007 · Tierra 1,00/1,00/0,017 · Marte 1,52/1,88/0,093 · Júpiter 5,20/11,9/0,048 · Saturno 9,54/29,4/0,054 · Urano 19,2/84,0/0,046 · Neptuno 30,0/165/0,010",
+   "unidad": "—",
+   "pagina_pdf": 337
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Establecer la velocidad y el período de un satélite en órbita circular (ejercicio resuelto 23)",
+   "pasos": [
+    "Precisar el referencial galileano: geocéntrico (satélite terrestre), marsocéntrico, heliocéntrico… según el astro atractor.",
+    "Escribir la fuerza gravitacional con vector unitario: F = G·m·M/r²·n (con r = R + h si se da la altitud).",
+    "Aplicar la 2.ª ley de Newton y escribir la aceleración en la base de Frenet: a = (dv/dt)τ + (v²/r)n.",
+    "Proyectar sobre τ: dv/dt = 0, la velocidad es constante (movimiento uniforme). Proyectar sobre n: v² = G·M/r.",
+    "Deducir v = √(G·M/r) y T = 2πr/v = 2π√(r³/(G·M))."
+   ],
+   "pagina_pdf": 348
+  },
+  {
+   "titulo": "Usar la 3.ª ley de Kepler para hallar un período (ejercicio resuelto 25)",
+   "pasos": [
+    "Plantear T²/a³ = 4π²/(G·M) para el mismo astro atractor: T²/a³ = T_P²/R_P³.",
+    "Si no se da la masa del astro ni G, usar los datos de otro satélite del mismo astro (p. ej. Fobos para Marte).",
+    "Despejar T = T_P·√(a³/R_P³) y convertir a las unidades pedidas.",
+    "Comprobar el orden de magnitud: cuanto mayor es a, mayor es T."
+   ],
+   "pagina_pdf": 349
+  },
+  {
+   "titulo": "Hallar el semieje mayor a a partir del periapsis y apoapsis",
+   "pasos": [
+    "Hacer un esquema con el astro en un foco y situar h₁ (periapsis) y h₂ (apoapsis) sobre el eje mayor.",
+    "Leer en el esquema que 2a = h₁ + 2R + h₂ (R = radio del astro).",
+    "Despejar a = (h₁ + 2R + h₂)/2 y convertir a km o m."
+   ],
+   "pagina_pdf": 349
+  },
+  {
+   "titulo": "Calcular el área barrida con la fórmula de Herón (actividad 3)",
+   "pasos": [
+    "Medir con el programa las posiciones del planeta en dos instantes y la posición del foco (Sol).",
+    "Calcular las longitudes AF, AB y FB y el semiperímetro p = (AF + AB + FB)/2.",
+    "Calcular 𝒜 = √(p(p−AF)(p−AB)(p−FB)) para cada intervalo de tiempo.",
+    "Comparar las áreas de intervalos de tiempo iguales para verificar la 2.ª ley de Kepler."
+   ],
+   "pagina_pdf": 338
+  },
+  {
+   "titulo": "Verificar la 3.ª ley de Kepler con regresión lineal (actividad 4, ECE)",
+   "pasos": [
+    "Convertir a (en U.A.) a metros y T (en años) a segundos; calcular a³ y T² para cada planeta.",
+    "Hacer la regresión lineal T² = f(a³) con Python (stats.linregress): pendiente, ordenada en el origen y coeficiente de correlación.",
+    "Un coeficiente de correlación cercano a 1 y una recta que pasa por el origen validan la proporcionalidad T² ∝ a³.",
+    "La pendiente k = 4π²/(G·M) permite determinar la masa M del astro atractor."
+   ],
+   "pagina_pdf": 339
+  },
+  {
+   "titulo": "Determinar la masa del astro atractor a partir de un satélite",
+   "pasos": [
+    "Plantear T²/a³ = 4π²/(G·M) y despejar M = 4π²·a³/(G·T²).",
+    "Convertir T a segundos (p. ej. 3 d 13 h 14 min = 306 840 s) y a a metros.",
+    "Calcular M y compararla con el valor de tablas para identificar el astro (ej. 30: Júpiter)."
+   ],
+   "pagina_pdf": 351
+  },
+  {
+   "titulo": "Calcular la altitud de un satélite geoestacionario",
+   "pasos": [
+    "Usar T = período de rotación sidérea de la Tierra y la órbita en el plano ecuatorial.",
+    "Despejar h = (T²·G·M/4π²)^(1/3) − R_T a partir de T = 2π√((R_T+h)³/(G·M)).",
+    "Resultado: unos 36 000 km de altitud, justo sobre un punto del ecuador."
+   ],
+   "pagina_pdf": 342
+  },
+  {
+   "titulo": "Saber redactar una solución completa (ejercicio 27)",
+   "pasos": [
+    "Precisar bien el referencial (geocéntrico, con su definición completa).",
+    "Escribir la expresión literal antes de la aplicación numérica y respetar las cifras significativas.",
+    "Hacer un esquema y poner el vector unitario en la fuerza; indicar cuál es el vector unitario.",
+    "Convertir las unidades (km → m) y ser crítico con el valor encontrado (¿es razonable un período de 178 s?)."
+   ],
+   "pagina_pdf": 350
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Referencial incompleto",
+   "correccion": "Decir «referencial geocéntrico» y su definición: centro de la Tierra y ejes hacia estrellas lejanas fijas.",
+   "pagina_pdf": 350
+  },
+  {
+   "id": "err2",
+   "nombre": "No convertir km a m",
+   "correccion": "Pasar r y h a metros antes de aplicar v = √(GM/r); 6 840 km = 6,84×10⁶ m.",
+   "pagina_pdf": 350
+  },
+  {
+   "id": "err3",
+   "nombre": "Confundir altitud h con radio de órbita r",
+   "correccion": "La altitud se mide desde la superficie: r = R_astro + h.",
+   "pagina_pdf": 348
+  },
+  {
+   "id": "err4",
+   "nombre": "Escribir mal la 3.ª ley (T³ = k·a²)",
+   "correccion": "Es T² = k·a³: período al cuadrado y semieje al cubo.",
+   "pagina_pdf": 344
+  },
+  {
+   "id": "err5",
+   "nombre": "Pensar que v constante implica aceleración nula",
+   "correccion": "En órbita circular uniforme a = v²/r ≠ 0: es radial y centrípeta.",
+   "pagina_pdf": 344
+  },
+  {
+   "id": "err6",
+   "nombre": "Olvidar el vector unitario y el esquema de la fuerza",
+   "correccion": "F = G·m·M/r²·n con n unitario hacia el astro; dibujar siempre la flecha en un esquema.",
+   "pagina_pdf": 350
+  },
+  {
+   "id": "err7",
+   "nombre": "No juzgar si el resultado es razonable",
+   "correccion": "Comprobar el orden de magnitud: T = 178 s para la ISS es absurdo (≈ 93 min = 5,6×10³ s).",
+   "pagina_pdf": 350
+  },
+  {
+   "id": "err8",
+   "nombre": "Confundir áreas y distancias en la 2.ª ley de Kepler",
+   "correccion": "Áreas iguales en tiempos iguales (no distancias iguales): más rápido en el perihelio.",
+   "pagina_pdf": 344
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "Activité 1 · Le système solaire à travers les siècles",
+   "descripcion": "Comparar los modelos de Aristóteles, Ptolomeo (epiciclos y deferentes), Copérnico y Kepler; indicar los fenómenos que el modelo de Aristóteles no explica (retrogradación, variaciones de velocidad y brillo) y resumir los elementos esenciales del sistema solar según Kepler.",
+   "pagina_pdf": 336
+  },
+  {
+   "titulo": "Activité 2 (TP) · Orbite de Mercure",
+   "descripcion": "Con un simulador en Python se traza la órbita de Mercurio (T = 0,240 años, e = 0,206, a = 0,387 U.A.), se sitúa el perihelio y el afelio y se comprueba la 1.ª ley; cambiando a, e y T se identifican planetas de órbita casi circular (Venus, Neptuno…). Se representan los vectores velocidad y aceleración.",
+   "pagina_pdf": 337
+  },
+  {
+   "titulo": "Activité 3 (TP) · La comète de Halley",
+   "descripcion": "Verificar con Python la 2.ª ley de Kepler calculando áreas barridas con la fórmula de Herón (T = 76,09 años, e = 0,967, a = 17,83 U.A.); se discute la imprecisión de las áreas en el caso de una cometa muy excéntrica.",
+   "pagina_pdf": 338
+  },
+  {
+   "titulo": "Activité 4 · La masse de Jupiter (résolution de problème)",
+   "descripcion": "Verificar con regresión lineal la 3.ª ley (T²/a³ = 4π²/(G·M)) en el sistema solar y adaptarla a los satélites de Júpiter (Amalthée, Thébé, Io, Europe, Ganymède, Callisto) para determinar la masa de Júpiter y compararla con 1,898×10²⁷ kg.",
+   "pagina_pdf": 339
+  },
+  {
+   "titulo": "Ejercicio 37 · Découverte d'une exoplanète habitable (Luyten GJ273)",
+   "descripcion": "Representar las órbitas de los exoplanetas, justificar que una órbita casi circular sufre menos variaciones de temperatura y verificar la 3.ª ley de Kepler para determinar la masa de la estrella.",
+   "pagina_pdf": 353
+  },
+  {
+   "titulo": "Ejercicio 38 · Estimation de la masse d'un trou noir (étoile S2)",
+   "descripcion": "Con la 3.ª ley y los datos de la estrella S2 (17 horas-luz de periastro), estimar la masa del objeto central de la galaxia y su velocidad en el periastro frente a c.",
+   "pagina_pdf": 354
+  },
+  {
+   "titulo": "ECE · Étude d'un système d'exoplanètes (Tau Ceti)",
+   "descripcion": "Proponer y aplicar un protocolo con regresión lineal T² = f(a³), obtener k y su incertidumbre, estimar la masa de la estrella y el semieje mayor de Tau Ceti g.",
+   "pagina_pdf": 356
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Ex. 14 · La planète naine Cérès. Aphélie 4,47×10⁸ km, périhélie 3,81×10⁸ km, a_T = 1,50×10⁸ km, T_T = 365,25 jours. 1) Que déduire des distances au périhélie et à l'aphélie sur la nature de la trajectoire ? 2) Représenter l'orbite. 3) Calculer le demi-grand axe a_C. 4) Avec la 3e loi de Kepler, calculer la période de révolution de Cérès.",
+   "datos": {
+    "aphélie": "4,47×10⁸ km",
+    "périhélie": "3,81×10⁸ km",
+    "a_T": "1,50×10⁸ km",
+    "T_T": "365,25 jours"
+   },
+   "respuesta": "La distance Cérès–Soleil n'est pas constante donc la trajectoire est une ellipse (1re loi de Kepler). a_C = (4,47×10⁸ + 3,81×10⁸)/2 = 4,14×10⁸ km. T_C = √(a_C³/a_T³)·T_T = 1,67×10³ jours.",
+   "respuesta_numerica": {
+    "valor": 1670,
+    "unidad": "jours",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "2a = r_aphélie + r_périhélie, donc a_C = 4,14×10⁸ km",
+    "T_C²/a_C³ = T_T²/a_T³",
+    "T_C = T_T·√((4,14×10⁸)³/(1,50×10⁸)³) = 365,25 × 4,59",
+    "T_C ≈ 1,67×10³ jours"
+   ],
+   "pagina_pdf": 345,
+   "corrige_pagina_pdf": 618
+  },
+  {
+   "id": "e2",
+   "enunciado": "Ex. 25 (résolu) · Étude de l'orbiteur Mars Orbiter Mission (MOM). Orbite elliptique à h₁ = 422 km (périapside) et h₂ = 76 994 km (apoapside) au-dessus de Mars (R_M = 3 390 km). Phobos : orbite circulaire de rayon 9 377 km, période 7 h 39 min. 1) Référentiel ? 2) Justifier la position du centre de Mars. 3) Établir a et la calculer. 4) Déterminer la période de MOM avec la 3e loi de Kepler.",
+   "datos": {
+    "h1": "422 km",
+    "h2": "76 994 km",
+    "R_M": "3 390 km",
+    "R_Phobos": "9 377 km",
+    "T_Phobos": "7 h 39 min"
+   },
+   "respuesta": "1) Référentiel marsocentrique, supposé galiléen. 2) 1re loi de Kepler : le centre de Mars est à l'un des foyers de l'ellipse. 3) 2a = h₁ + 2R_M + h₂ donc a = 4,21×10⁴ km. 4) T²/a³ = T_P²/R_P³, d'où T = 4,37×10³ min, soit près de 73 heures.",
+   "respuesta_numerica": {
+    "valor": 4370,
+    "unidad": "min",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "2a = h₁ + 2R_M + h₂ = 422 + 2×3390 + 76994",
+    "a = 4,21×10⁴ km",
+    "T = T_P·√(a³/R_P³) = 459 min × √((4,21×10⁷)³/(9 377×10³)³)",
+    "T ≈ 4,37×10³ min ≈ 73 h"
+   ],
+   "pagina_pdf": 349,
+   "corrige_pagina_pdf": 349
+  },
+  {
+   "id": "e3",
+   "enunciado": "Ex. 23 (résolu) · Étude de l'orbiteur Exomars Trace Gas Orbiter (ETGO), en orbite circulaire à 400 km d'altitude autour de Mars. 1) Dans quel référentiel galiléen est décrit le mouvement ? 2) Donner l'expression vectorielle de la force gravitationnelle. 3) Montrer, avec la 2e loi de Newton, que la vitesse est constante. 4) Déterminer la relation de la vitesse en fonction de M_M, G, R_M et h.",
+   "datos": {
+    "h": "400 km"
+   },
+   "respuesta": "1) Référentiel marsocentrique. 2) F = G·M_M·m_S/(R_M+h)²·n. 3) m_S·a = F avec a = dv/dt·τ + v²/(R_M+h)·n ; projection sur τ : dv/dt = 0, donc v constante. 4) Projection sur n : v² = G·M_M/(R_M+h), soit v = √(G·M_M/(R_M+h)).",
+   "respuesta_numerica": null,
+   "pasos": [
+    "F = G·M_M·m_S/(R_M+h)²·n",
+    "m_S·dv/dt = 0 donc v = cte",
+    "m_S·v²/(R_M+h) = G·M_M·m_S/(R_M+h)²",
+    "v = √(G·M_M/(R_M+h))"
+   ],
+   "pagina_pdf": 348,
+   "corrige_pagina_pdf": 348
+  },
+  {
+   "id": "e4",
+   "enunciado": "Ex. 30 · What is this planet ? Un satellite (S) orbite autour d'une planète (P) en mouvement circulaire uniforme. Rayon orbital r_S = 6,7×10⁵ km ; période T_S = 3 j 13 h 14 min. 1) Que devient la 3e loi de Kepler pour (S) ? 2) Période en secondes. 3) a. Exprimer la masse M_P et la calculer. b. Identifier la planète (Vénus 4,87×10²⁴ kg, Terre 5,98×10²⁴ kg, Mars 6,42×10²³ kg, Jupiter 1,90×10²⁷ kg).",
+   "datos": {
+    "r_S": "6,7×10⁵ km",
+    "T_S": "3 j 13 h 14 min",
+    "G": "6,67×10⁻¹¹ SI"
+   },
+   "respuesta": "T²/r³ = k = 4π²/(G·M_P). T = 306 840 s. M_P = 4π²r³/(G·T²) = 1,9×10²⁷ kg : c'est Jupiter.",
+   "respuesta_numerica": {
+    "valor": 1.9e+27,
+    "unidad": "kg",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "T_S = 3×86 400 + 13×3 600 + 14×60 = 306 840 s",
+    "M_P = 4π²·(6,7×10⁸)³ / (6,67×10⁻¹¹ × 306 840²)",
+    "M_P ≈ 1,9×10²⁷ kg",
+    "Valeur proche de la masse de Jupiter"
+   ],
+   "pagina_pdf": 351,
+   "corrige_pagina_pdf": 619
+  },
+  {
+   "id": "e5",
+   "enunciado": "Ex. 26 · La comète Hale-Bopp. Passée près du Soleil le 1er avril 1997, demi-grand axe 186 U.A., M_S = 2,0×10³⁰ kg, G = 6,67×10⁻¹¹ SI, 1 U.A. = 150 millions de km. 1) Référentiel ? 2) Perturbation due à Jupiter ? 3) T²/a³ = 4π²/(G·M_S) : calculer la période de révolution.",
+   "datos": {
+    "a": "186 U.A.",
+    "M_S": "2,0×10³⁰ kg",
+    "1 U.A.": "150×10⁶ km"
+   },
+   "respuesta": "1) Référentiel héliocentrique. 2) La force gravitationnelle de Jupiter sur la comète a perturbé sa trajectoire. 3) T = √(4π²a³/(G·M_S)) = 8,0×10¹⁰ s = 2,5×10³ ans.",
+   "respuesta_numerica": {
+    "valor": 2500,
+    "unidad": "ans",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "a = 186 × 1,50×10¹¹ = 2,79×10¹³ m",
+    "T = √(4π²·a³/(G·M_S))",
+    "T ≈ 8,0×10¹⁰ s",
+    "T ≈ 2,5×10³ ans"
+   ],
+   "pagina_pdf": 349,
+   "corrige_pagina_pdf": 619
+  },
+  {
+   "id": "e6",
+   "enunciado": "Ex. 39 · Le LEM et la capsule Apollo. Capsule en orbite circulaire uniforme à h = 110 km autour de la Lune (R_L = 1 737 km, M_L = 7,34×10²² kg). 1) Référentiel ? 2) Accélération de la capsule. 3) Montrer que v = √(G·M_L/(R_L+h)). 4) Vérifier que la durée entre deux passages successifs à la verticale du module lunaire vaut environ 2 h.",
+   "datos": {
+    "h": "110 km",
+    "R_L": "1 737 km",
+    "M_L": "7,34×10²² kg",
+    "G": "6,67×10⁻¹¹ SI"
+   },
+   "respuesta": "1) Référentiel lunocentrique. 2) a = G·M_L/(R_L+h)²·n. 3) a = v²/(R_L+h) donc v = √(G·M_L/(R_L+h)). 4) T = 2π√((R_L+h)³/(G·M_L)) = 7,09×10³ s = 1,97 h, soit près de 2 h. Problème à résoudre : les ondes électromagnétiques ne traversent pas la Lune ; la communication est coupée pendant 789 s à chaque révolution.",
+   "respuesta_numerica": {
+    "valor": 7100,
+    "unidad": "s",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "a = G·M_L/(R_L+h)²",
+    "v = √(G·M_L/(R_L+h))",
+    "T = 2π√((R_L+h)³/(G·M_L)) ≈ 7,09×10³ s",
+    "T = 1,97 h ≈ 2 h"
+   ],
+   "pagina_pdf": 355,
+   "corrige_pagina_pdf": 619
+  },
+  {
+   "id": "e7",
+   "enunciado": "Ex. 19 · Troisième loi de Kepler pour un mouvement circulaire. Pour une planète du système solaire de vitesse v = √(G·M_S/r) : 1) indiquer le référentiel galiléen ; 2) montrer que T²/r³ = 4π²/(G·M_S) ; 3) avec les données du document 3 de l'activité 2 p. 319, montrer avec un tableau que la relation est vérifiée.",
+   "datos": {
+    "M_S": "1,99×10³⁰ kg"
+   },
+   "respuesta": "1) Référentiel héliocentrique. 2) v = 2πr/T et v = √(G·M_S/r) donc (2πr/T)² = G·M_S/r, soit T²/r³ = 4π²/(G·M_S). 3) Le tableau donne T²/r³ ≈ 2,93–2,97×10⁻¹⁹ s²·m⁻³ pour les 8 planètes : constante ≈ 2,95×10⁻¹⁹ s²·m⁻³.",
+   "respuesta_numerica": {
+    "valor": 2.95e-19,
+    "unidad": "s²·m⁻³",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "v = 2πr/T et v = √(G·M_S/r)",
+    "T²/r³ = 4π²/(G·M_S) = 4π²/(6,67×10⁻¹¹ × 1,99×10³⁰)",
+    "≈ 2,97×10⁻¹⁹ s²·m⁻³ (corrigé : ≈ 2,95×10⁻¹⁹)"
+   ],
+   "pagina_pdf": 346,
+   "corrige_pagina_pdf": 618
+  },
+  {
+   "id": "e8",
+   "enunciado": "Ex. 24 · Triton, satellite de Neptune (orbite circulaire de centre N). 1) Référentiel galiléen ? 2) Utiliser la 2e loi de Kepler pour montrer que la vitesse est constante. 3) Représenter la force gravitationnelle, l'accélération et la vitesse de Triton. 4) T²/R_N³ = 4π²/(G·M_N) : a. calculer T ; b. en déduire la vitesse.",
+   "datos": {},
+   "respuesta": "1) Référentiel neptunocentrique. 2) Aires balayées égales ⇒ arcs de cercle égaux dans des durées égales : la vitesse est constante. 4) a. T = 5,9 jours. b. v = 2πR_N/T = 4,4 km·s⁻¹ (les valeurs de R_N et M_N ne figurent pas dans le texte de l'énoncé lisible ; le corrigé donne 2π×3,55×10⁸/5,1×10⁵ = 4,4×10³ m·s⁻¹).",
+   "respuesta_numerica": {
+    "valor": 4.4,
+    "unidad": "km·s⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Aires égales en durées égales ⇒ v constante",
+    "T = 2π√(R_N³/(G·M_N)) = 5,9 jours",
+    "v = 2πR_N/T = 2π×3,55×10⁸ / 5,1×10⁵ = 4,4×10³ m·s⁻¹"
+   ],
+   "pagina_pdf": 348,
+   "corrige_pagina_pdf": 619
+  },
+  {
+   "id": "e9",
+   "enunciado": "Ex. 33 · La sonde Rosetta et la comète Tchouri. Rosetta (m_s = 3,0 t) orbite à 10 km d'altitude d'une comète sphérique de rayon 2,5 km et de masse M_c = 1,0×10¹³ kg. 1) Référentiel ? 2) Période de révolution. 3) Expression vectorielle de la force de gravitation sur la sonde. 4) En déduire le champ de gravitation g.",
+   "datos": {
+    "M_c": "1,0×10¹³ kg",
+    "m_s": "3,0 t",
+    "G": "6,67408×10⁻¹¹ SI",
+    "altitude": "10 km",
+    "R_c": "2,5 km"
+   },
+   "respuesta": "1) Référentiel tchouricentrique. 2) T = 2π√(R³/(G·M_c)) (le corrigé donne 2,4×10³ s = 41 min ; avec les données lisibles de l'énoncé et R = 12,5 km, le recalcul donne ≈ 3,4×10⁵ s : écart signalé, non utilisé comme réponse numérique). 3) F = −G·m·M/R²·u_r = m_s·g. 4) g = −G·M/R²·u_r.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Référentiel tchouricentrique",
+    "T = 2π√(R³/(G·M_c))",
+    "F = −G·m_s·M_c/R²·u_r",
+    "g = −G·M_c/R²·u_r"
+   ],
+   "pagina_pdf": 352,
+   "corrige_pagina_pdf": 619
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "gravitacion",
+   "params": {
+    "M": 5.97,
+    "r": 7.23
+   },
+   "titulo": "Satélite en órbita baja terrestre",
+   "relacion": "Ilustra v = √(GM/r), a = GM/r² y T = 2π√(r³/GM) con el ejemplo del cours (r = 7,23×10⁶ m, T ≈ 6,12×10³ s)."
+  },
+  {
+   "preset": "gravitacion",
+   "params": {
+    "M": 5.97,
+    "r": 42.2
+   },
+   "titulo": "Órbita geoestacionaria",
+   "relacion": "A r ≈ 42 200 km (h ≈ 36 000 km) el período coincide con el de rotación sidérea de la Tierra (fórmula f18)."
+  },
+  {
+   "preset": "generico",
+   "params": {
+    "expr": "2*PI*sqrt(x*x*x*14993/M)/3600",
+    "xmin": 6.4,
+    "xmax": 50,
+    "vars": {
+     "M": {
+      "min": 1,
+      "max": 100,
+      "step": 0.1,
+      "def": 5.97,
+      "label": "M masa del astro (×10²⁴ kg)",
+      "unit": "×10²⁴ kg"
+     }
+    }
+   },
+   "titulo": "Período T (horas) en función del radio r (×10⁶ m)",
+   "relacion": "Curva de T = 2π√(r³/(GM)); mover M muestra que k = 4π²/(GM) depende solo del astro atractor (f15, f16)."
+  },
+  {
+   "preset": "generico",
+   "params": {
+    "expr": "sqrt(66.7*M/x)",
+    "xmin": 6.4,
+    "xmax": 50,
+    "vars": {
+     "M": {
+      "min": 1,
+      "max": 100,
+      "step": 0.1,
+      "def": 5.97,
+      "label": "M masa del astro (×10²⁴ kg)",
+      "unit": "×10²⁴ kg"
+     }
+    }
+   },
+   "titulo": "Velocidad v (km/s) en función del radio r (×10⁶ m)",
+   "relacion": "Curva de v = √(GM/r): la velocidad disminuye al alejarse del astro (f13)."
+  },
+  {
+   "preset": "newton2",
+   "params": {},
+   "titulo": "2.ª ley de Newton",
+   "relacion": "Recuerda ΣF = m·a, base para deducir la aceleración y la velocidad del satélite (f9)."
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "espacio-orbital",
+  "mecanica_especial": "Gravedad reducida (microgravedad orbital), plataformas móviles que orbitan con un período, zonas de campo que ligan el salto (menos gravedad cerca de la órbita, un «pozo gravitatorio» con más gravedad) y enemigos que son los errores típicos."
+ },
+ "estilo_intro_sugerido": "fisica3d"
+}

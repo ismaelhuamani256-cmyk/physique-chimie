@@ -1,0 +1,281 @@
+{
+ "titulo": "La manguera que acelera",
+ "estilo": "monigotes",
+ "duracion_seg": 24,
+ "actores": [
+  {
+   "id": "jardinero",
+   "tipo": "humano",
+   "pos": [
+    0.1,
+    0.72
+   ],
+   "color": "#ffb703",
+   "escala": 1.1
+  },
+  {
+   "id": "perro",
+   "tipo": "perro",
+   "pos": [
+    0.22,
+    0.8
+   ],
+   "color": "#c8895a",
+   "escala": 0.9
+  },
+  {
+   "id": "agua",
+   "tipo": "fluido",
+   "pos": [
+    0.5,
+    0.62
+   ],
+   "color": "#00d4ff",
+   "escala": 1.4
+  },
+  {
+   "id": "pinza",
+   "tipo": "bloque",
+   "pos": [
+    0.64,
+    0.6
+   ],
+   "color": "#9aa5b8",
+   "escala": 0.5
+  },
+  {
+   "id": "gota",
+   "tipo": "bola",
+   "pos": [
+    0.4,
+    0.5
+   ],
+   "color": "#7fdcff",
+   "escala": 0.45
+  },
+  {
+   "id": "coche",
+   "tipo": "auto",
+   "pos": [
+    0.2,
+    0.3
+   ],
+   "color": "#e63946",
+   "escala": 1.0
+  },
+  {
+   "id": "aire",
+   "tipo": "flecha",
+   "pos": [
+    0.45,
+    0.3
+   ],
+   "color": "#2f6bff",
+   "escala": 0.9
+  }
+ ],
+ "pasos": [
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "pinza"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "gota"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "coche"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "aire"
+  },
+  {
+   "t": 0,
+   "accion": "subtitulo",
+   "texto": "Un jardinero riega el jardín… y su perro vigila la manguera."
+  },
+  {
+   "t": 0.5,
+   "accion": "mueve",
+   "actor": "jardinero",
+   "a": [
+    0.3,
+    0.72
+   ],
+   "dur": 3
+  },
+  {
+   "t": 1,
+   "accion": "mueve",
+   "actor": "perro",
+   "a": [
+    0.4,
+    0.8
+   ],
+   "dur": 2.5
+  },
+  {
+   "t": 3.5,
+   "accion": "vector",
+   "actor": "agua",
+   "dx": 0.07,
+   "dy": 0,
+   "etiqueta": "v_A"
+  },
+  {
+   "t": 4,
+   "accion": "subtitulo",
+   "texto": "El agua es un fluido incompresible: en régimen permanente el caudal Q = v·S es el mismo en todo el tubo."
+  },
+  {
+   "t": 4.5,
+   "accion": "formula",
+   "latex": "Q = \\dfrac{V}{\\Delta t} = v \\cdot S"
+  },
+  {
+   "t": 7.5,
+   "accion": "aparece",
+   "actor": "pinza",
+   "dur": 1
+  },
+  {
+   "t": 8,
+   "accion": "subtitulo",
+   "texto": "Si el jardinero aprieta la manguera, la sección S baja…"
+  },
+  {
+   "t": 8.5,
+   "accion": "escala",
+   "actor": "pinza",
+   "a": 1.0,
+   "dur": 1.5
+  },
+  {
+   "t": 10,
+   "accion": "valor",
+   "id": "S",
+   "desde": 100,
+   "hasta": 33,
+   "dur": 2.5,
+   "etiqueta": "S (% de la sección)"
+  },
+  {
+   "t": 10,
+   "accion": "valor",
+   "id": "v",
+   "desde": 1,
+   "hasta": 3,
+   "dur": 2.5,
+   "etiqueta": "v (relativa, × v_A)"
+  },
+  {
+   "t": 10.5,
+   "accion": "vector",
+   "actor": "agua",
+   "dx": 0.2,
+   "dy": 0,
+   "etiqueta": "v_B"
+  },
+  {
+   "t": 11,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "¡Guau! ¡El agua sale mucho más rápido!"
+  },
+  {
+   "t": 12,
+   "accion": "particulas",
+   "tipo": "burbujas",
+   "pos": [
+    0.7,
+    0.6
+   ]
+  },
+  {
+   "t": 13,
+   "accion": "subtitulo",
+   "texto": "S_A·v_A = S_B·v_B: con S tres veces menor, la velocidad es tres veces mayor."
+  },
+  {
+   "t": 13.5,
+   "accion": "resalta",
+   "actor": "pinza"
+  },
+  {
+   "t": 15.5,
+   "accion": "aparece",
+   "actor": "coche",
+   "dur": 1
+  },
+  {
+   "t": 16,
+   "accion": "aparece",
+   "actor": "aire",
+   "dur": 0.8
+  },
+  {
+   "t": 16,
+   "accion": "subtitulo",
+   "texto": "Bernoulli: donde el fluido va más rápido, la presión es menor (efecto Venturi)."
+  },
+  {
+   "t": 16.5,
+   "accion": "mueve",
+   "actor": "coche",
+   "a": [
+    0.75,
+    0.3
+   ],
+   "dur": 4
+  },
+  {
+   "t": 17,
+   "accion": "mueve",
+   "actor": "aire",
+   "a": [
+    0.9,
+    0.36
+   ],
+   "dur": 3
+  },
+  {
+   "t": 17.5,
+   "accion": "formula",
+   "latex": "P + \\dfrac{1}{2}\\rho v^2 + \\rho g z = \\text{constante}"
+  },
+  {
+   "t": 18.5,
+   "accion": "vector",
+   "actor": "coche",
+   "dx": 0,
+   "dy": 0.12,
+   "etiqueta": "P baja → el coche se «pega»"
+  },
+  {
+   "t": 21,
+   "accion": "habla",
+   "actor": "jardinero",
+   "texto": "¡Más velocidad, menos presión!"
+  },
+  {
+   "t": 22,
+   "accion": "particulas",
+   "tipo": "chispas",
+   "pos": [
+    0.75,
+    0.3
+   ]
+  },
+  {
+   "t": 23,
+   "accion": "pausa",
+   "dur": 1
+  }
+ ]
+}

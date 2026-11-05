@@ -740,12 +740,12 @@
     params: [
       { id: 'f0', label: 'Frecuencia de la fuente f₀', min: 100, max: 1000, step: 10, def: 440, unit: 'Hz' },
       { id: 'vs', label: 'Celeridad de la fuente vₛ', min: 0, max: 250, step: 5, def: 100, unit: 'm/s' }],
-    create(host, p) { return { host, t: 0, sx: 0.2, ems: [], eacc: 1e9, last: { A: null, B: null }, meas: { A: 0, B: 0 }, flash: { A: 0, B: 0 } }; },
+    create(host, p) { return { host, t: 0, sx: 0.2, ems: [], eacc: 0.2, last: { A: null, B: null }, meas: { A: 0, B: 0 }, flash: { A: 0, B: 0 } }; },
     onParam(S) { S.last = { A: null, B: null }; S.meas = { A: 0, B: 0 }; },
     step(S, dt, p) {
       const k = dopCalc(p), xo = { A: 0.06, B: 0.94 }; S.t += dt;
-      S.sx += (k.vs / VSON) * CF * dt; if (S.sx > 0.72) { S.sx = 0.2; S.ems = []; S.last = { A: null, B: null }; S.eacc = 1e9; }
-      S.eacc += dt; const T0 = SLOW / k.f0; while (S.eacc >= T0) { S.eacc -= T0; S.ems.push({ x: S.sx, t: S.t - S.eacc, hit: {} }); }
+      S.sx += (k.vs / VSON) * CF * dt; if (S.sx > 0.72) { S.sx = 0.2; S.ems = []; S.last = { A: null, B: null }; S.eacc = SLOW / k.f0; }
+      S.eacc += dt; const T0 = SLOW / k.f0; for (let guard = 0; S.eacc >= T0 && guard < 6; guard++) { S.eacc -= T0; S.ems.push({ x: S.sx, t: S.t - S.eacc, hit: {} }); }
       for (const e of S.ems) ['A', 'B'].forEach((o) => { if (e.hit[o]) return; const ta = e.t + Math.abs(xo[o] - e.x) / CF; if (S.t >= ta) { e.hit[o] = 1; if (S.last[o] != null && ta > S.last[o]) S.meas[o] = (1 / (ta - S.last[o])) * SLOW; S.last[o] = ta; S.flash[o] = 1; } });
       S.ems = S.ems.filter((e) => (S.t - e.t) * CF < 1.1); S.flash.A *= Math.pow(0.02, dt); S.flash.B *= Math.pow(0.02, dt);
     },
@@ -772,7 +772,7 @@
       const obs = (xf, o, col, lab, fth) => { const x = X(xf), fl = S.flash[o]; const y = cy + 2;
         ctx.fillStyle = 'rgba(' + (o === 'A' ? '0,212,255' : '255,61,166') + ',' + (0.12 + 0.4 * fl) + ')'; ctx.beginPath(); ctx.arc(x, y, 20 + 14 * fl, 0, TAU); ctx.fill();
         ctx.fillStyle = '#cfd8ff'; ctx.beginPath(); ctx.arc(x, y - 4, 7, 0, TAU); ctx.fill(); ctx.fillStyle = col; rr(ctx, x - 9, y + 4, 18, 14, 5); ctx.fill();
-        const tx_ = clamp(x, R.x + 62, R.x + R.w - 62); txt(ctx, lab, tx_, R.y + R.h - (wide ? 40 : 30), { size: fs, color: col, align: 'center', w: 700, halo: true });
+        const tx_ = clamp(x, R.x + 84, R.x + R.w - 84); txt(ctx, lab, tx_, R.y + R.h - (wide ? 40 : 30), { size: fs, color: col, align: 'center', w: 700, halo: true });
         txt(ctx, 'f = ' + fmt(fth, 0) + ' Hz', tx_, R.y + R.h - (wide ? 24 : 14), { size: fs + 1, color: C.txt, align: 'center', w: 700, halo: true });
         if (S.meas[o] > 0) txt(ctx, 'medida: ' + fmt(S.meas[o], 0) + ' Hz', tx_, R.y + R.h - (wide ? 8 : -2), { size: fs - 1.5, color: C.txt2, align: 'center', halo: true }); };
       obs(0.06, 'A', C.verde, k.vs > 0 ? 'A (detrás): más grave' : 'A', k.fB); obs(0.94, 'B', C.magenta, k.vs > 0 ? 'B (delante): más agudo' : 'B', k.fF);

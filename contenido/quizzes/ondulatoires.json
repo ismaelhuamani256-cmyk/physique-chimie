@@ -1,0 +1,236 @@
+{
+ "capitulo_id": "ondulatoires",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "numerico",
+   "enunciado": "Un appareil mesure une intensité sonore I = 5,9×10⁻⁷ W·m⁻². Calculer le niveau d'intensité sonore L (I₀ = 1,0×10⁻¹² W·m⁻²).",
+   "valor": 57.7,
+   "unidad": "dB",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "L = 10·log(I/I₀)",
+    "L = 10·log(5,9×10⁻⁷ / 1,0×10⁻¹²) = 10·log(5,9×10⁵)",
+    "L ≈ 57.7 dB ≈ 58 dB"
+   ],
+   "pagina_pdf": 458
+  },
+  {
+   "id": "q2",
+   "tipo": "numerico",
+   "enunciado": "Le niveau d'intensité sonore d'un son vaut L = 104 dB. Calculer l'intensité sonore I correspondante (I₀ = 1,0×10⁻¹² W·m⁻²).",
+   "valor": 0.0251,
+   "unidad": "W·m⁻²",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "I = I₀·10^(L/10)",
+    "I = 1,0×10⁻¹² × 10^(104/10) = 1,0×10⁻¹² × 10^10,4",
+    "I = 2.51e-02 W·m⁻² ≈ 2,5×10⁻² W·m⁻²"
+   ],
+   "pagina_pdf": 458
+  },
+  {
+   "id": "q3",
+   "tipo": "numerico",
+   "enunciado": "Un groupe de musique : batterie 70 dB, guitares 68 dB, piano 65 dB, chanteuse 66 dB (niveaux séparés mesurés au sonomètre). Quel est le niveau d'intensité sonore total lorsque tous les instruments jouent ensemble ? (on additionne les intensités, pas les niveaux)",
+   "valor": 73.7,
+   "unidad": "dB",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "Pour chaque instrument : I = I₀·10^(L/10)",
+    "I_total = I₀·(10⁷ + 10⁶,⁸ + 10⁶,⁵ + 10⁶,⁶) ≈ 2,3×10⁻⁵ W·m⁻²",
+    "L_total = 10·log(I_total/I₀) ≈ 73.7 dB"
+   ],
+   "pagina_pdf": 465
+  },
+  {
+   "id": "q4",
+   "tipo": "numerico",
+   "enunciado": "Une fente est éclairée par un laser de longueur d'onde λ = 650 nm. L'écran est à D = 2,70 m et la tache centrale a une largeur L = 2,40 cm. Déterminer la largeur a de la fente (petits angles : tan θ ≈ θ = L/2D = λ/a).",
+   "valor": 146.2,
+   "unidad": "µm",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "θ = λ/a et tan θ ≈ θ = L/(2D)",
+    "a = 2λD/L (tout en mètres : L = 2,40×10⁻² m)",
+    "a = 2×650×10⁻⁹×2,70 / 2,40×10⁻² = 1.463e-04 m ≈ 146 µm"
+   ],
+   "pagina_pdf": 458
+  },
+  {
+   "id": "q5",
+   "tipo": "numerico",
+   "enunciado": "Un laser rouge (λ = 633 nm) éclaire deux trous. L'écran est à D = 2,6 m et l'interfrange mesurée est i = 3,4 mm. Calculer l'écartement e entre les deux trous.",
+   "valor": 484.0,
+   "unidad": "µm",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "i = λ·D/e donc e = λ·D/i",
+    "e = 633×10⁻⁹ × 2,6 / 3,4×10⁻³",
+    "e = 4.84e-04 m ≈ 484 µm (le corrigé donne 4,8×10⁻⁴ m)"
+   ],
+   "pagina_pdf": 622
+  },
+  {
+   "id": "q6",
+   "tipo": "numerico",
+   "enunciado": "Un bourdon bat des ailes 200 fois par seconde (f = 200 Hz) et s'approche d'un observateur immobile à v = 7 m·s⁻¹ (c = 340 m·s⁻¹). Calculer le décalage Doppler Δf = f·v/c.",
+   "valor": 4.1,
+   "unidad": "Hz",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "Δf = f·v/c",
+    "Δf = 200 × 7 / 340",
+    "Δf ≈ 4.1 Hz : f perçue ≈ 204 Hz"
+   ],
+   "pagina_pdf": 622
+  },
+  {
+   "id": "q7",
+   "tipo": "numerico",
+   "enunciado": "La sirène d'un camion de pompiers émet à 800 Hz. Le camion passe à 30 m·s⁻¹ (c = 340 m·s⁻¹). Quelle fréquence l'observateur perçoit-il quand le camion s'approche ? (utiliser Δf = f·v/c)",
+   "valor": 871.0,
+   "unidad": "Hz",
+   "tolerancia_rel": 0.01,
+   "cifras_sig": 3,
+   "pasos": [
+    "Δf = f·v/c = 800×30/340 ≈ 71 Hz",
+    "Il s'approche : f_R = f_e + Δf",
+    "f_R = 800 + 71 = 871 Hz"
+   ],
+   "pagina_pdf": 622
+  },
+  {
+   "id": "q8",
+   "tipo": "opcion",
+   "enunciado": "Pourquoi ne peut-on pas additionner directement les niveaux sonores en dB de plusieurs sources ?",
+   "opciones": [
+    "Parce que le décibel n'est pas une unité du Système international",
+    "Parce que la fonction log n'est pas additive : log a + log b ≠ log(a + b), il faut additionner les intensités",
+    "Parce que les niveaux sonores sont toujours égaux",
+    "Parce que seul le niveau le plus élevé compte toujours"
+   ],
+   "correcta": 1,
+   "explicacion": "L = 10·log(I/I₀) : on convertit chaque niveau en intensité, on additionne les intensités puis on reconvertit en dB (ex. 28 : 82 dB + 82 dB ≈ 85 dB).",
+   "pagina_pdf": 622
+  },
+  {
+   "id": "q9",
+   "tipo": "opcion",
+   "enunciado": "La diffraction d'une onde par une ouverture est d'autant plus marquée que :",
+   "opciones": [
+    "la taille a de l'ouverture est très grande devant λ",
+    "la taille a de l'ouverture est voisine ou inférieure à λ",
+    "la fréquence de l'onde est nulle",
+    "l'écran est très proche de l'ouverture"
+   ],
+   "correcta": 1,
+   "explicacion": "Cours : la diffraction dépend de a et de λ ; elle est d'autant plus marquée que a est voisin ou inférieur à λ.",
+   "pagina_pdf": 453
+  },
+  {
+   "id": "q10",
+   "tipo": "opcion",
+   "enunciado": "On diminue la largeur a d'une fente éclairée par un laser de longueur d'onde λ. La tache centrale de diffraction :",
+   "opciones": [
+    "se rétrécit",
+    "ne change pas",
+    "s'élargit, car θ = λ/a augmente",
+    "disparaît pour toujours"
+   ],
+   "correcta": 2,
+   "explicacion": "θ = λ/a : si a diminue, θ augmente et la tache centrale (de largeur L = 2λD/a) s'élargit.",
+   "pagina_pdf": 454
+  },
+  {
+   "id": "q11",
+   "tipo": "opcion",
+   "enunciado": "Quelles sont les conditions pour observer des interférences entre deux ondes ?",
+   "opciones": [
+    "Avoir des longueurs d'onde différentes et un déphasage variable",
+    "Avoir la même longueur d'onde (ou fréquence) et être synchrones, c'est-à-dire un déphasage constant",
+    "Avoir la même amplitude seulement",
+    "Venir de sources placées côte à côte, quelles que soient leurs fréquences"
+   ],
+   "correcta": 1,
+   "explicacion": "Conditions d'interférences : même longueur d'onde ou fréquence ET ondes synchrones (cohérentes), c'est-à-dire un déphasage constant.",
+   "pagina_pdf": 454
+  },
+  {
+   "id": "q12",
+   "tipo": "opcion",
+   "enunciado": "Deux haut-parleurs émettent λ = 2,0 m. Un point est à 1 m du premier et à 4 m du second. Que se passe-t-il en ce point ?",
+   "opciones": [
+    "Interférences constructives, maximum d'amplitude",
+    "Interférences destructives, minimum d'amplitude",
+    "Aucune interférence",
+    "Interférences constructives avec δ = 3λ"
+   ],
+   "correcta": 1,
+   "explicacion": "δ = 4 − 1 = 3 m = 3λ/2 = (k + ½)λ avec k = 1 : minimum d'amplitude, interférences destructives (ex. 16).",
+   "pagina_pdf": 460
+  },
+  {
+   "id": "q13",
+   "tipo": "opcion",
+   "enunciado": "Quel est le principe d'un casque à réduction de bruit ?",
+   "opciones": [
+    "Il amplifie le bruit ambiant par interférences constructives",
+    "Il émet une onde en opposition de phase avec le bruit ambiant pour l'annuler (interférences destructives)",
+    "Il diffracte le bruit par une ouverture étroite",
+    "Il utilise l'effet Doppler pour baisser la fréquence"
+   ],
+   "correcta": 1,
+   "explicacion": "Un micro détecte les ondes sonores ambiantes et crée un signal en opposition de phase qui annule le bruit.",
+   "pagina_pdf": 455
+  },
+  {
+   "id": "q14",
+   "tipo": "opcion",
+   "enunciado": "Le son d'un train qui klaxonne est plus aigu quand il s'approche et plus grave quand il s'éloigne. Cela s'explique par :",
+   "opciones": [
+    "la diffraction du son",
+    "l'effet Doppler : la fréquence perçue dépend du mouvement relatif de la source",
+    "l'atténuation géométrique",
+    "les interférences destructives"
+   ],
+   "correcta": 1,
+   "explicacion": "Effet Doppler : variation de fréquence perçue par un observateur si la source est en mouvement par rapport à lui.",
+   "pagina_pdf": 456
+  },
+  {
+   "id": "q15",
+   "tipo": "opcion",
+   "enunciado": "Le spectre d'une étoile présente des raies décalées vers les grandes longueurs d'onde par rapport à celles obtenues en laboratoire. Que peut-on dire ?",
+   "opciones": [
+    "L'étoile se rapproche de la Terre",
+    "L'étoile s'éloigne de la Terre (redshift)",
+    "L'étoile est immobile",
+    "L'étoile est forcément double"
+   ],
+   "correcta": 1,
+   "explicacion": "λ = c/f : si l'étoile s'éloigne, f perçue diminue et λ augmente : décalage vers le rouge (redshift).",
+   "pagina_pdf": 456
+  },
+  {
+   "id": "q16",
+   "tipo": "opcion",
+   "enunciado": "Un second bourdon vole à la même vitesse à côté du premier. Quelle fréquence perçoit le premier bourdon pour les battements du second ?",
+   "opciones": [
+    "200 Hz : il le perçoit immobile",
+    "204 Hz",
+    "196 Hz",
+    "0 Hz"
+   ],
+   "correcta": 0,
+   "explicacion": "Il n'y a pas de mouvement relatif entre eux, donc pas de décalage Doppler (ex. 20) : f = 200 Hz.",
+   "pagina_pdf": 622
+  }
+ ]
+}

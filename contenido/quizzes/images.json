@@ -1,0 +1,263 @@
+{
+ "capitulo_id": "images",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "numerico",
+   "enunciado": "Une lunette afocale a un objectif de distance focale f'₁ = 60 cm et un oculaire de distance focale f'₂ = 20 mm. Quelle distance sépare l'objectif de l'oculaire ?",
+   "valor": 62,
+   "unidad": "cm",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "Lunette afocale : F'₁ = F₂, donc O₁O₂ = f'₁ + f'₂",
+    "f'₂ = 20 mm = 2,0 cm",
+    "O₁O₂ = 60 + 2,0 = 62 cm"
+   ],
+   "pagina_pdf": 482
+  },
+  {
+   "id": "q2",
+   "tipo": "numerico",
+   "enunciado": "Lunette afocale : f'₁ = 50 cm et f'₂ = 1,0 cm. Calculer son grossissement G (valeur algébrique, sans unité).",
+   "valor": -50,
+   "unidad": "",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "G = −f'₁/f'₂",
+    "G = −50/1,0 = −50"
+   ],
+   "pagina_pdf": 484
+  },
+  {
+   "id": "q3",
+   "tipo": "numerico",
+   "enunciado": "Universarium de Nice : la lunette a une distance focale f'₁ = 17,89 m. Un objet à l'infini de diamètre apparent θ = 1″ = (1/3600)° donne une image intermédiaire de taille A₁B₁ = f'₁·tan θ. Calculer A₁B₁ en µm.",
+   "valor": 87,
+   "unidad": "µm",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "tan θ ≈ tan(1/3600°) = 4,85×10⁻⁶",
+    "A₁B₁ = 17,89 × 4,85×10⁻⁶ = 8,7×10⁻⁵ m",
+    "A₁B₁ = 87 µm"
+   ],
+   "pagina_pdf": 484
+  },
+  {
+   "id": "q4",
+   "tipo": "numerico",
+   "enunciado": "Universarium de Nice : f'₁ = 17,89 m. Quelle distance focale f'₂ (en mm) doit avoir l'oculaire pour obtenir un grossissement de −2 200 ?",
+   "valor": 8.1,
+   "unidad": "mm",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "G = −f'₁/f'₂ donc f'₂ = −f'₁/G",
+    "f'₂ = 17,89/2 200 = 8,13×10⁻³ m",
+    "f'₂ ≈ 8,1 mm"
+   ],
+   "pagina_pdf": 484
+  },
+  {
+   "id": "q5",
+   "tipo": "numerico",
+   "enunciado": "Deux lentilles de distances focales f'₁ = 1,0 m et f'₂ = 10 cm : le cercle oculaire est l'image de la monture de l'objectif par l'oculaire, avec O₂O₁ = −110 cm. Calculer la position O₂C du cercle oculaire (en cm).",
+   "valor": 11,
+   "unidad": "cm",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "1/O₂C = 1/O₂O₁ + 1/f'₂",
+    "1/O₂C = 1/(−110) + 1/10 = 0,091 cm⁻¹",
+    "O₂C = 11 cm"
+   ],
+   "pagina_pdf": 487
+  },
+  {
+   "id": "q6",
+   "tipo": "numerico",
+   "enunciado": "Même lunette (objectif de diamètre D = 4,0 cm, O₂O₁ = −110 cm, O₂C = 11 cm). Calculer le diamètre d_CO du cercle oculaire, en mm.",
+   "valor": 4.0,
+   "unidad": "mm",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "d_CO = |γ| × D = |O₂C/O₂O₁| × D",
+    "d_CO = (11/110) × 4,0 = 0,40 cm",
+    "d_CO = 4,0 mm"
+   ],
+   "pagina_pdf": 487
+  },
+  {
+   "id": "q7",
+   "tipo": "numerico",
+   "enunciado": "Un objectif de diamètre D = 9,0 cm donne un faisceau qui doit entrer dans une pupille de diamètre 6 mm (cercle oculaire a = 6 mm). Calculer la valeur absolue du grossissement |G| = D/a.",
+   "valor": 15,
+   "unidad": "",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "G = −D/a",
+    "|G| = 90 mm / 6 mm = 15"
+   ],
+   "pagina_pdf": 488
+  },
+  {
+   "id": "q8",
+   "tipo": "numerico",
+   "enunciado": "Même lunette (f'₁ = 60 cm, |G| = 15). Calculer la distance focale f'₂ de l'oculaire, en cm.",
+   "valor": 4.0,
+   "unidad": "cm",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "G = −f'₁/f'₂ donc f'₂ = f'₁/|G|",
+    "f'₂ = 60/15 = 4,0 cm"
+   ],
+   "pagina_pdf": 488
+  },
+  {
+   "id": "q9",
+   "tipo": "numerico",
+   "enunciado": "Un gemmologue observe une pierre située à 6,0 cm d'une loupe de distance focale 75 mm. Calculer la valeur du grandissement γ (sans unité).",
+   "valor": 5.0,
+   "unidad": "",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "OA = −6,0 cm ; f' = 7,5 cm",
+    "1/OA' = 1/OA + 1/f' = −0,1667 + 0,1333 = −0,0333 cm⁻¹ → OA' = −30 cm",
+    "γ = OA'/OA = (−30)/(−6,0) = 5,0"
+   ],
+   "pagina_pdf": 472
+  },
+  {
+   "id": "q10",
+   "tipo": "numerico",
+   "enunciado": "Tour Montparnasse (h = 210 m) vue à D = 6 km à travers la lunette terrestre de grossissement G = 5. Calculer l'angle θ' sous lequel on la voit, en rad (θ = h/D).",
+   "valor": 0.18,
+   "unidad": "rad",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "θ = h/D = 210/6000 = 0,035 rad",
+    "θ' = G × θ = 5 × 0,035 = 0,175 rad ≈ 0,18 rad"
+   ],
+   "pagina_pdf": 491
+  },
+  {
+   "id": "q11",
+   "tipo": "numerico",
+   "enunciado": "Œil myope et lunette de f'₁ = 60 cm : l'objet AB est vu sous θ = 2,0×10⁻² rad. Calculer la valeur absolue de la taille de l'image intermédiaire, |A₁B₁| = f'₁·tan θ, en cm.",
+   "valor": 1.2,
+   "unidad": "cm",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "|A₁B₁| = 60 × tan(2,0×10⁻²)",
+    "|A₁B₁| = 60 × 0,0200 = 1,2 cm"
+   ],
+   "pagina_pdf": 487
+  },
+  {
+   "id": "q12",
+   "tipo": "numerico",
+   "enunciado": "Pouvoir séparateur de l'œil : 1′ = 60″. Deux étoiles sont séparées de θ = 34″. Calculer le grossissement minimal G_min (valeur absolue) pour que l'œil les sépare à travers la lunette.",
+   "valor": 1.8,
+   "unidad": "",
+   "tolerancia_rel": 0.05,
+   "cifras_sig": 2,
+   "pasos": [
+    "θ' = G·θ doit valoir au moins 60″",
+    "G_min = 60/34 ≈ 1,8"
+   ],
+   "pagina_pdf": 484
+  },
+  {
+   "id": "q13",
+   "tipo": "opcion",
+   "enunciado": "Lorsqu'on observe une étoile à travers une lunette astronomique, le faisceau :",
+   "opciones": [
+    "traverse l'oculaire avant de pénétrer dans la lunette",
+    "traverse l'objectif puis émerge par l'oculaire",
+    "traverse l'oculaire puis émerge par l'objectif",
+    "ne traverse aucune lentille"
+   ],
+   "correcta": 1,
+   "explicacion": "Le faisceau traverse l'objectif avant de pénétrer dans la lunette et émerge par l'oculaire.",
+   "pagina_pdf": 482
+  },
+  {
+   "id": "q14",
+   "tipo": "opcion",
+   "enunciado": "Le faisceau issu d'un point situé à l'infini (hors de l'axe) converge :",
+   "opciones": [
+    "au foyer image de l'objectif",
+    "au foyer objet de l'oculaire",
+    "dans le plan focal image de l'objectif",
+    "au centre optique O₁"
+   ],
+   "correcta": 2,
+   "explicacion": "Il converge en un point B₁ du plan focal image de l'objectif ; seul A (sur l'axe) converge en F'₁.",
+   "pagina_pdf": 482
+  },
+  {
+   "id": "q15",
+   "tipo": "opcion",
+   "enunciado": "L'image intermédiaire A₁B₁ est :",
+   "opciones": [
+    "réelle et à l'endroit",
+    "réelle et renversée",
+    "virtuelle et renversée",
+    "virtuelle et à l'endroit"
+   ],
+   "correcta": 1,
+   "explicacion": "L'objectif donne une image réelle et renversée de l'objet, qui sert d'objet pour l'oculaire.",
+   "pagina_pdf": 482
+  },
+  {
+   "id": "q16",
+   "tipo": "opcion",
+   "enunciado": "Pour augmenter le grossissement d'une lunette afocale, on peut :",
+   "opciones": [
+    "augmenter le diamètre de l'objectif",
+    "diminuer la distance focale de l'oculaire",
+    "augmenter la distance focale de l'oculaire",
+    "diminuer la distance focale de l'objectif"
+   ],
+   "correcta": 1,
+   "explicacion": "|G| = f'₁/f'₂ : on l'augmente en diminuant f'₂ (ou en augmentant f'₁). Le diamètre de l'objectif ne change pas G.",
+   "pagina_pdf": 482
+  },
+  {
+   "id": "q17",
+   "tipo": "opcion",
+   "enunciado": "Pour une observation dans de bonnes conditions, l'œil doit être placé :",
+   "opciones": [
+    "au niveau du foyer image de l'oculaire (sans autre précision)",
+    "au niveau du cercle oculaire",
+    "contre l'oculaire",
+    "au niveau de l'objectif"
+   ],
+   "correcta": 1,
+   "explicacion": "Le cercle oculaire est l'endroit où l'on reçoit le maximum de lumière provenant de l'objet à l'infini.",
+   "pagina_pdf": 482
+  },
+  {
+   "id": "q18",
+   "tipo": "opcion",
+   "enunciado": "Pourquoi parle-t-on de grossissement G et non de grandissement γ pour une lunette ?",
+   "opciones": [
+    "la lunette ne donne aucune image",
+    "les tailles de l'objet (lointain) et de l'image (virtuelle) ne sont pas accessibles ; on compare des angles",
+    "γ n'existe que pour les lentilles divergentes",
+    "G se mesure avec un mètre"
+   ],
+   "correcta": 1,
+   "explicacion": "Comme la taille de l'objet et celle de l'image virtuelle ne sont pas accessibles, on détermine G = θ'/θ (rapport d'angles).",
+   "pagina_pdf": 480
+  }
+ ]
+}

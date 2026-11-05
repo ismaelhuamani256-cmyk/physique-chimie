@@ -1,0 +1,1495 @@
+{
+ "id": "thermodynamique",
+ "titulo": "Premier principe de la thermodynamique",
+ "materia": "physique",
+ "mundo": "energie",
+ "pdf_ini": 414,
+ "pdf_fin": 445,
+ "resumen": "La energía interna U de un sistema es la suma de sus energías microscópicas (cinéticas por agitación térmica y potenciales de interacción). El primer principio dice que, para un sistema cerrado y en reposo, ΔU = W + Q: solo cambia al intercambiar trabajo o transferencia térmica con el exterior. Las transferencias térmicas (conducción, convección, rayonamiento) van siempre del medio caliente al frío; se describen con la capacidad térmica (Q = C·ΔT), el flujo y la resistencia térmica, y dos leyes: Stefan-Boltzmann (F = σT⁴, temperatura de la Tierra, albedo y efecto invernadero) y Newton (dT/dt = −γ(T − T_th), enfriamiento exponencial).",
+ "resumen_fr": "Énergie interne, premier principe ΔU = W + Q, capacité thermique, modes de transfert thermique, flux et résistance thermique, loi de Stefan-Boltzmann (température terrestre moyenne, albédo, effet de serre) et loi thermique de Newton.",
+ "nociones_clave": [
+  {
+   "id": "n1",
+   "fr": "Système, énergie interne U d'un système",
+   "es": "El sistema es el objeto del estudio energético. Su energía interna U es su energía propia: la suma de todas las energías que existen a escala microscópica por sus constituyentes. Se mide en joule (J).",
+   "pagina_pdf": 420
+  },
+  {
+   "id": "n2",
+   "fr": "Aspect microscopique de U",
+   "es": "Con tantas partículas no se puede calcular U directamente, pero sí determinar su variación ΔU (que, como toda energía, se expresa en joule).",
+   "pagina_pdf": 420
+  },
+  {
+   "id": "n3",
+   "fr": "Contributions microscopiques à U",
+   "es": "Energías cinéticas microscópicas (agitación thermique, aumentan con la temperatura) y energías potentielles d'interaction entre partículas (interacciones intra o intermoleculares: entre nucleones, átomos de una molécula, moléculas).",
+   "pagina_pdf": 420
+  },
+  {
+   "id": "n4",
+   "fr": "Énergie totale d'un système",
+   "es": "E_tot = E_c + E_pp + U. Un sistema en reposo macroscópico tiene E_c + E_pp constante, y entonces ΔE_tot = ΔU.",
+   "pagina_pdf": 420
+  },
+  {
+   "id": "n5",
+   "fr": "Système fermé au repos",
+   "es": "Sistema que no intercambia materia con el exterior y está en reposo a escala macroscópica: es el caso al que se aplica el primer principio.",
+   "pagina_pdf": 421
+  },
+  {
+   "id": "n6",
+   "fr": "Premier principe de la thermodynamique",
+   "es": "ΔU = W + Q: la energía de un sistema cerrado en reposo varía solo si intercambia energía con el exterior, como trabajo W o como transferencia térmica Q. Sirve para el bilan thermique (estudio energético). ΔU > 0 si el sistema gana energía.",
+   "pagina_pdf": 421
+  },
+  {
+   "id": "n7",
+   "fr": "Capacité thermique C",
+   "es": "Energía que hay que transferir a un sistema para aumentar su temperatura 1 kelvin (J·K⁻¹). Puede razonarse directamente en °C para las variaciones: T(K) = θ(°C) + 273.",
+   "pagina_pdf": 421
+  },
+  {
+   "id": "n8",
+   "fr": "Transfert thermique Q",
+   "es": "Transferencia de energía entre el sistema y el exterior que se traduce en una variación de temperatura ΔT del sistema (Q = C·ΔT).",
+   "pagina_pdf": 421
+  },
+  {
+   "id": "n9",
+   "fr": "Conduction thermique",
+   "es": "Transferencia térmica por contacto entre el sistema y el exterior: a nivel microscópico la agitación térmica se transmite de cerca en cerca sin transporte de materia (casserole sobre la placa eléctrica).",
+   "pagina_pdf": 422
+  },
+  {
+   "id": "n10",
+   "fr": "Convection thermique",
+   "es": "Transferencia térmica por movimiento de materia dentro del sistema: el aire caliente, menos denso, sube y el frío, más denso, baja (radiador, convector eléctrico).",
+   "pagina_pdf": 422
+  },
+  {
+   "id": "n11",
+   "fr": "Rayonnement thermique",
+   "es": "Transferencia térmica por medio de una onda electromagnética, sin soporte material (el Sol calienta la Tierra a distancia).",
+   "pagina_pdf": 422
+  },
+  {
+   "id": "n12",
+   "fr": "Sens du transfert thermique",
+   "es": "Solo se hace en un sentido: del medio de temperatura más alta (fuente caliente) al de más baja (fuente fría), hasta que las temperaturas se igualan (irreversible: el café caliente se enfría).",
+   "pagina_pdf": 422
+  },
+  {
+   "id": "n13",
+   "fr": "Flux thermique Φ",
+   "es": "Transferencia térmica Q por unidad de tiempo entre dos medios (en W): evalúa la velocidad de la transferencia.",
+   "pagina_pdf": 422
+  },
+  {
+   "id": "n14",
+   "fr": "Résistance thermique R_th",
+   "es": "Traduce la oposición de un sistema o material al flujo térmico: cuanto mayor es, menor el flujo. Una buena aislación es una gran R_th (en K·W⁻¹).",
+   "pagina_pdf": 423
+  },
+  {
+   "id": "n15",
+   "fr": "Corps noir",
+   "es": "Objeto ideal que emite en forma de radiación toda la energía que recibe; la ley de Stefan-Boltzmann relaciona su flujo por unidad de superficie con su temperatura.",
+   "pagina_pdf": 423
+  },
+  {
+   "id": "n16",
+   "fr": "Albédo",
+   "es": "Proporción de la energía recibida por un planeta que se refleja y no se absorbe. Tierra y atmósfera: A = 0,30 (≈ 70 % del flujo se absorbe).",
+   "pagina_pdf": 424
+  },
+  {
+   "id": "n17",
+   "fr": "Effet de serre",
+   "es": "Fenómeno natural de calentamiento de un planeta provocado por los gases de su atmósfera, que absorben parte de la radiación infrarroja emitida por el suelo (≈ 20 % para la Tierra).",
+   "pagina_pdf": 424
+  },
+  {
+   "id": "n18",
+   "fr": "Température moyenne terrestre",
+   "es": "Estimable suponiendo la temperatura globalmente estable: flujo recibido del Sol = flujo emitido por la Tierra. Sin albedo ni efecto invernadero se obtiene 279 K = 6 °C; con ambos se llega a ≈ 15 °C.",
+   "pagina_pdf": 424
+  },
+  {
+   "id": "n19",
+   "fr": "Thermostat",
+   "es": "Objeto cuya temperatura permanece constante; el medio exterior suele hacer de termostato para el sistema estudiado.",
+   "pagina_pdf": 424
+  },
+  {
+   "id": "n20",
+   "fr": "Bilan radiatif",
+   "es": "El balance radiativo terrestre es la diferencia entre la energía solar recibida y la energía emitida al espacio; el albedo y el efecto invernadero influyen en la temperatura del planeta.",
+   "pagina_pdf": 414
+  },
+  {
+   "id": "n21",
+   "fr": "Diagramme énergétique",
+   "es": "Esquema del estudio energético: sistema en el centro y flechas de las transferencias de energía (W, Q…) que entran o salen; Q y W son positivos si el sistema recibe, negativos si cede.",
+   "pagina_pdf": 431
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "U = E_{c,\\text{micro}} + E_{pp,\\text{micro}}",
+   "nombre": "Energía interna: contribuciones microscópicas",
+   "nombre_fr": "Énergie interne d'un système",
+   "variables": [
+    {
+     "simbolo": "U",
+     "significado": "energía interna del sistema (suma de las energías microscópicas)",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "E_{c,\\text{micro}}",
+     "significado": "energías cinéticas microscópicas (agitación térmica de las partículas)",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "E_{pp,\\text{micro}}",
+     "significado": "energías potenciales de interacción entre partículas (intra e intermoleculares)",
+     "unidad": "J"
+    }
+   ],
+   "explicacion": "La energía interna U es la suma de todas las energías que existen a escala microscópica: cinéticas (agitación térmica, que aumentan con la temperatura) y potenciales de interacción. No se puede calcular directamente, pero sí su variación ΔU.",
+   "ejemplo": {
+    "enunciado": "Cours: en el aire, las moléculas de dioxígeno tienen una velocidad media de 4,6×10² m·s⁻¹ a 0 °C y de 5,0×10² m·s⁻¹ a 20 °C.",
+    "resultado": "Su energía cinética microscópica aumenta con la temperatura.",
+    "pagina_pdf": 420
+   },
+   "pagina_pdf": 420,
+   "animacion": {
+    "preset": "termodinamica",
+    "params": {},
+    "leyenda": "Un gas en un pistón con partículas agitadas: mueve Q y W y observa cómo el balance de energías cambia la energía interna U."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "E_{tot} = E_c + E_{pp} + U",
+   "nombre": "Energía total de un sistema",
+   "nombre_fr": "Énergie totale d'un système",
+   "variables": [
+    {
+     "simbolo": "E_{tot}",
+     "significado": "energía total del sistema",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "E_c",
+     "significado": "energía cinética (del sistema en movimiento)",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "E_{pp}",
+     "significado": "energía potencial de pesantez (sistema en altura)",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "U",
+     "significado": "energía interna",
+     "unidad": "J"
+    }
+   ],
+   "explicacion": "Un sistema en movimiento o en altura tiene además E_c y E_pp. Un sistema en reposo a escala macroscópica tiene E_c + E_pp = constante.",
+   "ejemplo": null,
+   "pagina_pdf": 420,
+   "animacion": {
+    "preset": "termodinamica",
+    "params": {},
+    "leyenda": "Un gas en un pistón con partículas agitadas: mueve Q y W y observa cómo el balance de energías cambia la energía interna U."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "\\Delta E_{tot} = \\Delta U",
+   "nombre": "Variación de la energía total de un sistema en reposo",
+   "nombre_fr": "Variation d'énergie totale d'un système au repos",
+   "variables": [
+    {
+     "simbolo": "\\Delta E_{tot}",
+     "significado": "variación de la energía total",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "\\Delta U",
+     "significado": "variación de la energía interna",
+     "unidad": "J"
+    }
+   ],
+   "explicacion": "Si el sistema está en reposo a escala macroscópica (E_c + E_pp constante), toda la variación de energía total es variación de energía interna.",
+   "ejemplo": null,
+   "pagina_pdf": 421,
+   "animacion": {
+    "preset": "termodinamica",
+    "params": {},
+    "leyenda": "Un gas en un pistón con partículas agitadas: mueve Q y W y observa cómo el balance de energías cambia la energía interna U."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "\\Delta U = W + Q",
+   "nombre": "Primer principio de la termodinámica",
+   "nombre_fr": "Premier principe de la thermodynamique",
+   "variables": [
+    {
+     "simbolo": "\\Delta U",
+     "significado": "variación de energía interna del sistema",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "W",
+     "significado": "trabajo recibido por el sistema",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "Q",
+     "significado": "transferencia térmica recibida por el sistema",
+     "unidad": "J"
+    }
+   ],
+   "explicacion": "Para un sistema cerrado (sin intercambio de materia) y en reposo, su energía solo varía si intercambia energía con el exterior: como trabajo W o como transferencia térmica Q. ΔU > 0 cuando el sistema gana energía. Sirve para hacer el balance térmico.",
+   "ejemplo": {
+    "enunciado": "Exercice 18 (chocolat fouetté): el chocolat pierde 50 kJ al enfriarse (Q = −50 kJ) y recibe 10 kJ del batidor eléctrico (W = +10 kJ).",
+    "resultado": "ΔU = W + Q = 10 − 50 = −40 kJ (aplicación directa de la fórmula; el corrigé impreso no cubre este ejercicio).",
+    "pagina_pdf": 427
+   },
+   "pagina_pdf": 421,
+   "animacion": {
+    "preset": "termodinamica",
+    "params": {},
+    "leyenda": "Mueve Q y W: el pistón recibe o cede energía y la barra de ΔU = W + Q sube o baja según los signos."
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "\\Delta U = Q = C\\cdot\\Delta T",
+   "nombre": "Transferencia térmica y capacidad térmica (sistema incompresible)",
+   "nombre_fr": "Transfert thermique et capacité thermique",
+   "variables": [
+    {
+     "simbolo": "Q",
+     "significado": "transferencia térmica",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "C",
+     "significado": "capacidad térmica del sistema",
+     "unidad": "J·K⁻¹"
+    },
+    {
+     "simbolo": "\\Delta T",
+     "significado": "variación de temperatura (se puede calcular directamente en °C)",
+     "unidad": "K"
+    }
+   ],
+   "explicacion": "La capacidad térmica C es la energía que hay que transferir al sistema para subir su temperatura 1 K. Para un sistema cerrado, en reposo e incompresible: ΔU = Q = C·ΔT.",
+   "ejemplo": {
+    "enunciado": "Exercice 23 (café en un termo): 1,0 L de café (ρ = 1,0 kg·L⁻¹, c = 4,18 kJ·kg⁻¹·K⁻¹) pasa de 60 °C a 52 °C.",
+    "resultado": "ΔU_café = ρ·V·c·ΔT = 1,0×1,0×4,18×(52 − 60) = −33 kJ.",
+    "pagina_pdf": 428
+   },
+   "pagina_pdf": 421,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "C*x",
+     "xmin": 0,
+     "xmax": 80,
+     "vars": {
+      "C": {
+       "min": 100,
+       "max": 4000,
+       "step": 50,
+       "def": 1045,
+       "label": "Capacidad térmica C",
+       "unit": "J/K"
+      }
+     }
+    },
+    "leyenda": "Gráfica de Q = C·ΔT (en J) frente a ΔT (en K): una recta cuya pendiente es la capacidad térmica C (por defecto 1 045 J/K, el mug de 250 mL de agua)."
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "C = m\\cdot c",
+   "nombre": "Capacidad térmica y capacidad térmica másica",
+   "nombre_fr": "Capacité thermique massique",
+   "variables": [
+    {
+     "simbolo": "C",
+     "significado": "capacidad térmica del sistema",
+     "unidad": "J·K⁻¹"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa del sistema",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "c",
+     "significado": "capacidad térmica másica del material",
+     "unidad": "J·kg⁻¹·K⁻¹"
+    }
+   ],
+   "explicacion": "La capacidad térmica de un sistema es su masa por la capacidad térmica másica del material. Para el agua: c_eau = 4,18 J·g⁻¹·°C⁻¹ (= 4 180 J·kg⁻¹·K⁻¹).",
+   "ejemplo": {
+    "enunciado": "Exercice 21 (mug de té en el microondas): V = 250 mL de agua (ρ = 1,00 kg·L⁻¹), c_eau = 4 180 J·kg⁻¹·K⁻¹, de 10 °C a 90 °C.",
+    "resultado": "m = 0,250 kg ; C = 0,250×4 180 = 1,05×10³ J·K⁻¹ ; ΔU = C·ΔT = 8,4×10⁴ J (cálculo propio con las fórmulas del cours).",
+    "pagina_pdf": 428
+   },
+   "pagina_pdf": 421,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x*c",
+     "xmin": 0,
+     "xmax": 2,
+     "vars": {
+      "c": {
+       "min": 500,
+       "max": 4500,
+       "step": 10,
+       "def": 4180,
+       "label": "Capacidad térmica másica c",
+       "unit": "J/(kg·K)"
+      }
+     }
+    },
+    "leyenda": "Gráfica de C = m·c (en J/K) frente a la masa m (en kg); la pendiente es c (por defecto, la del agua: 4 180 J·kg⁻¹·K⁻¹)."
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "\\Phi = \\dfrac{Q}{\\Delta t}",
+   "nombre": "Flujo térmico",
+   "nombre_fr": "Flux thermique",
+   "variables": [
+    {
+     "simbolo": "\\Phi",
+     "significado": "flujo térmico (potencia térmica)",
+     "unidad": "W"
+    },
+    {
+     "simbolo": "Q",
+     "significado": "transferencia térmica que fluye entre dos medios",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "\\Delta t",
+     "significado": "duración",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "El flujo térmico mide la rapidez de una transferencia térmica: es el calor Q que pasa entre dos medios por unidad de tiempo. Tiene dimensiones de potencia.",
+   "ejemplo": {
+    "enunciado": "Exercice 30 (sauna): en 5,0 min el sauna pierde la energía recibida durante la 1 min de calentamiento a P = 7,5 kW, es decir 4,5×10² kJ.",
+    "resultado": "Φ = ΔE/Δt = 450×10³/300 = 1,5 kW.",
+    "pagina_pdf": 621
+   },
+   "pagina_pdf": 422,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "Q/x",
+     "xmin": 60,
+     "xmax": 600,
+     "vars": {
+      "Q": {
+       "min": 50000,
+       "max": 900000,
+       "step": 10000,
+       "def": 450000,
+       "label": "Transferencia Q",
+       "unit": "J"
+      }
+     }
+    },
+    "leyenda": "Gráfica de Φ = Q/Δt (en W) frente a la duración Δt (en s): con Q fijo, cuanto más lenta es la transferencia, menor es el flujo."
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "\\Phi = \\dfrac{T_c - T_f}{R_{th}}",
+   "nombre": "Flujo térmico y resistencia térmica",
+   "nombre_fr": "Flux thermique et résistance thermique",
+   "variables": [
+    {
+     "simbolo": "\\Phi",
+     "significado": "flujo térmico",
+     "unidad": "W"
+    },
+    {
+     "simbolo": "T_c",
+     "significado": "temperatura de la fuente caliente",
+     "unidad": "K (o °C: solo interviene la diferencia)"
+    },
+    {
+     "simbolo": "T_f",
+     "significado": "temperatura de la fuente fría",
+     "unidad": "K (o °C)"
+    },
+    {
+     "simbolo": "R_{th}",
+     "significado": "resistencia térmica del sistema o de la pared",
+     "unidad": "K·W⁻¹"
+    }
+   ],
+   "explicacion": "El flujo depende de la diferencia de temperatura entre los dos medios y de la resistencia térmica, que traduce la oposición del medio al flujo: cuanto mayor es R_th, menor el flujo. Un buen aislante (R_th alta) frena las pérdidas de una vivienda.",
+   "ejemplo": {
+    "enunciado": "Cours: sauna a 70 °C por dentro con 20 °C fuera; hay que aportar 1 500 W.",
+    "resultado": "R_th = ΔT/Φ = 50/1 500 = 3,3×10⁻² K·W⁻¹.",
+    "pagina_pdf": 423
+   },
+   "pagina_pdf": 423,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x/R",
+     "xmin": 0,
+     "xmax": 80,
+     "vars": {
+      "R": {
+       "min": 0.01,
+       "max": 0.2,
+       "step": 0.005,
+       "def": 0.041,
+       "label": "Resistencia térmica R_th",
+       "unit": "K/W"
+      }
+     }
+    },
+    "leyenda": "Gráfica de Φ = ΔT/R_th (en W) frente a la diferencia de temperatura ΔT: con R_th = 0,041 K/W (sauna del exercice 30) y ΔT = 62 K sale ≈ 1 500 W."
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "R_{th} = \\dfrac{e}{\\lambda\\cdot S}",
+   "nombre": "Resistencia térmica de una pared",
+   "nombre_fr": "Résistance thermique d'une paroi",
+   "variables": [
+    {
+     "simbolo": "R_{th}",
+     "significado": "resistencia térmica de la pared",
+     "unidad": "K·W⁻¹"
+    },
+    {
+     "simbolo": "e",
+     "significado": "espesor de la pared",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "\\lambda",
+     "significado": "conductividad térmica del material",
+     "unidad": "W·m⁻¹·K⁻¹"
+    },
+    {
+     "simbolo": "S",
+     "significado": "superficie de la pared",
+     "unidad": "m²"
+    }
+   ],
+   "explicacion": "Cuanto más gruesa es la pared (e) y menos conductor el material (λ pequeña), mayor resistencia. Con varias paredes acopladas, las resistencias se suman. Atención: convertir el espesor a metros. (El cours imprime las unidades de R y λ con erratas; las de los exercices son K·W⁻¹ y W·m⁻¹·K⁻¹.)",
+   "ejemplo": {
+    "enunciado": "Exercice résolu 29 (maison passive): vidrios de triple vitrage, S = 15 m², e = 3,6 cm, λ = 0,023 W·m⁻¹·K⁻¹.",
+    "resultado": "R_V = e/(λ·S) = 3,6×10⁻²/(0,023×15) = 0,10 K·W⁻¹.",
+    "pagina_pdf": 430
+   },
+   "pagina_pdf": 423,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x/(lam*S)",
+     "xmin": 0.01,
+     "xmax": 0.3,
+     "vars": {
+      "lam": {
+       "min": 0.02,
+       "max": 0.6,
+       "step": 0.002,
+       "def": 0.036,
+       "label": "Conductividad λ",
+       "unit": "W/(m·K)"
+      },
+      "S": {
+       "min": 1,
+       "max": 20,
+       "step": 0.1,
+       "def": 2.9,
+       "label": "Superficie S",
+       "unit": "m²"
+      }
+     }
+    },
+    "leyenda": "Gráfica de R_th = e/(λ·S) (en K/W) frente al espesor e (en m): con λ = 0,036 y S = 2,9 m² (ballon d'eau chaude) la resistencia crece linealmente con e."
+   }
+  },
+  {
+   "id": "f10",
+   "latex": "F = \\sigma\\cdot T^{4}",
+   "nombre": "Ley de Stefan-Boltzmann",
+   "nombre_fr": "Loi de Stefan-Boltzmann",
+   "variables": [
+    {
+     "simbolo": "F",
+     "significado": "flujo térmico por unidad de superficie emitido por el cuerpo negro",
+     "unidad": "W·m⁻²"
+    },
+    {
+     "simbolo": "\\sigma",
+     "significado": "constante de Stefan-Boltzmann = 5,67×10⁻⁸",
+     "unidad": "W·m⁻²·K⁻⁴"
+    },
+    {
+     "simbolo": "T",
+     "significado": "temperatura del «cuerpo negro» (obligatoriamente en kelvin)",
+     "unidad": "K"
+    }
+   ],
+   "explicacion": "Todo cuerpo a temperatura no nula pierde energía por radiación. Para un cuerpo negro (objeto ideal que emite en forma de radiación toda la energía que recibe), el flujo emitido por unidad de superficie crece con la 4.ª potencia de T. T(K) = θ(°C) + 273.",
+   "ejemplo": {
+    "enunciado": "Cours: flujo recibido del Sol repartido sobre la Tierra F' = 342 W·m⁻² y equilibrio radiativo σ·T⁴ = F'.",
+    "resultado": "T = 279 K, es decir 6 °C (frente a los 15 °C reales).",
+    "pagina_pdf": 424
+   },
+   "pagina_pdf": 423,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "5.67e-8*x^4",
+     "xmin": 200,
+     "xmax": 400,
+     "vars": {}
+    },
+    "leyenda": "Gráfica de F = σ·T⁴ (en W·m⁻²) frente a T (en K, entre 200 y 400 K): la curva se dispara con la cuarta potencia; a 279 K sale ≈ 343 W·m⁻²."
+   }
+  },
+  {
+   "id": "f11",
+   "latex": "F\\cdot \\pi R_{atm}^{2} = F'\\cdot 4\\pi R_{atm}^{2}\\ \\Rightarrow\\ F' = \\dfrac{F}{4}",
+   "nombre": "Flujo solar repartido sobre la Tierra",
+   "nombre_fr": "Flux thermique reçu du Soleil par unité de surface",
+   "variables": [
+    {
+     "simbolo": "F",
+     "significado": "constante solar: flujo recibido por unidad de superficie perpendicular a los rayos (1 368)",
+     "unidad": "W·m⁻²"
+    },
+    {
+     "simbolo": "F'",
+     "significado": "flujo recibido repartido sobre toda la superficie de la Tierra",
+     "unidad": "W·m⁻²"
+    },
+    {
+     "simbolo": "R_{atm}",
+     "significado": "radio de la Tierra con su atmósfera",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "El flujo total interceptado es el de un disco (πR²) y se reparte sobre una esfera en rotación (4πR²); por tanto F' = F/4.",
+   "ejemplo": {
+    "enunciado": "Cours y exercice résolu 1: F = 1 368 W·m⁻².",
+    "resultado": "F' = 1 368/4 = 342 W·m⁻².",
+    "pagina_pdf": 440
+   },
+   "pagina_pdf": 424,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x/4",
+     "xmin": 0,
+     "xmax": 3000,
+     "vars": {}
+    },
+    "leyenda": "Gráfica de F' = F/4: una recta de pendiente 1/4; con la constante solar F = 1 368 W·m⁻² da F' = 342 W·m⁻²."
+   }
+  },
+  {
+   "id": "f12",
+   "latex": "\\dfrac{dT}{dt} = -\\gamma\\,(T - T_{th})",
+   "nombre": "Ley térmica de Newton (ecuación diferencial)",
+   "nombre_fr": "Loi thermique de Newton",
+   "variables": [
+    {
+     "simbolo": "\\dfrac{dT}{dt}",
+     "significado": "tasa de variación de la temperatura del sistema",
+     "unidad": "K·s⁻¹"
+    },
+    {
+     "simbolo": "\\gamma",
+     "significado": "constante positiva",
+     "unidad": "s⁻¹"
+    },
+    {
+     "simbolo": "T",
+     "significado": "temperatura del sistema",
+     "unidad": "K"
+    },
+    {
+     "simbolo": "T_{th}",
+     "significado": "temperatura del termostato (el medio exterior)",
+     "unidad": "K"
+    }
+   ],
+   "explicacion": "Un sistema incompresible que intercambia energía por transferencia térmica con un termostato (objeto de temperatura constante) varía su temperatura tanto más rápido cuanto mayor es la diferencia T − T_th. Es una ecuación diferencial lineal de primer orden con coeficientes constantes y segundo miembro constante.",
+   "ejemplo": {
+    "enunciado": "Exercice résolu 31 (muffins sortis du four): T(0) = 100 °C, T(10 min) = 80 °C, cocina a T_cuis = 20 °C.",
+    "resultado": "dT/dt = −γ·(T − T_cuis), con γ = ln(4/3)/10 min⁻¹.",
+    "pagina_pdf": 431
+   },
+   "pagina_pdf": 424,
+   "animacion": {
+    "preset": "enfriamiento-newton",
+    "params": {
+     "T0": 100,
+     "Text": 20
+    },
+    "leyenda": "Los muffins salen del horno a 100 °C en una cocina a 20 °C: la curva baja rápido al principio y se aplana hacia T_th; la pendiente en cada punto es −γ·(T − T_th)."
+   }
+  },
+  {
+   "id": "f13",
+   "latex": "T(t) = (T_0 - T_{th})\\,e^{-\\gamma t} + T_{th}",
+   "nombre": "Solución: evolución exponencial de la temperatura",
+   "nombre_fr": "Évolution de la température d'un système en contact avec un thermostat",
+   "variables": [
+    {
+     "simbolo": "T(t)",
+     "significado": "temperatura del sistema en el instante t",
+     "unidad": "K (o °C)"
+    },
+    {
+     "simbolo": "T_0",
+     "significado": "temperatura inicial (t = 0)",
+     "unidad": "K (o °C)"
+    },
+    {
+     "simbolo": "T_{th}",
+     "significado": "temperatura del termostato (T cuando t → ∞)",
+     "unidad": "K (o °C)"
+    },
+    {
+     "simbolo": "\\gamma",
+     "significado": "constante de la ley de Newton",
+     "unidad": "s⁻¹ (o min⁻¹)"
+    }
+   ],
+   "explicacion": "La solución de y' = a·y + b es y(x) = A·e^{ax} + B. Aquí T(t) = A·e^{−γt} + B con B = T_th (T → T_th si t → ∞) y A = T_0 − T_th (condición inicial). Fonction exponentielle décroissante cuyo límite es T_th.",
+   "ejemplo": {
+    "enunciado": "Exercice 28 (tasse de café): 75 °C inicial, 25 °C en la pieza, 50 °C tras 5 min.",
+    "resultado": "T_amb = 25 °C ; T(t) = 50·e^{−γt} + 25 ; γ = (ln 2)/5 min⁻¹ ; T(t) = 50·e^{−(ln 2/5)t} + 25.",
+    "pagina_pdf": 621
+   },
+   "pagina_pdf": 424,
+   "animacion": {
+    "preset": "enfriamiento-newton",
+    "params": {
+     "T0": 75,
+     "Text": 25,
+     "tau": 433
+    },
+    "leyenda": "El café a 75 °C en una pieza a 25 °C: T baja exponencialmente hacia 25 °C; τ = 1/γ = 5/ln 2 min ≈ 433 s, y en 5 min la diferencia se reduce a la mitad (50 °C)."
+   }
+  },
+  {
+   "id": "f14",
+   "latex": "E = P\\cdot\\Delta t",
+   "nombre": "Energía y potencia",
+   "nombre_fr": "Puissance et énergie",
+   "variables": [
+    {
+     "simbolo": "E",
+     "significado": "energía utilizada o suministrada por un dipolo",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "P",
+     "significado": "potencia utilizada o suministrada por el dipolo",
+     "unidad": "W"
+    },
+    {
+     "simbolo": "\\Delta t",
+     "significado": "duración de utilización",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "Relación de 1.º (Avant d'aborder le chapitre) usada para las energías eléctricas de los exercices: bouilloire, microondas, sauna, chauffe-eau.",
+   "ejemplo": {
+    "enunciado": "Exercice 21: horno microondas con P = 900 W; hay que aportar ΔU = 8,4×10⁴ J al agua del mug.",
+    "resultado": "Δt = ΔU/P = 8,36×10⁴/900 ≈ 93 s (cálculo propio con las fórmulas del cours).",
+    "pagina_pdf": 428
+   },
+   "pagina_pdf": 414,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "P*x",
+     "xmin": 0,
+     "xmax": 120,
+     "vars": {
+      "P": {
+       "min": 100,
+       "max": 3000,
+       "step": 50,
+       "def": 900,
+       "label": "Potencia P",
+       "unit": "W"
+      }
+     }
+    },
+    "leyenda": "Gráfica de E = P·Δt (en J) frente a la duración (en s): con P = 900 W (microondas del exercice 21) la energía crece linealmente con el tiempo."
+   }
+  },
+  {
+   "id": "f15",
+   "latex": "\\eta = \\dfrac{E_{utile}}{E_{d\\acute{e}pens\\acute{e}e}}",
+   "nombre": "Rendimiento energético",
+   "nombre_fr": "Rendement énergétique",
+   "variables": [
+    {
+     "simbolo": "\\eta",
+     "significado": "rendimiento energético (sin unidad, o en %)",
+     "unidad": ""
+    },
+    {
+     "simbolo": "E_{utile}",
+     "significado": "energía útil realmente transmitida (p. ej. a la agua)",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "E_{d\\acute{e}pens\\acute{e}e}",
+     "significado": "energía gastada (p. ej. energía eléctrica consumida)",
+     "unidad": "J"
+    }
+   ],
+   "explicacion": "Cociente entre la energía útil y la energía gastada. En la bouilloire, la energía útil es la transferencia térmica que calienta el agua; la gastada, la energía eléctrica consumida. En una PAC, η > 1 porque parte de la energía útil viene de la fuente fría.",
+   "ejemplo": {
+    "enunciado": "Exercice 35: bouilloire de 1 500 W, 0,40 L de agua de 18 °C a 85 °C en 1 min 20 s.",
+    "resultado": "η = ρ·V·c·ΔT/(P·Δt) = 1,0×0,40×4,18×10³×(85−18)/(1 500×80) ≈ 0,93 (el corrigé imprime 0,94 = 94 %).",
+    "pagina_pdf": 621
+   },
+   "pagina_pdf": 432,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x/Ed",
+     "xmin": 0,
+     "xmax": 120000,
+     "vars": {
+      "Ed": {
+       "min": 20000,
+       "max": 200000,
+       "step": 1000,
+       "def": 120000,
+       "label": "Energía gastada",
+       "unit": "J"
+      }
+     }
+    },
+    "leyenda": "Gráfica de η = E_útil/E_gastada frente a la energía útil: con E_gastada = P·Δt = 120 kJ (bouilloire) llegan al 93 % con 112 kJ útiles."
+   }
+  },
+  {
+   "id": "f16",
+   "latex": "F_{absorb\\acute{e}e} = (1-A)\\cdot F'",
+   "nombre": "Flujo absorbido y albedo",
+   "nombre_fr": "Albédo et flux absorbé",
+   "variables": [
+    {
+     "simbolo": "F_{absorb\\acute{e}e}",
+     "significado": "flujo solar absorbido por unidad de superficie",
+     "unidad": "W·m⁻²"
+    },
+    {
+     "simbolo": "A",
+     "significado": "albedo: proporción de la energía recibida que se refleja (0,30 para la Tierra y su atmósfera)",
+     "unidad": ""
+    },
+    {
+     "simbolo": "F'",
+     "significado": "flujo solar repartido (342 para la Tierra)",
+     "unidad": "W·m⁻²"
+    }
+   ],
+   "explicacion": "El albedo A es la proporción de energía recibida que se refleja y no se absorbe. En el equilibrio radiativo el flujo emitido iguala al absorbido: σ·T⁴ = (1 − A)·F'. Con A = 0,30 sale T ≈ 255 K (−18 °C) frente a los 15 °C reales; la diferencia viene del efecto invernadero.",
+   "ejemplo": {
+    "enunciado": "Exercice de synthèse 1: albedo A = 1/3 (1/3 del flujo se refleja), F' = 342 W·m⁻².",
+    "resultado": "F_absorbée = (2/3)×342 = 228 W·m⁻².",
+    "pagina_pdf": 440
+   },
+   "pagina_pdf": 424,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "(1-x)*F",
+     "xmin": 0,
+     "xmax": 1,
+     "vars": {
+      "F": {
+       "min": 100,
+       "max": 700,
+       "step": 2,
+       "def": 342,
+       "label": "Flujo F'",
+       "unit": "W/m²"
+      }
+     }
+    },
+    "leyenda": "Gráfica del flujo absorbido (en W·m⁻²) frente al albedo A (de 0 a 1): a más albedo, menos energía absorbida; con A = 1/3 y F' = 342 W·m⁻² salen 228 W·m⁻²."
+   }
+  },
+  {
+   "id": "f17",
+   "latex": "G = F_s - F_e",
+   "nombre": "Efecto invernadero",
+   "nombre_fr": "Effet de serre",
+   "variables": [
+    {
+     "simbolo": "G",
+     "significado": "efecto invernadero",
+     "unidad": "W·m⁻²"
+    },
+    {
+     "simbolo": "F_s",
+     "significado": "flujo térmico por unidad de superficie emitido por el suelo",
+     "unidad": "W·m⁻²"
+    },
+    {
+     "simbolo": "F_e",
+     "significado": "flujo térmico por unidad de superficie emitido al espacio por la Tierra y su atmósfera (= flujo absorbido)",
+     "unidad": "W·m⁻²"
+    }
+   ],
+   "explicacion": "La Tierra emite hacia el espacio un flujo F_e menor que el flujo F_s emitido por su superficie; el efecto invernadero es la diferencia entre ambos. Los gases de la atmósfera absorben ≈ 20 % de la radiación emitida por el suelo.",
+   "ejemplo": {
+    "enunciado": "Exercice de synthèse 1: F_e = F_absorbée = 228 W·m⁻² (T = constante) y suelo a 15 °C (288 K).",
+    "resultado": "F_s = σ·T⁴ = 5,67×10⁻⁸×288⁴ ≈ 390 W·m⁻² ; G = F_s − F_e = 390 − 228 = 162 W·m⁻².",
+    "pagina_pdf": 440
+   },
+   "pagina_pdf": 440,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x-Fe",
+     "xmin": 200,
+     "xmax": 500,
+     "vars": {
+      "Fe": {
+       "min": 150,
+       "max": 300,
+       "step": 2,
+       "def": 228,
+       "label": "Flujo emitido al espacio F_e",
+       "unit": "W/m²"
+      }
+     }
+    },
+    "leyenda": "Gráfica de G = F_s − F_e (en W·m⁻²) frente al flujo del suelo F_s: con F_e = 228 W·m⁻² y F_s = 390 W·m⁻² resulta G = 162 W·m⁻²."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "c_eau, capacidad térmica másica del agua",
+   "valor": "4,18 (= 4 180)",
+   "unidad": "J·g⁻¹·°C⁻¹ (= J·kg⁻¹·K⁻¹ × 10⁻³ por gramo; 4 180 J·kg⁻¹·K⁻¹)",
+   "pagina_pdf": 417
+  },
+  {
+   "nombre": "σ, constante de Stefan-Boltzmann",
+   "valor": "5,67×10⁻⁸",
+   "unidad": "W·m⁻²·K⁻⁴ (valor de los exercices; las páginas de cours imprimen 10⁻³ y 10⁻² por errata)",
+   "pagina_pdf": 426
+  },
+  {
+   "nombre": "F, constante solar (flujo solar en el techo de la atmósfera, perpendicular a los rayos)",
+   "valor": "1 368",
+   "unidad": "W·m⁻²",
+   "pagina_pdf": 423
+  },
+  {
+   "nombre": "F', flujo solar repartido sobre la Tierra (= F/4)",
+   "valor": "342",
+   "unidad": "W·m⁻²",
+   "pagina_pdf": 423
+  },
+  {
+   "nombre": "A, albedo de la Tierra y su atmósfera",
+   "valor": "0,30",
+   "unidad": "sin unidad",
+   "pagina_pdf": 424
+  },
+  {
+   "nombre": "Relación de temperaturas",
+   "valor": "T(K) = θ(°C) + 273",
+   "unidad": "K",
+   "pagina_pdf": 418
+  },
+  {
+   "nombre": "Temperatura moyenne de la Terre (valor real / teórico sin albedo ni efecto invernadero)",
+   "valor": "15 °C / 279 K (6 °C)",
+   "unidad": "°C, K",
+   "pagina_pdf": 424
+  },
+  {
+   "nombre": "ρ_eau, masa volúmica del agua",
+   "valor": "1,0",
+   "unidad": "kg·L⁻¹",
+   "pagina_pdf": 428
+  },
+  {
+   "nombre": "1 kWh",
+   "valor": "3,6×10⁶",
+   "unidad": "J",
+   "pagina_pdf": 430
+  },
+  {
+   "nombre": "R, constante de los gases perfectos (usada en la synthèse 3)",
+   "valor": "8,31",
+   "unidad": "J·K⁻¹·mol⁻¹",
+   "pagina_pdf": 443
+  },
+  {
+   "nombre": "Lv, energía másica de vaporización del agua a 20 °C",
+   "valor": "2,4×10³",
+   "unidad": "kJ·kg⁻¹",
+   "pagina_pdf": 435
+  },
+  {
+   "nombre": "Acero: c, L_f, ρ, temperatura de fusión",
+   "valor": "460 ; 2,50×10⁵ ; 7 200 ; 1 500",
+   "unidad": "J·kg⁻¹·K⁻¹ ; J·kg⁻¹ ; kg·m⁻³ ; °C",
+   "pagina_pdf": 445
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Hacer el estudio energético (balance) de un sistema con el 1.er principio",
+   "pasos": [
+    "Definir el sistema y comprobar que es cerrado y está en reposo a escala macroscópica.",
+    "Identificar las transferencias de energía con el exterior: trabajo W (p. ej. batidor, resistencia eléctrica, compresor) y transferencia térmica Q.",
+    "Dibujar el diagrama energético: flechas entrantes (W, Q > 0 si el sistema recibe) y salientes (< 0 si cede).",
+    "Escribir ΔU = W + Q; si el sistema es incompresible y W = 0, ΔU = Q = C·ΔT.",
+    "Si la temperatura no varía, ΔU = 0: la energía aportada compensa las pérdidas (maison, sauna)."
+   ],
+   "pagina_pdf": 421
+  },
+  {
+   "titulo": "Determinar una capacidad térmica con un calorímetro (TP act. 2)",
+   "pasos": [
+    "Calorímetro: verter 200 g de agua a T_amb y mezclar con 100 g de agua caliente T_c; agitar hasta que la temperatura se estabilice en T_finale (sistema isolé).",
+    "Hacer el estudio energético del sistema (agua + calorímetro): ΔU = Q = 0 y suma de las ΔU = C·ΔT de cada parte; deducir C_calo.",
+    "Para un material: sumergir una masa m inicialmente en agua hirviendo (100 °C) en 200 g de agua a T_amb dentro del calorímetro; medir T_finale.",
+    "Estudio energético del sistema (agua + material + calorímetro) y deducir c_mat = C/m; discutir las incertidumbres."
+   ],
+   "pagina_pdf": 417
+  },
+  {
+   "titulo": "Estimar la temperatura moyenne terrestre (act. 3 y exercice 1)",
+   "pasos": [
+    "Escribir el balance energético: flujo solar recibido por el disco (F·πR²) repartido sobre la esfera (4πR²) ⇒ F' = F/4 = 342 W·m⁻².",
+    "Tener en cuenta el albedo A: flujo absorbido (1 − A)·F'.",
+    "Equilibrio radiativo: σ·T⁴ = flujo absorbido; despejar T en kelvin y convertir a °C (θ = T − 273).",
+    "Comparar con 15 °C: el efecto invernadero G = F_s − F_e explica la diferencia (F_s = σ·T_suelo⁴)."
+   ],
+   "pagina_pdf": 424
+  },
+  {
+   "titulo": "Resolver la ley de Newton y determinar γ (exercices 28 y 31)",
+   "pasos": [
+    "Escribir la ecuación diferencial: dT/dt = −γ·(T − T_th), con γ > 0 (el medio exterior es el termostato: T_ext = T_th).",
+    "Solución general T(t) = A·e^{−γt} + B ; cuando t → ∞, T → T_th ⇒ B = T_th.",
+    "En t = 0, T = T_0 ⇒ A = T_0 − T_th, luego T(t) = (T_0 − T_th)·e^{−γt} + T_th.",
+    "Con un dato (T en un instante) despejar γ usando ln (ln(a/b) = −ln(b/a)).",
+    "Para una duración: T(t) = valor ⇒ t = ln(·)/γ."
+   ],
+   "pagina_pdf": 431
+  },
+  {
+   "titulo": "Calcular el flujo térmico a través de una pared",
+   "pasos": [
+    "Convertir los datos al SI (espesor e en m; 1 MJ = 10⁶ J; 1 kWh = 3,6×10⁶ J).",
+    "Calcular R_th = e/(λ·S) de cada pared; si hay varias paredes acopladas, sumar las resistencias.",
+    "Hallar Φ = (T_c − T_f)/R_th con el sentido del flujo de la fuente caliente a la fría.",
+    "Energía perdida: Q = Φ·Δt; ΔU = Q si el sistema (p. ej. aire, nevera) es incompresible."
+   ],
+   "pagina_pdf": 430
+  },
+  {
+   "titulo": "Modelizar la curva de enfriamiento (TP act. 4 y ECE)",
+   "pasos": [
+    "Adquirir T(t) con un sensor de temperatura (p. ej. capteur LM35 + Arduino: 10 mV por °C) y medir antes la temperatura ambiente y su incertidumbre.",
+    "Modelizar la curva con T = A·e^{−Ct} + B e identificar A = T_0 − T_amb, C = γ y B = T_amb.",
+    "Usar la ecuación para predecir T tras 15 min o la duración necesaria para estar a 1 °C de T_amb.",
+    "Comparar con la medida y señalar una fuente de incertidumbre."
+   ],
+   "pagina_pdf": 419
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Usar T en °C en la ley de Stefan-Boltzmann",
+   "correccion": "La ley F = σ·T⁴ exige T en kelvin: T(K) = θ(°C) + 273. En cambio, para una variación ΔT (Q = C·ΔT) se puede razonar directamente en °C.",
+   "pagina_pdf": 423
+  },
+  {
+   "id": "err2",
+   "nombre": "Olvidar convertir unidades y cifras significativas",
+   "correccion": "Pasar el espesor a m (3,6 cm = 3,6×10⁻² m), MJ a J y kWh a J (1 kWh = 3,6×10⁶ J), y dar el resultado con las cifras significativas de los datos.",
+   "pagina_pdf": 430
+  },
+  {
+   "id": "err3",
+   "nombre": "Creer que la energía se destruye al frenar o enfriar",
+   "correccion": "No se destruye: se transfiere del sistema al medio exterior (Exercice 17: «Faux. L'énergie est transférée»).",
+   "pagina_pdf": 427
+  },
+  {
+   "id": "err4",
+   "nombre": "Pensar que solo el calor puede aumentar U",
+   "correccion": "El trabajo W también aumenta la energía interna: el agua agitada de la experiencia de Joule se calienta. W y Q pueden producir la misma ΔU.",
+   "pagina_pdf": 432
+  },
+  {
+   "id": "err5",
+   "nombre": "Olvidar la convección al razonar sobre transferencias térmicas",
+   "correccion": "En la nevera el aire frío desciende y el caliente asciende (convección): el tubo metálico va arriba, no en el centro (Exercice 33).",
+   "pagina_pdf": 432
+  },
+  {
+   "id": "err6",
+   "nombre": "Confundir transferencia térmica Q (J) y flujo Φ (W)",
+   "correccion": "Φ = Q/Δt: Q es una energía (J) y Φ una potencia (W). La energía perdida en un tiempo es Q = Φ·Δt (con unidades coherentes).",
+   "pagina_pdf": 432
+  },
+  {
+   "id": "err7",
+   "nombre": "Ignorar el albedo en el balance radiativo de la Tierra",
+   "correccion": "La Tierra no es un cuerpo negro: refleja ≈ 30 % de la energía recibida. Sin albedo ni efecto invernadero se obtiene 279 K = 6 °C en vez de 15 °C.",
+   "pagina_pdf": 424
+  },
+  {
+   "id": "err8",
+   "nombre": "Confundir T_th con la temperatura inicial T_0 en la ley de Newton",
+   "correccion": "T_th es la temperatura del termostato (lo que alcanza T cuando t → ∞, p. ej. T_cuis o T_amb), no la de partida: T(t) = (T_0 − T_th)·e^{−γt} + T_th.",
+   "pagina_pdf": 431
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "Activité 1 (classe inversée) — Modes de transfert thermique",
+   "descripcion": "Con animaciones sobre conducción (casserole sobre una placa), convección (radiador) y rayonnement, se describen los movimientos de partículas en cada modo y se identifican los modos en situaciones cotidianas (cacerola, microondas, radiador, piscina).",
+   "pagina_pdf": 416
+  },
+  {
+   "titulo": "Activité 2 (TP) — Capacité thermique",
+   "descripcion": "Se determina la capacidad thermique de un calorímetro (200 g de agua + 100 g de agua caliente, sistema aislado) y la capacidad térmica másica de un material mezclándolo, tras sumergirlo en agua hirviendo, con 200 g de agua en el calorímetro; se mide T_amb, T_c y T_finale con termómetro.",
+   "pagina_pdf": 417
+  },
+  {
+   "titulo": "Activité 3 (resolución de problema) — Température terrestre moyenne",
+   "descripcion": "A partir del flujo solar (1 368 W·m⁻² → 342), la ley de Stefan-Boltzmann, el albedo y el efecto invernadero, se estima la temperatura moyenne teórica y se explica la diferencia con 15 °C.",
+   "pagina_pdf": 418
+  },
+  {
+   "titulo": "Activité 4 (TP) — Loi de refroidissement de Newton",
+   "descripcion": "Se calienta agua a 100 °C, se registra T(t) con un sensor conectado a un ordenador, se modeliza con T = A·e^{−Ct} + B y se compara con la hipótesis de Newton T = (T_0 − T_amb)·e^{−γt} + T_amb; se predice T a los 15 min y la duración hasta 1 °C de T_amb.",
+   "pagina_pdf": 419
+  },
+  {
+   "titulo": "Exercice 34 — Expérience de Joule",
+   "descripcion": "Una tige con palas agita el agua de un calorímetro térmicamente aislado: la temperatura sube con solo aportar trabajo, lo que pone en cuestión la teoría del «calórico».",
+   "pagina_pdf": 432
+  },
+  {
+   "titulo": "Pour préparer l'ECE — Loi thermique de Newton (Arduino + LM35)",
+   "descripcion": "Protocolo con un sensor LM35 (10 mV por °C, de −40 a +110 °C), placa Arduino y secador de pelo para estudiar el enfriamiento del aire tras calentarlo a 60 °C; balance energético y resolución de la ecuación diferencial.",
+   "pagina_pdf": 438
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Exercice résolu 29 — Maison passive : maison de 68 m² habitables, T_ext moyenne 10 °C (suelo 4 °C), T_i = 19 °C constante. Transferts en un día: muros Q_m = 56 MJ, vidrios Q_V, suelo Q_S = 37 MJ, techos Q_C = 24 MJ. Vidrios: S = 15 m², e = 3,6 cm, λ = 0,023 W·m⁻¹·K⁻¹ (triple vitrage). 1. Determinar la resistencia térmica R_V. 2. a. Determinar Q_V ; b. deducir la energía aportada por la estufa de leña durante un día. 3. Con 100 días de calefacción, ¿es una maison passive (besoin ≤ 15 kWh·m⁻²·an⁻¹)? (1 kWh = 3,6×10⁶ J)",
+   "datos": {
+    "S_habitable": "68 m²",
+    "S_vitres": "15 m²",
+    "e": "3,6 cm",
+    "lambda": "0,023 W·m⁻¹·K⁻¹",
+    "Qm": "56 MJ",
+    "Qs": "37 MJ",
+    "Qc": "24 MJ"
+   },
+   "respuesta": "1. R_V = e/(λ·S) = 3,6×10⁻²/(0,023×15) = 0,10 K·W⁻¹. 2. a. Q_V = (T_i − T_ext)·Δt/R_V = (19 − 4)×24×3 600/0,10 = 1,3×10⁷ J = 13 MJ. b. ΔU = 0 (T interior constante): Q_p = Q_m + Q_V + Q_S + Q_C = 56 + 13 + 37 + 24 = 130 MJ. 3. (130/3,6)×100/68 = 53 kWh·m⁻²·an⁻¹ > 15 : no es una maison passive.",
+   "respuesta_numerica": {
+    "valor": 0.1,
+    "unidad": "K·W⁻¹",
+    "tolerancia_rel": 0.05
+   },
+   "pasos": [
+    "R_V = e/(λ·S) con e en m",
+    "Φ = Q/Δt = (T_i − T_ext)/R ⇒ Q_V = (T_i − T_ext)·Δt/R_V",
+    "ΔU = 0 ⇒ la estufa compensa Q_m + Q_V + Q_S + Q_C = 130 MJ",
+    "130 MJ = 36 kWh ; ×100 días/365… según el corrigé: (130/3,6)×100/68 = 53 kWh·m⁻²·an⁻¹ > 15"
+   ],
+   "pagina_pdf": 430,
+   "corrige_pagina_pdf": 430
+  },
+  {
+   "id": "e2",
+   "enunciado": "Exercice résolu 31 — Muffins sortis du four : a las 12 h 00 están a 100 °C; tras 10 min, 80 °C. Se supone que dT/dt es proporcional a (T − T_cuis) (ley de Newtron), cocina a 20 °C. 1. a. Establecer la ecuación diferencial de primer orden (constante −γ, γ > 0). b. Resolverla dando T(t) en función de γ y T_cuis. 2. Determinar γ. 3. ¿Cuánto tiempo hasta que la temperatura de los muffins se divida por 2 respecto a la salida del horno?",
+   "datos": {
+    "T0": "100 °C",
+    "T(10 min)": "80 °C",
+    "T_cuis": "20 °C"
+   },
+   "respuesta": "1. a. dT/dt = −γ·(T − T_cuis). b. T(t) = (100 − T_cuis)·e^{−γt} + T_cuis = 80·e^{−γt} + 20. 2. T(10) = 80 ⇒ e^{−10γ} = 60/80 ⇒ γ = ln(4/3)/10 (≈ 0,029 min⁻¹). 3. T = 50 ⇒ e^{−γt} = 3/8 ⇒ t = ln(8/3)/γ ≈ 34 min.",
+   "respuesta_numerica": {
+    "valor": 34,
+    "unidad": "min",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "dT/dt = −γ(T − T_cuis) ; T(t) = (T(0) − T_cuis)·e^{−γt} + T_cuis",
+    "T(10) = 80 = 80·e^{−10γ} + 20 ⇒ e^{−10γ} = 60/80 ⇒ γ = ln(4/3)/10",
+    "T(t) = 50 ⇒ 80·e^{−γt} + 20 = 50 ⇒ e^{−γt} = 3/8",
+    "t = ln(8/3)/γ = ln(8/3)/(0,1×ln(4/3)) ≈ 34 min"
+   ],
+   "pagina_pdf": 431,
+   "corrige_pagina_pdf": 431
+  },
+  {
+   "id": "e3",
+   "enunciado": "Exercice 28 — Refroidissement d'une tasse de café : café inicialmente a 75 °C en una pieza a 25 °C; tras 5 min está a 50 °C. dT/dt = γ·(T(t) − T_amb) con γ constante. 1. Estudio energético del sistema (café). 2. Valor de T_amb. 3. Resolver la ecuación diferencial dando T(t) en función de γ. 4. a. Valor numérico de γ. b. Expresión general de T(t).",
+   "datos": {
+    "T0": "75 °C",
+    "T_amb": "25 °C",
+    "T(5 min)": "50 °C"
+   },
+   "respuesta": "1. El sistema {café} cede energía. 2. T_amb = 25 °C. 3. T(t) = (T_0 − T_amb)·e^{−γt} + T_amb ⇒ T(t) = 50·e^{−γt} + 25. 4. a. T(5) = 50 ⇒ 50·e^{−5γ} + 25 = 50 ⇒ e^{−5γ} = 1/2 ⇒ γ = (ln 2)/5 ≈ 0,14 min⁻¹. b. T(t) = 50·e^{−(ln 2/5)·t} + 25.",
+   "respuesta_numerica": {
+    "valor": 0.1386,
+    "unidad": "min⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Quand t → ∞, T = T_amb ⇒ B = T_amb",
+    "À t = 0, T = T_0 ⇒ A = T_0 − T_amb = 50",
+    "T(5) = 50 ⇒ e^{−5γ} = 1/2",
+    "γ = (ln 2)/5 min⁻¹ ≈ 0,14 min⁻¹ ; T(t) = 50·e^{−(ln 2/5)t} + 25"
+   ],
+   "pagina_pdf": 429,
+   "corrige_pagina_pdf": 621
+  },
+  {
+   "id": "e4",
+   "enunciado": "Exercice 32 — Crime dans une série TV : cuerpo hallado a las 2 h 20 en el exterior donde la temperatura es de −5 °C. A esa hora el cuerpo está a 20 °C; media hora después, 15 °C. T(humano) = 37 °C ; dT/dt = −γ·(T(t) − T_amb). 1. Dar T_amb. 2. Resolver la ecuación diferencial dando T(t) en función de γ. 3. a. Valor de γ. b. Expresión general de T(t). 4. Determinar la hora del crimen.",
+   "datos": {
+    "T_amb": "−5 °C",
+    "T(0)": "20 °C",
+    "T(30 min)": "15 °C",
+    "T_humano": "37 °C"
+   },
+   "respuesta": "1. T_amb = −5 °C. 2. T(t) = (T_0 − T_amb)·e^{−γt} + T_amb = 25·e^{−γt} − 5. 3. a. T(30) = 15 ⇒ e^{−30γ} = 4/5 ⇒ γ = ln(5/4)/30 (min⁻¹). b. T(t) = 25·e^{−ln(5/4)·t/30} − 5. 4. T(t) = 37 ⇒ t = 30·ln(42/25)/ln(4/5) ≈ −70 min = −1 h 10 ⇒ hora del crimen: 2 h 20 − 1 h 10 = 1 h 10.",
+   "respuesta_numerica": {
+    "valor": 70,
+    "unidad": "min (antes del hallazgo)",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "T_amb = −5 °C ; T(0) = 20 ⇒ A = T_0 − T_amb = 25",
+    "T(30) = 15 = 25·e^{−30γ} − 5 ⇒ e^{−30γ} = 4/5 ⇒ γ = ln(5/4)/30",
+    "T(t) = 37 ⇒ 25·e^{−γt} − 5 = 37 ⇒ t = 30·ln(42/25)/ln(4/5) ≈ −70 min",
+    "2 h 20 − 1 h 10 = 1 h 10"
+   ],
+   "pagina_pdf": 431,
+   "corrige_pagina_pdf": 621
+  },
+  {
+   "id": "e5",
+   "enunciado": "Exercice 23 — Café chaud dans un thermos : 1,0 L de café a 60 °C se vierte en un termo y la temperatura del conjunto se estabiliza a 52 °C. Capacidad térmica másica y masa volúmica del café = las del agua (c_eau = 4,18 kJ·kg⁻¹·K⁻¹, ρ_eau = 1,0 kg·L⁻¹). 1. Calcular la variación de energía interna del café. 2. Suponiendo el termo perfectamente aislado, determinar la variación de energía interna del sistema (termo + café). 3. Deducir ΔU del termo.",
+   "datos": {
+    "V": "1,0 L",
+    "T_i": "60 °C",
+    "T_f": "52 °C",
+    "c": "4,18 kJ·kg⁻¹·K⁻¹",
+    "rho": "1,0 kg·L⁻¹"
+   },
+   "respuesta": "1. ΔU_café = ρ_eau·V·c_eau·ΔT = 1,0×1,0×4,18×(52 − 60) = −33 kJ. 2. ΔU_café+termo = 0. 3. ΔU_café+termo = ΔU_café + ΔU_termo = 0 ⇒ ΔU_termo = −ΔU_café = +33 kJ.",
+   "respuesta_numerica": {
+    "valor": -33.4,
+    "unidad": "kJ",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "m = ρ·V = 1,0 kg",
+    "ΔU_café = m·c·ΔT = 1,0×4,18×(52 − 60) = −33 kJ",
+    "Sistema aislado: ΔU_total = 0 ⇒ ΔU_termo = +33 kJ"
+   ],
+   "pagina_pdf": 428,
+   "corrige_pagina_pdf": 621
+  },
+  {
+   "id": "e6",
+   "enunciado": "Exercice 35 — Bouilloire électrique : potencia 1 500 W, 0,40 L de agua inicialmente a 18 °C se calientan hasta 85 °C en 1 min 20 s. c_eau = 4,18 kJ·kg⁻¹·K⁻¹, ρ_eau = 1,0 kg·L⁻¹, η = E_útil/E_gastada. 1. Diagrama energético de la bouilloire. 2. Rendimiento energético.",
+   "datos": {
+    "P": "1 500 W",
+    "V": "0,40 L",
+    "T_i": "18 °C",
+    "T_f": "85 °C",
+    "Δt": "1 min 20 s"
+   },
+   "respuesta": "1. Fournisseur d'électricité → W_él → bouilloire → Q₁ (eau) y Q₂ (milieu extérieur). 2. η = E_utile/E_dépensée = Q₁/W_él = ρ·V·c·ΔT/(P·Δt) = 1,0×0,40×4,18×10³×(85 − 18)/(1 500×80) ; el corrigé imprime 0,94 = 94 % (con estos datos sale 0,93).",
+   "respuesta_numerica": {
+    "valor": 0.934,
+    "unidad": "",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "E_útil = Q₁ = ρ·V·c·ΔT = 1,0×0,40×4,18×10³×67 ≈ 1,12×10⁵ J",
+    "E_gastada = P·Δt = 1 500×80 = 1,2×10⁵ J",
+    "η = 1,12×10⁵/1,2×10⁵ ≈ 0,93–0,94"
+   ],
+   "pagina_pdf": 432,
+   "corrige_pagina_pdf": 621
+  },
+  {
+   "id": "e7",
+   "enunciado": "Exercice 36 — Pompe à chaleur pour piscine : piscina con m_eau = 10,0 toneladas de agua a 10 °C (= T exterior) que se quiere llevar a 27 °C; energía eléctrica consumida W_e = 2,4×10⁸ J; c_eau = 4,18 kJ·kg⁻¹·K⁻¹; η = E_útil/E_gastada. 1. b. Calcular ΔU del agua y c. deducir la transferencia térmica Q aportada al agua. 2. a. Fuentes caliente y fría de la PAC; c. rendimiento; d. energía eléctrica W_e' con calefacción eléctrica clásica; e. ¿es la PAC performante?",
+   "datos": {
+    "m": "10,0 t",
+    "T_i": "10 °C",
+    "T_f": "27 °C",
+    "We": "2,4×10⁸ J"
+   },
+   "respuesta": "1. b. ΔU_eau = m_eau·c_eau·ΔT = 10,0×10³×4,18×10³×(27 − 10) = 7,1×10⁸ J. c. Q_PAC = ΔU_eau = 7,1×10⁸ J. 2. a. La fuente fría es el aire que se queda a T constante; la caliente es la piscina. c. η = Q_PAC/W_e = 7,1×10⁸/2,4×10⁸ ≈ 3. d. W_e' = Q_PAC = 7,1×10⁸ J directamente de la red. e. La PAC es 3 veces más performante que un sistema de calefacción eléctrica clásica.",
+   "respuesta_numerica": {
+    "valor": 2.96,
+    "unidad": "",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "ΔU_eau = m·c·ΔT = 10,0×10³×4,18×10³×17 = 7,1×10⁸ J",
+    "Q_PAC = ΔU_eau = 7,1×10⁸ J",
+    "η = Q_PAC/W_e = 7,1×10⁸/2,4×10⁸ ≈ 3"
+   ],
+   "pagina_pdf": 433,
+   "corrige_pagina_pdf": 621
+  },
+  {
+   "id": "e8",
+   "enunciado": "Exercice de synthèse 1 — Effet de serre : constante solar F_solaire = 1 368 W·m⁻², albedo A = 1/3 (la tercera parte del flujo se refleja), σ = 5,67×10⁻⁸ W·m⁻²·K⁻⁴. 1. Calcular F'_solaire recibido por unidad de superficie de la atmósfera terrestre (con esquema). 2. Albedo y F_absorbée. 3. 1. F_e emitido al espacio por la Tierra y su atmósfera. 3. 2. Sabiendo que la temperatura del suelo es 15 °C, flujo F_s emitido por el suelo. 4. Expresión del efecto invernadero G y su valor.",
+   "datos": {
+    "F_solaire": "1 368 W·m⁻²",
+    "A": "1/3",
+    "σ": "5,67×10⁻⁸ W·m⁻²·K⁻⁴",
+    "θ_suelo": "15 °C"
+   },
+   "respuesta": "1. Φ = F_solaire×πR² = F'×4πR² ⇒ F' = 1 368/4 = 342 W·m⁻². 2. A = 1/3 ; F_absorbée = (2/3)×342 = 228 W·m⁻². 3.1. T constante ⇒ F_e = F_absorbée = 228 W·m⁻². 3.2. F_s = σ·T⁴ = 5,67×10⁻⁸×(273 + 15)⁴ = 390 W·m⁻². 4. G = F_s − F_e = 162 W·m⁻².",
+   "respuesta_numerica": {
+    "valor": 162,
+    "unidad": "W·m⁻²",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "F' = F/4 = 342 W·m⁻²",
+    "F_absorbée = (1 − A)·F' = (2/3)×342 = 228 W·m⁻²",
+    "F_s = σ·T⁴ = 5,67×10⁻⁸×288⁴ ≈ 390 W·m⁻²",
+    "G = F_s − F_e = 390 − 228 = 162 W·m⁻²"
+   ],
+   "pagina_pdf": 440,
+   "corrige_pagina_pdf": 440
+  },
+  {
+   "id": "e9",
+   "enunciado": "Exercice 46 — Tapis de sol pour randonneur : se comparan los tapices «isotapis» (λ = 0,03 W·m⁻¹·K⁻¹; 193 cm × 62 cm × 1,1 cm) y «thermoplus» (Φ = 40 W en las mismas condiciones). T aire/suelo = 15 °C, T piel = 33 °C, R = e/(λ·S). 1. Sentido de la transferencia térmica y fenómeno. 2. Estimar la superficie de contacto (0,005 ; 0,05 ; 0,5 ; 5 m²). Calcular el flujo Φ a través del «isotapis» y decir qué tapiz aísla mejor.",
+   "datos": {
+    "λ": "0,03 W·m⁻¹·K⁻¹",
+    "e": "1,1 cm",
+    "S": "≈ 0,5 m²",
+    "T_piel": "33 °C",
+    "T_suelo": "15 °C"
+   },
+   "respuesta": "a. La transferencia va del randonneur (33 °C) al aire y al suelo (15 °C). b. Es una transferencia térmica por conducción. S ≈ 0,5 m². Φ = (T_c − T_f)/R_th = (T_c − T_f)·λ·S/e = (33 − 15)×0,03×0,5/1,1×10⁻² ≈ 2×10 W (≈ 25 W) < 40 W del «thermoplus»: el mejor aislante es el «isotapis».",
+   "respuesta_numerica": {
+    "valor": 24.5,
+    "unidad": "W",
+    "tolerancia_rel": 0.2
+   },
+   "pasos": [
+    "Sentido: de la fuente caliente (piel, 33 °C) a la fría (suelo, 15 °C)",
+    "S ≈ 0,5 m²",
+    "R_th = e/(λ·S) ; Φ = ΔT/R_th = 18×0,03×0,5/1,1×10⁻² ≈ 2×10 W",
+    "Menor Φ ⇒ mejor aislante: «isotapis»"
+   ],
+   "pagina_pdf": 437,
+   "corrige_pagina_pdf": 621
+  },
+  {
+   "id": "e10",
+   "enunciado": "Exercice de synthèse 2 — Ballon de chauffage sanitaire : ballon de 200 L, 230 V, 2 200 W, tiempo de calentamiento 5 h 17 min (de 15 a 65 °C), constante de enfriamiento 0,18 Wh·jour⁻¹·K⁻¹·L⁻¹ (65 °C, aire a 20 °C). Superficie de intercambio S = 2,9 m², aislante de e = 70 mm de lana de roca (λ = 0,036 W·m⁻¹·K⁻¹). c_eau = 4 180 J·kg⁻¹·K⁻¹, ρ_eau = 1 000 kg·m⁻³. 2. a. Duración para calentar el agua de 15 a 65 °C (sin pérdidas). 3. Flujo térmico a través de las paredes entre agua a 65 °C y aire a 20 °C. 4. a. Energía perdida en un día (en Wh).",
+   "datos": {
+    "V": "200 L",
+    "P": "2 200 W",
+    "S": "2,9 m²",
+    "e": "70 mm",
+    "λ": "0,036 W·m⁻¹·K⁻¹"
+   },
+   "respuesta": "Sin corrigé impreso; resolución con las fórmulas del cours: 2. a. ΔE = ρ·V·c·ΔT = 200×4 180×50 = 4,18×10⁷ J ; Δt = ΔE/P = 4,18×10⁷/2 200 ≈ 1,9×10⁴ s ≈ 5 h 17 min (coherente con el fabricante). 3. R = e/(λ·S) = 0,070/(0,036×2,9) ≈ 0,67 K·W⁻¹ ; Φ = ΔT/R = 45/0,67 ≈ 67 W. 4. a. E_perdida ≈ 67×24 ≈ 1,6 kWh/día = 1,6×10³ Wh ; b. Cr ≈ 1,6×10³/(45×200) ≈ 0,18 Wh·jour⁻¹·K⁻¹·L⁻¹ (coherente con el fabricante).",
+   "respuesta_numerica": {
+    "valor": 67,
+    "unidad": "W",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "R = e/(λ·S) = 0,070/(0,036×2,9) ≈ 0,67 K·W⁻¹",
+    "Φ = (65 − 20)/0,67 ≈ 67 W",
+    "E = Φ·24 h ≈ 1,6×10³ Wh/jour",
+    "Cr = E/(ΔT·V) = 1 611/(45×200) ≈ 0,18"
+   ],
+   "pagina_pdf": 441,
+   "corrige_pagina_pdf": 441
+  },
+  {
+   "id": "e11",
+   "enunciado": "Exercice 30 — Dans un sauna : cloisons de doble vidrio; resistencia eléctrica de P = 7,5 kW durante 1,0 min cada 5 min; T exterior 18 °C, T interior 80 °C. 1. Energía térmica recibida durante la minuto de calentamiento. 2. Resistencia térmica del sauna.",
+   "datos": {
+    "P": "7,5 kW",
+    "t_chauffe": "1,0 min",
+    "période": "5 min",
+    "θ_int": "80 °C",
+    "θ_ext": "18 °C"
+   },
+   "respuesta": "1. ΔE = P·Δt_chauffe = 7,5×60 = 4,5×10² kJ. 2. La energía perdida en 5 min con T constante es la misma: Φ = ΔE/Δt = 450/300 = 1,5 kW ; R = ΔT/Φ = (80 − 18)/1 500 ≈ 4,1×10⁻² K·W⁻¹.",
+   "respuesta_numerica": {
+    "valor": 0.0413,
+    "unidad": "K·W⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "ΔE = P·Δt = 7 500×60 = 4,5×10⁵ J",
+    "Φ = ΔE/Δt = 4,5×10⁵/300 = 1 500 W",
+    "R = ΔT/Φ = 62/1 500 ≈ 4,1×10⁻² K·W⁻¹"
+   ],
+   "pagina_pdf": 430,
+   "corrige_pagina_pdf": 621
+  },
+  {
+   "id": "e12",
+   "enunciado": "Exercice 33 — Réfrigérateur : a) ¿Qué transferencias térmicas hay? b) ¿Dónde es más acertado poner el tubo metálico? La temperatura interior es de 4 °C con exterior a 20 °C; resistencia térmica 0,89 K·W⁻¹. a. ¿En qué sentido va la transferencia? b. Flujo térmico intercambiado entre interior y exterior. c. Energía disipada en kWh en un año.",
+   "datos": {
+    "T_int": "4 °C",
+    "T_ext": "20 °C",
+    "R": "0,89 K·W⁻¹"
+   },
+   "respuesta": "1. a. Convección del aire en el interior de la nevera. b. Colocar el tubo en altura: el aire caliente tiende a subir y el frío a bajar. 2. a. De la fuente caliente (exterior) hacia la fría (interior). b. Φ = ΔT/R = 16/0,89 = 18 W. c. 1 año = 365,25×24 = 8 766 h ; ΔU = Q = Φ·Δt = 18×8 766 = 1,6×10⁵ Wh = 1,6×10² kWh.",
+   "respuesta_numerica": {
+    "valor": 160,
+    "unidad": "kWh",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Sentido: del exterior (20 °C) al interior (4 °C)",
+    "Φ = ΔT/R = 16/0,89 ≈ 18 W",
+    "Δt = 365,25×24 = 8 766 h",
+    "Q = Φ·Δt = 18×8 766 ≈ 1,6×10⁵ Wh = 1,6×10² kWh"
+   ],
+   "pagina_pdf": 432,
+   "corrige_pagina_pdf": 621
+  },
+  {
+   "id": "e13",
+   "enunciado": "Exercice de synthèse 4 (parte 1) — Flux thermique reçu du Soleil : F = 1 368 W·m⁻², A = 0,30, σ = 5,67×10⁻⁸ W·m⁻²·K⁻⁴. 1. Sin tener en cuenta la atmósfera, calcular F' por unidad de superficie terrestre. 2. Albedo y flujo F'' realmente absorbido. 3. a. Calcular la temperatura media de la Tierra considerándola un cuerpo negro; b. comparar con 15 °C y justificar la diferencia.",
+   "datos": {
+    "F": "1 368 W·m⁻²",
+    "A": "0,30",
+    "σ": "5,67×10⁻⁸ W·m⁻²·K⁻⁴"
+   },
+   "respuesta": "Sin corrigé impreso; resolución con las fórmulas del cours: 1. F' = F/4 = 342 W·m⁻². 2. a. El albedo es la proporción de energía recibida que se refleja; b. F'' = (1 − A)·F' = 0,70×342 = 239 W·m⁻². 3. a. σ·T⁴ = F'' ⇒ T = (239/5,67×10⁻⁸)^{1/4} ≈ 255 K ≈ −18 °C ; b. con 15 °C real la diferencia (≈ 33 °C) la explica el efecto invernadero (sin albedo se obtendría 279 K = 6 °C).",
+   "respuesta_numerica": {
+    "valor": 255,
+    "unidad": "K",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "F' = 1 368/4 = 342 W·m⁻²",
+    "F'' = (1 − 0,30)×342 ≈ 239 W·m⁻²",
+    "T = (F''/σ)^{1/4} = (239/5,67×10⁻⁸)^{1/4} ≈ 255 K = −18 °C",
+    "Diferencia con 15 °C: efecto invernadero"
+   ],
+   "pagina_pdf": 444,
+   "corrige_pagina_pdf": 444
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "termodinamica",
+   "params": {},
+   "titulo": "Pistón y primer principio",
+   "relacion": "ΔU = W + Q: el pistón recibe o cede trabajo y calor y la energía interna varía según los signos."
+  },
+  {
+   "preset": "enfriamiento-newton",
+   "params": {
+    "T0": 100,
+    "Text": 20
+   },
+   "titulo": "Muffins sortis du four",
+   "relacion": "Loi thermique de Newton (exercice résolu 31): T baja de 100 °C hacia la temperatura de la cocina (20 °C)."
+  },
+  {
+   "preset": "enfriamiento-newton",
+   "params": {
+    "T0": 75,
+    "Text": 25,
+    "tau": 433
+   },
+   "titulo": "Tasse de café",
+   "relacion": "Exercice 28: T(t) = 50·e^{−γt} + 25 con γ = (ln 2)/5 min⁻¹ (τ = 1/γ ≈ 433 s)."
+  },
+  {
+   "preset": "generico",
+   "params": {
+    "expr": "5.67e-8*x^4",
+    "xmin": 200,
+    "xmax": 400,
+    "vars": {}
+   },
+   "titulo": "Ley de Stefan-Boltzmann",
+   "relacion": "F = σ·T⁴ con T en kelvin: a 279 K sale ≈ 343 W·m⁻² (balance con el flujo solar F' = 342 W·m⁻²)."
+  },
+  {
+   "preset": "generico",
+   "params": {
+    "expr": "x/R",
+    "xmin": 0,
+    "xmax": 80,
+    "vars": {
+     "R": {
+      "min": 0.01,
+      "max": 0.2,
+      "step": 0.005,
+      "def": 0.041,
+      "label": "Resistencia térmica R_th",
+      "unit": "K/W"
+     }
+    }
+   },
+   "titulo": "Flujo térmico y resistencia",
+   "relacion": "Φ = ΔT/R_th (sauna del exercice 30: R_th ≈ 0,041 K·W⁻¹ y ΔT = 62 K dan ≈ 1 500 W)."
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "horno-termico",
+  "mecanica_especial": "Corrientes de convección (zonas con fuerza ascendente que reducen la gravedad efectiva y elevan al jugador), plataformas oscilantes (agitación térmica), resortes (pistón que comprime el gas) y escalones que simulan paredes aislantes."
+ },
+ "estilo_intro_sugerido": "monigotes"
+}

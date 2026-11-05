@@ -1,0 +1,1078 @@
+{
+ "id": "photons",
+ "titulo": "Description de la lumière par un flux de photons",
+ "materia": "physique",
+ "mundo": "ondes",
+ "pdf_ini": 494,
+ "pdf_fin": 515,
+ "resumen": "La luz se describe con dos modelos que coexisten (dualidad onda-partícula): el ondulatorio y el de partículas llamadas fotones, de masa nula y energía E = hν. El efecto fotoeléctrico (emisión de electrones por un rayonnement) solo aparece por encima de una frecuencia umbral ν_s propia del material y no depende de la intensidad: Einstein lo explicó en 1905 con el fotón. Un fotón cede su energía a un electrón: E_photon = W + E_c, con W = hν_s el trabajo de extracción, de donde E_c = h(ν − ν_s). Las aplicaciones (célula fotoeléctrica, fotodiodo, DEL, célula fotovoltaica de unión PN con bandas de energía) se miden con el rendimiento η = P_eléctrica / P_luminosa × 100.",
+ "resumen_fr": "Modèles ondulatoire et particulaire de la lumière, photon E = hν, effet photoélectrique (fréquence seuil), travail d'extraction W = hν_s, énergie cinétique E_c = h(ν − ν_s), cellule photoélectrique, jonction PN, bandes d'énergie, rendement d'une cellule photovoltaïque.",
+ "nociones_clave": [
+  {
+   "id": "n1",
+   "fr": "Dualité onde-particule",
+   "es": "La luz se puede describir con un modelo ondulatorio (onda electromagnética) y con un modelo particulado (fotones). Los dos modelos coexisten: es la dualidad onda-partícula. En el modelo ondulatorio, más intensidad aporta más energía; en el particulado, la energía depende de la frecuencia ν y del número de fotones.",
+   "pagina_pdf": 496
+  },
+  {
+   "id": "n2",
+   "fr": "Effet photoélectrique",
+   "es": "Emisión de electrones de un material bajo el efecto de un rayonnement electromagnético. Observado por Becquerel (1839), estudiado por Hertz (1887) y Hallwachs (1888), interpretado por Einstein (1905, premio Nobel de física 1921).",
+   "pagina_pdf": 499
+  },
+  {
+   "id": "n3",
+   "fr": "Le photon (carte d'identité)",
+   "es": "Partícula de luz: masa m = 0 (nula en reposo), carga q = 0 C, energía E = hν, velocidad c = 3,00×10⁸ m·s⁻¹ en el vacío. Un rayonnement de frecuencia ν es un conjunto de fotones que transportan cada uno la energía E = hν.",
+   "pagina_pdf": 499
+  },
+  {
+   "id": "n4",
+   "fr": "Fréquence seuil ν_s",
+   "es": "El efecto fotoeléctrico se produce a partir de una frecuencia límite ν_s (fréquence seuil), sea cual sea la intensidad del rayonnement. Depende del material (Cs 4,62×10¹⁴ Hz, K 5,56×10¹⁴, Ba 6,00×10¹⁴, Zn 8,11×10¹⁴, Cu 1,03×10¹⁵ Hz). A ν_s corresponde λ_s = c/ν_s: el efecto ocurre si λ < λ_s.",
+   "pagina_pdf": 499
+  },
+  {
+   "id": "n5",
+   "fr": "Propriétés expérimentales de l'effet photoélectrique",
+   "es": "(1) La emisión empieza desde una frecuencia umbral que depende del material, no de la intensidad. (2) El número de electrones emitidos es proporcional a la intensidad del rayonnement. (3) La energía cinética del electrón emitido es proporcional a la frecuencia del rayonnement.",
+   "pagina_pdf": 499
+  },
+  {
+   "id": "n6",
+   "fr": "Interprétation d'Einstein (1905)",
+   "es": "El modelo ondulatorio no explica ni la frecuencia umbral ni la ausencia de umbral de intensidad. Einstein retomó el modelo de fotones, asociado a la hipótesis de cuantificación de la energía de Max Planck: si E_photon < hν_s no se emite ningún electrón; si E_photon ≥ hν_s, los electrones se extraen aunque haya un solo fotón (un fotón, un electrón).",
+   "pagina_pdf": 499
+  },
+  {
+   "id": "n7",
+   "fr": "Travail d'extraction W",
+   "es": "Energía mínima que hay que aportar a un material para extraer un electrón. Símbolo W, unidad el julio (J); en la práctica se usa el electrón-voltio (1 eV = 1,602×10⁻¹⁹ J). Cuanto mayor es W, más ligado está el electrón. Depende del material.",
+   "pagina_pdf": 500
+  },
+  {
+   "id": "n8",
+   "fr": "Énergie cinétique de l'électron extrait",
+   "es": "Si ν > ν_s, el fotón aporta hν > W y el exceso se convierte en energía cinética del electrón (conservación de la energía). Crece linealmente con la frecuencia: la gráfica E_c(ν) es una recta de pendiente h que corta el eje de abscisas en ν_s y tiene ordenada en el origen −W.",
+   "pagina_pdf": 500
+  },
+  {
+   "id": "n9",
+   "fr": "Cellule photoélectrique",
+   "es": "Dispositivo que engendra una corriente eléctrico bajo el efecto de la luz: cátodo (emisor) y ánodo (colector) en un tubo al vacío o con gas inerte. Si el cátodo recibe luz de ν > ν_s emite electrones recogidos por el ánodo; la corriente aumenta con el número de fotones recibidos. Se usa en luxómetros, espectrofotómetros, interruptores crepusculares, detección de objetos.",
+   "pagina_pdf": 501
+  },
+  {
+   "id": "n10",
+   "fr": "Semi-conducteurs, jonction PN et bandes d'énergie",
+   "es": "Una unión PN junta un semiconductor dopado N (exceso de electrones) y otro dopado P (déficit de electrones: «huecos»). Los niveles de energía forman bandas (valencia, banda prohibida o «gap», conducción). Si un fotón tiene energía superior al gap, extrae un electrón y engendra corriente (absorción: célula fotovoltaica); la recombinación electrón-hueco emite un fotón (emisión: DEL). Para el silicio el gap vale 1,12 eV.",
+   "pagina_pdf": 501
+  },
+  {
+   "id": "n11",
+   "fr": "Cellule photovoltaïque et DEL",
+   "es": "Célula fotovoltaica: convierte energía luminosa en energía eléctrica (absorción de fotones). DEL (diode électroluminescente, símbolo de diodo con flechas): unión PN polarizada en directo que emite fotones. Fotodiodo: detecta luz (absorbe fotones).",
+   "pagina_pdf": 501
+  },
+  {
+   "id": "n12",
+   "fr": "Rendement et caractéristique I = f(U)",
+   "es": "El rendimiento mide la eficacia de la conversión luz → electricidad (hoy entre 5 y 18 %). Se determina trazando la característica I = f(U) y P = g(U) de la célula: el punto de funcionamiento de potencia máxima (U_m, I_m) da P_eléctrica máxima.",
+   "pagina_pdf": 501
+  },
+  {
+   "id": "n13",
+   "fr": "Quantification de l'énergie de l'atome (acquis de 1re)",
+   "es": "La energía del átomo está cuantificada: solo toma ciertos valores. Un átomo absorbe un fotón si la energía del fotón corresponde a la diferencia entre dos niveles; un átomo excitado restituye energía emitiendo un fotón.",
+   "pagina_pdf": 494
+  },
+  {
+   "id": "n14",
+   "fr": "Expérience de Hertz et Hallwachs",
+   "es": "Electroscopio cargado negativamente con una placa de zinc iluminada por ultravioleta: se descarga. Cargado positivamente con UV: no pasa nada. Cargado negativamente con luz visible: no pasa nada. Muestra que el efecto exige ν suficiente y que se emiten electrones (cargas negativas).",
+   "pagina_pdf": 496
+  },
+  {
+   "id": "n15",
+   "fr": "Expérience de Millikan (1916)",
+   "es": "Con metales alcalinos y una tensión de frenado U₀ que detiene los electrones (E_c = −eU₀), Millikan trazó U₀ en función de ν (recta): validó la interpretación de Einstein y permite medir la constante de Planck h. Premio Nobel 1923 (carga elemental e y efecto fotoeléctrico). Nota del libro: estas nociones están excluidas de la prueba escrita del bac en la fecha de publicación.",
+   "pagina_pdf": 511
+  },
+  {
+   "id": "n16",
+   "fr": "Détecteurs et applications de l'interaction photon-matière",
+   "es": "Diodo electroluminiscente, espectrofotómetro/luxómetro (célula fotoeléctrica), detector de presencia, detector de humo (DEL + captador de luz: el humo dispersa la luz), panel fotovoltaico, centelleador + fotomultiplicador en física de partículas.",
+   "pagina_pdf": 505
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "E = h\\nu = h\\,\\dfrac{c}{\\lambda}",
+   "nombre": "Energía de un fotón",
+   "nombre_fr": "Énergie d'un photon",
+   "variables": [
+    {
+     "simbolo": "E",
+     "significado": "energía del fotón",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "h",
+     "significado": "constante de Planck (6,63×10⁻³⁴ J·s)",
+     "unidad": "J·s"
+    },
+    {
+     "simbolo": "\\nu",
+     "significado": "frecuencia de la radiación",
+     "unidad": "Hz"
+    },
+    {
+     "simbolo": "c",
+     "significado": "celeridad de la luz en el vacío (3,00×10⁸ m·s⁻¹)",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "\\lambda",
+     "significado": "longitud de onda en el vacío",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Una radiación de frecuencia ν es un conjunto de fotones que transportan cada uno la energía E = hν = hc/λ: a mayor frecuencia (menor longitud de onda), más energía por fotón.",
+   "ejemplo": {
+    "enunciado": "Exercice 17 : un laser bleu de longueur d'onde λ = 450 nm extrait un électron d'une électrode en césium (travail d'extraction 1,95 eV). Énergie du photon ?",
+    "resultado": "E = hc/λ = 6,63×10⁻³⁴ × 3,00×10⁸ / 450×10⁻⁹ = 4,42×10⁻¹⁹ J (≈ 2,76 eV). Le corrigé en déduit E_c = 1,30×10⁻¹⁹ J = 0,811 eV.",
+    "pagina_pdf": 505
+   },
+   "pagina_pdf": 494,
+   "animacion": {
+    "preset": "fotones",
+    "params": {
+     "nu": 667,
+     "W0": 1.95
+    },
+    "leyenda": "Un fotón azul de 450 nm (≈ 667 THz) sobre cesio (W = 1,95 eV): ve la energía hν del fotón y el electrón que sale con el exceso."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "\\lambda_s = \\dfrac{c}{\\nu_s}",
+   "nombre": "Longitud de onda umbral",
+   "nombre_fr": "Longueur d'onde seuil",
+   "variables": [
+    {
+     "simbolo": "\\lambda_s",
+     "significado": "longitud de onda umbral en el vacío",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "c",
+     "significado": "celeridad de la luz en el vacío (3,00×10⁸ m·s⁻¹)",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "\\nu_s",
+     "significado": "frecuencia umbral (fréquence seuil)",
+     "unidad": "Hz"
+    }
+   ],
+   "explicacion": "A cada frecuencia umbral se asocia una longitud de onda umbral. El efecto fotoeléctrico se produce para una radiación de frecuencia ν > ν_s, es decir de longitud de onda λ < λ_s (desigualdad invertida).",
+   "ejemplo": {
+    "enunciado": "La fréquence seuil du zinc vaut ν_s = 8,11×10¹⁴ Hz.",
+    "resultado": "λ_s = 3,00×10⁸ / 8,11×10¹⁴ = 370 nm : un rayonnement de fréquence supérieure à 8,11×10¹⁴ Hz et de longueur d'onde inférieure à 370 nm provoque l'effet photoélectrique.",
+    "pagina_pdf": 499
+   },
+   "pagina_pdf": 499,
+   "animacion": {
+    "preset": "fotones",
+    "params": {
+     "nu": 811,
+     "W0": 3.36
+    },
+    "leyenda": "Zinc: con ν = 811 THz (justo el umbral, W = 3,36 eV) el fotón apenas alcanza para extraer un electrón; baja ν y deja de salir."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "W = h\\,\\nu_s",
+   "nombre": "Trabajo de extracción",
+   "nombre_fr": "Travail d'extraction",
+   "variables": [
+    {
+     "simbolo": "W",
+     "significado": "trabajo de extracción (energía mínima para extraer un electrón)",
+     "unidad": "J (o eV)"
+    },
+    {
+     "simbolo": "h",
+     "significado": "constante de Planck (6,63×10⁻³⁴ J·s)",
+     "unidad": "J·s"
+    },
+    {
+     "simbolo": "\\nu_s",
+     "significado": "frecuencia umbral del material",
+     "unidad": "Hz"
+    }
+   ],
+   "explicacion": "La existencia de una frecuencia umbral se traduce energéticamente en un trabajo de extracción: la energía mínima que debe aportar un fotón para arrancar un electrón del material. Depende del material estudiado. Conversión: 1 eV = 1,602×10⁻¹⁹ J.",
+   "ejemplo": {
+    "enunciado": "Zinc : ν_s = 8,11×10¹⁴ Hz. Travail d'extraction ?",
+    "resultado": "W = h·ν_s = 6,63×10⁻³⁴ × 8,11×10¹⁴ = 5,38×10⁻¹⁹ J = 5,38×10⁻¹⁹ / 1,602×10⁻¹⁹ = 3,36 eV. Un photon d'énergie ≥ 3,36 eV peut extraire un électron du zinc.",
+    "pagina_pdf": 500
+   },
+   "pagina_pdf": 500,
+   "animacion": {
+    "preset": "fotones",
+    "params": {
+     "nu": 811,
+     "W0": 3.36
+    },
+    "leyenda": "Umbral del zinc: el trabajo de extracción de 3,36 eV equivale a la energía de un fotón de 811 THz; mueve ν y compáralo con W."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "E_{\\text{photon}} = W + E_c",
+   "nombre": "Conservación de la energía en el efecto fotoeléctrico",
+   "nombre_fr": "Conservation de l'énergie (effet photoélectrique)",
+   "variables": [
+    {
+     "simbolo": "E_{\\text{photon}}",
+     "significado": "energía del fotón incidente (= hν)",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "W",
+     "significado": "trabajo de extracción del material",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "E_c",
+     "significado": "energía cinética del electrón extraído",
+     "unidad": "J"
+    }
+   ],
+   "explicacion": "La energía del fotón se reparte: una parte paga la extracción (W) y el exceso queda como energía cinética del electrón. Equivalente a E_c = E_photon − W. Si E_photon < W no hay emisión.",
+   "ejemplo": {
+    "enunciado": "Exercice 26 (or, W = 5,10 eV) : rayonnement ③ de fréquence ν₃ = 5,00×10¹⁵ Hz.",
+    "resultado": "E_photon = W + E_c ; ν_s = W/h = 1,23×10¹⁵ Hz ; E_c = h(ν − ν_s) = 2,50×10⁻¹⁸ J.",
+    "pagina_pdf": 507
+   },
+   "pagina_pdf": 500,
+   "animacion": {
+    "preset": "fotones",
+    "params": {
+     "nu": 1000,
+     "W0": 3.36
+    },
+    "leyenda": "Zinc con ν = 1000 THz: el fotón (≈ 4,14 eV) paga W = 3,36 eV y el sobrante sale como energía cinética del electrón."
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "E_c = h\\nu - h\\nu_s = h\\,(\\nu - \\nu_s)",
+   "nombre": "Energía cinética del electrón extraído",
+   "nombre_fr": "Énergie cinétique de l'électron",
+   "variables": [
+    {
+     "simbolo": "E_c",
+     "significado": "energía cinética del electrón",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "h",
+     "significado": "constante de Planck (6,63×10⁻³⁴ J·s)",
+     "unidad": "J·s"
+    },
+    {
+     "simbolo": "\\nu",
+     "significado": "frecuencia del rayonnement (ν > ν_s)",
+     "unidad": "Hz"
+    },
+    {
+     "simbolo": "\\nu_s",
+     "significado": "frecuencia umbral del material",
+     "unidad": "Hz"
+    }
+   ],
+   "explicacion": "E_c crece linealmente con ν (el «pont vers les maths»): recta de pendiente h, que corta el eje de abscisas en ν_s y tiene ordenada en el origen −W. La intensidad no cambia E_c, solo el número de electrones.",
+   "ejemplo": {
+    "enunciado": "Rayonnement de fréquence ν = 10,0×10¹⁴ Hz sur du zinc (W = 5,38×10⁻¹⁹ J).",
+    "resultado": "E_c = E_photon − W = hν − W = 10,0×10¹⁴ × 6,63×10⁻³⁴ − 5,38×10⁻¹⁹ = 1,25×10⁻¹⁹ J.",
+    "pagina_pdf": 500
+   },
+   "pagina_pdf": 500,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x<nus ? 0 : 0.004139*(x-nus)",
+     "xmin": 0,
+     "xmax": 1500,
+     "vars": {
+      "nus": {
+       "min": 300,
+       "max": 1100,
+       "step": 1,
+       "def": 811,
+       "label": "Frecuencia umbral νs",
+       "unit": "THz"
+      }
+     }
+    },
+    "leyenda": "Gráfica de E_c (eV) frente a ν (THz): cero hasta ν_s (811 THz para el zinc) y luego recta de pendiente h; desplaza ν_s para cambiar de material."
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "E_c = \\dfrac{1}{2}\\,m_e v^2 \\;\\Rightarrow\\; v = \\sqrt{\\dfrac{2E_c}{m_e}}",
+   "nombre": "Velocidad del electrón extraído",
+   "nombre_fr": "Vitesse de l'électron",
+   "variables": [
+    {
+     "simbolo": "E_c",
+     "significado": "energía cinética del electrón",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "m_e",
+     "significado": "masa del electrón (9,11×10⁻³¹ kg)",
+     "unidad": "kg"
+    },
+    {
+     "simbolo": "v",
+     "significado": "velocidad del electrón",
+     "unidad": "m·s⁻¹"
+    }
+   ],
+   "explicacion": "Conocida E_c (en julios), la velocidad se deduce de la energía cinética clásica. Hay que convertir antes los eV en J (1 eV = 1,602×10⁻¹⁹ J).",
+   "ejemplo": {
+    "enunciado": "Zinc, ν = 10,0×10¹⁴ Hz : E_c = 1,25×10⁻¹⁹ J. Vitesse de l'électron ?",
+    "resultado": "v = √(2E_c/m_e) = 5,24×10⁵ m·s⁻¹.",
+    "pagina_pdf": 500
+   },
+   "pagina_pdf": 500,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "sqrt(2*x*1e-19/9.11e-31)/1e5",
+     "xmin": 0,
+     "xmax": 6,
+     "vars": {}
+    },
+    "leyenda": "Curva v (en 10⁵ m·s⁻¹) frente a E_c (en 10⁻¹⁹ J): con E_c = 1,25 sale v ≈ 5,24×10⁵ m·s⁻¹, como en el ejemplo del zinc."
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "\\eta = \\dfrac{P_{\\text{électrique}}}{P_{\\text{lumineuse}}}\\times 100 = \\dfrac{E_{\\text{utile}}}{E_{\\text{fournie}}}\\times 100",
+   "nombre": "Rendimiento de una célula fotovoltaica",
+   "nombre_fr": "Rendement d'une cellule photovoltaïque",
+   "variables": [
+    {
+     "simbolo": "\\eta",
+     "significado": "rendimiento (en %, sin unidad)",
+     "unidad": "%"
+    },
+    {
+     "simbolo": "P_{\\text{électrique}}",
+     "significado": "potencia eléctrica máxima obtenida",
+     "unidad": "W"
+    },
+    {
+     "simbolo": "P_{\\text{lumineuse}}",
+     "significado": "potencia luminosa recibida",
+     "unidad": "W"
+    },
+    {
+     "simbolo": "E",
+     "significado": "energías (útil = eléctrica, fournie = luminosa)",
+     "unidad": "J"
+    }
+   ],
+   "explicacion": "El rendimiento compara la energía (o potencia) eléctrica útil con la luminosa recibida; hoy se sitúa entre el 5 y el 18 %. Se calcula con P_eléctrica máxima, leída en el punto de funcionamiento de potencia máxima.",
+   "ejemplo": {
+    "enunciado": "Exercice 28 : P_électrique = U_m × I_m = 2,0 × 0,0083 = 0,017 W ; P_lumineuse = 0,17 W (valeur donnée par le corrigé du livre).",
+    "resultado": "η = 0,017 / 0,17 × 100 = 10 %.",
+    "pagina_pdf": 508
+   },
+   "pagina_pdf": 501,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x/Pl*100",
+     "xmin": 0,
+     "xmax": 0.1,
+     "vars": {
+      "Pl": {
+       "min": 0.05,
+       "max": 0.5,
+       "step": 0.01,
+       "def": 0.17,
+       "label": "Potencia luminosa recibida",
+       "unit": "W"
+      }
+     }
+    },
+    "leyenda": "Gráfica de η (%) frente a la potencia eléctrica (W) para una potencia luminosa dada: con 0,017 W y 0,17 W recibidos sale η = 10 %."
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "P_{\\text{lumineuse}} = E \\times S",
+   "nombre": "Potencia luminosa recibida",
+   "nombre_fr": "Puissance lumineuse reçue",
+   "variables": [
+    {
+     "simbolo": "P_{\\text{lumineuse}}",
+     "significado": "potencia luminosa recibida por la célula",
+     "unidad": "W"
+    },
+    {
+     "simbolo": "E",
+     "significado": "iluminancia (éclairement) en W·m⁻² (se admite 100 lx = 1 W·m⁻²)",
+     "unidad": "W·m⁻²"
+    },
+    {
+     "simbolo": "S",
+     "significado": "superficie de la célula",
+     "unidad": "m²"
+    }
+   ],
+   "explicacion": "El luxómetro mide la iluminancia en lux; con la equivalencia admitida 100 lx ↔ 1 W·m⁻² se obtiene la potencia luminosa que llega a la superficie S de la célula.",
+   "ejemplo": {
+    "enunciado": "Exercice 23 : cellule de 5 cm × 4 cm éclairée à 7 000 lx (100 lx = 1 W·m⁻²).",
+    "resultado": "E = 70 W·m⁻² ; S = 2,0×10⁻³ m² ; P_lumineuse = 70 × 2,0×10⁻³ = 0,14 W (calculé avec les relations du cours).",
+    "pagina_pdf": 506
+   },
+   "pagina_pdf": 498,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x*S",
+     "xmin": 0,
+     "xmax": 200,
+     "vars": {
+      "S": {
+       "min": 0.0005,
+       "max": 0.01,
+       "step": 0.0005,
+       "def": 0.002,
+       "label": "Superficie S",
+       "unit": "m²"
+      }
+     }
+    },
+    "leyenda": "Recta P_lum (W) frente a la iluminancia E (W·m⁻²): con S = 20 cm² y E = 70 W·m⁻² la célula recibe 0,14 W."
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "P_{\\text{électrique}} = U \\times I",
+   "nombre": "Potencia eléctrica y punto de potencia máxima",
+   "nombre_fr": "Puissance électrique de la cellule",
+   "variables": [
+    {
+     "simbolo": "P",
+     "significado": "potencia eléctrica entregada por la célula",
+     "unidad": "W"
+    },
+    {
+     "simbolo": "U",
+     "significado": "tensión en bornes de la célula",
+     "unidad": "V"
+    },
+    {
+     "simbolo": "I",
+     "significado": "intensidad de la corriente",
+     "unidad": "A"
+    }
+   ],
+   "explicacion": "Se calcula P = U·I para cada par (U, I) de la característica, se traza P = f(U) y el máximo de P da el punto de funcionamiento de potencia máxima (U_m, I_m) y P_eléctrica.",
+   "ejemplo": {
+    "enunciado": "Exercice 28 : point de fonctionnement maximal U_m = 2,0 V, I_m = 0,0083 A.",
+    "resultado": "P_électrique = 2,0 × 0,0083 = 0,017 W.",
+    "pagina_pdf": 508
+   },
+   "pagina_pdf": 498,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "x*I",
+     "xmin": 0,
+     "xmax": 3,
+     "vars": {
+      "I": {
+       "min": 0.001,
+       "max": 0.3,
+       "step": 0.0001,
+       "def": 0.0083,
+       "label": "Intensidad I",
+       "unit": "A"
+      }
+     }
+    },
+    "leyenda": "P = U·I frente a U para una intensidad fija: en el punto U_m = 2,0 V, I_m = 0,0083 A de la célula se obtiene 0,017 W."
+   }
+  },
+  {
+   "id": "f10",
+   "latex": "E_{\\text{photon}} = \\dfrac{hc}{\\lambda} \\geq E_{\\text{gap}} \\;\\Rightarrow\\; \\lambda \\leq \\dfrac{hc}{E_{\\text{gap}}}",
+   "nombre": "Condición de absorción de un fotón por un semiconductor",
+   "nombre_fr": "Absorption d'un photon par un semi-conducteur (gap)",
+   "variables": [
+    {
+     "simbolo": "E_{\\text{gap}}",
+     "significado": "energía de la banda prohibida (gap)",
+     "unidad": "eV"
+    },
+    {
+     "simbolo": "\\lambda",
+     "significado": "longitud de onda del fotón",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "h,\\ c",
+     "significado": "constante de Planck y celeridad de la luz",
+     "unidad": "J·s ; m·s⁻¹"
+    }
+   ],
+   "explicacion": "Si el fotón tiene una energía superior al gap, extrae un electrón de la banda de valencia a la de conducción y engendra corriente (célula fotovoltaica); en el sentido inverso, la recombinación emite un fotón (DEL). Deducida de E = hc/λ aplicada al gap, como piden las actividades y ejercicios del capítulo.",
+   "ejemplo": {
+    "enunciado": "Silicium : gap 1,12 eV (activité 2, exercices 25 et 38). Domaine de longueurs d'onde absorbées ?",
+    "resultado": "λ ≤ hc/E_gap = 6,63×10⁻³⁴ × 3,00×10⁸ / (1,12 × 1,602×10⁻¹⁹) ≈ 1,11 µm, soit ν ≥ 2,71×10¹⁴ Hz (calculé avec E = hν = hc/λ).",
+    "pagina_pdf": 497
+   },
+   "pagina_pdf": 501,
+   "animacion": {
+    "preset": "fotones",
+    "params": {
+     "nu": 271,
+     "W0": 1.12
+    },
+    "leyenda": "Silicio (gap 1,12 eV): un fotón de ≈ 271 THz es el mínimo que libera un electrón; por encima de esa frecuencia (λ ≤ 1,11 µm) se absorbe."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "h (constante de Planck)",
+   "valor": "6,63×10⁻³⁴",
+   "unidad": "J·s",
+   "pagina_pdf": 494
+  },
+  {
+   "nombre": "c (celeridad de la luz en el vacío)",
+   "valor": "3,00×10⁸",
+   "unidad": "m·s⁻¹",
+   "pagina_pdf": 494
+  },
+  {
+   "nombre": "1 eV (electrón-voltio)",
+   "valor": "1,602×10⁻¹⁹",
+   "unidad": "J",
+   "pagina_pdf": 497
+  },
+  {
+   "nombre": "mₑ (masa del electrón)",
+   "valor": "9,11×10⁻³¹",
+   "unidad": "kg",
+   "pagina_pdf": 504
+  },
+  {
+   "nombre": "e (carga elemental, ejercicio 37)",
+   "valor": "1,60×10⁻¹⁹",
+   "unidad": "C",
+   "pagina_pdf": 511
+  },
+  {
+   "nombre": "Fotón: masa y carga",
+   "valor": "m = 0 ; q = 0",
+   "unidad": "kg ; C",
+   "pagina_pdf": 499
+  },
+  {
+   "nombre": "Equivalencia luxómetro",
+   "valor": "100 lx = 1 W·m⁻²",
+   "unidad": "lx ; W·m⁻²",
+   "pagina_pdf": 498
+  },
+  {
+   "nombre": "ν_s / λ_s del cesio",
+   "valor": "4,62×10¹⁴ Hz / 650 nm",
+   "unidad": "Hz / nm",
+   "pagina_pdf": 499
+  },
+  {
+   "nombre": "ν_s / λ_s del potasio",
+   "valor": "5,56×10¹⁴ Hz / 540 nm",
+   "unidad": "Hz / nm",
+   "pagina_pdf": 499
+  },
+  {
+   "nombre": "ν_s / λ_s del bario",
+   "valor": "6,00×10¹⁴ Hz / 500 nm",
+   "unidad": "Hz / nm",
+   "pagina_pdf": 499
+  },
+  {
+   "nombre": "ν_s / λ_s del zinc",
+   "valor": "8,11×10¹⁴ Hz / 370 nm",
+   "unidad": "Hz / nm",
+   "pagina_pdf": 499
+  },
+  {
+   "nombre": "ν_s / λ_s del cobre",
+   "valor": "1,03×10¹⁵ Hz / 290 nm",
+   "unidad": "Hz / nm",
+   "pagina_pdf": 499
+  },
+  {
+   "nombre": "W del zinc",
+   "valor": "3,36 (= 5,38×10⁻¹⁹ J)",
+   "unidad": "eV",
+   "pagina_pdf": 500
+  },
+  {
+   "nombre": "W del oro (ejercicio 26)",
+   "valor": "5,10",
+   "unidad": "eV",
+   "pagina_pdf": 507
+  },
+  {
+   "nombre": "Gap del silicio",
+   "valor": "1,12",
+   "unidad": "eV",
+   "pagina_pdf": 497
+  },
+  {
+   "nombre": "Gap de GaSb, GaP, GaAs",
+   "valor": "0,68 ; 2,25 ; 1,43",
+   "unidad": "eV",
+   "pagina_pdf": 512
+  },
+  {
+   "nombre": "Gap del germanio (ejercicio 40)",
+   "valor": "0,66",
+   "unidad": "eV",
+   "pagina_pdf": 513
+  },
+  {
+   "nombre": "Dominio visible",
+   "valor": "400 – 800 (otra escala del libro: 400 – 750)",
+   "unidad": "nm",
+   "pagina_pdf": 506
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Decidir si hay efecto fotoeléctrico (comparar con el umbral)",
+   "pasos": [
+    "Convertir el trabajo de extracción de eV a J (1 eV = 1,602×10⁻¹⁹ J) y calcular ν_s = W/h.",
+    "Calcular λ_s = c/ν_s. Atención: el rayonnement se caracteriza por una longitud de onda (el primero) o por frecuencias (los otros dos).",
+    "Hay efecto si ν ≥ ν_s (equivalentemente λ ≤ λ_s); si no, no se extrae ningún electrón, sea cual sea la intensidad."
+   ],
+   "pagina_pdf": 507
+  },
+  {
+   "titulo": "Calcular la energía cinética y la velocidad del electrón extraído",
+   "pasos": [
+    "Aplicar la conservación de la energía: E_photon = W + E_c.",
+    "E_c = hν − W = hν − hν_s = h(ν − ν_s) (W en J).",
+    "Despejar la velocidad de E_c = ½ m_e v²: v = √(2E_c / m_e), con m_e = 9,11×10⁻³¹ kg."
+   ],
+   "pagina_pdf": 507
+  },
+  {
+   "titulo": "Interpretar la gráfica E_c = f(ν)",
+   "pasos": [
+    "Es una recta (por encima de ν_s) de coeficiente director h.",
+    "Corta el eje de abscisas en ν_s y su ordenada en el origen (prolongada) es −W.",
+    "El trabajo de extracción se lee en la gráfica y es positivo (no −4,30 eV: W = +4,30 eV, como en el ejercicio 30)."
+   ],
+   "pagina_pdf": 500
+  },
+  {
+   "titulo": "Medir la potencia eléctrica máxima de una célula fotovoltaica (montaje)",
+   "pasos": [
+    "Montar la célula en serie con un amperímetro y una resistencia variable (0 a 100 kΩ), con un voltímetro en derivación entre los bornes de la célula; un luxómetro mide la iluminancia E.",
+    "Variar R para obtener pares (I, U); trazar I = f(U) con un tableur-grapheur.",
+    "Calcular P = U·I para cada par, trazar P = f(U) y leer P_eléctrica máxima (U_m, I_m)."
+   ],
+   "pagina_pdf": 498
+  },
+  {
+   "titulo": "Calcular el rendimiento de la célula",
+   "pasos": [
+    "P_lumineuse = E × S (E en W·m⁻², con 100 lx = 1 W·m⁻²; S en m²).",
+    "P_électrique = U_m × I_m en el punto de funcionamiento de potencia máxima.",
+    "η = P_électrique / P_lumineuse × 100 y comentar el resultado (rendimiento medio de una célula: 5–18 %)."
+   ],
+   "pagina_pdf": 508
+  },
+  {
+   "titulo": "Expresar el resultado de una medida con su incertidumbre (fiche méthode 7)",
+   "pasos": [
+    "La incertidumbre típica u(x) se redondea generalmente a 1 cifra significativa y el resultado a la misma decimal.",
+    "Para comparar la medida con un valor de referencia: Q = |x_mes − x_ref| / u(x); son compatibles a Q·u(x) cerca.",
+    "Evaluación de tipo A (varias medidas, histograma) o de tipo B (una sola medida)."
+   ],
+   "pagina_pdf": 556
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Más intensidad = efecto fotoeléctrico",
+   "correccion": "No: por debajo de la frecuencia umbral no se extrae ningún electrón, sea cual sea la intensidad; un solo fotón con hν ≥ W basta.",
+   "pagina_pdf": 499
+  },
+  {
+   "id": "err2",
+   "nombre": "Olvidar convertir eV en J",
+   "correccion": "Antes de usar h o m_e convierte W y E_c a julios: 1 eV = 1,602×10⁻¹⁹ J.",
+   "pagina_pdf": 507
+  },
+  {
+   "id": "err3",
+   "nombre": "Trabajo de extracción negativo o velocidad nula",
+   "correccion": "W es una energía positiva (la ordenada en el origen es −W); y bajo el umbral no hay velocidad nula: no se emiten electrones.",
+   "pagina_pdf": 509
+  },
+  {
+   "id": "err4",
+   "nombre": "Confundir ν y λ",
+   "correccion": "Efecto si ν ≥ ν_s pero λ ≤ λ_s (desigualdad invertida); λ_s = c/ν_s.",
+   "pagina_pdf": 499
+  },
+  {
+   "id": "err5",
+   "nombre": "Intensidad ↔ energía cinética",
+   "correccion": "La intensidad fija el número de electrones emitidos; E_c solo depende de la frecuencia (E_c = h(ν − ν_s)).",
+   "pagina_pdf": 499
+  },
+  {
+   "id": "err6",
+   "nombre": "Rendimiento al revés",
+   "correccion": "η = P_eléctrica / P_luminosa × 100 (salida entre entrada), no P_luminosa / P_eléctrica.",
+   "pagina_pdf": 503
+  },
+  {
+   "id": "err7",
+   "nombre": "Montaje sin resistencia variable",
+   "correccion": "Para hallar la potencia máxima hay que variar R (resistencia variable) con el amperímetro en serie y el voltímetro en derivación.",
+   "pagina_pdf": 503
+  },
+  {
+   "id": "err8",
+   "nombre": "Confundir absorción y emisión de fotones",
+   "correccion": "La célula fotovoltaica y el fotodiodo absorben fotones; la DEL los emite (recombinación electrón-hueco).",
+   "pagina_pdf": 501
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "Activité 1 — Effet photoélectrique (Hertz y Hallwachs)",
+   "descripcion": "Electroscopio con placa de zinc: cargado negativamente e iluminado con UV se descarga; cargado positivamente con UV no ocurre nada; cargado negativamente con luz visible no ocurre nada. Un vídeo muestra la influencia de la longitud de onda y de la intensidad. Preguntas: definir el efecto, hallar la frecuencia umbral del zinc y del sodio, y ver cómo evoluciona el número de electrones con la intensidad.",
+   "pagina_pdf": 496
+  },
+  {
+   "titulo": "Activité 2 — Applications de l'interaction lumière-matière",
+   "descripcion": "Dispositivos: diodo electroluminiscente, espectrofotómetro, detector de presencia, panel fotovoltaico. Se estudia la célula fotoeléctrica (cátodo/ánodo) y la unión PN del silicio (1,12 eV): intervalo de longitudes de onda que pueden producir corriente y energía de un fotón de 560 nm emitido por una unión PN.",
+   "pagina_pdf": 497
+  },
+  {
+   "titulo": "TP — Rendement d'une cellule photovoltaïque (activité 4)",
+   "descripcion": "Célula FV de superficie S, voltímetro, amperímetro, luxómetro, lámpara de escritorio y resistencia variable (0–100 kΩ) en serie. Se traza I = f(U), P = f(U), se halla P_eléctrica máxima, se mide E, se calcula P_lumineuse = E·S y se obtiene η = P_él/P_lum ×100, con regard critique sur les incertitudes (fiche méthode p. 538).",
+   "pagina_pdf": 498
+  },
+  {
+   "titulo": "Exercice 37 — Expérience de Millikan",
+   "descripcion": "Rayonnement de frecuencia ν extrae electrones del cátodo; una tensión de frenado U₀ los detiene (E_c = −eU₀). La recta U₀(ν) del sodio (ν_s = 43,9×10¹³ Hz) permite determinar h y compararla con el valor actual. Prepa-bac; en la fecha de publicación fuera de la prueba escrita.",
+   "pagina_pdf": 511
+  },
+  {
+   "titulo": "Geste ECE n° 9 — Associations de cellules",
+   "descripcion": "Comparar el rendimiento de dos células en serie y de dos en derivación: proponer protocolo, trazar P = f(U), medir P máxima, calcular P_lumineuse e identificar una fuente de incertidumbre. Capacidad experimental excluida de la prueba práctica en la fecha de publicación.",
+   "pagina_pdf": 514
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Exercice résolu 26 — Or électrique : le travail d'extraction de l'or est de 5,10 eV. 1. Pour chaque rayonnement, dire en justifiant s'il y a un effet photoélectrique : ① λ₁ = 300 nm ; ② ν₂ = 1,00×10¹⁵ Hz ; ③ ν₃ = 5,00×10¹⁵ Hz. 2. Calculer alors l'énergie cinétique et la vitesse de l'électron émis.",
+   "datos": {
+    "c": "3,00×10⁸ m·s⁻¹",
+    "h": "6,63×10⁻³⁴ J·s",
+    "1 eV": "1,602×10⁻¹⁹ J",
+    "m_e": "9,11×10⁻³¹ kg",
+    "W(Au)": "5,10 eV"
+   },
+   "respuesta": "ν_s = W/h = 1,23×10¹⁵ Hz ; λ_s = c/ν_s = 244 nm. Effet si ν ≥ ν_s et λ ≤ λ_s : seul le rayonnement ③ extrait des électrons. E_c = h(ν − ν_s) = 2,50×10⁻¹⁸ J ; v = √(2E_c/m_e) = 2,34×10⁶ m·s⁻¹.",
+   "respuesta_numerica": {
+    "valor": 2340000.0,
+    "unidad": "m·s⁻¹",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Convertir : W = 5,10 × 1,602×10⁻¹⁹ J",
+    "ν_s = W/h = (5,10×1,602×10⁻¹⁹)/(6,63×10⁻³⁴) = 1,23×10¹⁵ Hz ; λ_s = c/ν_s = 244 nm",
+    "① λ₁ = 300 nm > λ_s : non ; ② ν₂ = 1,00×10¹⁵ Hz < ν_s : non ; ③ ν₃ = 5,00×10¹⁵ Hz > ν_s : oui",
+    "E_c = hν − hν_s = 6,63×10⁻³⁴ × (5,00×10¹⁵ − 1,23×10¹⁵) = 2,50×10⁻¹⁸ J",
+    "v = √(2E_c/m_e) = √(2 × 2,50×10⁻¹⁸ / 9,11×10⁻³¹) = 2,34×10⁶ m·s⁻¹"
+   ],
+   "pagina_pdf": 507,
+   "corrige_pagina_pdf": 507
+  },
+  {
+   "id": "e2",
+   "enunciado": "Exercice résolu 28 — Étude d'une cellule photovoltaïque : surface 45 cm², éclairement 85 W·m⁻², caractéristique courant-tension donnée ; point de puissance maximale U_m = 2,0 V, I_m = 0,0083 A. 1. Expliquer comment déterminer expérimentalement le point de fonctionnement de puissance maximale. 2. Calculer le rendement de la cellule en pourcentage.",
+   "datos": {
+    "S": "45 cm²",
+    "E": "85 W·m⁻²",
+    "U_m": "2,0 V",
+    "I_m": "0,0083 A"
+   },
+   "respuesta": "1. On calcule P = U×I pour chaque valeur, on trace P = f(U), on lit U_m pour la valeur maximale de P, et on reporte U_m sur la courbe I = f(U). 2. P_électrique = U_m×I_m = 0,017 W ; P_lumineuse = E×S = 0,17 W (valeur du livre) ; η = 0,017/0,17 × 100 = 10 %. (Nota: con S = 45 cm² = 45×10⁻⁴ m² y E = 85 W·m⁻², E·S sería 0,38 W; el libro imprime 0,17 W y 10 % — posible errata del libro.)",
+   "respuesta_numerica": {
+    "valor": 10,
+    "unidad": "%",
+    "tolerancia_rel": 0.05
+   },
+   "pasos": [
+    "P = U×I pour chaque couple (U, I), tracé de P = f(U)",
+    "Lecture de la puissance maximale : U_m = 2,0 V, I_m = 0,0083 A → P_électrique = 0,017 W",
+    "P_lumineuse = E×S = 0,17 W (valeur du livre)",
+    "η = P_électrique / P_lumineuse × 100 = 10 %"
+   ],
+   "pagina_pdf": 508,
+   "corrige_pagina_pdf": 508
+  },
+  {
+   "id": "e3",
+   "enunciado": "Exercice 17 — Laser bleu : un laser bleu de longueur d'onde λ = 450 nm extrait un électron d'une électrode de césium de travail d'extraction 1,95 eV. 1. Calculer l'énergie cinétique de l'électron en J puis en eV. 2. Calculer la vitesse d'expulsion de l'électron.",
+   "datos": {
+    "λ": "450 nm",
+    "W": "1,95 eV",
+    "h": "6,63×10⁻³⁴ J·s",
+    "c": "3,00×10⁸ m·s⁻¹"
+   },
+   "respuesta": "1. E_photon = hν = hc/λ = W + E_c donc E_c = hc/λ − W = 1,30×10⁻¹⁹ J = 0,811 eV. 2. v = √(2E_c/m) = 5,34×10⁵ m·s⁻¹ (corrigé du livre).",
+   "respuesta_numerica": {
+    "valor": 1.3e-19,
+    "unidad": "J",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "E_photon = hc/λ = 4,42×10⁻¹⁹ J (2,76 eV)",
+    "W = 1,95 eV = 3,12×10⁻¹⁹ J",
+    "E_c = E_photon − W = 1,30×10⁻¹⁹ J = 0,811 eV",
+    "v = √(2E_c/m_e) = 5,34×10⁵ m·s⁻¹"
+   ],
+   "pagina_pdf": 505,
+   "corrige_pagina_pdf": 623
+  },
+  {
+   "id": "e4",
+   "enunciado": "Exercice 27 — Zinc électrique : on éclaire une plaque de zinc avec une lampe à vapeur de mercure dont les raies ont pour longueurs d'onde 302, 313, 365, 405, 436, 546 et 578 nm (W(Zn) = 3,36 eV). 1. Rappeler la définition de l'effet photoélectrique. 2. Montrer qu'il y a émission d'un électron uniquement pour les longueurs d'onde du domaine des ultraviolets. 3. Calculer l'énergie cinétique de l'électron extrait par un photon de longueur d'onde 302 nm.",
+   "datos": {
+    "W(Zn)": "3,36 eV",
+    "λ": "302 nm",
+    "h": "6,63×10⁻³⁴ J·s",
+    "c": "3,00×10⁸ m·s⁻¹"
+   },
+   "respuesta": "1. Extraction d'électrons d'un matériau sous l'effet d'une onde électromagnétique. 2. L'effet a lieu pour λ ≤ λ_s = hc/W(Zn) = 370 nm : seules les raies à 302, 313 et 365 nm (UV) conviennent. 3. E_c = hc/λ − W = 1,20×10⁻¹⁹ J.",
+   "respuesta_numerica": {
+    "valor": 1.2e-19,
+    "unidad": "J",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "λ_s = hc/W = 370 nm : effet si λ ≤ 370 nm (domaine UV)",
+    "E_photon(302 nm) = hc/λ = 6,59×10⁻¹⁹ J",
+    "E_c = hc/λ − W = 6,59×10⁻¹⁹ − 3,36×1,602×10⁻¹⁹ = 1,20×10⁻¹⁹ J"
+   ],
+   "pagina_pdf": 507,
+   "corrige_pagina_pdf": 623
+  },
+  {
+   "id": "e5",
+   "enunciado": "Exercice 20 — Rendement : un panneau photovoltaïque a un rendement de 11 %. Il reçoit un rayonnement de 900 W. 1. Représenter la conversion d'énergie. 2. Rappeler la définition du rendement. 3. Calculer la puissance électrique produite.",
+   "datos": {
+    "η": "11 %",
+    "P_lumineuse": "900 W"
+   },
+   "respuesta": "1. Énergie lumineuse → cellule photovoltaïque → énergie électrique (+ énergie thermique). 2. η = P_électrique/P_lumineuse × 100. 3. P_électrique = P_lumineuse × η/100 = 900 × 0,11 = 99 W (le corrigé imprimé semble donner 77 W : probable coquille, 900 × 0,11 = 99 W).",
+   "respuesta_numerica": {
+    "valor": 99,
+    "unidad": "W",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "η = P_électrique/P_lumineuse × 100",
+    "P_électrique = P_lumineuse × η/100",
+    "P_électrique = 900 × 11/100 = 99 W"
+   ],
+   "pagina_pdf": 505,
+   "corrige_pagina_pdf": 623
+  },
+  {
+   "id": "e6",
+   "enunciado": "Exercice 29 — Caractéristiques d'un module : module photovoltaïque en silicium monocristallin de surface S = 0,25 m², éclairé par une lampe d'éclairement 97 W·m⁻² ; mesures (U en V ; I en mA) : (20,8 ; 0,0) (19,9 ; 45,5) (18,8 ; 84,1) (17,5 ; 116) (15,8 ; 150) (13,5 ; 173) (7,5 ; 200) (4,4 ; 210) (0,061 ; 224). 1. Schéma du montage. 2. Tracer I = f(U). 3. a. Déterminer en expliquant la démarche la puissance électrique maximale. b. Calculer le rendement. c. Commenter.",
+   "datos": {
+    "S": "0,25 m²",
+    "E": "97 W·m⁻²"
+   },
+   "respuesta": "3. a. On calcule P = U×I pour chaque valeur et on trace P = f(U) : P_électrique max = 2,4 W. b. η = P_électrique/(E×S) = 2,4/(97×0,25) ≈ 10 %. c. 10 % de l'énergie lumineuse est convertie en énergie électrique : c'est le rendement moyen d'une cellule photovoltaïque (corrigé du livre).",
+   "respuesta_numerica": {
+    "valor": 9.9,
+    "unidad": "%",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "P = U×I pour chaque couple (15,8 V × 0,150 A = 2,37 W est le maximum)",
+    "P_électrique max ≈ 2,4 W",
+    "P_lumineuse = E×S = 97 × 0,25 = 24,25 W",
+    "η = 2,4 / 24,25 × 100 ≈ 9,9 % ≈ 10 %"
+   ],
+   "pagina_pdf": 508,
+   "corrige_pagina_pdf": 624
+  },
+  {
+   "id": "e7",
+   "enunciado": "Exercice 23 — Étude d'une cellule : lors d'une séance de TP, on éclaire une cellule photovoltaïque de longueur 5 cm et de largeur 4 cm placée à 10 cm d'une lampe de bureau. La cellule reçoit un éclairement de 7 000 lx. On mesure I = 0,18 A et U = 0,35 V pour la puissance électrique maximale. 1. Calculer la puissance lumineuse reçue. 2. Calculer la puissance électrique maximale. 3. a. Calculer le rendement. b. Commenter.",
+   "datos": {
+    "éclairement": "7 000 lx (100 lx = 1 W·m⁻²)",
+    "I": "0,18 A",
+    "U": "0,35 V",
+    "S": "5 cm × 4 cm"
+   },
+   "respuesta": "(Pas dans le corrigé imprimé ; calculé avec les relations du cours.) P_lumineuse = E×S = 70 × 2,0×10⁻³ = 0,14 W ; P_électrique = U×I = 0,35 × 0,18 = 0,063 W ; η = 0,063/0,14 × 100 = 45 % : valeur nettement plus élevée que le rendement habituel de 5 à 18 %.",
+   "respuesta_numerica": {
+    "valor": 45,
+    "unidad": "%",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "E = 7 000 lx = 70 W·m⁻² ; S = 5 × 4 = 20 cm² = 2,0×10⁻³ m²",
+    "P_lumineuse = E×S = 0,14 W",
+    "P_électrique = U×I = 0,063 W",
+    "η = 0,063/0,14 × 100 = 45 %"
+   ],
+   "pagina_pdf": 506,
+   "corrige_pagina_pdf": 0
+  },
+  {
+   "id": "e8",
+   "enunciado": "Exercice 32 — Matériau mystère : un matériau de nature inconnue éjecte un électron avec une énergie cinétique de 1,0×10⁻¹⁹ J sous l'effet d'un photon de fréquence ν = 7,5×10¹⁴ Hz. Démarche experte : déterminer à l'aide des données (longueur d'onde seuil de différents matériaux : Cs 650 nm, K 540 nm, Ba 500 nm, Zn 370 nm, Cu 290 nm) la nature du matériau.",
+   "datos": {
+    "E_c": "1,0×10⁻¹⁹ J",
+    "ν": "7,5×10¹⁴ Hz",
+    "h": "6,63×10⁻³⁴ J·s",
+    "c": "3,00×10⁸ m·s⁻¹"
+   },
+   "respuesta": "(Pas dans le corrigé imprimé ; calculé avec les relations du cours.) W = hν − E_c = 3,97×10⁻¹⁹ J (2,48 eV) ; ν_s = W/h = 6,0×10¹⁴ Hz ; λ_s = c/ν_s = 500 nm : le matériau est le baryum.",
+   "respuesta_numerica": {
+    "valor": 500,
+    "unidad": "nm",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "W = E_photon − E_c = h·ν − E_c = 6,63×10⁻³⁴ × 7,5×10¹⁴ − 1,0×10⁻¹⁹ = 3,97×10⁻¹⁹ J",
+    "ν_s = W/h = 5,99×10¹⁴ Hz",
+    "λ_s = c/ν_s = 5,0×10⁻⁷ m = 500 nm → baryum"
+   ],
+   "pagina_pdf": 509,
+   "corrige_pagina_pdf": 0
+  },
+  {
+   "id": "e9",
+   "enunciado": "Vérifier l'essentiel (QCM 1 à 9) : 1 L'effet photoélectrique s'explique avec : A aspect particulaire / B aspect ondulatoire / C dualité. 2 Il se produit : A en dessous / B au-dessus d'une fréquence seuil / C pour n'importe quelle fréquence. 3 Cobalt ν_s = 1,2×10¹⁵ Hz : effet pour : A λ > 250 nm / B λ < 250 nm / C λ = 250 nm. 4 Le travail d'extraction est l'énergie : A pour extraire un photon / B pour extraire un électron / C libérée lors de l'extraction. 5 Cobalt : W = ? 6 Conservation de l'énergie. 7 Dispositifs qui exploitent l'effet photoélectrique. 8 Rendement. 9 Montage pour la puissance maximale.",
+   "datos": {
+    "cobalt": "ν_s = 1,2×10¹⁵ Hz"
+   },
+   "respuesta": "Corrigé du livre : 1 A ; 2 B ; 3 B ; 4 B ; 5 A (W = 8,0×10⁻¹⁹ J) ; 6 A et B (hν = E_c + W = E_c + hν_s) ; 7 B et C (luxmètre, spectrophotomètre) ; 8 C (η = P_électrique/P_lumineuse × 100) ; 9 A (cellule, ampèremètre en série, voltmètre en dérivation et résistance variable).",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Q3 : λ_s = c/ν_s = 250 nm et effet si λ < λ_s",
+    "Q5 : W = hν_s = 6,63×10⁻³⁴ × 1,2×10¹⁵ = 8,0×10⁻¹⁹ J",
+    "Q8 : η = P_électrique / P_lumineuse × 100"
+   ],
+   "pagina_pdf": 503,
+   "corrige_pagina_pdf": 623
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "fotones",
+   "params": {
+    "nu": 811,
+    "W0": 3.36
+   },
+   "titulo": "Umbral fotoeléctrico del zinc",
+   "relacion": "W = hν_s: con ν = ν_s = 811 THz el fotón apenas extrae un electrón (W = 3,36 eV)."
+  },
+  {
+   "preset": "fotones",
+   "params": {
+    "nu": 1000,
+    "W0": 3.36
+   },
+   "titulo": "Zinc a 10,0×10¹⁴ Hz",
+   "relacion": "E_c = hν − W = 1,25×10⁻¹⁹ J (ejemplo del cours)."
+  },
+  {
+   "preset": "fotones",
+   "params": {
+    "nu": 667,
+    "W0": 1.95
+   },
+   "titulo": "Láser azul sobre cesio",
+   "relacion": "Ejercicio 17: λ = 450 nm, W = 1,95 eV, E_c ≈ 0,81 eV."
+  },
+  {
+   "preset": "generico",
+   "params": {
+    "expr": "x<nus ? 0 : 0.004139*(x-nus)",
+    "xmin": 0,
+    "xmax": 1500,
+    "vars": {
+     "nus": {
+      "min": 300,
+      "max": 1100,
+      "step": 1,
+      "def": 811,
+      "label": "Frecuencia umbral νs",
+      "unit": "THz"
+     }
+    }
+   },
+   "titulo": "Recta E_c(ν)",
+   "relacion": "E_c = h(ν − ν_s): pendiente h, corte con el eje en ν_s, ordenada en el origen −W."
+  },
+  {
+   "preset": "generico",
+   "params": {
+    "expr": "x/Pl*100",
+    "xmin": 0,
+    "xmax": 0.1,
+    "vars": {
+     "Pl": {
+      "min": 0.05,
+      "max": 0.5,
+      "step": 0.01,
+      "def": 0.17,
+      "label": "Potencia luminosa recibida",
+      "unit": "W"
+     }
+    }
+   },
+   "titulo": "Rendimiento de la célula",
+   "relacion": "η = P_eléctrica/P_luminosa × 100 (ejercicio 28)."
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "camara-fotoelectrica",
+  "mecanica_especial": "Cámara fotoeléctrica: campo cátodo→ánodo (zona_campo que reduce el peso y empuja al «electrón» Ato), resortes = fotones UV que lanzan por encima del umbral (todo o nada), plataformas oscilantes (ondas de luz) y gravedad ligeramente reducida."
+ },
+ "estilo_intro_sugerido": "fisica3d"
+}

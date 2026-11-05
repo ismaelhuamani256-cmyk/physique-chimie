@@ -277,7 +277,7 @@
     if (g.jefe) J.Jefe.update(g, dt);
     pasoProyectiles(g, dt);
     // partículas
-    for (const q of g.part) { q.vida -= dt; q.vy += q.grav * dt; q.x += q.vx * dt * 16 / 2; q.y += q.vy * dt * 16 / 2; }
+    for (const q of g.part) { q.vida -= dt; q.vy += q.grav * dt; q.x += q.vx * dt * 16; q.y += q.vy * dt * 16; }
     g.part = g.part.filter((q) => q.vida > 0);
     g.shake = Math.max(0, g.shake - dt * 14);
     if (w.meta) w.meta.fase += dt;

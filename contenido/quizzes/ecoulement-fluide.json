@@ -1,0 +1,267 @@
+{
+ "capitulo_id": "ecoulement-fluide",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "opcion",
+   "enunciado": "La poussée d'Archimède a pour origine :",
+   "opciones": [
+    "l'attraction exercée par la Terre",
+    "les variations de la pression au sein d'un fluide",
+    "les frottements exercés par le fluide",
+    "la tension superficielle du fluide"
+   ],
+   "correcta": 1,
+   "explicacion": "La pression augmente avec la profondeur : les forces pressantes sont plus intenses sous l'objet que sur le dessus, leur résultante est la poussée d'Archimède.",
+   "pagina_pdf": 368
+  },
+  {
+   "id": "q2",
+   "tipo": "opcion",
+   "enunciado": "Pour un corps de volume V plongé dans un fluide de masse volumique ρ_f, l'expression vectorielle de la poussée d'Archimède est :",
+   "opciones": [
+    "π⃗ = −ρ·V·g⃗ (ρ du corps)",
+    "π⃗ = ρ_f·V·g⃗",
+    "π⃗ = −ρ_f·V·g⃗",
+    "π⃗ = −m_corps·g⃗"
+   ],
+   "correcta": 2,
+   "explicacion": "π⃗ = −ρ_f·V·g⃗ : vertical vers le haut (opposé au champ de pesanteur), avec ρ_f du fluide et V le volume de fluide déplacé.",
+   "pagina_pdf": 368
+  },
+  {
+   "id": "q3",
+   "tipo": "opcion",
+   "enunciado": "En régime permanent, l'écoulement d'un fluide traversant la section d'un conduit est caractérisé par :",
+   "opciones": [
+    "un débit volumique et une vitesse du fluide constants",
+    "un débit volumique constant mais une vitesse pouvant varier",
+    "un débit volumique et une vitesse pouvant varier",
+    "une pression constante partout"
+   ],
+   "correcta": 0,
+   "explicacion": "En régime permanent les lignes de courant ne changent pas : en un point donné la vitesse et le débit conservent la même valeur au cours du temps (Vérifier l'essentiel, question 5 : réponse A).",
+   "pagina_pdf": 368
+  },
+  {
+   "id": "q4",
+   "tipo": "opcion",
+   "enunciado": "Dans un conduit qui se rétrécit (S_B < S_A), en régime permanent :",
+   "opciones": [
+    "Q(A) > Q(B) et v_A < v_B",
+    "Q(A) = Q(B) et v_A = v_B",
+    "Q(A) = Q(B) et v_A < v_B",
+    "Q(A) < Q(B) et v_A > v_B"
+   ],
+   "correcta": 2,
+   "explicacion": "Le débit volumique se conserve et v_A·S_A = v_B·S_B : la vitesse augmente quand la section diminue.",
+   "pagina_pdf": 368
+  },
+  {
+   "id": "q5",
+   "tipo": "opcion",
+   "enunciado": "À altitude constante, l'effet Venturi signifie que, lorsque la vitesse d'un fluide augmente :",
+   "opciones": [
+    "sa pression augmente",
+    "sa pression diminue",
+    "sa masse volumique augmente",
+    "son débit diminue"
+   ],
+   "correcta": 1,
+   "explicacion": "P + ½ρv² = constante : si v augmente, P diminue (et inversement).",
+   "pagina_pdf": 366
+  },
+  {
+   "id": "q6",
+   "tipo": "opcion",
+   "enunciado": "La relation de Bernoulli modélise l'écoulement d'un fluide :",
+   "opciones": [
+    "compressible, en régime variable, avec frottements",
+    "incompressible, en régime permanent et sans frottement ni transfert thermique",
+    "uniquement au repos",
+    "uniquement les gaz"
+   ],
+   "correcta": 1,
+   "explicacion": "Hypothèses du cours : fluide incompressible, régime permanent, sans frottement ni travail ni transfert thermique ; elle exprime la conservation de l'énergie totale le long d'une ligne de courant.",
+   "pagina_pdf": 366
+  },
+  {
+   "id": "q7",
+   "tipo": "opcion",
+   "enunciado": "Un iceberg flotte à la surface de l'océan (ρ_glace = 910 kg·m⁻³, ρ_eau océans = 1024 kg·m⁻³). La fraction émergée du volume est environ :",
+   "opciones": [
+    "1/2",
+    "1/3",
+    "1/10",
+    "9/10"
+   ],
+   "correcta": 2,
+   "explicacion": "À l'équilibre π = P : V_immergé/V_iceberg = ρ_glace/ρ_eau = 910/1024 ≈ 0,89, donc ≈ 1/10 du volume émerge.",
+   "pagina_pdf": 360
+  },
+  {
+   "id": "q8",
+   "tipo": "opcion",
+   "enunciado": "Au tennis, lors d'un coup lifté, la rotation de la balle fait que, d'un côté de la balle, la vitesse de l'air augmente. Du côté où l'air est le plus rapide, la pression est :",
+   "opciones": [
+    "la plus grande",
+    "la plus faible",
+    "identique des deux côtés",
+    "nulle"
+   ],
+   "correcta": 1,
+   "explicacion": "Effet Magnus : là où la vitesse augmente, la pression diminue (Bernoulli) ; la différence de pression dévie la trajectoire.",
+   "pagina_pdf": 366
+  },
+  {
+   "id": "q9",
+   "tipo": "numerico",
+   "enunciado": "Un plongeur prévoit de s'immerger à 15 m sous la surface de l'eau (ρ = 1000 kg·m⁻³, g = 9,8 N·kg⁻¹). Quelle est la variation maximale de pression qu'il subira (ΔP = ρ·g·Δz) ?",
+   "valor": 147000,
+   "unidad": "Pa",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "ΔP = ρ·g·Δz",
+    "ΔP = 1000 × 9,8 × 15",
+    "ΔP = 1,47×10⁵ Pa"
+   ],
+   "pagina_pdf": 358
+  },
+  {
+   "id": "q10",
+   "tipo": "numerico",
+   "enunciado": "Une bille d'acier de volume V = 5,0 cm³ est totalement immergée dans l'eau (ρ_eau = 1,0×10³ kg·m⁻³, g = 9,8 N·kg⁻¹). Valeur de la poussée d'Archimède ?",
+   "valor": 0.049,
+   "unidad": "N",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "Convertir V = 5,0×10⁻⁶ m³",
+    "π = ρ_f·V·g",
+    "π = 1,0×10³ × 5,0×10⁻⁶ × 9,8 = 4,9×10⁻² N"
+   ],
+   "pagina_pdf": 364
+  },
+  {
+   "id": "q11",
+   "tipo": "numerico",
+   "enunciado": "La Loire rejette près de 80×10⁶ m³ d'eau par jour dans l'océan. Son débit volumique moyen vaut (en m³·s⁻¹) :",
+   "valor": 926,
+   "unidad": "m³·s⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "Q = V/Δt",
+    "Δt = 24 × 3600 = 86 400 s",
+    "Q = 80×10⁶ / 86 400 ≈ 926 m³/s"
+   ],
+   "pagina_pdf": 365
+  },
+  {
+   "id": "q12",
+   "tipo": "numerico",
+   "enunciado": "Un tuyau d'arrosage de diamètre 25 mm est alimenté avec une vitesse d'écoulement v_A = 1,7 m·s⁻¹. Quel est le débit volumique Q ?",
+   "valor": 0.00083,
+   "unidad": "m³·s⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "S = π·d²/4 = π × (25×10⁻³)²/4 = 4,9×10⁻⁴ m²",
+    "Q = v·S = 1,7 × 4,9×10⁻⁴",
+    "Q = 8,3×10⁻⁴ m³/s (≈ 3,0×10³ L/h)"
+   ],
+   "pagina_pdf": 370
+  },
+  {
+   "id": "q13",
+   "tipo": "numerico",
+   "enunciado": "Ce même tuyau (Q = 8,3×10⁻⁴ m³·s⁻¹) sert à remplir un arrosoir de 12 L. Durée nécessaire ?",
+   "valor": 14,
+   "unidad": "s",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "V = 12 L = 12×10⁻³ m³",
+    "Δt = V/Q = 12×10⁻³ / 8,3×10⁻⁴",
+    "Δt ≈ 14 s"
+   ],
+   "pagina_pdf": 370
+  },
+  {
+   "id": "q14",
+   "tipo": "numerico",
+   "enunciado": "Fluide incompressible (ρ = 825 kg·m⁻³) en écoulement horizontal : v_A = 4,5 m·s⁻¹, P_A = 1002 hPa, P_B = 987 hPa. Vitesse v_B ?",
+   "valor": 4.9,
+   "unidad": "m·s⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "Même altitude : P_A + ½ρv_A² = P_B + ½ρv_B²",
+    "v_B = √(2(P_A − P_B)/ρ + v_A²)",
+    "v_B = √(2 × 1500 / 825 + 4,5²) = 4,9 m/s"
+   ],
+   "pagina_pdf": 371
+  },
+  {
+   "id": "q15",
+   "tipo": "numerico",
+   "enunciado": "Lance à incendie (ex. 28) : v_B = 1,8 m·s⁻¹ à la sortie de la borne, v_A = 35 m·s⁻¹ dans la lance (même altitude), P_A = P_atm = 1,013×10⁵ Pa, ρ = 1000 kg·m⁻³. Pression P_B ?",
+   "valor": 710000.0,
+   "unidad": "Pa",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "P_B + ½ρv_B² = P_atm + ½ρv_A²",
+    "P_B = P_atm + ½ρ(v_A² − v_B²)",
+    "P_B = 1,013×10⁵ + 0,5 × 1000 × (35² − 1,8²) = 7,1×10⁵ Pa ≈ 7 bar"
+   ],
+   "pagina_pdf": 374
+  },
+  {
+   "id": "q16",
+   "tipo": "numerico",
+   "enunciado": "Un château d'eau alimente un robinet : h = 10 m de hauteur d'eau (g = 9,8 N·kg⁻¹). Vitesse de sortie de l'eau v_B = √(2·g·h) ?",
+   "valor": 14,
+   "unidad": "m·s⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "Bernoulli entre la surface libre A (v_A ≈ 0, P_atm) et la sortie B (P_atm)",
+    "ρ·g·z_A = ½ρ·v_B²",
+    "v_B = √(2 × 9,8 × 10) = 14 m/s"
+   ],
+   "pagina_pdf": 366
+  },
+  {
+   "id": "q17",
+   "tipo": "numerico",
+   "enunciado": "Baumgartner (ex. 26) : masse totale du système 3×10³ kg, ρ_air = 1,2 kg·m⁻³. Volume d'hélium minimal pour la sustentation (π = P) ?",
+   "valor": 2500,
+   "unidad": "m³",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "Sustentation : π = P",
+    "ρ_air·V·g = m·g",
+    "V = m/ρ_air = 3×10³ / 1,2 = 2,5×10³ m³"
+   ],
+   "pagina_pdf": 373
+  },
+  {
+   "id": "q18",
+   "tipo": "numerico",
+   "enunciado": "Une fontaine est alimentée avec un débit de 1 m³ par minute ; l'orifice de la tuyère mesure 25 mm de diamètre. Vitesse d'éjection de l'eau ?",
+   "valor": 34,
+   "unidad": "m·s⁻¹",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "Q = 1/60 = 1,67×10⁻² m³/s",
+    "S = π·(25×10⁻³)²/4 = 4,9×10⁻⁴ m²",
+    "v = Q/S ≈ 34 m/s"
+   ],
+   "pagina_pdf": 374
+  }
+ ]
+}

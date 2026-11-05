@@ -247,7 +247,7 @@
    "x": 98,
    "y": 10,
    "ref": "f6",
-   "latex": "n(\\mathrm{I_2})_{formé}=n(\\mathrm{Zn})_{formé}=\\dfrac{1}{2}\\,n(e^-)=\\dfrac{I\\cdot\\Delta t}{2\\,N_A\\cdot e}",
+   "latex": "n(\\mathrm{I_2})_{\\text{formé}}=n(\\mathrm{Zn})_{\\text{formé}}=\\dfrac{1}{2}\\,n(e^-)=\\dfrac{I\\cdot\\Delta t}{2\\,N_A\\cdot e}",
    "nombre": "Balance de materia de la electrólisis (Zn²⁺ / I⁻)"
   },
   {

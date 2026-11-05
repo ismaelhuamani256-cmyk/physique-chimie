@@ -8,7 +8,7 @@
   "salto": 12,
   "viento": 0
  },
- "ancho_tiles": 176,
+ "ancho_tiles": 181,
  "alto_tiles": 18,
  "segmentos": [
   {
@@ -36,26 +36,26 @@
   {
    "tipo": "foso",
    "x": 20,
-   "largo": 4
+   "largo": 5
   },
   {
    "tipo": "plataforma_movil",
    "x": 20,
    "y": 14,
-   "largo": 4,
+   "largo": 3,
    "recorrido": 2,
    "eje": "x",
    "periodo": 3
   },
   {
    "tipo": "plataforma",
-   "x": 24,
+   "x": 25,
    "y": 14,
    "largo": 14
   },
   {
    "tipo": "coleccionable",
-   "x": 29,
+   "x": 30,
    "y": 12,
    "ref": "f2",
    "latex": "Q_r = \\dfrac{[\\mathrm{C}]^c\\cdot[\\mathrm{D}]^d}{[\\mathrm{A}]^a\\cdot[\\mathrm{B}]^b}",
@@ -63,7 +63,7 @@
   },
   {
    "tipo": "enemigo",
-   "x": 34,
+   "x": 35,
    "y": 13,
    "enemigo": "equilibrio_estatico",
    "nombre": "Creer que equilibrio = «todo se detiene»",
@@ -71,22 +71,22 @@
   },
   {
    "tipo": "foso",
-   "x": 38,
+   "x": 39,
    "largo": 4
   },
   {
    "tipo": "plataforma",
-   "x": 42,
+   "x": 43,
    "y": 14,
    "largo": 18
   },
   {
    "tipo": "checkpoint",
-   "x": 44
+   "x": 45
   },
   {
    "tipo": "zona_campo",
-   "x": 44,
+   "x": 45,
    "y": 8,
    "w": 12,
    "h": 6,
@@ -95,7 +95,7 @@
   },
   {
    "tipo": "coleccionable",
-   "x": 49,
+   "x": 50,
    "y": 12,
    "ref": "f3",
    "latex": "K(T) = Q_{r,\\acute{e}q} = \\dfrac{[\\mathrm{C}]_f^c\\cdot[\\mathrm{D}]_f^d}{[\\mathrm{A}]_f^a\\cdot[\\mathrm{B}]_f^b}",
@@ -103,7 +103,7 @@
   },
   {
    "tipo": "enemigo",
-   "x": 55,
+   "x": 56,
    "y": 13,
    "enemigo": "criterio_invertido",
    "nombre": "Invertir el criterio Qr,i frente a K",
@@ -111,27 +111,27 @@
   },
   {
    "tipo": "foso",
-   "x": 60,
-   "largo": 4
+   "x": 61,
+   "largo": 5
   },
   {
    "tipo": "plataforma_movil",
-   "x": 60,
+   "x": 61,
    "y": 14,
-   "largo": 4,
+   "largo": 3,
    "recorrido": 2,
    "eje": "x",
    "periodo": 3
   },
   {
    "tipo": "plataforma",
-   "x": 64,
+   "x": 66,
    "y": 13,
    "largo": 16
   },
   {
    "tipo": "zona_campo",
-   "x": 66,
+   "x": 68,
    "y": 7,
    "w": 6,
    "h": 6,
@@ -140,7 +140,7 @@
   },
   {
    "tipo": "coleccionable",
-   "x": 72,
+   "x": 74,
    "y": 11,
    "ref": "f4",
    "latex": "Q_{r,i} < K(T) \\Rightarrow \\text{sens direct}\\ ;\\quad Q_{r,i} > K(T) \\Rightarrow \\text{sens opposé}\\ ;\\quad Q_{r,i} = K(T) \\Rightarrow \\text{équilibre}",
@@ -148,7 +148,7 @@
   },
   {
    "tipo": "enemigo",
-   "x": 76,
+   "x": 78,
    "y": 12,
    "enemigo": "agua_solvente",
    "nombre": "Tratar el agua como solvente cuando es reactivo puro",
@@ -156,36 +156,36 @@
   },
   {
    "tipo": "foso",
-   "x": 80,
-   "largo": 4
+   "x": 82,
+   "largo": 5
   },
   {
    "tipo": "plataforma_movil",
-   "x": 80,
+   "x": 82,
    "y": 13,
-   "largo": 4,
+   "largo": 3,
    "recorrido": 2,
    "eje": "x",
    "periodo": 3
   },
   {
    "tipo": "plataforma",
-   "x": 84,
+   "x": 87,
    "y": 13,
    "largo": 16
   },
   {
    "tipo": "checkpoint",
-   "x": 86
+   "x": 89
   },
   {
    "tipo": "resorte",
-   "x": 88,
+   "x": 91,
    "y": 13
   },
   {
    "tipo": "coleccionable",
-   "x": 88,
+   "x": 91,
    "y": 10,
    "ref": "f5",
    "latex": "q_{max} = n(\\mathrm{e}^-)\\cdot N_A\\cdot e",
@@ -193,7 +193,7 @@
   },
   {
    "tipo": "enemigo",
-   "x": 94,
+   "x": 97,
    "y": 12,
    "enemigo": "sin_puente_salino",
    "nombre": "Olvidar el puente salino en el esquema de la pila",
@@ -201,7 +201,7 @@
   },
   {
    "tipo": "coleccionable",
-   "x": 97,
+   "x": 100,
    "y": 11,
    "ref": "f6",
    "latex": "n(\\mathrm{e}^-) = z\\cdot n(\\text{réactif limitant})\\qquad (\\mathrm{Zn}:\\ z = 2)",
@@ -209,22 +209,22 @@
   },
   {
    "tipo": "foso",
-   "x": 100,
+   "x": 103,
    "largo": 4
   },
   {
    "tipo": "plataforma",
-   "x": 104,
+   "x": 107,
    "y": 14,
    "largo": 14
   },
   {
    "tipo": "checkpoint",
-   "x": 106
+   "x": 109
   },
   {
    "tipo": "coleccionable",
-   "x": 109,
+   "x": 112,
    "y": 12,
    "ref": "f7",
    "latex": "\\sigma = \\sum_{i=1}^{n}\\lambda_i\\cdot[X_i]",
@@ -232,7 +232,7 @@
   },
   {
    "tipo": "enemigo",
-   "x": 114,
+   "x": 117,
    "y": 13,
    "enemigo": "corriente_vs_electrones",
    "nombre": "Confundir sentido de la corriente y de los electrones",
@@ -240,27 +240,27 @@
   },
   {
    "tipo": "foso",
-   "x": 118,
-   "largo": 4
+   "x": 121,
+   "largo": 5
   },
   {
    "tipo": "plataforma_movil",
-   "x": 118,
+   "x": 121,
    "y": 14,
-   "largo": 4,
+   "largo": 3,
    "recorrido": 2,
    "eje": "x",
    "periodo": 3
   },
   {
    "tipo": "plataforma",
-   "x": 122,
+   "x": 126,
    "y": 14,
    "largo": 18
   },
   {
    "tipo": "coleccionable",
-   "x": 127,
+   "x": 131,
    "y": 12,
    "ref": "f8",
    "latex": "I = \\dfrac{q}{\\Delta t}",
@@ -268,7 +268,7 @@
   },
   {
    "tipo": "enemigo",
-   "x": 134,
+   "x": 138,
    "y": 13,
    "enemigo": "electrones_sin_igualar",
    "nombre": "Electrones no igualados en las semiecuaciones",
@@ -276,27 +276,27 @@
   },
   {
    "tipo": "foso",
-   "x": 140,
-   "largo": 4
+   "x": 144,
+   "largo": 5
   },
   {
    "tipo": "plataforma_movil",
-   "x": 140,
+   "x": 144,
    "y": 14,
-   "largo": 4,
+   "largo": 3,
    "recorrido": 2,
    "eje": "x",
    "periodo": 3
   },
   {
    "tipo": "plataforma",
-   "x": 144,
+   "x": 149,
    "y": 14,
    "largo": 32
   },
   {
    "tipo": "jefe",
-   "x": 160,
+   "x": 165,
    "jefe": "ejercicio_bac_1",
    "titulo": "Ejercicio bac: síntesis y pila (ej. 28 y 30)",
    "preguntas": [
@@ -352,7 +352,7 @@
   },
   {
    "tipo": "meta",
-   "x": 172
+   "x": 177
   }
  ]
 }

@@ -392,5 +392,221 @@
     dispose(S) { disposeComun(S); },
   });
 
-//@@FIN_PARTE_1@@
+  // =====================================================================================
+  // 3. ENFRIAMIENTO DE NEWTON — T(t) = T_ext + (T₀ − T_ext)·e^(−t/τ)
+  //    Didáctico: el tiempo de la animación está acelerado para recorrer 5τ en ~20 s reales
+  //    (se indica el factor). La pérdida de calor ∝ (T − T_ext) se dibuja con flechas.
+  //    La gráfica incluye la asíntota T_ext, la marca t = τ (63 % del descenso) y la tangente en t = 0
+  //    (que corta la asíntota exactamente en t = τ).
+  // =====================================================================================
+  const nwCalc = (p) => {
+    const T0 = num(p.T0, 90), Te = num(p.Text, 20), tau = Math.max(1, num(p.tau, 120));
+    return { T0, Te, tau, T: (t) => Te + (T0 - Te) * Math.exp(-t / tau) };
+  };
+  const NEWTON = {
+    titulo: 'Ley de enfriamiento de Newton', materia: 'physique',
+    params: [
+      { id: 'T0', label: 'Temperatura inicial T₀', min: 20, max: 100, step: 1, def: 90, unit: '°C' },
+      { id: 'Text', label: 'Temperatura exterior T_ext', min: -10, max: 40, step: 1, def: 20, unit: '°C' },
+      { id: 'tau', label: 'Constante de tiempo τ', min: 20, max: 600, step: 10, def: 120, unit: 's' }],
+    create(host, p) { return { host, t: 0, hold: 0, steam: [], btns: [] }; },
+    onParam(S, id, v, p) { S.t = Math.min(S.t, 5 * nwCalc(p).tau); },
+    step(S, dt, p) {
+      const k = nwCalc(p), Tend = 5 * k.tau, rate = Tend / 20;
+      if (S.t >= Tend) { S.hold += dt; if (S.hold > 2) { S.t = 0; S.hold = 0; } } else S.t = Math.min(Tend, S.t + dt * rate);
+      p._t = S.t; S.rate = rate;
+      // vapor: más intenso cuanto más caliente
+      const lvl = clamp((k.T(S.t) - 35) / 65, 0, 1), max = S.host.reduced ? 14 : 42;
+      if (S.steam.length < max && Math.random() < lvl * dt * 22) S.steam.push({ x: (Math.random() - 0.5) * 0.8, y: 0, vy: 0.35 + Math.random() * 0.3, ph: Math.random() * 6, life: 0, size: 0.6 + Math.random() * 0.6, lvl });
+      for (const q of S.steam) { q.y += q.vy * dt; q.life += dt * 0.55; q.x += Math.sin(q.ph + q.y * 5) * dt * 0.12; }
+      S.steam = S.steam.filter((q) => q.life < 1);
+      vivo(S, NEWTON, p, dt);
+    },
+    draw(S, ctx, w, h, p) {
+      fondo(ctx, w, h); const k = nwCalc(p), fs = fsz(w), wide = w >= 560, t = S.t, T = k.T(t), tau = k.tau;
+      const R = wide ? { x: 8, y: 8, w: w * 0.38, h: h - 16 } : { x: 8, y: 6, w: w - 16, h: h * 0.42 };
+      const G = wide ? { x: w * 0.38 + 66, y: 34, w: w * 0.62 - 86, h: h - 100 } : { x: 46, y: h * 0.42 + 34, w: w - 66, h: h * 0.58 - 74 };
+      // --- escena: aire del entorno, taza, termómetro, flechas de pérdida
+      const tint = termo(clamp((k.Te + 10) / 110, 0, 1)); ctx.fillStyle = rgb(tint, 0.1); rr(ctx, R.x, R.y, R.w, R.h, 12); ctx.fill(); ctx.strokeStyle = 'rgba(42,55,107,.9)'; ctx.lineWidth = 1; ctx.stroke();
+      txt(ctx, 'Aire: T_ext = ' + fmt(k.Te, 0) + ' °C', R.x + 10, R.y + fs + 4, { size: fs, color: C.txt2 });
+      const mw = Math.min(R.w * 0.34, R.h * 0.36), mh = mw * 1.08, cx = R.x + R.w * 0.46, yb = R.y + R.h * (wide ? 0.82 : 0.9);
+      const tc = termo(clamp((T + 5) / 105, 0, 1));
+      // vapor
+      for (const q of S.steam) { const a = (1 - q.life) * 0.5 * q.lvl * Math.sin(Math.min(1, q.life * 4) * Math.PI / 2), r = (6 + q.life * 22) * q.size * (mw / 90);
+        const px = cx + q.x * mw * 0.5, py = yb - mh * 0.86 - q.y * mh * 0.9; const g = ctx.createRadialGradient(px, py, 0, px, py, r); g.addColorStop(0, 'rgba(235,240,255,' + a + ')'); g.addColorStop(1, 'rgba(235,240,255,0)'); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(px, py, r, 0, TAU); ctx.fill(); }
+      // asa
+      ctx.strokeStyle = '#cfd8ff'; ctx.lineWidth = 6; ctx.lineCap = 'round'; ctx.beginPath(); ctx.arc(cx + mw / 2, yb - mh * 0.5, mh * 0.2, -Math.PI / 2, Math.PI / 2); ctx.stroke();
+      // líquido + cuerpo
+      const lx = cx - mw / 2, ly = yb - mh * 0.86; ctx.save(); rr(ctx, lx, yb - mh, mw, mh, 10); ctx.clip();
+      const gl = ctx.createLinearGradient(lx, 0, lx + mw, 0); gl.addColorStop(0, rgb(tc.map((c) => c * 0.8 | 0))); gl.addColorStop(0.5, rgb(tc)); gl.addColorStop(1, rgb(tc.map((c) => c * 0.75 | 0)));
+      ctx.fillStyle = gl; ctx.fillRect(lx, ly, mw, yb - ly); ctx.fillStyle = 'rgba(255,255,255,.14)'; ctx.fillRect(lx + mw * 0.12, ly + 6, mw * 0.08, mh * 0.7); ctx.restore();
+      ctx.fillStyle = rgb(tc.map((c) => Math.min(255, c * 1.12 | 0))); ctx.beginPath(); ctx.ellipse(cx, ly, mw / 2 - 1, mw * 0.07, 0, 0, TAU); ctx.fill();
+      ctx.strokeStyle = '#dfe6ff'; ctx.lineWidth = 3.5; rr(ctx, lx, yb - mh, mw, mh, 10); ctx.stroke();
+      // termómetro (escala −10 … 110 °C)
+      const tx0 = cx - mw / 2 - Math.min(48, R.w * 0.14), th = mh * 1.25, ty1 = yb - th, tyb = yb - 10, tyv = (v) => tyb - clamp((v + 10) / 120, 0, 1) * (tyb - ty1 - 6);
+      ctx.fillStyle = 'rgba(223,230,255,.14)'; rr(ctx, tx0 - 5, ty1, 10, tyb - ty1, 5); ctx.fill(); ctx.strokeStyle = '#dfe6ff'; ctx.lineWidth = 1.6; ctx.stroke();
+      ctx.fillStyle = rgb(tc); ctx.fillRect(tx0 - 2.5, tyv(T), 5, tyb - tyv(T)); ctx.beginPath(); ctx.arc(tx0, tyb + 4, 8, 0, TAU); ctx.fill(); ctx.strokeStyle = '#dfe6ff'; ctx.stroke();
+      for (let v = 0; v <= 100; v += 20) { ctx.strokeStyle = 'rgba(223,230,255,.6)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(tx0 + 6, tyv(v)); ctx.lineTo(tx0 + 11, tyv(v)); ctx.stroke(); if (wide || v % 40 === 0) txt(ctx, String(v), tx0 - 9, tyv(v), { size: fs - 2.5, color: C.txt2, align: 'right', base: 'middle' }); }
+      // flechas de pérdida de calor (∝ T − T_ext)
+      const dT = T - k.Te, sc = clamp(Math.abs(dT) / Math.max(Math.abs(k.T0 - k.Te), 5), 0, 1);
+      if (Math.abs(dT) > 0.3) { const L = 6 + 30 * sc, ax = cx + mw / 2 + mh * 0.2 + 12, out = dT > 0, col = out ? C.calor : C.frio; ctx.globalAlpha = 0.45 + 0.55 * sc;
+        for (let i = 0; i < 3; i++) { const y = yb - mh * (0.25 + i * 0.25); if (out) arrow(ctx, ax, y, ax + L, y, col, 2.4, 9); else arrow(ctx, ax + L, y, ax, y, col, 2.4, 9); } ctx.globalAlpha = 1;
+        txt(ctx, out ? 'pierde calor' : 'gana calor', ax + 2, yb - mh * 1.0 - 4, { size: fs - 1.5, color: col }); }
+      // lecturas del termómetro
+      chip(ctx, 'T = ' + fmt(T, 1) + ' °C', cx, R.y + R.h * (wide ? 0.13 : 0.2), { size: fs + 3, w: 700, align: 'center', color: C.txt, border: rgb(tc) });
+      chip(ctx, 't = ' + fmt(t, 0) + ' s  (×' + fmt(S.rate || 1, 1) + ' más rápido)', cx, yb + (wide ? 22 : 0) + (wide ? 0 : 0) - (wide ? 0 : 0) + (wide ? 0 : 0) - (wide ? 0 : 0), { size: fs - 1, align: 'center', color: C.txt2, w: 400 });
+      // --- gráfica T(t)
+      const lo = Math.min(k.T0, k.Te), hi = Math.max(k.T0, k.Te), pad = Math.max(2, 0.12 * (hi - lo)), Tend = 5 * tau;
+      const ax = ejes(ctx, G, 0, Tend, lo - pad, hi + pad, { xt: [0, 1, 2, 3, 4, 5].map((i) => i * tau), fx: (v) => fmt(v, 0), fy: (v) => fmt(v, 0), xl: 't (s)', yl: 'T (°C)', ny: 4 });
+      ctx.save(); ctx.beginPath(); ctx.rect(G.x, G.y - 2, G.w, G.h + 4); ctx.clip();
+      // asíntota
+      ctx.setLineDash([6, 5]); ctx.strokeStyle = C.frio; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(G.x, ax.Y(k.Te)); ctx.lineTo(G.x + G.w, ax.Y(k.Te)); ctx.stroke(); ctx.setLineDash([]);
+      // tangente en t = 0 (corta la asíntota en t = τ)
+      ctx.setLineDash([4, 4]); ctx.strokeStyle = 'rgba(255,209,102,.7)'; ctx.beginPath(); ctx.moveTo(ax.X(0), ax.Y(k.T0)); ctx.lineTo(ax.X(tau), ax.Y(k.Te)); ctx.stroke(); ctx.setLineDash([]);
+      // curva completa (tenue) y curva recorrida
+      const curva = (tmax, col, lw) => { ctx.strokeStyle = col; ctx.lineWidth = lw; ctx.lineJoin = 'round'; ctx.beginPath(); const n = 90; for (let i = 0; i <= n; i++) { const tt = (tmax * i) / n; i ? ctx.lineTo(ax.X(tt), ax.Y(k.T(tt))) : ctx.moveTo(ax.X(tt), ax.Y(k.T(tt))); } ctx.stroke(); };
+      curva(Tend, 'rgba(0,212,255,.22)', 2); curva(t, C.cian, 3.2);
+      ctx.restore();
+      // marca t = τ
+      const xT = ax.X(tau), yT = ax.Y(k.T(tau)); ctx.setLineDash([3, 4]); ctx.strokeStyle = C.ambar; ctx.lineWidth = 1.3; ctx.beginPath(); ctx.moveTo(xT, G.y + G.h); ctx.lineTo(xT, yT); ctx.lineTo(G.x, yT); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = C.ambar; ctx.beginPath(); ctx.arc(xT, yT, 4.5, 0, TAU); ctx.fill();
+      txt(ctx, 'τ = ' + fmt(tau, 0) + ' s', xT + 6, G.y + G.h - 6, { size: fs, color: C.ambar, w: 700, halo: true });
+      txt(ctx, 'T(τ) = ' + fmt(k.T(tau), 1) + ' °C  (63 % del cambio)', Math.min(xT + 8, G.x + G.w - 6), yT + (k.T0 > k.Te ? -8 : fs + 8), { size: fs - 1, color: C.ambar, align: xT + 8 > G.x + G.w * 0.55 ? 'right' : 'left', halo: true });
+      txt(ctx, 'T_ext', G.x + G.w - 4, ax.Y(k.Te) + (k.T0 > k.Te ? -6 : fs + 5), { size: fs, color: C.frio, align: 'right', w: 700, halo: true });
+      txt(ctx, 'tangente en t = 0', ax.X(tau * 0.5) + 8, ax.Y(lerp(k.T0, k.Te, 0.5)) - 6, { size: fs - 2, color: 'rgba(255,209,102,.8)', halo: true });
+      // punto móvil
+      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(ax.X(t), ax.Y(T), 5.5, 0, TAU); ctx.fill(); ctx.strokeStyle = C.cian; ctx.lineWidth = 2.5; ctx.stroke();
+    },
+    formula(p) {
+      const k = nwCalc(p), t = p._t || 0, d = k.T0 - k.Te;
+      return '\\begin{aligned}T(t)&=T_{\\text{ext}}+(T_0-T_{\\text{ext}})\\,e^{-t/\\tau}=' + tx(k.Te, 0) + (d >= 0 ? '+' : '-') + tx(Math.abs(d), 0) + '\\,e^{-t/' + tx(k.tau, 0) + '}\\\\[3pt]'
+        + 'T(' + tx(t, 0) + '\\ \\text{s})&=' + tx(k.T(t), 1) + '\\ {}^{\\circ}\\text{C}\\end{aligned}';
+    },
+    lecturas(p) {
+      const k = nwCalc(p), t = p._t || 0;
+      return [{ label: 't', valor: fmt(t, 0) + ' s' }, { label: 'T(t)', valor: fmt(k.T(t), 1) + ' °C' }, { label: 'τ', valor: fmt(k.tau, 0) + ' s' },
+        { label: 'T(τ)', valor: fmt(k.T(k.tau), 1) + ' °C' }, { label: 'T(5τ)', valor: fmt(k.T(5 * k.tau), 1) + ' °C' }];
+    },
+  };
+  PCB.anim.register('enfriamiento-newton', NEWTON);
+
+  // =====================================================================================
+  // 4. ONDAS — λ = v/f ; periodo T = 1/f ; atenuación en dB
+  //    Modo 0: onda viajera transversal (representación: también vale para el sonido, que en realidad
+  //            es longitudinal) con las "partículas del medio" oscilando. Escala: la ventana muestra
+  //            ≈3,3 λ de los valores con que se abre; después, λ en pantalla cambia con f y v.
+  //            El tiempo está ralentizado (≈0,5 Hz en pantalla); T real se indica en la cota.
+  //    Modo 1: fuente sonora puntual en campo libre: L(d) = L₀ − 20·log(d/d₀), d₀ = 1 m
+  //            (solo atenuación geométrica; sin absorción). Los círculos no están a escala de λ.
+  // =====================================================================================
+  const modoOnda = (p) => (p.modo === 1 || p.modo === true || String(p.modo).toLowerCase() === 'db' || p.modo === '1' ? 1 : 0);
+  const ondCalc = (p) => {
+    const f = Math.max(0.1, num(p.f, 440)), v = Math.max(0.1, num(p.v, 340)), L0 = num(p.L0, 80), d = Math.max(1, num(p.d, 8));
+    return { f, v, lam: v / f, T: 1 / f, L0, d, d2: 2 * d, L1: L0 - 20 * Math.log10(d), L2: L0 - 20 * Math.log10(2 * d) };
+  };
+  const ONDAS = {
+    titulo: 'Ondas: λ = v/f y atenuación', materia: 'physique',
+    params: [
+      { id: 'f', label: 'Frecuencia f', min: 1, max: 2000, step: 1, def: 440, unit: 'Hz' },
+      { id: 'v', label: 'Celeridad v', min: 1, max: 1500, step: 1, def: 340, unit: 'm/s' },
+      { id: 'modo', label: 'Modo', min: 0, max: 1, step: 1, def: 0, oculto: true },
+      { id: 'L0', label: 'Nivel a 1 m (modo dB)', min: 40, max: 110, step: 1, def: 80, unit: 'dB' },
+      { id: 'd', label: 'Distancia d (modo dB)', min: 1, max: 25, step: 0.5, def: 8, unit: 'm' }],
+    create(host, p) {
+      const k = ondCalc(p);
+      const S = { host, ph: 0, t: 0, lam0: k.lam, f0: k.f, btns: [], rings: [], emit: 0, pend: 0 };
+      punteros(S, {
+        down: (x, y) => { if (modoOnda(p) !== 1 || !S.geo) return false; return Math.abs(x - S.geo.xd1) < 22 && y > S.geo.yTop - 10 && y < S.geo.yAx + 20; },
+        move: (x) => { const g = S.geo; if (!g) return; const d = ((x - g.xSrc) / g.axLen) * g.Dmax; p.d = clamp(Math.round(d * 2) / 2, 1, 25); S._vt = 9; vivo(S, ONDAS, p, 0); const inp = S.host.host.parentElement.querySelector('.anim-ctrl input[aria-label="Distancia d (modo dB)"]'); if (inp) { inp.value = p.d; const b = inp.parentElement.querySelector('b'); if (b) b.textContent = fmt(p.d, 1) + ' m'; } },
+        hover: (x, y) => modoOnda(p) === 1 && S.geo && Math.abs(x - S.geo.xd1) < 22 && y > S.geo.yTop - 10 && y < S.geo.yAx + 20,
+      });
+      return S;
+    },
+    step(S, dt, p) {
+      const k = ondCalc(p); S.t += dt;
+      const fv = clamp(0.5 * Math.pow(k.f / S.f0, 0.6), 0.12, 3); S.fv = fv; S.ph += TAU * fv * dt;
+      // círculos del modo dB: uno cada 0,55 s
+      S.emit += dt; if (S.emit > 0.55) { S.emit = 0; S.rings.push(S.t); if (S.rings.length > 9) S.rings.shift(); }
+    },
+    draw(S, ctx, w, h, p) {
+      fondo(ctx, w, h); S.btns = []; const k = ondCalc(p), fs = fsz(w), modo = modoOnda(p);
+      const setModo = (m) => () => { p.modo = m; S._vt = 9; vivo(S, ONDAS, p, 0); };
+      btn(S, ctx, { x: 10, y: 8, w: 92, h: 26, label: 'Onda viajera', active: modo === 0, on: setModo(0), size: fs });
+      btn(S, ctx, { x: 108, y: 8, w: 120, h: 26, label: 'Sonido · dB', active: modo === 1, on: setModo(1), size: fs });
+      const mx = w * 0.05;
+      if (modo === 0) {
+        // ---------------- modo 0: onda viajera + periodo ----------------
+        const Rw = { x: mx, y: h * 0.17, w: w - 2 * mx, h: h * 0.42 }, yc = Rw.y + Rw.h * 0.58, Ap = Rw.h * 0.24, pxm = Rw.w / 3.3 / S.lam0, lampx = k.lam * pxm, kx = TAU / lampx;
+        ctx.strokeStyle = 'rgba(159,176,217,.35)'; ctx.setLineDash([4, 5]); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(Rw.x, yc); ctx.lineTo(Rw.x + Rw.w, yc); ctx.stroke(); ctx.setLineDash([]);
+        const yw = (x) => yc - Ap * Math.sin(kx * (x - Rw.x) - S.ph);
+        const grad = ctx.createLinearGradient(Rw.x, 0, Rw.x + Rw.w, 0); grad.addColorStop(0, C.violeta); grad.addColorStop(1, C.cian2);
+        ctx.strokeStyle = grad; ctx.lineWidth = 3.5; ctx.lineJoin = 'round'; ctx.beginPath(); for (let x = 0; x <= Rw.w; x += 3) { const X = Rw.x + x; x ? ctx.lineTo(X, yw(X)) : ctx.moveTo(X, yw(X)); } ctx.stroke();
+        // partículas del medio
+        const M = S.host.reduced ? 28 : 60; for (let i = 0; i <= M; i++) { const X = Rw.x + (i / M) * Rw.w; ctx.fillStyle = 'rgba(234,240,255,.9)'; ctx.beginPath(); ctx.arc(X, yw(X), 3.3, 0, TAU); ctx.fill(); }
+        // dos partículas en fase: separadas λ
+        let xa = Rw.x + Rw.w * 0.1; if (xa + lampx > Rw.x + Rw.w - 6) xa = Rw.x + 8; const xb = xa + lampx, okLam = xb <= Rw.x + Rw.w - 4;
+        [xa, okLam ? xb : null].forEach((X) => { if (X == null) return; ctx.strokeStyle = C.ambar; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(X, yw(X), 7, 0, TAU); ctx.stroke(); ctx.setLineDash([3, 3]); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(X, yw(X) - 8); ctx.lineTo(X, Rw.y + 6); ctx.stroke(); ctx.setLineDash([]); });
+        if (okLam) cota(ctx, xa, Rw.y + 12, xb, Rw.y + 12, 'λ = ' + lfmt(k.lam), C.ambar, fs + 1, true); else txt(ctx, 'λ = ' + lfmt(k.lam) + ' (mayor que la ventana)', xa, Rw.y + 12, { size: fs, color: C.ambar, w: 700 });
+        // sentido de propagación
+        arrow(ctx, Rw.x + Rw.w - 80, Rw.y + Rw.h + 10, Rw.x + Rw.w - 10, Rw.y + Rw.h + 10, C.cian2, 3, 11); txt(ctx, 'v = ' + fmt(k.v, 0) + ' m/s', Rw.x + Rw.w - 85, Rw.y + Rw.h + 14, { size: fs, color: C.cian2, w: 700, align: 'right' });
+        // gráfica de la partícula resaltada: y(t) con el periodo T
+        const G = { x: mx + 34, y: h * 0.7, w: w - 2 * mx - 34, h: h * 0.2 }, fv = S.fv || 0.5, win = 3 / fv;
+        ctx.fillStyle = 'rgba(10,15,32,.55)'; rr(ctx, G.x, G.y, G.w, G.h, 6); ctx.fill(); ctx.strokeStyle = C.borde; ctx.lineWidth = 1; ctx.stroke();
+        ctx.strokeStyle = 'rgba(159,176,217,.3)'; ctx.beginPath(); ctx.moveTo(G.x, G.y + G.h / 2); ctx.lineTo(G.x + G.w, G.y + G.h / 2); ctx.stroke();
+        const ka = kx * (xa - Rw.x), Xt = (tt) => G.x + ((tt - (S.t - win)) / win) * G.w, ph_t = (tt) => S.ph - TAU * fv * (S.t - tt);
+        ctx.save(); ctx.beginPath(); ctx.rect(G.x, G.y, G.w, G.h); ctx.clip(); ctx.strokeStyle = C.ambar; ctx.lineWidth = 2.6; ctx.beginPath();
+        for (let i = 0; i <= 120; i++) { const tt = S.t - win + (win * i) / 120, y = G.y + G.h / 2 - Math.sin(ka - ph_t(tt)) * G.h * 0.36; i ? ctx.lineTo(Xt(tt), y) : ctx.moveTo(Xt(tt), y); } ctx.stroke(); ctx.restore();
+        const d = (((S.ph - (ka - Math.PI / 2)) % TAU) + TAU) % TAU, tp0 = S.t - d / (TAU * fv), tp1 = tp0 - 1 / fv;
+        if (Xt(tp1) > G.x) { const yy = G.y + G.h / 2 - G.h * 0.36 - 7; [tp1, tp0].forEach((tt) => { ctx.setLineDash([2, 3]); ctx.strokeStyle = 'rgba(255,209,102,.6)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(Xt(tt), yy - 4); ctx.lineTo(Xt(tt), G.y + G.h / 2 - G.h * 0.36 + 2); ctx.stroke(); ctx.setLineDash([]); }); cota(ctx, Xt(tp1), yy, Xt(tp0), yy, 'T = 1/f = ' + tfmt(k.T), C.ambar, fs, true); }
+        ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(G.x + G.w, G.y + G.h / 2 - Math.sin(ka - S.ph) * G.h * 0.36, 4.5, 0, TAU); ctx.fill();
+        txt(ctx, 'posición de la partícula anaranjada', G.x + 4, G.y + G.h + fs + 4, { size: fs - 1, color: C.txt2 }); txt(ctx, 'tiempo (cámara lenta)', G.x + G.w, G.y + G.h + fs + 4, { size: fs - 1, color: C.txt2, align: 'right' });
+        txt(ctx, 'y', G.x - 8, G.y + G.h / 2, { size: fs, color: C.txt2, align: 'right', base: 'middle' });
+        chip(ctx, 'f = ' + fmt(k.f, 0) + ' Hz', w - 10, 21, { size: fs, align: 'right', color: C.violeta, border: C.violeta });
+      } else {
+        // ---------------- modo 1: sonido y atenuación en dB ----------------
+        const xSrc = w * 0.09, axLen = w * 0.84, Dmax = 50, yAx = h * 0.4, xd = (d) => xSrc + (d / Dmax) * axLen, yTop = h * 0.14;
+        S.geo = { xSrc, axLen, Dmax, yAx, yTop, xd1: xd(k.d) };
+        // eje de distancias
+        ctx.strokeStyle = C.borde; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(xSrc, yAx); ctx.lineTo(xSrc + axLen, yAx); ctx.stroke();
+        [0, 10, 20, 30, 40, 50].forEach((d) => { ctx.beginPath(); ctx.moveTo(xd(d), yAx - 3); ctx.lineTo(xd(d), yAx + 3); ctx.stroke(); txt(ctx, d + (d === 50 ? ' m' : ''), xd(d), yAx + fs + 6, { size: fs - 1.5, color: C.txt2, align: 'center' }); });
+        // círculos que se alejan; opacidad ∝ nivel sonoro a esa distancia
+        const spd = axLen / 3.6;
+        S.rings.forEach((tb) => { const r = (S.t - tb) * spd; if (r < 4 || r > axLen) return; const d = Math.max(1, (r / axLen) * Dmax), Ld = k.L0 - 20 * Math.log10(d), a = clamp((Ld - 15) / (k.L0 - 15), 0.04, 1);
+          ctx.strokeStyle = 'rgba(0,212,255,' + (0.8 * a) + ')'; ctx.lineWidth = 1 + 3 * a; ctx.beginPath(); ctx.arc(xSrc, yAx, r, -1.0, 1.0); ctx.stroke(); ctx.beginPath(); ctx.arc(xSrc, yAx, r, Math.PI - 1.0, Math.PI + 1.0); ctx.stroke(); });
+        // fuente (altavoz)
+        ctx.fillStyle = '#7e8cb8'; ctx.beginPath(); ctx.moveTo(xSrc - 14, yAx - 7); ctx.lineTo(xSrc - 4, yAx - 7); ctx.lineTo(xSrc + 8, yAx - 16); ctx.lineTo(xSrc + 8, yAx + 16); ctx.lineTo(xSrc - 4, yAx + 7); ctx.lineTo(xSrc - 14, yAx + 7); ctx.closePath(); ctx.fill();
+        txt(ctx, 'L₀ = ' + fmt(k.L0, 0) + ' dB a 1 m', xSrc - 14, yAx - 24, { size: fs, color: C.cian2, w: 700 });
+        // sonómetros a d y 2d
+        const sono = (d, L, col, lab) => {
+          const x = xd(d); if (d > Dmax + 0.1) return; ctx.strokeStyle = col; ctx.setLineDash([3, 3]); ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(x, yAx); ctx.lineTo(x, yTop + 34); ctx.stroke(); ctx.setLineDash([]);
+          ctx.fillStyle = 'rgba(18,26,51,.95)'; rr(ctx, x - 34, yTop, 68, 34, 7); ctx.fill(); ctx.strokeStyle = col; ctx.lineWidth = 1.8; ctx.stroke();
+          txt(ctx, fmt(L, 1) + ' dB', x, yTop + 15, { size: fs + 1, color: col, align: 'center', w: 700, base: 'middle' }); txt(ctx, lab, x, yTop + 28, { size: fs - 2, color: C.txt2, align: 'center', base: 'middle' });
+          ctx.fillStyle = col; ctx.beginPath(); ctx.arc(x, yAx, 5, 0, TAU); ctx.fill();
+        };
+        sono(k.d, k.L1, C.ambar, 'd = ' + fmt(k.d, 1) + ' m'); sono(k.d2, k.L2, C.magenta, '2d = ' + fmt(k.d2, 1) + ' m');
+        if (k.d2 <= Dmax) cota(ctx, xd(k.d), yAx + fs * 2 + 14, xd(k.d2), yAx + fs * 2 + 14, 'A = ' + fmt(k.L1 - k.L2, 1) + ' dB', C.verde, fs, false);
+        txt(ctx, 'arrastra el sonómetro ◂ ▸', xSrc + axLen, yAx - 24, { size: fs - 1.5, color: C.txt2, align: 'right' });
+        // curva L(d)
+        const G = { x: w * 0.1, y: h * 0.62, w: w * 0.84, h: h * 0.24 }, ylo = Math.max(0, k.L0 - 50), yhi = k.L0 + 6;
+        const ax = ejes(ctx, G, 0, Dmax, ylo, yhi, { xt: [0, 10, 20, 30, 40, 50], fx: (v) => fmt(v, 0), fy: (v) => fmt(v, 0), xl: 'distancia d (m)', yl: 'L (dB)', ny: 3 });
+        ctx.strokeStyle = C.cian; ctx.lineWidth = 2.8; ctx.beginPath(); for (let i = 0; i <= 100; i++) { const d = 1 + (49 * i) / 100, L = clamp(k.L0 - 20 * Math.log10(d), ylo, yhi); i ? ctx.lineTo(ax.X(d), ax.Y(L)) : ctx.moveTo(ax.X(d), ax.Y(L)); } ctx.stroke();
+        [[k.d, k.L1, C.ambar], [k.d2, k.L2, C.magenta]].forEach((q) => { if (q[0] > Dmax) return; ctx.fillStyle = q[2]; ctx.beginPath(); ctx.arc(ax.X(q[0]), ax.Y(clamp(q[1], ylo, yhi)), 5, 0, TAU); ctx.fill(); });
+        chip(ctx, 'Duplicar la distancia = −6 dB (atenuación geométrica)', w - 10, 21, { size: fs - 1, align: 'right', color: C.verde, border: C.verde });
+      }
+    },
+    formula(p) {
+      const k = ondCalc(p);
+      if (modoOnda(p) === 1) return '\\begin{aligned}L(d)&=L_0-20\\log\\dfrac{d}{d_0}\\quad(d_0=1\\ \\text{m})\\\\[3pt]A&=L_1-L_2=20\\log\\dfrac{' + tx(k.d2, 1) + '}{' + tx(k.d, 1) + '}=' + tx(k.L1 - k.L2, 1) + '\\ \\text{dB}\\end{aligned}';
+      return '\\lambda=\\dfrac{v}{f}=\\dfrac{' + tx(k.v, 0) + '}{' + tx(k.f, 0) + '}=' + ltex(k.lam) + '\\qquad T=\\dfrac1f=' + ttex(k.T);
+    },
+    lecturas(p) {
+      const k = ondCalc(p);
+      if (modoOnda(p) === 1) return [{ label: 'L(d)', valor: fmt(k.L1, 1) + ' dB' }, { label: 'L(2d)', valor: fmt(k.L2, 1) + ' dB' }, { label: 'Atenuación A', valor: fmt(k.L1 - k.L2, 1) + ' dB' }, { label: 'L₀ a 1 m', valor: fmt(k.L0, 0) + ' dB' }];
+      return [{ label: 'λ', valor: lfmt(k.lam) }, { label: 'T', valor: tfmt(k.T) }, { label: 'f', valor: fmt(k.f, 0) + ' Hz' }, { label: 'v', valor: fmt(k.v, 0) + ' m·s⁻¹' }];
+    },
+    dispose(S) { disposeComun(S); },
+  };
+  PCB.anim.register('ondas', ONDAS);
+
+//@@FIN_PARTE_2@@
 })();

@@ -73,7 +73,7 @@
     const ancho = Math.round(num(nivel.ancho_tiles, 0)), alto = Math.round(num(nivel.alto_tiles, 0));
     const segs = Array.isArray(nivel.segmentos) ? nivel.segmentos : [];
     const tiles = new Uint8Array(Math.max(0, ancho * alto));
-    const G = { ancho, alto, tiles, movers: [], resortes: [], campos: [], fosos: [], arena: null, puente: null, meta: null, jefe: null, palanca: null };
+    const G = { ancho, alto, tiles, movers: [], resortes: [], campos: [], fosos: [], puentes: [], palancas: [], arena: null, meta: null, jefe: null };
     const get = (x, y) => (x < 0 || x >= ancho || y < 0 || y >= alto ? 0 : tiles[y * ancho + x]);
     const set = (x, y, v) => { if (x >= 0 && x < ancho && y >= 0 && y < alto) tiles[y * ancho + x] = v; };
     G.get = get;
@@ -97,35 +97,28 @@
       G.fosos.push({ x, largo: l });
       for (let i = 0; i < l; i++) for (let yy = 0; yy < alto; yy++) if (get(x + i, yy) === 1) set(x + i, yy, 0);
     }
-    // 3) objetos
+    // 3) puentes (plataforma sólida de 1 tile sobre lava; pueden caer) y objetos
+    for (const s of segs) {
+      if (s.tipo !== 'puente') continue;
+      const x = Math.round(num(s.x, 0)), y = Math.round(num(s.y, 0)), l = Math.max(0, Math.round(num(s.largo, 0)));
+      for (let i = 0; i < l; i++) { for (let yy = y; yy < alto; yy++) set(x + i, yy, 0); set(x + i, y, 3); }
+      G.puentes.push({ id: s.id || null, x, y, largo: l, caeCon: s.cae_con || null, seg: s });
+    }
     for (const s of segs) {
       if (s.tipo === 'plataforma_movil') {
         G.movers.push({ x: num(s.x, 0), y: num(s.y, 0), largo: Math.max(1, Math.round(num(s.largo, 3))), rec: num(s.recorrido, 4),
           eje: s.eje === 'y' ? 'y' : 'x', per: Math.max(0.5, num(s.periodo, 3)), seg: s });
       } else if (s.tipo === 'resorte') G.resortes.push({ x: Math.round(num(s.x, 0)), y: Math.round(num(s.y, 0)), seg: s });
       else if (s.tipo === 'zona_campo') G.campos.push({ x: num(s.x, 0), y: num(s.y, 0), w: num(s.w, 1), h: num(s.h, 1), fx: num(s.fx, 0), fy: num(s.fy, 0), seg: s });
+      else if (s.tipo === 'palanca') G.palancas.push({ id: s.id || null, x: num(s.x, 0), y: num(s.y, 0), objetivo: s.objetivo || null, seg: s })
       else if (s.tipo === 'meta' && !G.meta) G.meta = { x: Math.round(num(s.x, 0)), seg: s };
       else if (s.tipo === 'jefe' && !G.jefe) G.jefe = { x: Math.round(num(s.x, 0)), seg: s };
     }
-    // 4) arena del jefe: paredes en izq y der; en fortaleza el suelo de la arena es un puente
+    // 4) arena del jefe: paredes de energía en izq y der mientras dura el combate (ver README)
     if (G.jefe) {
       const fort = nivel.tipo_nivel === 'fortaleza' || G.jefe.seg.jefe === 'rey_entropia';
       const metaX = G.meta ? G.meta.x : ancho - 2;
-      const palancaX = fort ? metaX - 4 : null;
-      G.arena = { izq: G.jefe.x - 12, der: fort ? palancaX - 1 : metaX - 1, fort, palancaX };
-      if (fort) {
-        const y = G.topAt(Math.max(0, G.arena.izq + 1));
-        if (y >= 0) {
-          for (let x = G.arena.izq; x < palancaX; x++) {
-            if (G.topAt(x) !== y) continue;   // columna no uniforme: lo reportará el validador
-            for (let yy = y; yy < alto; yy++) set(x, yy, 0);
-            set(x, y, 3);
-          }
-          G.puente = { x0: G.arena.izq, x1: palancaX, y };
-        }
-        const ty = G.topAt(palancaX);
-        if (ty >= 0) G.palanca = { x: palancaX, y: ty - 1 };
-      }
+      G.arena = { izq: G.jefe.x - 12, der: metaX - 1, fort };
     }
     return G;
   }
@@ -193,7 +186,7 @@
     const F = fisica(nivel);
     if (F.hSeguro < 2.2) E(`Con esta física el salto solo alcanza ${F.hMax.toFixed(2)} tiles: demasiado bajo para jugar.`);
     const segs = nivel.segmentos;
-    const TIPOS = ['plataforma', 'foso', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'checkpoint', 'jefe', 'meta'];
+    const TIPOS = ['plataforma', 'puente', 'palanca', 'foso', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'checkpoint', 'jefe', 'meta'];
     const G = geometria(nivel);
     const dentroX = (x) => x >= 0 && x < ancho, dentroY = (y) => y >= 0 && y < alto;
     const desc = (s, i) => `segmento #${i} (${s.tipo}${s.x != null ? ' x=' + s.x : ''}${s.y != null ? ' y=' + s.y : ''})`;
@@ -203,8 +196,8 @@
     segs.forEach((s, i) => {
       if (!s || typeof s !== 'object' || !TIPOS.includes(s.tipo)) { E(`segmento #${i}: tipo desconocido ${JSON.stringify(s && s.tipo)}.`); return; }
       if (!esNum(s.x)) { E(`${desc(s, i)}: falta x numérica.`); return; }
-      if (['plataforma', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo'].includes(s.tipo) && !esNum(s.y)) E(`${desc(s, i)}: falta y numérica.`);
-      if (['plataforma', 'foso', 'plataforma_movil'].includes(s.tipo) && !(esNum(s.largo) && s.largo >= 1)) E(`${desc(s, i)}: "largo" debe ser un número >= 1.`);
+      if (['plataforma', 'puente', 'palanca', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo'].includes(s.tipo) && !esNum(s.y)) E(`${desc(s, i)}: falta y numérica.`);
+      if (['plataforma', 'puente', 'foso', 'plataforma_movil'].includes(s.tipo) && !(esNum(s.largo) && s.largo >= 1)) E(`${desc(s, i)}: "largo" debe ser un número >= 1.`);
       if (s.x < 0 || s.x >= ancho) E(`${desc(s, i)}: x fuera de rango [0, ${ancho}).`);
       if (s.y != null && (s.y < 0 || s.y >= alto)) E(`${desc(s, i)}: y fuera de rango [0, ${alto}).`);
       if (esNum(s.largo) && s.x + s.largo > ancho) E(`${desc(s, i)}: se sale del nivel (x+largo=${s.x + s.largo} > ancho_tiles=${ancho}).`);
@@ -254,8 +247,8 @@
       for (let k = 0; k <= 16; k++) {
         const p = posMovil(m, (m.per * k) / 16);
         let choca = false;
-        for (let xx = Math.floor(p.x); xx < Math.ceil(p.x + m.largo); xx++) if (SOLIDO(G.get(xx, Math.round(p.y)))) choca = true;
-        if (choca) { E(`plataforma_movil en x=${sg.x}, y=${sg.y}: su recorrido atraviesa un bloque sólido.`); break; }
+        for (let xx = Math.floor(p.x); xx < Math.ceil(p.x + m.largo); xx++) if (SOLIDO(G.get(xx, Math.round(p.y) - 1)) || SOLIDO(G.get(xx, Math.round(p.y) - 2))) choca = true;
+        if (choca) { E(`plataforma_movil en x=${sg.x}, y=${sg.y}: hay un bloque sólido justo encima de su recorrido (no cabe el jugador).`); break; }
       }
       if (m.eje === 'x' && (m.x + Math.max(0, m.rec) + m.largo > ancho || m.x + Math.min(0, m.rec) < 0)) E(`plataforma_movil en x=${sg.x}: su recorrido se sale del nivel.`);
       if (m.eje === 'y' && (m.y + m.rec < 1 || m.y + m.rec > alto - 1)) E(`plataforma_movil en x=${sg.x}: su recorrido vertical se sale del nivel.`);
@@ -295,6 +288,25 @@
       if (typeof e.nombre !== 'string' || !e.nombre.trim()) E(`enemigo "${e.enemigo}" sin "nombre".`);
     }
 
+    // --- puentes y palancas (fortaleza) ---
+    const ids = new Set();
+    G.puentes.forEach((b) => { if (b.id) { if (ids.has(b.id)) E(`puente con id duplicado: ${b.id}.`); ids.add(b.id); } });
+    G.palancas.forEach((l) => { if (l.id) { if (ids.has(l.id)) E(`id duplicado: ${l.id}.`); ids.add(l.id); } });
+    for (const l of G.palancas) {
+      const x = Math.floor(l.x), y = Math.floor(l.y);
+      if (l.seg.efecto !== 'cae_puente') E(`palanca en x=${l.x}: efecto debe ser "cae_puente" (vale ${JSON.stringify(l.seg.efecto)}).`);
+      if (!G.puentes.length) E(`palanca en x=${l.x}: no hay ningún puente que pueda caer.`);
+      else if (l.objetivo && !G.puentes.some((b) => b.id === l.objetivo)) E(`palanca en x=${l.x}: objetivo "${l.objetivo}" no es el id de ningún puente.`);
+      if (G.get(x, y) !== 0) E(`palanca en x=${l.x}, y=${l.y}: está dentro de un sólido.`);
+      let apoyo = false; for (let k = 1; k <= 2; k++) if (G.get(x, y + k) !== 0) apoyo = true;
+      if (!apoyo) E(`palanca en x=${l.x}, y=${l.y}: flota (no hay suelo en los 2 tiles siguientes).`);
+    }
+    for (const b of G.puentes) {
+      if (b.caeCon && !G.palancas.some((l) => l.id === b.caeCon)) E(`puente en x=${b.x}: cae_con "${b.caeCon}" no es el id de ninguna palanca.`);
+      if (b.y > alto - 3) E(`puente en x=${b.x}: y=${b.y} demasiado abajo.`);
+    }
+    if (nivel.tipo_nivel === 'fortaleza' && (!G.puentes.length || !G.palancas.length)) W('Nivel fortaleza sin puente o sin palanca (el contrato pide ambos).');
+
     // --- jefe ---
     const jefe = jefes[0];
     if (nivel.tipo_nivel === 'fortaleza' && (!jefe || jefe.jefe !== 'rey_entropia')) E('Un nivel "fortaleza" necesita un segmento jefe con jefe:"rey_entropia".');
@@ -311,15 +323,12 @@
       if (A) {
         if (A.izq < 4) E(`jefe en x=${jefe.x}: la arena empezaría en x=${A.izq}; mueve el jefe a x >= 16.`);
         const ancho_int = A.der - (A.izq + 1);
-        if (ancho_int < 14) E(`Arena del jefe demasiado estrecha (${ancho_int} tiles interiores, mínimo 14). La arena va de jefe.x-12 a ${A.fort ? 'meta.x-5' : 'meta.x-1'}.`);
-        const y0 = G.fosos.length ? null : null; void y0;
-        const ref = G.puente ? G.puente.y : G.topAt(A.izq + 1);
-        for (let x = A.izq; x <= (A.fort ? A.palancaX : A.der); x++) {
-          const t = A.fort && x < A.palancaX ? (G.get(x, ref) === 3 ? ref : -1) : G.topAt(x);
-          if (t !== ref) { E(`Arena del jefe: el suelo debe ser plano y continuo entre x=${A.izq} y x=${A.fort ? A.palancaX : A.der} (falla en x=${x}).`); break; }
+        if (ancho_int < 14) E(`Arena del jefe demasiado estrecha (${ancho_int} tiles interiores, mínimo 14). La arena va de jefe.x-12 a meta.x-1.`);
+        const ref = G.topAt(A.izq + 1);
+        for (let x = A.izq; x <= A.der; x++) {
+          if (G.topAt(x) !== ref) { E(`Arena del jefe: el suelo debe ser plano y continuo entre x=${A.izq} y x=${A.der} (falla en x=${x}).`); break; }
         }
         if (G.movers.some((m) => m.x < A.der + 1 && m.x + m.largo + Math.abs(m.rec) > A.izq)) W('Hay plataformas móviles dentro de la arena del jefe.');
-        if (A.fort && G.palanca == null) E('Fortaleza: no hay suelo en la posición de la palanca (meta.x-4).');
       }
     }
 

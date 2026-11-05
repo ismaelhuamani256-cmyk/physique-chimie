@@ -436,7 +436,8 @@
       fondo(ctx, w, h);
       const eq = `${cf(e.a)}A + ${cf(e.b)}B → ${cf(e.c)}C`;
       // ---------- vaso con moléculas (izquierda)
-      const vx = w * 0.05, vw = w * 0.34, vy = h * 0.2, vh = h * 0.64;
+      const peq = w < 520; // pantalla estrecha: vaso más pequeño y tabla sin subtítulos
+      const vx = w * (peq ? 0.03 : 0.05), vw = w * (peq ? 0.31 : 0.34), vy = h * 0.2, vh = h * 0.64;
       txt(ctx, eq, vx + vw / 2, h * 0.1, fs + 3, '#eaf0ff', 'center', 700);
       const r = vaso(ctx, vx, vy, vw, vh, 0.8, '#5fd0ff', 0.2);
       const pulso = 0.5 + 0.5 * Math.sin(s.t * 4);
@@ -460,7 +461,7 @@
         bola(ctx, lx, ly - fs * 0.35, 4.5, col); txt(ctx, `${nm} ${num(v, 2)}`, lx + 9, ly, fs - 1, '#c9d6f5', 'left', 600);
       });
       // ---------- barra de avance + tableau (derecha)
-      const rx = w * 0.45, rw = w * 0.52;
+      const rx = w * (peq ? 0.39 : 0.45), rw = w * (peq ? 0.59 : 0.52);
       txt(ctx, 'Avancement x', rx, h * 0.1, fs + 1, '#c9d6f5', 'left', 700);
       txt(ctx, 'x = ' + num(e.xe, 2) + ' mol', rx + rw, h * 0.1, fs + 1, '#ffd166', 'right', 700);
       const by = h * 0.15, bh = Math.max(12, h * 0.05);
@@ -469,18 +470,18 @@
       if (f > 0.001) { const gb = ctx.createLinearGradient(rx, 0, rx + rw, 0); gb.addColorStop(0, '#2ee59d'); gb.addColorStop(1, '#ff3da6'); rr(ctx, rx, by, Math.max(bh, rw * f), bh, bh / 2); ctx.fillStyle = gb; ctx.fill(); }
       brillo(ctx, rx + rw * f, by + bh / 2, bh * 1.8, '#ffd166', 0.6); bola(ctx, rx + rw * f, by + bh / 2, bh * 0.55, '#ffd166');
       txt(ctx, '0', rx, by + bh + fs + 2, fs - 1, '#9fb0d9', 'left', 400);
-      const limTxt = e.lim === 'ambos' ? 'A y B (mezcla estequiométrica)' : e.lim + ' limitante';
+      const limTxt = e.lim === 'ambos' ? (peq ? 'A y B' : 'A y B (mezcla estequiométrica)') : e.lim + ' limitante';
       txt(ctx, 'x_max = ' + num(e.xmax, 2) + ' mol  ·  ' + limTxt, rx + rw, by + bh + fs + 2, fs - 1, '#ff8fb1', 'right', 700);
       if (e.bloq) txt(ctx, 'x > x_max: la reacción se detiene en x_max', rx + rw / 2, by + bh + 2 * fs + 6, fs - 1, '#ffd166', 'center', 600);
       // tableau
       const ty = h * 0.34, th = h * 0.6, rows = 4, rh = th / rows;
-      const cw0 = rw * 0.25, cwi = (rw - cw0) / 4;
+      const cw0 = rw * (peq ? 0.23 : 0.25), cwi = (rw - cw0) / 4, sub = rh > 34 && !peq;
       panel(ctx, rx, ty, rw, th, 8);
       const fsT = clamp(rh * 0.34, 9.5, 15);
       const cols = ['x', `n(A)`, `n(B)`, `n(C)`], colC = ['#ffd166', COL_A, COL_B, COL_C];
       // cabecera
       txt(ctx, 'État', rx + cw0 / 2, ty + rh * 0.62, fsT, '#9fb0d9', 'center', 700);
-      cols.forEach((c, i) => txt(ctx, c + (i ? ' (mol)' : ''), rx + cw0 + cwi * (i + 0.5), ty + rh * 0.62, fsT - (i ? 1.5 : 0), colC[i], 'center', 700));
+      cols.forEach((c, i) => txt(ctx, c + (i && !peq ? ' (mol)' : ''), rx + cw0 + cwi * (i + 0.5), ty + rh * 0.62, fsT - (i ? 1.5 : 0), colC[i], 'center', 700));
       const filas = [
         ['Initial', 0, p.n1, p.n2, 0, ['0', 'n₁', 'n₂', '0'], 0],
         ['En cours', e.xe, e.nA, e.nB, e.nC, ['x', `n₁−${cf(e.a)}x`, `n₂−${cf(e.b)}x`, `${cf(e.c)}x`], 1],
@@ -490,19 +491,22 @@
         const y = ty + rh * (i + 1);
         ctx.strokeStyle = 'rgba(255,255,255,.12)'; ctx.beginPath(); ctx.moveTo(rx + 6, y); ctx.lineTo(rx + rw - 6, y); ctx.stroke();
         if (i === 1) { rr(ctx, rx + 3, y + 2, rw - 6, rh - 4, 6); ctx.fillStyle = 'rgba(255,209,102,.10)'; ctx.fill(); ctx.strokeStyle = 'rgba(255,209,102,.45)'; ctx.stroke(); }
-        txt(ctx, fl[0], rx + cw0 / 2, y + rh * (rh > 34 ? 0.45 : 0.62), fsT, i === 1 ? '#ffd166' : '#c9d6f5', 'center', 700);
+        txt(ctx, fl[0], rx + cw0 / 2, y + rh * (sub ? 0.45 : 0.62), fsT, i === 1 ? '#ffd166' : '#c9d6f5', 'center', 700);
         for (let k = 0; k < 4; k++) {
           const cx = rx + cw0 + cwi * (k + 0.5), v = fl[1 + k], cero = Math.abs(v) < 1e-9;
           const esLim = i === 2 && ((k === 1 && lim('A')) || (k === 2 && lim('B')));
           if (esLim) { rr(ctx, cx - cwi / 2 + 3, y + 3, cwi - 6, rh - 6, 6); ctx.fillStyle = 'rgba(255,77,109,.2)'; ctx.fill(); ctx.strokeStyle = '#ff4d6d'; ctx.stroke(); }
-          txt(ctx, num(cero ? 0 : v, 2), cx, y + rh * (rh > 34 ? 0.45 : 0.62), fsT + 1, esLim ? '#ff8fb1' : '#eaf0ff', 'center', 700);
-          if (rh > 34) txt(ctx, esLim ? '★ limitante' : fl[5][k], cx, y + rh * 0.82, fsT - 3, esLim ? '#ff8fb1' : '#7f8fb8', 'center', 400);
+          txt(ctx, num(cero ? 0 : v, 2), cx, y + rh * (sub ? 0.45 : 0.62), fsT + 1, esLim ? '#ff8fb1' : '#eaf0ff', 'center', 700);
+          if (sub) txt(ctx, esLim ? '★ limitante' : fl[5][k], cx, y + rh * 0.82, fsT - 3, esLim ? '#ff8fb1' : '#7f8fb8', 'center', 400);
         }
       });
-      if (rh <= 34) txt(ctx, '★ = reactivo limitante (se agota)', rx + rw, ty + th + fs + 3, fs - 2, '#ff8fb1', 'right', 400);
+      if (!sub) txt(ctx, '★ = reactivo limitante (se agota)', rx + rw, ty + th + fs + 3, fs - 2, '#ff8fb1', 'right', 400);
     },
     formula(p) {
       const e = estadoAvance(p), A = e.a === 1 ? '' : `${e.a}\\times`, B = e.b === 1 ? '' : `${e.b}\\times`;
+      if (window.innerWidth < 640) { // pantalla estrecha: una relación por línea y sin desarrollo numérico largo
+        return `\\begin{gathered}n(\\mathrm{A})=n_1-${cf(e.a)}x=${tx(e.nA)}\\ \\text{mol}\\\\ n(\\mathrm{B})=n_2-${cf(e.b)}x=${tx(e.nB)}\\ \\text{mol}\\\\ n(\\mathrm{C})=${cf(e.c)}x=${tx(e.nC)}\\ \\text{mol}\\\\ x_{\\max}=${tx(e.xmax)}\\ \\text{mol}\\end{gathered}`;
+      }
       return `\\begin{gathered}n(\\mathrm{A})=n_1-${cf(e.a)}x=${tx(p.n1)}-${A}${tx(e.xe)}=${tx(e.nA)}\\ \\text{mol}\\qquad n(\\mathrm{B})=n_2-${cf(e.b)}x=${tx(e.nB)}\\ \\text{mol}\\qquad n(\\mathrm{C})=${cf(e.c)}x=${tx(e.nC)}\\ \\text{mol}\\\\[2pt] x_{\\max}=\\min\\!\\left(\\dfrac{n_1}{${e.a}},\\dfrac{n_2}{${e.b}}\\right)=${tx(e.xmax)}\\ \\text{mol}\\end{gathered}`;
     },
     lecturas(p) {
@@ -511,5 +515,135 @@
         { label: 'n(A)', valor: num(e.nA, 2) + ' mol' }, { label: 'n(B)', valor: num(e.nB, 2) + ' mol' }, { label: 'n(C)', valor: num(e.nC, 2) + ' mol' }];
     },
     dispose(s) { /* sin listeners */ },
+  });
+
+  // =====================================================================================
+  // 3. QUOTIENT-EQUILIBRE — Qr vs K   (modelo didáctico A ⇌ B,  Qr = [B]/[A],  [A]+[B] = 1 mol·L⁻¹)
+  //   Qr < K → la reacción evoluciona en sentido directo (A → B);  Qr > K → sentido inverso (B → A);  Qr = K → equilibrio.
+  // Cinética del modelo: v_directa = k_d·[A], v_inversa = k_i·[B] con k_d/k_i = K, de modo que en el equilibrio
+  // ambas se igualan (equilibrio dinámico: las moléculas siguen intercambiándose sin cambio neto).
+  // Mientras no se pulsa «Dejar evolucionar», el dibujo es una "foto" del instante con el Qr del slider.
+  // =====================================================================================
+  const COL_QA = '#3d8bff', COL_QB = '#ff3da6';
+  const qNow = (f) => f / Math.max(1e-9, 1 - f);
+  const sentido = (Q, K) => (Math.abs(Math.log(Q / K)) < 0.04 ? 0 : Q < K ? 1 : -1); // 1 directo, -1 inverso, 0 equilibrio
+
+  PCB.anim.register('quotient-equilibre', {
+    titulo: 'Quotient de réaction et équilibre', materia: 'chimie',
+    params: [
+      { id: 'K', label: 'Constante K', min: 0.1, max: 20, step: 0.1, def: 4, unit: '' },
+      { id: 'Q', label: 'Quotient Qr (état initial)', min: 0.1, max: 20, step: 0.1, def: 1, unit: '' },
+    ],
+    create(host, p) {
+      const rng = host.rng, N = host.reduced ? 70 : 120, ord = [];
+      for (let i = 0; i < N; i++) ord.push(i);
+      for (let i = N - 1; i > 0; i--) { const j = Math.floor(rng() * (i + 1)); [ord[i], ord[j]] = [ord[j], ord[i]]; }
+      // type = (ord < nB): al cambiar nB se transforman las moléculas cuyo "orden" cruza el umbral
+      const q = ord.map((o) => ({ u: rng(), v: rng(), a: rng() * TAU, ord: o, cb: 0, fl: 0 }));
+      const porOrd = []; q.forEach((m) => (porOrd[m.ord] = m));
+      const f0 = p.Q / (1 + p.Q), s = { t: 0, rng, N, q, porOrd, f: f0, nB: Math.round(f0 * N), evol: false, swapAcc: 0, red: host.reduced };
+      q.forEach((m) => (m.cb = m.ord < s.nB ? 1 : 0));
+      clics(s, host);
+      return s;
+    },
+    onParam(s, id, v, p) { if (id === 'Q') s.evol = false; },
+    step(s, dt, p) {
+      const K = p.K, kd = 0.4 * Math.sqrt(K), ki = 0.4 / Math.sqrt(K), rng = s.rng, N = s.N;
+      s.t += dt;
+      if (s.evol) s.f += dt * (kd * (1 - s.f) - ki * s.f);            // evolución cinética hacia Qr = K
+      else s.f = suav(s.f, p.Q / (1 + p.Q), 7, dt);                   // sigue al slider (foto del instante)
+      const Qn = qNow(s.f), eq = sentido(Qn, K) === 0;
+      s.dirFlux = kd * (1 - s.f); s.invFlux = ki * s.f;
+      // moléculas que cambian de tipo para ajustar nB al valor objetivo (como mucho unas pocas por frame)
+      const obj = Math.round(s.f * N); let guard = 4;
+      while (s.nB < obj && guard-- > 0) { const m = s.porOrd[s.nB]; if (m) m.fl = 1; s.nB++; }
+      while (s.nB > obj && guard-- > 0) { s.nB--; const m = s.porOrd[s.nB]; if (m) m.fl = 1; }
+      // equilibrio dinámico: intercambios A→B y B→A simultáneos (sin cambio neto)
+      if (s.evol || eq) {
+        s.swapAcc += dt * clamp(s.dirFlux * N * 0.35, 1.5, s.red ? 6 : 12);
+        while (s.swapAcc >= 1 && s.nB > 0 && s.nB < N) {
+          s.swapAcc -= 1;
+          const oA = s.nB + Math.floor(rng() * (N - s.nB)), oB = Math.floor(rng() * s.nB); // un orden de A y uno de B
+          const mA = s.porOrd[oA], mB = s.porOrd[oB];
+          mA.ord = oB; mB.ord = oA; s.porOrd[oB] = mA; s.porOrd[oA] = mB; mA.fl = 1; mB.fl = 1;
+        }
+      } else s.swapAcc = 0;
+      s.q.forEach((m) => { m.cb = suav(m.cb, m.ord < s.nB ? 1 : 0, 9, dt); m.fl = Math.max(0, m.fl - dt * 2.5); deambula(m, dt, 0.08, 1, rng); });
+    },
+    draw(s, ctx, w, h, p) {
+      const K = p.K, f = s.f, Qn = qNow(f), sen = sentido(Qn, K), fs = FS(w, h), peq = w < 520;
+      fondo(ctx, w, h); s.btns.length = 0;
+      const sh = clamp(h * 0.26, 56, 96), sy = h - sh;          // franja inferior: escala logarítmica
+      // ---------- botón + estado
+      const bw = peq ? 128 : 160, bh = 26;
+      if (!s.evol) boton(ctx, s, 8, 6, bw, bh, '▶ Dejar evolucionar', () => { s.evol = true; }, '#2ee59d', fs);
+      else boton(ctx, s, 8, 6, bw, bh, '↺ Volver al Qr inicial', () => { s.evol = false; s.f = p.Q / (1 + p.Q); }, '#ffd166', fs);
+      // ---------- vaso con moléculas
+      const vx = w * 0.05, vy = bh + 16, vw = w * (peq ? 0.4 : 0.38), vh = sy - vy - 12;
+      const r = vaso(ctx, vx, vy, vw, vh, 0.82, '#7aa8ff', 0.16);
+      const rad = clamp(Math.min(vw, vh) * 0.034, 3.2, 6.4);
+      for (const m of s.q) {
+        const x = r.x0 + m.u * (r.x1 - r.x0), y = r.y0 + m.v * (r.y1 - r.y0);
+        if (m.fl > 0) brillo(ctx, x, y, rad * 4, '#ffffff', m.fl * 0.55);
+        bola(ctx, x, y, rad, mezcla(COL_QA, COL_QB, m.cb));
+      }
+      // ---------- columna derecha: sentido, flujos y barras
+      const rx = vx + vw + w * 0.05, rw = w - rx - w * 0.03;
+      const colSen = sen === 1 ? '#2ee59d' : sen === -1 ? '#ff3da6' : '#ffd166';
+      const cmp = sen === 1 ? 'Qr < K' : sen === -1 ? 'Qr > K' : 'Qr = K';
+      txt(ctx, cmp, rx + rw / 2, vy + fs + 4, fs + 6, colSen, 'center', 700);
+      const msg = sen === 1 ? 'sentido directo  A → B' : sen === -1 ? 'sentido inverso  B → A' : 'equilibrio dinámico';
+      txt(ctx, msg, rx + rw / 2, vy + 2 * fs + 12, fs, '#c9d6f5', 'center', 600);
+      // flechas de velocidades (anchura ∝ velocidad): directa → e inversa ←
+      const ay = vy + 2 * fs + 26, jd = clamp(s.dirFlux / 0.6, 0.02, 1), ji = clamp(s.invFlux / 0.6, 0.02, 1);
+      const mx = rw * 0.12;
+      flecha(ctx, rx + mx, ay, rx + rw - mx, ay, '#2ee59d', 1.5 + 6 * jd, 6 + 6 * jd);
+      flecha(ctx, rx + rw - mx, ay + 14 + 4 * jd, rx + mx, ay + 14 + 4 * jd, '#ff3da6', 1.5 + 6 * ji, 6 + 6 * ji);
+      txt(ctx, 'v directa', rx + mx, ay - 6 - 3 * jd, fs - 2, '#8fe9c4', 'left', 400);
+      txt(ctx, 'v inversa', rx + rw - mx, ay + 14 + 4 * jd + 11 + 3 * ji + fs * 0.6, fs - 2, '#ff9cc9', 'right', 400);
+      // barras de concentración
+      const by0 = ay + 14 + 4 + 28 + fs, by1 = sy - fs * 2.2, bwid = Math.min(rw * 0.28, 52);
+      if (by1 - by0 > 24) {
+        [['[A]', 1 - f, COL_QA, rx + rw * 0.27], ['[B]', f, COL_QB, rx + rw * 0.73]].forEach(([nm, v, col, cx]) => {
+          rr(ctx, cx - bwid / 2, by0, bwid, by1 - by0, 5); ctx.fillStyle = 'rgba(255,255,255,.06)'; ctx.fill();
+          const hh = Math.max(2, (by1 - by0) * v);
+          const gb = ctx.createLinearGradient(0, by1 - hh, 0, by1); gb.addColorStop(0, col); gb.addColorStop(1, rgba(col, 0.55));
+          rr(ctx, cx - bwid / 2, by1 - hh, bwid, hh, 5); ctx.fillStyle = gb; ctx.fill();
+          txt(ctx, nm, cx, by1 + fs + 2, fs, col, 'center', 700);
+          txt(ctx, num(v, 2), cx, Math.min(by1 - 4, by1 - hh - 4), fs - 1, '#eaf0ff', 'center', 700);
+        });
+        txt(ctx, 'mol·L⁻¹', rx + rw / 2, by1 + fs + 2, fs - 2, '#7f8fb8', 'center', 400);
+      }
+      // ---------- escala logarítmica de Qr y K (10⁻² … 10²)
+      const gx = w * 0.06, gw = w * 0.88, gy = sy + sh * 0.42, lg = (v) => gx + ((Math.log10(clamp(v, 0.01, 100)) + 2) / 4) * gw;
+      panel(ctx, w * 0.02, sy + 2, w * 0.96, sh - 6, 10);
+      txt(ctx, 'Escala logarítmica de Qr y K', w * 0.04, sy + fs + 6, fs - 1, '#9fb0d9', 'left', 600);
+      // zonas: izquierda de K (directo) / derecha (inverso)
+      const kx = lg(K), zh = 7;
+      rr(ctx, gx, gy - zh / 2, Math.max(0, kx - gx), zh, 3); ctx.fillStyle = 'rgba(46,229,157,.35)'; ctx.fill();
+      rr(ctx, kx, gy - zh / 2, Math.max(0, gx + gw - kx), zh, 3); ctx.fillStyle = 'rgba(255,61,166,.35)'; ctx.fill();
+      [0.01, 0.1, 1, 10, 100].forEach((v, i) => {
+        const x = lg(v); ctx.strokeStyle = 'rgba(255,255,255,.35)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x, gy + 5); ctx.lineTo(x, gy + 10); ctx.stroke();
+        txt(ctx, ['0,01', '0,1', '1', '10', '100'][i], x, gy + 10 + fs, fs - 2, '#7f8fb8', 'center', 400);
+      });
+      // marcador de K (triángulo cian) y de Qr (círculo)
+      ctx.fillStyle = '#00d4ff'; ctx.beginPath(); ctx.moveTo(kx, gy - 5); ctx.lineTo(kx - 6, gy - 15); ctx.lineTo(kx + 6, gy - 15); ctx.closePath(); ctx.fill();
+      txt(ctx, 'K = ' + num(K, 1), kx, gy - 19, fs - 1, '#00d4ff', 'center', 700);
+      const qx = lg(Qn);
+      if (Math.abs(qx - kx) > 10) flecha(ctx, qx + (kx > qx ? 8 : -8), gy, kx + (kx > qx ? -8 : 8), gy, colSen, 2, 7);
+      brillo(ctx, qx, gy, 16, colSen, 0.7); bola(ctx, qx, gy, 6.5, colSen);
+      txt(ctx, 'Qr = ' + num(Qn, Qn < 10 ? 2 : 1), qx, gy + 10 + fs + fs + 1 > sy + sh - 6 ? gy - 19 : gy + 10 + 2 * fs + 2, fs - 1, colSen, 'center', 700);
+    },
+    formula(p) {
+      const sen = sentido(p.Q, p.K), cmp = sen === 1 ? '<' : sen === -1 ? '>' : '=';
+      const txtS = sen === 1 ? '\\text{sentido directo}' : sen === -1 ? '\\text{sentido inverso}' : '\\text{equilibrio}';
+      return `Q_r=\\dfrac{[\\mathrm{B}]}{[\\mathrm{A}]}=${tx(p.Q, 1)}\\ ${cmp}\\ K=${tx(p.K, 1)}\\ \\Rightarrow\\ ${txtS}`;
+    },
+    lecturas(p) {
+      const sen = sentido(p.Q, p.K);
+      return [{ label: 'Qr', valor: num(p.Q, 2) }, { label: 'K', valor: num(p.K, 2) }, { label: 'evolución', valor: sen === 1 ? 'directa (→)' : sen === -1 ? 'inversa (←)' : 'equilibrio (Qr = K)' },
+        { label: '[B]/[A] en equilibrio', valor: num(p.K, 2) }];
+    },
+    dispose(s) { if (s._offClics) s._offClics(); },
   });
 })();

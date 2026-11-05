@@ -1,0 +1,1020 @@
+{
+ "id": "synthese-organique",
+ "titulo": "Stratégies en synthèse organique",
+ "materia": "chimie",
+ "mundo": "constitucion",
+ "pdf_ini": 226,
+ "pdf_fin": 261,
+ "resumen": "El capítulo estudia cómo diseñar y optimizar una síntesis orgánica. Se repasan estructura y propiedades (fórmula topológica, familias éster/amina/amida/haloalcano, isomería de constitución, polímeros), cómo aumentar la velocidad de formación y el rendimiento (temperatura, catalizador, exceso de reactivo, eliminación de un producto), las estrategias multietapa (sustitución, adición, eliminación, protección/desprotección de funciones) y las síntesis ecorresponsables (química verde). El rendimiento R = n_obtenue/n_attendue es la magnitud central.",
+ "resumen_fr": "Optimiser une synthèse : vitesse de formation, rendement, stratégies multi-étapes (modification de groupe ou de chaîne, protection/déprotection) et chimie verte.",
+ "nociones_clave": [
+  {
+   "id": "n1",
+   "fr": "Formule topologique",
+   "es": "Representación simplificada de una molécula orgánica: no se dibujan los átomos de C ni de H, salvo los H unidos a un heteroátomo (O, N, …); los enlaces covalentes son trazos.",
+   "pagina_pdf": 232
+  },
+  {
+   "id": "n2",
+   "fr": "Familles fonctionnelles : ester, amine, amide, halogénoalcane",
+   "es": "Los compuestos orgánicos se agrupan en familias según su grupo característico: éster R–CO–O–R', amina (N con tres sustituyentes), amida R–CO–N y haloalcano R–X (X = halógeno).",
+   "pagina_pdf": 232
+  },
+  {
+   "id": "n3",
+   "fr": "Squelette carboné saturé / insaturé (linéaire, ramifié, cyclique)",
+   "es": "Los átomos de C forman esqueletos lineales, ramificados o cíclicos. Es saturado si solo tiene enlaces simples C–C e insaturado si tiene al menos un enlace múltiple (doble o triple) entre dos C.",
+   "pagina_pdf": 232
+  },
+  {
+   "id": "n4",
+   "fr": "Isomères de constitution",
+   "es": "Moléculas con la misma fórmula bruta pero distinto encadenamiento de átomos: isómeros de cadena (esqueleto distinto), de posición (grupo característico o insaturación en otra posición) y de función (grupos característicos diferentes). Sus propiedades físicas, químicas y biológicas difieren.",
+   "pagina_pdf": 232
+  },
+  {
+   "id": "n5",
+   "fr": "Polymère, monomère, polymérisation",
+   "es": "Un polímero es una macromolécula formada por la repetición de un motivo elemental, el monómero (ej.: amilosa, cuyo monómero es la glucosa; PVC a partir del cloruro de vinilo). Una síntesis puede conducir a un polímero: polimerización.",
+   "pagina_pdf": 232
+  },
+  {
+   "id": "n6",
+   "fr": "Protocole de synthèse",
+   "es": "Un protocolo de síntesis comprende: las condiciones de puesta en marcha de la síntesis, los métodos de aislamiento y purificación del producto buscado y su identificación (el libro dice «4 étapes» pero enumera tres elementos).",
+   "pagina_pdf": 226
+  },
+  {
+   "id": "n7",
+   "fr": "Augmenter la vitesse de formation",
+   "es": "Se actúa sobre los factores cinéticos: temperatura, concentración de los reactivos, estado de división de los reactivos, naturaleza del disolvente (fig. 5) y uso de un catalizador, que conduce a intermedios de reacción más reactivos.",
+   "pagina_pdf": 233
+  },
+  {
+   "id": "n8",
+   "fr": "Rendement d'une synthèse",
+   "es": "El rendimiento R es uno de los criterios para apreciar la eficacia de una síntesis: compara la cantidad de producto obtenida con la esperada.",
+   "pagina_pdf": 233
+  },
+  {
+   "id": "n9",
+   "fr": "Réactif / catalyseur sélectif",
+   "es": "La elección de un reactivo (o de un catalizador) más o menos selectivo influye en el rendimiento (fig. 6: la bacteria Pseudomonas putida convierte el tolueno en ácido para-hidroxibenzoico con 99 % de selectividad, alternativa a la vía química).",
+   "pagina_pdf": 233
+  },
+  {
+   "id": "n10",
+   "fr": "Déplacer l'équilibre pour augmenter le rendement",
+   "es": "Todo sistema tiende a un mismo estado de equilibrio caracterizado por K(T). Modificar Qr equivale a cambiar el sentido de evolución: introducir un exceso de un reactivo o eliminar un producto (destilación, fig. 7) aumenta el rendimiento.",
+   "pagina_pdf": 233
+  },
+  {
+   "id": "n11",
+   "fr": "Modification de groupe caractéristique / de chaîne carbonée",
+   "es": "En una síntesis multietapa, la transformación puede afectar a un grupo característico y/o a la cadena carbonada. Las reacciones se clasifican examinando la naturaleza de reactivos y productos.",
+   "pagina_pdf": 233
+  },
+  {
+   "id": "n12",
+   "fr": "Réaction de substitution",
+   "es": "Un átomo o grupo de átomos del reactivo de interés es reemplazado por otro átomo o grupo (ej.: R–OH + SOCl₂ → R–Cl + SO₂ + HCl).",
+   "pagina_pdf": 234
+  },
+  {
+   "id": "n13",
+   "fr": "Réaction d'addition",
+   "es": "Implica generalmente una molécula con al menos una insaturación en su cadena carbonada; el producto contiene todos los átomos de todos los reactivos (ej.: alqueno + H₂O → alcohol).",
+   "pagina_pdf": 234
+  },
+  {
+   "id": "n14",
+   "fr": "Réaction d'élimination",
+   "es": "El reactivo de interés cede átomos portados por carbonos adyacentes y aparece una insaturación o una ciclación (ej.: alcohol + H⁺, en caliente → alqueno + H₂O).",
+   "pagina_pdf": 234
+  },
+  {
+   "id": "n15",
+   "fr": "Autres catégories : oxydo-réduction, acide-base, polymérisation",
+   "es": "Según el tipo de reactivo empleado también se distinguen reacciones de oxidación-reducción y ácido-base; una síntesis puede formar un polímero (polimerización, fig. 8: PVC).",
+   "pagina_pdf": 234
+  },
+  {
+   "id": "n16",
+   "fr": "Chimiosélectivité, protection et déprotection de fonction",
+   "es": "Un reactivo es quimioselectivo si solo reacciona con un grupo característico (NaBH₄ reduce cetonas pero no ésteres; LiAlH₄ reduce ambos). Si la molécula tiene varios grupos y el reactivo no es quimioselectivo, hay que proteger los grupos que no se quieren modificar (protección → reacción → desprotección, fig. 9).",
+   "pagina_pdf": 234
+  },
+  {
+   "id": "n17",
+   "fr": "Synthèses écoresponsables (chimie verte)",
+   "es": "Buscar reactivos, disolventes, catalizadores y protocolos que minimicen energía y residuos y aumenten velocidad, selectividad y rendimiento (química verde, años 90; fig. 10: disolventes alternativos, procesos catalíticos, eficacia energética, productos biodegradables, recursos renovables, evitar residuos y derivados, maximizar economía de átomos y de etapas).",
+   "pagina_pdf": 234
+  },
+  {
+   "id": "n18",
+   "fr": "Économie d'atomes et facteur E",
+   "es": "La economía de átomos E_A cuantifica la proporción de átomos de los reactivos incorporados en el producto deseado frente a los que acaban en subproductos; el factor E relaciona masa de residuo/producto deseado. Un proceso es tanto más eficaz cuanto más cerca de 0 está E.",
+   "pagina_pdf": 245
+  },
+  {
+   "id": "n19",
+   "fr": "Montages de synthèse : reflux, distillation, Dean-Stark",
+   "es": "El calentamiento a reflujo (calentador, matraz, refrigerante vertical) acelera la reacción sin pérdida de materia. La destilación o el Dean-Stark eliminan un producto durante la síntesis para aumentar el rendimiento.",
+   "pagina_pdf": 235
+  },
+  {
+   "id": "n20",
+   "fr": "Nomenclature des molécules organiques (fiche méthode 15)",
+   "es": "Alcanos: prefijo según nº de C + «ano»; ramificados: cadena principal + grupos alquilo numerados. Ésteres: «…oato de alquilo»; aminas: «…amina»; amidas: «…amida»; haloalcanos: halógeno (bromo, cloro, fluoro, yodo) + alcano.",
+   "pagina_pdf": 568
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "n = \\dfrac{m}{M}",
+   "nombre": "Quantité de matière à partir de la masse",
+   "nombre_fr": "Quantité de matière d'un échantillon",
+   "variables": [
+    {
+     "simbolo": "n",
+     "significado": "cantidad de materia de la muestra",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa de la muestra",
+     "unidad": "g"
+    },
+    {
+     "simbolo": "M",
+     "significado": "masa molar de la especie química",
+     "unidad": "g·mol⁻¹"
+    }
+   ],
+   "explicacion": "Primer paso para calcular un rendimiento: convertir cada masa de reactivo o de producto en cantidad de materia.",
+   "ejemplo": {
+    "enunciado": "Ex. 22 (résolu): n_A = m_A/M_A con m_A = 1,00 g de ácido benzoico y M_A = 122 g·mol⁻¹.",
+    "resultado": "n_A = 8,2×10⁻³ mol",
+    "pagina_pdf": 240
+   },
+   "pagina_pdf": 226,
+   "animacion": {
+    "preset": "masa-molar",
+    "params": {
+     "m": 1.0,
+     "M": 122
+    },
+    "leyenda": "Al subir la masa m de ácido benzoico aparecen más moléculas en el matraz; la cantidad n = m/M sube en proporción."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "n = \\dfrac{\\rho\\cdot V}{M}",
+   "nombre": "Quantité de matière d'un liquide",
+   "nombre_fr": "n = ρ·V / M",
+   "variables": [
+    {
+     "simbolo": "ρ",
+     "significado": "masa volúmica (densidad en g·cm⁻³)",
+     "unidad": "g·cm⁻³"
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen de la muestra",
+     "unidad": "cm³"
+    },
+    {
+     "simbolo": "M",
+     "significado": "masa molar",
+     "unidad": "g·mol⁻¹"
+    }
+   ],
+   "explicacion": "Para un reactivo líquido se conoce el volumen introducido: se obtiene la masa con ρ·V y luego se divide por M.",
+   "ejemplo": {
+    "enunciado": "Ex. 18 (corrigé): n(ácido etanoico) con ρ = 1,05 g·mL⁻¹, V = 58 mL, M = 60 g·mol⁻¹.",
+    "resultado": "n(ácido) ≈ 1,0 mol (el corrigé da 1,0 mol)",
+    "pagina_pdf": 238
+   },
+   "pagina_pdf": 226,
+   "animacion": {
+    "preset": "masa-molar",
+    "params": {
+     "m": 60.9,
+     "M": 60
+    },
+    "leyenda": "La masa ρ·V = 1,05×58 ≈ 60,9 g de ácido etanoico dividida por M = 60 g·mol⁻¹ da n ≈ 1,0 mol."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "R = \\dfrac{n_{\\text{obtenue}}}{n_{\\text{attendue}}}\\times 100",
+   "nombre": "Rendement d'une synthèse",
+   "nombre_fr": "Rendement R (%)",
+   "variables": [
+    {
+     "simbolo": "R",
+     "significado": "rendimiento",
+     "unidad": "%"
+    },
+    {
+     "simbolo": "n_obtenue",
+     "significado": "cantidad de producto obtenida",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "n_attendue",
+     "significado": "cantidad de producto esperada (avance máximo)",
+     "unidad": "mol"
+    }
+   ],
+   "explicacion": "Indicador de la eficacia de una síntesis: n_attendue sale del avance máximo x_max fijado por el reactivo limitante.",
+   "ejemplo": {
+    "enunciado": "Situation 1 (p. 208): síntesis del etanoato de etilo con 0,10 mol de ácido y 0,10 mol de etanol; se obtienen 5,5 g (M = 88 g·mol⁻¹).",
+    "resultado": "n_obtenue = 5,5/88 = 0,0625 mol → R = 62,5 % (cálculo a partir de los datos; el libro no da la respuesta)",
+    "pagina_pdf": 226
+   },
+   "pagina_pdf": 233,
+   "animacion": {
+    "preset": "avance",
+    "params": {
+     "x": 0.0625,
+     "n1": 0.1,
+     "n2": 0.1
+    },
+    "leyenda": "El avance alcanzado (0,0625 mol) frente al máximo posible (0,10 mol) muestra qué fracción de los reactivos se convirtió: el rendimiento."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "Q_r = \\dfrac{[C]^c\\cdot[D]^d}{[A]^a\\cdot[B]^b}",
+   "nombre": "Quotient de réaction",
+   "nombre_fr": "Quotient de réaction Qr",
+   "variables": [
+    {
+     "simbolo": "Qr",
+     "significado": "cociente de reacción",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "[A],[B]",
+     "significado": "concentraciones de los reactivos",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "[C],[D]",
+     "significado": "concentraciones de los productos",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "a,b,c,d",
+     "significado": "coeficientes estequiométricos",
+     "unidad": "–"
+    }
+   ],
+   "explicacion": "Para aA + bB = cC + dD, Qr depende de las concentraciones de reactivos y productos; modificar Qr equivale a influir en el sentido de evolución del sistema.",
+   "ejemplo": {
+    "enunciado": "Ex. 1 (aspirina, p. 232): 4.a Qr en función del avance x (H₂O no es disolvente).",
+    "resultado": "Qr = (x/(0,10 − x))²",
+    "pagina_pdf": 250
+   },
+   "pagina_pdf": 233,
+   "animacion": {
+    "preset": "quotient-equilibre",
+    "params": {
+     "K": 0.007
+    },
+    "leyenda": "Con K = 7,0×10⁻³ se ve cómo Qr se acerca a K y el sistema evoluciona hasta el equilibrio."
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "K(T) = Q_{r,\\text{éq}}",
+   "nombre": "Constante d'équilibre",
+   "nombre_fr": "Constante d'équilibre K(T)",
+   "variables": [
+    {
+     "simbolo": "K(T)",
+     "significado": "constante de equilibrio, depende solo de la temperatura",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "Qr,éq",
+     "significado": "cociente de reacción en el estado de equilibrio",
+     "unidad": "sin unidad"
+    }
+   ],
+   "explicacion": "Cualesquiera que sean las condiciones iniciales, el sistema tiende al mismo estado de equilibrio caracterizado por K(T) a una temperatura dada.",
+   "ejemplo": {
+    "enunciado": "Ex. 1 (aspirina, p. 232): 4.b y 6: K(T) = (x_f/(0,10 − x_f))², con K(T) = 7,0×10⁻³.",
+    "resultado": "x_f = 0,10·√K/(1+√K) = 7,7×10⁻³ mol",
+    "pagina_pdf": 250
+   },
+   "pagina_pdf": 233,
+   "animacion": {
+    "preset": "quotient-equilibre",
+    "params": {
+     "K": 0.007
+    },
+    "leyenda": "Sea cual sea el punto de partida, Qr acaba igualando K(T) = 7,0×10⁻³: ese es el estado de equilibrio."
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "Q_{r,i} < K(T)\\ \\Rightarrow\\ \\text{sens direct}",
+   "nombre": "Critère d'évolution spontanée",
+   "nombre_fr": "Critère d'évolution spontanée",
+   "variables": [
+    {
+     "simbolo": "Qr,i",
+     "significado": "cociente de reacción en el estado inicial",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "K(T)",
+     "significado": "constante de equilibrio",
+     "unidad": "sin unidad"
+    }
+   ],
+   "explicacion": "Si Qr,i < K el sistema evoluciona en el sentido directo (a favor de los productos). Un exceso de reactivo o la eliminación de un producto aleja Qr de K y favorece el sentido directo, es decir, el rendimiento.",
+   "ejemplo": {
+    "enunciado": "Ex. 1 (aspirina): estado inicial x = 0, luego Qr,i = 0 y K(T) = 7,0×10⁻³.",
+    "resultado": "Qr,i < K: la transformación evoluciona en el sentido directo",
+    "pagina_pdf": 250
+   },
+   "pagina_pdf": 233,
+   "animacion": {
+    "preset": "quotient-equilibre",
+    "params": {
+     "K": 0.007
+    },
+    "leyenda": "Si Q es menor que K, las moléculas se transforman hacia los productos hasta que Q alcanza K."
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "\\tau = \\dfrac{x_f}{x_{max}}",
+   "nombre": "Taux d'avancement final",
+   "nombre_fr": "Taux d'avancement final",
+   "variables": [
+    {
+     "simbolo": "τ",
+     "significado": "tasa de avance final",
+     "unidad": "sin unidad (o %)"
+    },
+    {
+     "simbolo": "x_f",
+     "significado": "avance final",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "x_max",
+     "significado": "avance máximo",
+     "unidad": "mol"
+    }
+   ],
+   "explicacion": "Compara el avance final alcanzado con el máximo teórico; en una transformación con equilibrio τ es menor que 1.",
+   "ejemplo": {
+    "enunciado": "Ex. 1 (aspirina), pregunta 7: x_f = 7,7×10⁻³ mol y x_max = 0,10 mol.",
+    "resultado": "τ = 7,7×10⁻² = 7,7 % < 8 %",
+    "pagina_pdf": 250
+   },
+   "pagina_pdf": 250,
+   "animacion": {
+    "preset": "avance",
+    "params": {
+     "x": 0.0077,
+     "n1": 0.1,
+     "n2": 0.1
+    },
+    "leyenda": "El avance final (7,7×10⁻³ mol) es solo una pequeña fracción del máximo (0,10 mol): τ ≈ 7,7 %."
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "c = \\dfrac{m_{\\text{soluté}}}{M\\cdot V}\\quad\\text{con}\\quad m_{\\text{soluté}} = \\rho_{eau}\\cdot d\\cdot V\\cdot w",
+   "nombre": "Concentration d'une solution commerciale (titre massique)",
+   "nombre_fr": "Concentration à partir du titre massique w et de la densité d",
+   "variables": [
+    {
+     "simbolo": "c",
+     "significado": "concentración en cantidad de materia",
+     "unidad": "mol·L⁻¹"
+    },
+    {
+     "simbolo": "m_soluté",
+     "significado": "masa de soluto",
+     "unidad": "g"
+    },
+    {
+     "simbolo": "M",
+     "significado": "masa molar",
+     "unidad": "g·mol⁻¹"
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen de disolución",
+     "unidad": "L"
+    },
+    {
+     "simbolo": "w",
+     "significado": "título másico",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "d",
+     "significado": "densidad",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "ρ_eau",
+     "significado": "masa volúmica del agua",
+     "unidad": "g·L⁻¹"
+    }
+   ],
+   "explicacion": "Para manipular un reactivo comercial (etiqueta con w y d) se pasa de la masa de soluto a la concentración molar.",
+   "ejemplo": {
+    "enunciado": "Ex. 1 (aspirina), pregunta 3: ácido etanoico comercial w = 80 %, d = 1,04, M = 60 g·mol⁻¹; en 1,00 L hay m_soluté = 0,83 kg.",
+    "resultado": "c = 0,83×10³/(60,0×1,00) = 14 mol·L⁻¹",
+    "pagina_pdf": 250
+   },
+   "pagina_pdf": 250,
+   "animacion": {
+    "preset": "concentracion",
+    "params": {},
+    "leyenda": "Más moles disueltos en el mismo volumen significan más moléculas por litro: la concentración c = n/V."
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "E = \\dfrac{1 - E_A}{E_A}",
+   "nombre": "Facteur E et économie d'atomes",
+   "nombre_fr": "Facteur E (relation avec l'économie d'atomes E_A)",
+   "variables": [
+    {
+     "simbolo": "E",
+     "significado": "factor E (masa de residuo / masa de producto deseado)",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "E_A",
+     "significado": "economía de átomos (fracción de átomos de los reactivos que acaban en el producto deseado)",
+     "unidad": "sin unidad"
+    }
+   ],
+   "explicacion": "Un proceso es tanto más eficaz cuanto más cerca de 0 está E. Cuanto mayor es E_A (máximo 100 %), menor es E.",
+   "ejemplo": {
+    "enunciado": "Ex. 34, Doc 3: E_A = 73,5 % (procedimiento vía isobuteno).",
+    "resultado": "E = (1 − 0,735)/0,735 ≈ 0,36 (cálculo con la relación del Doc 3; el libro pide calcularlo)",
+    "pagina_pdf": 245
+   },
+   "pagina_pdf": 245,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "(1-x)/x",
+     "xmin": 0.3,
+     "xmax": 1.0,
+     "vars": {}
+    },
+    "leyenda": "La curva E = (1 − E_A)/E_A baja hacia 0 cuando la economía de átomos E_A se acerca a 1 (100 %)."
+   }
+  },
+  {
+   "id": "f10",
+   "latex": "\\sigma = \\sum_{i=1}^{n}\\lambda_i\\cdot[X_i]",
+   "nombre": "Conductivité d'une solution ionique",
+   "nombre_fr": "Conductivité σ (relation du Doc 1 de l'exercice de synthèse 3)",
+   "variables": [
+    {
+     "simbolo": "σ",
+     "significado": "conductividad",
+     "unidad": "S·m⁻¹"
+    },
+    {
+     "simbolo": "λᵢ",
+     "significado": "conductividad molar iónica del ion i",
+     "unidad": "S·m²·mol⁻¹"
+    },
+    {
+     "simbolo": "[Xᵢ]",
+     "significado": "concentración del ion i",
+     "unidad": "mol·m⁻³"
+    }
+   ],
+   "explicacion": "Aparece como dato en el ejercicio de síntesis 3 (leche) y se usa para seguir una transformación por conductimetría (también en el ejercicio 6, σ(t) = K·x(t)). Pertenece al capítulo de métodos físicos de análisis.",
+   "ejemplo": null,
+   "pagina_pdf": 252,
+   "animacion": {
+    "preset": "conductimetria",
+    "params": {},
+    "leyenda": "Más iones en disolución (mayor concentración) hacen subir la conductividad σ = Σ λᵢ[Xᵢ]."
+   }
+  },
+  {
+   "id": "f11",
+   "latex": "\\mathrm{pH} = \\mathrm{p}K_A + \\log\\dfrac{[A^-]_f}{[AH]_f}",
+   "nombre": "pH d'un couple acide-base",
+   "nombre_fr": "Relation pH – pKA (Doc 1 des exercices de synthèse 3 et 4)",
+   "variables": [
+    {
+     "simbolo": "pH",
+     "significado": "pH de la disolución",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "pKA",
+     "significado": "pKA del par AH/A⁻",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "[A⁻]_f, [AH]_f",
+     "significado": "concentraciones finales de la base y del ácido",
+     "unidad": "mol·L⁻¹"
+    }
+   ],
+   "explicacion": "Dato de los ejercicios de síntesis 3 y 4 (ácido caprílico, fluoresceína): permite saber qué forma predomina según el pH. Pertenece a los capítulos de ácido-base.",
+   "ejemplo": null,
+   "pagina_pdf": 252,
+   "animacion": {
+    "preset": "acido-base",
+    "params": {},
+    "leyenda": "Al mover el pH respecto al pKA cambia la forma predominante del par ácido/base."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "Masse volumique de l'eau ρ_eau",
+   "valor": "1,00×10³",
+   "unidad": "g·L⁻¹",
+   "pagina_pdf": 250
+  },
+  {
+   "nombre": "K(T) de l'estérification de l'aspirine (ex. 1)",
+   "valor": "7,0×10⁻³",
+   "unidad": "sin unidad",
+   "pagina_pdf": 250
+  },
+  {
+   "nombre": "Constante d'Avogadro N_A",
+   "valor": "6,02×10²³",
+   "unidad": "mol⁻¹",
+   "pagina_pdf": 251
+  },
+  {
+   "nombre": "Charge élémentaire e",
+   "valor": "1,6×10⁻¹⁹",
+   "unidad": "C",
+   "pagina_pdf": 256
+  },
+  {
+   "nombre": "Produit ionique de l'eau K_e à 25 °C",
+   "valor": "1,0×10⁻¹⁴",
+   "unidad": "sin unidad",
+   "pagina_pdf": 254
+  },
+  {
+   "nombre": "Masses molaires atomiques (ex. 36)",
+   "valor": "M(C) = 12,0 ; M(H) = 1,0 ; M(O) = 16,0",
+   "unidad": "g·mol⁻¹",
+   "pagina_pdf": 247
+  },
+  {
+   "nombre": "Électronégativités (ex. 6)",
+   "valor": "χ(H) = 2,20 ; χ(C) = 2,55 ; χ(Cl) = 3,16 ; χ(O) = 3,44",
+   "unidad": "sin unidad",
+   "pagina_pdf": 258
+  },
+  {
+   "nombre": "Bandes IR (ex. 6)",
+   "valor": "O–H alcool 3200–3400 ; C–H (C lié à une double liaison) 3000–3100 ; C–H (C tétragonal) 2810–3000 ; C=C 1620–1680",
+   "unidad": "cm⁻¹",
+   "pagina_pdf": 258
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Calculer un rendement",
+   "pasos": [
+    "Repérer las cantidades de reactivos introducidas: n = m/M (sólidos) o n = ρ·V/M (líquidos).",
+    "Hacer la tabla de avance con la estequiometría y determinar el avance máximo x_max (reactivo limitante).",
+    "n_attendue = x_max × coeficiente del producto (aquí 1); n_obtenue = m_obtenida / M del producto.",
+    "R = n_obtenue / n_attendue × 100.",
+    "Comprobar que 0 < R ≤ 100 % y comentar (equilibrio, pérdidas en purificación…)."
+   ],
+   "pagina_pdf": 240
+  },
+  {
+   "titulo": "Aumentar la velocidad de formación de un producto",
+   "pasos": [
+    "Subir la temperatura del medio de reacción (calentar a reflujo para no perder materia).",
+    "Aumentar la concentración de los reactivos.",
+    "Favorecer el contacto: estado de división de los reactivos y naturaleza del disolvente (fig. 5).",
+    "Emplear un catalizador (p. ej. H₂SO₄ o APTS en una esterificación): acelera sin cambiar el estado final."
+   ],
+   "pagina_pdf": 233
+  },
+  {
+   "titulo": "Mejorar el rendimiento de una síntesis con equilibrio",
+   "pasos": [
+    "Recordar: el sistema tiende a K(T); modificar Qr cambia el sentido de evolución.",
+    "Introducir uno de los reactivos en exceso.",
+    "Eliminar un producto a medida que se forma (destilación o montaje Dean-Stark, fig. 7), con cuidado de no eliminar un reactivo: si el reactivo es el más volátil, destilar bajaría el rendimiento.",
+    "Elegir un reactivo más selectivo o un reactivo que haga la reacción total (p. ej. anhídrido en vez de ácido, ex. 23)."
+   ],
+   "pagina_pdf": 233
+  },
+  {
+   "titulo": "Protocolo de síntesis y tratamiento (secuencia de las actividades)",
+   "pasos": [
+    "Poner los reactivos en el matraz con un catalizador y granos de piedra pómez.",
+    "Calentar a reflujo (refrigerante vertical con circulación de agua) durante el tiempo indicado.",
+    "Enfriar y extraer: trasvasar a una ampolla de decantación, separar la fase acuosa de la orgánica.",
+    "Lavar la fase orgánica (p. ej. con disolución de hidrogenocarbonato de sodio hasta fin del efervescencia).",
+    "Secar la fase orgánica con sulfato de magnesio anhidro y filtrar.",
+    "Aislar y pesar el producto (filtración a presión reducida, recristalización si es sólido) para calcular el rendimiento."
+   ],
+   "pagina_pdf": 230
+  },
+  {
+   "titulo": "Clasificar una transformación orgánica",
+   "pasos": [
+    "Comparar la estructura de los reactivos y de los productos (¿cambia un grupo característico o la cadena carbonada?).",
+    "Sustitución: un átomo o grupo es reemplazado por otro.",
+    "Adición: el producto contiene todos los átomos de los reactivos (suele haber una insaturación en el reactivo).",
+    "Eliminación: el reactivo cede átomos de carbonos adyacentes y aparece una insaturación o un ciclo.",
+    "Según el reactivo, también puede ser oxidación-reducción, ácido-base o polimerización."
+   ],
+   "pagina_pdf": 234
+  },
+  {
+   "titulo": "Proteger y desproteger un grupo característico",
+   "pasos": [
+    "Identificar los grupos de la molécula polifuncional y ver si el reactivo es quimioselectivo.",
+    "Si no lo es, proteger el grupo que no debe reaccionar (ej.: grupo carbonilo protegido con etilenglicol y H⁺).",
+    "Realizar la transformación deseada sobre el otro grupo (ej.: reducción del éster con LiAlH₄).",
+    "Desproteger el grupo protegido (ej.: H₂O, H⁺) para recuperar la función inicial."
+   ],
+   "pagina_pdf": 234
+  },
+  {
+   "titulo": "Elaborar una secuencia de síntesis a partir de una banque de réactions",
+   "pasos": [
+    "Identificar los grupos característicos de los reactivos A y B (aminoácidos α: grupo amino y carboxilo).",
+    "Identificar qué reacción de la banque forma el enlace buscado (amida/enlace peptídico, reacción 1).",
+    "Detectar qué grupos hay que proteger para evitar reacciones no deseadas y qué reacciones los protegen/desprotegen.",
+    "Ordenar las etapas: protección → acoplamiento → desprotección, justificando cada etapa."
+   ],
+   "pagina_pdf": 231
+  },
+  {
+   "titulo": "Nombrar una molécula orgánica (fiche méthode 15)",
+   "pasos": [
+    "Buscar la cadena principal (la más larga) y darle el nombre del alcano con el mismo número de C.",
+    "Localizar las ramificaciones (grupos alquilo: metilo, etilo, propilo…) y numerar la cadena para que los índices sean lo más pequeños posible.",
+    "Nombre = grupos alquilo (por orden alfabético, con di-, tri-… si se repiten) + cadena principal.",
+    "Éster: …oato de alquilo; amina: …amina; amida: …amida (se suprime «ácido» y «oico» → «amida»); haloalcano: bromo-, cloro-, fluoro-, yodo-."
+   ],
+   "pagina_pdf": 568
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Confundir velocidad y rendimiento",
+   "correccion": "Calentar o añadir un catalizador acelera la reacción, pero no cambia la cantidad final de producto: el rendimiento queda inalterado.",
+   "pagina_pdf": 242
+  },
+  {
+   "id": "err2",
+   "nombre": "Llamar «adición» a la esterificación",
+   "correccion": "Se forma agua además del éster: la esterificación es más bien una sustitución, no una adición.",
+   "pagina_pdf": 242
+  },
+  {
+   "id": "err3",
+   "nombre": "Olvidar el catalizador (H₂SO₄)",
+   "correccion": "El ácido sulfúrico es catalizador: aumenta la velocidad de formación; interrogarse siempre por el papel de cada especie introducida.",
+   "pagina_pdf": 242
+  },
+  {
+   "id": "err4",
+   "nombre": "Calcular n_attendue con el reactivo en exceso",
+   "correccion": "n_attendue sale del avance máximo, fijado por el reactivo limitante (tabla de avance).",
+   "pagina_pdf": 240
+  },
+  {
+   "id": "err5",
+   "nombre": "Destilar el reactivo más volátil",
+   "correccion": "Destilar el reactivo (el de menor temperatura de ebullición) lo elimina y baja el rendimiento; hay que eliminar un producto.",
+   "pagina_pdf": 240
+  },
+  {
+   "id": "err6",
+   "nombre": "Calentar sin reflujo",
+   "correccion": "El calentamiento a reflujo acelera la reacción evitando toda pérdida de materia; sin refrigerante se pierden vapores.",
+   "pagina_pdf": 238
+  },
+  {
+   "id": "err7",
+   "nombre": "Olvidar proteger / desproteger",
+   "correccion": "Si el reactivo no es quimioselectivo hay que proteger el grupo; tras la reacción, una etapa de desprotección es necesaria.",
+   "pagina_pdf": 234
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "TP 1 – Synthèse de l'acide hippurique (activité expérimentale 1)",
+   "descripcion": "Síntesis del ácido hipúrico a partir de glicina y cloruro de benzoílo en medio básico (NaOH 2,0 mol·L⁻¹): la glicina tiene dos grupos reactivos (–NH₂ y –COOH) y el cloruro de benzoílo es un reactivo quimioselectivo; se forma una amida (molécula B, confirmado por espectro IR). Protocolo: 2,5 g de glicina en 60 mL de sosa, adición gota a gota de 4,5 mL de cloruro de benzoílo (1,21 g·mL⁻¹) con agitación 15 min, acidificación con HCl concentrado hasta pH < 4 sobre hielo, filtración a presión reducida, lavado con agua helada, recristalización y secado en estufa a 130 °C. Se calculan n de reactivos, masa teórica y rendimiento.",
+   "pagina_pdf": 228
+  },
+  {
+   "titulo": "TP 2 – Synthèses comparées d'une espèce odorante (benzoate de méthyle)",
+   "descripcion": "Esterificación ácido benzoico (12,2 g) + metanol con H₂SO₄ y calentamiento a reflujo 60 min, comparando la experiencia A (4,00 mL de metanol) y la B (40,0 mL). Tratamiento: decantación con disolución saturada de NaCl, lavado con hidrogenocarbonato de sodio, secado con MgSO₄ anhidro y filtración. Se compara el rendimiento para deducir cómo aumentarlo (exceso de un reactivo).",
+   "pagina_pdf": 230
+  },
+  {
+   "titulo": "Démarche d'investigation – Stratégie de synthèse organique (Met-enképhaline)",
+   "descripcion": "Pentapéptido Tyr-Gly-Gly-Phe-Met: partir de los reactivos A (tirosina) y B (tetrapéptido) y proponer, con una banque de réactions, una secuencia de transformaciones con protección y desprotección de funciones.",
+   "pagina_pdf": 231
+  },
+  {
+   "titulo": "Préparer l'ECE – Substitution ou élimination",
+   "descripcion": "Síntesis del 2-cloro-2-metilbutano a partir del 2-metilbutan-2-ol y HCl concentrado; comprobar si se obtiene también 2-metilbut-2-eno (eliminación) usando nitrato de plata alcohólico y agua de bromo (datos del Doc 3).",
+   "pagina_pdf": 248
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Ex. 22 – Synthèse et olivier de Bohême. C₆H₅CO₂H(s) + CH₃CH₂OH(ℓ) ⇌ C₆H₅CO₂CH₂CH₃(ℓ) + H₂O(ℓ). En un matraz de 100 mL: 1,00 g de ácido benzoico y 10,0 mL de etanol, con APTS y piedra pómez, calentamiento a reflujo 30 min. La gráfica da x_max observado = 5,8 mmol. 1) Repérer los parámetros que influyen en la evolución temporal. 2) Déterminer el rendimiento. 3) ¿Se puede aumentar el rendimiento destilando en vez de calentar a reflujo?",
+   "datos": {
+    "m(ácido)": "1,00 g",
+    "M(ácido benzoico)": "122 g·mol⁻¹",
+    "V(etanol)": "10,0 mL",
+    "ρ(etanol)": "0,79 g·mL⁻¹",
+    "n_obtenue": "5,8 mmol"
+   },
+   "respuesta": "1) El calentamiento y la introducción de un catalizador (APTS) aumentan la velocidad de formación. 2) n_A = 1,00/122 = 8,2×10⁻³ mol; x_max = 8,2×10⁻³ mol; R = 5,8/8,2×100 = 71 %. 3) El etanol, reactivo con la T de ebullición más baja (78,2 °C), se eliminaría al destilar: el rendimiento disminuiría.",
+   "respuesta_numerica": {
+    "valor": 71,
+    "unidad": "%",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "n_A = m_A/M_A = 1,00/122 = 8,2×10⁻³ mol",
+    "Avance máximo = 8,2×10⁻³ mol (reactivo limitante: el ácido)",
+    "R = n_obtenue/n_attendue × 100 = 5,8/8,2 × 100 = 71 %"
+   ],
+   "pagina_pdf": 240,
+   "corrige_pagina_pdf": 240
+  },
+  {
+   "id": "e2",
+   "enunciado": "Ex. 24 – De l'acide lactique au PLA. El PLA (ácido poliláctico) es un polímero biodegradable que se obtiene a partir del ácido láctico (ácido 2-hidroxipropanoico). 1) Repérer las dos funciones del ácido láctico. 2) Escribir la reacción entre dos moléculas de ácido láctico que eliminan una molécula de agua. 3) ¿Por qué se dice que el PLA es un poliéster?",
+   "datos": {
+    "monómero": "ácido láctico CH₃–CH(OH)–COOH"
+   },
+   "respuesta": "1) Función carboxilo y función hidroxilo. 2) La función carboxilo de una molécula reacciona con la función hidroxilo de la otra, formando un éster y H₂O. 3) El PLA es un poliéster porque es un polímero que contiene n veces la función éster.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Identificar –COOH y –OH",
+    "Condensación carboxilo + hidroxilo → éster + H₂O",
+    "Repetir n veces → función éster repetida = poliéster"
+   ],
+   "pagina_pdf": 241,
+   "corrige_pagina_pdf": 241
+  },
+  {
+   "id": "e3",
+   "enunciado": "Ex. 30 – Ester et cosmétique. Síntesis del etanoato de bencilo: CH₃CO₂H + C₆H₅CH₂OH ⇌ CH₃CO₂CH₂C₆H₅ + H₂O. Protocolo: 28,4 mL de alcohol bencílico y 11,4 mL de ácido etanoico con H₂SO₄ concentrado y piedra pómez; calentamiento a reflujo 1 h; se obtienen 18,9 mL de éster. 1) ¿Qué montaje (A, B o C) se usa? 2) Justificar H₂SO₄ y calentamiento a reflujo. 3) Calcular el rendimiento. 4) ¿Qué montaje permitiría mejorarlo?",
+   "datos": {
+    "alcohol bencílico": "M = 108 g·mol⁻¹; ρ = 1,04 g·mL⁻¹",
+    "ácido etanoico": "M = 60,0 g·mol⁻¹; ρ = 1,05 g·mL⁻¹",
+    "éster": "M = 150 g·mol⁻¹; ρ = 1,06 g·mL⁻¹",
+    "T_eb mezcla agua/tolueno": "84 °C"
+   },
+   "respuesta": "1) El montaje B (reflujo). 2) El catalizador y el calentamiento aumentan la velocidad de formación; el reflujo evita perder materia. 3) R = 67 %. 4) Para mejorar el rendimiento hay que eliminar un producto (el agua) destilándola a medida que se forma: montaje A.",
+   "respuesta_numerica": {
+    "valor": 67,
+    "unidad": "%",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "n(ácido) = 1,05×11,4/60 = 0,20 mol (limitante); n(alcohol) = 1,04×28,4/108 = 0,27 mol",
+    "n(éster obtenido) = 1,06×18,9/150 = 0,134 mol",
+    "R = 0,134/0,20 × 100 ≈ 67 %"
+   ],
+   "pagina_pdf": 243,
+   "corrige_pagina_pdf": 616
+  },
+  {
+   "id": "e4",
+   "enunciado": "Ex. 20 – Une voie plus verte pour la synthèse du phénol. Proceso HOCK (90 % de la producción mundial): ① C₆H₆ + propeno → cumeno (H⁺, 190 °C, 34 bar); ② cumeno + O₂ → hidroperóxido de cumeno (HO⁻, 110 °C); ③ hidroperóxido + H⁺ (50 °C) → fenol + propanona. 1) ¿A qué categoría pertenecen las etapas ①, ② y ③? 2) ¿Qué interés tiene una adición frente a una eliminación desde el punto de vista de la síntesis ecorresponsable? 3) ¿Qué interés presenta el procedimiento DOW (tolueno → ácido benzoico → fenol) y 4) por qué su peso en la producción es débil?",
+   "datos": {},
+   "respuesta": "1) Etapas ① y ②: reacciones de adición; etapa ③: eliminación. 2) En una adición todos los átomos de los reactivos se encuentran en el producto buscado (economía de átomos). 3) Dos etapas catalizadas y uso de un reactivo renovable: el dioxígeno. 4) Por las duraciones de calentamiento, el coste energético es elevado.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Clasificar cada etapa por la naturaleza de reactivos y productos",
+    "Relacionar adición con economía de átomos",
+    "Citar principios de química verde: catálisis, reactivo renovable"
+   ],
+   "pagina_pdf": 239,
+   "corrige_pagina_pdf": 616
+  },
+  {
+   "id": "e5",
+   "enunciado": "Ex. 21 – Synthèse de la 4-nitroaniline. Etapa ①: anilina + anhídrido etanoico → acetanilida (amida) + ácido etanoico; etapa ②: nitración con HNO₃; etapa ③: HO⁻ → 4-nitroanilina. 1) ¿Categoría de las etapas? 2) HNO₃ es oxidante y puede transformar el grupo amino en nitro: a) ¿una acción directa de HNO₃ sobre la anilina llevaría a la nitroanilina? b) Justificar la etapa ①. c) ¿Es HNO₃ quimioselectivo? d) ¿Papel de la etapa ③?",
+   "datos": {},
+   "respuesta": "1) Reacciones de sustitución. 2.a) No: conduciría a la sustitución de un H del ciclo por el grupo nitro y a la nitración del grupo amino. b) Protección del grupo amino mediante una función amida. c) Sí. d) Desprotección de la función amino.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Reconocer sustituciones (se reemplaza un átomo o grupo)",
+    "Etapa ①: proteger –NH₂ como amida",
+    "Etapa ③: desproteger"
+   ],
+   "pagina_pdf": 239,
+   "corrige_pagina_pdf": 616
+  },
+  {
+   "id": "e6",
+   "enunciado": "Ex. 36 – Synthèse de l'isoprène (problème à résoudre). Proceso en 3 etapas: ① etino + propanona → A (NH₃, KOH); ② A + H₂ → B (hidrogenación selectiva); ③ B → isopreno C + H₂O (250–300 °C, Al₂O₃). Produjo hasta 1982 30 000 t de isopreno por año con un rendimiento del 85 %. ¿Volumen mínimo de propanona necesario por año?",
+   "datos": {
+    "M(C)": "12,0 g·mol⁻¹",
+    "M(H)": "1,0 g·mol⁻¹",
+    "M(O)": "16,0 g·mol⁻¹",
+    "ρ(propanona)": "790 kg·m⁻³",
+    "m(isopreno)": "30 000 t = 3,0×10¹⁰ g",
+    "R": "85 %"
+   },
+   "respuesta": "Etapa ②: adición; etapa ③: eliminación. Ecuación global: C₂H₂ + C₃H₆O + H₂ → C₅H₈ + H₂O. M(isopreno) = 68 g·mol⁻¹; n(obtenue) = 4,4×10⁸ mol; n(attendue) = 5,2×10⁸ mol; n(propanona) = n(isopreno attendue) → V(propanona) = 3,8×10⁴ m³.",
+   "respuesta_numerica": {
+    "valor": 38000.0,
+    "unidad": "m³",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "M(C₅H₈) = 5×12,0 + 8×1,0 = 68 g·mol⁻¹; n_obtenue = 3,0×10¹⁰/68 = 4,4×10⁸ mol",
+    "n_attendue = n_obtenue/0,85 = 5,2×10⁸ mol",
+    "n(propanona) = n_attendue; M(C₃H₆O) = 58 g·mol⁻¹ → m = 3,0×10¹⁰ g = 3,0×10⁷ kg",
+    "V = m/ρ = 3,0×10⁷/790 = 3,8×10⁴ m³"
+   ],
+   "pagina_pdf": 247,
+   "corrige_pagina_pdf": 617
+  },
+  {
+   "id": "e7",
+   "enunciado": "Ex. 1 – L'aspirine (exercice résolu). ROH + CH₃CO₂H ⇌ CH₃CO₂R + H₂O con 0,10 mol de ácido etanoico y 0,10 mol de ácido salicílico (ROH). Etiqueta del ácido etanoico: w = 80 %, d = 1,04, M = 60 g·mol⁻¹. 3) Concentración de la disolución comercial. 4.b) Expresión de K(T). 5-6) Calcular Qr,i, sentido de evolución y x_f sabiendo K(T) = 7,0×10⁻³. 7) Tasa de avance final τ.",
+   "datos": {
+    "n(ácido etanoico)": "0,10 mol",
+    "n(ácido salicílico)": "0,10 mol",
+    "K(T)": "7,0×10⁻³",
+    "ρ_eau": "1,00×10³ g·L⁻¹"
+   },
+   "respuesta": "3) c = 14 mol·L⁻¹. 4.b) K(T) = (x_f/(0,10 − x_f))². 5) Qr,i = 0. 6) Qr,i < K: sentido directo; x_f = 0,10√K/(1+√K) = 7,7×10⁻³ mol. 7) τ = x_f/x_max = 7,7×10⁻² = 7,7 % < 8 %.",
+   "respuesta_numerica": {
+    "valor": 7.7,
+    "unidad": "%",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "m_soluté = ρ_eau·d·V·w = 0,83 kg por litro → c = 830/60 = 14 mol·L⁻¹",
+    "Qr = x²/(0,10 − x)² ; Qr,i = 0 < K → sentido directo",
+    "x_f = 0,10√K/(1+√K) = 7,7×10⁻³ mol",
+    "τ = 7,7×10⁻³/0,10 = 7,7 %"
+   ],
+   "pagina_pdf": 250,
+   "corrige_pagina_pdf": 250
+  },
+  {
+   "id": "e8",
+   "enunciado": "Ex. 26 – Corregir la solución de un alumno. La esterificación del etanoato de butilo (ácido etanoico + butan-1-ol con H₂SO₄) se sigue a 50 °C y a 20 °C. 1) ¿A qué categoría de reacción pertenece la esterificación? 2) ¿Cómo se aumenta la velocidad de reacción? 3) ¿Cómo aumentar el rendimiento? (El alumno respondió: «es una adición»; «el rendimiento aumenta al calentar».)",
+   "datos": {},
+   "respuesta": "1) La esterificación es más bien una sustitución, porque se forma agua además del éster. 2) La velocidad aumenta calentando el medio y añadiendo ácido sulfúrico, un catalizador. 3) Calentar permite formar más rápidamente el éster pero no en mayor cantidad: el rendimiento permanece inalterado.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Contar los productos: éster + agua → sustitución",
+    "Factores cinéticos: temperatura y catalizador",
+    "Un factor cinético no cambia el estado final → R no cambia"
+   ],
+   "pagina_pdf": 242,
+   "corrige_pagina_pdf": 617
+  },
+  {
+   "id": "e9",
+   "enunciado": "Ex. 23 – Quelle voie de synthèse pour l'arôme d'abricot ? Dos síntesis del propanoato de 3-metilbutilo con el alcohol en defecto: ① ácido propanoico + alcohol ⇌ éster + H₂O; ② anhídrido propanoico + alcohol → éster + ácido propanoico. Curvas A y B de x(t). 1) Justificar el uso del ácido propanoico en exceso en la vía ①. 2) ¿Interés del anhídrido propanoico? 3) A partir de las curvas, rendimiento de la síntesis ①.",
+   "datos": {},
+   "respuesta": "1) Mejorar el rendimiento de la reacción. 2) Sustituir el ácido por el anhídrido permite que la reacción sea total. 3) R = 89 % (el corrigé escribe «éthanoïque» en lugar de «propanoïque» en el apartado 2).",
+   "respuesta_numerica": {
+    "valor": 89,
+    "unidad": "%",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Exceso de un reactivo → Qr alejado de K → más producto",
+    "Anhídrido: transformación total",
+    "Lectura de la curva: R = x_f/x_max = 89 %"
+   ],
+   "pagina_pdf": 240,
+   "corrige_pagina_pdf": 617
+  },
+  {
+   "id": "e10",
+   "enunciado": "Ex. 25 – Le PMMA... un polymère vert ? El PMMA se obtiene por poliadición del metacrilato de metilo (MMA). 1) Repérer la insaturación del MMA. 2) Por analogía con propeno → polipropeno, escribir la reacción de polimerización. 3) ¿El PMMA es una poliamida, un poliéster o una poliolefina? 4) ¿Qué interés tiene desde el punto de vista de la química verde?",
+   "datos": {},
+   "respuesta": "1) Doble enlace C=C del grupo CH₂=C(CH₃)–. 2) n CH₂=C(CH₃)–CO₂CH₃ → –[CH₂–C(CH₃)(CO₂CH₃)]ₙ–. 3) Un poliéster. 4) El PMMA es perfectamente reciclable (despolimerización), aunque se produce a partir de compuestos derivados del petróleo.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Localizar C=C",
+    "Abrir el doble enlace y encadenar n motivos",
+    "Identificar el grupo éster en el motivo"
+   ],
+   "pagina_pdf": 241,
+   "corrige_pagina_pdf": 617
+  },
+  {
+   "id": "e11",
+   "enunciado": "Ex. 19 – L'arôme artificiel d'ananas. CH₃CH₂CH₂CO₂H + CH₃CH₂OH ⇌ butanoato de etilo + H₂O. Mezcla equimolar de 0,22 mol de etanol y de ácido butanoico, 1 mL de H₂SO₄ concentrado, reflujo 30 min; masa obtenida de butanoato de etilo: 17,4 g. 1) Papel del ácido sulfúrico. 2) Calcular el rendimiento. 3) ¿Qué propuestas aumentan la cantidad máxima de éster: a) alcohol en exceso, b) doblar el H₂SO₄, c) eliminar el agua formada?",
+   "datos": {
+    "M(butanoato de etilo)": "C₆H₁₂O₂ = 116 g·mol⁻¹ (calculada)",
+    "T_eb(éster)": "121 °C"
+   },
+   "respuesta": "No hay corrigé en el libro para este ejercicio; resultado calculado a partir de los datos: 1) catalizador. 2) n_obtenue = 17,4/116 = 0,15 mol; R = 0,15/0,22 ≈ 68 %. 3) a) y c) aumentan el rendimiento (exceso de reactivo / eliminación de un producto); b) no, un catalizador no cambia el estado final.",
+   "respuesta_numerica": {
+    "valor": 68,
+    "unidad": "%",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "M(C₆H₁₂O₂) = 6×12 + 12×1 + 2×16 = 116 g·mol⁻¹",
+    "n = 17,4/116 = 0,150 mol",
+    "R = 0,150/0,22 × 100 ≈ 68 %"
+   ],
+   "pagina_pdf": 238,
+   "corrige_pagina_pdf": 0
+  },
+  {
+   "id": "e12",
+   "enunciado": "Ejercicio de síntesis 4 (BAC) – Espèce fluorescente, parte B: síntesis de la fluoresceína. 2 resorcina + anhídrido ftálico → fluoresceína + 2 H₂O (H₂SO₄, calor). Se mezclan 3,30 g de resorcina y 2,00 g de anhídrido ftálico; se obtienen 2,47 g de fluoresceína. 2) Mostrar que un reactivo está en exceso. 8) ¿Rendimiento?",
+   "datos": {
+    "M(resorcina)": "110 g·mol⁻¹",
+    "M(anhídrido ftálico)": "148 g·mol⁻¹",
+    "M(H₂Flu)": "332 g·mol⁻¹"
+   },
+   "respuesta": "No hay corrigé en el libro; calculado a partir de los datos: n(resorcina) = 0,0300 mol y n(anhídrido) = 0,0135 mol; la estequiometría 2:1 exige 0,0270 mol de resorcina para consumir todo el anhídrido → resorcina en exceso, x_max = 0,0135 mol. n_obtenue = 2,47/332 = 7,44×10⁻³ mol → R ≈ 55 %.",
+   "respuesta_numerica": {
+    "valor": 55,
+    "unidad": "%",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "n(res) = 3,30/110 = 0,0300 mol; n(anh) = 2,00/148 = 0,0135 mol",
+    "Con 2:1, el limitante es el anhídrido: x_max = 0,0135 mol",
+    "n_obtenue = 2,47/332 = 7,44×10⁻³ mol; R = 7,44×10⁻³/0,0135 × 100 ≈ 55 %"
+   ],
+   "pagina_pdf": 254,
+   "corrige_pagina_pdf": 0
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "masa-molar",
+   "params": {
+    "m": 1.0,
+    "M": 122
+   },
+   "titulo": "De la masa a la cantidad de materia",
+   "relacion": "n = m/M: primer paso del cálculo del rendimiento (ex. 22)."
+  },
+  {
+   "preset": "avance",
+   "params": {
+    "x": 0.0625,
+    "n1": 0.1,
+    "n2": 0.1
+   },
+   "titulo": "Avance y rendimiento",
+   "relacion": "R = n_obtenue/n_attendue: qué fracción del avance máximo se alcanza."
+  },
+  {
+   "preset": "quotient-equilibre",
+   "params": {
+    "K": 0.007
+   },
+   "titulo": "Qr frente a K y exceso de reactivo",
+   "relacion": "Qr < K → sentido directo; exceso de reactivo o eliminación de un producto aumenta el rendimiento."
+  },
+  {
+   "preset": "concentracion",
+   "params": {},
+   "titulo": "Concentración de un reactivo comercial",
+   "relacion": "c a partir del título másico (ex. 1, aspirina)."
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "laboratorio-neon",
+  "mecanica_especial": "Columnas de vapor del reflujo (zona_campo con empuje hacia arriba que reduce la gravedad efectiva sobre los fosos) y plataformas móviles que imitan el matraz y el refrigerante."
+ },
+ "estilo_intro_sugerido": "quimica3d"
+}

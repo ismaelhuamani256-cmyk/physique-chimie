@@ -1,0 +1,391 @@
+{
+ "capitulo_id": "description-mouvement",
+ "tipo_nivel": "fortaleza",
+ "tema_visual": "lava-fortaleza",
+ "fisica_juego": {
+  "gravedad": 1.0,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 172,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 6,
+   "y": 12,
+   "ref": "f1",
+   "latex": "\\overrightarrow{OM}(t)=x(t)\\,\\vec i+y(t)\\,\\vec j+z(t)\\,\\vec k=\\begin{pmatrix}x(t)\\\\y(t)\\\\z(t)\\end{pmatrix}",
+   "nombre": "Vector posición"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 13,
+   "y": 12,
+   "ref": "f3",
+   "latex": "\\vec v(t)=\\dfrac{d\\overrightarrow{OM}(t)}{dt}",
+   "nombre": "Vector velocidad (derivada del vector posición)"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 16,
+   "y": 13,
+   "enemigo": "error_aceleracion_solo_aumento",
+   "nombre": "Creer que aceleración = «solo aumenta la rapidez»",
+   "correccion": "a⃗ ≠ 0 también si v frena o solo cambia de dirección; a⃗ = dv⃗/dt (vector)."
+  },
+  {
+   "tipo": "foso",
+   "x": 20,
+   "largo": 4,
+   "lava": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 24,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 29,
+   "y": 12,
+   "ref": "f4",
+   "latex": "\\vec v(t)=\\dfrac{dx}{dt}\\,\\vec i+\\dfrac{dy}{dt}\\,\\vec j+\\dfrac{dz}{dt}\\,\\vec k=\\begin{pmatrix}dx/dt\\\\dy/dt\\\\dz/dt\\end{pmatrix}",
+   "nombre": "Coordenadas del vector velocidad"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 32,
+   "y": 13,
+   "enemigo": "error_uniforme_a_cero",
+   "nombre": "Movimiento uniforme ⇒ aceleración nula",
+   "correccion": "En el circular uniforme a = v²/R ≠ 0 (a⃗ ⟂ v⃗, hacia el centro)."
+  },
+  {
+   "tipo": "foso",
+   "x": 36,
+   "largo": 2,
+   "lava": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 38,
+   "y": 12,
+   "largo": 10
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 43,
+   "y": 10,
+   "ref": "f7",
+   "latex": "\\vec a=\\begin{pmatrix}dv_x/dt\\\\dv_y/dt\\\\dv_z/dt\\end{pmatrix}=\\begin{pmatrix}d^2x/dt^2\\\\d^2y/dt^2\\\\d^2z/dt^2\\end{pmatrix}",
+   "nombre": "Coordenadas del vector aceleración"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 45,
+   "y": 11,
+   "enemigo": "error_unidades",
+   "nombre": "No convertir unidades (cm, km, min decimales)",
+   "correccion": "Pasar todo a SI: D = 40 cm = 0,40 m; 2,9·10⁹ km = 2,9·10¹² m; 1,33 min = 79,8 s (no 1 min 33 s)."
+  },
+  {
+   "tipo": "foso",
+   "x": 48,
+   "largo": 4,
+   "lava": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 52,
+   "y": 12,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 54,
+   "y": 9,
+   "largo": 4,
+   "recorrido": 4,
+   "eje": "x",
+   "periodo": 3
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 56,
+   "y": 7,
+   "ref": "f6",
+   "latex": "\\vec a(t)=\\dfrac{d\\vec v(t)}{dt}",
+   "nombre": "Vector aceleración (derivada del vector velocidad)"
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 52,
+   "y": 8,
+   "w": 10,
+   "h": 4,
+   "fx": 0.6,
+   "fy": 0
+  },
+  {
+   "tipo": "enemigo",
+   "x": 60,
+   "y": 11,
+   "enemigo": "error_v_cero_a_cero",
+   "nombre": "v = 0 ⇒ a = 0",
+   "correccion": "En la cima de un lanzamiento vertical v = 0 pero a⃗ = g⃗ (constante, hacia abajo)."
+  },
+  {
+   "tipo": "foso",
+   "x": 62,
+   "largo": 4,
+   "lava": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 66,
+   "y": 11,
+   "largo": 10
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 70
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 72,
+   "y": 9,
+   "ref": "f9",
+   "latex": "\\vec a=a_\\tau\\,\\vec\\tau+a_n\\,\\vec n\\quad\\text{con}\\quad a_\\tau=\\dfrac{dv}{dt},\\;\\; a_n=\\dfrac{v^2}{R}",
+   "nombre": "Aceleración en el repère de Frenet"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 74,
+   "y": 10,
+   "enemigo": "error_aceleracion_media",
+   "nombre": "Aceleración media tomada por la instantánea",
+   "correccion": "Δv/Δt sobre todo el intervalo es una media; para una fase hay que usar los valores de esa fase."
+  },
+  {
+   "tipo": "foso",
+   "x": 76,
+   "largo": 3,
+   "lava": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 79,
+   "y": 11,
+   "largo": 10
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 79,
+   "y": 7,
+   "w": 10,
+   "h": 4,
+   "fx": -0.6,
+   "fy": 0
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 83,
+   "y": 9,
+   "ref": "f10",
+   "latex": "a=\\dfrac{v^{2}}{R}\\qquad \\vec a=\\dfrac{v^{2}}{R}\\,\\vec n",
+   "nombre": "Aceleración en el movimiento circular uniforme"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 85,
+   "y": 10,
+   "enemigo": "error_diametro_radio",
+   "nombre": "Usar el diámetro en lugar del radio en v²/R",
+   "correccion": "R = D/2: a_n = v²/(D/2)."
+  },
+  {
+   "tipo": "resorte",
+   "x": 87,
+   "y": 10
+  },
+  {
+   "tipo": "foso",
+   "x": 89,
+   "largo": 3,
+   "lava": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 92,
+   "y": 10,
+   "largo": 10
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 97,
+   "y": 8,
+   "ref": "f8",
+   "latex": "\\vec v=v\\,\\vec\\tau=\\begin{pmatrix}v\\\\0\\end{pmatrix}",
+   "nombre": "Velocidad en el repère de Frenet"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 99,
+   "y": 9,
+   "enemigo": "error_signo_aceleracion",
+   "nombre": "Ignorar el signo de a_τ o de la aceleración",
+   "correccion": "a_τ < 0 (o a opuesto a v) significa que el móvil se ralentiza, no que «vaya hacia atrás»."
+  },
+  {
+   "tipo": "foso",
+   "x": 102,
+   "largo": 3,
+   "lava": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 105,
+   "y": 11,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 106,
+   "y": 8,
+   "largo": 4,
+   "recorrido": 3,
+   "eje": "x",
+   "periodo": 4
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 111
+  },
+  {
+   "tipo": "foso",
+   "x": 113,
+   "largo": 36,
+   "lava": true
+  },
+  {
+   "tipo": "puente",
+   "id": "puente_entropia",
+   "x": 113,
+   "y": 11,
+   "largo": 36,
+   "cae_con": "palanca_entropia"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 121,
+   "y": 9,
+   "ref": "f2",
+   "latex": "\\vec v(t_i)=\\dfrac{\\Delta\\overrightarrow{OM}(t_i)}{\\Delta t}=\\dfrac{\\overrightarrow{OM}(t_{i+1})-\\overrightarrow{OM}(t_{i-1})}{t_{i+1}-t_{i-1}}",
+   "nombre": "Vector velocidad a partir de las posiciones (construcción en un punto)"
+  },
+  {
+   "tipo": "jefe",
+   "x": 131,
+   "jefe": "rey_entropia",
+   "titulo": "Rey Entropía: el jefe de la lava y los engranajes",
+   "preguntas": [
+    {
+     "pregunta": "¿Cuál es la relación entre el vector posición OM y el vector velocidad v⃗?",
+     "opciones": [
+      "v⃗ = k·OM (k constante)",
+      "v⃗ = dOM/dt",
+      "OM = dv⃗/dt",
+      "v⃗ = da⃗/dt"
+     ],
+     "correcta": 1,
+     "explicacion": "El vector velocidad es la derivada respecto al tiempo del vector posición: v⃗ = dOM/dt (tangente a la trayectoria, en el sentido del movimiento).",
+     "pagina_pdf": 267
+    },
+    {
+     "pregunta": "En un movimiento circular uniforme de radio R y velocidad v, el vector aceleración...",
+     "opciones": [
+      "es nulo porque v es constante",
+      "es colineal con v⃗ y vale dv/dt",
+      "es ortogonal a v⃗, apunta al centro y vale v²/R",
+      "apunta hacia fuera del círculo y vale v²/R"
+     ],
+     "correcta": 2,
+     "explicacion": "a_τ = dv/dt = 0, así que a⃗ = (v²/R)·n⃗, constante en valor, ortogonal a v⃗ y dirigido al centro.",
+     "pagina_pdf": 269
+    },
+    {
+     "pregunta": "Ejercicio 11: con y(t) = −4,9·t² + 5,87·t + 2,0 (SI), ¿cuál es la componente vertical v_y(t) de la velocidad?",
+     "opciones": [
+      "−9,8·t + 5,87",
+      "−4,9·t² + 5,87",
+      "−9,8·t² + 5,87·t",
+      "5,87"
+     ],
+     "correcta": 0,
+     "explicacion": "v_y = dy/dt = −2×4,9·t + 5,87 = −9,8·t + 5,87 m·s⁻¹ (a_y = −9,8 m·s⁻²).",
+     "pagina_pdf": 272
+    },
+    {
+     "pregunta": "En el repère de Frenet, ¿cuál es la expresión general de la aceleración?",
+     "opciones": [
+      "a⃗ = (dv/dt)·τ⃗ + (v²/R)·n⃗",
+      "a⃗ = v·τ⃗",
+      "a⃗ = (v²/R)·τ⃗ + (dv/dt)·n⃗",
+      "a⃗ = (dv/dt)·n⃗"
+     ],
+     "correcta": 0,
+     "explicacion": "a_τ = dv/dt (tangencial) y a_n = v²/R (normal, hacia el centro de curvatura).",
+     "pagina_pdf": 268
+    },
+    {
+     "pregunta": "Si v⃗ y a⃗ son colineales y de mismo sentido (a⃗ constante), el movimiento es...",
+     "opciones": [
+      "rectilíneo uniforme",
+      "rectilíneo uniformemente acelerado",
+      "rectilíneo uniformemente ralentizado",
+      "circular uniforme"
+     ],
+     "correcta": 1,
+     "explicacion": "a⃗·v⃗ > 0: la norma de v aumenta, su sentido y dirección no cambian: rectilíneo uniformemente acelerado.",
+     "pagina_pdf": 269
+    }
+   ]
+  },
+  {
+   "tipo": "plataforma",
+   "x": 149,
+   "y": 11,
+   "largo": 23
+  },
+  {
+   "tipo": "palanca",
+   "id": "palanca_entropia",
+   "x": 151,
+   "y": 10,
+   "efecto": "cae_puente",
+   "puente": "puente_entropia",
+   "nombre": "Palanca de Entropía"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 158,
+   "y": 9,
+   "ref": "f5",
+   "latex": "\\vec a(t_i)=\\dfrac{\\Delta\\vec v(t_i)}{\\Delta t}=\\dfrac{\\vec v(t_{i+1})-\\vec v(t_{i-1})}{t_{i+1}-t_{i-1}}",
+   "nombre": "Vector aceleración a partir de las velocidades (construcción en un punto)"
+  },
+  {
+   "tipo": "meta",
+   "x": 168
+  }
+ ]
+}

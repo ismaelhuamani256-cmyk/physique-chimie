@@ -1,0 +1,53 @@
+# Super Claude Bros · Physique-Chimie BAC
+
+App **100 % local y offline** para estudiar tu manual de physique-chimie Tle (Bordas): un mapa 3D de mundos, un nivel de plataformas por capítulo, una intro animada y el capítulo para estudiar con **fórmulas animadas**.
+
+Sin API, sin claves, sin cuentas: todo el contenido ya está generado dentro de `contenido/`.
+
+## Cómo arrancar
+
+1. Instala **Node.js** (botón LTS en https://nodejs.org). Solo se hace una vez.
+2. Doble clic en:
+   - Windows → `iniciar.bat`
+   - Mac → `iniciar.command` (la primera vez: clic derecho → Abrir)
+3. Se abre `http://127.0.0.1:3000`. Si no, ábrelo a mano. (No abras `index.html` con doble clic: necesita el servidor.)
+
+Tu progreso (XP, estrellas, racha…) se guarda en `data/progreso.json`. Cópialo para hacer respaldo, o usa Exportar/Importar en el panel del mapa.
+
+## El ciclo
+
+```
+Mapa 3D ─▶ eliges capítulo ─▶ NIVEL de plataformas ─▶ (ganar o morir) ─▶ INTRO animada ─▶ CAPÍTULO
+```
+- **Saltar juego → capítulo** está siempre en la barra superior (y **Saltar intro**).
+- Ganar da XP extra y una pista gratis en el quiz. Morir no bloquea nada.
+- Controles del juego: flechas / WASD, Espacio o ↑ para saltar, P pausa. Hay botones táctiles.
+- **Fortalezas** (castillo de lava + jefe «Rey Entropía», que se derrota respondiendo preguntas del cours): capítulos 1, 10, 15, 17 y 20.
+
+## Fórmulas animadas
+
+En la pestaña **Fórmulas** de cada capítulo, pulsa una fórmula (o «Ver la animación») y se abre una animación: por ejemplo la concentración muestra un vaso con líquido y moléculas disueltas; los sliders cambian n y V y la fórmula se actualiza con los valores en vivo. La pestaña **Lab** reúne los simuladores del capítulo.
+Hay 31 animaciones específicas (química y física) y una gráfica genérica para las fórmulas sin dibujo posible.
+
+## Contenido y fidelidad
+
+- Los 20 capítulos salen **solo de tu libro** (`cours/*.pdf`, escaneados). Cada dato lleva su `pagina_pdf` (página del PDF = página impresa + 18).
+- Lo que no estaba en el libro está marcado **«no está en el cours»**; los resultados que no traían corrigé y se calcularon con las fórmulas del libro están marcados como *cálculo propio*.
+- Los agentes detectaron **erratas del libro** (enunciado y corrigé que no cuadran); esos ejercicios se omitieron del quiz o se dejaron sin respuesta numérica para que el corrector no te dé por mala una respuesta buena.
+- La corrección numérica la hace el código (valor con tolerancia, cifras significativas y unidades), no una IA.
+
+## Estructura
+
+```
+index.html · server.js · iniciar.bat / iniciar.command
+css/   js/   (js/mapa.js, js/juego/, js/intro/, js/estudio/, js/anim/, js/anim-core.js, js/core.js)
+contenido/  indice.json · capitulos/ · niveles/ · intros/ · quizzes/
+lib/   three, katex y fuentes en local
+cours/ tus PDF
+CONTRATO.md · INSTRUCCIONES-CONTENIDO.md   (cómo está pensado y cómo se generó el contenido)
+```
+Comprobar un nivel: `node js/juego/validador.js contenido/niveles/<capitulo>.json`.
+
+## Originalidad
+
+El protagonista (**Ato**, robot-científico con un átomo orbitando), los sprites, la música (chiptune generado con WebAudio), los niveles y el jefe son originales; no se copia ningún personaje ni sonido de otras franquicias.

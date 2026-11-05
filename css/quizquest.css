@@ -1,0 +1,139 @@
+/* =====================================================================================
+   quizquest.css — QUIZ QUEST: pantallas de bienvenida, transición, derrota y resumen
+   + el aviso «🎮 Quiz Quest» de la pestaña «Ponme a prueba».
+   Usa los tokens de css/base.css (--bg, --panel, --txt, --f-hud, --f-ui…). Todo con prefijo qq-.
+   ===================================================================================== */
+.qq-host{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+.qq{position:relative;min-height:100%;display:flex;flex-direction:column;color:var(--txt);font-family:var(--f-ui);
+  --qq-oro:#ffd23f;--qq-oro2:#ff9f1c;--qq-verde:#2ee59d;--qq-azul:#3ad0ff;--qq-rojo:#ff4d6d;--qq-pan:#141c3dee}
+
+/* ---------- fondos por tema (tierra / agua / castillo) ---------- */
+.qq-fondo{position:fixed;inset:44px 0 0 0;z-index:0;overflow:hidden;pointer-events:none}
+.qq-fondo-tierra{background:linear-gradient(#070b24,#1a1450 58%,#15405a 100%)}
+.qq-fondo-agua{background:linear-gradient(#06203f,#0b4a7a 55%,#0a6f92 100%)}
+.qq-fondo-castillo{background:linear-gradient(#14040a,#4a0f12 58%,#8a2a10 100%)}
+.qq-estrellas{position:absolute;inset:0;opacity:.8;
+  background-image:radial-gradient(1.5px 1.5px at 12% 18%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 28% 62%,#cfe8ff 50%,transparent 51%),
+  radial-gradient(2px 2px at 47% 30%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 63% 76%,#ffe9a8 50%,transparent 51%),
+  radial-gradient(2px 2px at 78% 22%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 90% 55%,#cfe8ff 50%,transparent 51%),
+  radial-gradient(1.5px 1.5px at 8% 85%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 38% 92%,#fff 50%,transparent 51%);
+  animation:qq-titila 4.5s ease-in-out infinite alternate}
+.qq-fondo-agua .qq-estrellas{background-image:radial-gradient(6px 6px at 15% 80%,#ffffff22 60%,transparent 62%),radial-gradient(9px 9px at 35% 60%,#ffffff1c 60%,transparent 62%),
+  radial-gradient(5px 5px at 60% 85%,#ffffff26 60%,transparent 62%),radial-gradient(8px 8px at 82% 70%,#ffffff1c 60%,transparent 62%),radial-gradient(4px 4px at 92% 90%,#ffffff2a 60%,transparent 62%);
+  animation:qq-burbujas 9s linear infinite}
+.qq-fondo-castillo .qq-estrellas{background-image:radial-gradient(2px 2px at 14% 88%,#ffb020 50%,transparent 51%),radial-gradient(2px 2px at 34% 80%,#ff5a14 50%,transparent 51%),
+  radial-gradient(2px 2px at 55% 92%,#ffe08a 50%,transparent 51%),radial-gradient(2px 2px at 75% 84%,#ff7a2a 50%,transparent 51%),radial-gradient(2px 2px at 91% 90%,#ffb020 50%,transparent 51%);
+  animation:qq-brasas 6s linear infinite}
+.qq-suelo{position:absolute;left:0;right:0;bottom:0;height:22px;opacity:.75;
+  background:repeating-linear-gradient(90deg,#1c2a63 0 28px,#243476 28px 32px);border-top:4px solid #19e3ff;box-shadow:0 -6px 30px #19e3ff33}
+.qq-fondo-agua .qq-suelo{background:repeating-linear-gradient(90deg,#14405a 0 28px,#1b5272 28px 32px);border-top-color:#7ff3ff}
+.qq-fondo-castillo .qq-suelo{background:repeating-linear-gradient(90deg,#3a1316 0 28px,#4a1a1e 28px 32px);border-top-color:#ff9f1c;box-shadow:0 -6px 30px #ff5a1455}
+@keyframes qq-titila{from{opacity:.55}to{opacity:.95}}
+@keyframes qq-burbujas{from{transform:translateY(30px)}to{transform:translateY(-60px)}}
+@keyframes qq-brasas{from{transform:translateY(20px);opacity:.9}to{transform:translateY(-70px);opacity:.3}}
+
+/* ---------- contenedor central ---------- */
+.qq-wrap{position:relative;z-index:1;width:min(720px,100%);margin:0 auto;padding:22px 16px 80px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.qq-wrap.centro{justify-content:center;min-height:calc(100vh - 44px)}
+
+/* ---------- logotipo en bloques ---------- */
+.qq-logo{display:flex;align-items:center;justify-content:center;gap:clamp(6px,2vw,14px);font-family:var(--f-hud);font-size:clamp(24px,6.4vw,46px);line-height:1;margin-top:6px}
+.qq-logo b{color:var(--qq-oro);text-shadow:0 3px 0 #b3590a,0 6px 0 #5a2a05,0 10px 22px #ff9f1c88;letter-spacing:1px}
+.qq-logo b.q2{color:#6dffd0;text-shadow:0 3px 0 #0b8f6a,0 6px 0 #064a38,0 10px 22px #2ee59d88}
+.qq-bloq{display:inline-grid;place-items:center;width:1.55em;height:1.55em;font-size:.62em;color:#06123a;font-weight:900;
+  background:linear-gradient(145deg,#c9fbff,#4fd8ff 45%,#6a6dff);clip-path:polygon(30% 0,70% 0,100% 30%,100% 70%,70% 100%,30% 100%,0 70%,0 30%);
+  filter:drop-shadow(0 0 8px #4fd8ffaa) drop-shadow(0 4px 0 #1b2a7a);animation:qq-salta 1.8s ease-in-out infinite}
+.qq-bloq.b2{animation-delay:.9s}
+@keyframes qq-salta{0%,70%,100%{transform:translateY(0)}80%{transform:translateY(-9px)}90%{transform:translateY(0)}}
+.qq-cap{margin:0;font-family:var(--f-estudio);font-size:clamp(16px,3.4vw,22px);color:#cfe3ff;font-style:italic}
+.qq-kicker{margin:0;font-family:var(--f-ui);font-weight:800;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--qq-verde)}
+.qq-kicker.mal{color:var(--qq-rojo)}
+.qq-titulo{margin:0;font-family:var(--f-ui);font-weight:700;font-size:clamp(22px,5vw,34px)}
+
+/* ---------- ruta de 3 fases ---------- */
+.qq-ruta{list-style:none;margin:2px 0;padding:0;display:flex;align-items:stretch;justify-content:center;gap:0;width:100%}
+.qq-ruta li{flex:1;display:flex;align-items:center;gap:8px;padding:8px 10px;background:#101733cc;border:2px solid #2a376b;position:relative;text-align:left;min-width:0}
+.qq-ruta li+li{margin-left:14px}
+.qq-ruta li+li::before{content:"";position:absolute;left:-14px;top:50%;width:14px;height:4px;margin-top:-2px;background:repeating-linear-gradient(90deg,#4a5aa0 0 4px,transparent 4px 8px)}
+.qq-ruta li:first-child{border-radius:12px 0 0 12px}.qq-ruta li:last-child{border-radius:0 12px 12px 0}
+.qq-ruta li.act{border-color:var(--qq-oro);background:#2a2108cc;box-shadow:0 0 18px #ffd23f44}
+.qq-ruta li.ok{border-color:var(--qq-verde);background:#0b2a22cc}
+.qq-ruta-ico{font-size:22px;flex:none}
+.qq-ruta-t{display:flex;flex-direction:column;line-height:1.15;font-size:12px;min-width:0}
+.qq-ruta-t b{font-size:12px}.qq-ruta-t small{color:var(--txt2);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ---------- reglas ---------- */
+.qq-reglas{list-style:none;margin:0;padding:12px 14px;width:100%;background:var(--qq-pan);display:flex;flex-direction:column;gap:10px;text-align:left}
+.qq-reglas li{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.42}
+.qq-ico{flex:none;width:34px;height:34px;display:grid;place-items:center;font-size:19px;border-radius:9px;background:#243476;border:2px solid #3a4c9a}
+.qq-reglas b{color:#fff}
+.qq-teclas{margin:0;color:var(--txt2);font-size:12.5px;line-height:2}
+kbd{font:600 11px var(--f-ui);background:#222d5e;border:1px solid #3a4c9a;border-bottom-width:3px;border-radius:5px;padding:1px 6px;color:#eaf0ff;margin:0 1px}
+
+/* ---------- fila de datos ---------- */
+.qq-fila{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;width:100%}
+.qq-dato{flex:1 1 180px;min-width:160px;padding:9px 12px;background:var(--qq-pan);border:1px solid #2a376b;border-radius:12px;display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center}
+.qq-dato small,.qq-stat small{color:var(--txt2);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.qq-vidas{display:inline-flex;gap:4px;font-size:20px}
+.qq-vidas i{font-style:normal;color:#3b2a45}
+.qq-vidas i.on{color:var(--qq-rojo);text-shadow:0 0 10px #ff4d6d88}
+.qq-mejor{font-size:14px}.qq-mejor b{color:var(--qq-oro);font-size:17px}.qq-mejor em{color:var(--qq-verde);font-style:normal;font-size:12px}
+.qq-est{color:var(--qq-oro);letter-spacing:2px;text-shadow:0 0 10px #ffd23f66}
+.qq-nada{color:var(--txt2);font-size:13px}
+.qq-seed-fila{display:flex;gap:6px;align-items:center}
+.qq-semilla-in{width:96px;font:700 15px var(--f-ui);text-align:center;color:#fff;background:#0b1130;border:2px solid #3a4c9a;border-radius:8px;padding:5px 6px}
+.qq-semilla-in:focus-visible{outline:2px solid var(--qq-azul);outline-offset:1px}
+
+/* ---------- botones ---------- */
+.qq-btn{font:700 14px var(--f-ui);color:#fff;background:#243476;border:2px solid #4a5fc0;border-radius:11px;padding:10px 18px;cursor:pointer;transition:transform .1s,filter .12s;box-shadow:0 4px 0 #101a4a}
+.qq-btn:hover{filter:brightness(1.18);transform:translateY(-1px)}
+.qq-btn:active{transform:translateY(3px);box-shadow:0 1px 0 #101a4a}
+.qq-btn:focus-visible{outline:3px solid var(--qq-azul);outline-offset:2px}
+.qq-btn.mini{padding:5px 10px;font-size:12px;box-shadow:0 3px 0 #101a4a}
+.qq-btn.sec{background:#1a2250;border-color:#3a4c9a}
+.qq-btn.jugar{font-family:var(--f-hud);font-size:clamp(13px,2.6vw,17px);color:#3a1a00;background:linear-gradient(#ffe27a,#ffb020);border:3px solid #7a3a05;
+  box-shadow:0 5px 0 #7a3a05,0 10px 24px #ff9f1c55;padding:15px 34px;letter-spacing:.06em;animation:qq-late 1.6s ease-in-out infinite}
+.qq-btn.jugar:active{box-shadow:0 1px 0 #7a3a05}
+@keyframes qq-late{50%{transform:scale(1.045)}}
+.qq-botones{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:6px}
+.qq-nota{margin:0;color:var(--txt2);font-size:12.5px;max-width:520px;line-height:1.5}
+.qq-pulso{font-family:var(--f-hud);font-size:12px;color:var(--qq-oro);animation:qq-titila 1s ease-in-out infinite alternate}
+
+/* ---------- estadísticas ---------- */
+.qq-stats{width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;background:var(--qq-pan);padding:14px}
+.qq-stat{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0}
+.qq-stat b{font-size:22px;color:#fff;font-family:var(--f-ui)}
+.qq-stat span{font-size:12px;color:var(--txt2)}
+.qq-premios{display:inline-flex;flex-wrap:wrap;gap:5px;justify-content:center}
+.qq-premio{display:inline-flex;align-items:center;gap:2px;font-size:14px;background:#222d5e;border-radius:99px;padding:1px 7px 1px 5px}
+.qq-premio b{font-size:11px;color:var(--qq-oro)}
+.qq-prox{width:100%;display:flex;align-items:center;gap:14px;text-align:left;background:var(--qq-pan)}
+.qq-prox-ico{font-size:34px}.qq-prox p{margin:3px 0 0;color:var(--txt2);font-size:13px}
+.qq-grande{display:flex;flex-direction:column;align-items:center;gap:2px}
+.qq-grande b small{font-size:.5em;margin-left:.15em;font-family:var(--f-ui)}
+.qq-grande b{font-family:var(--f-hud);font-size:clamp(34px,10vw,64px);color:var(--qq-oro);text-shadow:0 4px 0 #b3590a,0 8px 26px #ff9f1c88}
+.qq-grande .qq-est{font-size:clamp(26px,6vw,38px)}
+.qq-tabla-wrap{width:100%;overflow-x:auto;padding:6px;background:var(--qq-pan)}
+.qq-tabla{width:100%;border-collapse:collapse;font-size:13px;min-width:460px}
+.qq-tabla th{color:var(--txt2);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.07em;padding:6px 8px;text-align:center}
+.qq-tabla td{padding:7px 8px;border-top:1px solid #2a376b;text-align:center;vertical-align:middle}
+.qq-tabla td:first-child{text-align:left;white-space:nowrap}
+.qq-tabla td.xp{color:var(--qq-oro);font-weight:700}
+
+/* ---------- aviso en la pestaña «Ponme a prueba» ---------- */
+.est-qq{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 14px;padding:12px 16px;border-radius:14px;
+  background:linear-gradient(120deg,#2a1470,#1b4f8f 60%,#0f7d6a);border:2px solid #ffd23f;box-shadow:0 8px 24px #1b4f8f55;color:#fff}
+.est-qq-txt{flex:1 1 260px;min-width:0;font-size:14px;line-height:1.4}
+.est-qq-txt b{display:block;font-size:17px;color:#ffe27a;margin-bottom:2px}
+.est-qq-btn.btn{font-weight:800;font-size:15px;padding:11px 22px;color:#3a1a00;background:linear-gradient(#ffe27a,#ffb020);border:2px solid #7a3a05;box-shadow:0 4px 0 #7a3a05;white-space:nowrap}
+.est-qq-btn.btn:hover{background:linear-gradient(#fff0a8,#ffc247)}
+.est-qq-btn.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #7a3a05}
+
+/* ---------- móvil ---------- */
+@media (max-width:560px){
+  .qq-wrap{padding:14px 12px 60px;gap:11px}
+  .qq-ruta li{padding:6px 7px;gap:5px}.qq-ruta-ico{font-size:18px}.qq-ruta-t small{display:none}
+  .qq-reglas li{font-size:13px}.qq-ico{width:30px;height:30px;font-size:17px}
+  .qq-btn.jugar{padding:13px 26px}
+}
+@media (prefers-reduced-motion:reduce){.qq *{animation:none!important}}

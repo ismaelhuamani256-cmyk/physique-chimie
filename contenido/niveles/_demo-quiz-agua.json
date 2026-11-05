@@ -1,0 +1,402 @@
+{
+ "capitulo_id": "_demo",
+ "tipo_nivel": "quiz_agua",
+ "tema_visual": "submarino",
+ "fisica_juego": {
+  "gravedad": 1.0,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 140,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "zona_agua",
+   "x": 0,
+   "y": 0,
+   "w": 140,
+   "h": 18,
+   "corriente_x": 0,
+   "corriente_y": 0
+  },
+  {
+   "tipo": "zona_agua",
+   "x": 40,
+   "y": 3,
+   "w": 30,
+   "h": 11,
+   "corriente_x": 2.2,
+   "corriente_y": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 15,
+   "largo": 140
+  },
+  {
+   "tipo": "plataforma",
+   "x": 22,
+   "y": 11,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 84,
+   "y": 10,
+   "largo": 5
+  },
+  {
+   "tipo": "bloque_pregunta",
+   "x": 12,
+   "y": 9,
+   "pregunta": {
+    "id": "c1",
+    "tipo": "opcion",
+    "enunciado": "Quelle relation lie la quantité de matière $n$, la masse $m$ et la masse molaire $M$ ?",
+    "opciones": [
+     "n=\\dfrac{m}{M}",
+     "n=m\\times M",
+     "n=\\dfrac{M}{m}",
+     "n=m+M"
+    ],
+    "correcta": 0,
+    "explicacion": "Une quantité de matière est le rapport de la masse à la masse molaire : $n=m/M$.",
+    "pagina_pdf": 21,
+    "pasos": [
+     "On cherche n en mol.",
+     "$M$ s'exprime en g·mol⁻¹ et $m$ en g, donc $m/M$ est en mol."
+    ],
+    "latex_opciones": true
+   },
+   "premio": "moneda",
+   "fallo": "cierra"
+  },
+  {
+   "tipo": "bloque_pregunta",
+   "x": 24,
+   "y": 7,
+   "pregunta": {
+    "id": "t1",
+    "tipo": "numerico",
+    "enunciado": "Quelle est la pression d'une mole de gaz parfait à $T=300\\ \\mathrm{K}$ dans un volume $V=24{,}9\\ \\mathrm{L}$ ? ($R=8{,}314\\ \\mathrm{J\\cdot K^{-1}\\cdot mol^{-1}}$)",
+    "valor": 100000.0,
+    "unidad": "Pa",
+    "tolerancia_rel": 0.03,
+    "cifras_sig": 2,
+    "explicacion": "$P=nRT/V=1\\times8{,}314\\times300/0{,}0249\\approx1{,}0\\times10^5\\ \\mathrm{Pa}$.",
+    "pasos": [
+     "Convertir $V=24{,}9\\ \\mathrm{L}=0{,}0249\\ \\mathrm{m^3}$",
+     "$P=nRT/V$"
+    ],
+    "pagina_pdf": 0
+   },
+   "premio": "vida",
+   "fallo": "cierra"
+  },
+  {
+   "tipo": "bloque_pregunta",
+   "x": 46,
+   "y": 8,
+   "pregunta": {
+    "id": "t2",
+    "tipo": "numerico",
+    "enunciado": "Un gaz reçoit un travail $W=+200\\ \\mathrm{J}$ et un transfert thermique $Q=-50\\ \\mathrm{J}$. Quelle est la variation de son énergie interne ?",
+    "valor": 150,
+    "unidad": "J",
+    "tolerancia_rel": 0.02,
+    "cifras_sig": 2,
+    "explicacion": "Premier principe : $\\Delta U=W+Q=200+(-50)=150\\ \\mathrm{J}$.",
+    "pasos": [
+     "$\\Delta U=W+Q$"
+    ],
+    "pagina_pdf": 0
+   },
+   "premio": "pista",
+   "fallo": "enemigo"
+  },
+  {
+   "tipo": "bloque_pregunta",
+   "x": 62,
+   "y": 6,
+   "pregunta": {
+    "id": "g1",
+    "tipo": "opcion",
+    "enunciado": "D'après la loi de gravitation universelle, si la distance $r$ entre deux masses double, la force d'attraction…",
+    "opciones": [
+     "est divisée par 4",
+     "est divisée par 2",
+     "double",
+     "est multipliée par 4"
+    ],
+    "correcta": 0,
+    "explicacion": "$F=G\\,m\\,M/r^2$ : si $r$ double, $F$ est divisée par $2^2=4$.",
+    "pagina_pdf": 0
+   },
+   "premio": "escudo",
+   "fallo": "cierra"
+  },
+  {
+   "tipo": "bloque_pregunta",
+   "x": 76,
+   "y": 9,
+   "pregunta": {
+    "id": "o3",
+    "tipo": "numerico",
+    "enunciado": "Une lentille convergente de distance focale $f'=20\\ \\mathrm{cm}$ donne l'image d'un objet situé à $60\\ \\mathrm{cm}$ avant la lentille ($\\overline{OA}=-60\\ \\mathrm{cm}$). Où se forme l'image ($\\overline{OA'}$) ?",
+    "valor": 30,
+    "unidad": "cm",
+    "tolerancia_rel": 0.02,
+    "cifras_sig": 2,
+    "explicacion": "Relation de conjugaison : $\\dfrac{1}{\\overline{OA'}}-\\dfrac{1}{\\overline{OA}}=\\dfrac{1}{f'}$ donc $\\dfrac{1}{\\overline{OA'}}=\\dfrac{1}{20}-\\dfrac{1}{60}=\\dfrac{1}{30}$.",
+    "pasos": [
+     "$1/\\overline{OA'}=1/f'+1/\\overline{OA}$",
+     "$=1/20-1/60=2/60$",
+     "$\\overline{OA'}=30\\ \\mathrm{cm}$"
+    ],
+    "pagina_pdf": 0
+   },
+   "premio": "estrella",
+   "fallo": "cierra"
+  },
+  {
+   "tipo": "bloque_pregunta",
+   "x": 96,
+   "y": 8,
+   "pregunta": {
+    "id": "f1",
+    "tipo": "numerico",
+    "enunciado": "Quelle est la valeur de la poussée d'Archimède sur un objet de volume $2{,}0\\ \\mathrm{L}$ totalement immergé dans l'eau ($\\rho=1000\\ \\mathrm{kg\\cdot m^{-3}}$, $g=9{,}81\\ \\mathrm{m\\cdot s^{-2}}$) ?",
+    "valor": 19.6,
+    "unidad": "N",
+    "tolerancia_rel": 0.02,
+    "cifras_sig": 3,
+    "explicacion": "$\\Pi=\\rho V g=1000\\times2{,}0\\times10^{-3}\\times9{,}81=19{,}6\\ \\mathrm{N}$.",
+    "pasos": [
+     "$V=2{,}0\\ \\mathrm{L}=2{,}0\\times10^{-3}\\ \\mathrm{m^3}$",
+     "$\\Pi=\\rho V g$"
+    ],
+    "pagina_pdf": 0
+   },
+   "premio": "reloj",
+   "fallo": "cierra"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 30,
+   "y": 8,
+   "enemigo": "medusa",
+   "nombre": "Méduse : oublier les unités",
+   "correccion": "Une grandeur physique s'écrit toujours avec son unité."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 52,
+   "y": 10,
+   "enemigo": "pez",
+   "nombre": "Poisson : confondre masse et poids",
+   "correccion": "La masse (kg) n'est pas le poids (N) : P = m·g."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 72,
+   "y": 14,
+   "enemigo": "erizo",
+   "nombre": "Oursin : arrondir trop tôt",
+   "correccion": "Ne pas arrondir les résultats intermédiaires."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 104,
+   "y": 9,
+   "enemigo": "anguila",
+   "nombre": "Anguille : oublier de convertir",
+   "correccion": "Convertir les volumes en m³ avant d'utiliser les formules SI."
+  },
+  {
+   "tipo": "tuberia",
+   "x": 58,
+   "y": 15,
+   "alto": 2,
+   "pregunta": {
+    "id": "c6",
+    "tipo": "numerico",
+    "enunciado": "On prélève $10{,}0\\ \\mathrm{mL}$ d'une solution mère à $0{,}50\\ \\mathrm{mol\\cdot L^{-1}}$ qu'on complète à $100{,}0\\ \\mathrm{mL}$. Quelle est la concentration de la solution fille ?",
+    "valor": 0.05,
+    "unidad": "mol·L⁻¹",
+    "tolerancia_rel": 0.02,
+    "cifras_sig": 2,
+    "explicacion": "Conservation de la quantité de matière : $C_1V_1=C_2V_2$, donc $C_2=0{,}50\\times10{,}0/100{,}0=0{,}050\\ \\mathrm{mol\\cdot L^{-1}}$.",
+    "pasos": [
+     "$C_1V_1=C_2V_2$",
+     "$C_2=C_1V_1/V_2=0{,}050\\ \\mathrm{mol\\cdot L^{-1}}$"
+    ],
+    "pagina_pdf": 0
+   },
+   "preguntas_reserva": [
+    {
+     "id": "c2",
+     "tipo": "numerico",
+     "enunciado": "Calculer la quantité de matière contenue dans $4{,}0\\ \\mathrm{g}$ d'hydroxyde de sodium NaOH ($M=40\\ \\mathrm{g\\cdot mol^{-1}}$).",
+     "valor": 0.1,
+     "unidad": "mol",
+     "tolerancia_rel": 0.02,
+     "cifras_sig": 2,
+     "explicacion": "$n=m/M=4{,}0/40=0{,}10\\ \\mathrm{mol}$.",
+     "pasos": [
+      "$n=m/M$",
+      "$n=4{,}0/40$",
+      "$n=0{,}10\\ \\mathrm{mol}$"
+     ],
+     "pagina_pdf": 0
+    }
+   ],
+   "destino": "bonus"
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 70
+  },
+  {
+   "tipo": "puerta",
+   "x": 88,
+   "y": 15,
+   "alto": 4,
+   "pregunta": {
+    "id": "m1",
+    "tipo": "numerico",
+    "enunciado": "Calculer l'énergie cinétique d'une voiture de $1000\\ \\mathrm{kg}$ roulant à $20\\ \\mathrm{m\\cdot s^{-1}}$.",
+    "valor": 200000.0,
+    "unidad": "J",
+    "tolerancia_rel": 0.02,
+    "cifras_sig": 2,
+    "explicacion": "$E_c=\\tfrac12 m v^2=0{,}5\\times1000\\times20^2=2{,}0\\times10^5\\ \\mathrm{J}$.",
+    "pasos": [
+     "$E_c=\\tfrac12 mv^2$",
+     "$=0{,}5\\times1000\\times400$"
+    ],
+    "pagina_pdf": 0
+   },
+   "preguntas_reserva": [
+    {
+     "id": "e2",
+     "tipo": "opcion",
+     "enunciado": "Dans un circuit série, que vaut l'intensité du courant en tous les points ?",
+     "opciones": [
+      "la même",
+      "elle diminue après chaque dipôle",
+      "elle se partage entre les dipôles",
+      "elle dépend de la couleur du fil"
+     ],
+     "correcta": 0,
+     "explicacion": "Dans un circuit en série, l'intensité est la même en tout point (conservation de la charge).",
+     "pagina_pdf": 0
+    }
+   ]
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 110
+  },
+  {
+   "tipo": "jefe_quiz",
+   "x": 126,
+   "jefe": "pulpo_acido",
+   "vidas": 3,
+   "preguntas": [
+    {
+     "id": "c3",
+     "tipo": "opcion",
+     "enunciado": "Une solution a $[\\mathrm{H_3O^+}]=1{,}0\\times10^{-4}\\ \\mathrm{mol\\cdot L^{-1}}$. Quel est son pH ?",
+     "opciones": [
+      "4,0",
+      "−4,0",
+      "10,0",
+      "0,0001"
+     ],
+     "correcta": 0,
+     "explicacion": "$\\mathrm{pH}=-\\log([\\mathrm{H_3O^+}]/c^\\circ)=-\\log(10^{-4})=4{,}0$.",
+     "pagina_pdf": 0
+    },
+    {
+     "id": "c4",
+     "tipo": "opcion",
+     "enunciado": "Selon Brønsted, un acide est une espèce chimique capable de…",
+     "opciones": [
+      "céder un ou plusieurs protons H⁺",
+      "capter un ou plusieurs protons H⁺",
+      "céder un électron",
+      "capter un électron"
+     ],
+     "correcta": 0,
+     "explicacion": "Un acide de Brønsted cède un proton H⁺ ; une base en capte un.",
+     "pagina_pdf": 0
+    },
+    {
+     "id": "c7",
+     "tipo": "opcion",
+     "enunciado": "Pour un couple acide/base, quand $\\mathrm{pH}=\\mathrm{p}K_A$, on a…",
+     "opciones": [
+      "[A⁻] = [AH]",
+      "[A⁻] > [AH]",
+      "[A⁻] < [AH]",
+      "[AH] = 0"
+     ],
+     "correcta": 0,
+     "explicacion": "$\\mathrm{pH}=\\mathrm{p}K_A+\\log([\\mathrm{A^-}]/[\\mathrm{AH}])$ : si $\\mathrm{pH}=\\mathrm{p}K_A$ alors $[\\mathrm{A^-}]=[\\mathrm{AH}]$.",
+     "pagina_pdf": 0
+    },
+    {
+     "id": "c2",
+     "tipo": "numerico",
+     "enunciado": "Calculer la quantité de matière contenue dans $4{,}0\\ \\mathrm{g}$ d'hydroxyde de sodium NaOH ($M=40\\ \\mathrm{g\\cdot mol^{-1}}$).",
+     "valor": 0.1,
+     "unidad": "mol",
+     "tolerancia_rel": 0.02,
+     "cifras_sig": 2,
+     "explicacion": "$n=m/M=4{,}0/40=0{,}10\\ \\mathrm{mol}$.",
+     "pasos": [
+      "$n=m/M$",
+      "$n=4{,}0/40$",
+      "$n=0{,}10\\ \\mathrm{mol}$"
+     ],
+     "pagina_pdf": 0
+    },
+    {
+     "id": "c5",
+     "tipo": "opcion",
+     "enunciado": "D'après la loi de Beer-Lambert $A=\\varepsilon\\,\\ell\\,c$, si l'on double la concentration $c$ (même cuve, même longueur d'onde), l'absorbance…",
+     "opciones": [
+      "double",
+      "est divisée par deux",
+      "ne change pas",
+      "est multipliée par quatre"
+     ],
+     "correcta": 0,
+     "explicacion": "$A$ est proportionnelle à $c$ : si $c$ double, $A$ double.",
+     "pagina_pdf": 0
+    },
+    {
+     "id": "c6",
+     "tipo": "numerico",
+     "enunciado": "On prélève $10{,}0\\ \\mathrm{mL}$ d'une solution mère à $0{,}50\\ \\mathrm{mol\\cdot L^{-1}}$ qu'on complète à $100{,}0\\ \\mathrm{mL}$. Quelle est la concentration de la solution fille ?",
+     "valor": 0.05,
+     "unidad": "mol·L⁻¹",
+     "tolerancia_rel": 0.02,
+     "cifras_sig": 2,
+     "explicacion": "Conservation de la quantité de matière : $C_1V_1=C_2V_2$, donc $C_2=0{,}50\\times10{,}0/100{,}0=0{,}050\\ \\mathrm{mol\\cdot L^{-1}}$.",
+     "pasos": [
+      "$C_1V_1=C_2V_2$",
+      "$C_2=C_1V_1/V_2=0{,}050\\ \\mathrm{mol\\cdot L^{-1}}$"
+     ],
+     "pagina_pdf": 0
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 136
+  }
+ ]
+}

@@ -1,0 +1,346 @@
+{
+ "capitulo_id": "_demo",
+ "tipo_nivel": "quiz_castillo",
+ "tema_visual": "lava-fortaleza",
+ "fisica_juego": {
+  "gravedad": 1.0,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 150,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 40
+  },
+  {
+   "tipo": "bloque_pregunta",
+   "x": 10,
+   "y": 10,
+   "pregunta": {
+    "id": "p1",
+    "tipo": "numerico",
+    "enunciado": "Un solide de masse $2{,}0\\ \\mathrm{kg}$ est soumis à une force résultante de $6{,}0\\ \\mathrm{N}$. Quelle est la norme de son accélération ?",
+    "valor": 3.0,
+    "unidad": "m·s⁻²",
+    "tolerancia_rel": 0.02,
+    "cifras_sig": 2,
+    "explicacion": "Deuxième loi de Newton : $\\sum\\vec F=m\\vec a$, donc $a=F/m=6{,}0/2{,}0=3{,}0\\ \\mathrm{m\\cdot s^{-2}}$.",
+    "pasos": [
+     "$a=\\Sigma F/m$",
+     "$a=6{,}0/2{,}0$"
+    ],
+    "pagina_pdf": 0
+   },
+   "premio": "moneda",
+   "fallo": "cierra"
+  },
+  {
+   "tipo": "bloque_pregunta",
+   "x": 16,
+   "y": 10,
+   "pregunta": {
+    "id": "m1",
+    "tipo": "numerico",
+    "enunciado": "Calculer l'énergie cinétique d'une voiture de $1000\\ \\mathrm{kg}$ roulant à $20\\ \\mathrm{m\\cdot s^{-1}}$.",
+    "valor": 200000.0,
+    "unidad": "J",
+    "tolerancia_rel": 0.02,
+    "cifras_sig": 2,
+    "explicacion": "$E_c=\\tfrac12 m v^2=0{,}5\\times1000\\times20^2=2{,}0\\times10^5\\ \\mathrm{J}$.",
+    "pasos": [
+     "$E_c=\\tfrac12 mv^2$",
+     "$=0{,}5\\times1000\\times400$"
+    ],
+    "pagina_pdf": 0
+   },
+   "premio": "pista",
+   "fallo": "cierra"
+  },
+  {
+   "tipo": "bloque_pregunta",
+   "x": 22,
+   "y": 10,
+   "pregunta": {
+    "id": "n1",
+    "tipo": "opcion",
+    "enunciado": "Après deux demi-vies, quelle fraction des noyaux radioactifs initiaux reste-t-il ?",
+    "opciones": [
+     "1/4",
+     "1/2",
+     "1/8",
+     "0"
+    ],
+    "correcta": 0,
+    "explicacion": "Après chaque demi-vie la moitié des noyaux restants se désintègre : $(1/2)^2=1/4$.",
+    "pagina_pdf": 0
+   },
+   "premio": "vida",
+   "fallo": "enemigo"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 26,
+   "y": 13,
+   "enemigo": "force_oubliee",
+   "nombre": "Force oubliée",
+   "correccion": "Faire l'inventaire de toutes les forces (poids, réaction, frottements…)."
+  },
+  {
+   "tipo": "tuberia",
+   "x": 32,
+   "y": 14,
+   "alto": 2,
+   "pregunta": {
+    "id": "t2",
+    "tipo": "numerico",
+    "enunciado": "Un gaz reçoit un travail $W=+200\\ \\mathrm{J}$ et un transfert thermique $Q=-50\\ \\mathrm{J}$. Quelle est la variation de son énergie interne ?",
+    "valor": 150,
+    "unidad": "J",
+    "tolerancia_rel": 0.02,
+    "cifras_sig": 2,
+    "explicacion": "Premier principe : $\\Delta U=W+Q=200+(-50)=150\\ \\mathrm{J}$.",
+    "pasos": [
+     "$\\Delta U=W+Q$"
+    ],
+    "pagina_pdf": 0
+   },
+   "destino": "atajo",
+   "salida_x": 62,
+   "salida_y": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 40,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 44,
+   "y": 14,
+   "largo": 36
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 48
+  },
+  {
+   "tipo": "puerta",
+   "x": 56,
+   "y": 12,
+   "alto": 3,
+   "pregunta": {
+    "id": "o1",
+    "tipo": "numerico",
+    "enunciado": "Un photon a une fréquence $\\nu=5{,}0\\times10^{14}\\ \\mathrm{Hz}$. Quelle est son énergie en eV ? ($h=6{,}63\\times10^{-34}\\ \\mathrm{J\\cdot s}$, $1\\ \\mathrm{eV}=1{,}60\\times10^{-19}\\ \\mathrm{J}$)",
+    "valor": 2.07,
+    "unidad": "eV",
+    "tolerancia_rel": 0.03,
+    "cifras_sig": 2,
+    "explicacion": "$E=h\\nu=6{,}63\\times10^{-34}\\times5{,}0\\times10^{14}=3{,}3\\times10^{-19}\\ \\mathrm{J}\\approx2{,}1\\ \\mathrm{eV}$.",
+    "pasos": [
+     "$E=h\\nu$",
+     "$E=3{,}3\\times10^{-19}\\ \\mathrm{J}$",
+     "$E=3{,}3\\times10^{-19}/1{,}60\\times10^{-19}\\approx2{,}1\\ \\mathrm{eV}$"
+    ],
+    "pagina_pdf": 0
+   },
+   "preguntas_reserva": [
+    {
+     "id": "o3",
+     "tipo": "numerico",
+     "enunciado": "Une lentille convergente de distance focale $f'=20\\ \\mathrm{cm}$ donne l'image d'un objet situé à $60\\ \\mathrm{cm}$ avant la lentille ($\\overline{OA}=-60\\ \\mathrm{cm}$). Où se forme l'image ($\\overline{OA'}$) ?",
+     "valor": 30,
+     "unidad": "cm",
+     "tolerancia_rel": 0.02,
+     "cifras_sig": 2,
+     "explicacion": "Relation de conjugaison : $\\dfrac{1}{\\overline{OA'}}-\\dfrac{1}{\\overline{OA}}=\\dfrac{1}{f'}$ donc $\\dfrac{1}{\\overline{OA'}}=\\dfrac{1}{20}-\\dfrac{1}{60}=\\dfrac{1}{30}$.",
+     "pasos": [
+      "$1/\\overline{OA'}=1/f'+1/\\overline{OA}$",
+      "$=1/20-1/60=2/60$",
+      "$\\overline{OA'}=30\\ \\mathrm{cm}$"
+     ],
+     "pagina_pdf": 0
+    }
+   ]
+  },
+  {
+   "tipo": "bloque_pregunta",
+   "x": 66,
+   "y": 10,
+   "pregunta": {
+    "id": "e1",
+    "tipo": "numerico",
+    "enunciado": "Calculer la constante de temps $\\tau=RC$ d'un dipôle RC avec $R=10\\ \\mathrm{k\\Omega}$ et $C=100\\ \\mathrm{\\mu F}$.",
+    "valor": 1.0,
+    "unidad": "s",
+    "tolerancia_rel": 0.02,
+    "cifras_sig": 2,
+    "explicacion": "$\\tau=RC=10\\times10^{3}\\times100\\times10^{-6}=1{,}0\\ \\mathrm{s}$.",
+    "pasos": [
+     "Convertir : $R=1{,}0\\times10^4\\ \\Omega$, $C=1{,}0\\times10^{-4}\\ \\mathrm{F}$",
+     "$\\tau=RC=1{,}0\\ \\mathrm{s}$"
+    ],
+    "pagina_pdf": 0
+   },
+   "premio": "escudo",
+   "fallo": "cierra"
+  },
+  {
+   "tipo": "foso",
+   "x": 80,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 80,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 88,
+   "y": 14,
+   "largo": 62
+  },
+  {
+   "tipo": "enemigo",
+   "x": 94,
+   "y": 13,
+   "enemigo": "signe_inverse",
+   "nombre": "Signe inversé",
+   "correccion": "Un travail reçu est positif, un travail cédé est négatif."
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 100
+  },
+  {
+   "tipo": "bloque_pregunta",
+   "x": 104,
+   "y": 10,
+   "pregunta": {
+    "id": "t1",
+    "tipo": "numerico",
+    "enunciado": "Quelle est la pression d'une mole de gaz parfait à $T=300\\ \\mathrm{K}$ dans un volume $V=24{,}9\\ \\mathrm{L}$ ? ($R=8{,}314\\ \\mathrm{J\\cdot K^{-1}\\cdot mol^{-1}}$)",
+    "valor": 100000.0,
+    "unidad": "Pa",
+    "tolerancia_rel": 0.03,
+    "cifras_sig": 2,
+    "explicacion": "$P=nRT/V=1\\times8{,}314\\times300/0{,}0249\\approx1{,}0\\times10^5\\ \\mathrm{Pa}$.",
+    "pasos": [
+     "Convertir $V=24{,}9\\ \\mathrm{L}=0{,}0249\\ \\mathrm{m^3}$",
+     "$P=nRT/V$"
+    ],
+    "pagina_pdf": 0
+   },
+   "premio": "estrella",
+   "fallo": "cierra"
+  },
+  {
+   "tipo": "jefe_quiz",
+   "x": 132,
+   "jefe": "rey_entropia",
+   "vidas": 3,
+   "preguntas": [
+    {
+     "id": "p2",
+     "tipo": "opcion",
+     "enunciado": "Quelle est l'expression de la deuxième loi de Newton dans un référentiel galiléen ?",
+     "opciones": [
+      "\\sum\\vec F=m\\,\\vec a",
+      "\\sum\\vec F=\\vec 0",
+      "\\vec F_{A/B}=-\\vec F_{B/A}",
+      "\\vec F=m\\,\\vec v"
+     ],
+     "correcta": 0,
+     "explicacion": "Dans un référentiel galiléen, la somme des forces extérieures est égale à la dérivée du vecteur quantité de mouvement : $\\sum\\vec F=m\\vec a$ (masse constante).",
+     "pagina_pdf": 0,
+     "latex_opciones": true
+    },
+    {
+     "id": "c4",
+     "tipo": "opcion",
+     "enunciado": "Selon Brønsted, un acide est une espèce chimique capable de…",
+     "opciones": [
+      "céder un ou plusieurs protons H⁺",
+      "capter un ou plusieurs protons H⁺",
+      "céder un électron",
+      "capter un électron"
+     ],
+     "correcta": 0,
+     "explicacion": "Un acide de Brønsted cède un proton H⁺ ; une base en capte un.",
+     "pagina_pdf": 0
+    },
+    {
+     "id": "c3",
+     "tipo": "opcion",
+     "enunciado": "Une solution a $[\\mathrm{H_3O^+}]=1{,}0\\times10^{-4}\\ \\mathrm{mol\\cdot L^{-1}}$. Quel est son pH ?",
+     "opciones": [
+      "4,0",
+      "−4,0",
+      "10,0",
+      "0,0001"
+     ],
+     "correcta": 0,
+     "explicacion": "$\\mathrm{pH}=-\\log([\\mathrm{H_3O^+}]/c^\\circ)=-\\log(10^{-4})=4{,}0$.",
+     "pagina_pdf": 0
+    },
+    {
+     "id": "f1",
+     "tipo": "numerico",
+     "enunciado": "Quelle est la valeur de la poussée d'Archimède sur un objet de volume $2{,}0\\ \\mathrm{L}$ totalement immergé dans l'eau ($\\rho=1000\\ \\mathrm{kg\\cdot m^{-3}}$, $g=9{,}81\\ \\mathrm{m\\cdot s^{-2}}$) ?",
+     "valor": 19.6,
+     "unidad": "N",
+     "tolerancia_rel": 0.02,
+     "cifras_sig": 3,
+     "explicacion": "$\\Pi=\\rho V g=1000\\times2{,}0\\times10^{-3}\\times9{,}81=19{,}6\\ \\mathrm{N}$.",
+     "pasos": [
+      "$V=2{,}0\\ \\mathrm{L}=2{,}0\\times10^{-3}\\ \\mathrm{m^3}$",
+      "$\\Pi=\\rho V g$"
+     ],
+     "pagina_pdf": 0
+    },
+    {
+     "id": "g1",
+     "tipo": "opcion",
+     "enunciado": "D'après la loi de gravitation universelle, si la distance $r$ entre deux masses double, la force d'attraction…",
+     "opciones": [
+      "est divisée par 4",
+      "est divisée par 2",
+      "double",
+      "est multipliée par 4"
+     ],
+     "correcta": 0,
+     "explicacion": "$F=G\\,m\\,M/r^2$ : si $r$ double, $F$ est divisée par $2^2=4$.",
+     "pagina_pdf": 0
+    },
+    {
+     "id": "n2",
+     "tipo": "opcion",
+     "enunciado": "Dans l'écriture $^{A}_{Z}X$ d'un noyau, que représente $Z$ ?",
+     "opciones": [
+      "le nombre de protons",
+      "le nombre de nucléons",
+      "le nombre de neutrons",
+      "le nombre d'électrons du cortège"
+     ],
+     "correcta": 0,
+     "explicacion": "$Z$ est le numéro atomique (nombre de protons) ; $A$ est le nombre de nucléons.",
+     "pagina_pdf": 0
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 146
+  }
+ ]
+}

@@ -588,15 +588,44 @@
   };
   const NOMBRES = { agua: 'H2O', water: 'H2O', eau: 'H2O', metano: 'CH4', methane: 'CH4', amoniaco: 'NH3', ammoniac: 'NH3', oxigeno: 'O2', dioxigeno: 'O2', dioxygène: 'O2', hidrogeno: 'H2', dihidrogeno: 'H2', dihydrogène: 'H2', nitrogeno: 'N2', co2: 'CO2', 'dioxido de carbono': 'CO2', 'dioxyde de carbone': 'CO2', etanol: 'C2H5OH', ethanol: 'C2H5OH', metanol: 'CH3OH', 'acido acetico': 'CH3COOH', 'acide éthanoïque': 'CH3COOH', 'acide acétique': 'CH3COOH', oxonio: 'H3O+', hidroxido: 'HO-', hydroxyde: 'HO-', hidronio: 'H3O+', 'sal': 'NaCl', cloro: 'Cl2', dicloro: 'Cl2', peroxido: 'H2O2', etileno: 'C2H4', etano: 'C2H6' };
 
+  // El guion rara vez trae `formula`: se deduce del id del actor (agua1, h3o_a, hcl, alcohol...).
+  const IDF = [
+    [/^(h2o2|peroxid)/, 'H2O2'], [/^(agua|eau|water|h2o)/, 'H2O'], [/^(co2|dioxido|dioxyde)/, 'CO2'], [/^(o2|oxigeno|dioxigeno)/, 'O2'], [/^(h2|hidrogeno|dihidrogeno)$/, 'H2'],
+    [/^(n2|nitrogeno)/, 'N2'], [/^(ch4|metano|methane)/, 'CH4'], [/^(nh3|amoniaco|ammoniac|base)/, 'NH3'], [/^(nh4|amonio)/, 'NH4+'], [/^(alcohol|etanol|ethanol)/, 'C2H5OH'],
+    [/^(acido|acid|ah$|acetico|etanoico|acide|ethanoique)/, 'CH3COOH'], [/^(hcl|clorhidrico)/, 'HCl'], [/^(h3o|oxonio|hidronio)/, 'H3O+'], [/^(ho|oh|hidroxido|hydroxyde)$/, 'HO-'],
+    [/^(proton|h\+)/, 'H+'], [/^(ab$|acetato|ethanoate)/, 'CH3COO-'], [/^(cl|cloruro|chlorure)/, 'Cl-'], [/^(zn|zinc|metal)/, 'Zn2+'], [/^(yodo|diyodo|iode|i2$)/, 'I2'],
+    [/^(i\d*|yoduro|iodure)$/, 'I-'], [/^(na|sodio)/, 'Na+'], [/^(cu|cobre)/, 'Cu2+'], [/^(ag|plata)/, 'Ag+'], [/^(fe|hierro)/, 'Fe2+'], [/^(ca)\d*$/, 'Ca2+'],
+  ];
+  /** Fórmula "oficial" del actor: campo explícito del guion o deducida del id. null si no se sabe. */
+  lib.formulaDeActor = function (spec) {
+    for (const c of [spec.formula, spec.molecula, spec.simbolo, spec.elemento]) if (c) return String(c);
+    const base = String(spec.id || '').toLowerCase().replace(/_.*$/, '');
+    for (const [re, f] of IDF) if (re.test(base)) return f;
+    return null;
+  };
+  // Cajas por tipo (idénticas a K.EXT del motor 00-engine.js): [ancho, alto, ancla] en "alturas de escena"
+  lib.EXT = {
+    auto: [0.32, 0.15, 'base'], perro: [0.18, 0.13, 'base'], humano: [0.11, 0.28, 'base'], cohete: [0.08, 0.24, 'centro'], planeta: [0.17, 0.17, 'centro'], luna: [0.09, 0.09, 'centro'],
+    tubo_ensayo: [0.07, 0.24, 'base'], vaso: [0.13, 0.16, 'base'], bola: [0.07, 0.07, 'centro'], molecula: [0.15, 0.13, 'centro'], atomo: [0.15, 0.15, 'centro'], ion: [0.09, 0.09, 'centro'],
+    electron: [0.035, 0.035, 'centro'], circuito: [0.36, 0.24, 'centro'], pendulo: [0.12, 0.34, 'pivote'], resorte: [0.34, 0.07, 'izq'], onda: [0.5, 0.13, 'centro'], lente: [0.09, 0.3, 'centro'],
+    rayo: [0.28, 0.04, 'centro'], flecha: [0.16, 0.05, 'centro'], bloque: [0.12, 0.1, 'base'], fluido: [0.5, 0.2, 'centro'], termometro: [0.05, 0.24, 'base'], texto: [0.22, 0.06, 'centro'],
+  };
+  /** LaTeX sencillo -> texto plano unicode (usa el kit del motor si existe) */
+  lib.texPlano = function (s) {
+    const K = PCB.intro && PCB.intro.kit;
+    if (K && K.texPlano) return K.texPlano(s);
+    return String(s == null ? '' : s).replace(/\$|\\(?:vec|text|mathrm)|[{}]/g, '').replace(/\\([A-Za-z]+)/g, '$1');
+  };
+
   /** spec -> {atomos:[{el,p:[x,y,z]}], enlaces:[[i,j,ord]], carga, generica} */
   function resolverMolecula(spec) {
-    const cand = [spec.formula, spec.molecula, spec.texto, spec.etiqueta, spec.nombre, spec.id].filter(Boolean).map(String);
+    const cand = [spec.formula, spec.molecula, spec.simbolo, spec.texto, spec.etiqueta, spec.nombre, lib.formulaDeActor(spec), spec.id].filter(Boolean).map(String);
     let parsed = null, nombreKey = null;
     for (const c of cand) {
       const k = c.toLowerCase().trim(); if (NOMBRES[k]) { nombreKey = NOMBRES[k]; parsed = parseFormula(nombreKey); break; }
       const p = parseFormula(c); if (p && (MOLS[firma(p.cuentas)] || !parsed)) { parsed = p; if (MOLS[firma(p.cuentas)]) break; }
     }
-    if (!parsed) parsed = parseFormula('H2O');
+    if (!parsed) { const gen = ['CO2', 'O2', 'N2', 'CH4', 'H3N', 'H2O']; parsed = parseFormula(gen[Math.floor(hash(String(spec.id || 'x').split('').reduce((q, c) => q + c.charCodeAt(0), 7)) * gen.length)].replace('H3N', 'NH3')); }
     const sig = firma(parsed.cuentas), lib0 = MOLS[sig];
     if (lib0) return { atomos: lib0.a.map((q) => ({ el: q[0], p: [q[1], q[2], q[3]] })), enlaces: lib0.b, carga: parsed.carga, generica: false };
     // Genérico: átomo central (el menos abundante no-H, o el primero) con los demás en esfera de Fibonacci
@@ -622,10 +651,9 @@
     let rmax = 0.5;
     m.atomos.forEach((at) => {
       const inf = infoEl(at.el);
-      const col = m.generica && at.el !== 'H' && spec.color ? spec.color : inf.c;
-      const mt = matEl[at.el + col] || (matEl[at.el + col] = lib.mat(col, { shininess: 80, specular: 0x666666 }));
+      const mt = matEl[at.el] || (matEl[at.el] = lib.mat(inf.c, { shininess: 80, specular: 0x666666 }));
       const r = inf.r * 0.82 * K, mesh = lib.mesh(G.sphere(), mt, at.p[0] * K, at.p[1] * K, at.p[2] * K, r);
-      spin.add(mesh); atomos.push({ mesh, el: at.el, r, lp: new T.Vector3(at.p[0] * K, at.p[1] * K, at.p[2] * K), mat: mt, c0: lib.color(col).clone() });
+      spin.add(mesh); atomos.push({ mesh, el: at.el, r, lp: new T.Vector3(at.p[0] * K, at.p[1] * K, at.p[2] * K), mat: mt });
       rmax = Math.max(rmax, Math.hypot(at.p[0], at.p[1], at.p[2]) * K + r);
     });
     const mb = lib.mat(MATBOND.color, { shininess: 60 });
@@ -643,15 +671,21 @@
       const bd = lib.textSprite(txt, { color: '#fff', bg: m.carga > 0 ? '#e5384f' : '#2f6bff', circle: true, h: 0.62, px: 50 });
       bd.position.set(rmax * 0.8, rmax * 0.8, 0.5); grp.add(bd);
     }
-    const fase = hash(spec.id ? [...String(spec.id)].reduce((s, c) => s + c.charCodeAt(0), 0) : 3) * 6.28;
-    const primeraColor = spec.color;
+    // resplandor del color del actor (identifica a cada molécula del guion) + átomos "pesados" virados a ese color
+    const glow = lib.glow('#ffffff', rmax * 3.2, 0.3); glow.userData.noBox = true; grp.add(glow);
+    let colAct = null;
+    const pintar = (c) => {
+      colAct = c; const cc = c && !/^#f{3,6}$/i.test(c) ? lib.color(c) : null;
+      for (const el in matEl) { const m0 = matEl[el]; m0.color.copy(lib.color(infoEl(el).c)); if (cc && el !== 'H') m0.color.lerp(cc, 0.5); m0.userData.baseOp = m0.opacity; }
+      glow.visible = !!cc; if (cc) glow.material.color.copy(cc);
+    };
+    pintar(spec.color);
+    const fase = hash([...String(spec.id || 'x')].reduce((q, c) => q + c.charCodeAt(0), 3)) * 6.28;
     return {
-      obj: grp, radio: rmax + 0.3, base: 1, mol: { atomos, enlaces, spin, K, m },
+      obj: grp, radio: rmax + 0.3, mol: { atomos, enlaces, spin, K, m },
       update(a, S, dt) {
         spin.rotation.y = S.i * 0.55 + fase; spin.rotation.x = 0.35 * Math.sin(S.i * 0.4 + fase);
-        // si el guion cambia el color del actor, las bolas viran hacia ese color
-        const k = a.color && a.color !== primeraColor && !m.generica ? 0.6 : 0;
-        if (k || atomos[0].tintado) for (const at of atomos) { at.tintado = !!k; at.mat.color.copy(at.c0); if (k) at.mat.color.lerp(lib.color(a.color), k); }
+        if (a.color && a.color !== colAct) pintar(a.color);
       },
     };
   };
@@ -659,7 +693,7 @@
   // ---------- átomo con núcleo, órbitas y electrones ----------
   function zDe(spec) {
     if (spec.Z || spec.z) return +(spec.Z || spec.z);
-    for (const c of [spec.elemento, spec.simbolo, spec.formula, spec.texto, spec.etiqueta, spec.nombre]) {
+    for (const c of [spec.elemento, spec.simbolo, spec.formula, spec.texto, spec.etiqueta, spec.nombre, lib.formulaDeActor(spec)]) {
       if (!c) continue; const p = parseFormula(c); if (p && p.orden.length === 1) { const i = SIMBOLOS.indexOf(p.orden[0]); if (i >= 0) return i + 1; }
     }
     return 6;

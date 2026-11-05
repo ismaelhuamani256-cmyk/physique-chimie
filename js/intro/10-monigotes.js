@@ -189,7 +189,7 @@
         const colaA = -2.35 + meneo;
         trazo([[-0.066, -0.098 - sube], [-0.066 + Math.cos(colaA) * 0.03, -0.098 - sube + Math.sin(colaA) * 0.03], [-0.066 + Math.cos(colaA + 0.5) * 0.055, -0.098 - sube + Math.sin(colaA + 0.5) * 0.055]], { w: 4.4, c: osc, dbl: false });
         // cuerpo
-        trazo([[-0.07, -0.09 - sube], [-0.045, -0.11 - sube], [0.04, -0.112 - sube], [0.072, -0.095 - sube], [0.07, -0.068 - sube], [0.04, -0.054 - sube], [-0.04, -0.054 - sube], [-0.07, -0.066 - sube]], { close: true, fill: clar, seed: 11 });
+        elipse(0, -0.083 - sube, 0.073, 0.034, 0, { fill: clar, seed: 11 });
         pata(-0.028, Math.PI, false); pata(0.028, 0, true);
         // cabeza
         const hy = -0.128 - sube;

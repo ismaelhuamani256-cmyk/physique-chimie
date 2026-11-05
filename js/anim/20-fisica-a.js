@@ -38,7 +38,7 @@
 //                   H0  0,3 … 2   · 0,05· 1   m        (opc.) altura del orificio sobre el suelo
 // gas-ideal         n   0,1 … 2   · 0,1 · 1   mol      cantidad de gas
 //                   T   100 … 1000 · 10 · 300 K        temperatura
-//                   V   1 … 50    · 0,5 · 25  L        volumen (posición del pistón)
+//                   V   5 … 50    · 0,5 · 25  L        volumen (posición del pistón)
 //
 // SIMPLIFICACIONES DIDÁCTICAS (detalladas en cada preset): sin rozamiento del aire,
 // campos uniformes, sin efectos de borde, partículas del gas sin interacción (gas ideal).
@@ -152,7 +152,9 @@
     ctx.lineTo(x1 - hl * Math.cos(ang - 0.42), y1 - hl * Math.sin(ang - 0.42));
     ctx.lineTo(x1 - hl * Math.cos(ang + 0.42), y1 - hl * Math.sin(ang + 0.42)); ctx.closePath(); ctx.fill();
     ctx.restore();
-    if (o.label) {
+    if (o.label && o.lmid) {
+      txt(ctx, o.label, (x0 + x1) / 2, (y0 + y1) / 2 - 12, { align: 'center', color: o.lcolor || color, size: o.lsize || 12, bg: 'rgba(10,15,32,0.65)' });
+    } else if (o.label) {
       ctx.font = FONT(o.lsize || 12);
       const tw = ctx.measureText(o.label).width;
       txt(ctx, o.label, x1 + ux * (8 + tw / 2 * Math.abs(ux)), y1 + uy * 10 - (Math.abs(uy) < 0.3 ? 9 : 0),
@@ -278,10 +280,10 @@
       // vectores v (azul) y a (verde), escala común para v dentro de la pantalla
       const vmax = Math.max(1, ...vs.map(Math.abs));
       const vy = gy - ch * 1.35 - 14 * k, kv = (w * 0.2) / vmax;
-      flecha(ctx, cx, vy, cx + vf(tau) * kv, vy, C.vel, { lw: 3.5 * k, label: `v = ${num(vf(tau), 1)} m/s`, lsize: 11 * k + 1 });
+      flecha(ctx, cx, vy, cx + vf(tau) * kv, vy, C.vel, { lw: 3.5 * k, label: `v = ${num(vf(tau), 1)} m/s`, lsize: 11 * k + 1, lmid: true });
       if (Math.abs(a) > 0.01) {
         const ay = vy - 20 * k;
-        flecha(ctx, cx, ay, cx + a * w * 0.045, ay, C.acel, { lw: 3.5 * k, label: `a = ${num(a, 1)} m/s²`, lsize: 11 * k + 1 });
+        flecha(ctx, cx, ay, cx + a * w * 0.045, ay, C.acel, { lw: 3.5 * k, label: `a = ${num(a, 1)} m/s²`, lsize: 11 * k + 1, lmid: true });
       }
       // cronómetro
       const cwid = 98 * k, cxx = 10, cyy = 10;
@@ -612,7 +614,7 @@
     draw(s, ctx, w, h, p) {
       fondo(ctx, w, h);
       const k = kPant(w, h), f = cargaFisica(p), L = PL_L, D = PL_D;
-      const Sx = Math.min((0.5 * w) / L, (0.52 * h) / D), X0 = w * 0.27, cy = h * 0.5;
+      const Sx = Math.min((0.54 * w) / L, (0.52 * h) / D), X0 = w * 0.25, cy = h * 0.5;
       const PX = (xm) => X0 + xm * Sx, PY = (ym) => cy - ym * Sx;
       const pre = 0.25 * L / p.v0, tIn = s.t - pre;          // tIn<0: aún no entra en las placas
       // posición de la partícula (m)
@@ -664,15 +666,16 @@
       const kv = (0.16 * w) / p.v0;
       if (!parada) flecha(ctx, bx, by, bx + vx * kv, by - vy * kv * 1, C.vel, { lw: 3 * k, label: 'v', lsize: 12 * k + 1 });
       if (dentro) {
-        const LF = 0.17 * h;
+        const LF = 0.26 * D * Sx;
         flecha(ctx, bx, by, bx, by + (f.sig < 0 ? -LF : LF), C.fuerza, { lw: 3.4 * k, label: 'F = qE', lsize: 11 * k + 1 });
-        flecha(ctx, bx + 12 * k, by, bx + 12 * k, by + (f.sig < 0 ? -LF * 1.5 : LF * 1.5), C.acel, { lw: 3.4 * k, label: 'a', lsize: 12 * k + 1 });
+        flecha(ctx, bx + 12 * k, by, bx + 12 * k, by + (f.sig < 0 ? -LF * 1.55 : LF * 1.55), C.acel, { lw: 3.4 * k, label: 'a', lsize: 12 * k + 1 });
       }
       if (parada) txt(ctx, 'impacto en la placa', bx, by + (f.sig < 0 ? -28 : 28) * k, { align: 'center', size: 12 * k, color: C.ambar, bg: 'rgba(10,15,32,.75)' });
       // cotas: L, d
       ctx.strokeStyle = C.tenue; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(pxl, yB + th + 26 * k); ctx.lineTo(pxl + pw, yB + th + 26 * k); ctx.stroke();
       txt(ctx, 'L = 10 cm', pxl + pw / 2, yB + th + 38 * k, { align: 'center', size: 11 * k, color: C.tenue, weight: 400 });
-      txt(ctx, 'd = 4 cm', pxl - 8, cy, { align: 'right', size: 11 * k, color: C.tenue, weight: 400 });
+      ctx.beginPath(); ctx.moveTo(pxl - 14 * k, yT + th); ctx.lineTo(pxl - 14 * k, yB); ctx.moveTo(pxl - 18 * k, yT + th); ctx.lineTo(pxl - 10 * k, yT + th); ctx.moveTo(pxl - 18 * k, yB); ctx.lineTo(pxl - 10 * k, yB); ctx.stroke();
+      txt(ctx, 'd = 4 cm', pxl - 20 * k, cy - 22 * k, { align: 'right', size: 11 * k, color: C.tenue, weight: 400 });
       // HUD
       const ns = Math.max(0, tIn) * 1e9;
       txt(ctx, `t = ${num(ns, ns < 10 ? 2 : 1)} ns`, 10, 14, { size: 12 * k, color: C.ambar });
@@ -751,7 +754,7 @@
       for (let i = 0; i <= 120; i++) { const q = P((TAU * i) / 120); i ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]); }
       ctx.stroke(); ctx.setLineDash([]);
       // astro central (radio visual didáctico: crece con ∛M, nunca toca la órbita)
-      const rPer = f.a * (1 - e) * sc, rp = clamp(6.4 * sc * Math.cbrt(p.M / 5.97), 9 * k, Math.max(9 * k, rPer * 0.6));
+      const rPer = f.a * (1 - e) * sc, rp = clamp(6.4e6 * sc * Math.cbrt(p.M / 5.97), 11 * k, Math.max(11 * k, rPer * 0.6));
       const gl = ctx.createRadialGradient(fx, fy, rp * 0.9, fx, fy, rp * 1.8); gl.addColorStop(0, 'rgba(80,160,255,.35)'); gl.addColorStop(1, 'rgba(80,160,255,0)');
       ctx.fillStyle = gl; ctx.beginPath(); ctx.arc(fx, fy, rp * 1.8, 0, TAU); ctx.fill();
       const gpn = ctx.createRadialGradient(fx - rp * 0.35, fy - rp * 0.35, rp * 0.1, fx, fy, rp); gpn.addColorStop(0, '#7fd6ff'); gpn.addColorStop(0.55, '#2a78d8'); gpn.addColorStop(1, '#0f2a6e');
@@ -771,7 +774,7 @@
       ctx.fillStyle = '#cfd8ff'; ctx.fillRect(-5 * k - 1, -4 * k - 1, 10 * k + 2, 8 * k + 2);
       ctx.fillStyle = '#ffd166'; ctx.fillRect(-1.5, -11 * k, 3, 22 * k); ctx.restore();
       // barra de escala y HUD
-      const barM = pasoNice(f.a * 0.5, 3), bpx = barM * sc;
+      const barM = pasoNice((f.a * 0.5) / 1e6, 3), bpx = barM * 1e6 * sc;
       ctx.strokeStyle = C.tenue; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(w - 12 - bpx, h - 16); ctx.lineTo(w - 12, h - 16);
       ctx.moveTo(w - 12 - bpx, h - 20); ctx.lineTo(w - 12 - bpx, h - 12); ctx.moveTo(w - 12, h - 20); ctx.lineTo(w - 12, h - 12); ctx.stroke();
       txt(ctx, `${num(barM, barM < 1 ? 1 : 0)} ×10⁶ m`, w - 12 - bpx / 2, h - 28, { align: 'center', size: 11 * k, color: C.tenue, weight: 400 });
@@ -850,7 +853,7 @@
       const cx = sceneW * 0.5, base = h * 0.84, X = (xm) => cx + xm * sc, Y = (ym) => base - ym * sc;
       // línea de referencia Ep = 0
       ctx.strokeStyle = 'rgba(142,160,207,.45)'; ctx.setLineDash([5, 5]); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(6, base); ctx.lineTo(sceneW - 6, base); ctx.stroke(); ctx.setLineDash([]);
-      txt(ctx, 'Ep = 0', 8, base + 11 * k, { size: 10.5 * k, color: C.tenue, weight: 400 });
+      txt(ctx, 'Ep = 0 (referencia)', cx, base - 9 * k, { align: 'center', size: 10.5 * k, color: C.tenue, weight: 400 });
       // tobogán (relleno + borde)
       const xe = Xt * 1.08, N = 60;
       ctx.beginPath(); ctx.moveTo(X(-xe), base + 14 * k);
@@ -911,6 +914,365 @@
       const Ec = 0.5 * p.m * p.v * p.v, Ep = p.m * G0 * p.h, vb = Math.sqrt(p.v * p.v + 2 * G0 * p.h);
       return [{ label: 'Ec', valor: `${numA(Ec)} J` }, { label: 'Ep', valor: `${numA(Ep)} J` }, { label: 'Em', valor: `${numA(Ec + Ep)} J` },
         { label: 'v en el punto bajo (sin rozamiento)', valor: `${num(vb, 2)} m·s⁻¹` }];
+    },
+  });
+
+  // =====================================================================================
+  // 7 · ARQUÍMEDES — Π = ρ_fluido · V_sumergido · g
+  //   Cubo de volumen V y masa volúmica ρc en un depósito de fluido (ρ). Dos modos:
+  //   · DINAMÓMETRO: el cuerpo cuelga y se sumerge (slider «inm» o automáticamente al inicio).
+  //     Lectura aparente T = P − Π. Si ρc < ρ el cuerpo no puede quedar totalmente sumergido
+  //     (el hilo se destensa): se queda en la flotación, con T = 0.
+  //   · LIBRE (botón «Soltar»): dinámica vertical con rozamiento viscoso lineal; flota
+  //     (inmersión ρc/ρ) si ρc < ρ y se hunde si ρc > ρ (apoya en el fondo: reacción N).
+  //   Simplificaciones: el nivel del fluido se mantiene fijo; cubo de arista V^(1/3); sin olas.
+  // =====================================================================================
+  const AR = { Wt: 0.4, Ht: 0.36, Lf: 0.28 }; // depósito: ancho, alto, nivel del fluido (m)
+  function arqFisica(p, f) {
+    const rhoc = p.rhoc || 2700, a = Math.cbrt(p.V), P = rhoc * p.V * G0, Pi = p.rho * p.V * G0 * f;
+    return { rhoc, a, P, Pi, PiMax: p.rho * p.V * G0, T: Math.max(0, P - Pi), feq: rhoc / p.rho };
+  }
+  reg('arquimedes', {
+    titulo: 'Principio de Arquímedes: Π = ρ·V·g',
+    params: [
+      { id: 'rho', label: 'Masa volúmica del fluido ρ', min: 600, max: 1600, step: 10, def: 1000, unit: 'kg/m³' },
+      { id: 'V', label: 'Volumen del cuerpo V', min: 0.0002, max: 0.002, step: 0.0001, def: 0.001, unit: 'm³' },
+      { id: 'rhoc', label: 'Masa volúmica del cuerpo ρc (opcional)', min: 200, max: 8000, step: 50, def: 2700, unit: 'kg/m³' },
+      { id: 'inm', label: 'Inmersión (opcional)', min: 0, max: 100, step: 1, def: 100, unit: '%' },
+    ],
+    create(host, p) {
+      const s = { modo: 'dina', f: 0, yb: AR.Lf, vy: 0, t: 0, reduced: host.reduced, burb: [] };
+      ponerClicks(s, host);
+      s.rng = host.rng || Math.random;
+      return s;
+    },
+    onParam(s, id) { if (id === 'inm' && s.modo === 'libre') { s.modo = 'dina'; } if (s.modo === 'libre' && id !== 'inm') { s.vy = 0; } },
+    dispose(s) { quitarClicks(s); },
+    step(s, dt, p) {
+      s.t += dt;
+      const ph = arqFisica(p, 1), a = ph.a;
+      if (s.modo === 'dina') {
+        const ft = Math.min(p.inm / 100, ph.feq);
+        s.f += clamp(ft - s.f, -dt * 0.55, dt * 0.55);                // desciende/asciende suavemente
+        s.yb = AR.Lf - a * s.f; s.vy = 0;
+      } else {
+        // libre: m·dv/dt = Π(y) − P − c·v ; apoyo en el fondo
+        const m = ph.rhoc * p.V, c = 6 * m;
+        pasos(s, dt, 1 / 240, (hh) => {
+          const f = clamp((AR.Lf - s.yb) / a, 0, 1), Pi = p.rho * p.V * G0 * f;
+          s.vy += ((Pi - m * G0 - c * s.vy) / m) * hh; s.yb += s.vy * hh;
+          if (s.yb <= 0) { s.yb = 0; if (s.vy < 0) s.vy = 0; }
+        });
+        s.f = clamp((AR.Lf - s.yb) / a, 0, 1);
+      }
+      // burbujas decorativas
+      if (!s.reduced && s.burb.length < 14 && s.rng() < dt * 5) s.burb.push({ x: 0.03 + s.rng() * 0.34, y: 0.01, v: 0.03 + s.rng() * 0.05, r: 1 + s.rng() * 1.6 });
+      s.burb.forEach((b) => (b.y += b.v * dt)); s.burb = s.burb.filter((b) => b.y < AR.Lf);
+    },
+    draw(s, ctx, w, h, p) {
+      fondo(ctx, w, h); s._btns.length = 0;
+      const k = kPant(w, h), ph = arqFisica(p, s.f), a = ph.a;
+      const sceneW = w * (w < 520 ? 0.58 : 0.62);
+      const sc = Math.min((0.86 * h) / 0.78, (0.52 * sceneW) / AR.Wt);
+      const tx0 = (sceneW - AR.Wt * sc) / 2, tyB = h * 0.95, X = (xm) => tx0 + xm * sc, Y = (ym) => tyB - ym * sc;
+      const cxm = AR.Wt / 2;
+      // ---- depósito y fluido ----
+      const yS = Y(AR.Lf);
+      const gw = ctx.createLinearGradient(0, yS, 0, tyB); gw.addColorStop(0, '#2b79d6'); gw.addColorStop(1, '#123a7a');
+      ctx.fillStyle = gw; ctx.fillRect(X(0), yS, AR.Wt * sc, tyB - yS);
+      // burbujas
+      s.burb.forEach((b) => { ctx.fillStyle = 'rgba(200,230,255,.45)'; ctx.beginPath(); ctx.arc(X(b.x), Y(b.y), b.r * k, 0, TAU); ctx.fill(); });
+      // ---- dinamómetro (solo modo dina) ----
+      const ytopBar = Y(AR.Ht + 0.2 + 0.07), tubeL = 0.17 * sc, tubeW = 22 * k, tubeTop = ytopBar + 8 * k, tubeBot = tubeTop + tubeL;
+      const bodyTop = Y(s.yb + a), bodyBot = Y(s.yb), bcx = X(cxm), bh = bodyBot - bodyTop;
+      if (s.modo === 'dina') {
+        ctx.strokeStyle = '#8ea0cf'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(bcx - 40 * k, ytopBar); ctx.lineTo(bcx + 40 * k, ytopBar); ctx.stroke();
+        ctx.strokeStyle = '#8ea0cf'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(bcx, ytopBar); ctx.lineTo(bcx, tubeTop); ctx.stroke();
+        ctx.fillStyle = 'rgba(220,235,255,.1)'; rr(ctx, bcx - tubeW / 2, tubeTop, tubeW, tubeL, 5); ctx.fill(); ctx.strokeStyle = '#b9c7ff'; ctx.lineWidth = 1.5; ctx.stroke();
+        const Tmax = [2, 5, 10, 20, 50, 100, 200].find((v) => v >= ph.P * 1.05) || 300;
+        const st = Tmax <= 5 ? 1 : Tmax <= 20 ? 5 : Tmax <= 100 ? 10 : 50;
+        ctx.font = FONT(9 * k + 1, 400); ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+        for (let v = 0; v <= Tmax + 1e-9; v += st) {
+          const yy = tubeTop + (v / Tmax) * tubeL; ctx.strokeStyle = '#b9c7ff'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(bcx - tubeW / 2, yy); ctx.lineTo(bcx - tubeW / 2 + 5, yy); ctx.stroke();
+          ctx.fillStyle = C.tenue; ctx.fillText(String(v), bcx - tubeW / 2 - 18 * k, yy);
+        }
+        const yT = tubeTop + (ph.T / Tmax) * tubeL;
+        ctx.strokeStyle = C.fuerza; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(bcx - tubeW / 2, yT); ctx.lineTo(bcx + tubeW / 2, yT); ctx.stroke();
+        txt(ctx, `${num(ph.T, 1)} N`, bcx + tubeW / 2 + 6, yT, { size: 12 * k, color: C.fuerza, bg: 'rgba(10,15,32,.75)' });
+        ctx.strokeStyle = '#8ea0cf'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(bcx, tubeBot); ctx.lineTo(bcx, bodyTop); ctx.stroke();
+      }
+      // ---- cuerpo (cubo) ----
+      const tcol = clamp((ph.rhoc - 200) / 7800, 0, 1);
+      const mix = (c1, c2, t) => c1.map((v, i) => Math.round(lerp(v, c2[i], t)));
+      const c1 = mix([205, 160, 95], [150, 165, 190], tcol), c2 = mix([150, 105, 55], [85, 100, 130], tcol);
+      const bw = a * sc, gcub = ctx.createLinearGradient(bcx - bw / 2, bodyTop, bcx + bw / 2, bodyBot);
+      gcub.addColorStop(0, `rgb(${c1})`); gcub.addColorStop(1, `rgb(${c2})`);
+      ctx.fillStyle = gcub; rr(ctx, bcx - bw / 2, bodyTop, bw, bh, 4); ctx.fill(); ctx.strokeStyle = 'rgba(255,255,255,.55)'; ctx.lineWidth = 1.4; ctx.stroke();
+      if (s.modo === 'dina') { ctx.fillStyle = '#8ea0cf'; ctx.beginPath(); ctx.arc(bcx, bodyTop, 3, 0, TAU); ctx.fill(); }
+      txt(ctx, `ρc = ${num(ph.rhoc, 0)}`, bcx, (bodyTop + bodyBot) / 2, { align: 'center', size: clamp(bw * 0.17, 9, 12.5), color: '#10162e' });
+      // velo de fluido sobre la parte sumergida + superficie
+      ctx.fillStyle = 'rgba(43,121,214,.30)'; ctx.fillRect(X(0), yS, AR.Wt * sc, tyB - yS);
+      ctx.strokeStyle = '#7fc2ff'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(X(0), yS); ctx.lineTo(X(AR.Wt), yS); ctx.stroke();
+      // vidrio del depósito
+      ctx.strokeStyle = 'rgba(200,225,255,.75)'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(X(0), Y(AR.Ht)); ctx.lineTo(X(0), tyB); ctx.lineTo(X(AR.Wt), tyB); ctx.lineTo(X(AR.Wt), Y(AR.Ht)); ctx.stroke();
+      // ---- fuerzas (misma escala) ----
+      const Lmax = 0.2 * h, kF = Lmax / Math.max(ph.P, ph.PiMax, 1e-6), cyb = (bodyTop + bodyBot) / 2;
+      const off = Math.max(10, bw * 0.28), fl = (nom, v) => `${nom} = ${num(v, 1)} N`;
+      flecha(ctx, bcx, cyb, bcx, cyb + ph.P * kF, C.fuerza, { lw: 3.4 * k, label: fl('P', ph.P), lsize: 11 * k + 1 });
+      if (ph.Pi > 0.05) flecha(ctx, bcx - off, cyb, bcx - off, cyb - ph.Pi * kF, C.fuerza, { lw: 3.4 * k, label: fl('Π', ph.Pi), lsize: 11 * k + 1 });
+      if (s.modo === 'dina' && ph.T > 0.05) flecha(ctx, bcx + off, cyb, bcx + off, cyb - ph.T * kF, C.fuerza, { lw: 3.4 * k, label: fl('T', ph.T), lsize: 11 * k + 1 });
+      if (s.modo === 'libre' && s.yb <= 0 && ph.P - ph.Pi > 0.05) flecha(ctx, bcx + off, cyb, bcx + off, cyb - (ph.P - ph.Pi) * kF, C.fuerza, { lw: 3.4 * k, label: fl('N', ph.P - ph.Pi), lsize: 11 * k + 1 });
+      // ---- panel de datos ----
+      const px = sceneW + 8, pw = w - px - 8, lh = 17 * k + 1;
+      let y = 16 * k;
+      ctx.fillStyle = 'rgba(16,26,58,.7)'; rr(ctx, px, 8, pw, h - 16, 12); ctx.fill(); ctx.strokeStyle = C.borde; ctx.lineWidth = 1; ctx.stroke();
+      const fila = (a1, b1, col) => { txt(ctx, a1, px + 10, y, { size: 11.5 * k, color: C.tenue, weight: 400 }); txt(ctx, b1, px + pw - 10, y, { align: 'right', size: 12 * k, color: col || C.texto }); y += lh; };
+      fila('Fluide ρ', `${num(p.rho, 0)} kg/m³`, C.agua);
+      fila('Corps ρc', `${num(ph.rhoc, 0)} kg/m³`, '#e0b878');
+      fila('V', `${tsciPlano(p.V)} m³`);
+      y += 4;
+      const flota = ph.rhoc < p.rho;
+      txt(ctx, flota ? 'ρc < ρ  →  flotte' : ph.rhoc > p.rho ? 'ρc > ρ  →  coule' : 'ρc = ρ  →  équilibre', px + pw / 2, y, { align: 'center', size: 12.5 * k, color: C.ambar }); y += lh + 2;
+      fila('Immergé', `${num(s.f * 100, 0)} %`, C.acento);
+      fila('Π', `${num(ph.Pi, 2)} N`, C.fuerza);
+      fila('P', `${num(ph.P, 2)} N`, C.fuerza);
+      if (s.modo === 'dina') fila('P apparent = P − Π', `${num(ph.T, 2)} N`, C.fuerza);
+      else if (s.yb <= 0) fila('Réaction N', `${num(Math.max(0, ph.P - ph.Pi), 2)} N`, C.fuerza);
+      // botones
+      const bw2 = Math.min(pw - 20, 110 * k + 20);
+      boton(s, ctx, px + (pw - bw2) / 2, h - 66 * k, bw2, 26 * k, '⬇ Soltar', () => { s.modo = 'libre'; s.vy = 0; }, s.modo === 'libre');
+      boton(s, ctx, px + (pw - bw2) / 2, h - 34 * k, bw2, 26 * k, '⚖ Dinamómetro', () => { s.modo = 'dina'; }, s.modo === 'dina');
+    },
+    formula(p) {
+      const ph = arqFisica(p, 1);
+      return `\\Pi=\\rho\\,V\\,g=${tnum(p.rho, 0)}\\times${tsci(p.V, 1)}\\times9{,}81=${tnumA(ph.PiMax)}\\ \\text{N}`;
+    },
+    lecturas(p) {
+      const ph = arqFisica(p, 1), flota = ph.rhoc < p.rho;
+      const o = [{ label: 'Π (cuerpo sumergido)', valor: `${num(ph.PiMax, 2)} N` }, { label: 'P = ρc·V·g', valor: `${num(ph.P, 2)} N` }];
+      o.push(flota ? { label: 'resultado', valor: `flota (${num(ph.feq * 100, 0)} % sumergido)` } : { label: 'P aparente = P − Π', valor: `${num(ph.P - ph.PiMax, 2)} N` });
+      return o;
+    },
+  });
+  /** m³ en texto plano compacto (1,0×10⁻³) */
+  const tsciPlano = (v) => snum(v, 1);
+
+  // =====================================================================================
+  // 8 · TORRICELLI — v = √(2·g·h)
+  //   Depósito abierto con un orificio pequeño a la altura H0 del suelo y agua h por encima.
+  //   Chorro: v = √(2gh) horizontal; luego tiro parabólico con alcance  d = v·√(2H0/g) = 2√(h·H0).
+  //   El nivel baja despacio: dh/dt = −κ·√(2gh) con κ = (S_orificio/S_depósito) = 0,03
+  //   (fijado para que se vea el efecto). Al llegar al 25 % de h se rellena (o botón «Rellenar»).
+  //   El chorro se dibuja como flujo de partículas balísticas + línea translúcida.
+  // =====================================================================================
+  const TQ = { Wt: 0.9, kappa: 0.03 };
+  reg('torricelli', {
+    titulo: 'Teorema de Torricelli: v = √(2gh)',
+    params: [
+      { id: 'h', label: 'Altura de agua h', min: 0.1, max: 1.5, step: 0.05, def: 0.8, unit: 'm' },
+      { id: 'H0', label: 'Altura del orificio H₀ (opcional)', min: 0.3, max: 2, step: 0.05, def: 1, unit: 'm' },
+    ],
+    create(host, p) {
+      const s = { lv: p.h, parts: [], gotas: [], t: 0, ref: 0, reduced: host.reduced, rng: host.rng || Math.random, acc: 0 };
+      ponerClicks(s, host); s.llenar = () => { s.ref = 1; };
+      return s;
+    },
+    onParam(s, id, v, p) { if (id === 'h') { s.lv = p.h; s.ref = 0; } },
+    dispose(s) { quitarClicks(s); },
+    step(s, dt, p) {
+      s.t += dt;
+      if (s.ref) { s.lv += dt * (p.h - Math.max(p.h * 0.2, 0.1)) * 0.9 + dt * 0.3; if (s.lv >= p.h) { s.lv = p.h; s.ref = 0; } }
+      else { s.lv -= TQ.kappa * Math.sqrt(2 * G0 * Math.max(s.lv, 0)) * dt; if (s.lv < Math.max(p.h * 0.25, 0.05)) s.llenar(); }
+      const v = Math.sqrt(2 * G0 * Math.max(s.lv, 0)), rate = s.reduced ? 45 : 110;
+      s.acc += dt * rate; let n = 0;
+      while (s.acc >= 1 && n < 5) { s.acc -= 1; n++; s.parts.push({ x: 0, y: 0, vx: v * (1 + (s.rng() - 0.5) * 0.02), vy: (s.rng() - 0.5) * 0.03, t: 0 }); }
+      s.parts.forEach((q) => { q.vy -= G0 * dt; q.x += q.vx * dt; q.y += q.vy * dt; });
+      const H0 = p.H0 || 1;
+      s.parts = s.parts.filter((q) => {
+        if (q.y + H0 > 0) return true;
+        if (s.gotas.length < 60 && s.rng() < (s.reduced ? 0.1 : 0.3)) s.gotas.push({ x: q.x, y: 0, vx: (s.rng() - 0.3) * 0.5, vy: 0.4 + s.rng() * 0.6, t: 0 });
+        return false;
+      });
+      s.gotas.forEach((g) => { g.vy -= G0 * dt; g.x += g.vx * dt; g.y += g.vy * dt; g.t += dt; });
+      s.gotas = s.gotas.filter((g) => g.y >= 0 && g.t < 0.6);
+    },
+    draw(s, ctx, w, h, p) {
+      fondo(ctx, w, h); s._btns.length = 0;
+      const k = kPant(w, h), H0 = p.H0 || 1, lv = Math.max(s.lv, 0), v = Math.sqrt(2 * G0 * lv);
+      const Rmax = 2 * Math.sqrt(p.h * H0) + 0.3;
+      const sc = Math.min((0.86 * h) / (H0 + 1.7), (0.86 * w) / (TQ.Wt + 0.35 + Rmax));
+      const gy = h * 0.9, tx0 = w * 0.05 + 0.35 * sc * 0.4, X = (xm) => tx0 + xm * sc, Y = (ym) => gy - ym * sc; // ym = altura sobre el suelo
+      const xO = TQ.Wt;                                    // pared del orificio
+      // suelo y regla de alcances
+      ctx.fillStyle = '#16224a'; ctx.fillRect(0, gy, w, h - gy);
+      ctx.strokeStyle = '#5a6cb0'; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(w, gy); ctx.stroke();
+      const step = pasoNice(Rmax * 0.9, 5), dp = decPaso(step);
+      for (let d = 0; X(xO + d) < w - 6; d += step) {
+        ctx.strokeStyle = '#5a6cb0'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(X(xO + d), gy); ctx.lineTo(X(xO + d), gy + 5); ctx.stroke();
+        txt(ctx, num(d, dp), X(xO + d), gy + 14 * k, { size: 10 * k + 1, align: 'center', color: C.tenue, weight: 400 });
+      }
+      txt(ctx, 'distancia al depósito (m)', w - 8, gy + 28 * k, { align: 'right', size: 10 * k + 1, color: C.tenue, weight: 400 });
+      // depósito: soporte, agua, paredes
+      const topY = Y(H0 + 1.5 + 0.15), botY = Y(H0 - 0.1), yS = Y(H0 + lv);
+      ctx.fillStyle = '#243462'; ctx.fillRect(X(0.1), botY, 0.15 * sc, gy - botY); ctx.fillRect(X(TQ.Wt - 0.25), botY, 0.15 * sc, gy - botY);
+      const gw = ctx.createLinearGradient(0, yS, 0, botY); gw.addColorStop(0, '#2f86e6'); gw.addColorStop(1, '#14408a');
+      ctx.fillStyle = gw; ctx.fillRect(X(0), yS, TQ.Wt * sc, botY - yS);
+      if (!s.reduced) { ctx.strokeStyle = 'rgba(160,210,255,.7)'; ctx.lineWidth = 2; ctx.beginPath(); for (let i = 0; i <= 24; i++) { const xx = X(0) + (i / 24) * TQ.Wt * sc; const yy = yS + Math.sin(s.t * 3 + i * 0.8) * 1.4; i ? ctx.lineTo(xx, yy) : ctx.moveTo(xx, yy); } ctx.stroke(); }
+      ctx.strokeStyle = 'rgba(200,225,255,.8)'; ctx.lineWidth = 3; ctx.beginPath();
+      ctx.moveTo(X(0), topY); ctx.lineTo(X(0), botY); ctx.lineTo(X(TQ.Wt), botY); ctx.lineTo(X(TQ.Wt), topY); ctx.stroke();
+      // orificio
+      ctx.fillStyle = C.fondo; ctx.fillRect(X(xO) - 3, Y(H0) - 4 * k, 6, 8 * k);
+      // chorro: línea translúcida + partículas
+      const ox = X(xO), oy = Y(H0);
+      ctx.strokeStyle = 'rgba(80,170,255,.35)'; ctx.lineWidth = 6 * k; ctx.lineCap = 'round'; ctx.beginPath();
+      const tF = Math.sqrt((2 * H0) / G0);
+      for (let i = 0; i <= 40; i++) { const t = (tF * i) / 40; const xx = ox + v * t * sc, yy = oy + 0.5 * G0 * t * t * sc; i ? ctx.lineTo(xx, yy) : ctx.moveTo(xx, yy); }
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(190,230,255,.9)';
+      s.parts.forEach((q) => { ctx.beginPath(); ctx.arc(ox + q.x * sc, oy - q.y * sc, 1.7 * k + 0.4, 0, TAU); ctx.fill(); });
+      ctx.fillStyle = 'rgba(190,230,255,.8)'; s.gotas.forEach((g) => { ctx.beginPath(); ctx.arc(X(xO + g.x), Y(g.y), 1.5 * k, 0, TAU); ctx.fill(); });
+      // vector velocidad en el orificio
+      flecha(ctx, ox + 4, oy, ox + 4 + v * 0.04 * w, oy, C.vel, { lw: 3.5 * k, label: `v = ${num(v, 2)} m/s`, lsize: 11.5 * k + 1 });
+      // cotas: h (amarillo) y H0
+      ctx.strokeStyle = C.ambar; ctx.lineWidth = 1.6; ctx.setLineDash([4, 3]);
+      ctx.beginPath(); ctx.moveTo(X(0.12), yS); ctx.lineTo(X(0.12), oy); ctx.stroke(); ctx.setLineDash([]);
+      ctx.beginPath(); ctx.moveTo(X(0.12) - 4, yS); ctx.lineTo(X(0.12) + 4, yS); ctx.moveTo(X(0.12) - 4, oy); ctx.lineTo(X(0.12) + 4, oy); ctx.stroke();
+      txt(ctx, `h = ${num(lv, 2)} m`, X(0.12) + 8, (yS + oy) / 2, { size: 12 * k, color: C.ambar, bg: 'rgba(10,15,32,.7)' });
+      const hx = X(TQ.Wt) + 0.0; ctx.strokeStyle = C.tenue; ctx.lineWidth = 1.2; ctx.setLineDash([3, 3]);
+      ctx.beginPath(); ctx.moveTo(X(-0.12), oy); ctx.lineTo(X(-0.12), gy); ctx.stroke(); ctx.setLineDash([]);
+      txt(ctx, `H₀ = ${num(H0, 2)} m`, X(-0.12) - 4, (oy + gy) / 2, { align: 'right', size: 11 * k, color: C.tenue, bg: 'rgba(10,15,32,.7)' });
+      // alcance
+      const R = v * tF, xr = X(xO + R);
+      if (xr < w - 8) {
+        ctx.strokeStyle = C.ambar; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(xr - 6, gy - 6); ctx.lineTo(xr + 6, gy + 6); ctx.moveTo(xr + 6, gy - 6); ctx.lineTo(xr - 6, gy + 6); ctx.stroke();
+        txt(ctx, `d = ${num(R, 2)} m`, xr, gy - 16 * k, { align: 'center', size: 12 * k, color: C.ambar, bg: 'rgba(10,15,32,.7)' });
+      }
+      txt(ctx, `v = √(2·g·h) = ${num(v, 2)} m/s`, w - 10, 14, { align: 'right', size: 12.5 * k, color: C.vel });
+      txt(ctx, `nivel ↓ ${num(lv, 2)} m`, w - 10, 14 + 17 * k, { align: 'right', size: 11.5 * k, color: C.tenue, weight: 400 });
+      boton(s, ctx, 10, 10, 96, 26, '⟳ Rellenar', s.llenar, !!s.ref);
+    },
+    formula(p) {
+      return `v=\\sqrt{2gh}=\\sqrt{2\\times9{,}81\\times${tnum(p.h, 2)}}=${tnum(Math.sqrt(2 * G0 * p.h), 2)}\\ ${U_MS}`;
+    },
+    lecturas(p) {
+      const H0 = p.H0 || 1, v = Math.sqrt(2 * G0 * p.h);
+      return [{ label: 'v', valor: `${num(v, 2)} m·s⁻¹` }, { label: 'alcance d = 2√(h·H₀)', valor: `${num(2 * Math.sqrt(p.h * H0), 2)} m` },
+        { label: 'tiempo de caída', valor: `${num(Math.sqrt((2 * H0) / G0), 2)} s` }];
+    },
+  });
+
+  // =====================================================================================
+  // 9 · GAS IDEAL — P·V = n·R·T   (R = 8,314 J·K⁻¹·mol⁻¹)
+  //   Cilindro con pistón móvil. Partículas 2D sin interacción entre sí (gas ideal), choques
+  //   elásticos con las paredes y con el pistón (que cede su velocidad). Un termostato suave
+  //   mantiene la energía cinética media ∝ T: rapidez eficaz ∝ √T. Nº de partículas = 40·n
+  //   (cada punto ≈ 0,025 mol; escala visual). El manómetro marca P = n·R·T/V (valor exacto de
+  //   la fórmula) y se enciende un destello en el pistón con cada choque. V en litros → m³.
+  // =====================================================================================
+  const R_GAS = 8.314, GAS_VMAX = 50;
+  const gasP = (p) => (p.n * R_GAS * p.T) / (p.V / 1000); // Pa
+  const niceMax = (v) => { for (const m of [1, 2, 5]) for (let e = -1; e < 8; e++) { const c = m * Math.pow(10, e); if (c >= v) return c; } return v; };
+  reg('gas-ideal', {
+    titulo: 'Gas ideal: P·V = n·R·T',
+    params: [
+      { id: 'n', label: 'Cantidad de gas n', min: 0.1, max: 2, step: 0.1, def: 1, unit: 'mol' },
+      { id: 'T', label: 'Temperatura T', min: 100, max: 1000, step: 10, def: 300, unit: 'K' },
+      { id: 'V', label: 'Volumen V', min: 5, max: 50, step: 0.5, def: 25, unit: 'L' },
+    ],
+    create(host, p) {
+      const s = { parts: [], Vc: p.V, flash: 0, reduced: host.reduced, rng: host.rng || Math.random, pn: 0, t: 0 };
+      s.pmax = niceMax((gasP(p) / 1000) * 1.2); s.pn = gasP(p) / 1000;
+      s.Lb = host.w * 0.48; s.hb = clamp(Math.min(host.h * 0.46, s.Lb * 0.5), 70, 220); s.kpx = kPant(host.w, host.h); // se reajustan en draw
+      return s;
+    },
+    onParam(s, id, v, p) { s.pmax = niceMax((gasP(p) / 1000) * 1.2); },
+    step(s, dt, p) {
+      s.t += dt;
+      const target = Math.round(40 * p.n), rn = s.rng;
+      s.Vc += clamp(p.V - s.Vc, -dt * 18, dt * 18);                     // el pistón se desplaza suave
+      // altas/bajas de partículas hasta igualar n
+      while (s.parts.length < target) s.parts.push({ x: rn() * s.Lb * (s.Vc / GAS_VMAX), y: rn() * s.hb, vx: 0, vy: 0, nuevo: true });
+      while (s.parts.length > target) s.parts.splice((rn() * s.parts.length) | 0, 1);
+      // geometría vigente (px) y rapidez eficaz objetivo
+      const L = s.Lb * (s.Vc / GAS_VMAX), Lprev = s.Lprev == null ? L : s.Lprev, vp = (L - Lprev) / Math.max(dt, 1e-4); s.Lprev = L;
+      const vrms = 7 * Math.sqrt(p.T) * s.kpx;                          // px/s ∝ √T
+      let ke = 0;
+      s.parts.forEach((q) => {
+        if (q.nuevo) { const a = rn() * TAU; q.vx = Math.cos(a) * vrms; q.vy = Math.sin(a) * vrms; q.nuevo = false; }
+        q.x += q.vx * dt; q.y += q.vy * dt;
+        if (q.x < 0) { q.x = -q.x; q.vx = Math.abs(q.vx); }
+        if (q.x > L) { q.x = L - (q.x - L); q.vx = -Math.abs(q.vx) + 2 * vp; s.flash = 1; q.flash = 1; }
+        if (q.x < 0) q.x = 0; if (q.x > L) q.x = L;
+        if (q.y < 0) { q.y = -q.y; q.vy = Math.abs(q.vy); }
+        if (q.y > s.hb) { q.y = 2 * s.hb - q.y; q.vy = -Math.abs(q.vy); }
+        ke += q.vx * q.vx + q.vy * q.vy;
+      });
+      // termostato: relaja la rapidez eficaz hacia vrms (isoterma)
+      if (s.parts.length) { const cur = Math.sqrt(ke / s.parts.length) || vrms, f = 1 + (vrms / cur - 1) * (1 - Math.exp(-dt / 0.35)); s.parts.forEach((q) => { q.vx *= f; q.vy *= f; }); }
+      s.flash = Math.max(0, s.flash - dt * 6);
+      s.pn += (gasP(p) / 1000 - s.pn) * (1 - Math.exp(-dt / 0.2));
+    },
+    draw(s, ctx, w, h, p) {
+      fondo(ctx, w, h);
+      const k = kPant(w, h), P = gasP(p) / 1000;                         // kPa
+      // geometría: termómetro | cilindro | varilla | manómetro
+      const cx0 = w * 0.14, Lmax = w * 0.48, cyc = h * 0.5, hb = clamp(Math.min(h * 0.46, Lmax * 0.5), 70, 220);
+      s.Lb = Lmax; s.hb = hb; s.kpx = k;
+      const L = Lmax * (s.Vc / GAS_VMAX), top = cyc - hb / 2, pxP = cx0 + L;
+      // cilindro (cristal) y fondo
+      ctx.fillStyle = 'rgba(40,60,120,.18)'; ctx.fillRect(cx0, top, Lmax, hb);
+      ctx.strokeStyle = 'rgba(190,210,255,.7)'; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(cx0 + Lmax + 6, top); ctx.lineTo(cx0, top); ctx.lineTo(cx0, top + hb); ctx.lineTo(cx0 + Lmax + 6, top + hb); ctx.stroke();
+      // regla de volumen bajo el cilindro
+      ctx.strokeStyle = C.tenue; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(cx0, top + hb + 12 * k); ctx.lineTo(cx0 + Lmax, top + hb + 12 * k); ctx.stroke();
+      for (let v = 0; v <= GAS_VMAX; v += 10) { const xx = cx0 + (v / GAS_VMAX) * Lmax; ctx.beginPath(); ctx.moveTo(xx, top + hb + 9 * k); ctx.lineTo(xx, top + hb + 15 * k); ctx.stroke(); txt(ctx, String(v), xx, top + hb + 26 * k, { align: 'center', size: 10 * k, color: C.tenue, weight: 400 }); }
+      txt(ctx, 'V (L)', cx0 + Lmax + 10, top + hb + 26 * k, { size: 10 * k, color: C.tenue, weight: 400 });
+      // partículas (color según T)
+      const tt = clamp((p.T - 100) / 900, 0, 1), cr = Math.round(lerp(61, 255, tt)), cg = Math.round(lerp(165, 90, tt)), cb = Math.round(lerp(255, 100, tt));
+      const rad = 3.2 * k + 0.6;
+      s.parts.forEach((q) => {
+        ctx.fillStyle = `rgb(${cr},${cg},${cb})`; ctx.beginPath(); ctx.arc(cx0 + q.x, top + q.y, rad, 0, TAU); ctx.fill();
+      });
+      // pistón + varilla + mango
+      const gpi = ctx.createLinearGradient(pxP - 5 * k, 0, pxP + 7 * k, 0); gpi.addColorStop(0, '#b9c7ff'); gpi.addColorStop(1, '#5a6cb0');
+      ctx.fillStyle = gpi; rr(ctx, pxP, top + 2, 10 * k, hb - 4, 3); ctx.fill();
+      if (s.flash > 0 && !s.reduced) { ctx.fillStyle = `rgba(255,209,102,${s.flash * 0.55})`; ctx.fillRect(pxP - 3 * k, top + 2, 4 * k, hb - 4); }
+      ctx.strokeStyle = '#8ea0cf'; ctx.lineWidth = 4 * k; ctx.beginPath(); ctx.moveTo(pxP + 10 * k, cyc); ctx.lineTo(cx0 + Lmax + 22 * k, cyc); ctx.stroke();
+      ctx.fillStyle = '#8ea0cf'; rr(ctx, cx0 + Lmax + 22 * k, cyc - 18 * k, 8 * k, 36 * k, 3); ctx.fill();
+      // ---- termómetro (izquierda) ----
+      const tx = w * 0.075, tT = top - 4, tB = top + hb + 4, tw = 11 * k + 2;
+      ctx.fillStyle = 'rgba(220,235,255,.08)'; rr(ctx, tx - tw / 2, tT, tw, tB - tT - 8, tw / 2); ctx.fill(); ctx.strokeStyle = '#b9c7ff'; ctx.lineWidth = 1.6; ctx.stroke();
+      const lvl = tB - 8 - clamp((p.T - 100) / 900, 0, 1) * (tB - tT - 22);
+      ctx.fillStyle = C.fuerza; ctx.fillRect(tx - 2.2 * k, lvl, 4.4 * k, tB - 8 - lvl); ctx.beginPath(); ctx.arc(tx, tB - 4, 6.5 * k, 0, TAU); ctx.fill();
+      for (let T = 100; T <= 1000; T += 300) { const yy = tB - 8 - ((T - 100) / 900) * (tB - tT - 22); ctx.strokeStyle = '#b9c7ff'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(tx + tw / 2, yy); ctx.lineTo(tx + tw / 2 + 5, yy); ctx.stroke(); txt(ctx, String(T), tx + tw / 2 + 7, yy, { size: 9.5 * k, color: C.tenue, weight: 400 }); }
+      txt(ctx, `${num(p.T, 0)} K`, tx, tT - 14 * k, { align: 'center', size: 12 * k, color: C.fuerza });
+      txt(ctx, `${num(p.T - 273.15, 0)} °C`, tx, tT - 1, { align: 'center', size: 10 * k, color: C.tenue, weight: 400 });
+      // ---- manómetro (derecha) ----
+      const gx = w * 0.855, Rg = Math.min(w * 0.125, h * 0.27), gyc = h * 0.42;
+      const gg = ctx.createRadialGradient(gx, gyc, Rg * 0.2, gx, gyc, Rg); gg.addColorStop(0, '#1a2756'); gg.addColorStop(1, '#0d1530');
+      ctx.fillStyle = gg; ctx.beginPath(); ctx.arc(gx, gyc, Rg, 0, TAU); ctx.fill(); ctx.strokeStyle = '#b9c7ff'; ctx.lineWidth = 3; ctx.stroke();
+      const a0 = (135 * Math.PI) / 180, span = (270 * Math.PI) / 180, nt = 5;
+      for (let i = 0; i <= nt; i++) {
+        const ang = a0 + (i / nt) * span, c = Math.cos(ang), sn = Math.sin(ang), val = (s.pmax * i) / nt;
+        ctx.strokeStyle = i > nt * 0.85 ? C.fuerza : '#b9c7ff'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(gx + c * Rg * 0.82, gyc + sn * Rg * 0.82); ctx.lineTo(gx + c * Rg * 0.95, gyc + sn * Rg * 0.95); ctx.stroke();
+        txt(ctx, val >= 100 ? num(val, 0) : num(val, val < 10 ? 1 : 0), gx + c * Rg * 0.62, gyc + sn * Rg * 0.62, { align: 'center', size: 9.5 * k + 0.5, color: C.tenue, weight: 400 });
+      }
+      const fr = clamp(s.pn / s.pmax, 0, 1.03), na = a0 + fr * span;
+      flecha(ctx, gx, gyc, gx + Math.cos(na) * Rg * 0.8, gyc + Math.sin(na) * Rg * 0.8, C.ambar, { lw: 3 * k, head: 8 });
+      ctx.fillStyle = '#e6eeff'; ctx.beginPath(); ctx.arc(gx, gyc, 4 * k + 1, 0, TAU); ctx.fill();
+      txt(ctx, 'P (kPa)', gx, gyc + Rg * 0.38, { align: 'center', size: 10 * k, color: C.tenue, weight: 400 });
+      txt(ctx, `P = ${num(P, P < 10 ? 2 : P < 100 ? 1 : 0)} kPa`, gx, gyc + Rg + 16 * k, { align: 'center', size: 13 * k, color: C.ambar });
+      txt(ctx, `V = ${num(s.Vc, 1)} L`, gx, gyc + Rg + 34 * k, { align: 'center', size: 11.5 * k, color: C.tenue });
+      txt(ctx, `n = ${num(p.n, 1)} mol  ·  ${s.parts.length} partículas (≈0,025 mol c/u)`, cx0, top - 14 * k, { size: 11 * k, color: C.tenue, weight: 400 });
+      txt(ctx, 'vitesse moyenne ∝ √T', cx0 + Lmax, top - 14 * k, { align: 'right', size: 11 * k, color: C.tenue, weight: 400 });
+    },
+    formula(p) {
+      const Pa = gasP(p);
+      return `PV=nRT\\;\\Rightarrow\\;P=\\dfrac{nRT}{V}=\\dfrac{${tnum(p.n, 1)}\\times8{,}314\\times${tnum(p.T, 0)}}{${tnum(p.V, 1)}\\times10^{-3}}=${tsci(Pa, 2)}\\ \\text{Pa}`;
+    },
+    lecturas(p) {
+      const Pa = gasP(p);
+      return [{ label: 'P', valor: `${num(Pa / 1000, Pa < 1e4 ? 2 : 1)} kPa` }, { label: 'R', valor: '8,314 J·K⁻¹·mol⁻¹' }, { label: 'n·R·T', valor: `${num(p.n * R_GAS * p.T, 0)} J` }, { label: 'T', valor: `${num(p.T - 273.15, 0)} °C` }];
     },
   });
 })();

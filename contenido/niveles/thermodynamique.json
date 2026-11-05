@@ -348,12 +348,12 @@
     {
      "pregunta": "Pour un système fermé au repos, le premier principe de la thermodynamique s'écrit :",
      "opciones": [
-      "ΔU = W + Q",
-      "ΔU = W − Q",
       "ΔE_tot = 0 toujours",
-      "ΔU = C·ΔT dans tous les cas"
+      "ΔU = W + Q",
+      "ΔU = C·ΔT dans tous les cas",
+      "ΔU = W − Q"
      ],
-     "correcta": 0,
+     "correcta": 1,
      "explicacion": "Si un système fermé au repos a une énergie qui varie, c'est qu'il échange de l'énergie avec l'extérieur : travail W ou transfert thermique Q, donc ΔU = W + Q.",
      "pagina_pdf": 421
     },
@@ -362,8 +362,8 @@
      "opciones": [
       "ΔU = Q = C·ΔT",
       "ΔU = W + Q + C",
-      "ΔU = C/ΔT",
-      "ΔU = σ·T⁴"
+      "ΔU = σ·T⁴",
+      "ΔU = C/ΔT"
      ],
      "correcta": 0,
      "explicacion": "Pour un système fermé au repos et incompressible : ΔU = Q = C·ΔT, avec C = m·c en J·K⁻¹.",
@@ -372,36 +372,36 @@
     {
      "pregunta": "Quelle est l'expression du flux thermique Φ, et son unité ?",
      "opciones": [
-      "Φ = Q/Δt, en watt (W)",
-      "Φ = Q·Δt, en joule (J)",
       "Φ = Δt/Q, en W·s⁻¹",
-      "Φ = C·ΔT, en J·K⁻¹"
+      "Φ = Q·Δt, en joule (J)",
+      "Φ = C·ΔT, en J·K⁻¹",
+      "Φ = Q/Δt, en watt (W)"
      ],
-     "correcta": 0,
+     "correcta": 3,
      "explicacion": "Le flux thermique est le transfert thermique Q par unité de temps entre deux milieux : Φ = Q/Δt, en watt. Il a la dimension d'une puissance.",
      "pagina_pdf": 422
     },
     {
      "pregunta": "Un système en contact avec un thermostat de température T_th (loi de Newton, dT/dt = −γ(T − T_th)) voit sa température évoluer selon :",
      "opciones": [
-      "T(t) = (T₀ − T_th)·e^(−γt) + T_th, qui tend vers T_th",
-      "T(t) = T_th·e^(−γt), qui tend vers 0",
       "T(t) = T₀ + γ·t, croissance linéaire",
+      "T(t) = T_th·e^(−γt), qui tend vers 0",
+      "T(t) = (T₀ − T_th)·e^(−γt) + T_th, qui tend vers T_th",
       "T(t) = T_th, constante dès t = 0"
      ],
-     "correcta": 0,
+     "correcta": 2,
      "explicacion": "La solution est T(t) = (T₀ − T_th)·e^(−γt) + T_th : exponentielle décroissante (ou croissante) qui tend vers la température du thermostat quand t → ∞.",
      "pagina_pdf": 424
     },
     {
      "pregunta": "Dans la loi de Stefan-Boltzmann F = σ·T⁴, la température 15 °C du sol terrestre doit s'utiliser sous la forme :",
      "opciones": [
-      "T = 288 K",
       "T = 15 K",
-      "T = 258 K",
-      "T = 15 °C directement"
+      "T = 288 K",
+      "T = 15 °C directement",
+      "T = 258 K"
      ],
-     "correcta": 0,
+     "correcta": 1,
      "explicacion": "T(K) = θ(°C) + 273 = 15 + 273 = 288 K ; alors F_s = 5,67×10⁻⁸ × 288⁴ ≈ 390 W·m⁻² (exercice de synthèse 1).",
      "pagina_pdf": 440
     }

@@ -1,0 +1,1441 @@
+{
+ "id": "systeme-electrique",
+ "titulo": "Dynamique d'un système électrique",
+ "materia": "physique",
+ "mundo": "ondes",
+ "pdf_ini": 516,
+ "pdf_fin": 549,
+ "resumen": "Capítulo 20 (último del libro). Un condensador son dos armaduras conductoras separadas por un aislante; almacena carga q = C·u y la intensidad i = dq/dt = C·du/dt hace que i esté en avance de fase sobre u (comportamiento capacitivo, base de los sensores capacitivos y de las pantallas táctiles). En un circuito RC serie, la tensión u_C obedece una ecuación diferencial lineal de primer orden: en la carga u_C = E(1 − e^(−t/RC)) y en la descarga u_C = E·e^(−t/RC). La constante de tiempo τ = R·C da la duración del régimen transitorio (63 % en t = τ; carga/descarga completa en 5τ). Incluye los «Exercices de synthèse» del tema Ondes et signaux (difracción, Wi-Fi, lentes, Solar Impulse, medida de C).",
+ "resumen_fr": "Le condensateur (deux armatures séparées par un isolant) vérifie q = C·u et i = C·du/dt ; dans un circuit RC série, u_C(t) = E(1 − e^(−t/RC)) à la charge et E·e^(−t/RC) à la décharge, avec τ = R·C.",
+ "nociones_clave": [
+  {
+   "fr": "Intensité du courant électrique et charges électriques",
+   "es": "La intensidad del corriente es el caudal de cargas: la cantidad de electricidad (carga q, en culombios) que atraviesa una sección del conductor por segundo. En un metal los portadores son los electrones.",
+   "pagina_pdf": 522
+  },
+  {
+   "fr": "Courant continu / courant variable i(t)",
+   "es": "En corriente continua la intensidad I es constante (igual que el caudal de carga). En corriente variable puede cambiar en cada instante y se escribe como función del tiempo: i(t). Es la derivada de q(t) respecto al tiempo.",
+   "pagina_pdf": 522
+  },
+  {
+   "fr": "Condensateur, armatures, condensation de l'électricité",
+   "es": "Un condensador es un conjunto de dos conductores colocados uno frente al otro y separados por un aislante; los dos conductores son sus armaduras. Al acercar un conductor cargado a otro neutro se acumulan cargas positivas y negativas en las caras enfrentadas: es la condensación de la electricidad.",
+   "pagina_pdf": 522
+  },
+  {
+   "fr": "Armatures chargées : charges opposées et tension",
+   "es": "Las armaduras de un condensador cargado llevan cargas iguales en valor absoluto pero de signos opuestos; entre ellas existe una tensión u (u_C).",
+   "pagina_pdf": 522
+  },
+  {
+   "fr": "Capacité d'un condensateur (farad)",
+   "es": "Coeficiente de proporcionalidad C entre la carga q y la tensión u; depende de las propiedades (geometría, materiales) del condensador. Se mide en faradios (F); los valores usuales se expresan en µF (10⁻⁶ F) o nF (10⁻⁹ F).",
+   "pagina_pdf": 522
+  },
+  {
+   "fr": "Modèle électrostatique du condensateur plan",
+   "es": "La capacidad de un condensador plano depende de la superficie S de las armaduras, de su separación d y de la permitividad ε del material aislante: crece con S y con ε y disminuye con d.",
+   "pagina_pdf": 518
+  },
+  {
+   "fr": "Ordres de grandeur des capacités",
+   "es": "Arranque de motor eléctrico: 10⁻⁴ F; filtrado de audio: 10⁻⁵ a 10⁻⁶ F; aplicaciones electrónicas: 10⁻⁷ a 10⁻⁹ F.",
+   "pagina_pdf": 523
+  },
+  {
+   "fr": "Déphasage entre u(t) et i(t)",
+   "es": "En régimen sinusoidal u(t) e i(t) tienen el mismo periodo pero pueden estar desplazados a derecha o izquierda: ese desplazamiento es el desfase. Si ambas señales se anulan a la vez, están en fase (desfase nulo).",
+   "pagina_pdf": 519
+  },
+  {
+   "fr": "Comportement capacitif",
+   "es": "Un dipolo tiene comportamiento capacitivo cuando la intensidad está en avance de fase respecto a la tensión (i adelanta a u). Se deduce de i = C·du/dt: u e i no pueden estar en fase.",
+   "pagina_pdf": 523
+  },
+  {
+   "fr": "Capteurs capacitifs et écrans tactiles",
+   "es": "La variación de espesor, de nivel de líquido o de desplazamiento cambia la superficie, el espesor o el material entre armaduras y por tanto la capacidad, que se mide sin contacto. Una pantalla táctil capacitiva usa una rejilla conductora cargada (1.ª armadura) y el dedo (2.ª armadura).",
+   "pagina_pdf": 523
+  },
+  {
+   "fr": "Circuit RC série",
+   "es": "Asociación en serie de un condensador de capacidad C y un conductor óhmico de resistencia R. Su régimen transitorio es aquel en que el condensador se carga o se descarga progresivamente.",
+   "pagina_pdf": 524
+  },
+  {
+   "fr": "Régime transitoire et régime permanent",
+   "es": "Mientras la tensión u_C varía se habla de régimen transitorio; cuando alcanza E y ya no varía, de régimen permanente.",
+   "pagina_pdf": 524
+  },
+  {
+   "fr": "Constante de temps τ = R·C",
+   "es": "El producto R·C es homogéneo a un tiempo y se expresa en segundos. Mide la duración de la carga o descarga: cuanto mayor es τ, más lenta. El condensador se considera totalmente cargado o descargado al cabo de 5τ.",
+   "pagina_pdf": 525
+  },
+  {
+   "fr": "Détermination graphique de τ",
+   "es": "Dos métodos: leer en la curva la abscisa donde u_C(t) = 0,63·E (carga), o trazar la tangente en el origen y tomar la abscisa de su corte con la asíntota horizontal.",
+   "pagina_pdf": 525
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "i(t)=\\dfrac{\\mathrm{d}q(t)}{\\mathrm{d}t}",
+   "nombre": "Intensidad como derivada de la carga",
+   "nombre_fr": "Intensité du courant électrique",
+   "variables": [
+    {
+     "simbolo": "i(t)",
+     "significado": "intensidad del corriente (caudal de carga)",
+     "unidad": "A"
+    },
+    {
+     "simbolo": "q(t)",
+     "significado": "cantidad de electricidad (carga) que atraviesa una sección del conductor",
+     "unidad": "C"
+    },
+    {
+     "simbolo": "t",
+     "significado": "tiempo",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "La intensidad en cada instante es la derivada de la carga que atraviesa la sección. En corriente continua la derivada se reduce a una diferencia: I = q/Δt.",
+   "ejemplo": {
+    "enunciado": "Ejercicio resuelto 24 (consejo): en corriente continua, la derivada i = dq/dt se traduce en una diferencia.",
+    "resultado": "I = q/Δt",
+    "pagina_pdf": 531
+   },
+   "pagina_pdf": 522,
+   "animacion": {
+    "preset": "condensador-rc",
+    "params": {
+     "R": 470,
+     "C": 1000,
+     "E": 6.0
+    },
+    "leyenda": "Al cerrar el interruptor las cargas fluyen por el circuito: la intensidad (caudal de carga) es grande al principio y decae a medida que las armaduras se cargan."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "q=C\\cdot u",
+   "nombre": "Carga y capacidad del condensador",
+   "nombre_fr": "Capacité d'un condensateur",
+   "variables": [
+    {
+     "simbolo": "q",
+     "significado": "carga de la armadura",
+     "unidad": "C"
+    },
+    {
+     "simbolo": "C",
+     "significado": "capacidad del condensador",
+     "unidad": "F"
+    },
+    {
+     "simbolo": "u",
+     "significado": "tensión entre las armaduras",
+     "unidad": "V"
+    }
+   ],
+   "explicacion": "La carga de una armadura es proporcional a la tensión; el coeficiente es la capacidad C. En el SI, C se mide en faradios (1 µF = 10⁻⁶ F; 1 nF = 10⁻⁹ F).",
+   "ejemplo": {
+    "enunciado": "Ejercicio 16 (Load and voltage): condensador cerámico de 10 nF cargado a 6,0 V; ¿qué carga lleva cada armadura (en valor absoluto)?",
+    "resultado": "q = C·u = 10×10⁻⁹ × 6,0 = 6,0×10⁻⁸ C (cálculo con la relación del cours; el corrigé no lo detalla).",
+    "pagina_pdf": 529
+   },
+   "pagina_pdf": 522,
+   "animacion": {
+    "preset": "condensador-rc",
+    "params": {
+     "R": 470,
+     "C": 1000,
+     "E": 6.0
+    },
+    "leyenda": "La carga acumulada en la armadura sube a la vez que la tensión u_C: q = C·u_C, con C = 1,0×10³ µF y E = 6,0 V."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "i=C\\cdot\\dfrac{\\mathrm{d}u}{\\mathrm{d}t}",
+   "nombre": "Comportamiento capacitivo: i = C·du/dt",
+   "nombre_fr": "Comportement capacitif",
+   "variables": [
+    {
+     "simbolo": "i",
+     "significado": "intensidad del corriente",
+     "unidad": "A"
+    },
+    {
+     "simbolo": "C",
+     "significado": "capacidad",
+     "unidad": "F"
+    },
+    {
+     "simbolo": "u",
+     "significado": "tensión entre las armaduras",
+     "unidad": "V"
+    }
+   ],
+   "explicacion": "Resulta de derivar q = C·u (con C constante) y de i = dq/dt. Implica que u e i no pueden estar en fase: es i la que está en avance de fase sobre u.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 22, pregunta 1: relaciones entre u_C, i y u_R durante la descarga.",
+    "resultado": "i = C·du_C/dt y u_R = R·i (corrigé).",
+    "pagina_pdf": 624
+   },
+   "pagina_pdf": 523,
+   "animacion": {
+    "preset": "condensador-rc",
+    "params": {
+     "R": 2200,
+     "C": 470,
+     "E": 9.0
+    },
+    "leyenda": "Mira la intensidad en el circuito: es máxima cuando u_C cambia más deprisa (al principio) y se anula cuando u_C se estabiliza."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "C=\\varepsilon\\times\\dfrac{S}{d}",
+   "nombre": "Capacidad de un condensador plano",
+   "nombre_fr": "Modèle électrostatique du condensateur plan",
+   "variables": [
+    {
+     "simbolo": "C",
+     "significado": "capacidad",
+     "unidad": "F"
+    },
+    {
+     "simbolo": "\\varepsilon",
+     "significado": "permitividad del aislante (depende del material entre armaduras)",
+     "unidad": "F·m⁻¹"
+    },
+    {
+     "simbolo": "S",
+     "significado": "superficie de las armaduras",
+     "unidad": "m²"
+    },
+    {
+     "simbolo": "d",
+     "significado": "distancia entre las dos armaduras",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "La capacidad es proporcional a la superficie y a la permitividad, e inversamente proporcional a la separación. Es el principio de los sensores capacitivos (espesor, nivel, desplazamiento). El valor numérico de ε no está en el cours.",
+   "ejemplo": null,
+   "pagina_pdf": 518,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "eps*S/x",
+     "xmin": 1,
+     "xmax": 10,
+     "vars": {
+      "eps": {
+       "min": 1,
+       "max": 10,
+       "step": 0.5,
+       "def": 2,
+       "label": "ε (unidades arbitrarias)",
+       "unit": ""
+      },
+      "S": {
+       "min": 1,
+       "max": 10,
+       "step": 0.5,
+       "def": 5,
+       "label": "S (unidades arbitrarias)",
+       "unit": ""
+      }
+     }
+    },
+    "leyenda": "Curva C = ε·S/d (el eje x es la separación d): aleja las armaduras y C cae; aumenta S o ε y C sube proporcionalmente (unidades arbitrarias)."
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "\\dfrac{\\mathrm{d}u_C}{\\mathrm{d}t}+\\dfrac{1}{R\\cdot C}\\cdot u_C=\\dfrac{E}{R\\cdot C}",
+   "nombre": "Ecuación diferencial de la carga del condensador",
+   "nombre_fr": "Équation différentielle de la charge",
+   "variables": [
+    {
+     "simbolo": "u_C",
+     "significado": "tensión entre las armaduras",
+     "unidad": "V"
+    },
+    {
+     "simbolo": "E",
+     "significado": "tensión continua del generador",
+     "unidad": "V"
+    },
+    {
+     "simbolo": "R",
+     "significado": "resistencia del conductor óhmico",
+     "unidad": "Ω"
+    },
+    {
+     "simbolo": "C",
+     "significado": "capacidad",
+     "unidad": "F"
+    }
+   ],
+   "explicacion": "Sale de la ley de mallas E = u_C + u_R, con u_R = R·i, q = C·u_C e i = C·du_C/dt. Es lineal de primer orden con segundo miembro constante.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 26 (resuelto): ley de mallas E = u_R + u_C con q = C·u_C e i = dq/dt.",
+    "resultado": "E = R·C·du_C/dt + u_C, es decir, du_C/dt + u_C/(RC) = E/(RC).",
+    "pagina_pdf": 532
+   },
+   "pagina_pdf": 524,
+   "animacion": {
+    "preset": "condensador-rc",
+    "params": {
+     "R": 470,
+     "C": 1000,
+     "E": 6.0
+    },
+    "leyenda": "La pendiente de la curva de carga (du_C/dt) es grande cuando u_C está lejos de E y tiende a 0 al acercarse: eso expresa la ecuación diferencial."
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "u_C(t)=E\\cdot\\left(1-e^{-\\frac{t}{R\\cdot C}}\\right)",
+   "nombre": "Tensión durante la carga",
+   "nombre_fr": "Charge d'un condensateur",
+   "variables": [
+    {
+     "simbolo": "u_C(t)",
+     "significado": "tensión en las armaduras",
+     "unidad": "V"
+    },
+    {
+     "simbolo": "E",
+     "significado": "tensión del generador",
+     "unidad": "V"
+    },
+    {
+     "simbolo": "R\\cdot C",
+     "significado": "constante de tiempo τ",
+     "unidad": "s"
+    },
+    {
+     "simbolo": "t",
+     "significado": "tiempo desde el cierre del interruptor",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "Solución con u_C(0) = 0: función creciente que tiende a E (régimen permanente). Se obtiene con u_C = A·e^(αt) + B, B = −A, α = −1/RC y A = −E.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 23: circuito RC con R = 3,3 kΩ y C = 60 µF; se registra la carga y luego la descarga.",
+    "resultado": "τ = R·C = 3,3×10³ × 60×10⁻⁶ ≈ 0,20 s (cálculo con τ = RC; el enunciado pide contrastarlo con la gráfica).",
+    "pagina_pdf": 530
+   },
+   "pagina_pdf": 524,
+   "animacion": {
+    "preset": "condensador-rc",
+    "params": {
+     "R": 3300,
+     "C": 60,
+     "E": 3.0
+    },
+    "leyenda": "Carga de un condensador de 60 µF con R = 3,3 kΩ y E = 3 V: u_C sube de 0 a E siguiendo 1 − e^(−t/RC)."
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "\\dfrac{\\mathrm{d}u_C}{\\mathrm{d}t}+\\dfrac{1}{R\\cdot C}\\cdot u_C=0",
+   "nombre": "Ecuación diferencial de la descarga",
+   "nombre_fr": "Équation différentielle de la décharge",
+   "variables": [
+    {
+     "simbolo": "u_C",
+     "significado": "tensión en las armaduras",
+     "unidad": "V"
+    },
+    {
+     "simbolo": "R",
+     "significado": "resistencia",
+     "unidad": "Ω"
+    },
+    {
+     "simbolo": "C",
+     "significado": "capacidad",
+     "unidad": "F"
+    }
+   ],
+   "explicacion": "Con el condensador inicialmente cargado y el interruptor cerrado, la ley de mallas da u_C + u_R = 0, es decir, la ecuación homogénea. Equivale a u_C + τ·du_C/dt = 0.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 22, pregunta 1.b: deducir la ecuación diferencial de u_C(t) en la descarga.",
+    "resultado": "du_C/dt + (1/RC)·u_C = 0 (corrigé).",
+    "pagina_pdf": 624
+   },
+   "pagina_pdf": 525,
+   "animacion": {
+    "preset": "condensador-rc",
+    "params": {
+     "R": 2200,
+     "C": 470,
+     "E": 9.0
+    },
+    "leyenda": "Descarga: al cerrar el circuito la tensión baja a un ritmo proporcional a su propio valor (du_C/dt = −u_C/RC)."
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "u_C(t)=E\\cdot e^{-\\frac{t}{R\\cdot C}}",
+   "nombre": "Tensión durante la descarga",
+   "nombre_fr": "Décharge d'un condensateur",
+   "variables": [
+    {
+     "simbolo": "u_C(t)",
+     "significado": "tensión en las armaduras",
+     "unidad": "V"
+    },
+    {
+     "simbolo": "E",
+     "significado": "tensión inicial (condensador cargado)",
+     "unidad": "V"
+    },
+    {
+     "simbolo": "R\\cdot C",
+     "significado": "constante de tiempo τ",
+     "unidad": "s"
+    }
+   ],
+   "explicacion": "Solución con u_C(0) = E: α = −1/(RC), A = E y B = 0. Función decreciente que tiende a 0.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 22: E = 9,0 V ; R = 2,2 kΩ ; C = 470 µF. Duración de la descarga.",
+    "resultado": "τ = R·C = 2,2×10³ × 470×10⁻⁶ = 1,0 s, luego 5τ = 5 s (corrigé).",
+    "pagina_pdf": 624
+   },
+   "pagina_pdf": 525,
+   "animacion": {
+    "preset": "condensador-rc",
+    "params": {
+     "R": 2200,
+     "C": 470,
+     "E": 9.0
+    },
+    "leyenda": "Un condensador de 470 µF cargado a 9,0 V se descarga por 2,2 kΩ: u_C cae de 9,0 V hacia 0 en unos 5 s (τ ≈ 1 s)."
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "\\tau=R\\cdot C",
+   "nombre": "Constante de tiempo del circuito RC",
+   "nombre_fr": "Constante de temps",
+   "variables": [
+    {
+     "simbolo": "\\tau",
+     "significado": "constante de tiempo (tiempo característico)",
+     "unidad": "s"
+    },
+    {
+     "simbolo": "R",
+     "significado": "resistencia del circuito",
+     "unidad": "Ω"
+    },
+    {
+     "simbolo": "C",
+     "significado": "capacidad del condensador",
+     "unidad": "F"
+    }
+   ],
+   "explicacion": "Es homogénea a un tiempo. Evalúa el orden de magnitud de la duración de carga o descarga; solo depende de R y de C. Se considera el condensador totalmente cargado o descargado al cabo de 5τ.",
+   "ejemplo": {
+    "enunciado": "Carga de un circuito RC con R = 10 kΩ y C = 1,0 µF (curva verde, fig. 10).",
+    "resultado": "τ = R·C = 10×10³ × 1,0×10⁻⁶ = 10×10⁻³ s = 10 ms; el condensador está totalmente cargado al cabo de 50 ms.",
+    "pagina_pdf": 525
+   },
+   "pagina_pdf": 525,
+   "animacion": {
+    "preset": "condensador-rc",
+    "params": {
+     "R": 470,
+     "C": 1000,
+     "E": 6.0
+    },
+    "leyenda": "Cambia R o C: la curva se estira (τ mayor, carga más lenta) o se comprime; la lectura τ = R·C se actualiza en vivo."
+   }
+  },
+  {
+   "id": "f10",
+   "latex": "u_C(\\tau)=0{,}63\\,E\\ \\text{(carga)}\\qquad u_C(\\tau)=0{,}37\\,E\\ \\text{(descarga)}",
+   "nombre": "Valor de u_C en t = τ (63 % / 37 %)",
+   "nombre_fr": "Détermination graphique de τ",
+   "variables": [
+    {
+     "simbolo": "u_C(\\tau)",
+     "significado": "tensión en la fecha t = τ",
+     "unidad": "V"
+    },
+    {
+     "simbolo": "E",
+     "significado": "tensión del generador (valor final en la carga, inicial en la descarga)",
+     "unidad": "V"
+    }
+   ],
+   "explicacion": "En la carga, τ es la duración para que u_C alcance el 63 % de E; en la descarga u_C cae al 37 % de E. Alternativa: la tangente en el origen corta la asíntota horizontal en t = τ.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 28 (corrigé): τ = R·C y u_C(τ) = E(1 − e^(−1)).",
+    "resultado": "u_C(τ) = E × 0,63.",
+    "pagina_pdf": 624
+   },
+   "pagina_pdf": 525,
+   "animacion": {
+    "preset": "condensador-rc",
+    "params": {
+     "R": 470,
+     "C": 1000,
+     "E": 6.0
+    },
+    "leyenda": "Marca t = τ en la curva de carga: u_C vale 0,63·E = 3,8 V con E = 6,0 V; la tangente en el origen corta la asíntota exactamente ahí."
+   }
+  },
+  {
+   "id": "f11",
+   "latex": "E=u_C+u_R\\qquad u_R=R\\cdot i",
+   "nombre": "Ley de mallas y ley de Ohm en el circuito RC",
+   "nombre_fr": "Loi d'additivité des tensions",
+   "variables": [
+    {
+     "simbolo": "E",
+     "significado": "tensión del generador",
+     "unidad": "V"
+    },
+    {
+     "simbolo": "u_C",
+     "significado": "tensión en el condensador",
+     "unidad": "V"
+    },
+    {
+     "simbolo": "u_R",
+     "significado": "tensión en el conductor óhmico",
+     "unidad": "V"
+    },
+    {
+     "simbolo": "i",
+     "significado": "intensidad del corriente",
+     "unidad": "A"
+    }
+   ],
+   "explicacion": "Punto de partida de la ecuación diferencial: a cada instante E = u_C + u_R, y por la ley de Ohm u_R = R·i. Con q = C·u_C e i = C·du_C/dt se llega a E = u_C + R·C·du_C/dt.",
+   "ejemplo": null,
+   "pagina_pdf": 524,
+   "animacion": {
+    "preset": "condensador-rc",
+    "params": {
+     "R": 3300,
+     "C": 60,
+     "E": 3.0
+    },
+    "leyenda": "Observa cómo la tensión del generador se reparte: u_C sube y u_R baja de modo que su suma permanece igual a E."
+   }
+  },
+  {
+   "id": "f12",
+   "latex": "I=\\dfrac{q}{\\Delta t}\\ \\Rightarrow\\ u_C=\\dfrac{I\\cdot\\Delta t}{C}",
+   "nombre": "Carga con corriente constante (medida de C)",
+   "nombre_fr": "Charge à intensité constante",
+   "variables": [
+    {
+     "simbolo": "I",
+     "significado": "intensidad constante del generador de corriente",
+     "unidad": "A"
+    },
+    {
+     "simbolo": "\\Delta t",
+     "significado": "duración de la carga",
+     "unidad": "s"
+    },
+    {
+     "simbolo": "C",
+     "significado": "capacidad",
+     "unidad": "F"
+    },
+    {
+     "simbolo": "u_C",
+     "significado": "tensión en el condensador (recta que pasa por el origen)",
+     "unidad": "V"
+    }
+   ],
+   "explicacion": "Con intensidad constante, q = I·Δt y u_C = I·Δt/C: u_C es proporcional a Δt y el coeficiente director de la recta vale I/C, de donde se deduce C.",
+   "ejemplo": {
+    "enunciado": "Ejercicio resuelto 24: I = 1,0 mA; coeficiente director de la recta u_C = f(t) igual a 2,5 V·s⁻¹.",
+    "resultado": "C = I/(I/C) = 1,0×10⁻³/2,5 = 4,0×10⁻⁴ F = 400 µF.",
+    "pagina_pdf": 531
+   },
+   "pagina_pdf": 531,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "1000*I*x/C",
+     "xmin": 0,
+     "xmax": 60,
+     "vars": {
+      "I": {
+       "min": 0.5,
+       "max": 3,
+       "step": 0.1,
+       "def": 1.0,
+       "label": "I",
+       "unit": "mA"
+      },
+      "C": {
+       "min": 100,
+       "max": 800,
+       "step": 10,
+       "def": 400,
+       "label": "C",
+       "unit": "µF"
+      }
+     }
+    },
+    "leyenda": "Gráfica u_C(t) = I·t/C (x en segundos): con I = 1,0 mA y C = 400 µF es una recta de pendiente 2,5 V/s, como en el ejercicio 24."
+   }
+  },
+  {
+   "id": "f13",
+   "latex": "\\theta=\\dfrac{\\lambda}{a}\\qquad \\tan\\theta\\approx\\theta=\\dfrac{L}{2D}",
+   "nombre": "Difracción: desvío angular de la mancha central",
+   "nombre_fr": "Diffraction par un tamis",
+   "variables": [
+    {
+     "simbolo": "\\theta",
+     "significado": "desvío angular (aproximación de ángulos pequeños)",
+     "unidad": "rad"
+    },
+    {
+     "simbolo": "\\lambda",
+     "significado": "longitud de onda",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "a",
+     "significado": "dimensión de la abertura (lado de la malla)",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "L",
+     "significado": "lado de la mancha central",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "D",
+     "significado": "distancia tamiz–pantalla",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Ejercicio de síntesis 1: la difracción de una abertura pequeña frente a λ revela el carácter ondulatorio de la luz; de θ = L/(2D) = λ/a se despeja a = 2·D·λ/L.",
+   "ejemplo": {
+    "enunciado": "Láser λ = 532 nm; mancha central cuadrada de lado L = 2,66 cm; D = 2,0 m.",
+    "resultado": "a = 2×2,0×532×10⁻⁹/(2,66×10⁻²) = 8,0×10⁻⁵ m = 80 µm.",
+    "pagina_pdf": 540
+   },
+   "pagina_pdf": 540,
+   "animacion": {
+    "preset": "difraccion",
+    "params": {
+     "lam": 532,
+     "a": 80
+    },
+    "leyenda": "Con λ = 532 nm y una abertura de 80 µm la mancha central tiene el ancho del ejercicio; estrecha la abertura y la mancha se ensancha (θ = λ/a)."
+   }
+  },
+  {
+   "id": "f14",
+   "latex": "E=h\\cdot\\nu=\\dfrac{h\\cdot c}{\\lambda}",
+   "nombre": "Energía del fotón (relación de Planck)",
+   "nombre_fr": "Énergie d'un photon",
+   "variables": [
+    {
+     "simbolo": "E",
+     "significado": "energía del fotón",
+     "unidad": "J"
+    },
+    {
+     "simbolo": "h",
+     "significado": "constante de Planck",
+     "unidad": "J·s"
+    },
+    {
+     "simbolo": "\\nu",
+     "significado": "frecuencia de la onda",
+     "unidad": "Hz"
+    },
+    {
+     "simbolo": "c",
+     "significado": "celeridad de la luz en el vacío",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "\\lambda",
+     "significado": "longitud de onda",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Ejercicios de síntesis 1 y 5: la energía de un fotón del láser (532 nm) o la longitud de onda de un fotón con energía igual al gap del silicio (1,12 eV).",
+   "ejemplo": {
+    "enunciado": "Fotón del láser de λ = 532 nm (síntesis 1).",
+    "resultado": "E = 6,63×10⁻³⁴ × 3×10⁸ / 532×10⁻⁹ ≈ 4×10⁻¹⁹ J.",
+    "pagina_pdf": 540
+   },
+   "pagina_pdf": 540,
+   "animacion": {
+    "preset": "fotones",
+    "params": {
+     "nu": 564,
+     "W0": 1.12
+    },
+    "leyenda": "Un fotón de 564 THz (532 nm) lleva E = h·ν ≈ 2,3 eV; el trabajo de extracción de 1,12 eV (gap del silicio) marca el umbral de los fotones útiles."
+   }
+  },
+  {
+   "id": "f15",
+   "latex": "A=10\\times\\log\\left(\\dfrac{P_e}{P_r}\\right)\\qquad A=40+20\\times\\log(d)",
+   "nombre": "Atenuación de una señal Wi-Fi (dB)",
+   "nombre_fr": "Atténuation d'un signal",
+   "variables": [
+    {
+     "simbolo": "A",
+     "significado": "atenuación del canal de transmisión",
+     "unidad": "dB"
+    },
+    {
+     "simbolo": "P_e",
+     "significado": "potencia de emisión",
+     "unidad": "W"
+    },
+    {
+     "simbolo": "P_r",
+     "significado": "potencia recibida",
+     "unidad": "W"
+    },
+    {
+     "simbolo": "d",
+     "significado": "distancia emisor–receptor (modelo a 2,4 GHz)",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Ejercicio de síntesis 3: A = 40 + 20·log(d) modela la atenuación a 2,4 GHz y A = 10·log(Pe/Pr) la define; permite hallar la potencia recibida.",
+   "ejemplo": {
+    "enunciado": "Dron a d = 10 m del teléfono; Pe = 100 mW (máximo autorizado en Francia).",
+    "resultado": "A = 40 + 20×log(10) = 60 dB; Pr = Pe·10^(−A/10) = 1,0×10⁻⁷ W (cálculo con las relaciones del enunciado).",
+    "pagina_pdf": 542
+   },
+   "pagina_pdf": 542,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "40+20*log10(x)",
+     "xmin": 1,
+     "xmax": 50,
+     "vars": {}
+    },
+    "leyenda": "Atenuación A (dB) frente a la distancia d (1 a 50 m, alcance exterior): sube 20 dB cada vez que la distancia se multiplica por 10."
+   }
+  },
+  {
+   "id": "f16",
+   "latex": "f_R-f_E=\\pm\\dfrac{v}{c}\\cdot f_E",
+   "nombre": "Efecto Doppler (emisor móvil, receptor fijo)",
+   "nombre_fr": "Effet Doppler",
+   "variables": [
+    {
+     "simbolo": "f_R",
+     "significado": "frecuencia recibida por el receptor",
+     "unidad": "Hz"
+    },
+    {
+     "simbolo": "f_E",
+     "significado": "frecuencia emitida",
+     "unidad": "Hz"
+    },
+    {
+     "simbolo": "v",
+     "significado": "celeridad del emisor (pequeña frente a c)",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "c",
+     "significado": "celeridad de propagación de las ondas",
+     "unidad": "m·s⁻¹"
+    }
+   ],
+   "explicacion": "Dato del ejercicio de síntesis 3: el signo depende del sentido de desplazamiento del emisor (con el dron alejándose la frecuencia recibida disminuye).",
+   "ejemplo": {
+    "enunciado": "Dron que se aleja a v = 3,0 m·s⁻¹; ondas electromagnéticas de c = 3,0×10⁸ m·s⁻¹.",
+    "resultado": "|f_R − f_E|/f_E = v/c = 1,0×10⁻⁸ (variación relativa, cálculo con la relación del enunciado).",
+    "pagina_pdf": 543
+   },
+   "pagina_pdf": 543,
+   "animacion": {
+    "preset": "doppler",
+    "params": {},
+    "leyenda": "Una fuente que se aleja del receptor hace que éste perciba una frecuencia menor; con luz/radio el desplazamiento relativo v/c es diminuto."
+   }
+  },
+  {
+   "id": "f17",
+   "latex": "\\dfrac{1}{\\overline{OA'}}-\\dfrac{1}{\\overline{OA}}=\\dfrac{1}{f'}",
+   "nombre": "Relación de conjugación de una lente convergente",
+   "nombre_fr": "Relation de conjugaison",
+   "variables": [
+    {
+     "simbolo": "\\overline{OA}",
+     "significado": "posición algebraica del objeto respecto al centro óptico",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "\\overline{OA'}",
+     "significado": "posición algebraica de la imagen",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "f'",
+     "significado": "distancia focal imagen",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Dato del ejercicio de síntesis 4 (maqueta de instrumento óptico con dos lentes convergentes): sirve para situar la imagen intermedia A₁B₁ y la imagen final A'B'.",
+   "ejemplo": {
+    "enunciado": "Primera maqueta: AO₁ = 140 cm, O₁F₁' = 80 cm, O₂F₂ = −10 cm, O₁O₂ = 130 cm, AB = 20 cm.",
+    "resultado": "O₁A₁ = 1/(1/80 − 1/140) ≈ 187 cm; O₂A₁ ≈ 56,7 cm; O₂A' = 8,5 cm; aumento total ≈ −0,20 (cálculo con la relación del cours; el corrigé no lo detalla).",
+    "pagina_pdf": 544
+   },
+   "pagina_pdf": 544,
+   "animacion": {
+    "preset": "lente",
+    "params": {
+     "f": 10
+    },
+    "leyenda": "Lente 2 (f' = 10 cm): mueve el objeto y mira cómo la relación 1/OA' − 1/OA = 1/f' sitúa la imagen."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "Prefijos de capacidad: 1 µF",
+   "valor": "10⁻⁶",
+   "unidad": "F",
+   "pagina_pdf": 522
+  },
+  {
+   "nombre": "Prefijos de capacidad: 1 nF",
+   "valor": "10⁻⁹",
+   "unidad": "F",
+   "pagina_pdf": 522
+  },
+  {
+   "nombre": "Constante de Planck h (ejercicio de síntesis 1)",
+   "valor": "6,63×10⁻³⁴",
+   "unidad": "J·s",
+   "pagina_pdf": 540
+  },
+  {
+   "nombre": "Constante de Planck h (ejercicio de síntesis 5)",
+   "valor": "6,62×10⁻³⁴",
+   "unidad": "J·s",
+   "pagina_pdf": 546
+  },
+  {
+   "nombre": "Celeridad de la luz en el vacío c",
+   "valor": "3×10⁸ (3,0×10⁸ en los ejercicios 3 y 5)",
+   "unidad": "m·s⁻¹",
+   "pagina_pdf": 540
+  },
+  {
+   "nombre": "1 eV",
+   "valor": "1,6×10⁻¹⁹",
+   "unidad": "J",
+   "pagina_pdf": 546
+  },
+  {
+   "nombre": "1 ch (caballo de vapor)",
+   "valor": "735,5",
+   "unidad": "W",
+   "pagina_pdf": 546
+  },
+  {
+   "nombre": "Criterio de carga/descarga total del condensador",
+   "valor": "5τ (≈ 99 %; en t = τ: 63 % en la carga, 37 % en la descarga)",
+   "unidad": "—",
+   "pagina_pdf": 525
+  },
+  {
+   "nombre": "Permitividad ε",
+   "valor": "no está en el cours (solo se indica que se expresa en F·m⁻¹)",
+   "unidad": "F·m⁻¹",
+   "pagina_pdf": 518
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Establecer la ecuación diferencial de u_C (carga)",
+   "pasos": [
+    "Dibujar el circuito RC serie con el generador ideal de tensión continua E y el interruptor; indicar el sentido de i y las tensiones E, u_R y u_C.",
+    "Aplicar la ley de aditividad de las tensiones en cada instante: E = u_C + u_R.",
+    "Sustituir la ley de Ohm u_R = R·i.",
+    "Sustituir q = C·u_C y i = dq/dt = C·du_C/dt para eliminar q e i.",
+    "Obtener E = u_C + R·C·du_C/dt, es decir, du_C/dt + u_C/(R·C) = E/(R·C). En la descarga el segundo miembro es 0."
+   ],
+   "pagina_pdf": 524
+  },
+  {
+   "titulo": "Resolver la ecuación diferencial lineal de primer orden",
+   "pasos": [
+    "Buscar soluciones de la forma u_C(t) = A·e^(αt) + B, con A, B y α constantes.",
+    "Aplicar la condición inicial: en la carga u_C(0) = 0 ⇒ B = −A (en la descarga u_C(0) = E).",
+    "Reportar la expresión en la ecuación diferencial e identificar: α = −1/(R·C) y A = −E (carga) o A = E, B = 0 (descarga).",
+    "Escribir u_C(t) = E·(1 − e^(−t/RC)) en la carga, o u_C(t) = E·e^(−t/RC) en la descarga."
+   ],
+   "pagina_pdf": 524
+  },
+  {
+   "titulo": "Determinar τ gráficamente",
+   "pasos": [
+    "Método 1: calcular 0,63·E (carga) y leer en la curva u_C(t) la abscisa correspondiente: es τ.",
+    "Método 2: trazar la tangente a la curva en el origen y la asíntota horizontal u_C = E; la abscisa de su punto de corte es τ.",
+    "En la descarga la lectura se hace en u_C = 0,37·E.",
+    "Comparar con τ = R·C; el condensador se considera cargado o descargado al cabo de 5τ."
+   ],
+   "pagina_pdf": 525
+  },
+  {
+   "titulo": "Medir la capacidad con intensidad constante",
+   "pasos": [
+    "Montar el condensador con un generador de corriente I constante; el voltímetro se conecta en derivación y el amperímetro en serie.",
+    "Escribir q = I·Δt (caudal de carga constante) y q = C·u_C, de donde u_C = I·Δt/C.",
+    "Representar u_C en ordenadas y t en abscisas: debe salir una recta que pasa por el origen.",
+    "El coeficiente director vale I/C; deducir C = I/(coeficiente director)."
+   ],
+   "pagina_pdf": 531
+  },
+  {
+   "titulo": "Identificar un comportamiento capacitivo (osciloscopio)",
+   "pasos": [
+    "Montar el dipolo D en serie con un conductor óhmico R conectado al GBF en modo sinusoidal; la masa común.",
+    "Visualizar con el osciloscopio en modo bicurva u_D(t) y u_R(t); u_R es proporcional a i(t) (u_R = R·i).",
+    "Invertir/sustraer según el protocolo para comparar fases y medir el desfase.",
+    "Si i(t) está en avance de fase respecto a u(t), el dipolo tiene comportamiento capacitivo."
+   ],
+   "pagina_pdf": 519
+  },
+  {
+   "titulo": "Medir τ con un microcontrolador (Arduino)",
+   "pasos": [
+    "Dos pines digitales: uno carga el condensador (HIGH) y otro lo descarga; un pin analógico mide u_C.",
+    "Iniciar un cronómetro (millis()) al comenzar la carga y esperar mientras la lectura analógica sea < 647 (63 % de 1023 bits).",
+    "Al llegar al umbral, τ = millis() − instante inicial.",
+    "Deducir C = τ/R y descargar el condensador antes de la siguiente medida."
+   ],
+   "pagina_pdf": 521
+  },
+  {
+   "titulo": "Análisis dimensional (fiche méthode 10)",
+   "pasos": [
+    "Recordar las siete dimensiones SI: tiempo T, longitud L, masa M, intensidad I, temperatura Θ, cantidad de materia N, intensidad luminosa J.",
+    "Dos magnitudes son homogéneas si tienen la misma dimensión; los dos miembros de una ecuación deben tener la misma dimensión y solo se suman magnitudes homogéneas.",
+    "Escribir dim X de cada magnitud (p. ej. dim q = I·T) y combinar: dim(R·C) = (dim u/I)·(I·T/dim u) = T.",
+    "Concluir que τ = R·C es homogéneo a un tiempo (no confundir dimensión con unidad)."
+   ],
+   "pagina_pdf": 562
+  },
+  {
+   "titulo": "Esquematizar los dipolos de un circuito (fiche méthode 21)",
+   "pasos": [
+    "Conocer los símbolos normalizados: generador, pila, célula fotovoltaica; lámpara, motor, diodo, DEL, resistencia, condensador; voltímetro, amperímetro, ohmímetro.",
+    "Cada malla se representa por un rectángulo y cada dipolo se coloca en la malla de forma equilibrada.",
+    "Deben aparecer todos los nudos del circuito; varios esquemas pueden corresponder a un mismo montaje."
+   ],
+   "pagina_pdf": 575
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Confundir dimensión y unidad",
+   "correccion": "La dimensión (p. ej. T) no es la unidad (el segundo): el análisis dimensional se hace con dimensiones.",
+   "pagina_pdf": 562
+  },
+  {
+   "id": "err2",
+   "nombre": "Dejar i = dq/dt en corriente continua",
+   "correccion": "Con I constante la derivada se traduce en una diferencia: I = q/Δt.",
+   "pagina_pdf": 531
+  },
+  {
+   "id": "err3",
+   "nombre": "Voltímetro en serie o amperímetro en derivación",
+   "correccion": "El voltímetro se conecta en derivación y el amperímetro en serie.",
+   "pagina_pdf": 531
+  },
+  {
+   "id": "err4",
+   "nombre": "Creer que u e i están en fase en un condensador",
+   "correccion": "i = C·du/dt: es la intensidad i la que está en avance de fase sobre la tensión u.",
+   "pagina_pdf": 523
+  },
+  {
+   "id": "err5",
+   "nombre": "Creer que el condensador está cargado en t = τ",
+   "correccion": "En t = τ solo se alcanza el 63 % de E; carga o descarga total al cabo de 5τ.",
+   "pagina_pdf": 525
+  },
+  {
+   "id": "err6",
+   "nombre": "Pensar que τ depende solo de C (o solo de R)",
+   "correccion": "τ = R·C depende de R y de C; la duración de la carga no depende de E.",
+   "pagina_pdf": 527
+  },
+  {
+   "id": "err7",
+   "nombre": "Dejar q e i en la ecuación diferencial",
+   "correccion": "Se elimina q e i de la ley de mallas para obtener una ecuación solo en u_C.",
+   "pagina_pdf": 532
+  },
+  {
+   "id": "err8",
+   "nombre": "Confundir la curva de carga con la de descarga",
+   "correccion": "Carga: u_C crece de 0 a E. Descarga: u_C decrece de E a 0.",
+   "pagina_pdf": 525
+  },
+  {
+   "id": "err9",
+   "nombre": "Olvidar convertir µF y nF a faradios",
+   "correccion": "1 µF = 10⁻⁶ F y 1 nF = 10⁻⁹ F antes de calcular τ o q.",
+   "pagina_pdf": 522
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "Actividad 1 (TP) — Capacidad de un condensador plano",
+   "descripcion": "Con un capacímetro y un condensador de plato (de Aepinus) se mide la capacidad variando la superficie de las armaduras, su separación y el material aislante, para confrontar el modelo C = ε·S/d.",
+   "pagina_pdf": 518
+  },
+  {
+   "titulo": "Actividad 2 (TP) — Comportamiento capacitivo de un dipolo",
+   "descripcion": "Circuito GBF + R + dipolo D; con el osciloscopio en modo bicurva se observa u_R(t) (imagen de i(t)) y u_D(t) para saber si i está en avance o retardo de fase. Conclusión con tres dipolos enmascarados.",
+   "pagina_pdf": 519
+  },
+  {
+   "titulo": "Actividad 3 (TP) — Flash fotográfico y condensador",
+   "descripcion": "Condensador C = 1,0×10³ µF, R = 470 Ω y R₁ = 33 Ω; se carga a 6,0 V (circuito 1) y se descarga en R₁ (circuito 2). Se calcula τ_th, se fija la duración de adquisición (5τ), se mide τ_exp y se simula el flash añadiendo un diodo DEL (polarizado) en serie.",
+   "pagina_pdf": 520
+  },
+  {
+   "titulo": "Actividad 4 (resolución de problema) — Tiempo característico y capacidad con Arduino",
+   "descripcion": "Un microcontrolador mide el tiempo hasta que u_C alcanza el 63 % (lectura 647 sobre 1023) y calcula C a partir de τ y R. Se pide adaptar el programa al material disponible.",
+   "pagina_pdf": 521
+  },
+  {
+   "titulo": "Ejercicio 12 — Carrillón electrostático",
+   "descripcion": "Dos placas metálicas conectadas a un generador de alta tensión; un péndulo con una bolita conductora oscila entre ellas, atraída alternativamente por cada placa.",
+   "pagina_pdf": 528
+  },
+  {
+   "titulo": "Pour préparer l'ECE — Carga y descarga de un condensador",
+   "descripcion": "GBF en señal cuadrada de 20 Hz y amplitud 5,0 V, R = 10 kΩ, oscilógrafo y multímetro: reglajes, montaje con polaridad, medida de τ y deducción de C comparada con la indicación del fabricante.",
+   "pagina_pdf": 538
+  },
+  {
+   "titulo": "Piste pour le Grand oral — ¿Pueden los condensadores sustituir a las baterías?",
+   "descripcion": "Comparación batería/condensador (velocidad, capacidad de almacenamiento, vida útil, rendimiento) y pregunta de ampliación sobre un supercondensador de 0,5 F que se descarga en 1 kΩ.",
+   "pagina_pdf": 539
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Exercice résolu 24 — Capacité d'un condensateur : on charge un condensateur de capacité C avec un générateur de courant d'intensité constante I = 1,0 mA et on mesure u_C à différents instants : Δt = 0, 10, 20, 30, 60 s ; u_C = 0, 23, 51, 76, 152 V (la valeur 98 V à 40 s est aussi dans le tableau). Exprimer u_C en fonction de I, C et Δt, représenter u_C = f(t), la confronter au modèle et en déduire C.",
+   "datos": {
+    "I": "1,0 mA",
+    "pente graphique": "2,5 V·s⁻¹"
+   },
+   "respuesta": "u_C = I·Δt/C ; la droite passe par l'origine (u_C proportionnel à Δt), coefficient directeur I/C = 125/50 = 2,5 V·s⁻¹ donc C = 1,0×10⁻³/2,5 = 4,0×10⁻⁴ F = 400 µF.",
+   "respuesta_numerica": {
+    "valor": 400,
+    "unidad": "µF",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Définition : q = C·u_C et, I constant, I = q/Δt, donc u_C = I·Δt/C.",
+    "Tracer u_C = f(t) : droite passant par l'origine, cohérente avec le modèle.",
+    "Coefficient directeur = I/C = 125/50 = 2,5 V·s⁻¹.",
+    "C = I/2,5 = 1,0×10⁻³/2,5 = 4,0×10⁻⁴ F = 400 µF."
+   ],
+   "pagina_pdf": 531,
+   "corrige_pagina_pdf": 531
+  },
+  {
+   "id": "e2",
+   "enunciado": "Exercice résolu 26 — Charge d'un condensateur et constante de temps : circuit RC série avec générateur de tension E = 1,5 V, R = 1,0 MΩ, C = 10 µF. 1) Établir l'équation différentielle vérifiée par u_C. 2) La solution est u_C(t) = E(1 − e^(−t/τ)) : établir l'expression de τ (homogène à un temps) et calculer sa valeur. 3) Déterminer τ graphiquement.",
+   "datos": {
+    "R": "1,0 MΩ",
+    "C": "10 µF",
+    "E": "1,5 V"
+   },
+   "respuesta": "E = R·C·du_C/dt + u_C ; τ = R·C, dim τ = dim R·dim C = T ; τ = 1,0×10⁶ × 10×10⁻⁶ = 10 s ; graphiquement : tangente à l'origine ou 63 % de la valeur finale (τ ≈ 10 s).",
+   "respuesta_numerica": {
+    "valor": 10,
+    "unidad": "s",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Loi des mailles : E = u_R + u_C, avec q = C·u_C, i = dq/dt = C·du_C/dt et u_R = R·i.",
+    "E = R·C·du_C/dt + u_C.",
+    "En reportant u_C(t) dans l'équation : (R·C/τ − 1)·e^(−t/τ) = 0 donc τ = R·C.",
+    "Analyse dimensionnelle : dim τ = (dim u/I)·(I·T/dim u) = T.",
+    "τ = 1,0×10⁶ × 10×10⁻⁶ = 10 s."
+   ],
+   "pagina_pdf": 532,
+   "corrige_pagina_pdf": 532
+  },
+  {
+   "id": "e3",
+   "enunciado": "Exercice 17 — Capacité d'un condensateur : un condensateur initialement déchargé est relié à un courant d'intensité constante I égale à 12 mA. Au bout d'une minute, la tension à ses bornes vaut 1,5 V. a. Calculer la capacité. b. Ce résultat est-il cohérent avec la photographie ci-contre (480 µF indiqué) ? 2. Est-ce une valeur courante pour un condensateur ?",
+   "datos": {
+    "I": "12 mA",
+    "Δt": "60 s",
+    "u": "1,5 V"
+   },
+   "respuesta": "C = I·Δt/U = 12×10⁻³ × 60 / 1,5 = 0,48 F. Sur la photo 480 µF : il y a un facteur 1 000. 0,48 F est une valeur élevée pour la capacité d'un condensateur.",
+   "respuesta_numerica": {
+    "valor": 0.48,
+    "unidad": "F",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "q = I·Δt = 12×10⁻³ × 60 = 0,72 C.",
+    "C = q/u = 0,72/1,5 = 0,48 F.",
+    "Comparer à 480 µF = 4,8×10⁻⁴ F : facteur 1 000."
+   ],
+   "pagina_pdf": 529,
+   "corrige_pagina_pdf": 624
+  },
+  {
+   "id": "e4",
+   "enunciado": "Exercice 19 — Durée de charge maximale : un condensateur porte les indications « tension de service 42 V – capacité 330 µF ». Il est chargé par un générateur de courant qui délivre une intensité de 2,0 mA. Quelle durée de charge maximale permet de rester dans la limite de fonctionnement du composant ?",
+   "datos": {
+    "U": "42 V",
+    "C": "330 µF",
+    "I": "2,0 mA"
+   },
+   "respuesta": "Δt = C·U/I = 330×10⁻⁶ × 42 / 2,0×10⁻³ ≈ 6,9 s (le corrigé imprimé écrit « 6,9 × 10⁻⁶ s », exposant manifestement erroné : l'opération donne 6,9 s).",
+   "respuesta_numerica": {
+    "valor": 6.93,
+    "unidad": "s",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "q = C·U = 330×10⁻⁶ × 42 = 1,386×10⁻² C.",
+    "Δt = q/I = 1,386×10⁻² / 2,0×10⁻³ = 6,9 s."
+   ],
+   "pagina_pdf": 529,
+   "corrige_pagina_pdf": 624
+  },
+  {
+   "id": "e5",
+   "enunciado": "Exercice 22 — Décharge d'un condensateur : condensateur initialement chargé tel que u_C = E = 9,0 V ; R = 2,2 kΩ ; C = 470 µF. On ferme l'interrupteur à t = 0. 1) Relations entre u_C, i et u_R puis équation différentielle de u_C(t). 2) Montrer que u_C(t) = E·e^(−t/RC) est solution. 3) Limite de u_C(t) quand t → ∞ ; durée nécessaire pour atteindre cette limite à partir de τ ; allure de la courbe.",
+   "datos": {
+    "E": "9,0 V",
+    "R": "2,2 kΩ",
+    "C": "470 µF"
+   },
+   "respuesta": "i = C·du_C/dt et u_R = R·i ⇒ du_C/dt + u_C/(RC) = 0. u_C tend vers 0. τ = R·C = 2,2×10³ × 470×10⁻⁶ = 1,0 s donc 5τ = 5 s.",
+   "respuesta_numerica": {
+    "valor": 1.034,
+    "unidad": "s",
+    "tolerancia_rel": 0.05
+   },
+   "pasos": [
+    "u_C + u_R = 0 avec u_R = R·i et i = C·du_C/dt.",
+    "du_C/dt + u_C/(RC) = 0.",
+    "Avec u_C = E·e^(−t/RC) : −E/(RC)·e^(−t/RC) + E/(RC)·e^(−t/RC) = 0.",
+    "τ = 2,2×10³ × 470×10⁻⁶ = 1,0 s ; 5τ = 5 s."
+   ],
+   "pagina_pdf": 530,
+   "corrige_pagina_pdf": 624
+  },
+  {
+   "id": "e6",
+   "enunciado": "Exercice 38 — Sonde thermique (questions préliminaires) : capteur modélisé par un circuit RC série avec C = 1,0 µF et E = 4,0 V, la résistance R étant celle d'une thermistance. 1.a Rappeler l'expression de τ. 1.b Démontrer que u_C(τ) = 0,63·E. 2. À l'aide du document 2, déterminer τ₂₀ pour 20 °C et en déduire que R₂₀ = 1,3 kΩ.",
+   "datos": {
+    "C": "1,0 µF",
+    "E": "4,0 V",
+    "τ₂₀ (lecture graphique)": "1,3 ms"
+   },
+   "respuesta": "τ = R·C ; u_C(τ) = E(1 − e^(−1)) = 0,63·E ; lecture graphique τ₂₀ = 1,3 ms d'où R₂₀ = τ/C = 1,3×10⁻³/1,0×10⁻⁶ = 1,3×10³ Ω = 1,3 kΩ.",
+   "respuesta_numerica": {
+    "valor": 1300,
+    "unidad": "Ω",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "τ = R·C.",
+    "u_C(τ) = E·(1 − e^(−τ/RC)) = E·(1 − e^(−1)) = 0,63·E.",
+    "τ₂₀ = 1,3 ms (lecture graphique).",
+    "R₂₀ = τ₂₀/C = 1,3×10⁻³ / 1,0×10⁻⁶ = 1,3 kΩ."
+   ],
+   "pagina_pdf": 537,
+   "corrige_pagina_pdf": 624
+  },
+  {
+   "id": "e7",
+   "enunciado": "Exercice 33 — Lampe secouée : lampe de poche « sans pile » dont la décharge peut être modélisée par celle d'un condensateur C = 1,0 F dans un conducteur ohmique R = 220 Ω, U₀ = 3,6 V à t₀ = 0. 1) Établir l'équation différentielle et montrer qu'elle s'écrit du_C/dt + u_C/τ = 0. 2) Vérifier par analyse dimensionnelle que τ est homogène à un temps. 3.a Montrer que u(t) = U₀e^(−t/τ) est solution. 3.b En déduire qu'une durée d'environ 5τ correspond à une décharge quasi complète. 4) Évaluer la durée de fonctionnement de la lampe.",
+   "datos": {
+    "C": "1,0 F",
+    "R": "220 Ω",
+    "U₀": "3,6 V"
+   },
+   "respuesta": "τ = R·C = 220 × 1,0 = 220 s ; durée de fonctionnement ≈ 5τ = 1,1×10³ s, soit environ 18 min (valeur calculée avec les relations du cours ; le corrigé ne détaille pas cet exercice).",
+   "respuesta_numerica": {
+    "valor": 1100,
+    "unidad": "s",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "τ = R·C = 220 Ω × 1,0 F = 220 s.",
+    "Décharge quasi complète au bout de 5τ = 1 100 s.",
+    "1 100 s ≈ 18 min."
+   ],
+   "pagina_pdf": 534,
+   "corrige_pagina_pdf": 534
+  },
+  {
+   "id": "e8",
+   "enunciado": "Exercice 32 — Système d'alarme : le circuit de commande de la sirène se déclenche dès que le condensateur est chargé (R = 47 kΩ ; C = 1,1×10³ µF ; E = 9,0 V). Démarche élémentaire : 1. Calculer la constante de temps. 2. À partir de combien de τ peut-on considérer le condensateur chargé ? En déduire la durée dont dispose l'utilisateur pour désactiver l'alarme. 3. Cette durée vous semble-t-elle suffisante ?",
+   "datos": {
+    "R": "47 kΩ",
+    "C": "1,1×10³ µF",
+    "E": "9,0 V"
+   },
+   "respuesta": "τ = R·C = 47×10³ × 1,1×10⁻³ ≈ 52 s ; chargé à partir de 5τ ≈ 2,6×10² s, soit environ 4 min 20 s (calcul avec les relations du cours ; corrigé non fourni).",
+   "respuesta_numerica": {
+    "valor": 51.7,
+    "unidad": "s",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "τ = R·C = 47×10³ Ω × 1,1×10³×10⁻⁶ F = 51,7 s.",
+    "Condensateur chargé au bout de 5τ ≈ 258 s.",
+    "258 s ≈ 4 min 18 s."
+   ],
+   "pagina_pdf": 534,
+   "corrige_pagina_pdf": 534
+  },
+  {
+   "id": "e9",
+   "enunciado": "Exercice 28 — Défibrillateur cardiaque (proposer une correction) : la courbe de charge du condensateur C montre u_C tendant vers 1 500 V. 1. Quelle tension délivre le générateur ? 2. Déterminer la constante de temps τ du circuit (63 % de la tension maximale). 3.a Si l'on considère qu'un condensateur est chargé lorsque la tension atteint 97 % de la tension maximale, au bout de quelle durée Δt est-il chargé ? b. Comparer à la valeur habituelle 5τ.",
+   "datos": {
+    "E": "1 500 V",
+    "seuil": "97 %"
+   },
+   "respuesta": "E = 1 500 V (tension élevée : précautions de sécurité). 63 % de 1 500 V ≈ 945 V atteint pour τ ≈ 0,5 s. 97 % de 1 500 V = 1 455 V atteint vers 2,5 s ≈ 5τ (même résultat que la durée habituelle 5τ).",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Lecture : tension du générateur = valeur limite = 1 500 V.",
+    "0,63 × 1 500 = 945 V ⇒ τ ≈ 0,5 s (lecture graphique).",
+    "0,97 × 1 500 = 1 455 V ⇒ Δt ≈ 2,5 s.",
+    "5τ = 5 × 0,5 = 2,5 s : même résultat. Attention aux chiffres significatifs et justifier la lecture."
+   ],
+   "pagina_pdf": 533,
+   "corrige_pagina_pdf": 533
+  },
+  {
+   "id": "e10",
+   "enunciado": "Exercice de synthèse 2 — Étude d'un dipôle RC : on charge un condensateur de capacité inconnue C à travers R = 330 kΩ avec un générateur de tension constante u₀ = 12,0 V. Le tableau de mesures (t, u_C) donne : (0 ; 0), (5 ; 1,6), (10 ; 3,0), (15 ; 4,2), (20 ; 5,2), (30 ; 6,9), (40 ; 8,2), (50 ; 9,1), (70 ; 10,4), (100 ; 11,3), (150 ; 11,8), (200 ; 11,9), (250 ; 12,0). Déterminer la constante de temps, calculer C et dire si la valeur est en accord avec C = 100 µF à 20 % près.",
+   "datos": {
+    "R": "330 kΩ",
+    "u₀": "12,0 V",
+    "C constructeur": "100 µF ± 20 %"
+   },
+   "respuesta": "63 % de 12,0 V = 7,6 V : atteint vers t ≈ 35 s (τ ≈ 35 s, lecture graphique sur le tableau). C = τ/R ≈ 35/330×10³ ≈ 1,1×10⁻⁴ F ≈ 1,1×10² µF, comprise entre 80 et 120 µF : accord avec la tolérance du constructeur. (Valeurs calculées à partir des données de l'énoncé ; corrigé non fourni.)",
+   "respuesta_numerica": {
+    "valor": 106,
+    "unidad": "µF",
+    "tolerancia_rel": 0.1
+   },
+   "pasos": [
+    "Équation vérifiée : R·C·du_C/dt + u_C = u₀ ; tangente à l'origine coupant u_C = u₀ en t = τ.",
+    "0,63 × 12,0 = 7,6 V ⇒ τ ≈ 35 s.",
+    "C = τ/R = 35/(330×10³) ≈ 1,06×10⁻⁴ F ≈ 106 µF.",
+    "Tolérance : 100 µF ± 20 % ⇒ 80 à 120 µF : 106 µF convient."
+   ],
+   "pagina_pdf": 541,
+   "corrige_pagina_pdf": 541
+  },
+  {
+   "id": "e11",
+   "enunciado": "Exercice de synthèse 6 — Mesure de la capacité d'un condensateur (1ère méthode) : condensateur initialement déchargé relié à un générateur de courant d'intensité constante et réglable ; un voltmètre mesure u_AB. 1. Montrer que u_AB = I·t/C. 2. Pour I = 10 µA, u_AB atteint u₁ = 6,0 V à t₁ = 7,2 s. Calculer C. (2e méthode : GBF en créneau 0–6 V, R = 1 000 Ω, valeur constructeur C = 12 µF à 5 %.)",
+   "datos": {
+    "I": "10 µA",
+    "u₁": "6,0 V",
+    "t₁": "7,2 s",
+    "R (2e méthode)": "1 000 Ω"
+   },
+   "respuesta": "q = I·t = C·u_AB ⇒ u_AB = I·t/C. C = I·t₁/u₁ = 10×10⁻⁶ × 7,2 / 6,0 = 1,2×10⁻⁵ F = 12 µF (valeur calculée ; corrigé non fourni). Valeur attendue en 2e méthode : τ = R·C = 12 ms.",
+   "respuesta_numerica": {
+    "valor": 12,
+    "unidad": "µF",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "I = q/Δt avec I constant : q = I·t.",
+    "q = C·u_AB ⇒ u_AB = I·t/C.",
+    "C = I·t₁/u₁ = 10×10⁻⁶ × 7,2 / 6,0 = 1,2×10⁻⁵ F = 12 µF."
+   ],
+   "pagina_pdf": 548,
+   "corrige_pagina_pdf": 548
+  },
+  {
+   "id": "e12",
+   "enunciado": "Exercice de synthèse 1 (résolu) — Diffraction par un tamis : laser monochromatique λ = 532 nm dirigé vers un tamis à mailles carrées de côté a ; tache centrale carrée de côté L = 2,66 cm sur un écran à D = 2,0 m. 1.a Quel caractère de la lumière met en évidence la diffraction ? 1.b Condition d'observation ? 2.a Relation λ = c/ν ; fréquence. 2.b Énergie du photon. 3.a Montrer que θ = L/(2D). 3.c Calculer a.",
+   "datos": {
+    "λ": "532 nm",
+    "L": "2,66 cm",
+    "D": "2,0 m",
+    "h": "6,63×10⁻³⁴ J·s",
+    "c": "3×10⁸ m·s⁻¹"
+   },
+   "respuesta": "La diffraction met en évidence le caractère ondulatoire de la lumière, observable quand la taille de l'ouverture est petite devant λ. E = h·c/λ = 6,63×10⁻³⁴ × 3×10⁸ / 532×10⁻⁹ ≈ 4×10⁻¹⁹ J. tan θ = θ = (L/2)/D = L/(2D) et θ = λ/a donc a = 2·D·λ/L = 8,0×10⁻⁵ m = 80 µm.",
+   "respuesta_numerica": {
+    "valor": 80,
+    "unidad": "µm",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Schéma : tan θ = (L/2)/D ≈ θ.",
+    "θ = λ/a ⇒ λ/a = L/(2D).",
+    "a = 2·D·λ/L = 2 × 2,0 × 532×10⁻⁹ / 2,66×10⁻² = 8,0×10⁻⁵ m = 80 µm."
+   ],
+   "pagina_pdf": 540,
+   "corrige_pagina_pdf": 540
+  },
+  {
+   "id": "e13",
+   "enunciado": "Exercice de synthèse 3 — Connexion Wi-Fi pour piloter un drone : standard IEEE 802.11 g (débit théorique maximal 54 Mbits/s, 2,4 GHz, 100 mW maximum, atténuation A = 40 + 20·log(d)). Webcam 1 280 × 720 pixels à 30 images par seconde, 24 bits par pixel. 1. Calculer l'atténuation à d = 10 m. 2. En déduire la puissance maximale reçue. 3. Le débit théorique permet-il de visualiser la vidéo en direct ? Puis : longueur d'onde du signal et variation relative de fréquence du drone à 3,0 m·s⁻¹ (effet Doppler).",
+   "datos": {
+    "Pe": "100 mW",
+    "f": "2,4 GHz",
+    "c": "3,0×10⁸ m·s⁻¹",
+    "v": "3,0 m·s⁻¹"
+   },
+   "respuesta": "A = 40 + 20·log(10) = 60 dB ; A = 10·log(Pe/Pr) ⇒ Pr = Pe·10^(−6) = 1,0×10⁻⁷ W. Débit vidéo = 1 280×720×24×30 ≈ 6,6×10⁸ bits/s ≈ 664 Mbits/s, très supérieur à 54 Mbits/s : impossible sans compression. λ = c/f = 0,125 m. |Δf|/f = v/c = 1,0×10⁻⁸. (Calculé avec les données de l'énoncé ; corrigé non fourni.)",
+   "respuesta_numerica": {
+    "valor": 60,
+    "unidad": "dB",
+    "tolerancia_rel": 0.01
+   },
+   "pasos": [
+    "A = 40 + 20·log(10) = 60 dB.",
+    "Pe/Pr = 10^(A/10) = 10⁶ ⇒ Pr = 0,100/10⁶ = 1,0×10⁻⁷ W.",
+    "Débit = 1 280 × 720 × 24 × 30 ≈ 6,64×10⁸ bit/s > 54×10⁶ bit/s.",
+    "λ = c/f = 3,0×10⁸/2,4×10⁹ = 0,125 m.",
+    "Doppler : (f_R − f_E)/f_E = ±v/c = 3,0/3,0×10⁸ = 1,0×10⁻⁸."
+   ],
+   "pagina_pdf": 543,
+   "corrige_pagina_pdf": 543
+  },
+  {
+   "id": "e14",
+   "enunciado": "Exercice de synthèse 5 — Avion solaire « Solar Impulse » : 269,5 m² de cellules, puissance solaire surfacique moyenne 1 000 W·m⁻², rendement 23 %. 1. Calculer la puissance solaire reçue (en kW). 2. Montrer que la puissance électrique fournie vaut 62,0 kW. 3. Cette puissance suffit-elle pour 4 moteurs de 17,5 ch à rendement 94 % (1 ch = 735,5 W) ? Puis : longueur d'onde du photon d'énergie égale au gap du silicium (E_g = 1,12 eV).",
+   "datos": {
+    "S": "269,5 m²",
+    "η": "23 %",
+    "Eg": "1,12 eV",
+    "h": "6,62×10⁻³⁴ J·s",
+    "c": "3,0×10⁸ m·s⁻¹"
+   },
+   "respuesta": "P = 1 000 × 269,5 = 269,5 kW ; P_élec = 0,23 × 269,5 ≈ 62,0 kW ; les moteurs demandent 4×17,5×735,5/0,94 ≈ 54,8 kW < 62,0 kW : suffisant. λ = h·c/E_g = 6,62×10⁻³⁴ × 3,0×10⁸ /(1,12 × 1,6×10⁻¹⁹) ≈ 1,1×10³ nm. (Calculé avec les données de l'énoncé ; corrigé non fourni.)",
+   "respuesta_numerica": {
+    "valor": 62.0,
+    "unidad": "kW",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "P_solaire = 1 000 W·m⁻² × 269,5 m² = 269,5 kW.",
+    "P_élec = 0,23 × 269,5 = 62,0 kW.",
+    "Moteurs : 4 × 17,5 × 735,5 = 51,5 kW de puissance utile, soit 54,8 kW électriques à η = 94 % : suffisant.",
+    "λ = h·c/(E_g·1,6×10⁻¹⁹) ≈ 1,1×10⁻⁶ m = 1,1×10³ nm."
+   ],
+   "pagina_pdf": 546,
+   "corrige_pagina_pdf": 546
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "condensador-rc",
+   "params": {
+    "R": 470,
+    "C": 1000,
+    "E": 6.0
+   },
+   "titulo": "Carga del condensador del flash (Actividad 3)",
+   "relacion": "C = 1,0×10³ µF, R = 470 Ω, E = 6,0 V: τ = R·C ≈ 0,47 s y u_C(t) = E(1 − e^(−t/RC))."
+  },
+  {
+   "preset": "condensador-rc",
+   "params": {
+    "R": 2200,
+    "C": 470,
+    "E": 9.0
+   },
+   "titulo": "Descarga del ejercicio 22",
+   "relacion": "E = 9,0 V, R = 2,2 kΩ, C = 470 µF: τ ≈ 1,0 s y u_C(t) = E·e^(−t/RC); cargado/descargado a 5τ."
+  },
+  {
+   "preset": "generico",
+   "params": {
+    "expr": "1000*I*x/C",
+    "xmin": 0,
+    "xmax": 60,
+    "vars": {
+     "I": {
+      "min": 0.5,
+      "max": 3,
+      "step": 0.1,
+      "def": 1.0,
+      "label": "I",
+      "unit": "mA"
+     },
+     "C": {
+      "min": 100,
+      "max": 800,
+      "step": 10,
+      "def": 400,
+      "label": "C",
+      "unit": "µF"
+     }
+    }
+   },
+   "titulo": "Carga con corriente constante (ejercicio 24)",
+   "relacion": "u_C = I·Δt/C: recta por el origen cuyo coeficiente director I/C permite medir C."
+  },
+  {
+   "preset": "difraccion",
+   "params": {
+    "lam": 532,
+    "a": 80
+   },
+   "titulo": "Difracción por un tamiz (síntesis 1)",
+   "relacion": "θ = λ/a con λ = 532 nm y a = 80 µm."
+  },
+  {
+   "preset": "fotones",
+   "params": {
+    "nu": 564,
+    "W0": 1.12
+   },
+   "titulo": "Fotones y gap del silicio (síntesis 5)",
+   "relacion": "E = h·ν = h·c/λ; el gap del silicio vale 1,12 eV."
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "lava-fortaleza",
+  "mecanica_especial": "Fortaleza final con lava: plataformas oscilantes (periodo ≈ τ de carga/descarga), zonas de campo entre «armaduras» que empujan hacia arriba, resortes, puente sobre lava que cae al accionar la palanca y Rey Entropía, que se vence con tres respuestas sobre el condensador y el circuito RC."
+ },
+ "estilo_intro_sugerido": "matrix"
+}

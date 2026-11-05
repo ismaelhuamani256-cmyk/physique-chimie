@@ -6,12 +6,12 @@
    "tipo": "opcion",
    "enunciado": "Premier principe de la thermodynamique : pour un système fermé au repos, la variation d'énergie interne s'écrit :",
    "opciones": [
+    "ΔU = σ · T⁴",
     "ΔU = W + Q",
     "ΔU = W · Q",
-    "ΔU = C / ΔT",
-    "ΔU = σ · T⁴"
+    "ΔU = C / ΔT"
    ],
-   "correcta": 0,
+   "correcta": 1,
    "explicacion": "Si un système fermé au repos a une énergie qui varie, c'est qu'il échange de l'énergie avec l'extérieur sous forme de travail W ou de transfert thermique Q : ΔU = W + Q.",
    "pagina_pdf": 421
   },
@@ -21,9 +21,9 @@
    "enunciado": "Quelles énergies microscopiques contribuent à l'énergie interne U d'un système ?",
    "opciones": [
     "Les énergies cinétiques microscopiques (agitation thermique) et les énergies potentielles d'interaction",
+    "Uniquement la température du système, exprimée en kelvin",
     "Seulement l'énergie cinétique macroscopique du système",
-    "Seulement l'énergie potentielle de pesanteur",
-    "Uniquement la température du système, exprimée en kelvin"
+    "Seulement l'énergie potentielle de pesanteur"
    ],
    "correcta": 0,
    "explicacion": "U = E_c,micro + E_pp,micro : agitation thermique des particules (elle augmente avec la température) et interactions entre particules.",
@@ -78,12 +78,12 @@
    "tipo": "opcion",
    "enunciado": "Le radiateur d'une pièce chauffe l'air par circulation des masses d'air : l'air chaud, moins dense, monte et l'air froid descend. Quel est ce mode de transfert thermique ?",
    "opciones": [
-    "La convection",
-    "La conduction",
     "Le rayonnement",
-    "Le travail W"
+    "Le travail W",
+    "La conduction",
+    "La convection"
    ],
-   "correcta": 0,
+   "correcta": 3,
    "explicacion": "Dans la convection le transfert thermique se fait par mouvement de matière au sein du système. La conduction se fait de proche en proche sans transport de matière ; le rayonnement par ondes électromagnétiques.",
    "pagina_pdf": 422
   },
@@ -92,12 +92,12 @@
    "tipo": "opcion",
    "enunciado": "Dans quel sens se fait un transfert thermique entre deux milieux de températures différentes ?",
    "opciones": [
-    "De la source chaude vers la source froide, jusqu'à égalité des températures",
+    "Dans le sens qui dépend de la masse des milieux, pas de leurs températures",
     "De la source froide vers la source chaude",
-    "Dans les deux sens à la fois, par moitié",
-    "Dans le sens qui dépend de la masse des milieux, pas de leurs températures"
+    "De la source chaude vers la source froide, jusqu'à égalité des températures",
+    "Dans les deux sens à la fois, par moitié"
    ],
-   "correcta": 0,
+   "correcta": 2,
    "explicacion": "Un transfert thermique ne peut se faire que dans un seul sens : du milieu de température la plus élevée vers celui de température la plus faible, jusqu'à ce que leurs températures soient égales.",
    "pagina_pdf": 422
   },
@@ -177,12 +177,12 @@
    "tipo": "opcion",
    "enunciado": "Comment appelle-t-on la proportion de l'énergie reçue par la Terre qui est réfléchie et donc non absorbée (≈ 0,30 pour la Terre et son atmosphère) ?",
    "opciones": [
+    "Le flux thermique",
     "L'albédo",
     "L'effet de serre",
-    "Le flux thermique",
     "La résistance thermique"
    ],
-   "correcta": 0,
+   "correcta": 1,
    "explicacion": "L'albédo A est la proportion de l'énergie reçue qui est réfléchie ; pour la Terre et son atmosphère A = 0,30 (≈ 70 % de l'énergie est absorbée).",
    "pagina_pdf": 424
   },
@@ -192,9 +192,9 @@
    "enunciado": "Loi thermique de Newton dT/dt = −γ·(T − T_th) avec γ > 0 : que devient la température T du système quand t → ∞ ?",
    "opciones": [
     "Elle tend vers la température T_th du thermostat",
-    "Elle tend vers 0 K",
     "Elle croît indéfiniment",
-    "Elle reste égale à sa valeur initiale T₀"
+    "Elle reste égale à sa valeur initiale T₀",
+    "Elle tend vers 0 K"
    ],
    "correcta": 0,
    "explicacion": "Solution T(t) = (T₀ − T_th)·e^(−γt) + T_th : fonction exponentielle qui tend vers T_th.",
@@ -250,12 +250,12 @@
    "tipo": "opcion",
    "enunciado": "Pour calculer un flux avec la loi de Stefan-Boltzmann F = σ·T⁴, quelle erreur faut-il éviter ?",
    "opciones": [
-    "Utiliser T en °C au lieu de kelvin",
     "Utiliser T en kelvin",
+    "Considérer la Terre avec son albédo",
     "Prendre σ = 5,67×10⁻⁸ W·m⁻²·K⁻⁴",
-    "Considérer la Terre avec son albédo"
+    "Utiliser T en °C au lieu de kelvin"
    ],
-   "correcta": 0,
+   "correcta": 3,
    "explicacion": "T doit s'exprimer en kelvin : T(K) = θ(°C) + 273. C'est seulement pour une variation ΔT (Q = C·ΔT) qu'on peut raisonner directement en °C.",
    "pagina_pdf": 423
   }

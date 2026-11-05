@@ -125,7 +125,7 @@
   {
    "id": "n20",
    "fr": "Intensité sonore: aplicaciones y peligro",
-   "es": "Seuil de danger: 85 dB (Situation 1) y en el Código de trabajo los obreros no deben estar sometidos a niveles superiores a 87 dB (ejercicio 10). Un percusionista y una guitarra suman intensidades (no niveles).",
+   "es": "Seuil de danger: 85 dB (Situation 1) y en el Código de trabajo los obreros no deben estar sometidos a niveles superiores a 87 dB (ejercicio 10). Ejercicios 8, 10 y 27: las intensidades sonoras de varias fuentes se suman, no los niveles en dB.",
    "pagina_pdf": 459
   }
  ],
@@ -332,9 +332,9 @@
    ],
    "explicacion": "Cuanto más estrecha es la abertura (a cercano a λ), más se ensancha la figura de difracción: θ crece. La relación está en radianes.",
    "ejemplo": {
-    "enunciado": "Ejercicio 13: agujero de a = 200 µm iluminado por un láser verde (montaje del ejercicio 12, D = 1,7 m); se mide la mancha central de la foto para deducir λ.",
-    "resultado": "Con tan θ ≈ θ = L/(2D) = λ/a se obtiene λ = a·L/(2D) (relación a establecer, ver f7).",
-    "pagina_pdf": 460
+    "enunciado": "Ejercicio 32 (À l'abri ?): la marejada (vagues espaciadas λ = 15,7 m) llega a un puerto cuya abertura entre jetées mide a = 36,0 m. 1. Calcular el ángulo característico de difracción en grados.",
+    "resultado": "θ = λ/a = 15,7/36,0 ≈ 0,44 rad ≈ 25° (cálculo con la fórmula; el corrigé de este ejercicio no figura en el manual).",
+    "pagina_pdf": 466
    },
    "pagina_pdf": 454,
    "animacion": {
@@ -622,7 +622,7 @@
      "unidad": "m·s⁻¹"
     }
    ],
-   "explicacion": "Si v es muy pequeña frente a c, c − v ≈ c y Δf = f_e·v/c. Para una fuente que se aleja, Δf es negativo en el signo de la derivación exacta; en el cours se retiene el valor absoluto del desfase.",
+   "explicacion": "Si v es muy pequeña frente a c, c − v ≈ c y Δf = f_e·v/c. Δf = f_R − f_e es positivo si la fuente se acerca (f_R > f_e); si se aleja, se cambia −v por +v y f_R < f_e.",
    "ejemplo": {
     "enunciado": "Ejercicio resuelto 23: La₃ (f = 440 Hz) tocada por una pianista; el bailarín salta a v = 1,9 m / 0,75 s = 2,5 m·s⁻¹ hacia ella (c = 340 m·s⁻¹).",
     "resultado": "Δf = 440 × 2,5/340 = 3,3 Hz; f_R = 443 Hz. Δf/f = 7,5×10⁻³ supera el umbral S_dr = 1/1000 de un oído entrenado: el bailarín percibe otra nota.",
@@ -632,8 +632,8 @@
    "animacion": {
     "preset": "doppler",
     "params": {
-     "f0": 440,
-     "vs": 100
+     "f0": 800,
+     "vs": 30
     },
     "leyenda": "Sube la velocidad de la fuente y mira cómo crece el desfase Δf entre la frecuencia emitida y la percibida."
    }
@@ -1044,11 +1044,7 @@
     "I₀": "1,0×10⁻¹² W·m⁻²"
    },
    "respuesta": "1.a) Un sonómetro. b) I = 3,2×10⁻⁵ W·m⁻² (75 dB) e I' = 3,2×10⁻⁶ W·m⁻² (65 dB): N = I/I' = 10 guitarras. 2) I'' = 1,0×10⁻⁷ W·m⁻² (50 dB); I + I'' = 3,21×10⁻⁵ W·m⁻², es decir L'' ≈ 75 dB: la intensidad del triángulo es despreciable.",
-   "respuesta_numerica": {
-    "valor": 10,
-    "unidad": "guitarras",
-    "tolerancia_rel": 0.02
-   },
+   "respuesta_numerica": null,
    "pasos": [
     "I = I₀·10^(L/10) para el grupo y para una guitarra.",
     "N = I/I' = 3,2×10⁻⁵ / 3,2×10⁻⁶ = 10.",

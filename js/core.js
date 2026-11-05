@@ -58,10 +58,11 @@
     // {capitulos:[ids], niveles:[...], intros:[...], quizzes:[...]}
     disponibles: () => (B()
       ? Promise.resolve({ capitulos: Object.keys(B().capitulos), niveles: Object.keys(B().niveles), intros: Object.keys(B().intros), quizzes: Object.keys(B().quizzes) })
-      : util.fetchJSON('/api/contenido')),
+      : util.fetchJSON('api/contenido')),
   };
-  // /api/progreso solo existe con el servidor (http); abriendo index.html (file://) el progreso va a localStorage
-  const hayServidor = location.protocol === 'http:' || location.protocol === 'https:';
+  // /api/progreso solo existe con el servidor local (node server.js). Abriendo index.html (file://) o en GitHub Pages
+  // no hay servidor: el progreso va a localStorage. Se detecta al arrancar (cargarProgreso). Ruta relativa a propósito.
+  let hayServidor = false;
 
   // ---------- ajustes ----------
   PCB.settings = { reducirAnimaciones: false, estiloIntro: 'auto', musica: false, sfx: true };
@@ -72,7 +73,7 @@
   const persist = () => {
     const s = JSON.stringify(prog);
     try { localStorage.setItem('pcb_progreso', s); } catch (e) {}
-    if (hayServidor) fetch('/api/progreso', { method: 'POST', body: s }).catch(() => {});
+    if (hayServidor) fetch('api/progreso', { method: 'POST', body: s }).catch(() => {});
   };
   PCB.store = {
     get: () => prog,
@@ -95,7 +96,9 @@
   };
   async function cargarProgreso() {
     let p = null;
-    if (hayServidor) { try { p = await (await fetch('/api/progreso')).json(); } catch (e) {} }
+    if (location.protocol === 'http:' || location.protocol === 'https:') {
+      try { const r = await fetch('api/progreso'); if (r.ok) { p = await r.json(); hayServidor = true; } } catch (e) {}
+    }
     if (!p) { try { p = JSON.parse(localStorage.getItem('pcb_progreso')); } catch (e) {} }
     if (p && p.version) prog = Object.assign(vacio(), p);
     PCB.settings = Object.assign(PCB.settings, prog.ajustes || {});

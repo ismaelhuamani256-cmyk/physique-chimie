@@ -10,7 +10,9 @@ Sin API, sin claves, sin cuentas: todo el contenido ya está generado dentro de 
 
 *Opcional — con servidor local:* si prefieres guardar el progreso en un archivo (`data/progreso.json`), instala **Node.js** (botón LTS en https://nodejs.org) y abre `iniciar.bat` (Windows) o `iniciar.command` (Mac; la primera vez clic derecho → Abrir). Se abre `http://127.0.0.1:3000`.
 
-*Si cambias algo en `contenido/`, `js/` o `css/`:* ejecuta `node tools/generar-estatico.js` para regenerar `index.html` y `contenido/bundle.js`.
+*En internet (GitHub Pages):* la carpeta `docs/` es lo que se publica (la app y el contenido empaquetado, **sin los PDF del manual**). Una vez activado Pages, queda en https://ismaelhuamani256-cmyk.github.io/physique-chimie/ . En Pages el progreso se guarda en el navegador de cada dispositivo (usa Exportar/Importar para moverlo).
+
+*Si cambias algo en `contenido/`, `js/` o `css/`:* ejecuta `node tools/generar-estatico.js`; regenera `index.html`, `contenido/bundle.js` y la carpeta `docs/`.
 
 ## El ciclo
 

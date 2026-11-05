@@ -47,4 +47,14 @@ ${out.map((s) => `<script src="${s}"></script>`).join('\n')}
 </html>
 `;
 fs.writeFileSync(path.join(ROOT, 'index.html'), html);
+
+// 3) carpeta docs/ = lo único que se publica en GitHub Pages (app + contenido empaquetado; SIN los PDF de cours/ ni data/)
+const copiar = (a, b) => { fs.mkdirSync(path.dirname(b), { recursive: true }); fs.copyFileSync(a, b); };
+const copiarDir = (d) => { const src = path.join(ROOT, d); (function r(x, rel) { fs.readdirSync(x, { withFileTypes: true }).forEach((e) => {
+  const rr = path.join(rel, e.name); if (e.isDirectory()) r(path.join(x, e.name), rr); else copiar(path.join(x, e.name), path.join(ROOT, 'docs', rr)); }); })(src, d); };
+fs.rmSync(path.join(ROOT, 'docs'), { recursive: true, force: true });
+['css', 'js', 'lib'].forEach(copiarDir);
+copiar(path.join(ROOT, 'index.html'), path.join(ROOT, 'docs', 'index.html'));
+copiar(path.join(ROOT, 'contenido', 'bundle.js'), path.join(ROOT, 'docs', 'contenido', 'bundle.js'));
+fs.writeFileSync(path.join(ROOT, 'docs', '.nojekyll'), '');
 console.log(`bundle: ${(fs.statSync(path.join(ROOT, 'contenido', 'bundle.js')).size / 1e6).toFixed(2)} MB · ${out.length} scripts · ${css.length} css`);

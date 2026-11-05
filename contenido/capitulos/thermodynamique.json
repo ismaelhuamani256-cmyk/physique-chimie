@@ -5,7 +5,7 @@
  "mundo": "energie",
  "pdf_ini": 414,
  "pdf_fin": 445,
- "resumen": "La energía interna U de un sistema es la suma de sus energías microscópicas (cinéticas por agitación térmica y potenciales de interacción). El primer principio dice que, para un sistema cerrado y en reposo, ΔU = W + Q: solo cambia al intercambiar trabajo o transferencia térmica con el exterior. Las transferencias térmicas (conducción, convección, rayonamiento) van siempre del medio caliente al frío; se describen con la capacidad térmica (Q = C·ΔT), el flujo y la resistencia térmica, y dos leyes: Stefan-Boltzmann (F = σT⁴, temperatura de la Tierra, albedo y efecto invernadero) y Newton (dT/dt = −γ(T − T_th), enfriamiento exponencial).",
+ "resumen": "La energía interna U de un sistema es la suma de sus energías microscópicas (cinéticas por agitación térmica y potenciales de interacción). El primer principio dice que, para un sistema cerrado y en reposo, ΔU = W + Q: solo cambia al intercambiar trabajo o transferencia térmica con el exterior. Las transferencias térmicas (conducción, convección, rayonnement) van siempre del medio caliente al frío; se describen con la capacidad térmica (Q = C·ΔT), el flujo y la resistencia térmica, y dos leyes: Stefan-Boltzmann (F = σT⁴, temperatura de la Tierra, albedo y efecto invernadero) y Newton (dT/dt = −γ(T − T_th), enfriamiento exponencial).",
  "resumen_fr": "Énergie interne, premier principe ΔU = W + Q, capacité thermique, modes de transfert thermique, flux et résistance thermique, loi de Stefan-Boltzmann (température terrestre moyenne, albédo, effet de serre) et loi thermique de Newton.",
  "nociones_clave": [
   {
@@ -749,7 +749,7 @@
   },
   {
    "id": "f15",
-   "latex": "\\eta = \\dfrac{E_{utile}}{E_{d\\acute{e}pens\\acute{e}e}}",
+   "latex": "\\eta = \\dfrac{E_{\\text{utile}}}{E_{\\text{d\\'epens\\'ee}}}",
    "nombre": "Rendimiento energético",
    "nombre_fr": "Rendement énergétique",
    "variables": [
@@ -759,12 +759,12 @@
      "unidad": ""
     },
     {
-     "simbolo": "E_{utile}",
-     "significado": "energía útil realmente transmitida (p. ej. a la agua)",
+     "simbolo": "E_{\\text{utile}}",
+     "significado": "energía útil realmente transmitida (p. ej. al agua)",
      "unidad": "J"
     },
     {
-     "simbolo": "E_{d\\acute{e}pens\\acute{e}e}",
+     "simbolo": "E_{\\text{d\\'epens\\'ee}}",
      "significado": "energía gastada (p. ej. energía eléctrica consumida)",
      "unidad": "J"
     }
@@ -798,12 +798,12 @@
   },
   {
    "id": "f16",
-   "latex": "F_{absorb\\acute{e}e} = (1-A)\\cdot F'",
+   "latex": "F_{\\text{absorb\\'ee}} = (1-A)\\cdot F'",
    "nombre": "Flujo absorbido y albedo",
    "nombre_fr": "Albédo et flux absorbé",
    "variables": [
     {
-     "simbolo": "F_{absorb\\acute{e}e}",
+     "simbolo": "F_{\\text{absorb\\'ee}}",
      "significado": "flujo solar absorbido por unidad de superficie",
      "unidad": "W·m⁻²"
     },
@@ -898,8 +898,8 @@
  "constantes": [
   {
    "nombre": "c_eau, capacidad térmica másica del agua",
-   "valor": "4,18 (= 4 180)",
-   "unidad": "J·g⁻¹·°C⁻¹ (= J·kg⁻¹·K⁻¹ × 10⁻³ por gramo; 4 180 J·kg⁻¹·K⁻¹)",
+   "valor": "4,18",
+   "unidad": "J·g⁻¹·°C⁻¹ (equivale a 4 180 J·kg⁻¹·K⁻¹)",
    "pagina_pdf": 417
   },
   {
@@ -1138,14 +1138,14 @@
     "R_V = e/(λ·S) con e en m",
     "Φ = Q/Δt = (T_i − T_ext)/R ⇒ Q_V = (T_i − T_ext)·Δt/R_V",
     "ΔU = 0 ⇒ la estufa compensa Q_m + Q_V + Q_S + Q_C = 130 MJ",
-    "130 MJ = 36 kWh ; ×100 días/365… según el corrigé: (130/3,6)×100/68 = 53 kWh·m⁻²·an⁻¹ > 15"
+    "130 MJ = 36 kWh por día ; con 100 días de calefacción y 68 m²: (130/3,6)×100/68 = 53 kWh·m⁻²·an⁻¹ > 15 (no es pasiva)"
    ],
    "pagina_pdf": 430,
    "corrige_pagina_pdf": 430
   },
   {
    "id": "e2",
-   "enunciado": "Exercice résolu 31 — Muffins sortis du four : a las 12 h 00 están a 100 °C; tras 10 min, 80 °C. Se supone que dT/dt es proporcional a (T − T_cuis) (ley de Newtron), cocina a 20 °C. 1. a. Establecer la ecuación diferencial de primer orden (constante −γ, γ > 0). b. Resolverla dando T(t) en función de γ y T_cuis. 2. Determinar γ. 3. ¿Cuánto tiempo hasta que la temperatura de los muffins se divida por 2 respecto a la salida del horno?",
+   "enunciado": "Exercice résolu 31 — Muffins sortis du four : a las 12 h 00 están a 100 °C; tras 10 min, 80 °C. Se supone que dT/dt es proporcional a (T − T_cuis) (ley de Newton), cocina a 20 °C. 1. a. Establecer la ecuación diferencial de primer orden (constante −γ, γ > 0). b. Resolverla dando T(t) en función de γ y T_cuis. 2. Determinar γ. 3. ¿Cuánto tiempo hasta que la temperatura de los muffins se divida por 2 respecto a la salida del horno?",
    "datos": {
     "T0": "100 °C",
     "T(10 min)": "80 °C",
@@ -1168,7 +1168,7 @@
   },
   {
    "id": "e3",
-   "enunciado": "Exercice 28 — Refroidissement d'une tasse de café : café inicialmente a 75 °C en una pieza a 25 °C; tras 5 min está a 50 °C. dT/dt = γ·(T(t) − T_amb) con γ constante. 1. Estudio energético del sistema (café). 2. Valor de T_amb. 3. Resolver la ecuación diferencial dando T(t) en función de γ. 4. a. Valor numérico de γ. b. Expresión general de T(t).",
+   "enunciado": "Exercice 28 — Refroidissement d'une tasse de café : café inicialmente a 75 °C en una pieza a 25 °C; tras 5 min está a 50 °C. dT/dt = γ·(T(t) − T_amb) con γ constante (el enunciado dice γ < 0; el corrigé usa la convención equivalente −γ con γ > 0). 1. Estudio energético del sistema (café). 2. Valor de T_amb. 3. Resolver la ecuación diferencial dando T(t) en función de γ. 4. a. Valor numérico de γ. b. Expresión general de T(t).",
    "datos": {
     "T0": "75 °C",
     "T_amb": "25 °C",
@@ -1360,7 +1360,7 @@
   },
   {
    "id": "e11",
-   "enunciado": "Exercice 30 — Dans un sauna : cloisons de doble vidrio; resistencia eléctrica de P = 7,5 kW durante 1,0 min cada 5 min; T exterior 18 °C, T interior 80 °C. 1. Energía térmica recibida durante la minuto de calentamiento. 2. Resistencia térmica del sauna.",
+   "enunciado": "Exercice 30 — Dans un sauna : cloisons de madera forradas con un buen aislante térmico; resistencia eléctrica de P = 7,5 kW durante 1,0 min cada 5 min; T exterior 18 °C, T interior 80 °C. 1. Energía térmica recibida durante el minuto de calentamiento. 2. Resistencia térmica del sauna.",
    "datos": {
     "P": "7,5 kW",
     "t_chauffe": "1,0 min",
@@ -1384,7 +1384,7 @@
   },
   {
    "id": "e12",
-   "enunciado": "Exercice 33 — Réfrigérateur : a) ¿Qué transferencias térmicas hay? b) ¿Dónde es más acertado poner el tubo metálico? La temperatura interior es de 4 °C con exterior a 20 °C; resistencia térmica 0,89 K·W⁻¹. a. ¿En qué sentido va la transferencia? b. Flujo térmico intercambiado entre interior y exterior. c. Energía disipada en kWh en un año.",
+   "enunciado": "Exercice 33 — Réfrigérateur : el interior de una nevera se enfría con un tubo metálico por el que circula un fluido frío. 1. a. ¿Qué transferencias térmicas intervienen? b. ¿Dónde es más acertado colocar el tubo? 2. Temperatura interior 4 °C con exterior a 20 °C; resistencia térmica 0,89 K·W⁻¹. a. ¿En qué sentido va la transferencia? b. Flujo térmico intercambiado entre interior y exterior. c. Energía disipada en kWh durante un año.",
    "datos": {
     "T_int": "4 °C",
     "T_ext": "20 °C",

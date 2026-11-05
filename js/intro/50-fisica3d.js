@@ -55,7 +55,7 @@
         giro -= (v * dt) / 0.3; ruedas.forEach((r) => { r.rotation.z = giro; });
         const fr = !!a.frenando; fren.visible = fr;
         cab += ((fr ? -0.07 : 0) - cab) * Math.min(1, dt * 8); // el morro "se hunde" al frenar
-        pitch.rotation.z = cab + Math.sin(S.t * 22) * 0.004 * Math.min(1, v);
+        pitch.rotation.z = cab + Math.sin(S.i * 22) * 0.004 * Math.min(1, v);
         sp0 = v;
       },
     };
@@ -82,9 +82,9 @@
         if (Math.abs(vx) > 0.15) cara = vx < 0 ? PI : 0; raiz.rotation.y = aproxAng(raiz.rotation.y, cara, Math.min(1, dt * 8));
         const amp = clamp(v * 0.28, 0, 0.8); fase += dt * (2 + v * 3.2);
         patas.forEach((p, i) => { p.rotation.z = Math.sin(fase + (i === 0 || i === 3 ? 0 : PI)) * amp; });
-        g.position.y = Math.abs(Math.sin(fase)) * 0.05 * (amp > 0.05 ? 1 : 0) + (amp < 0.05 ? Math.sin(S.t * 2.4) * 0.012 : 0);
-        cola.rotation.z = 0.5 + Math.sin(S.t * (a.hablando ? 16 : 7)) * (0.3 + amp * 0.2);
-        cabeza.rotation.z = Math.sin(S.t * 1.5) * 0.06;
+        g.position.y = Math.abs(Math.sin(fase)) * 0.05 * (amp > 0.05 ? 1 : 0) + (amp < 0.05 ? Math.sin(S.i * 2.4) * 0.012 : 0);
+        cola.rotation.z = 0.5 + Math.sin(S.i * (a.hablando ? 16 : 7)) * (0.3 + amp * 0.2);
+        cabeza.rotation.z = Math.sin(S.i * 1.5) * 0.06;
       },
     };
   };
@@ -110,8 +110,8 @@
         const amp = clamp(v * 0.3, 0, 0.75); fase += dt * (2 + v * 2.6);
         piernas[0].rotation.z = Math.sin(fase) * amp; piernas[1].rotation.z = -Math.sin(fase) * amp;
         brazos[0].rotation.z = -Math.sin(fase) * amp * 0.9; brazos[1].rotation.z = Math.sin(fase) * amp * 0.9;
-        if (a.hablando) brazos[0].rotation.z = -0.9 + Math.sin(S.t * 6) * 0.35; // gesticula al hablar
-        g.position.y = amp > 0.05 ? Math.abs(Math.sin(fase)) * 0.04 : Math.sin(S.t * 1.8) * 0.01;
+        if (a.hablando) brazos[0].rotation.z = -0.9 + Math.sin(S.i * 6) * 0.35; // gesticula al hablar
+        g.position.y = amp > 0.05 ? Math.abs(Math.sin(fase)) * 0.04 : Math.sin(S.i * 1.8) * 0.01;
       },
     };
   };
@@ -144,10 +144,10 @@
         // el cohete apunta hacia donde va (si está parado, hacia arriba)
         ang = aproxAng(ang, sp > 0.4 ? Math.atan2(vy, vx) - PI / 2 : 0, Math.min(1, dt * 5)); g.rotation.z = ang;
         inten += ((sp > 0.3 ? 0.75 + Math.min(sp * 0.12, 0.6) : 0.4) - inten) * Math.min(1, dt * 5);
-        const fl = 1 + Math.sin(S.t * 40) * 0.12 + Math.sin(S.t * 27) * 0.08;
+        const fl = 1 + Math.sin(S.i * 40) * 0.12 + Math.sin(S.i * 27) * 0.08;
         f1.scale.set(0.32 * fl, 1.1 * inten * fl, 0.32 * fl); f1.position.y = -0.55 * inten; f2.scale.set(0.17, 0.7 * inten * fl, 0.17); f2.position.y = -0.35 * inten;
         for (let i = 0; i < NP; i++) {
-          const u = fract(S.t * 1.8 + i / NP), s = hash(i + 7) - 0.5, s2 = hash(i + 31) - 0.5;
+          const u = fract(S.i * 1.8 + i / NP), s = hash(i + 7) - 0.5, s2 = hash(i + 31) - 0.5;
           pos[i * 3] = s * 0.55 * u; pos[i * 3 + 1] = -0.2 - u * 2.4 * inten; pos[i * 3 + 2] = s2 * 0.55 * u;
           const k = (1 - u) * inten; col[i * 3] = k; col[i * 3 + 1] = k * (0.45 + 0.4 * (1 - u)); col[i * 3 + 2] = k * 0.12;
         }
@@ -175,13 +175,13 @@
     if (spec.anillo || /saturn/i.test(String(spec.nombre || spec.id || ''))) {
       const ring = new T.Mesh(new T.RingGeometry(1.7, 2.45, 64), lib.mat('#d9c08a', { opacity: 0.75, transparent: true, side: T.DoubleSide, flat: true })); ring.rotation.x = PI / 2 - 0.35; grp.add(ring);
     }
-    return { obj: grp, radio: 1.45, update(a, S) { p.rotation.y = S.t * 0.18; } };
+    return { obj: grp, radio: 1.45, update(a, S) { p.rotation.y = S.i * 0.18; } };
   };
   B.luna = function (spec) {
     const base = lib.color(spec.color, '#b9bcc6'), osc = base.clone().multiplyScalar(0.55);
     const geo = esferaRuidosa(0.6, 2, (x, y, z, out) => { const n = Math.sin(x * 11 + 1) * Math.sin(y * 9) * Math.sin(z * 10 + 2); out.copy(base); if (n > 0.35) out.lerp(osc, 0.8); });
     const grp = new T.Group(), m = new T.Mesh(geo, new T.MeshPhongMaterial({ vertexColors: true, flatShading: true, shininess: 8 })); grp.add(m);
-    return { obj: grp, radio: 0.7, update(a, S) { m.rotation.y = S.t * 0.1; } };
+    return { obj: grp, radio: 0.7, update(a, S) { m.rotation.y = S.i * 0.1; } };
   };
 
   // ------------------------------------------------------------------------------ péndulo
@@ -196,7 +196,7 @@
       obj: raiz, radio: 2.0, rotPropia: true, base: 1, tint: [mBob],
       update(a, S) {
         // si el guion no gira el péndulo, oscila solo (T ≈ 2.6 s)
-        const th = Math.abs(a.rot || 0) > 0.01 ? -(a.rot || 0) * lib.RAD : 0.5 * Math.sin(S.t * 2.4);
+        const th = Math.abs(a.rot || 0) > 0.01 ? -(a.rot || 0) * lib.RAD : 0.5 * Math.sin(S.i * 2.4);
         brazo.rotation.z = th;
       },
     };
@@ -214,7 +214,7 @@
     return {
       obj: grp, radio: 1.9, tint: [mM],
       update(a, S) {
-        const len = 2.2 * (1 + 0.28 * Math.sin(S.t * 3.2)); // oscila (M.A.S.)
+        const len = 2.2 * (1 + 0.28 * Math.sin(S.i * 3.2)); // oscila (M.A.S.)
         hel.scale.x = len; masa.position.x = -1.3 + len + 0.35;
       },
     };
@@ -236,7 +236,7 @@
         const k = (2 * PI) / 1.5, w = red ? 0 : 2.6;
         for (let i = 0; i < n; i++) {
           const x = pos.getX(i), z = pos.getZ(i), env = 1 - 0.55 * Math.pow(Math.abs(z) / (fondo / 2), 2);
-          const y = 0.2 * env * Math.sin(k * x - w * S.t) + 0.05 * Math.sin(k * 1.9 * z + w * 0.7 * S.t);
+          const y = 0.2 * env * Math.sin(k * x - w * S.i) + 0.05 * Math.sin(k * 1.9 * z + w * 0.7 * S.i);
           pos.setY(i, y); const q = clamp(y / 0.26 * 0.5 + 0.5, 0, 1);
           c.copy(osc).lerp(base, smooth(0, 0.5, q)).lerp(claro, smooth(0.6, 1, q)); col.setXYZ(i, c.r, c.g, c.b);
         }
@@ -267,7 +267,7 @@
     grp.add(core, halo, punta);
     const fot = [0, 1, 2, 3].map(() => { const s = lib.glow(col, 0.55, 0.95); grp.add(s); return s; });
     grp.position.x = -L / 2; const raiz = new T.Group(); raiz.add(grp);
-    return { obj: raiz, radio: 1.7, update(a, S) { fot.forEach((s, i) => { s.position.set(fract(S.t * 0.7 + i / 4) * L, 0, 0.05); }); } };
+    return { obj: raiz, radio: 1.7, update(a, S) { fot.forEach((s, i) => { s.position.set(fract(S.i * 0.7 + i / 4) * L, 0, 0.05); }); } };
   };
 
   // ------------------------------------------------------------------------------ flecha 3D
@@ -310,9 +310,9 @@
     return {
       obj: grp, radio: 2.3,
       update(a, S) {
-        for (let i = 0; i < NE; i++) { enPerimetro(S.t * 0.09 + i / NE, q); pos[i * 3] = q[0]; pos[i * 3 + 1] = q[1]; pos[i * 3 + 2] = 0.08; }
+        for (let i = 0; i < NE; i++) { enPerimetro(S.i * 0.09 + i / NE, q); pos[i * 3] = q[0]; pos[i * 3 + 1] = q[1]; pos[i * 3 + 2] = 0.08; }
         geo.attributes.position.needsUpdate = true;
-        halo.material.opacity = 0.45 + 0.15 * Math.sin(S.t * 5) ; mBul.emissive.setRGB(1, 0.78 + 0.1 * Math.sin(S.t * 5), 0.23);
+        halo.material.opacity = 0.45 + 0.15 * Math.sin(S.i * 5) ; mBul.emissive.setRGB(1, 0.78 + 0.1 * Math.sin(S.i * 5), 0.23);
       },
     };
   };
@@ -358,7 +358,7 @@
     for (let i = 0; i < 9; i++) grp.add(caja(mT, i % 4 === 0 ? 0.22 : 0.12, 0.02, 0.02, 0.24, -0.7 + i * 0.26, 0));
     return {
       obj: grp, radio: 1.6, tint: [mH],
-      update(a, S) { const lv = 0.55 + 0.4 * Math.sin(S.t * 0.7 - 1.2), len = 0.2 + lv * 2.2; col2.scale.y = len; col2.position.y = -1.2 + len / 2; },
+      update(a, S) { const lv = 0.55 + 0.4 * Math.sin(S.i * 0.7 - 1.2), len = 0.2 + lv * 2.2; col2.scale.y = len; col2.position.y = -1.2 + len / 2; },
     };
   };
 

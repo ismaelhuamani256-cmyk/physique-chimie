@@ -963,7 +963,7 @@
         const n = s.nu[i]; if (!n.dec) vivos++;
         if (n.vis < 0.02) continue;
         const [x, y] = cen(n.slot);
-        if (n.fl > 0) brillo(ctx, x, y, rn * 5, n.dec ? '#fff2a8' : '#ffffff', n.fl * 0.85);
+        if (n.fl > 0) brillo(ctx, x, y, rn * 3.4, n.dec ? '#fff2a8' : '#ffffff', n.fl * 0.7);
         if (n.dec) bola(ctx, x, y, rn * 0.62, '#5b7db3', n.vis); else { brillo(ctx, x, y, rn * 2.2, COL_PADRE, 0.22 * n.vis); bola(ctx, x, y, rn, COL_PADRE, n.vis); }
       }
       // partículas emitidas (α/β didácticas): salen del núcleo y se desvanecen

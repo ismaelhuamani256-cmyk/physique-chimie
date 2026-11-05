@@ -613,7 +613,7 @@
     return {
       obj: grp, radio: rmax + 0.3, base: 1, mol: { atomos, enlaces, spin, K, m },
       update(a, S, dt) {
-        spin.rotation.y = S.t * 0.55 + fase; spin.rotation.x = 0.35 * Math.sin(S.t * 0.4 + fase);
+        spin.rotation.y = S.i * 0.55 + fase; spin.rotation.x = 0.35 * Math.sin(S.i * 0.4 + fase);
         // si el guion cambia el color del actor, las bolas viran hacia ese color
         const k = a.color && a.color !== primeraColor && !m.generica ? 0.6 : 0;
         if (k || atomos[0].tintado) for (const at of atomos) { at.tintado = !!k; at.mat.color.copy(at.c0); if (k) at.mat.color.lerp(lib.color(a.color), k); }
@@ -652,8 +652,8 @@
     return {
       obj: grp, radio: 0.95 + 0.7 * (capas.length - 1) + 0.3, tint: null,
       update(a, S) {
-        for (const q of elec) { const th = q.ph + S.t * q.w; q.e.position.set(Math.cos(th) * q.R, Math.sin(th) * q.R, 0); }
-        grp.rotation.y = 0.4 * Math.sin(S.t * 0.3);
+        for (const q of elec) { const th = q.ph + S.i * q.w; q.e.position.set(Math.cos(th) * q.R, Math.sin(th) * q.R, 0); }
+        grp.rotation.y = 0.4 * Math.sin(S.i * 0.3);
       },
     };
   };
@@ -675,7 +675,7 @@
     const bd = lib.textSprite(txt, { color: '#fff', bg: carga > 0 ? '#e5384f' : '#2f6bff', circle: true, h: 0.72, px: 56 });
     bd.position.set(r * 0.85, r * 0.85, 0.4); grp.add(bd);
     const mol = { atomos: [{ el, r: r, lp: new T.Vector3(), mesh: null }], enlaces: [], spin: grp };
-    return { obj: grp, radio: r * 1.5, tint: [mt], mol, update(a, S) { grp.position.y = Math.sin(S.t * 1.3 + r) * 0.05; bd.scale.setScalar(1); } };
+    return { obj: grp, radio: r * 1.5, tint: [mt], mol, update(a, S) { grp.position.y = Math.sin(S.i * 1.3 + r) * 0.05; } };
   };
 
   // ---------- electrón: bolita brillante con estela ----------
@@ -684,7 +684,7 @@
     grp.add(lib.mesh(G.sphere(), mt, 0, 0, 0, 0.2));
     grp.add(lib.glow(col, 1.3, 0.9));
     const lab = lib.textSprite('e−', { color: '#bff4ff', h: 0.34, px: 60 }); lab.position.set(0.0, 0.42, 0.2); grp.add(lab);
-    return { obj: grp, radio: 0.45, tint: [mt], update(a, S) { grp.position.set(Math.sin(S.t * 9) * 0.035, Math.cos(S.t * 11) * 0.035, 0); } };
+    return { obj: grp, radio: 0.45, tint: [mt], update(a, S) { grp.position.set(Math.sin(S.i * 9) * 0.035, Math.cos(S.i * 11) * 0.035, 0); } };
   };
 
   // ---------- recipientes de vidrio con líquido y burbujas ----------
@@ -734,8 +734,8 @@
         const n = Math.max(2, Math.round(NB * (0.15 + 0.85 * inten)));
         const rr = Rl * 0.7, h = lvl - (y0 + 0.2);
         for (let i = 0; i < NB; i++) {
-          const ph = fract(S.t * (0.18 + 0.2 * hash(i + 3) + 0.25 * inten) + hash(i)), ang = hash(i + 9) * 6.28 + S.t * 0.5;
-          pos[i * 3] = Math.cos(ang) * rr * hash(i + 20) + Math.sin(S.t * 3 + i) * 0.03;
+          const ph = fract(S.i * (0.18 + 0.2 * hash(i + 3) + 0.25 * inten) + hash(i)), ang = hash(i + 9) * 6.28 + S.i * 0.5;
+          pos[i * 3] = Math.cos(ang) * rr * hash(i + 20) + Math.sin(S.i * 3 + i) * 0.03;
           pos[i * 3 + 1] = i < n ? y0 + 0.2 + ph * h : -999;
           pos[i * 3 + 2] = Math.sin(ang) * rr * hash(i + 20);
         }

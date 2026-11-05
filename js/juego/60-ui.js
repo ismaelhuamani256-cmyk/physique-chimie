@@ -27,10 +27,11 @@
       izq: ['ArrowLeft', 'a', 'A'], der: ['ArrowRight', 'd', 'D'], salto: [' ', 'ArrowUp', 'w', 'W', 'z', 'Z'], acc: ['ArrowDown', 'e', 'E', 's', 'S'], pausa: ['Escape', 'p', 'P'],
     };
     const teclas = {};
-    let gpPrev = { salto: false, pausa: false };
+    let gpPrev = { pausa: false };
+    const gp = { izq: false, der: false, salto: false };
     const recalcular = () => {
-      inp.dir = (inp.der || inp.t.der ? 1 : 0) - (inp.izq || inp.t.izq ? 1 : 0);
-      inp.salto = teclas.salto || inp.t.salto || inp.gp_salto;
+      inp.dir = (inp.der || inp.t.der || gp.der ? 1 : 0) - (inp.izq || inp.t.izq || gp.izq ? 1 : 0);
+      inp.salto = !!(teclas.salto || inp.t.salto || gp.salto);
       inp.accion = teclas.acc || inp.t.acc;
     };
     const kd = (e) => {
@@ -63,18 +64,14 @@
     /** Gamepad opcional: se consulta una vez por fotograma. */
     inp.sondear = function () {
       const pads = navigator.getGamepads ? navigator.getGamepads() : [];
-      const gp = pads && pads[0];
-      if (!gp) { if (inp.gp_salto) { inp.gp_salto = false; recalcular(); } return; }
-      const ax = gp.axes[0] || 0, b = (i) => gp.buttons[i] && gp.buttons[i].pressed;
-      const izq = ax < -0.4 || b(14), der = ax > 0.4 || b(15), salto = b(0) || b(2) || b(12), pausa = b(9);
-      inp.t.izq = inp.t.izq && !inp.gp_izq ? true : inp.t.izq;
-      if (izq !== !!inp.gp_izq || der !== !!inp.gp_der) { inp.gp_izq = izq; inp.gp_der = der; }
-      if (salto && !gpPrev.salto) inp.saltoEdge = true;
+      const pad = pads && pads[0];
+      if (!pad) { if (gp.izq || gp.der || gp.salto) { gp.izq = gp.der = gp.salto = false; recalcular(); } return; }
+      const ax = pad.axes[0] || 0, b = (i) => pad.buttons[i] && pad.buttons[i].pressed;
+      const n = { izq: ax < -0.4 || b(14), der: ax > 0.4 || b(15), salto: b(0) || b(2) || b(12) }, pausa = b(9);
+      if (n.salto && !gp.salto) inp.saltoEdge = true;
       if (pausa && !gpPrev.pausa) onPausa();
-      gpPrev = { salto, pausa };
-      inp.gp_salto = salto;
-      inp.dir = ((inp.der || inp.t.der || der) ? 1 : 0) - ((inp.izq || inp.t.izq || izq) ? 1 : 0);
-      inp.salto = teclas.salto || inp.t.salto || salto;
+      gpPrev = { pausa };
+      Object.assign(gp, n); recalcular();
     };
     inp.destroy = () => { window.removeEventListener('keydown', kd); window.removeEventListener('keyup', ku); window.removeEventListener('blur', blur); window.removeEventListener('pointerdown', gesto); };
     return inp;

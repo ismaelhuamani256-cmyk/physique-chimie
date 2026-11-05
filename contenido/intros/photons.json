@@ -1,0 +1,293 @@
+{
+ "titulo": "Un fotón, un electrón: el zinc que se resiste",
+ "estilo": "fisica3d",
+ "duracion_seg": 28,
+ "actores": [
+  {
+   "id": "prof",
+   "tipo": "humano",
+   "pos": [
+    0.14,
+    0.76
+   ],
+   "color": "#9d7bff",
+   "escala": 1.1
+  },
+  {
+   "id": "perro",
+   "tipo": "perro",
+   "pos": [
+    0.26,
+    0.82
+   ],
+   "color": "#c8895a",
+   "escala": 0.9
+  },
+  {
+   "id": "placa",
+   "tipo": "bloque",
+   "pos": [
+    0.66,
+    0.72
+   ],
+   "color": "#9aa7bd",
+   "escala": 1.3
+  },
+  {
+   "id": "e1",
+   "tipo": "electron",
+   "pos": [
+    0.62,
+    0.6
+   ],
+   "color": "#00d4ff",
+   "escala": 0.6
+  },
+  {
+   "id": "e2",
+   "tipo": "electron",
+   "pos": [
+    0.7,
+    0.6
+   ],
+   "color": "#00d4ff",
+   "escala": 0.6
+  },
+  {
+   "id": "luz_roja",
+   "tipo": "rayo",
+   "pos": [
+    0.18,
+    0.3
+   ],
+   "color": "#ff4d5e",
+   "escala": 0.9
+  },
+  {
+   "id": "luz_uv",
+   "tipo": "rayo",
+   "pos": [
+    0.18,
+    0.3
+   ],
+   "color": "#b36bff",
+   "escala": 1.2
+  },
+  {
+   "id": "etq",
+   "tipo": "texto",
+   "pos": [
+    0.5,
+    0.2
+   ],
+   "color": "#ffffff",
+   "escala": 1,
+   "texto": "Placa de zinc"
+  }
+ ],
+ "pasos": [
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "luz_uv"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "luz_roja"
+  },
+  {
+   "t": 0,
+   "accion": "subtitulo",
+   "texto": "Una profesora, su perro y una placa de zinc: ¿puede la luz arrancar electrones?"
+  },
+  {
+   "t": 1,
+   "accion": "habla",
+   "actor": "prof",
+   "texto": "Primero, luz roja… ¡y muy intensa!"
+  },
+  {
+   "t": 2,
+   "accion": "aparece",
+   "actor": "luz_roja",
+   "dur": 0.5
+  },
+  {
+   "t": 2.5,
+   "accion": "mueve",
+   "actor": "luz_roja",
+   "a": [
+    0.58,
+    0.58
+   ],
+   "dur": 2
+  },
+  {
+   "t": 4.5,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "¿Y los electrones? ¡Ni se mueven!"
+  },
+  {
+   "t": 4.5,
+   "accion": "subtitulo",
+   "texto": "Luz roja: muchos fotones, pero ninguno tiene energía suficiente (ν < ν_s)."
+  },
+  {
+   "t": 5,
+   "accion": "formula",
+   "latex": "E_{\\text{photon}}=h\\nu<h\\nu_s=W"
+  },
+  {
+   "t": 8,
+   "accion": "desaparece",
+   "actor": "luz_roja"
+  },
+  {
+   "t": 8.5,
+   "accion": "habla",
+   "actor": "prof",
+   "texto": "Cambio a ultravioleta: menos fotones, pero cada uno pega más fuerte."
+  },
+  {
+   "t": 9,
+   "accion": "aparece",
+   "actor": "luz_uv",
+   "dur": 0.5
+  },
+  {
+   "t": 9.5,
+   "accion": "mueve",
+   "actor": "luz_uv",
+   "a": [
+    0.6,
+    0.6
+   ],
+   "dur": 1.5
+  },
+  {
+   "t": 10,
+   "accion": "subtitulo",
+   "texto": "Cada fotón entrega toda su energía a un solo electrón: un fotón, un electrón."
+  },
+  {
+   "t": 11,
+   "accion": "particulas",
+   "tipo": "chispas",
+   "pos": [
+    0.62,
+    0.6
+   ]
+  },
+  {
+   "t": 11,
+   "accion": "mueve",
+   "actor": "e1",
+   "a": [
+    0.92,
+    0.2
+   ],
+   "dur": 2.5
+  },
+  {
+   "t": 11.2,
+   "accion": "vector",
+   "actor": "e1",
+   "dx": 0.1,
+   "dy": -0.08,
+   "etiqueta": "E_c"
+  },
+  {
+   "t": 11.5,
+   "accion": "habla",
+   "actor": "e1",
+   "texto": "¡Fuera de aquí!"
+  },
+  {
+   "t": 12.5,
+   "accion": "formula",
+   "latex": "E_c=h\\nu-W=h\\,(\\nu-\\nu_s)"
+  },
+  {
+   "t": 13.5,
+   "accion": "subtitulo",
+   "texto": "Lo que sobra tras pagar el trabajo de extracción W es energía cinética del electrón."
+  },
+  {
+   "t": 14,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "¡Guau! (Más fotones solo sacan más electrones, no más rápidos.)"
+  },
+  {
+   "t": 15.5,
+   "accion": "camara",
+   "zoom": 1.4,
+   "centro": [
+    0.7,
+    0.45
+   ],
+   "dur": 1.5
+  },
+  {
+   "t": 16,
+   "accion": "valor",
+   "id": "Ec",
+   "desde": 0,
+   "hasta": 1.25,
+   "dur": 3,
+   "etiqueta": "E_c del zinc con ν = 10,0×10¹⁴ Hz (×10⁻¹⁹ J)"
+  },
+  {
+   "t": 19,
+   "accion": "camara",
+   "zoom": 1,
+   "centro": [
+    0.5,
+    0.5
+   ],
+   "dur": 1.5
+  },
+  {
+   "t": 19.5,
+   "accion": "subtitulo",
+   "texto": "El modelo ondulatorio no lo explica; el de fotones de Einstein (1905) sí: la luz es onda y partícula."
+  },
+  {
+   "t": 21.5,
+   "accion": "resalta",
+   "actor": "placa"
+  },
+  {
+   "t": 22,
+   "accion": "formula",
+   "latex": "E=h\\nu=h\\,\\dfrac{c}{\\lambda}"
+  },
+  {
+   "t": 24,
+   "accion": "subtitulo",
+   "texto": "Esta idea abrió la física cuántica y las células fotovoltaicas."
+  },
+  {
+   "t": 24.5,
+   "accion": "habla",
+   "actor": "prof",
+   "texto": "¡Dualidad onda-partícula!"
+  },
+  {
+   "t": 25.5,
+   "accion": "particulas",
+   "tipo": "chispas",
+   "pos": [
+    0.4,
+    0.3
+   ]
+  },
+  {
+   "t": 27,
+   "accion": "pausa",
+   "dur": 1
+  }
+ ]
+}

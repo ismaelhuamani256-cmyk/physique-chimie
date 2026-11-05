@@ -1,0 +1,222 @@
+{
+ "capitulo_id": "description-mouvement",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "opcion",
+   "enunciado": "Quelle est la relation entre le vecteur position OM et le vecteur vitesse v⃗ ?",
+   "opciones": [
+    "v⃗ = k·OM avec k constante",
+    "OM = dv⃗/dt",
+    "v⃗ = dOM/dt",
+    "v⃗ = da⃗/dt"
+   ],
+   "correcta": 2,
+   "explicacion": "Le vecteur vitesse est la dérivée du vecteur position par rapport au temps: v⃗ = dOM/dt (Vérifier l'essentiel, question 1, réponse C).",
+   "pagina_pdf": 267
+  },
+  {
+   "id": "q2",
+   "tipo": "opcion",
+   "enunciado": "Expresiones generales de v⃗ y a⃗ en la base de Frenet (Vérifier l'essentiel, nº 5):",
+   "opciones": [
+    "v⃗ = vτ⃗ ; a⃗ = (dv/dt)τ⃗ + (v²/R)n⃗",
+    "v⃗ = vτ⃗ ; a⃗ = (v²/R)n⃗ solamente",
+    "v⃗ = vn⃗ ; a⃗ = (dv/dt)n⃗ + (v²/R)τ⃗",
+    "v⃗ = vτ⃗ ; a⃗ = dv/dt·τ⃗ solamente"
+   ],
+   "correcta": 0,
+   "explicacion": "En Frenet v⃗ = v·τ⃗ y a⃗ = a_τ τ⃗ + a_n n⃗ con a_τ = dv/dt y a_n = v²/R. (a⃗ = (v²/R)n⃗ solo vale en el circular uniforme.)",
+   "pagina_pdf": 271
+  },
+  {
+   "id": "q3",
+   "tipo": "opcion",
+   "enunciado": "Un mouvement circulaire uniforme: ¿qué relación hay entre v⃗ y a⃗?",
+   "opciones": [
+    "son colineales y del mismo sentido",
+    "son ortogonales y a⃗ apunta al centro",
+    "a⃗ es nulo porque la rapidez es constante",
+    "son ortogonales y a⃗ apunta hacia el exterior"
+   ],
+   "correcta": 1,
+   "explicacion": "a_τ = 0 y a⃗ = (v²/R)n⃗ (n⃗ hacia el centro): a⃗ ⟂ v⃗, no nula, de valor v²/R.",
+   "pagina_pdf": 269
+  },
+  {
+   "id": "q4",
+   "tipo": "opcion",
+   "enunciado": "Au sommet de la trajectoire d'un projectile lancé verticalement vers le haut, on a:",
+   "opciones": [
+    "v = 0 et a⃗ = 0⃗",
+    "v = 0 et a⃗ = g⃗ (vertical, vers le bas)",
+    "v maximale et a⃗ = g⃗",
+    "v = 0 et a⃗ vers le haut"
+   ],
+   "correcta": 1,
+   "explicacion": "L'accélération de la pesanteur est constante: au sommet la vitesse est nulle mais a⃗ = g⃗ (a⃗·v⃗ < 0 en montée, > 0 en descente).",
+   "pagina_pdf": 269
+  },
+  {
+   "id": "q5",
+   "tipo": "opcion",
+   "enunciado": "Ejercicio 14: un gráfico v(t) recta decreciente corresponde a un movimiento rectilíneo...",
+   "opciones": [
+    "uniforme",
+    "uniformemente acelerado",
+    "uniformemente ralentizado",
+    "circular uniforme"
+   ],
+   "correcta": 2,
+   "explicacion": "v decrece linealmente: a⃗ constante opuesto a v⃗ ⇒ a⃗·v⃗ < 0, rectilíneo uniformemente ralentizado (F).",
+   "pagina_pdf": 272
+  },
+  {
+   "id": "q6",
+   "tipo": "opcion",
+   "enunciado": "Dans le repère de Frenet, le vecteur n⃗ est:",
+   "opciones": [
+    "tangent à la trajectoire",
+    "orthogonal à τ⃗ et dirigé vers le centre de la courbure",
+    "colinéaire à v⃗",
+    "constant au cours du temps"
+   ],
+   "correcta": 1,
+   "explicacion": "τ⃗ est tangent et dans le sens du mouvement; n⃗ est orthogonal à τ⃗, vers le centre de courbure. La base est locale: dépend du point.",
+   "pagina_pdf": 268
+  },
+  {
+   "id": "q7",
+   "tipo": "opcion",
+   "enunciado": "Si a_τ = dv/dt < 0 dans un mouvement:",
+   "opciones": [
+    "le mouvement est accéléré",
+    "la vitesse est constante",
+    "le mouvement est ralenti",
+    "la trajectoire est rectiligne forcément"
+   ],
+   "correcta": 2,
+   "explicacion": "a_τ est nulle si v est constante, positive si le mouvement est accéléré, négative s'il est ralenti.",
+   "pagina_pdf": 268
+  },
+  {
+   "id": "q8",
+   "tipo": "numerico",
+   "enunciado": "Exercice 28 (disque de pierre): D = 40 cm, v_M = 5 m·s⁻¹ constante (t = 10 s). Calculer la valeur de l'accélération a_M (en m·s⁻²).",
+   "valor": 125,
+   "unidad": "m·s⁻²",
+   "tolerancia_rel": 0.05,
+   "cifras_sig": 2,
+   "pasos": [
+    "Convertir R = D/2 = 0,20 m",
+    "a_τ = dv/dt = 0 à t = 10 s",
+    "a = v²/R = 5²/0,20 = 125 m·s⁻² ≈ 1,2×10² m·s⁻²"
+   ],
+   "pagina_pdf": 276
+  },
+  {
+   "id": "q9",
+   "tipo": "numerico",
+   "enunciado": "Exercice 30 (vol spatiaux): a = 49,0 m·s⁻², v₀ = 0, d = 2,9×10¹² m (Terre–Uranus). Temps nécessaire t = √(2d/k), en secondes.",
+   "valor": 344000.0,
+   "unidad": "s",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "d = ½·k·t² avec k = a = 49,0 m·s⁻²",
+    "t = √(2×2,9×10¹²/49,0)",
+    "t ≈ 3,44×10⁵ s (3 j 23 h 30 min)"
+   ],
+   "pagina_pdf": 277
+  },
+  {
+   "id": "q10",
+   "tipo": "numerico",
+   "enunciado": "Ejercicio 33: v = 4,8 m·s⁻¹ y a = 24 m·s⁻² (movimiento circular uniforme). Radio R de la trayectoria, en metros.",
+   "valor": 0.96,
+   "unidad": "m",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "En circular uniforme a = v²/R",
+    "R = v²/a = 4,8²/24",
+    "R = 0,96 m = 96 cm"
+   ],
+   "pagina_pdf": 617
+  },
+  {
+   "id": "q11",
+   "tipo": "numerico",
+   "enunciado": "Ejercicio 11: a t = 1,0 s, v⃗ = (3,39 ; −3,93) m·s⁻¹. Calcular la norma de la velocidad.",
+   "valor": 5.19,
+   "unidad": "m·s⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "v = √(v_x² + v_y²)",
+    "v = √(3,39² + 3,93²)",
+    "v = 5,19 m·s⁻¹"
+   ],
+   "pagina_pdf": 617
+  },
+  {
+   "id": "q12",
+   "tipo": "numerico",
+   "enunciado": "Ejercicio 20 (manège de 16,0 m de diámetro, una vuelta en 2,40 s): aceleración de un punto de la periferia, a = v²/R con v = (perímetro)/T, en m·s⁻².",
+   "valor": 54.8,
+   "unidad": "m·s⁻²",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 3,
+   "pasos": [
+    "R = 8,00 m ; v = 2πR/T = π×16,0/2,40 = 20,9 m·s⁻¹",
+    "a = v²/R = 20,94²/8,00",
+    "a ≈ 54,8 m·s⁻² (calculado con las fórmulas del cours)"
+   ],
+   "pagina_pdf": 274
+  },
+  {
+   "id": "q13",
+   "tipo": "numerico",
+   "enunciado": "Ejercicio 32 (Ariane 5): v pasa de 0 a 500,0 m·s⁻¹ en 1,33 min a aceleración constante. Valor de la aceleración, en m·s⁻² (¡convierte 1,33 min a segundos!).",
+   "valor": 6.27,
+   "unidad": "m·s⁻²",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "Δt = 1,33 min = 1,33×60 = 79,8 s (no 1 min 33 s)",
+    "a = Δv/Δt = 500,0/79,8",
+    "a ≈ 6,27 m·s⁻²"
+   ],
+   "pagina_pdf": 278
+  },
+  {
+   "id": "q14",
+   "tipo": "numerico",
+   "enunciado": "Ejercicio 31 (roller): v₀ = 2,2 m·s⁻¹, a = −4,9 m·s⁻². ¿En cuántos segundos se anula la velocidad? (v = 2,2 − 4,9·t).",
+   "valor": 0.45,
+   "unidad": "s",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "v(t) = 2,2 − k·t con k = 4,9 m·s⁻²",
+    "v = 0 ⇒ t = 2,2/4,9",
+    "t = 0,45 s"
+   ],
+   "pagina_pdf": 617
+  },
+  {
+   "id": "q15",
+   "tipo": "opcion",
+   "enunciado": "Ejercicio 28 – En el gráfico v(t) del disco, la componente a_τ (pendiente de la tangente) es...",
+   "opciones": [
+    "nula al principio y grande al final",
+    "grande al principio y se anula hacia t ≈ 5 s",
+    "constante e igual a 5 m·s⁻²",
+    "negativa todo el tiempo"
+   ],
+   "correcta": 1,
+   "explicacion": "La pendiente es grande al inicio (v crece deprisa) y se anula hacia 5 s cuando v se estabiliza: circular acelerado y luego uniforme.",
+   "pagina_pdf": 276
+  }
+ ]
+}

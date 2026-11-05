@@ -52,6 +52,8 @@
 
   const TAU = Math.PI * 2;
   const G0 = 9.81; // m·s⁻²
+  // Unidades en LaTeX (¡no usar «·» dentro de \text{}: KaTeX falla!)
+  const U_MS = '\\text{m}\\cdot\\text{s}^{-1}', U_MS2 = '\\text{m}\\cdot\\text{s}^{-2}';
 
   // ---------- paleta ----------
   const C = {
@@ -248,18 +250,18 @@
       const step = pasoNice(Math.max(xmax - Math.min(0, xmin), 1), 6);
       const lo = Math.floor(Math.min(0, xmin) / step) * step; let hi = Math.ceil(Math.max(0, xmax) / step) * step; if (hi <= lo) hi = lo + step;
       // --- escena (arriba) ---
-      const sceneB = h * 0.5, sx0 = w * 0.09, sx1 = w * 0.92;
+      const sceneB = h * 0.46, sx0 = w * 0.09, sx1 = w * 0.92;
       const X = (m) => sx0 + ((m - lo) / (hi - lo)) * (sx1 - sx0);
-      const rulerY = sceneB - 16 * k, gy = rulerY - 7 * k, cw = clamp(w * 0.085, 40, 90), ch = cw * 0.4;
+      const rulerY = sceneB - 16 * k, gy = rulerY - 7 * k, cw = clamp(w * 0.1, 44, 100), ch = cw * 0.4;
       // suelo / regla
-      ctx.fillStyle = '#16224a'; ctx.fillRect(0, gy, w, h * 0.5 - gy);
+      ctx.fillStyle = '#16224a'; ctx.fillRect(0, gy, w, sceneB - gy + 4);
       ctx.strokeStyle = '#4b5da3'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(sx0, rulerY); ctx.lineTo(sx1, rulerY); ctx.stroke();
       const dp = decPaso(step);
       for (let m = lo; m <= hi + 1e-9; m += step) {
         ctx.beginPath(); ctx.moveTo(X(m), rulerY - 5); ctx.lineTo(X(m), rulerY + 5); ctx.stroke();
         txt(ctx, num(m, dp), X(m), rulerY + 14 * k, { size: 10 * k + 1, align: 'center', color: C.tenue, weight: 400 });
       }
-      txt(ctx, 'x (m)', sx1 + 2, rulerY + 14 * k, { size: 10 * k + 1, color: C.tenue, align: 'right', base: 'middle' });
+      txt(ctx, 'x (m)', 8, rulerY, { size: 10 * k + 1, color: C.tenue, weight: 400 });
       // fotografía estroboscópica: siluetas cada dtG
       const dtG = T <= 2 ? 0.25 : T <= 5 ? 0.5 : 1;
       for (let u = 0; u <= tau + 1e-9; u += dtG) {
@@ -294,7 +296,7 @@
       }
 
       // --- gráficas (abajo) ---
-      const gTop = h * 0.56, gH = h - gTop - 22 * k, estrecho = w < 520 && Math.abs(a) < 0.01;
+      const gTop = h * 0.54, gH = h - gTop - 22 * k, estrecho = w < 520 && Math.abs(a) < 0.01;
       const gW = estrecho ? w - 58 : (w - 100) / 2;
       const R1 = { x: 42, y: gTop, w: gW, h: gH };
       const xr = [Math.min(0, xmin) - 0.05 * Math.abs(xmax - Math.min(0, xmin)), Math.max(0, xmax) + 0.08 * Math.abs(xmax - Math.min(0, xmin))];
@@ -338,9 +340,9 @@
     formula(p) {
       const a = p.a || 0, dx = p.v * p.t + 0.5 * a * p.t * p.t;
       if (Math.abs(a) < 0.005)
-        return `v=\\dfrac{\\Delta x}{\\Delta t}=\\dfrac{${tnum(dx, 1)}\\ \\text{m}}{${tnum(p.t, 1)}\\ \\text{s}}=${tnum(p.v, 1)}\\ \\text{m·s}^{-1}`;
+        return `v=\\dfrac{\\Delta x}{\\Delta t}=\\dfrac{${tnum(dx, 1)}\\ \\text{m}}{${tnum(p.t, 1)}\\ \\text{s}}=${tnum(p.v, 1)}\\ ${U_MS}`;
       const vf = p.v + a * p.t;
-      return `\\bar v=\\dfrac{\\Delta x}{\\Delta t}=\\dfrac{${tnum(dx, 1)}}{${tnum(p.t, 1)}}=${tnum(dx / p.t, 2)}\\ \\text{m·s}^{-1}\\qquad a=\\dfrac{\\Delta v}{\\Delta t}=\\dfrac{${tnum(vf, 1)}-${tnum(p.v, 1)}}{${tnum(p.t, 1)}}=${tnum(a, 1)}\\ \\text{m·s}^{-2}`;
+      return `\\bar v=\\dfrac{\\Delta x}{\\Delta t}=\\dfrac{${tnum(dx, 1)}}{${tnum(p.t, 1)}}=${tnum(dx / p.t, 2)}\\ ${U_MS}\\qquad a=\\dfrac{\\Delta v}{\\Delta t}=\\dfrac{${tnum(vf, 1)}-${tnum(p.v, 1)}}{${tnum(p.t, 1)}}=${tnum(a, 1)}\\ ${U_MS2}`;
     },
     lecturas(p) {
       const a = p.a || 0, dx = p.v * p.t + 0.5 * a * p.t * p.t, out = [
@@ -390,7 +392,7 @@
     draw(s, ctx, w, h, p) {
       fondo(ctx, w, h);
       const k = kPant(w, h), ph = newtonFisica(p);
-      const floorY = h * 0.62, rulerY = floorY + 16 * k;
+      const floorY = h * 0.66, rulerY = floorY + 16 * k;
       // escala de distancias: que el recorrido a los 3 s ocupe ~70 % del ancho
       const dEnd = Math.max(0.5 * ph.a * NW_RUN * NW_RUN, 0.4), x0 = w * 0.11;
       const sc = (w * 0.7) / dEnd;
@@ -425,14 +427,14 @@
       ctx.strokeStyle = '#a9bcff'; ctx.lineWidth = 1.5; ctx.stroke();
       txt(ctx, `m = ${num(p.m, 1)} kg`, bx, cy - 0.5, { align: 'center', size: clamp(bw * 0.17, 10, 14), color: '#fff' });
       // fuerzas (misma escala)
-      const Lmax = Math.min(0.3 * w, 0.27 * h), fm = Math.max(ph.P, p.F, ph.f, 1e-6), kF = Lmax / fm;
+      const Lmax = Math.min(0.3 * w, 0.22 * h), fm = Math.max(ph.P, p.F, ph.f, 1e-6), kF = Lmax / fm;
       const lab = (n, v) => `${n} = ${numA(v, 3)} N`;
       flecha(ctx, bx, cy, bx, cy + ph.P * kF, C.fuerza, { lw: 3.5 * k, label: lab('P', ph.P), lsize: 11 * k + 1 });
       flecha(ctx, bx, cy, bx, cy - ph.N * kF, C.fuerza, { lw: 3.5 * k, label: lab('N', ph.N), lsize: 11 * k + 1 });
       if (p.F > 0.01) flecha(ctx, bx + bw * 0.5, cy, bx + bw * 0.5 + p.F * kF, cy, C.fuerza, { lw: 3.5 * k, label: lab('F', p.F), lsize: 11 * k + 1 });
       if (ph.f > 0.01) flecha(ctx, bx - bw * 0.5, cy + bh * 0.28, bx - bw * 0.5 - ph.f * kF, cy + bh * 0.28, C.fuerza, { lw: 3.5 * k, label: lab('f', ph.f), lsize: 11 * k + 1 });
       // resultante y aceleración (banda superior)
-      const yS = h * 0.1 + 8, yA = yS + h * 0.1 + 6, xS = Math.max(bx - bw / 2, 10);
+      const yS = 14 + 10 * k, yA = yS + 26 * k + 4, xS = Math.max(bx - bw / 2, 10);
       txt(ctx, 'ΣF', xS - 6, yS, { align: 'right', size: 12 * k + 1, color: C.fuerza });
       txt(ctx, 'a', xS - 6, yA, { align: 'right', size: 12 * k + 1, color: C.acel });
       if (ph.sumF > 0.01) {
@@ -450,9 +452,9 @@
       const ph = newtonFisica(p);
       if ((p.mu || 0) > 0.005) {
         if (!ph.mueve) return `F\\le\\mu m g=${tnumA(ph.fmax)}\\ \\text{N}\\;\\Rightarrow\\;\\sum F=0\\;\\Rightarrow\\;a=0`;
-        return `a=\\dfrac{F-\\mu m g}{m}=\\dfrac{${tnum(p.F, 1)}-${tnum(p.mu, 2)}\\times${tnum(p.m, 1)}\\times9{,}81}{${tnum(p.m, 1)}}=${tnumA(ph.a)}\\ \\text{m·s}^{-2}`;
+        return `a=\\dfrac{F-\\mu m g}{m}=\\dfrac{${tnum(p.F, 1)}-${tnum(p.mu, 2)}\\times${tnum(p.m, 1)}\\times9{,}81}{${tnum(p.m, 1)}}=${tnumA(ph.a)}\\ ${U_MS2}`;
       }
-      return `\\sum F=ma\\;\\Rightarrow\\;a=\\dfrac{\\sum F}{m}=\\dfrac{${tnum(p.F, 1)}\\ \\text{N}}{${tnum(p.m, 1)}\\ \\text{kg}}=${tnumA(ph.a)}\\ \\text{m·s}^{-2}`;
+      return `\\sum F=ma\\;\\Rightarrow\\;a=\\dfrac{\\sum F}{m}=\\dfrac{${tnum(p.F, 1)}\\ \\text{N}}{${tnum(p.m, 1)}\\ \\text{kg}}=${tnumA(ph.a)}\\ ${U_MS2}`;
     },
     lecturas(p) {
       const ph = newtonFisica(p), o = [
@@ -499,7 +501,7 @@
       const k = kPant(w, h), f = proyFisica(p), g = p.g;
       const x0 = w * 0.07, gy = h * 0.8;
       // escala (px por metro), suavizada: igual en x e y para respetar el ángulo
-      const objetivo = Math.min((w * 0.9 - x0) / Math.max(f.R, 2), (gy - h * 0.2) / Math.max(f.H, 1));
+      const objetivo = Math.min((w * 0.8 - x0) / Math.max(f.R, 2), (gy - h * 0.2) / Math.max(f.H, 1));
       s.esc = s.esc ? lerp(s.esc, objetivo, 0.12) : objetivo;
       const E = s.esc, X = (m) => x0 + m * E, Y = (m) => gy - m * E;
       // suelo y regla
@@ -549,7 +551,7 @@
       // proyectil y vectores en el punto actual
       const t = s.t, bxm = f.vx * t, bym = Math.max(0, f.vy0 * t - 0.5 * g * t * t), vyn = f.vy0 - g * t;
       const bx = X(bxm), by = Y(bym);
-      const kv = (0.17 * Math.min(w, h * 1.7)) / p.v0, vcol = '#7cc4ff';
+      const kv = (0.13 * Math.min(w, h * 1.7)) / p.v0, vcol = '#7cc4ff';
       flecha(ctx, bx, by, bx + f.vx * kv, by, vcol, { lw: 2.4 * k, head: 8, label: 'vx', lsize: 11 * k + 1, lcolor: vcol });
       flecha(ctx, bx, by, bx, by - vyn * kv, vcol, { lw: 2.4 * k, head: 8, label: 'vy', lsize: 11 * k + 1, lcolor: vcol });
       flecha(ctx, bx, by, bx + f.vx * kv, by - vyn * kv, C.vel, { lw: 3.6 * k, head: 11, label: 'v', lsize: 12 * k + 1 });
@@ -571,6 +573,344 @@
       const f = proyFisica(p);
       return [{ label: 'R (alcance)', valor: `${numA(f.R)} m` }, { label: 'H (altura máx.)', valor: `${numA(f.H)} m` },
         { label: 'T (vuelo)', valor: `${num(f.T, 2)} s` }, { label: 'vx', valor: `${num(f.vx, 1)} m·s⁻¹` }, { label: 'vy0', valor: `${num(f.vy0, 1)} m·s⁻¹` }];
+    },
+  });
+
+  // =====================================================================================
+  // 4 · CARGA EN CAMPO ELÉCTRICO UNIFORME — F = q·E
+  //   Condensador plano: placa superior (+) e inferior (−), campo E uniforme dirigido hacia abajo
+  //   (sin efectos de borde; fuera de las placas E = 0). La partícula entra horizontalmente con v0.
+  //   Dentro: a = |q|·E/m perpendicular a v0 → parábola  y = ½·a·(x/v0)².  Fuera: recta (MRU).
+  //   Electrón (q = −e): F hacia la placa +, es decir hacia ARRIBA. Protón: hacia abajo.
+  //   Si |y| supera d/2 la partícula choca con una placa. Geometría fija: L = 10 cm, d = 4 cm.
+  //   El peso se desprecia; el parámetro opcional `peso`=1 muestra la comparación F/P.
+  //   El tránsito real dura ns: se reproduce en cámara lenta (el cronómetro va en ns).
+  // =====================================================================================
+  const Q_E = 1.60e-19, M_E = 9.11e-31, M_P = 1.67e-27, PL_L = 0.10, PL_D = 0.04;
+  function cargaFisica(p) {
+    const sig = (p.signo || -1) < 0 ? -1 : 1, m = sig < 0 ? M_E : M_P, F = Q_E * p.E, a = F / m;
+    const tT = PL_L / p.v0, ayUp = sig < 0 ? a : -a;           // aceleración en y (arriba +)
+    let tImp = Infinity; if (Math.abs(0.5 * ayUp * tT * tT) > PL_D / 2) tImp = Math.sqrt(PL_D / Math.abs(ayUp));
+    const yS = 0.5 * ayUp * tT * tT, vyS = ayUp * tT;
+    return { sig, m, F, a, ayUp, tT, tImp, yS, vyS, choca: tImp < tT, P: m * G0 };
+  }
+  reg('carga-campo', {
+    titulo: 'Carga en un campo eléctrico: F = q·E',
+    params: [
+      { id: 'E', label: 'Campo E', min: 500, max: 30000, step: 500, def: 5000, unit: 'V/m' },
+      { id: 'v0', label: 'Velocidad de entrada v₀', min: 100000, max: 50000000, step: 100000, def: 20000000, unit: 'm/s' },
+      { id: 'signo', label: 'Partícula (−1 electrón · +1 protón)', min: -1, max: 1, step: 2, def: -1, unit: '' },
+    ],
+    create(host, p) { return { t: 0, hold: 0, reduced: host.reduced, estela: [] }; },
+    onParam(s) { s.t = 0; s.hold = 0; s.estela = []; },
+    step(s, dt, p) {
+      const f = cargaFisica(p), pre = 0.25 * PL_L / p.v0, tot = pre + f.tT + 0.45 * PL_L / p.v0;
+      if (s._fin) { s.hold += dt; if (s.hold > 1.5) { s.t = 0; s.hold = 0; s._fin = false; s.estela = []; } return; }
+      s.t += dt * tot / 4;                       // ~4 s de pantalla por pasada
+      if (s.t >= tot) { s.t = tot; s._fin = true; s.hold = 0; }
+    },
+    draw(s, ctx, w, h, p) {
+      fondo(ctx, w, h);
+      const k = kPant(w, h), f = cargaFisica(p), L = PL_L, D = PL_D;
+      const Sx = Math.min((0.5 * w) / L, (0.52 * h) / D), X0 = w * 0.27, cy = h * 0.5;
+      const PX = (xm) => X0 + xm * Sx, PY = (ym) => cy - ym * Sx;
+      const pre = 0.25 * L / p.v0, tIn = s.t - pre;          // tIn<0: aún no entra en las placas
+      // posición de la partícula (m)
+      let xm, ym, vx = p.v0, vy = 0, dentro = false, parada = false;
+      if (tIn < 0) { xm = p.v0 * tIn; ym = 0; }
+      else if (tIn <= Math.min(f.tT, f.tImp)) { xm = p.v0 * tIn; ym = 0.5 * f.ayUp * tIn * tIn; vy = f.ayUp * tIn; dentro = true; }
+      else if (f.choca) { const ti = f.tImp; xm = p.v0 * ti; ym = sgn(f.ayUp) * D / 2; vx = 0; vy = 0; parada = true; dentro = true; }
+      else { const tt = tIn - f.tT; xm = L + p.v0 * tt; ym = f.yS + f.vyS * tt; vy = f.vyS; }
+      // --- placas ---
+      const pw = L * Sx, pxl = PX(0), th = 9 * k, yT = PY(D / 2) - th, yB = PY(-D / 2);
+      const gP = ctx.createLinearGradient(0, yT, 0, yT + th); gP.addColorStop(0, '#ff8aa0'); gP.addColorStop(1, '#c0344f');
+      ctx.fillStyle = gP; rr(ctx, pxl, yT, pw, th, 3); ctx.fill();
+      const gN = ctx.createLinearGradient(0, yB, 0, yB + th); gN.addColorStop(0, '#2a5fd0'); gN.addColorStop(1, '#6aa0ff');
+      ctx.fillStyle = gN; rr(ctx, pxl, yB, pw, th, 3); ctx.fill();
+      const nsig = Math.max(4, Math.floor(pw / (22 * k)));
+      for (let i = 0; i < nsig; i++) {
+        const sx = pxl + ((i + 0.5) * pw) / nsig;
+        txt(ctx, '+', sx, yT - 8 * k, { align: 'center', size: 14 * k, color: '#ff8aa0' });
+        txt(ctx, '−', sx, yB + th + 9 * k, { align: 'center', size: 15 * k, color: '#7fb0ff' });
+      }
+      // líneas de campo uniformes (↓), espaciado constante
+      const nl = Math.max(5, Math.floor(pw / (30 * k)));
+      for (let i = 0; i < nl; i++) {
+        const sx = pxl + ((i + 0.5) * pw) / nl;
+        flecha(ctx, sx, yT + th + 5, sx, yB - 4, 'rgba(255,209,102,.55)', { lw: 1.4, head: 7, dash: [5, 4] });
+      }
+      flecha(ctx, pxl + pw + 16 * k, cy - 22 * k, pxl + pw + 16 * k, cy + 22 * k, C.ambar, { lw: 3 * k, head: 9, label: 'E', lsize: 13 * k });
+      // cañón de partículas
+      const gx = PX(-0.25 * L) - 22 * k;
+      ctx.fillStyle = '#26356b'; rr(ctx, gx - 18 * k, cy - 12 * k, 22 * k, 24 * k, 4); ctx.fill(); ctx.strokeStyle = '#8ea0cf'; ctx.lineWidth = 1.3; ctx.stroke();
+      // estela y estroboscopia
+      s.estela.push([xm, ym]); const maxE = s.reduced ? 60 : 400; if (s.estela.length > maxE) s.estela.shift();
+      ctx.lineWidth = 2.2 * k; ctx.lineCap = 'round';
+      for (let i = 1; i < s.estela.length; i++) {
+        ctx.strokeStyle = `rgba(${f.sig < 0 ? '179,136,255' : '255,122,69'},${(i / s.estela.length) * 0.7})`;
+        ctx.beginPath(); ctx.moveTo(PX(s.estela[i - 1][0]), PY(s.estela[i - 1][1])); ctx.lineTo(PX(s.estela[i][0]), PY(s.estela[i][1])); ctx.stroke();
+      }
+      const dtS = f.tT / 8;
+      for (let t = 0; t <= Math.min(tIn, f.tT, f.tImp) + 1e-18; t += dtS) {
+        ctx.fillStyle = 'rgba(255,209,102,.85)'; ctx.beginPath(); ctx.arc(PX(p.v0 * t), PY(0.5 * f.ayUp * t * t), 2.6 * k + 0.6, 0, TAU); ctx.fill();
+      }
+      // partícula
+      const bx = PX(xm), by = PY(ym), pr = 8 * k + 1, col = f.sig < 0 ? C.violeta : '#ff7a45';
+      const gp = ctx.createRadialGradient(bx - 2, by - 2, 1, bx, by, pr + 2); gp.addColorStop(0, '#ffffff'); gp.addColorStop(1, col);
+      ctx.fillStyle = gp; ctx.beginPath(); ctx.arc(bx, by, pr, 0, TAU); ctx.fill();
+      txt(ctx, f.sig < 0 ? '−' : '+', bx, by + 0.5, { align: 'center', size: 13 * k, color: '#1a1030', weight: 700 });
+      txt(ctx, f.sig < 0 ? 'électron' : 'proton', bx, by + pr + 12 * k, { align: 'center', size: 11 * k, color: col });
+      // vectores: v siempre; F y a solo dentro del campo
+      const kv = (0.16 * w) / p.v0;
+      if (!parada) flecha(ctx, bx, by, bx + vx * kv, by - vy * kv * 1, C.vel, { lw: 3 * k, label: 'v', lsize: 12 * k + 1 });
+      if (dentro) {
+        const LF = 0.17 * h;
+        flecha(ctx, bx, by, bx, by + (f.sig < 0 ? -LF : LF), C.fuerza, { lw: 3.4 * k, label: 'F = qE', lsize: 11 * k + 1 });
+        flecha(ctx, bx + 12 * k, by, bx + 12 * k, by + (f.sig < 0 ? -LF * 1.5 : LF * 1.5), C.acel, { lw: 3.4 * k, label: 'a', lsize: 12 * k + 1 });
+      }
+      if (parada) txt(ctx, 'impacto en la placa', bx, by + (f.sig < 0 ? -28 : 28) * k, { align: 'center', size: 12 * k, color: C.ambar, bg: 'rgba(10,15,32,.75)' });
+      // cotas: L, d
+      ctx.strokeStyle = C.tenue; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(pxl, yB + th + 26 * k); ctx.lineTo(pxl + pw, yB + th + 26 * k); ctx.stroke();
+      txt(ctx, 'L = 10 cm', pxl + pw / 2, yB + th + 38 * k, { align: 'center', size: 11 * k, color: C.tenue, weight: 400 });
+      txt(ctx, 'd = 4 cm', pxl - 8, cy, { align: 'right', size: 11 * k, color: C.tenue, weight: 400 });
+      // HUD
+      const ns = Math.max(0, tIn) * 1e9;
+      txt(ctx, `t = ${num(ns, ns < 10 ? 2 : 1)} ns`, 10, 14, { size: 12 * k, color: C.ambar });
+      txt(ctx, `y = ${num(ym * 1000, 1)} mm`, 10, 14 + 16 * k, { size: 12 * k, color: C.tenue, weight: 400 });
+      if (!f.choca && Math.abs(f.yS) < 0.03 * D) txt(ctx, 'desviación muy pequeña: masa grande → a pequeña', w - 10, 14, { align: 'right', size: 11 * k, color: C.ambar });
+      if (p.peso) txt(ctx, `F / P = ${snum(f.F / f.P, 1)}  →  el peso es despreciable`, w - 10, h - 14, { align: 'right', size: 12 * k, color: C.fuerza });
+    },
+    formula(p) {
+      const f = cargaFisica(p);
+      return `F=|q|E=${tsci(Q_E, 2)}\\times${tsci(p.E, 1)}=${tsci(f.F, 1)}\\ \\text{N}\\;\\Rightarrow\\;a=\\dfrac{F}{m}=\\dfrac{${tsci(f.F, 1)}}{${tsci(f.m, 2)}}=${tsci(f.a, 1)}\\ ${U_MS2}`;
+    },
+    lecturas(p) {
+      const f = cargaFisica(p), o = [
+        { label: 'F = |q|E', valor: `${snum(f.F, 2)} N` }, { label: 'a', valor: `${snum(f.a, 2)} m·s⁻²` },
+        { label: 'tiempo en placas', valor: `${snum(f.tT, 2)} s` }];
+      o.push(f.choca ? { label: 'resultado', valor: 'choca con la placa' } : { label: 'desviación a la salida', valor: `${num(Math.abs(f.yS) * 1000, 2)} mm` });
+      if (p.peso) o.push({ label: 'P = m·g', valor: `${snum(f.P, 2)} N` }, { label: 'F / P', valor: snum(f.F / f.P, 1) });
+      return o;
+    },
+  });
+
+  // =====================================================================================
+  // 5 · GRAVITACIÓN — F = G·M·m / r²  y leyes de Kepler
+  //   Unidades didácticas (indicadas en los sliders): M en 10²⁴ kg (Tierra = 5,97) y r en 10⁶ m
+  //   (órbita geoestacionaria ≈ 42,2). Órbita circular (e = 0) o elíptica de semieje mayor r.
+  //   Posición por la ecuación de Kepler (solución exacta, sin integración): E − e·sinE = 2π·t/T.
+  //   v² = GM(2/r − 1/a) (vis-viva). Circular: v = √(GM/r). 3ª ley: T = 2π√(a³/GM).
+  //   2ª ley: las 12 porciones coloreadas se barren en tiempos iguales (T/12) → áreas iguales.
+  //   El periodo T se reproduce a ritmo fijo de 10 s de pantalla por órbita.
+  // =====================================================================================
+  const G_N = 6.67e-11;
+  function gravFisica(p) {
+    const M = p.M * 1e24, a = p.r * 1e6, m = p.m || 1000, e = clamp(p.e || 0, 0, 0.95), mu = G_N * M;
+    return { M, a, m, e, mu, F: (mu * m) / (a * a), vc: Math.sqrt(mu / a), T: TAU * Math.sqrt((a * a * a) / mu), g: mu / (a * a), b: a * Math.sqrt(1 - e * e) };
+  }
+  function kepler(Mn, e) { let E = Mn + e * Math.sin(Mn); for (let i = 0; i < 10; i++) E -= (E - e * Math.sin(E) - Mn) / (1 - e * Math.cos(E)); return E; }
+  function fmtT(sec) {
+    if (sec < 7200) return `${num(sec / 60, 1)} min`;
+    if (sec < 172800) return `${num(sec / 3600, 1)} h`;
+    return `${num(sec / 86400, 1)} jours`;
+  }
+  reg('gravitacion', {
+    titulo: 'Gravitación: F = G·M·m/r² y órbitas',
+    params: [
+      { id: 'M', label: 'Masa del astro M', min: 1, max: 100, step: 0.1, def: 5.97, unit: '×10²⁴ kg' },
+      { id: 'r', label: 'Radio orbital r', min: 7, max: 100, step: 0.1, def: 42.2, unit: '×10⁶ m' },
+      { id: 'm', label: 'Masa del satélite m (opcional)', min: 100, max: 5000, step: 100, def: 1000, unit: 'kg' },
+      { id: 'e', label: 'Excentricidad e (opcional)', min: 0, max: 0.8, step: 0.05, def: 0, unit: '' },
+    ],
+    create(host, p) {
+      const rng = host.rng || Math.random, est = [];
+      for (let i = 0; i < 70; i++) est.push([rng(), rng(), 0.4 + rng() * 1.2, rng() * TAU]);
+      return { fi: 0, est, reduced: host.reduced };
+    },
+    step(s, dt) { s.fi = (s.fi + dt / 10) % 1; },
+    draw(s, ctx, w, h, p) {
+      fondo(ctx, w, h);
+      const k = kPant(w, h), f = gravFisica(p), e = f.e;
+      // estrellas
+      s.est.forEach((q) => { ctx.fillStyle = `rgba(200,215,255,${0.25 + 0.35 * (s.reduced ? 0.5 : (0.5 + 0.5 * Math.sin(performance.now() / 900 + q[3])))})`; ctx.fillRect(q[0] * w, q[1] * h, q[2], q[2]); });
+      // escala: el elipse (semiejes a, b) centrado en la pantalla; foco desplazado a·e
+      const sc = Math.min((0.4 * w) / f.a, (0.4 * h) / f.b), cx = w / 2, cy = h / 2;
+      const fx = cx + f.a * e * sc, fy = cy;                       // foco = astro central
+      const P = (E) => [fx + f.a * (Math.cos(E) - e) * sc, fy - f.b * Math.sin(E) * sc];
+      // porciones de áreas iguales (2ª ley)
+      const act = Math.floor(s.fi * 12);
+      for (let j = 0; j < 12; j++) {
+        ctx.beginPath(); ctx.moveTo(fx, fy);
+        for (let i = 0; i <= 10; i++) { const q = P(kepler(TAU * (j + i / 10) / 12, e)); ctx.lineTo(q[0], q[1]); }
+        ctx.closePath();
+        ctx.fillStyle = j === act ? 'rgba(46,229,157,0.42)' : j % 2 ? 'rgba(61,165,255,0.09)' : 'rgba(255,209,102,0.08)'; ctx.fill();
+        ctx.strokeStyle = j === act ? 'rgba(46,229,157,0.9)' : 'rgba(142,160,207,0.18)'; ctx.lineWidth = j === act ? 1.6 : 1; ctx.stroke();
+      }
+      // órbita
+      ctx.strokeStyle = 'rgba(160,190,255,0.5)'; ctx.setLineDash([5, 5]); ctx.lineWidth = 1.5; ctx.beginPath();
+      for (let i = 0; i <= 120; i++) { const q = P((TAU * i) / 120); i ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]); }
+      ctx.stroke(); ctx.setLineDash([]);
+      // astro central (radio visual didáctico: crece con ∛M, nunca toca la órbita)
+      const rPer = f.a * (1 - e) * sc, rp = clamp(6.4 * sc * Math.cbrt(p.M / 5.97), 9 * k, Math.max(9 * k, rPer * 0.6));
+      const gl = ctx.createRadialGradient(fx, fy, rp * 0.9, fx, fy, rp * 1.8); gl.addColorStop(0, 'rgba(80,160,255,.35)'); gl.addColorStop(1, 'rgba(80,160,255,0)');
+      ctx.fillStyle = gl; ctx.beginPath(); ctx.arc(fx, fy, rp * 1.8, 0, TAU); ctx.fill();
+      const gpn = ctx.createRadialGradient(fx - rp * 0.35, fy - rp * 0.35, rp * 0.1, fx, fy, rp); gpn.addColorStop(0, '#7fd6ff'); gpn.addColorStop(0.55, '#2a78d8'); gpn.addColorStop(1, '#0f2a6e');
+      ctx.fillStyle = gpn; ctx.beginPath(); ctx.arc(fx, fy, rp, 0, TAU); ctx.fill();
+      ctx.fillStyle = 'rgba(46,229,157,.55)'; ctx.beginPath(); ctx.ellipse(fx - rp * 0.25, fy + rp * 0.05, rp * 0.35, rp * 0.22, 0.5, 0, TAU); ctx.fill();
+      txt(ctx, 'M', fx, fy + rp + 11 * k, { align: 'center', size: 12 * k, color: C.tenue });
+      // satélite
+      const E = kepler(TAU * s.fi, e), q = P(E), sx = q[0], sy = q[1];
+      const r = f.a * (1 - e * Math.cos(E)), v = Math.sqrt(f.mu * (2 / r - 1 / f.a));
+      // fuerza hacia el foco (rojo) ∝ 1/r² y velocidad tangente (azul) ∝ v
+      const ux = (fx - sx), uy = (fy - sy), ul = Math.hypot(ux, uy) || 1, mn = Math.min(w, h);
+      const lF = Math.min(0.2 * mn * (f.a / r) * (f.a / r), Math.max(10, ul - rp - 6));
+      flecha(ctx, sx, sy, sx + (ux / ul) * lF, sy + (uy / ul) * lF, C.fuerza, { lw: 3.4 * k, label: 'F', lsize: 12 * k + 1 });
+      const tx = -f.a * Math.sin(E), ty = f.b * Math.cos(E), tl = Math.hypot(tx, ty), lv = 0.2 * mn * (v / f.vc);
+      flecha(ctx, sx, sy, sx + (tx / tl) * lv, sy - (ty / tl) * lv, C.vel, { lw: 3.4 * k, label: 'v', lsize: 12 * k + 1 });
+      ctx.save(); ctx.translate(sx, sy); ctx.rotate(Math.atan2(ul ? uy : 0, ux));
+      ctx.fillStyle = '#cfd8ff'; ctx.fillRect(-5 * k - 1, -4 * k - 1, 10 * k + 2, 8 * k + 2);
+      ctx.fillStyle = '#ffd166'; ctx.fillRect(-1.5, -11 * k, 3, 22 * k); ctx.restore();
+      // barra de escala y HUD
+      const barM = pasoNice(f.a * 0.5, 3), bpx = barM * sc;
+      ctx.strokeStyle = C.tenue; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(w - 12 - bpx, h - 16); ctx.lineTo(w - 12, h - 16);
+      ctx.moveTo(w - 12 - bpx, h - 20); ctx.lineTo(w - 12 - bpx, h - 12); ctx.moveTo(w - 12, h - 20); ctx.lineTo(w - 12, h - 12); ctx.stroke();
+      txt(ctx, `${num(barM, barM < 1 ? 1 : 0)} ×10⁶ m`, w - 12 - bpx / 2, h - 28, { align: 'center', size: 11 * k, color: C.tenue, weight: 400 });
+      txt(ctx, `T = ${fmtT(f.T)}`, 10, 14, { size: 13 * k, color: C.ambar });
+      txt(ctx, `v = ${num(v / 1000, 2)} km/s`, 10, 14 + 17 * k, { size: 12 * k, color: C.vel });
+      txt(ctx, `r = ${num(r / 1e6, 1)} ×10⁶ m`, 10, 14 + 33 * k, { size: 12 * k, color: C.tenue, weight: 400 });
+      if (e > 0.005) txt(ctx, 'aires iguales en tiempos iguales (T/12)', w / 2, h - 12, { align: 'center', size: 11 * k, color: '#7fe9bd' });
+      else txt(ctx, 'escala didáctica · M en 10²⁴ kg, r en 10⁶ m', 10, h - 12, { size: 10.5 * k, color: C.tenue, weight: 400 });
+    },
+    formula(p) {
+      const f = gravFisica(p);
+      if (f.e > 0.005) return `\\dfrac{T^{2}}{a^{3}}=\\dfrac{4\\pi^{2}}{GM}\\;\\Rightarrow\\;T=2\\pi\\sqrt{\\dfrac{a^{3}}{GM}}=${tsci(f.T, 2)}\\ \\text{s}`;
+      return `F=\\dfrac{G\\,M\\,m}{r^{2}}=\\dfrac{6{,}67\\times10^{-11}\\times${tsci(f.M, 2)}\\times${tsci(f.m, 1)}}{(${tsci(f.a, 2)})^{2}}=${tsci(f.F, 2)}\\ \\text{N}`;
+    },
+    lecturas(p) {
+      const f = gravFisica(p), o = [{ label: 'F', valor: `${snum(f.F, 2)} N` }, { label: 'g(r) = GM/r²', valor: `${num(f.g, 2)} m·s⁻²` },
+        { label: 'v = √(GM/r)', valor: `${num(f.vc / 1000, 2)} km·s⁻¹` }, { label: 'T', valor: `${fmtT(f.T)} (${snum(f.T, 2)} s)` }];
+      return o;
+    },
+  });
+
+
+  // =====================================================================================
+  // 6 · ENERGÍA MECÁNICA — Ec = ½mv², Ep = mgh, Em = Ec + Ep
+  //   Bola en un tobogán parabólico (y = c·x²). Sale de la altura h con velocidad v cuesta abajo.
+  //   Sin rozamiento Em es constante (la rapidez se calcula a partir de la energía: conservación
+  //   exacta). Con rozamiento μ opcional: fuerza tangencial μ·m·g·cosθ (se desprecia el término
+  //   centrífugo de la normal) y la energía disipada Q = ∫f·ds aparece como una 4ª barra.
+  //   Referencia Ep = 0 en el punto más bajo del tobogán.
+  // =====================================================================================
+  const EM_C = 0.2; // curvatura del tobogán: y = c·x²  (x, y en metros)
+  reg('energia-mecanica', {
+    titulo: 'Energía mecánica: Ec + Ep = Em',
+    params: [
+      { id: 'm', label: 'Masa m', min: 0.2, max: 5, step: 0.1, def: 1, unit: 'kg' },
+      { id: 'h', label: 'Altura inicial h', min: 0, max: 10, step: 0.5, def: 5, unit: 'm' },
+      { id: 'v', label: 'Velocidad inicial v', min: 0, max: 15, step: 0.5, def: 0, unit: 'm/s' },
+      { id: 'mu', label: 'Rozamiento μ (opcional)', min: 0, max: 0.3, step: 0.01, def: 0, unit: '' },
+    ],
+    create(host, p) {
+      const s = { reduced: host.reduced }; ponerClicks(s, host);
+      s.reinicia = (pp) => {
+        const q = pp || s.p || {}, h0 = Math.max(q.h || 0, 0), v0 = q.v || 0;
+        s.x = -Math.sqrt(h0 / EM_C); s.vs = v0; s.Q = 0; s.reposo = 0; s._acc = 0;
+        s.E0 = (v0 * v0) / 2 + G0 * h0;                 // energía mecánica específica inicial (J/kg)
+      };
+      s.p = p; s.reinicia(p);
+      return s;
+    },
+    onParam(s, id, v, p) { s.p = p; s.reinicia(p); },
+    dispose(s) { quitarClicks(s); },
+    step(s, dt, p) {
+      s.p = p; const mu = p.mu || 0;
+      if (s.reposo > 0) { s.reposo += dt; if (s.reposo > 2.5) s.reinicia(p); return; }
+      pasos(s, dt, 1 / 600, (hh) => {
+        const sl = 2 * EM_C * s.x, cosT = 1 / Math.sqrt(1 + sl * sl), sinT = sl * cosT;
+        // rozamiento estático: si la pendiente es menor que μ y la bola está parada, se queda
+        if (mu > 0 && Math.abs(s.vs) < 1e-3 && Math.abs(sl) <= mu) { s.vs = 0; return; }
+        // aceleración tangencial: gravedad + rozamiento (opuesto al movimiento)
+        let at = -G0 * sinT;
+        if (mu > 0 && Math.abs(s.vs) > 1e-3) at -= mu * G0 * cosT * sgn(s.vs);
+        s.vs += at * hh; s.x += s.vs * cosT * hh;                 // Euler semi-implícito
+        if (mu > 0) s.Q += mu * G0 * cosT * Math.abs(s.vs) * hh;  // J/kg disipados
+        // conservación: la rapidez sale de la energía disponible (E0 − Q − g·y)
+        const ek = s.E0 - s.Q - G0 * EM_C * s.x * s.x;
+        s.vs = ek > 0 ? sgn(s.vs) * Math.sqrt(2 * ek) : 0;
+      });
+      if (mu > 0 && s.vs === 0 && Math.abs(2 * EM_C * s.x) <= mu) s.reposo = 1e-6;
+    },
+    draw(s, ctx, w, h, p) {
+      fondo(ctx, w, h); s._btns.length = 0;
+      const k = kPant(w, h), m = p.m, mu = p.mu || 0;
+      const Htop = Math.max(p.h + (p.v * p.v) / (2 * G0), 0.6), Xt = Math.sqrt(Htop / EM_C);
+      const panW = clamp(w * 0.38, 150, 340), sceneW = w - panW;
+      const sc = Math.min((0.46 * sceneW) / (Xt * 1.08), (h * 0.66) / (Htop * 1.1));
+      const cx = sceneW * 0.5, base = h * 0.84, X = (xm) => cx + xm * sc, Y = (ym) => base - ym * sc;
+      // línea de referencia Ep = 0
+      ctx.strokeStyle = 'rgba(142,160,207,.45)'; ctx.setLineDash([5, 5]); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(6, base); ctx.lineTo(sceneW - 6, base); ctx.stroke(); ctx.setLineDash([]);
+      txt(ctx, 'Ep = 0', 8, base + 11 * k, { size: 10.5 * k, color: C.tenue, weight: 400 });
+      // tobogán (relleno + borde)
+      const xe = Xt * 1.08, N = 60;
+      ctx.beginPath(); ctx.moveTo(X(-xe), base + 14 * k);
+      for (let i = 0; i <= N; i++) { const x = -xe + (2 * xe * i) / N; ctx.lineTo(X(x), Y(EM_C * x * x)); }
+      ctx.lineTo(X(xe), base + 14 * k); ctx.closePath();
+      const gt = ctx.createLinearGradient(0, base - Htop * sc, 0, base + 14 * k); gt.addColorStop(0, '#2c3d78'); gt.addColorStop(1, '#16224a');
+      ctx.fillStyle = gt; ctx.fill();
+      ctx.strokeStyle = mu > 0 ? '#9aa8e0' : '#6a82d6'; ctx.lineWidth = 3; ctx.beginPath();
+      for (let i = 0; i <= N; i++) { const x = -xe + (2 * xe * i) / N; i ? ctx.lineTo(X(x), Y(EM_C * x * x)) : ctx.moveTo(X(x), Y(EM_C * x * x)); }
+      ctx.stroke();
+      // posición de la bola sobre la superficie (centro desplazado una distancia rb por la normal)
+      const rb = (6 + 3 * Math.cbrt(m)) * k;
+      const centro = (xm) => { const sl = 2 * EM_C * xm, c = 1 / Math.sqrt(1 + sl * sl), sn = sl * c; return [X(xm) - sn * rb, Y(EM_C * xm * xm) - c * rb, c, sn]; };
+      const [bx, by, cosT, sinT] = centro(s.x), bym = EM_C * s.x * s.x;
+      // marca de la posición de salida
+      const q0 = centro(-Math.sqrt(Math.max(p.h, 0) / EM_C));
+      ctx.strokeStyle = 'rgba(255,209,102,.5)'; ctx.lineWidth = 1.2; ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.arc(q0[0], q0[1], rb, 0, TAU); ctx.stroke(); ctx.setLineDash([]);
+      // altura actual (cota vertical)
+      ctx.strokeStyle = 'rgba(0,212,255,.6)'; ctx.lineWidth = 1.4; ctx.setLineDash([3, 3]); ctx.beginPath(); ctx.moveTo(bx, by); ctx.lineTo(bx, base); ctx.stroke(); ctx.setLineDash([]);
+      if (bym * sc > 22) txt(ctx, `h = ${num(bym, 2)} m`, bx + 6, (by + base) / 2, { size: 11 * k, color: C.acento, bg: 'rgba(10,15,32,.7)' });
+      const gb = ctx.createRadialGradient(bx - rb * 0.3, by - rb * 0.3, 1, bx, by, rb); gb.addColorStop(0, '#fff3c4'); gb.addColorStop(1, '#ff9f1c');
+      ctx.fillStyle = gb; ctx.beginPath(); ctx.arc(bx, by, rb, 0, TAU); ctx.fill();
+      // peso (rojo) y velocidad tangente (azul)
+      const vv = s.vs;
+      flecha(ctx, bx, by, bx, by + 0.14 * h * Math.min(1, 0.4 + m / 5), C.fuerza, { lw: 3 * k, head: 9, label: 'P', lsize: 11 * k + 1 });
+      if (Math.abs(vv) > 0.05) {
+        const lv = clamp(Math.abs(vv) * 7 * k, 8, 0.2 * sceneW);
+        flecha(ctx, bx, by, bx + cosT * sgn(vv) * lv, by - sinT * sgn(vv) * lv, C.vel, { lw: 3 * k, head: 9, label: 'v', lsize: 11 * k + 1 });
+      }
+      txt(ctx, `v = ${num(Math.abs(vv), 2)} m/s`, 10, h - 12, { size: 12 * k, color: C.vel });
+      // --- panel de barras de energía ---
+      const px0 = sceneW + 6, ph0 = panW - 12;
+      ctx.fillStyle = 'rgba(16,26,58,.78)'; rr(ctx, px0, 8, ph0, h - 16, 12); ctx.fill(); ctx.strokeStyle = C.borde; ctx.lineWidth = 1; ctx.stroke();
+      const Ec = 0.5 * m * vv * vv, Ep = m * G0 * bym, Q = m * s.Q, Emax = Math.max(m * s.E0, 1e-6);
+      const nb = mu > 0 ? 4 : 3, bwid = Math.min(46 * k, (ph0 - 16) / nb - 10), gap = (ph0 - nb * bwid) / (nb + 1);
+      const bBase = h - 38 * k, bTop = 44 * k, bh = bBase - bTop;
+      const barra = (i, vals, nombre, col) => {
+        const x = px0 + gap + i * (bwid + gap); let acc = 0;
+        ctx.fillStyle = 'rgba(255,255,255,.05)'; rr(ctx, x, bTop, bwid, bh, 4); ctx.fill();
+        vals.forEach(([val, c]) => { const hp = clamp(val / Emax, 0, 1.02) * bh; ctx.fillStyle = c; ctx.fillRect(x, bBase - acc - hp, bwid, hp); acc += hp; });
+        txt(ctx, num(vals.reduce((a, b) => a + b[0], 0), 1) + ' J', x + bwid / 2, bBase - acc - 9 * k, { align: 'center', size: 11 * k, color: C.texto });
+        txt(ctx, nombre, x + bwid / 2, bBase + 13 * k, { align: 'center', size: 12 * k, color: col });
+      };
+      barra(0, [[Ec, C.naranja]], 'Ec', C.naranja);
+      barra(1, [[Ep, C.acento]], 'Ep', C.acento);
+      barra(2, [[Ep, C.acento], [Ec, C.naranja]], 'Em', C.ambar);
+      if (mu > 0) barra(3, [[Q, C.fuerza]], 'Q', C.fuerza);
+      // línea de la energía mecánica inicial
+      ctx.strokeStyle = 'rgba(255,209,102,.6)'; ctx.setLineDash([4, 3]); ctx.beginPath(); ctx.moveTo(px0 + 6, bTop); ctx.lineTo(px0 + ph0 - 6, bTop); ctx.stroke(); ctx.setLineDash([]);
+      txt(ctx, mu > 0 ? 'Em = Ec + Ep disminuye (Q = calor)' : 'Em = Ec + Ep = constante', px0 + ph0 / 2, 24 * k, { align: 'center', size: 11.5 * k, color: C.ambar });
+      boton(s, ctx, 10, 10, 84, 26, '↺ Relanzar', () => s.reinicia(p), false);
+    },
+    formula(p) {
+      const Ec = 0.5 * p.m * p.v * p.v, Ep = p.m * G0 * p.h;
+      return `E_m=E_c+E_p=\\dfrac{1}{2}mv^{2}+mgh=${tnumA(Ec)}+${tnumA(Ep)}=${tnumA(Ec + Ep)}\\ \\text{J}`;
+    },
+    lecturas(p) {
+      const Ec = 0.5 * p.m * p.v * p.v, Ep = p.m * G0 * p.h, vb = Math.sqrt(p.v * p.v + 2 * G0 * p.h);
+      return [{ label: 'Ec', valor: `${numA(Ec)} J` }, { label: 'Ep', valor: `${numA(Ep)} J` }, { label: 'Em', valor: `${numA(Ec + Ep)} J` },
+        { label: 'v en el punto bajo (sin rozamiento)', valor: `${num(vb, 2)} m·s⁻¹` }];
     },
   });
 })();

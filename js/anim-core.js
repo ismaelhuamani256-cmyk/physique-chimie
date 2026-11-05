@@ -35,6 +35,11 @@
     if (!def) { host.textContent = 'Animación no disponible: ' + presetId; return { dispose() {} }; }
     // generico: los sliders salen de params.vars = {nombre:{min,max,step,def,label,unit}}
     if (def.id === 'generico' && opts.params && opts.params.vars) def = Object.assign({}, def, { params: A.genericoParams(opts.params.vars) });
+    // Si el cours trae un valor fuera del rango del slider (p. ej. K=4e-3), se amplía el rango en vez de recortar el dato
+    if (opts.params && def.params) def = Object.assign({}, def, { params: def.params.map((q) => {
+      const v = opts.params[q.id];
+      return typeof v === 'number' && (v < q.min || v > q.max) ? Object.assign({}, q, { min: Math.min(q.min, v), max: Math.max(q.max, v) }) : q;
+    }) });
     const p = valoresIniciales(def, opts.params);
     const formulaEl = el('div', { class: 'anim-formula' });
     const wrap = el('div', { class: 'anim-canvas-wrap' });

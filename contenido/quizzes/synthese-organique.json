@@ -1,0 +1,262 @@
+{
+ "capitulo_id": "synthese-organique",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "opcion",
+   "enunciado": "Lors d'une synthèse, on appelle « rendement » R le rapport…",
+   "opciones": [
+    "n_obtenue / n_attendue × 100",
+    "n_attendue / n_obtenue × 100",
+    "n_obtenue × n_attendue",
+    "x_max / x_f"
+   ],
+   "correcta": 0,
+   "explicacion": "R = n_obtenue / n_attendue × 100 (en %).",
+   "pagina_pdf": 233
+  },
+  {
+   "id": "q2",
+   "tipo": "numerico",
+   "enunciado": "Situation 1 (p. 208) : synthèse de l'éthanoate d'éthyle à partir de 0,10 mol d'acide éthanoïque et de 0,10 mol d'éthanol (mélange équimolaire). On obtient 5,5 g d'ester, M = 88 g·mol⁻¹. Quel est le rendement ?",
+   "valor": 62.5,
+   "unidad": "%",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "n_obtenue = m/M = 5,5/88 = 0,0625 mol",
+    "n_attendue = x_max = 0,10 mol (mélange équimolaire)",
+    "R = 0,0625/0,10 × 100 = 62,5 %"
+   ],
+   "pagina_pdf": 226
+  },
+  {
+   "id": "q3",
+   "tipo": "numerico",
+   "enunciado": "Ex. 22 : on introduit m_A = 1,00 g d'acide benzoïque (M = 122 g·mol⁻¹). Quelle quantité de matière d'acide benzoïque (en mol) a-t-on introduite ?",
+   "valor": 0.0082,
+   "unidad": "mol",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "n = m/M = 1,00/122",
+    "n = 8,2×10⁻³ mol"
+   ],
+   "pagina_pdf": 240
+  },
+  {
+   "id": "q4",
+   "tipo": "numerico",
+   "enunciado": "Ex. 22 : l'avancement maximal est x_max = 8,2×10⁻³ mol et on a obtenu 5,8×10⁻³ mol d'ester. Calculer le rendement de la synthèse (en %).",
+   "valor": 70.7,
+   "unidad": "%",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "R = n_obtenue / n_attendue × 100",
+    "R = 5,8×10⁻³ / 8,2×10⁻³ × 100 ≈ 71 %"
+   ],
+   "pagina_pdf": 240
+  },
+  {
+   "id": "q5",
+   "tipo": "numerico",
+   "enunciado": "Ex. 1 (aspirine) : l'acide éthanoïque du commerce a un titre massique w = 80 %, une densité d = 1,04 et M = 60 g·mol⁻¹ (ρ_eau = 1,00×10³ g·L⁻¹). Calculer sa concentration c en mol·L⁻¹.",
+   "valor": 13.9,
+   "unidad": "mol·L⁻¹",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "m_soluté (1,00 L) = ρ_eau·d·V·w = 1,00×10³ × 1,04 × 1,00 × 0,80 = 832 g (0,83 kg)",
+    "c = m_soluté/(M·V) = 832/(60,0×1,00) ≈ 14 mol·L⁻¹"
+   ],
+   "pagina_pdf": 250
+  },
+  {
+   "id": "q6",
+   "tipo": "numerico",
+   "enunciado": "Ex. 1 (aspirine) : K(T) = (x_f/(0,10 − x_f))² = 7,0×10⁻³. Calculer l'avancement final x_f (en mol).",
+   "valor": 0.00772,
+   "unidad": "mol",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "x_f/(0,10 − x_f) = √K = 0,0837",
+    "x_f = 0,10·√K/(1+√K) = 0,10×0,0837/1,0837",
+    "x_f ≈ 7,7×10⁻³ mol"
+   ],
+   "pagina_pdf": 250
+  },
+  {
+   "id": "q7",
+   "tipo": "numerico",
+   "enunciado": "Ex. 1 (aspirine) : avec x_f = 7,7×10⁻³ mol et x_max = 0,10 mol, calculer le taux d'avancement final τ (en %).",
+   "valor": 7.7,
+   "unidad": "%",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "τ = x_f / x_max",
+    "τ = 7,7×10⁻³ / 0,10 = 7,7×10⁻² ≈ 7,7 %"
+   ],
+   "pagina_pdf": 250
+  },
+  {
+   "id": "q8",
+   "tipo": "numerico",
+   "enunciado": "Ex. 30 : on introduit 28,4 mL d'alcool benzylique (M = 108 g·mol⁻¹, ρ = 1,04 g·mL⁻¹) et 11,4 mL d'acide éthanoïque (M = 60,0 g·mol⁻¹, ρ = 1,05 g·mL⁻¹) ; on obtient 18,9 mL d'éthanoate de benzyle (M = 150 g·mol⁻¹, ρ = 1,06 g·mL⁻¹). Calculer le rendement (en %).",
+   "valor": 67.0,
+   "unidad": "%",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "n(acide) = 1,05×11,4/60 = 0,20 mol (réactif limitant) ; n(alcool) = 1,04×28,4/108 = 0,27 mol",
+    "n(ester) = 1,06×18,9/150 = 0,134 mol",
+    "R = 0,134/0,20 × 100 ≈ 67 %"
+   ],
+   "pagina_pdf": 243
+  },
+  {
+   "id": "q9",
+   "tipo": "numerico",
+   "enunciado": "Ex. 36 : on veut produire 30 000 t d'isoprène C₅H₈ par an avec un rendement de 85 %, à partir de propanone (C₃H₆O). Données : M(C) = 12,0 ; M(H) = 1,0 ; M(O) = 16,0 g·mol⁻¹ ; ρ(propanone) = 790 kg·m⁻³. Quel volume minimal de propanone faut-il (en m³) ?",
+   "valor": 38100.0,
+   "unidad": "m³",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "M(C₅H₈) = 68 g·mol⁻¹ ; n_obtenue = 3,0×10¹⁰/68 = 4,4×10⁸ mol",
+    "n_attendue = n_obtenue/0,85 = 5,2×10⁸ mol = n(propanone)",
+    "m = 5,2×10⁸ × 58 = 3,0×10¹⁰ g = 3,0×10⁷ kg ; V = m/ρ = 3,0×10⁷/790 ≈ 3,8×10⁴ m³"
+   ],
+   "pagina_pdf": 247
+  },
+  {
+   "id": "q10",
+   "tipo": "numerico",
+   "enunciado": "Ex. 35 : on introduit 2,0 mL d'hexanedioate de diéthyle (M = 202 g·mol⁻¹, ρ = 1,0 g·mL⁻¹) ; l'eau est en excès. Quelle est la quantité de matière de diester introduite, égale à l'avancement maximal de l'hydrolyse (en mol) ?",
+   "valor": 0.0099,
+   "unidad": "mol",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "m = ρ·V = 1,0 × 2,0 = 2,0 g",
+    "n = m/M = 2,0/202 = 9,9×10⁻³ mol"
+   ],
+   "pagina_pdf": 246
+  },
+  {
+   "id": "q11",
+   "tipo": "numerico",
+   "enunciado": "Exercice de synthèse 4 (fluorescéine) : 3,30 g de résorcine (110 g·mol⁻¹) et 2,00 g d'anhydride phtalique (148 g·mol⁻¹) donnent, selon 2 résorcine + 1 anhydride → 1 fluorescéine + 2 H₂O, 2,47 g de fluorescéine (332 g·mol⁻¹). Calculer le rendement (en %).",
+   "valor": 55.0,
+   "unidad": "%",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "n(résorcine) = 0,0300 mol ; n(anhydride) = 0,0135 mol ; la résorcine est en excès (2×0,0135 = 0,0270 < 0,0300)",
+    "x_max = 0,0135 mol",
+    "n_obtenue = 2,47/332 = 7,44×10⁻³ mol ; R = 7,44×10⁻³/0,0135 × 100 ≈ 55 %"
+   ],
+   "pagina_pdf": 254
+  },
+  {
+   "id": "q12",
+   "tipo": "opcion",
+   "enunciado": "Pour augmenter la vitesse de formation d'un produit, il convient (Vérifier l'essentiel, Q4)…",
+   "opciones": [
+    "d'augmenter la température du milieu réactionnel",
+    "de distiller l'un des produits de la réaction",
+    "d'éliminer l'eau par un montage Dean-Stark",
+    "de diminuer la concentration des réactifs"
+   ],
+   "correcta": 0,
+   "explicacion": "Facteurs cinétiques : température, concentration des réactifs, état de division, solvant, catalyseur. Distiller un produit agit sur le rendement, pas sur la vitesse.",
+   "pagina_pdf": 233
+  },
+  {
+   "id": "q13",
+   "tipo": "opcion",
+   "enunciado": "La réaction d'un composé avec H₂O qui donne un produit contenant tous les atomes de tous les réactifs, à partir d'une molécule insaturée, est une réaction…",
+   "opciones": [
+    "d'addition",
+    "de substitution",
+    "d'élimination",
+    "de polymérisation"
+   ],
+   "correcta": 0,
+   "explicacion": "Dans une addition, le produit contient tous les atomes de tous les réactifs (ex. alcène + H₂O → alcool).",
+   "pagina_pdf": 234
+  },
+  {
+   "id": "q14",
+   "tipo": "opcion",
+   "enunciado": "Lors d'une réaction d'élimination…",
+   "opciones": [
+    "une insaturation (ou une cyclisation) apparaît",
+    "un atome est remplacé par un autre",
+    "tous les atomes des réactifs se retrouvent dans le produit",
+    "on forme obligatoirement un polymère"
+   ],
+   "correcta": 0,
+   "explicacion": "Le réactif cède des atomes portés par des carbones adjacents et une insaturation ou une cyclisation apparaît.",
+   "pagina_pdf": 234
+  },
+  {
+   "id": "q15",
+   "tipo": "opcion",
+   "enunciado": "L'éthanoate d'éthyle (ester) et l'acide butanoïque ont la même formule brute C₄H₈O₂ mais des groupes caractéristiques différents. Ce sont des isomères…",
+   "opciones": [
+    "de fonction",
+    "de position",
+    "de chaîne",
+    "ce sont la même molécule"
+   ],
+   "correcta": 0,
+   "explicacion": "Groupes caractéristiques différents (ester / acide carboxylique) : isomérie de fonction (fig. 3).",
+   "pagina_pdf": 232
+  },
+  {
+   "id": "q16",
+   "tipo": "opcion",
+   "enunciado": "Un procédé de synthèse est d'autant plus efficace (Doc 3, ex. 34) que son facteur E est proche de…",
+   "opciones": [
+    "0",
+    "1",
+    "100",
+    "l'infini"
+   ],
+   "correcta": 0,
+   "explicacion": "E = (1 − E_A)/E_A : plus E_A est proche de 100 %, plus E est proche de 0.",
+   "pagina_pdf": 245
+  },
+  {
+   "id": "q17",
+   "tipo": "opcion",
+   "enunciado": "Parmi ces principes, lequel relève de la chimie verte (Doc 2, ex. 34) ?",
+   "opciones": [
+    "Produire moins de déchets plutôt qu'investir dans leur retraitement",
+    "Maximiser les besoins énergétiques",
+    "Augmenter les produits dérivés",
+    "Utiliser des substances très toxiques si le rendement est bon"
+   ],
+   "correcta": 0,
+   "explicacion": "Prévention, économie d'atomes, méthodes moins toxiques et besoins énergétiques minimisés.",
+   "pagina_pdf": 245
+  },
+  {
+   "id": "q18",
+   "tipo": "opcion",
+   "enunciado": "Ex. 24 : pourquoi le PLA est-il un polyester ?",
+   "opciones": [
+    "C'est un polymère qui compte n fois la fonction ester",
+    "Il contient la fonction amide",
+    "Il est obtenu par élimination d'eau d'un alcène",
+    "Il contient des halogènes"
+   ],
+   "correcta": 0,
+   "explicacion": "Les fonctions carboxyle et hydroxyle de l'acide lactique forment un ester ; le polymère répète la fonction ester.",
+   "pagina_pdf": 241
+  }
+ ]
+}

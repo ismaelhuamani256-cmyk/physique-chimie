@@ -1,0 +1,439 @@
+{
+ "titulo": "El perro del carrusel: ¿acelera a rapidez constante?",
+ "estilo": "monigotes",
+ "duracion_seg": 23,
+ "actores": [
+  {
+   "id": "humano",
+   "tipo": "humano",
+   "pos": [
+    0.5,
+    0.62
+   ],
+   "color": "#2f6bff",
+   "escala": 0.8
+  },
+  {
+   "id": "perro",
+   "tipo": "perro",
+   "pos": [
+    0.68,
+    0.55
+   ],
+   "color": "#c98a4b",
+   "escala": 0.9
+  },
+  {
+   "id": "centro",
+   "tipo": "texto",
+   "pos": [
+    0.5,
+    0.45
+   ],
+   "texto": "O",
+   "color": "#00d4ff",
+   "escala": 1
+  },
+  {
+   "id": "bola",
+   "tipo": "bola",
+   "pos": [
+    0.5,
+    0.23
+   ],
+   "color": "#ff3da6",
+   "escala": 0.5
+  },
+  {
+   "id": "planeta",
+   "tipo": "planeta",
+   "pos": [
+    0.88,
+    0.18
+   ],
+   "color": "#2f6bff",
+   "escala": 0.7
+  },
+  {
+   "id": "rotulo",
+   "tipo": "texto",
+   "pos": [
+    0.5,
+    0.08
+   ],
+   "texto": "Carrusel de juguete  (R = 0,96 m)",
+   "color": "#ffffff",
+   "escala": 1
+  }
+ ],
+ "pasos": [
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "humano",
+   "dur": 0.8
+  },
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "perro",
+   "dur": 0.8
+  },
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "centro",
+   "dur": 0.5
+  },
+  {
+   "t": 0.2,
+   "accion": "aparece",
+   "actor": "rotulo",
+   "dur": 0.6
+  },
+  {
+   "t": 0.6,
+   "accion": "subtitulo",
+   "texto": "Un perro da vueltas en un carrusel de juguete a rapidez constante: 4,8 m/s."
+  },
+  {
+   "t": 1.0,
+   "accion": "mueve",
+   "actor": "perro",
+   "a": [
+    0.627,
+    0.776
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 1.0,
+   "accion": "vector",
+   "actor": "perro",
+   "dx": 0,
+   "dy": 0.14,
+   "etiqueta": "v"
+  },
+  {
+   "t": 1.0,
+   "accion": "vector",
+   "actor": "perro",
+   "dx": -0.12,
+   "dy": 0,
+   "etiqueta": "a"
+  },
+  {
+   "t": 1.2,
+   "accion": "habla",
+   "actor": "humano",
+   "texto": "Rapidez constante... ¡entonces aceleración cero!"
+  },
+  {
+   "t": 1.4,
+   "accion": "trayectoria",
+   "actor": "perro",
+   "puntos": [
+    [
+     0.68,
+     0.55
+    ],
+    [
+     0.674,
+     0.633
+    ],
+    [
+     0.656,
+     0.71
+    ],
+    [
+     0.627,
+     0.776
+    ],
+    [
+     0.59,
+     0.827
+    ],
+    [
+     0.547,
+     0.859
+    ],
+    [
+     0.5,
+     0.87
+    ],
+    [
+     0.453,
+     0.859
+    ],
+    [
+     0.41,
+     0.827
+    ],
+    [
+     0.373,
+     0.776
+    ],
+    [
+     0.344,
+     0.71
+    ],
+    [
+     0.326,
+     0.633
+    ],
+    [
+     0.32,
+     0.55
+    ],
+    [
+     0.326,
+     0.467
+    ],
+    [
+     0.344,
+     0.39
+    ],
+    [
+     0.373,
+     0.324
+    ],
+    [
+     0.41,
+     0.273
+    ],
+    [
+     0.453,
+     0.241
+    ],
+    [
+     0.5,
+     0.23
+    ],
+    [
+     0.547,
+     0.241
+    ],
+    [
+     0.59,
+     0.273
+    ],
+    [
+     0.627,
+     0.324
+    ],
+    [
+     0.656,
+     0.39
+    ],
+    [
+     0.674,
+     0.467
+    ],
+    [
+     0.68,
+     0.55
+    ]
+   ]
+  },
+  {
+   "t": 2.0,
+   "accion": "mueve",
+   "actor": "perro",
+   "a": [
+    0.5,
+    0.87
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 2.0,
+   "accion": "formula",
+   "latex": "\\vec v=\\dfrac{d\\overrightarrow{OM}}{dt}\\ \\ (\\text{tangente a la trayectoria})"
+  },
+  {
+   "t": 3.0,
+   "accion": "mueve",
+   "actor": "perro",
+   "a": [
+    0.373,
+    0.776
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 3.0,
+   "accion": "subtitulo",
+   "texto": "La velocidad v⃗ siempre es tangente a la trayectoria, pero su dirección no deja de cambiar."
+  },
+  {
+   "t": 3.0,
+   "accion": "vector",
+   "actor": "perro",
+   "dx": -0.14,
+   "dy": 0,
+   "etiqueta": "v"
+  },
+  {
+   "t": 3.0,
+   "accion": "vector",
+   "actor": "perro",
+   "dx": 0,
+   "dy": -0.12,
+   "etiqueta": "a"
+  },
+  {
+   "t": 4.0,
+   "accion": "mueve",
+   "actor": "perro",
+   "a": [
+    0.32,
+    0.55
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 5.0,
+   "accion": "mueve",
+   "actor": "perro",
+   "a": [
+    0.373,
+    0.324
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 5.0,
+   "accion": "vector",
+   "actor": "perro",
+   "dx": 0,
+   "dy": -0.14,
+   "etiqueta": "v"
+  },
+  {
+   "t": 5.0,
+   "accion": "vector",
+   "actor": "perro",
+   "dx": 0.12,
+   "dy": 0,
+   "etiqueta": "a"
+  },
+  {
+   "t": 5.0,
+   "accion": "subtitulo",
+   "texto": "Cambia v⃗, así que a⃗ = dv⃗/dt no es cero: apunta siempre hacia el centro."
+  },
+  {
+   "t": 6.0,
+   "accion": "mueve",
+   "actor": "perro",
+   "a": [
+    0.5,
+    0.23
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 7.0,
+   "accion": "vector",
+   "actor": "perro",
+   "dx": 0.14,
+   "dy": 0,
+   "etiqueta": "v"
+  },
+  {
+   "t": 7.0,
+   "accion": "vector",
+   "actor": "perro",
+   "dx": 0,
+   "dy": 0.12,
+   "etiqueta": "a"
+  },
+  {
+   "t": 7.0,
+   "accion": "resalta",
+   "actor": "perro"
+  },
+  {
+   "t": 7.2,
+   "accion": "aparece",
+   "actor": "bola",
+   "dur": 0.2
+  },
+  {
+   "t": 7.4,
+   "accion": "subtitulo",
+   "texto": "Si suelta la bola, sale por la tangente: ahí apunta v⃗."
+  },
+  {
+   "t": 7.4,
+   "accion": "mueve",
+   "actor": "bola",
+   "a": [
+    0.93,
+    0.23
+   ],
+   "dur": 2.4
+  },
+  {
+   "t": 9.0,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "¡Guau! (acelero hacia el centro)"
+  },
+  {
+   "t": 10.0,
+   "accion": "formula",
+   "latex": "a=\\dfrac{v^{2}}{R}"
+  },
+  {
+   "t": 10.0,
+   "accion": "valor",
+   "id": "a",
+   "desde": 0,
+   "hasta": 24,
+   "dur": 3,
+   "etiqueta": "a = v²/R  (m·s⁻²), con v = 4,8 m/s y R = 0,96 m"
+  },
+  {
+   "t": 10.5,
+   "accion": "subtitulo",
+   "texto": "Movimiento circular uniforme: a = v²/R, ortogonal a v⃗ y dirigida al centro."
+  },
+  {
+   "t": 13.5,
+   "accion": "habla",
+   "actor": "humano",
+   "texto": "Aceleración ≠ solo «ir más rápido»..."
+  },
+  {
+   "t": 14.5,
+   "accion": "aparece",
+   "actor": "planeta",
+   "dur": 0.8
+  },
+  {
+   "t": 15.2,
+   "accion": "habla",
+   "actor": "planeta",
+   "texto": "¡Yo también giro alrededor del Sol y acelero!"
+  },
+  {
+   "t": 16.0,
+   "accion": "vector",
+   "actor": "planeta",
+   "dx": -0.1,
+   "dy": 0.12,
+   "etiqueta": "a"
+  },
+  {
+   "t": 17.0,
+   "accion": "subtitulo",
+   "texto": "Para describir un movimiento: posición, velocidad v⃗ = dOM/dt y aceleración a⃗ = dv⃗/dt."
+  },
+  {
+   "t": 21.0,
+   "accion": "pausa",
+   "dur": 1
+  }
+ ]
+}

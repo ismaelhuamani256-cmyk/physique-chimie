@@ -125,16 +125,30 @@
       return art;
     }
 
-    function pintar(foco) {
+    let pintar = function (foco) {
       const c = PCB.store.cap(capId);
       const visibles = fs.filter((f) => coincide(f) && (st.filtro === 'todas' || (st.filtro === 'dominadas') === c.formulasDominadas.includes(f.id)));
       lista.replaceChildren(...(visibles.length ? visibles.map(tarjeta) : [el('p', { class: 'est-vacio' }, fs.length ? 'Ninguna fórmula coincide con el filtro.' : 'Este capítulo no tiene fórmulas registradas.')]));
       contador.textContent = H.dominadas(capId, cap).length + ' / ' + fs.length + ' dominadas · mostrando ' + visibles.length;
       if (foco) { const n = lista.querySelector('#f-' + CSS.escape(foco) + ' .est-facc button:last-child, #f-' + CSS.escape(foco) + ' .est-facc button'); if (n) n.focus({ preventScroll: true }); }
+    };
+    /** Reduce el tamaño de las fórmulas muy anchas hasta que quepan en su tarjeta (sin barra de desplazamiento) */
+    function ajustar() {
+      lista.querySelectorAll('.est-ftex').forEach((b) => {
+        const kat = b.querySelector('.est-ftex-in'); if (!kat || !b.clientWidth) return;
+        let k = 1; kat.style.setProperty('--k', k);
+        const libre = b.clientWidth - 24;
+        if (kat.scrollWidth > libre) k = Math.max(0.55, libre / kat.scrollWidth) * 0.98;
+        kat.style.setProperty('--k', k.toFixed(3));
+      });
     }
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => ajustar()) : null;
+    if (ro) ro.observe(lista);
+    const pintarYAjustar = pintar;
+    pintar = function (foco) { pintarYAjustar(foco); requestAnimationFrame(ajustar); };
     pintar();
     return { el: el('div', { class: 'est-formulas' },
-      el('div', { class: 'est-ftools' }, buscador, selFiltro, bFlash, selDir, contador), lista), onShow: () => pintar() };
+      el('div', { class: 'est-ftools' }, buscador, selFiltro, bFlash, selDir, contador), lista), onShow: () => pintar(), dispose: () => ro && ro.disconnect() };
   };
 
   // ---------------------------------------------------------------------------

@@ -199,11 +199,8 @@
    "pagina_pdf": 226,
    "animacion": {
     "preset": "masa-molar",
-    "params": {
-     "m": 60.9,
-     "M": 60
-    },
-    "leyenda": "La masa ρ·V = 1,05×58 ≈ 60,9 g de ácido etanoico dividida por M = 60 g·mol⁻¹ da n ≈ 1,0 mol."
+    "params": {},
+    "leyenda": "La masa ρ·V del líquido (p. ej. 1,05×58 ≈ 60,9 g de ácido etanoico) dividida por M = 60 g·mol⁻¹ da n ≈ 1,0 mol: mueve m y M para verlo."
    }
   },
   {
@@ -237,12 +234,8 @@
    "pagina_pdf": 233,
    "animacion": {
     "preset": "avance",
-    "params": {
-     "x": 0.0625,
-     "n1": 0.1,
-     "n2": 0.1
-    },
-    "leyenda": "El avance alcanzado (0,0625 mol) frente al máximo posible (0,10 mol) muestra qué fracción de los reactivos se convirtió: el rendimiento."
+    "params": {},
+    "leyenda": "El avance alcanzado x frente al máximo posible (fijado por el reactivo limitante) muestra qué fracción de los reactivos se convirtió: el rendimiento."
    }
   },
   {
@@ -281,10 +274,8 @@
    "pagina_pdf": 233,
    "animacion": {
     "preset": "quotient-equilibre",
-    "params": {
-     "K": 0.007
-    },
-    "leyenda": "Con K = 7,0×10⁻³ se ve cómo Qr se acerca a K y el sistema evoluciona hasta el equilibrio."
+    "params": {},
+    "leyenda": "Se ve cómo Qr se acerca a K y el sistema evoluciona hasta el equilibrio."
    }
   },
   {
@@ -313,10 +304,8 @@
    "pagina_pdf": 233,
    "animacion": {
     "preset": "quotient-equilibre",
-    "params": {
-     "K": 0.007
-    },
-    "leyenda": "Sea cual sea el punto de partida, Qr acaba igualando K(T) = 7,0×10⁻³: ese es el estado de equilibrio."
+    "params": {},
+    "leyenda": "Sea cual sea el punto de partida (cambia Q), Qr acaba igualando K(T): ese es el estado de equilibrio."
    }
   },
   {
@@ -345,9 +334,7 @@
    "pagina_pdf": 233,
    "animacion": {
     "preset": "quotient-equilibre",
-    "params": {
-     "K": 0.007
-    },
+    "params": {},
     "leyenda": "Si Q es menor que K, las moléculas se transforman hacia los productos hasta que Q alcanza K."
    }
   },
@@ -382,12 +369,8 @@
    "pagina_pdf": 250,
    "animacion": {
     "preset": "avance",
-    "params": {
-     "x": 0.0077,
-     "n1": 0.1,
-     "n2": 0.1
-    },
-    "leyenda": "El avance final (7,7×10⁻³ mol) es solo una pequeña fracción del máximo (0,10 mol): τ ≈ 7,7 %."
+    "params": {},
+    "leyenda": "Compara el avance final x_f con el máximo x_max: en un equilibrio como el de la aspirina (τ ≈ 7,7 %) solo una pequeña fracción se convierte."
    }
   },
   {
@@ -989,19 +972,13 @@
   },
   {
    "preset": "avance",
-   "params": {
-    "x": 0.0625,
-    "n1": 0.1,
-    "n2": 0.1
-   },
+   "params": {},
    "titulo": "Avance y rendimiento",
    "relacion": "R = n_obtenue/n_attendue: qué fracción del avance máximo se alcanza."
   },
   {
    "preset": "quotient-equilibre",
-   "params": {
-    "K": 0.007
-   },
+   "params": {},
    "titulo": "Qr frente a K y exceso de reactivo",
    "relacion": "Qr < K → sentido directo; exceso de reactivo o eliminación de un producto aumenta el rendimiento."
   },

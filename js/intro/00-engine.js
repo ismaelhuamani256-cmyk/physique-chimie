@@ -837,5 +837,6 @@
       ctrl = intro.play(host, ctx.guion || {}, { onFin: ctx.onFin });
     },
     unmount() { if (ctrl) { ctrl.dispose(); ctrl = null; } },
+    get ctrl() { return ctrl; }, // control del reproductor activo (pruebas / depuración)
   };
 })();

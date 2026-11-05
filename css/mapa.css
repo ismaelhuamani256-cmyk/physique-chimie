@@ -63,6 +63,8 @@
 /* ---------- pistas y botón lista ---------- */
 .mapa-ayuda{position:absolute;left:14px;bottom:70px;font-size:12px;color:var(--txt2);line-height:1.5;z-index:4;pointer-events:none;text-shadow:0 1px 3px #000}
 .mapa-ayuda b{color:var(--txt)}
+.mapa-ayuda{animation:mapa-ayuda-fade 1.2s ease 14s forwards}
+@keyframes mapa-ayuda-fade{to{opacity:0}}
 .mapa-btn-lista{position:absolute;top:12px;left:12px;z-index:6}
 
 /* ---------- tooltip de nodo ---------- */

@@ -324,7 +324,8 @@
       const haciaCentro = (M.centro[0] - n.pos.x) * nx + (M.centro[2] - n.pos.z) * nz;
       if (haciaCentro < 0) { nx = -nx; nz = -nz; }
       n.lado = new T.Vector3(nx, 0, nz);
-      n.off = n.fort ? 2.9 : 1.45;
+      n.escala = n.fort ? 1.12 : 1.35;   // las torres se ven más grandes
+      n.off = n.fort ? 3.4 : 2.15;
       n.torrePos = n.pos.clone().addScaledVector(n.lado, n.off);
     });
 
@@ -437,7 +438,7 @@
             }
           }
         } else if (idM === 'mouvement') { // pilón con anillo giratorio
-          const poste = mesh(new T.CylinderGeometry(0.14, 0.2, 2.6, 8), stdM({ color: 0x27325e, roughness: 0.6 })); poste.position.y = 1.3; grupo.add(poste);
+          const poste = mesh(new T.CylinderGeometry(0.14, 0.2, 2.6, 8), stdM({ color: 0x5a6aa8, roughness: 0.5, emissive: 0x16204a, emissiveIntensity: 0.6 })); poste.position.y = 1.3; grupo.add(poste);
           const anillo = mesh(new T.TorusGeometry(0.62, 0.07, 8, 28), emis(i % 2 ? pal.b : pal.a, 0.9)); anillo.position.y = 2.1; anillo.rotation.x = Math.PI / 2.4; grupo.add(anillo);
           const punta = mesh(new T.SphereGeometry(0.2, 10, 8), emis(0xffffff, 0.9)); punta.position.y = 2.75; grupo.add(punta);
           animados.push((t) => { anillo.rotation.z = t * 1.2 + ph; });
@@ -453,8 +454,8 @@
           }
         } else { // ondes: giroscopio de anillos, onda senoidal flotante, prismas
           if (i % 3 === 0) {
-            const pts = []; for (let j = 0; j <= 40; j++) { const x = (j / 40 - 0.5) * 8; pts.push(new T.Vector3(x, Math.sin(x * 1.6) * 0.7, 0)); }
-            const onda = mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts), 60, 0.1, 6), emis(pal.b, 0.9));
+            const pts = []; for (let j = 0; j <= 40; j++) { const x = (j / 40 - 0.5) * 5; pts.push(new T.Vector3(x, Math.sin(x * 2.2) * 0.45, 0)); }
+            const onda = mesh(new T.TubeGeometry(new T.CatmullRomCurve3(pts), 60, 0.08, 6), emis(pal.b, 0.9));
             onda.position.y = 3.4; onda.rotation.y = rnd() * 3; grupo.add(onda);
             animados.push((t) => { onda.position.y = 3.4 + Math.sin(t * 0.9 + ph) * 0.3; });
           } else if (i % 3 === 1) {
@@ -582,7 +583,7 @@
         lava: basM({ map: texLava, color: 0xffffff }),
       };
       // --- plataforma circular sobre el camino ---
-      const rPad = n.fort ? 1.55 : 2.0;
+      const rPad = n.fort ? 1.7 : 2.2;
       const pad = new T.Group(); pad.position.copy(n.pos); scene.add(pad);
       const disco = mesh(new T.CylinderGeometry(rPad, rPad + 0.15, 0.16, 36), m.piedra); disco.position.y = 0.01; pad.add(disco);
       const aro = mesh(new T.TorusGeometry(rPad, 0.045, 6, 48), m.acento); aro.rotation.x = Math.PI / 2; aro.position.y = 0.09; pad.add(aro);
@@ -591,12 +592,12 @@
       // --- torre / castillo (grupo que se levanta al pasar el ratón) ---
       const grupo = n.grupo = new T.Group(); grupo.position.copy(n.torrePos); scene.add(grupo);
       grupo.rotation.y = Math.atan2(-n.lado.x, -n.lado.z); // la "cara" mira al camino
-      const sombra = new T.Mesh(reg(new T.PlaneGeometry(n.fort ? 5.2 : 3.4, n.fort ? 5.2 : 3.4)), basM({ map: texSombra, transparent: true, depthWrite: false }));
+      const sombra = new T.Mesh(reg(new T.PlaneGeometry(n.fort ? 6 : 4.4, n.fort ? 6 : 4.4)), basM({ map: texSombra, transparent: true, depthWrite: false }));
       sombra.rotation.x = -Math.PI / 2; sombra.position.copy(n.torrePos); sombra.position.y += 0.03; scene.add(sombra);
 
       if (n.fort) {
         // === mini castillo sobre piedra, rodeado de un foso de lava ===
-        const lava = mesh(new T.CircleGeometry(2.0, 32), m.lava); lava.rotation.x = -Math.PI / 2; lava.position.copy(n.torrePos); lava.position.y += 0.07; scene.add(lava);
+        const lava = mesh(new T.CircleGeometry(2.3, 32), m.lava); lava.rotation.x = -Math.PI / 2; lava.position.copy(n.torrePos); lava.position.y += 0.07; scene.add(lava);
         const brillo = sprGlow(0xff7a1a, 8, 0.5); brillo.position.copy(n.torrePos); brillo.position.y += 1.2; scene.add(brillo);
         n.brilloLava = brillo;
         // tablones que cruzan la lava hacia la puerta
@@ -656,9 +657,9 @@
       flecha.renderOrder = 12; flecha.visible = false; grupo.add(flecha);
 
       // --- malla invisible para el picking con el ratón ---
-      const rHit = n.fort ? 2.0 : 1.5;
-      const hit = n.hit = new T.Mesh(reg(new T.CylinderGeometry(rHit, rHit, n.altura + 1.8, 10)), basM({ visible: false }));
-      hit.position.y = (n.altura + 1.8) / 2; hit.userData.nodo = n; grupo.add(hit);
+      const rHit = n.fort ? 1.9 : 1.15; // (en espacio local del grupo ya escalado)
+      const hit = n.hit = new T.Mesh(reg(new T.CylinderGeometry(rHit, rHit, n.altura + 0.3, 10)), basM({ visible: false }));
+      hit.position.y = (n.altura + 0.3) / 2; hit.userData.nodo = n; grupo.add(hit);
 
       n.baseY = n.torrePos.y;
       // animación del brillo de lava / glow
@@ -759,8 +760,8 @@
       });
       // brillo bajo los pies
       const halo = sprGlow(0x7ffbe3, 2.2, 0.45); halo.position.y = 0.05; g.add(halo);
-      g.scale.setScalar(0.78); scene.add(g);
-      return { g, piernas, brazos, ojos, atomo, electrones, torso, u: 0, rot: 0, vel: 0, saltoY: 0, escala: 0.78, parpadeo: 0 };
+      g.scale.setScalar(1.15); scene.add(g);
+      return { g, piernas, brazos, ojos, atomo, electrones, torso, u: 0, rot: 0, vel: 0, saltoY: 0, escala: 1.15, parpadeo: 0 };
     })();
 
     /** Anima a Ato: piernas/brazos si camina (vel 0..1), respiración, parpadeo y átomo */
@@ -795,7 +796,7 @@
     // =============================================================================
     // Cámara orbital
     // =============================================================================
-    const VISTA_TODO = { target: new T.Vector3(3, 6, -12), radius: 104, phi: 0.98, theta: 0 };
+    const VISTA_TODO = { target: new T.Vector3(5, 6, -12), radius: 118, phi: 0.98, theta: 0 };
     const goal = { theta: VISTA_TODO.theta, phi: VISTA_TODO.phi, radius: VISTA_TODO.radius, target: VISTA_TODO.target.clone() };
     const cur = { theta: goal.theta - (rm ? 0 : 0.6), phi: goal.phi, logR: Math.log(rm ? goal.radius : goal.radius * 1.5), target: goal.target.clone() };
     const par = { x: 0, y: 0 };      // parallax suavizado
@@ -883,7 +884,7 @@
       const colapsar = forzar != null ? forzar : !panel.classList.contains('colapsado');
       panel.classList.toggle('colapsado', colapsar); btnColapsar.setAttribute('aria-expanded', String(!colapsar));
     }
-    if (host.clientWidth && host.clientWidth < 760) alternarPanel(true);
+    if (host.clientWidth && host.clientWidth < 1400) alternarPanel(true);
 
     // ---- selector de mundos ----
     const botonesMundo = {};
@@ -943,7 +944,7 @@
     function posicionarTooltip() {
       if (!tooltipNodo) return;
       const n = tooltipNodo, w = host.clientWidth, hh = host.clientHeight;
-      _v.copy(n.torrePos); _v.y = n.baseY + n.lift * 0.55 + n.altura + 1.9; _v.project(camera);
+      _v.copy(n.torrePos); _v.y = n.baseY + n.lift * 0.55 + (n.altura + 1.9) * n.escala; _v.project(camera);
       const sx = (_v.x * 0.5 + 0.5) * w, sy = (-_v.y * 0.5 + 0.5) * hh;
       const tw = tooltip.offsetWidth || 280, th = tooltip.offsetHeight || 200;
       const x = clamp(sx, tw / 2 + 8, w - tw / 2 - 8);
@@ -1153,8 +1154,8 @@
       } else if (v.fase === 'salto') {
         // pequeño salto hacia el pie de la torre, mirando a ella
         const dur = rm ? 0.01 : 0.55, p = clamp(v.t / dur, 0, 1), n = v.n;
-        const lateral = (n.off - (n.fort ? 1.1 : 0.7)) * easeIO(p);
-        ato.saltoY = Math.sin(p * Math.PI) * 0.7;
+        const lateral = (n.off - (n.fort ? 1.5 : 1.2) * n.escala) * easeIO(p);
+        ato.saltoY = Math.sin(p * Math.PI) * 0.9;
         const d = Math.atan2(n.lado.x, n.lado.z) - ato.rot; ato.rot += Math.atan2(Math.sin(d), Math.cos(d)) * Math.min(1, dt * 12);
         colocarAto(ato.u, lateral, n.lado);
         goal.target.copy(ato.g.position); goal.target.y += 1; goal.radius = 14;
@@ -1183,7 +1184,7 @@
       renderer.setSize(w, hh, false); camera.aspect = w / hh;
       // en pantallas verticales/estrechas se aleja un poco para que quepa
       camera.fov = w / hh < 1 ? 58 : 45; camera.updateProjectionMatrix(); dirty = true;
-      if (w < 760 && !panel.dataset.auto) { panel.dataset.auto = '1'; alternarPanel(true); }
+      
     }
     const ro = new ResizeObserver(tamano); ro.observe(host);
     limpiezas.push(() => ro.disconnect());
@@ -1207,7 +1208,7 @@
         const meta = hover === n && n.disp ? 1 : hover === n ? 0.35 : 0;
         n.lift = rm ? meta : n.lift + (meta - n.lift) * (1 - Math.exp(-dt * 10));
         n.grupo.position.y = n.baseY + n.lift * 0.55;
-        n.grupo.scale.setScalar(1 + n.lift * 0.07);
+        n.grupo.scale.setScalar(n.escala * (1 + n.lift * 0.07));
         // las insignias crecen con la distancia para seguir siendo legibles
         _wp.copy(n.torrePos); const d = camera.position.distanceTo(_wp);
         const s = 1.55 * clamp(d / 38, 0.85, 3.2);
@@ -1277,7 +1278,7 @@
       /** Coordenadas de cliente (px) de la parte alta del nodo (para simular clic/hover) */
       pantallaDe(id) {
         const n = porId.get(id); if (!n) return null;
-        const v = new T.Vector3(n.torrePos.x, n.baseY + n.altura * 0.55, n.torrePos.z).project(camera), r = canvas.getBoundingClientRect();
+        const v = new T.Vector3(n.torrePos.x, n.baseY + n.altura * 0.5 * n.escala, n.torrePos.z).project(camera), r = canvas.getBoundingClientRect();
         return { x: r.left + (v.x * 0.5 + 0.5) * r.width, y: r.top + (-v.y * 0.5 + 0.5) * r.height };
       },
       estado: (id) => (porId.get(id) || {}).estado,

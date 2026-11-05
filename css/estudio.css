@@ -84,7 +84,8 @@
 .est-ftex{position:relative;display:block;width:100%;cursor:pointer;color:var(--txt);background:radial-gradient(circle at 50% 0,var(--acc-soft),#0a0f20 75%);border:1px solid var(--borde);border-radius:14px;padding:14px 8px 22px;overflow-x:auto;transition:transform .15s,border-color .15s}
 .est-ftex:hover{border-color:var(--acc2);transform:translateY(-1px)}
 .est-ftex-in .katex-display{margin:.3em 0}
-.est-ftex-in .katex{font-size:2.15em}
+.est-ftex-in{--k:1;display:inline-block;max-width:none}
+.est-ftex-in .katex{font-size:calc(2.15em * var(--k))}
 .est-ftex-hint{position:absolute;right:10px;bottom:4px;font:600 11px var(--f-ui);color:var(--acc2);opacity:.85}
 .est-oculto{color:var(--txt2);font:italic 600 17px var(--f-estudio);margin:0;padding:18px 0;text-align:center}
 .est-fdet{display:flex;flex-direction:column;gap:10px}
@@ -259,7 +260,7 @@
   .est-lab{grid-template-columns:minmax(0,1fr)}
   .est-lablist{position:static;flex-direction:row;overflow-x:auto;padding-bottom:6px}
   .est-labitem{flex:none;min-width:190px}
-  .est-ftex-in .katex{font-size:1.6em}
+  .est-ftex-in .katex{font-size:calc(1.6em * var(--k))}
   .est-ftools{top:-14px}
   .est-fcount{flex:1 1 100%;margin:0}
   .est-nivel{flex-direction:column;align-items:stretch;text-align:center}

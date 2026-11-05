@@ -1,0 +1,307 @@
+{
+ "titulo": "El rendimiento escurridizo",
+ "estilo": "quimica3d",
+ "duracion_seg": 26,
+ "actores": [
+  {
+   "id": "matraz",
+   "tipo": "vaso",
+   "pos": [
+    0.46,
+    0.62
+   ],
+   "color": "#9fd8ff",
+   "escala": 1.3
+  },
+  {
+   "id": "acido",
+   "tipo": "molecula",
+   "pos": [
+    0.14,
+    0.4
+   ],
+   "color": "#2ee59d",
+   "escala": 1
+  },
+  {
+   "id": "alcohol",
+   "tipo": "molecula",
+   "pos": [
+    0.14,
+    0.62
+   ],
+   "color": "#ff3da6",
+   "escala": 1
+  },
+  {
+   "id": "ester",
+   "tipo": "molecula",
+   "pos": [
+    0.46,
+    0.6
+   ],
+   "color": "#ffd166",
+   "escala": 1.1
+  },
+  {
+   "id": "agua",
+   "tipo": "molecula",
+   "pos": [
+    0.52,
+    0.64
+   ],
+   "color": "#00d4ff",
+   "escala": 0.7
+  },
+  {
+   "id": "termo",
+   "tipo": "termometro",
+   "pos": [
+    0.68,
+    0.62
+   ],
+   "color": "#e63946",
+   "escala": 1
+  },
+  {
+   "id": "quimico",
+   "tipo": "humano",
+   "pos": [
+    0.86,
+    0.68
+   ],
+   "color": "#ffffff",
+   "escala": 1.1
+  },
+  {
+   "id": "bola",
+   "tipo": "bola",
+   "pos": [
+    0.78,
+    0.3
+   ],
+   "color": "#ffd166",
+   "escala": 0.5
+  }
+ ],
+ "pasos": [
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "matraz",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "acido",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "alcohol",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "quimico",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "ester"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "agua"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "termo"
+  },
+  {
+   "t": 0,
+   "accion": "desaparece",
+   "actor": "bola"
+  },
+  {
+   "t": 0.5,
+   "accion": "subtitulo",
+   "texto": "Sintetizar es transformar reactivos en el producto que buscas."
+  },
+  {
+   "t": 1.5,
+   "accion": "habla",
+   "actor": "quimico",
+   "texto": "¡Quiero un éster con olor a plátano!"
+  },
+  {
+   "t": 3,
+   "accion": "mueve",
+   "actor": "acido",
+   "a": [
+    0.42,
+    0.58
+   ],
+   "dur": 2
+  },
+  {
+   "t": 3,
+   "accion": "mueve",
+   "actor": "alcohol",
+   "a": [
+    0.5,
+    0.6
+   ],
+   "dur": 2
+  },
+  {
+   "t": 5,
+   "accion": "aparece",
+   "actor": "termo",
+   "dur": 0.5
+  },
+  {
+   "t": 5,
+   "accion": "particulas",
+   "tipo": "burbujas",
+   "pos": [
+    0.46,
+    0.56
+   ]
+  },
+  {
+   "t": 5.5,
+   "accion": "subtitulo",
+   "texto": "Calentar a reflujo: más velocidad y sin perder materia."
+  },
+  {
+   "t": 6,
+   "accion": "resalta",
+   "actor": "termo"
+  },
+  {
+   "t": 8,
+   "accion": "reaccion",
+   "de": [
+    "acido",
+    "alcohol"
+   ],
+   "a": [
+    "ester",
+    "agua"
+   ]
+  },
+  {
+   "t": 8,
+   "accion": "aparece",
+   "actor": "ester",
+   "dur": 0.8
+  },
+  {
+   "t": 8,
+   "accion": "aparece",
+   "actor": "agua",
+   "dur": 0.8
+  },
+  {
+   "t": 8,
+   "accion": "particulas",
+   "tipo": "chispas",
+   "pos": [
+    0.46,
+    0.58
+   ]
+  },
+  {
+   "t": 9,
+   "accion": "formula",
+   "latex": "R=\\dfrac{n_{\\text{obtenue}}}{n_{\\text{attendue}}}\\times 100"
+  },
+  {
+   "t": 9,
+   "accion": "valor",
+   "id": "R",
+   "desde": 0,
+   "hasta": 67,
+   "dur": 3,
+   "etiqueta": "R (%) equimolar"
+  },
+  {
+   "t": 10,
+   "accion": "subtitulo",
+   "texto": "Pero es un equilibrio: el rendimiento no llega al 100 %."
+  },
+  {
+   "t": 13,
+   "accion": "habla",
+   "actor": "quimico",
+   "texto": "¿Cómo exprimo más producto?"
+  },
+  {
+   "t": 14,
+   "accion": "mueve",
+   "actor": "agua",
+   "a": [
+    0.84,
+    0.36
+   ],
+   "dur": 2.5
+  },
+  {
+   "t": 14.5,
+   "accion": "subtitulo",
+   "texto": "Elimina un producto (destilación) o usa un reactivo en exceso."
+  },
+  {
+   "t": 15,
+   "accion": "escala",
+   "actor": "ester",
+   "a": 1.8,
+   "dur": 2
+  },
+  {
+   "t": 17,
+   "accion": "formula",
+   "latex": "Q_{r,i}<K(T)\\ \\Rightarrow\\ \\text{sens direct}"
+  },
+  {
+   "t": 17.5,
+   "accion": "subtitulo",
+   "texto": "Con Qr menor que K, el sistema avanza hacia más producto."
+  },
+  {
+   "t": 20,
+   "accion": "color",
+   "actor": "bola",
+   "color": "#2ee59d"
+  },
+  {
+   "t": 20,
+   "accion": "aparece",
+   "actor": "bola",
+   "dur": 0.8
+  },
+  {
+   "t": 20.5,
+   "accion": "subtitulo",
+   "texto": "Y para varias etapas: protege, reacciona y desprotege. ¡Química inteligente y verde!"
+  },
+  {
+   "t": 23,
+   "accion": "habla",
+   "actor": "quimico",
+   "texto": "¡Rendimiento mejorado!"
+  },
+  {
+   "t": 25,
+   "accion": "pausa",
+   "dur": 1
+  }
+ ]
+}

@@ -152,7 +152,7 @@
   {
    "tipo": "plataforma",
    "x": 66,
-   "y": 11,
+   "y": 12,
    "largo": 10
   },
   {
@@ -162,7 +162,7 @@
   {
    "tipo": "coleccionable",
    "x": 72,
-   "y": 9,
+   "y": 10,
    "ref": "f9",
    "latex": "\\vec a=a_\\tau\\,\\vec\\tau+a_n\\,\\vec n\\quad\\text{con}\\quad a_\\tau=\\dfrac{dv}{dt},\\;\\; a_n=\\dfrac{v^2}{R}",
    "nombre": "Aceleración en el repère de Frenet"
@@ -170,7 +170,7 @@
   {
    "tipo": "enemigo",
    "x": 74,
-   "y": 10,
+   "y": 11,
    "enemigo": "error_aceleracion_media",
    "nombre": "Aceleración media tomada por la instantánea",
    "correccion": "Δv/Δt sobre todo el intervalo es una media; para una fase hay que usar los valores de esa fase."
@@ -184,13 +184,13 @@
   {
    "tipo": "plataforma",
    "x": 79,
-   "y": 11,
+   "y": 12,
    "largo": 10
   },
   {
    "tipo": "zona_campo",
    "x": 79,
-   "y": 7,
+   "y": 8,
    "w": 10,
    "h": 4,
    "fx": -0.6,
@@ -199,7 +199,7 @@
   {
    "tipo": "coleccionable",
    "x": 83,
-   "y": 9,
+   "y": 10,
    "ref": "f10",
    "latex": "a=\\dfrac{v^{2}}{R}\\qquad \\vec a=\\dfrac{v^{2}}{R}\\,\\vec n",
    "nombre": "Aceleración en el movimiento circular uniforme"
@@ -207,7 +207,7 @@
   {
    "tipo": "enemigo",
    "x": 85,
-   "y": 10,
+   "y": 11,
    "enemigo": "error_diametro_radio",
    "nombre": "Usar el diámetro en lugar del radio en v²/R",
    "correccion": "R = D/2: a_n = v²/(D/2)."
@@ -215,7 +215,7 @@
   {
    "tipo": "resorte",
    "x": 87,
-   "y": 10
+   "y": 11
   },
   {
    "tipo": "foso",
@@ -226,13 +226,13 @@
   {
    "tipo": "plataforma",
    "x": 92,
-   "y": 10,
+   "y": 12,
    "largo": 10
   },
   {
    "tipo": "coleccionable",
    "x": 97,
-   "y": 8,
+   "y": 10,
    "ref": "f8",
    "latex": "\\vec v=v\\,\\vec\\tau=\\begin{pmatrix}v\\\\0\\end{pmatrix}",
    "nombre": "Velocidad en el repère de Frenet"
@@ -240,7 +240,7 @@
   {
    "tipo": "enemigo",
    "x": 99,
-   "y": 9,
+   "y": 11,
    "enemigo": "error_signo_aceleracion",
    "nombre": "Ignorar el signo de a_τ o de la aceleración",
    "correccion": "a_τ < 0 (o a opuesto a v) significa que el móvil se ralentiza, no que «vaya hacia atrás»."
@@ -254,13 +254,13 @@
   {
    "tipo": "plataforma",
    "x": 105,
-   "y": 11,
+   "y": 12,
    "largo": 8
   },
   {
    "tipo": "plataforma_movil",
    "x": 106,
-   "y": 8,
+   "y": 9,
    "largo": 4,
    "recorrido": 3,
    "eje": "x",
@@ -271,23 +271,17 @@
    "x": 111
   },
   {
-   "tipo": "foso",
-   "x": 113,
-   "largo": 36,
-   "lava": true
-  },
-  {
    "tipo": "puente",
    "id": "puente_entropia",
    "x": 113,
-   "y": 11,
+   "y": 12,
    "largo": 36,
    "cae_con": "palanca_entropia"
   },
   {
    "tipo": "coleccionable",
    "x": 121,
-   "y": 9,
+   "y": 10,
    "ref": "f2",
    "latex": "\\vec v(t_i)=\\dfrac{\\Delta\\overrightarrow{OM}(t_i)}{\\Delta t}=\\dfrac{\\overrightarrow{OM}(t_{i+1})-\\overrightarrow{OM}(t_{i-1})}{t_{i+1}-t_{i-1}}",
    "nombre": "Vector velocidad a partir de las posiciones (construcción en un punto)"
@@ -363,22 +357,23 @@
   {
    "tipo": "plataforma",
    "x": 149,
-   "y": 11,
+   "y": 12,
    "largo": 23
   },
   {
    "tipo": "palanca",
    "id": "palanca_entropia",
    "x": 151,
-   "y": 10,
+   "y": 11,
    "efecto": "cae_puente",
    "puente": "puente_entropia",
+   "objetivo": "puente_entropia",
    "nombre": "Palanca de Entropía"
   },
   {
    "tipo": "coleccionable",
    "x": 158,
-   "y": 9,
+   "y": 10,
    "ref": "f5",
    "latex": "\\vec a(t_i)=\\dfrac{\\Delta\\vec v(t_i)}{\\Delta t}=\\dfrac{\\vec v(t_{i+1})-\\vec v(t_{i-1})}{t_{i+1}-t_{i-1}}",
    "nombre": "Vector aceleración a partir de las velocidades (construcción en un punto)"

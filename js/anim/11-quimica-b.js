@@ -599,10 +599,12 @@
       const mx = rw * 0.12;
       flecha(ctx, rx + mx, ay, rx + rw - mx, ay, '#2ee59d', 1.5 + 6 * jd, 6 + 6 * jd);
       flecha(ctx, rx + rw - mx, ay + 14 + 4 * jd, rx + mx, ay + 14 + 4 * jd, '#ff3da6', 1.5 + 6 * ji, 6 + 6 * ji);
-      txt(ctx, 'v directa', rx + mx, ay - 6 - 3 * jd, fs - 2, '#8fe9c4', 'left', 400);
-      txt(ctx, 'v inversa', rx + rw - mx, ay + 14 + 4 * jd + 11 + 3 * ji + fs * 0.6, fs - 2, '#ff9cc9', 'right', 400);
+      if (!peq) {
+        txt(ctx, 'v directa', rx + mx, ay - 6 - 3 * jd, fs - 2, '#8fe9c4', 'left', 400);
+        txt(ctx, 'v inversa', rx + rw - mx, ay + 14 + 4 * jd + 11 + 3 * ji + fs * 0.6, fs - 2, '#ff9cc9', 'right', 400);
+      }
       // barras de concentración
-      const by0 = ay + 14 + 4 + 28 + fs, by1 = sy - fs * 2.2, bwid = Math.min(rw * 0.28, 52);
+      const by0 = ay + (peq ? 36 : 14 + 4 + 28 + fs), by1 = sy - fs * 2.2, bwid = Math.min(rw * 0.28, 52);
       if (by1 - by0 > 24) {
         [['[A]', 1 - f, COL_QA, rx + rw * 0.27], ['[B]', f, COL_QB, rx + rw * 0.73]].forEach(([nm, v, col, cx]) => {
           rr(ctx, cx - bwid / 2, by0, bwid, by1 - by0, 5); ctx.fillStyle = 'rgba(255,255,255,.06)'; ctx.fill();
@@ -637,7 +639,8 @@
     formula(p) {
       const sen = sentido(p.Q, p.K), cmp = sen === 1 ? '<' : sen === -1 ? '>' : '=';
       const txtS = sen === 1 ? '\\text{sentido directo}' : sen === -1 ? '\\text{sentido inverso}' : '\\text{equilibrio}';
-      return `Q_r=\\dfrac{[\\mathrm{B}]}{[\\mathrm{A}]}=${tx(p.Q, 1)}\\ ${cmp}\\ K=${tx(p.K, 1)}\\ \\Rightarrow\\ ${txtS}`;
+      const sep = window.innerWidth < 640 ? '\\\\' : '\\ \\Rightarrow\\ '; // en pantalla estrecha, el sentido pasa a otra línea
+      return `\\begin{gathered}Q_r=\\dfrac{[\\mathrm{B}]}{[\\mathrm{A}]}=${tx(p.Q, 1)}\\ ${cmp}\\ K=${tx(p.K, 1)}${sep}${txtS}\\end{gathered}`;
     },
     lecturas(p) {
       const sen = sentido(p.Q, p.K);
@@ -645,5 +648,261 @@
         { label: '[B]/[A] en equilibrio', valor: num(p.K, 2) }];
     },
     dispose(s) { if (s._offClics) s._offClics(); },
+  });
+
+  // =====================================================================================
+  // 4. CINÉTICA — reacción de orden 1 (A → productos):  c(t) = c0·e^(−kt),  v = −dc/dt = k·c,  t½ = ln2/k
+  // Cada molécula tiene un umbral u_i (secuencia de baja discrepancia) y reacciona cuando e^(−kt) < u_i,
+  // es decir, en el instante t_i = −ln(u_i)/k: así el nº de moléculas de reactivo sigue exactamente c(t)/c0.
+  // El botón ▶ reproduce el tiempo desde 0 hasta el valor del slider t.
+  // =====================================================================================
+  const COL_R = '#3d8bff', COL_P = '#2ee59d';
+  const TMAX_C = 20, CMAX_C = 1.5;
+  PCB.anim.register('cinetica', {
+    titulo: 'Cinétique chimique (ordre 1)', materia: 'chimie',
+    params: [
+      { id: 'c0', label: 'Concentration initiale c₀', min: 0.1, max: 1.5, step: 0.05, def: 1, unit: 'mol·L⁻¹' },
+      { id: 'k', label: 'Constante de vitesse k', min: 0.05, max: 1, step: 0.01, def: 0.2, unit: 's⁻¹' },
+      { id: 't', label: 'Temps t', min: 0, max: TMAX_C, step: 0.1, def: 5, unit: 's' },
+    ],
+    create(host, p) {
+      const rng = host.rng, N = 120;
+      const q = Array.from({ length: N }, (_, i) => ({ u: rng(), v: rng(), a: rng() * TAU, th: baja(i), cb: 0, fl: 0, vis: 0, estado: 0 }));
+      const s = { t: 0, rng, q, tv: p.t, play: false, red: host.reduced };
+      clics(s, host); return s;
+    },
+    onParam(s, id, v, p) { if (id === 't') s.play = false; },
+    step(s, dt, p) {
+      s.t += dt; tiempoPaso(s, dt, p, TMAX_C, 8);
+      const Nact = Math.round(p.c0 * (s.red ? 55 : 80)), surv = Math.exp(-p.k * s.tv);
+      s.q.forEach((m, i) => {
+        m.vis = suav(m.vis, i < Nact ? 1 : 0, 5, dt);
+        const prod = m.th > surv ? 1 : 0;                      // ya reaccionó (e^(−kt) < u_i)
+        if (prod !== m.estado) { m.estado = prod; m.fl = 1; }
+        m.cb = suav(m.cb, prod, 10, dt); m.fl = Math.max(0, m.fl - dt * 2.2);
+        deambula(m, dt, 0.09, 1, s.rng);
+      });
+    },
+    draw(s, ctx, w, h, p) {
+      const fs = FS(w, h), peq = w < 520, tv = s.tv, c = p.c0 * Math.exp(-p.k * tv), thalf = Math.LN2 / p.k, v = p.k * c;
+      s.btns.length = 0; fondo(ctx, w, h);
+      // ---------- tubo de ensayo (izquierda)
+      const tw = Math.min(w * (peq ? 0.2 : 0.17), 78), tx0 = w * (peq ? 0.04 : 0.07), ty0 = h * 0.1, th = h * 0.74;
+      ctx.save();
+      const rad = tw / 2;
+      const trazo = () => { ctx.beginPath(); ctx.moveTo(tx0, ty0); ctx.lineTo(tx0, ty0 + th - rad); ctx.arc(tx0 + rad, ty0 + th - rad, rad, Math.PI, 0, true); ctx.lineTo(tx0 + tw, ty0); ctx.closePath(); };
+      trazo(); ctx.clip();
+      const ly = ty0 + th * 0.22, gl = ctx.createLinearGradient(0, ly, 0, ty0 + th);
+      gl.addColorStop(0, 'rgba(95,208,255,.16)'); gl.addColorStop(1, 'rgba(95,208,255,.34)');
+      ctx.fillStyle = gl; ctx.fillRect(tx0, ly, tw, th); ctx.fillStyle = 'rgba(255,255,255,.3)'; ctx.fillRect(tx0, ly, tw, 2);
+      const g2 = ctx.createLinearGradient(tx0, 0, tx0 + tw, 0); g2.addColorStop(0, 'rgba(255,255,255,.18)'); g2.addColorStop(0.22, 'rgba(255,255,255,.02)'); g2.addColorStop(1, 'rgba(255,255,255,.08)');
+      ctx.fillStyle = g2; ctx.fillRect(tx0, ty0, tw, th);
+      ctx.restore();
+      trazo(); ctx.strokeStyle = 'rgba(200,225,255,.65)'; ctx.lineWidth = 2; ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(tx0 - 4, ty0); ctx.lineTo(tx0 + tw + 4, ty0); ctx.stroke();
+      const r0 = clamp(tw * 0.055, 2.6, 4.6), ix0 = tx0 + 5, ix1 = tx0 + tw - 5, iy0 = ly + 6, iy1 = ty0 + th - rad * 0.4;
+      for (const m of s.q) {
+        if (m.vis < 0.02) continue;
+        const x = ix0 + m.u * (ix1 - ix0), y = iy0 + m.v * (iy1 - iy0);
+        if (m.fl > 0) brillo(ctx, x, y, r0 * 4.2, m.cb > 0.5 ? '#baffdf' : '#bcd6ff', m.fl * 0.7);
+        bola(ctx, x, y, r0 * (1 + 0.15 * m.cb), mezcla(COL_R, COL_P, m.cb), m.vis);
+      }
+      // leyenda
+      bola(ctx, tx0 - 1, ty0 + th + fs + 6, 4.5, COL_R); txt(ctx, 'A', tx0 + 7, ty0 + th + fs + 10, fs, '#c9d6f5', 'left', 700);
+      bola(ctx, tx0 + tw * 0.55, ty0 + th + fs + 6, 4.5, COL_P); txt(ctx, 'produits', tx0 + tw * 0.55 + 8, ty0 + th + fs + 10, fs - 1, '#c9d6f5', 'left', 400);
+      // ---------- gráfica c(t)
+      const gx = w * (peq ? 0.30 : 0.34), gw = w * (peq ? 0.66 : 0.62), gy = h * 0.14, gh = h * 0.62;
+      const ax = ejes(ctx, gx, gy, gw, gh, { x0: 0, x1: TMAX_C, y0: 0, y1: CMAX_C, xt: [0, 5, 10, 15, 20], yt: [0, 0.5, 1, 1.5], fs: fs - 1, xl: 't (s)', yl: 'c (mol·L⁻¹)', fx: (z) => num(z, 0), fy: (z) => num(z, 1) });
+      ctx.save(); ctx.beginPath(); ctx.rect(gx, gy, gw, gh); ctx.clip();
+      // marcas de t½ (y 2·t½)
+      [1, 2].forEach((n) => {
+        const th2 = n * thalf; if (th2 > TMAX_C) return;
+        const cc = p.c0 / Math.pow(2, n);
+        ctx.setLineDash([5, 4]); ctx.strokeStyle = n === 1 ? 'rgba(255,209,102,.85)' : 'rgba(255,209,102,.4)'; ctx.lineWidth = 1.2; ctx.beginPath();
+        ctx.moveTo(ax.X(th2), ax.Y(0)); ctx.lineTo(ax.X(th2), ax.Y(cc)); ctx.lineTo(ax.X(0), ax.Y(cc)); ctx.stroke(); ctx.setLineDash([]);
+        ctx.fillStyle = n === 1 ? '#ffd166' : 'rgba(255,209,102,.6)'; ctx.beginPath(); ctx.arc(ax.X(th2), ax.Y(cc), 3.5, 0, TAU); ctx.fill();
+      });
+      // curva completa (tenue) y tramo recorrido (brillante)
+      ctx.lineWidth = 2; ctx.strokeStyle = 'rgba(0,212,255,.35)'; ctx.beginPath();
+      for (let i = 0; i <= 120; i++) { const t = (TMAX_C * i) / 120, y = p.c0 * Math.exp(-p.k * t); i ? ctx.lineTo(ax.X(t), ax.Y(y)) : ctx.moveTo(ax.X(t), ax.Y(y)); }
+      ctx.stroke();
+      ctx.lineWidth = 3.2; ctx.strokeStyle = '#00d4ff'; ctx.beginPath();
+      const n = Math.max(2, Math.round(120 * tv / TMAX_C));
+      for (let i = 0; i <= n; i++) { const t = (tv * i) / n, y = p.c0 * Math.exp(-p.k * t); i ? ctx.lineTo(ax.X(t), ax.Y(y)) : ctx.moveTo(ax.X(t), ax.Y(y)); }
+      ctx.stroke();
+      // tangente en el instante t: pendiente −k·c  (v = −dc/dt); corta el eje c=0 en t + 1/k
+      const X0 = ax.X(tv), Y0 = ax.Y(c), sx = (gw / TMAX_C), sy = (gh / CMAX_C), m = (p.k * c * sy) / sx; // en pantalla y crece hacia abajo
+      ctx.strokeStyle = '#ff9f1c'; ctx.lineWidth = 2; ctx.beginPath();
+      const dx0 = -Math.min(60, X0 - gx + 30), dx1 = Math.min(1 / p.k, TMAX_C - tv + 1) * sx;
+      ctx.moveTo(X0 + dx0, Y0 + m * dx0); ctx.lineTo(X0 + dx1, Y0 + m * dx1); ctx.stroke();
+      ctx.restore();
+      brillo(ctx, X0, Y0, 18, '#ffd166', 0.75); bola(ctx, X0, Y0, 6, '#ffd166');
+      // etiquetas
+      const lx = clamp(X0 + 12, gx + 4, gx + gw - 150);
+      txt(ctx, 'v = k·c = ' + num(v, 3) + ' mol·L⁻¹·s⁻¹', lx, clamp(Y0 - 12, gy + fs + 2, gy + gh - 8), fs - 1, '#ff9f1c', 'left', 700);
+      if (thalf <= TMAX_C) txt(ctx, 't½ = ' + num(thalf, 1) + ' s', clamp(ax.X(thalf), gx + 30, gx + gw - 30), gy + gh - 8, fs, '#ffd166', 'center', 700);
+      txt(ctx, 'c = ' + num(c, 2), gx + gw - 6, gy + gh * 0.46, fs, '#00d4ff', 'right', 700);
+      txt(ctx, 't = ' + num(tv, 1) + ' s', gx + gw - 6, gy + gh * 0.46 + fs + 3, fs, '#eaf0ff', 'right', 700);
+      // botón de reproducción
+      if (!s.play) boton(ctx, s, gx + gw - (peq ? 100 : 140), 4, peq ? 100 : 140, 24, '▶ Reproducir t', () => { s.tv = 0; s.play = p.t > 0; }, '#2ee59d', fs - 1);
+      else boton(ctx, s, gx + gw - (peq ? 100 : 140), 4, peq ? 100 : 140, 24, '⏹ Parar', () => { s.play = false; s.tv = p.t; }, '#ffd166', fs - 1);
+    },
+    formula(p) {
+      const c = p.c0 * Math.exp(-p.k * p.t), v = p.k * c, th = Math.LN2 / p.k, UC = '\\text{mol}\\cdot\\text{L}^{-1}', UV = UC + '\\cdot\\text{s}^{-1}';
+      if (window.innerWidth < 640) { // pantalla estrecha: líneas cortas
+        return `\\begin{gathered}c(t)=c_0\\,e^{-kt}=${tx(c)}\\ ${UC}\\\\ v=kc=${tx(v, 3)}\\ ${UV}\\\\ t_{1/2}=\\dfrac{\\ln 2}{k}=${tx(th, 2)}\\ \\text{s}\\end{gathered}`;
+      }
+      return `\\begin{gathered}c(t)=c_0\\,e^{-kt}=${tx(p.c0)}\\,e^{-${tx(p.k)}\\times${tx(p.t, 1)}}=${tx(c)}\\ ${UC}\\\\[2pt] v=-\\dfrac{\\mathrm{d}c}{\\mathrm{d}t}=kc=${tx(v, 3)}\\ ${UV}\\qquad t_{1/2}=\\dfrac{\\ln 2}{k}=${tx(th, 2)}\\ \\text{s}\\end{gathered}`;
+    },
+    lecturas(p) {
+      const c = p.c0 * Math.exp(-p.k * p.t);
+      return [{ label: 'c(t)', valor: num(c, 3) + ' mol·L⁻¹' }, { label: 'v', valor: num(p.k * c, 3) + ' mol·L⁻¹·s⁻¹' }, { label: 't½', valor: num(Math.LN2 / p.k, 2) + ' s' }, { label: 'c/c₀', valor: num((100 * c) / p.c0, 0) + ' %' }];
+    },
+    dispose(s) { if (s._offClics) s._offClics(); },
+  });
+
+  // =====================================================================================
+  // 5. PILA — pila Daniell genérica:  (−) Zn | Zn²⁺ ‖ Cu²⁺ | Cu (+)
+  //   Ánodo (−): oxydation  Zn → Zn²⁺ + 2 e⁻      Cátodo (+): réduction  Cu²⁺ + 2 e⁻ → Cu
+  //   Los electrones circulan por el circuito externo del ánodo al cátodo; la corriente convencional I va al revés.
+  //   En el puente salino los aniones migran hacia el ánodo y los cationes hacia el cátodo (neutralidad eléctrica).
+  // Simplificación: E(t) = E·(1 − (t/100)³) con t el avance en %: la f.é.m. cae a 0 al agotarse la pila (Qr → K).
+  // =====================================================================================
+  const COL_ZN = '#b9c3dc', COL_CU = '#e08a3c', COL_CU2 = '#2f9dff', COL_ZN2 = '#c6a6ff', COL_E = '#ffe27a';
+  const Epila = (p) => p.E * (1 - Math.pow(clamp(p.t, 0, 100) / 100, 3));
+
+  /** Geometría de la escena (todo en función de w,h) */
+  function layPila(w, h) {
+    const yW = h * 0.14, bT = h * 0.42, bB = h * 0.84, bw = w * 0.31;
+    const L = { w, h, yW, bT, bB, bw, bx: [w * 0.06, w * 0.63], liq: h * 0.52, xz: w * 0.14, xc: w * 0.86, yTop: h * 0.3, yPlateB: h * 0.78, yBr: h * 0.31, brX: [w * 0.29, w * 0.71] };
+    L.bulb = { x: w * 0.5, y: yW, r: clamp(Math.min(w, h) * 0.065, 11, 26) };
+    L.amp = { x: w * 0.31, y: yW, r: clamp(Math.min(w, h) * 0.04, 8, 15) };
+    // camino de los electrones: placa Zn ↑ cable → lámpara → cable ↓ placa Cu
+    L.cam = [[L.xz, L.yTop], [L.xz, yW], [L.bulb.x, yW], [L.xc, yW], [L.xc, L.yTop]];
+    // camino del puente salino: brazo izquierdo ↑, tramo horizontal →, brazo derecho ↓
+    L.puente = [[L.brX[0], L.liq + h * 0.1], [L.brX[0], L.yBr], [L.brX[1], L.yBr], [L.brX[1], L.liq + h * 0.1]];
+    return L;
+  }
+  /** Punto a fracción f (0..1) de la longitud total de una polilínea */
+  function enCamino(cam, f) {
+    let tot = 0; const ls = [];
+    for (let i = 1; i < cam.length; i++) { const l = Math.hypot(cam[i][0] - cam[i - 1][0], cam[i][1] - cam[i - 1][1]); ls.push(l); tot += l; }
+    let d = frac(f) * tot;
+    for (let i = 0; i < ls.length; i++) { if (d <= ls[i]) { const k = d / ls[i]; return [lerp(cam[i][0], cam[i + 1][0], k), lerp(cam[i][1], cam[i + 1][1], k)]; } d -= ls[i]; }
+    return cam[cam.length - 1];
+  }
+
+  PCB.anim.register('pila', {
+    titulo: 'Pile électrochimique', materia: 'chimie',
+    params: [
+      { id: 'E', label: 'Force électromotrice E', min: 0.3, max: 2, step: 0.01, def: 1.1, unit: 'V' },
+      { id: 't', label: 'Avance de la réaction', min: 0, max: 100, step: 1, def: 30, unit: '%' },
+    ],
+    create(host, p) {
+      const rng = host.rng, red = host.reduced, mk = (n) => Array.from({ length: n }, () => ({ u: rng(), v: rng(), vis: 0, a: rng() * TAU }));
+      return { t: 0, rng, red, flow: 0, brig: 0, zn: mk(red ? 22 : 36), cu: mk(red ? 22 : 36), kp: [], an: [], L: layPila(host.w, host.h), eNo: 0 };
+    },
+    step(s, dt, p) {
+      const L = s.L, rng = s.rng, Et = Epila(p), irel = clamp(Et / 1.1, 0, 1.8); // corriente relativa ∝ f.é.m. actual
+      s.t += dt; s.flow = frac(s.flow + dt * 0.2 * irel); s.irel = irel;
+      s.brig = suav(s.brig, clamp(Et / 1.4, 0, 1), 4, dt);
+      const prog = clamp(p.t / 100, 0, 1);
+      // Zn²⁺: nº ∝ avance; nacen en la placa y se alejan. Cu²⁺: nº ∝ (1−avance); migran hacia la placa de Cu y se depositan
+      const nZ = Math.round((s.red ? 4 : 6) + (s.zn.length - 8) * prog), nC = Math.round(2 + (s.cu.length - 2) * (1 - prog));
+      s.zn.forEach((q, i) => {
+        q.vis = suav(q.vis, i < nZ ? 1 : 0, 4, dt);
+        q.u += dt * (0.05 + 0.05 * irel) + (rng() - 0.5) * dt * 0.5; q.v += (rng() - 0.5) * dt * 0.8;
+        if (q.u > 0.95) { q.u = 0.26 + rng() * 0.06; q.v = 0.2 + rng() * 0.7; q.vis *= 0.2; }  // se recicla junto al electrodo (flujo continuo de salida)
+        q.v = clamp(q.v, 0.04, 0.96); q.u = Math.max(0.1, q.u);
+      });
+      s.cu.forEach((q, i) => {
+        q.vis = suav(q.vis, i < nC ? 1 : 0, 4, dt);
+        q.u += dt * (0.05 + 0.08 * irel) + (rng() - 0.5) * dt * 0.5; q.v += (rng() - 0.5) * dt * 0.8;
+        if (q.u > 0.76) { s.an.push({ x: q.u, y: q.v, t: 0 }); q.u = 0.05 + rng() * 0.15; q.v = rng(); q.vis *= 0.2; } // se deposita: destello en la placa
+        q.v = clamp(q.v, 0.04, 0.96); q.u = Math.max(0.02, q.u);
+      });
+      for (let i = s.an.length - 1; i >= 0; i--) { s.an[i].t += dt; if (s.an[i].t > 0.5) s.an.splice(i, 1); }
+    },
+    draw(s, ctx, w, h, p) {
+      const L = (s.L = layPila(w, h)), fs = FS(w, h), Et = Epila(p), prog = clamp(p.t / 100, 0, 1), irel = s.irel || 0;
+      fondo(ctx, w, h);
+      // ---------- vasos (Zn²⁺ incoloro a la izquierda, Cu²⁺ azul a la derecha que se decolora con el avance)
+      const rI = vaso(ctx, L.bx[0], L.bT, L.bw, L.bB - L.bT, (L.bB - L.liq) / (L.bB - L.bT), '#cfe6ff', 0.1);
+      const rD = vaso(ctx, L.bx[1], L.bT, L.bw, L.bB - L.bT, (L.bB - L.liq) / (L.bB - L.bT), COL_CU2, 0.1 + 0.3 * (1 - prog * 0.85));
+      // ---------- placas
+      const pw0 = clamp(w * 0.03, 8, 22), pZ = pw0 * (1 - 0.5 * prog), pC = pw0 * (0.7 + 0.9 * prog), y0 = L.yTop, y1 = L.yPlateB;
+      const placa = (cx, ww, c1, c2) => { const g = ctx.createLinearGradient(cx - ww / 2, 0, cx + ww / 2, 0); g.addColorStop(0, c1); g.addColorStop(0.5, c2); g.addColorStop(1, c1); ctx.fillStyle = g; ctx.fillRect(cx - ww / 2, y0, ww, y1 - y0); };
+      placa(L.xz, pZ, '#6c7694', COL_ZN);
+      placa(L.xc, pC, '#9a5420', COL_CU);
+      // erosión del Zn / depósito de Cu: pequeños dentados a los lados de la zona sumergida
+      ctx.fillStyle = 'rgba(10,15,32,.8)';
+      for (let y = L.liq; y < y1; y += 7) { const k = prog * 2.2 * (0.6 + 0.4 * Math.sin(y * 1.7)); if (k > 0.2) ctx.fillRect(L.xz - pZ / 2 - 0.5, y, Math.min(k, 3), 3.2), ctx.fillRect(L.xz + pZ / 2 - Math.min(k, 3) + 0.5, y + 3, Math.min(k, 3), 3.2); }
+      ctx.fillStyle = COL_CU;
+      for (let y = L.liq; y < y1; y += 6) { const k = prog * 2.4 * (0.6 + 0.4 * Math.sin(y * 2.3)); if (k > 0.2) ctx.fillRect(L.xc - pC / 2 - k, y, k, 3), ctx.fillRect(L.xc + pC / 2, y + 3, k, 3); }
+      txt(ctx, 'Zn', L.xz, y1 + fs + 2, fs, COL_ZN, 'center', 700);
+      txt(ctx, 'Cu', L.xc, y1 + fs + 2, fs, COL_CU, 'center', 700);
+      // ---------- iones en los vasos
+      const rad = clamp(w * 0.0085, 2.8, 5.2);
+      for (const q of s.zn) if (q.vis > 0.02) { const x = rI.x0 + q.u * (rI.x1 - rI.x0), y = rI.y0 + q.v * (rI.y1 - rI.y0); bola(ctx, x, y, rad, COL_ZN2, q.vis); }
+      for (const q of s.cu) if (q.vis > 0.02) { const x = rD.x0 + q.u * (rD.x1 - rD.x0), y = rD.y0 + q.v * (rD.y1 - rD.y0); bola(ctx, x, y, rad, '#5fb6ff', q.vis); }
+      ctx.save(); ctx.globalCompositeOperation = 'lighter';
+      for (const g of s.an) { const x = rD.x0 + g.x * (rD.x1 - rD.x0), y = rD.y0 + g.y * (rD.y1 - rD.y0), k = g.t / 0.5; ctx.strokeStyle = `rgba(255,170,90,${1 - k})`; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(x, y, 2 + k * 9, 0, TAU); ctx.stroke(); }
+      ctx.restore();
+      // ---------- puente salino (gel) con iones que migran
+      const P = L.puente, bwid = clamp(h * 0.035, 7, 14);
+      ctx.save(); ctx.lineJoin = 'round'; ctx.lineCap = 'butt';
+      ctx.beginPath(); P.forEach((q, i) => (i ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1])));
+      ctx.strokeStyle = 'rgba(190,215,255,.55)'; ctx.lineWidth = bwid + 4; ctx.stroke();
+      ctx.strokeStyle = 'rgba(255,240,200,.28)'; ctx.lineWidth = bwid; ctx.stroke(); ctx.restore();
+      const nI = s.red ? 5 : 7;
+      for (let i = 0; i < nI; i++) { // cationes (K⁺) hacia el cátodo (→), aniones (NO₃⁻) hacia el ánodo (←)
+        const [x1, y1b] = enCamino(P, i / nI + s.flow * 0.9), [x2, y2] = enCamino(P, 1 - frac(i / nI + 0.5 / nI + s.flow * 0.9));
+        bola(ctx, x1, y1b - 1.5, bwid * 0.3, '#ff9ccf'); bola(ctx, x2, y2 + 1.5, bwid * 0.3, '#7fe3ff');
+      }
+      txt(ctx, 'pont salin', w * 0.5, L.yBr - bwid / 2 - 6, fs - 1, '#c9d6f5', 'center', 600);
+      if (w > 480) { txt(ctx, 'K⁺ →', w * 0.5 - 6, L.yBr + bwid + fs + 2, fs - 2, '#ff9ccf', 'right', 700); txt(ctx, '← anions', w * 0.5 + 6, L.yBr + bwid + fs + 2, fs - 2, '#7fe3ff', 'left', 700); }
+      // ---------- circuito externo: cables, lámpara, amperímetro
+      ctx.strokeStyle = '#7f8fb8'; ctx.lineWidth = 3; ctx.lineJoin = 'round'; ctx.beginPath();
+      L.cam.forEach((q, i) => (i ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1]))); ctx.stroke();
+      // lámpara
+      const B = L.bulb, br = s.brig;
+      brillo(ctx, B.x, B.y, B.r * (2.4 + 2 * br), '#ffe27a', 0.1 + 0.8 * br);
+      ctx.beginPath(); ctx.arc(B.x, B.y, B.r, 0, TAU); ctx.fillStyle = `rgba(255,${200 + 40 * br | 0},${100 + 100 * br | 0},${0.25 + 0.6 * br})`; ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,.7)'; ctx.lineWidth = 2; ctx.stroke();
+      ctx.strokeStyle = br > 0.05 ? '#fff3c4' : '#8a93ad'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(B.x - B.r * 0.5, B.y + B.r * 0.55); ctx.lineTo(B.x - B.r * 0.25, B.y - B.r * 0.1); ctx.lineTo(B.x, B.y + B.r * 0.2); ctx.lineTo(B.x + B.r * 0.25, B.y - B.r * 0.1); ctx.lineTo(B.x + B.r * 0.5, B.y + B.r * 0.55); ctx.stroke();
+      // amperímetro
+      const Am = L.amp; ctx.beginPath(); ctx.arc(Am.x, Am.y, Am.r, 0, TAU); ctx.fillStyle = '#0d1530'; ctx.fill(); ctx.strokeStyle = '#c9d6f5'; ctx.lineWidth = 1.6; ctx.stroke();
+      txt(ctx, 'A', Am.x, Am.y + Am.r * 0.38, Am.r * 1.1, '#eaf0ff', 'center', 700);
+      // electrones (ánodo → lámpara → cátodo)
+      const nE = s.red ? 14 : 22;
+      for (let i = 0; i < nE; i++) {
+        const [x, y] = enCamino(L.cam, i / nE + s.flow);
+        if (Math.hypot(x - B.x, y - B.y) < B.r * 0.95 || Math.hypot(x - Am.x, y - Am.y) < Am.r) continue; // pasan "por dentro"
+        brillo(ctx, x, y, 8, COL_E, 0.55 * clamp(irel, 0.2, 1)); bola(ctx, x, y, 3, COL_E);
+      }
+      if (irel > 0.02) { // sentido de e⁻ y de la corriente convencional I
+        const ya = L.yW - Math.max(L.bulb.r, 12) - 6;
+        flecha(ctx, w * 0.36, ya, w * 0.44, ya, COL_E, 2, 6); txt(ctx, 'e⁻', w * 0.4, ya - 4, fs - 1, COL_E, 'center', 700);
+        flecha(ctx, w * 0.64, ya, w * 0.56, ya, '#ff8fa3', 2, 6); txt(ctx, 'I', w * 0.6, ya - 4, fs - 1, '#ff8fa3', 'center', 700);
+      }
+      // ---------- polos y etiquetas
+      const polo = (x, signo, col) => { ctx.beginPath(); ctx.arc(x, L.yTop - 11, 9, 0, TAU); ctx.fillStyle = rgba(col, 0.2); ctx.fill(); ctx.strokeStyle = col; ctx.lineWidth = 1.8; ctx.stroke(); txt(ctx, signo, x, L.yTop - 11 + 5, 15, col, 'center', 700); };
+      polo(L.xz, '−', '#ff8fa3'); polo(L.xc, '+', '#7fe3ff');
+      const cxI = L.bx[0] + L.bw / 2, cxD = L.bx[1] + L.bw / 2, yl = L.bB + fs * 2.4;
+      txt(ctx, 'ANODE (−) · oxydation', cxI, yl, fs, '#ff8fa3', 'center', 700);
+      txt(ctx, 'Zn → Zn²⁺ + 2 e⁻', cxI, yl + fs + 3, fs - 1, '#c9d6f5', 'center', 400);
+      txt(ctx, 'CATHODE (+) · réduction', cxD, yl, fs, '#7fe3ff', 'center', 700);
+      txt(ctx, 'Cu²⁺ + 2 e⁻ → Cu', cxD, yl + fs + 3, fs - 1, '#c9d6f5', 'center', 400);
+      // lectura de E
+      txt(ctx, 'E = ' + num(Et, 2) + ' V', w * 0.5, L.yBr + bwid * 0.5 + fs * 2.6 + (w > 480 ? fs + 4 : 0), fs + 2, '#ffd166', 'center', 700);
+      txt(ctx, 'avance ' + num(p.t, 0) + ' %', w * 0.5, L.bB - 4, fs - 1, '#9fb0d9', 'center', 400);
+    },
+    formula(p) {
+      const Et = Epila(p);
+      return `\\begin{gathered}\\text{Zn}_{(s)}+\\text{Cu}^{2+}_{(aq)}\\rightarrow\\text{Zn}^{2+}_{(aq)}+\\text{Cu}_{(s)}\\\\[2pt] E=${tx(Et, 2)}\\ \\text{V}\\qquad \\xi\\ \\text{(avance)}=${tx(p.t, 0)}\\ \\%\\end{gathered}`;
+    },
+    lecturas(p) {
+      return [{ label: 'E (f.é.m.)', valor: num(Epila(p), 2) + ' V' }, { label: 'avance', valor: num(p.t, 0) + ' %' }, { label: 'e⁻', valor: 'ánodo (−) → cátodo (+)' }, { label: 'I', valor: 'cátodo (+) → ánodo (−)' }];
+    },
   });
 })();

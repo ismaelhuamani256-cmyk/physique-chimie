@@ -14,8 +14,9 @@ Juego **original**: protagonista *Ato* (robot-científico redondo con casco-burb
 | `20-temas.js` | Temas (`laboratorio-neon`, `lava-fortaleza`, `cielo-ondas`, fallback), tiles, parallax de 3–4 capas, peligro bajo los fosos |
 | `30-audio.js` | Chiptune original WebAudio (4 músicas de bucle + 16 efectos) |
 | `40-mundo.js` | `crearMundo`, colisiones AABB por ejes, simulación del jugador, enemigos, objetos, puentes, palancas, arena |
-| `50-jefes.js` | IA y dibujo de los dos jefes, proyectiles |
-| `60-ui.js` | Entrada (teclado/táctil/gamepad) y capa DOM (HUD, avisos KaTeX, preguntas, pausa, fin) |
+| `45-quiz.js` | **Modo Quiz Quest**: bloques `?`, ladrillos, tuberías, puertas, plataformas que caen, plantas carnívoras, bonus de monedas, premios, enemigos acuáticos, capa de agua |
+| `50-jefes.js` | IA y dibujo de los jefes (golem, Rey Entropía, Pulpo Ácido, Dragón de Tormenta), proyectiles, modo `jefe_quiz` |
+| `60-ui.js` | Entrada (teclado/táctil/gamepad) y capa DOM (HUD, avisos KaTeX, **modal de pregunta** opción/numérica, pausa, fin) |
 | `70-juego.js` | Montaje, bucle de paso fijo, render |
 | `validador.js` | **Física (`FIS`), geometría de tiles y validador** (navegador y Node) |
 
@@ -117,8 +118,42 @@ El `AudioContext` se crea en la primera tecla/clic/toque y se cierra en `unmount
 Pantalla ✔/✖ con fórmulas, vidas y XP estimado (`50 + 5·fórmulas + 50 si jefe`, igual que `PCB.flow.finNivel`). «Continuar» llama a
 `finNivel`; si perdiste las 3 vidas también hay «Reintentar».
 
+## Modo Quiz Quest (CONTRATO §4b)
+`PCB.screens.juego.mount(host, {capId, nivel, capitulo, onFin?, modoQuiz?})`: si hay `ctx.onFin(res)` se llama ahí (al pulsar «Continuar» de la
+pantalla final) con `res = {capId, gano, vidasRestantes, coleccionados, jefeDerrotado, respuestas:{correctas,total}, premios:{moneda,vida,pista,escudo,estrella,reloj}}`;
+si no, se llama a `PCB.flow.finNivel` (solo los 5 campos del contrato §2). `modoQuiz` se activa solo con `tipo_nivel` `quiz_*`.
+`PCB.juego.validar` y el CLI (`node js/juego/validador.js nivel.json`) entienden los tipos `quiz_tierra|quiz_agua|quiz_castillo` y todos los segmentos nuevos.
+Niveles de ejemplo (con preguntas reales de bachillerato): `contenido/niveles/_demo-quiz-tierra.json`, `_demo-quiz-agua.json`, `_demo-quiz-castillo.json`.
+
+**Pregunta Q** (esquema §6): `{id, tipo:"opcion"|"numerico", enunciado, opciones, correcta, explicacion, valor, unidad, tolerancia_rel, cifras_sig, pasos, pagina_pdf, latex_opciones?}`
+(también se acepta `pregunta` como alias de `enunciado`). El modal pausa el juego, renderiza `$…$` y `latex_opciones` con KaTeX, acepta teclas 1–6 / clic /
+Enter (en `numerico`: campo valor + unidad corregidos con `PCB.estudio.corregirNumerico({valor,unidad},{valor,unidad,tolerancia_rel,cifras_sig})`), muestra la
+explicación y los pasos y cuenta `{correctas,total}`. Se usa en bloques, tuberías, puertas y jefes (también los `jefe` clásicos).
+
+| Segmento | Campos | Comportamiento |
+|---|---|---|
+| `bloque_pregunta` | `x,y,pregunta,premio,fallo` | Se golpea con la cabeza (desde abajo). Acierto: premio `moneda\|vida\|pista\|escudo\|estrella\|reloj` y queda gris; fallo: se agrieta/cierra (con `fallo:"enemigo"` suelta un bichito que, pisado, enseña la explicación). Debe haber una superficie alcanzable 2–5 tiles por debajo |
+| `ladrillo` | `x,y,largo,contenido:"nada\|moneda\|moneda_multi\|pregunta"` | Cerámica de laboratorio que se **rompe desde abajo** con fragmentos; `moneda` +1; `moneda_multi` hasta 6 monedas y luego queda como bloque usado; `pregunta` = bloque_pregunta con aspecto de ladrillo (usa `pregunta`/`premio`/`fallo`) |
+| `tuberia` | `x,y,alto(1–3),pregunta,preguntas_reserva?,destino:"atajo\|bonus",salida_x,salida_y` | 2 tiles de ancho; `y` = cualquier fila sobre su suelo. **↓ / E encima** → pregunta. Acierto: `atajo` te lleva a `salida_x/salida_y` (y fija ahí el punto de reaparición); `bonus` abre una sala de monedas generada (30 s, tubería de salida) y vuelves. Fallo: **sale una planta carnívora** y la tubería se cierra 2.5 s; con `preguntas_reserva` se puede reintentar con otra pregunta, si no queda atascada |
+| `puerta` | `x,y,alto(2–6),pregunta,preguntas_reserva?` | Sólida. **↑ / E** delante (↑ no salta cerca de una puerta): pregunta; acierto la disuelve; fallo: sigue cerrada y se reintenta tras 3 s (con la siguiente de `preguntas_reserva`) |
+| `plataforma_cae` | `x,y,largo,retardo,reaparece` | De un solo sentido; tiembla `retardo` s (0.2–3) tras pisarla, cae y reaparece `reaparece` s (1–15) después (deja un fantasma). El validador la exige **alcanzable pero no como camino único**: no se usa para llegar a otras plataformas |
+| `planta_carnivora` | `x,y,ciclo(1.5–12),visible(0.3…ciclo−0.5)` | Bulbo con colmillos y ácido (diseño propio). Sale de la tubería situada en `x` (o del suelo si no hay) durante `visible` s de cada `ciclo`; muerde, no se pisa; **no sale** si estás encima o pegado a su tubería (≤1.6 tiles) |
+| `zona_agua` | `x,y,w,h,corriente_x,corriente_y` | Física de **natación**: hundimiento suave (≈1.8 tiles/s), cada pulsación de salto = brazada (≈2.1 tiles, `NAT.BRAZADA`), ↓ bucea, velocidad horizontal máx. 3.6 tiles/s, la corriente arrastra a ≈ `corriente·0.8` tiles/s, burbujas, sonido amortiguado (paso-bajo), fondo invisible si la zona llega al suelo del nivel (no hay foso mortal), techo si `y=0`; en la superficie (`y>0`) una brazada te saca del agua. Tema `submarino` |
+| enemigos `enemigo` ∈ `medusa\|pez\|erizo\|anguila` | como `enemigo` | Nadan (medusa vertical senoidal, pez horizontal, erizo bamboleante e **impisable**, anguila persigue despacio). Se pisan (salvo el erizo); al tocar muestran la `correccion` |
+| `jefe_quiz` | `x,jefe:"rey_entropia\|golem_formulas\|pulpo_acido\|dragon_tormenta",vidas,preguntas[≥5]` | Jefe **blindado** (escudo hexagonal con «?»). Pisarlo abre una pregunta: acierto → −1 vida del jefe, rebote; fallo → escudo destella, contraataque y pierdes 1 corazón (el escudo `premio` lo absorbe). Ataca entre preguntas (nunca se aturde). Misma arena que `jefe` (`jefe.x−12` … `meta.x−1`, suelo plano). `pulpo_acido` y `dragon_tormenta` siempre son modo quiz |
+
+Premios: moneda (+1, se cuentan), vida (hasta 5), pista, **escudo** (absorbe un golpe), **estrella** (8 s invulnerable; tocar un enemigo lo derrota), **reloj** (8 s de enemigos, jefes y plataformas a mitad de velocidad).
+Controles añadidos: ↓ / E = acción (tuberías, palancas, puertas; botón ⬇ en táctil), ↑ / E ante una puerta.
+Jefes nuevos (diseño propio): **Pulpo Ácido** (tinta, chorro de embestida, tentáculos que azotan el suelo) y **Dragón de Tormenta** (rayos con aviso desde las nubes, embestida, ráfaga de bolas eléctricas).
+
+**Validador Quiz Quest**: tipos de nivel nuevos; preguntas (`opcion`: 2–6 opciones y `correcta` válida; `numerico`: `valor` numérico, `tolerancia_rel` en (0,0.5]); bloques/ladrillos golpeables desde abajo;
+tuberías (alto 1–3, suelo a la misma altura bajo las 2 columnas, `destino`, salida con suelo y despejada); puertas; plantas (tubería o suelo bajo `x`);
+`quiz_agua`: sin límite de foso, alcanzabilidad **nadando** por flood-fill (meta, gemas, bloques —casilla de debajo—, bocas de tubería y puertas); `jefe_quiz` ≥5 preguntas; en niveles `quiz_*` no se exigen ≥5 coleccionables ni ≥3 enemigos.
+Nota: `index.html` es estático (lo genera `node tools/generar-estatico.js`): hay que regenerarlo para que cargue `js/juego/45-quiz.js`.
+
 ## Límites conocidos
 - No hay selección de jefe por nivel aparte de `jefe.jefe` (`rey_entropia` ⇒ jefe de fortaleza; cualquier otro id ⇒ Gran Ejercicio).
 - Las plataformas móviles y flotantes son de un solo sentido (no bloquean lateralmente ni desde abajo).
-- Un solo `jefe` y una sola `meta` por nivel; el validador exige que la arena sea plana.
+- Un solo `jefe`/`jefe_quiz` y una sola `meta` por nivel; el validador exige que la arena sea plana.
+- La sala de monedas (bonus) se genera siempre igual (44×18 tiles) y no tiene enemigos; el modo agua no admite fosos/lava mortales en el fondo.
 - El HUD usa PixelHUD, que no pinta bien mayúsculas con tilde: en el HUD se quitan las tildes (el texto de preguntas usa `UI`).

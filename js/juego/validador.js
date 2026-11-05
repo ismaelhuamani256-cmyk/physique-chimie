@@ -67,8 +67,8 @@
   // ---------- geometría: del JSON a una rejilla de tiles ----------
   // Tipos de tile: 0 aire, 1 suelo (se extiende hasta abajo, lo cortan los fosos), 2 plataforma flotante
   // (de un solo sentido: se atraviesa desde abajo), 3 puente, 4 bloque sólido.
-  // 5 = bloque ? (bloque_pregunta), 6 = tubería, 7 = puerta: sólidos que dibuja el motor como entidades
-  const SOLIDO = (t) => t === 1 || t === 3 || t === 4 || t === 5 || t === 6 || t === 7;
+  // 5 = bloque ? (bloque_pregunta), 6 = tubería, 7 = puerta, 8 = ladrillo: sólidos que dibuja el motor como entidades
+  const SOLIDO = (t) => t === 1 || t === 3 || t === 4 || t === 5 || t === 6 || t === 7 || t === 8;
   const SUELO_T = (t) => t === 1 || t === 2 || t === 3 || t === 4;   // lo que cuenta como "suelo" para topAt
   const JEFES_QUIZ = ['rey_entropia', 'golem_formulas', 'pulpo_acido', 'dragon_tormenta'];
   const ACUATICOS = ['medusa', 'pez', 'erizo', 'anguila'];
@@ -77,7 +77,7 @@
     const ancho = Math.round(num(nivel.ancho_tiles, 0)), alto = Math.round(num(nivel.alto_tiles, 0));
     const segs = Array.isArray(nivel.segmentos) ? nivel.segmentos : [];
     const tiles = new Uint8Array(Math.max(0, ancho * alto));
-    const G = { ancho, alto, tiles, movers: [], resortes: [], campos: [], fosos: [], puentes: [], palancas: [], bloques: [], tuberias: [], puertas: [], aguas: [], arena: null, meta: null, jefe: null };
+    const G = { ancho, alto, tiles, movers: [], resortes: [], campos: [], fosos: [], puentes: [], palancas: [], bloques: [], tuberias: [], puertas: [], aguas: [], ladrillos: [], caes: [], plantas: [], arena: null, meta: null, jefe: null };
     const get = (x, y) => (x < 0 || x >= ancho || y < 0 || y >= alto ? 0 : tiles[y * ancho + x]);
     const set = (x, y, v) => { if (x >= 0 && x < ancho && y >= 0 && y < alto) tiles[y * ancho + x] = v; };
     G.get = get;
@@ -119,6 +119,16 @@
       else if (s.tipo === 'palanca') G.palancas.push({ id: s.id || null, x: num(s.x, 0), y: num(s.y, 0), objetivo: s.objetivo || null, seg: s })
       else if (s.tipo === 'meta' && !G.meta) G.meta = { x: Math.round(num(s.x, 0)), seg: s };
       else if ((s.tipo === 'jefe' || s.tipo === 'jefe_quiz') && !G.jefe) G.jefe = { x: Math.round(num(s.x, 0)), seg: s };
+      else if (s.tipo === 'ladrillo') {
+        const x0 = Math.round(num(s.x, 0)), y = Math.round(num(s.y, 0)), l = Math.max(1, Math.round(num(s.largo, 1)));
+        for (let i = 0; i < l; i++) {
+          if (s.contenido === 'pregunta') {   // un ladrillo con pregunta es un bloque_pregunta con aspecto de ladrillo
+            G.bloques.push({ x: x0 + i, y, deLadrillo: true, seg: { tipo: 'bloque_pregunta', x: x0 + i, y, pregunta: s.pregunta, premio: s.premio || 'moneda', fallo: s.fallo || 'cierra', preguntas_reserva: s.preguntas_reserva } });
+            set(x0 + i, y, 5);
+          } else { G.ladrillos.push({ x: x0 + i, y, contenido: s.contenido || 'nada', seg: s }); set(x0 + i, y, 8); }
+        }
+      } else if (s.tipo === 'plataforma_cae') G.caes.push({ x: num(s.x, 0), y: num(s.y, 0), largo: Math.max(1, Math.round(num(s.largo, 3))), retardo: num(s.retardo, 0.6), reaparece: num(s.reaparece, 4), seg: s });
+      else if (s.tipo === 'planta_carnivora') G.plantas.push({ x: Math.round(num(s.x, 0)), y: Math.round(num(s.y, 0)), ciclo: num(s.ciclo, 3), visible: num(s.visible, 1.2), seg: s });
       else if (s.tipo === 'zona_agua') G.aguas.push({ x: num(s.x, 0), y: num(s.y, 0), w: num(s.w, 1), h: num(s.h, 1), cx: num(s.corriente_x, 0), cy: num(s.corriente_y, 0), seg: s });
       else if (s.tipo === 'bloque_pregunta') {
         const x = Math.round(num(s.x, 0)), y = Math.round(num(s.y, 0));
@@ -154,7 +164,7 @@
     for (let y = 0; y < G.alto; y++) {
       let ini = -1;
       for (let x = 0; x <= G.ancho; x++) {
-        const vt = (xx, yy) => { const q = G.get(xx, yy); return q === 5 || q === 7 ? 0 : q; };   // bloques ? y puertas no cuentan (se abren / se golpean)
+        const vt = (xx, yy) => { const q = G.get(xx, yy); return q === 5 || q === 7 || q === 8 ? 0 : q; };   // bloques ? y puertas no cuentan (se abren / se golpean)
         const t = x < G.ancho ? vt(x, y) : 0;
         const esSup = t !== 0 && !SOLIDO(vt(x, y - 1));
         if (esSup && ini < 0) ini = x;
@@ -168,6 +178,7 @@
       const s = out.find((o) => o.x0 <= r.x && r.x < o.x1 && o.y > ry && o.y <= ry + 3);
       if (s) s.resorte = true;
     }
+    for (const c of G.caes) out.push({ tipo: 'estatica', cae: true, y: Math.round(c.y), x0: c.x, x1: c.x + c.largo, muestras: [{ x0: c.x, x1: c.x + c.largo, y: Math.round(c.y) }] });
     for (const m of G.movers) {
       const muestras = [];
       for (let k = 0; k <= 8; k++) {
@@ -208,7 +219,7 @@
     const F = fisica(nivel);
     if (F.hSeguro < 2.2) E(`Con esta física el salto solo alcanza ${F.hMax.toFixed(2)} tiles: demasiado bajo para jugar.`);
     const segs = nivel.segmentos;
-    const TIPOS = ['plataforma', 'puente', 'palanca', 'foso', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'checkpoint', 'jefe', 'meta', 'bloque_pregunta', 'tuberia', 'puerta', 'zona_agua', 'jefe_quiz'];
+    const TIPOS = ['plataforma', 'puente', 'palanca', 'foso', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'checkpoint', 'jefe', 'meta', 'bloque_pregunta', 'tuberia', 'puerta', 'zona_agua', 'jefe_quiz', 'ladrillo', 'plataforma_cae', 'planta_carnivora'];
     const G = geometria(nivel);
     const dentroX = (x) => x >= 0 && x < ancho, dentroY = (y) => y >= 0 && y < alto;
     const desc = (s, i) => `segmento #${i} (${s.tipo}${s.x != null ? ' x=' + s.x : ''}${s.y != null ? ' y=' + s.y : ''})`;
@@ -218,8 +229,8 @@
     segs.forEach((s, i) => {
       if (!s || typeof s !== 'object' || !TIPOS.includes(s.tipo)) { E(`segmento #${i}: tipo desconocido ${JSON.stringify(s && s.tipo)}.`); return; }
       if (!esNum(s.x)) { E(`${desc(s, i)}: falta x numérica.`); return; }
-      if (['plataforma', 'puente', 'palanca', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'bloque_pregunta', 'tuberia', 'puerta', 'zona_agua'].includes(s.tipo) && !esNum(s.y)) E(`${desc(s, i)}: falta y numérica.`);
-      if (['plataforma', 'puente', 'foso', 'plataforma_movil'].includes(s.tipo) && !(esNum(s.largo) && s.largo >= 1)) E(`${desc(s, i)}: "largo" debe ser un número >= 1.`);
+      if (['plataforma', 'puente', 'palanca', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'bloque_pregunta', 'tuberia', 'puerta', 'zona_agua', 'ladrillo', 'plataforma_cae', 'planta_carnivora'].includes(s.tipo) && !esNum(s.y)) E(`${desc(s, i)}: falta y numérica.`);
+      if (['plataforma', 'puente', 'foso', 'plataforma_movil', 'plataforma_cae'].includes(s.tipo) && !(esNum(s.largo) && s.largo >= 1)) E(`${desc(s, i)}: "largo" debe ser un número >= 1.`);
       if (s.x < 0 || s.x >= ancho) E(`${desc(s, i)}: x fuera de rango [0, ${ancho}).`);
       if (s.y != null && (s.y < 0 || s.y >= alto)) E(`${desc(s, i)}: y fuera de rango [0, ${alto}).`);
       if (esNum(s.largo) && s.x + s.largo > ancho) E(`${desc(s, i)}: se sale del nivel (x+largo=${s.x + s.largo} > ancho_tiles=${ancho}).`);
@@ -406,11 +417,12 @@
       const cola = [ini]; vis.add(ini);
       while (cola.length) {
         const a = cola.shift();
+        if (a.cae) continue;   // una plataforma que cae no cuenta como camino hacia otras
         for (const b of sup) if (!vis.has(b) && puede(a, b)) { vis.add(b); cola.push(b); }
       }
       for (const s of sup) if (!vis.has(s)) {
         if (s.tipo === 'movil') E(`La plataforma móvil en x=${s.mover.seg.x}, y=${s.mover.seg.y} es inalcanzable (altura ≤ ${F.hSeguro.toFixed(1)} tiles, hueco ≤ ${F.gapSeguro.toFixed(1)} tiles).`);
-        else E(`La plataforma en x=${s.x0}..${s.x1 - 1}, y=${s.y} es inalcanzable desde el inicio (altura segura ${F.hSeguro.toFixed(1)}, hueco seguro ${F.gapSeguro.toFixed(1)} tiles).`);
+        else E(`La plataforma${s.cae ? ' que cae' : ''} en x=${s.x0}..${s.x1 - 1}, y=${s.y} es inalcanzable desde el inicio (altura segura ${F.hSeguro.toFixed(1)}, hueco seguro ${F.gapSeguro.toFixed(1)} tiles${s.cae ? '; las plataformas que caen no cuentan como único camino' : ''}).`);
       }
       if (meta) {
         const ty = G.topAt(meta.x);
@@ -467,6 +479,48 @@
       }
       if (!ok) E(`${id}: no se puede golpear desde abajo (hace falta una superficie alcanzable debajo, entre 2 y ${(F.hSeguro + 1.9).toFixed(1)} tiles por debajo del bloque).`);
     }
+    // ladrillos: se rompen golpeándolos desde abajo (misma comprobación que los bloques ?)
+    const golpeable = (bx, by) => {
+      for (const q of alc) for (const m of q.muestras) {
+        if (!(m.x0 < bx + 1.3 && m.x1 > bx - 0.3)) continue;
+        const h = m.y - by, lim = F.hSeguro + 1.9 + (q.resorte ? F.hResorte - F.hMax : 0);
+        if (m.y >= by + 2 && h <= lim) return true;
+      }
+      return false;
+    };
+    const CONT = ['nada', 'moneda', 'moneda_multi', 'pregunta'];
+    for (const sg of segs.filter((q) => q.tipo === 'ladrillo')) {
+      const id = `ladrillo (x=${sg.x}, y=${sg.y})`;
+      if (sg.largo != null && !(Number.isInteger(sg.largo) && sg.largo >= 1 && sg.largo <= 12)) E(`${id}: largo debe ser un entero entre 1 y 12.`);
+      if (sg.contenido != null && !CONT.includes(sg.contenido)) E(`${id}: contenido debe ser ${CONT.join('|')} (vale ${JSON.stringify(sg.contenido)}).`);
+      if (sg.contenido === 'pregunta') valQs(sg, id);
+      if (sg.x + (sg.largo || 1) > ancho) E(`${id}: se sale del nivel.`);
+    }
+    for (const b of G.ladrillos) {
+      const id = `ladrillo (x=${b.x}, y=${b.y})`;
+      if (b.y < 1 || b.y >= alto - 1) { E(`${id}: fuera de los límites del nivel.`); continue; }
+      if (esAgua || !ini) continue;
+      if (!golpeable(b.x, b.y)) E(`${id}: no se puede romper desde abajo (hace falta una superficie alcanzable entre 2 y ${(F.hSeguro + 1.9).toFixed(1)} tiles por debajo).`);
+    }
+    // plataformas que caen
+    for (const c of G.caes) {
+      const sg = c.seg, id = `plataforma_cae (x=${sg.x}, y=${sg.y})`;
+      if (!(c.retardo >= 0.2 && c.retardo <= 3) || (sg.retardo != null && !esNum(sg.retardo))) E(`${id}: retardo debe estar entre 0.2 y 3 s (vale ${sg.retardo}).`);
+      if (!(c.reaparece >= 1 && c.reaparece <= 15) || (sg.reaparece != null && !esNum(sg.reaparece))) E(`${id}: reaparece debe estar entre 1 y 15 s (vale ${sg.reaparece}).`);
+      if (c.y < 2 || c.y >= alto - 2) E(`${id}: y fuera de rango [2, ${alto - 2}).`);
+      if (c.x + c.largo > ancho) E(`${id}: se sale del nivel.`);
+      for (let i = 0; i < c.largo; i++) if (G.get(Math.floor(c.x) + i, Math.round(c.y)) !== 0) { E(`${id}: está dentro de un sólido.`); break; }
+    }
+    // plantas carnívoras
+    for (const pl of G.plantas) {
+      const sg = pl.seg, id = `planta_carnivora (x=${sg.x}, y=${sg.y})`;
+      if (!(pl.ciclo >= 1.5 && pl.ciclo <= 12)) E(`${id}: ciclo debe estar entre 1.5 y 12 s (vale ${sg.ciclo}).`);
+      if (!(pl.visible >= 0.3 && pl.visible <= pl.ciclo - 0.5)) E(`${id}: visible debe estar entre 0.3 y ciclo-0.5 (vale ${sg.visible}).`);
+      const tubo = G.tuberias.find((t) => t.x <= pl.x && pl.x < t.x + 2), base = tubo ? tubo.base : G.baseDesde(pl.x, pl.y);
+      if (base < 0) E(`${id}: no hay tubería ni suelo debajo.`);
+      else if (!tubo && (SOLIDO(G.get(pl.x, base - 1)) || SOLIDO(G.get(pl.x, base - 2)))) E(`${id}: el suelo sobre el que sale está tapado por un sólido.`);
+      if (pl.x < 8 && pl.x >= 0) W(`${id}: muy cerca del inicio.`);
+    }
     for (const t of G.tuberias) {
       const sg = t.seg, id = `tuberia (x=${sg.x}, y=${sg.y})`;
       if (t.base < 0) { E(`${id}: no hay suelo debajo.`); continue; }
@@ -507,6 +561,7 @@
         }
       }
       const alcanza = (x, y) => visto[Math.min(alto - 1, Math.max(0, y)) * ancho + Math.min(ancho - 1, Math.max(0, x))] === 1;
+      for (const b of G.ladrillos) if (!alcanza(b.x, b.y + 1)) E(`ladrillo (x=${b.x}, y=${b.y}): no se llega nadando a la casilla de debajo.`);
       if (meta) { const my = G.topAt(meta.x) - 1; if (!alcanza(meta.x, my)) E(`La meta (x=${meta.x}) no es accesible nadando desde el inicio.`); }
       for (const c of cols) if (!alcanza(Math.floor(c.x), Math.floor(c.y))) E(`coleccionable "${c.ref}" no es accesible nadando.`);
       for (const b of G.bloques) if (!alcanza(b.x, b.y + 1)) E(`bloque_pregunta (x=${b.x}, y=${b.y}): no se llega nadando a la casilla de debajo (hay que golpearlo desde abajo).`);

@@ -9,7 +9,7 @@
 (function () {
   const J = window.PCB.juego;
   const EPS = 1e-4;
-  const SOL = (t) => t === 1 || t === 3 || t === 4 || t === 5 || t === 6 || t === 7;   // 5 bloque ?, 6 tubería, 7 puerta
+  const SOL = (t) => t === 1 || t === 3 || t === 4 || t === 5 || t === 6 || t === 7 || t === 8;   // 5 bloque ?, 6 tubería, 7 puerta, 8 ladrillo
 
   // ---------- creación del mundo ----------
   J.crearMundo = function (nivel) {
@@ -36,6 +36,14 @@
     w.tuberias = G.tuberias.filter((t) => t.base >= 0).map((t) => ({ x: t.x, top: t.top, base: t.base, alto: t.alto, q: t.seg.pregunta, reserva: (t.seg.preguntas_reserva || []).slice(), destino: t.seg.destino || 'atajo',
       sx: t.seg.salida_x, sy: t.seg.salida_y, abierta: false, usada: false, cooldown: 0, agotada: false }));
     w.puertas = G.puertas.filter((d) => d.base >= 0).map((d) => ({ x: d.x, top: d.top, base: d.base, alto: d.alto, q: d.seg.pregunta, reserva: (d.seg.preguntas_reserva || []).slice(), abierta: false, cooldown: 0, disolver: 0, intentos: 0 }));
+    // ladrillos rompibles, plataformas que caen (viven en w.movers con cae:true) y plantas carnívoras
+    w.ladrillos = G.ladrillos.map((b) => ({ x: b.x, y: b.y, contenido: b.contenido, monedas: b.contenido === 'moneda_multi' ? 6 : b.contenido === 'moneda' ? 1 : 0, bump: 0, roto: false }));
+    for (const c of G.caes) w.movers.push({ x: c.x, y: c.y, bx: c.x, by: c.y, largo: c.largo, rec: 0, eje: 'x', per: 1, dx: 0, dy: 0, cae: true, retardo: c.retardo, reaparece: c.reaparece, estado: 'firme', t: 0, vy: 0, ausente: false });
+    w.plantas = G.plantas.map((pl) => {
+      const tubo = w.tuberias.find((t) => t.x <= pl.x && pl.x < t.x + 2);
+      const base = tubo ? tubo.top : G.baseDesde(pl.x, pl.y);
+      return { cx: tubo ? tubo.x + 1 : pl.x + 0.5, baseY: base, tubo: tubo || null, ciclo: pl.ciclo, visible: pl.visible, fase: ((J.hash('pl' + pl.x) % 100) / 100) * pl.ciclo, alt: 0, forzar: 0, mordio: false };
+    });
     w.aguas = G.aguas.map((a) => ({ x: a.x, y: a.y, w: a.w, h: a.h, cx: a.cx, cy: a.cy }));
     for (const s of nivel.segmentos) {
       if (s.tipo === 'coleccionable') w.items.push({ x: Math.floor(s.x), y: Math.floor(s.y), ref: s.ref, latex: s.latex, nombre: s.nombre, tomado: false, fase: (J.hash(s.ref || '') % 100) / 16 });
@@ -99,7 +107,7 @@
         if (SOL(t) || (t === 2 && prevB <= ty + 0.001)) mejor = Math.min(mejor, ty);
       }
       for (const m of w.movers) {
-        if (b.x + b.w > m.x && b.x < m.x + m.largo && prevB <= m.y + 0.06 && b.y + b.h >= m.y && m.y < mejor) { mejor = m.y; mov = m; }
+        if (!m.ausente && b.x + b.w > m.x && b.x < m.x + m.largo && prevB <= m.y + 0.06 && b.y + b.h >= m.y && m.y < mejor) { mejor = m.y; mov = m; }
       }
       if (mejor < Infinity) { b.y = mejor - b.h; b.vy = 0; b.suelo = true; b.sobre = mov; choco = true; }
     } else {
@@ -272,7 +280,7 @@
     // suelo invisible al fondo de una zona de agua que llega hasta abajo (se puede volver a subir nadando)
     if (zona && zona.y + zona.h >= w.alto && p.y + p.h > w.alto - 0.05) { p.y = w.alto - 0.05 - p.h; p.vy = Math.min(0, p.vy); p.suelo = true; }
     // golpe de cabeza contra un bloque ? (desde abajo)
-    if (p.techo && w.get(p.techo.x, p.techo.y) === 5 && J.Quiz) J.Quiz.golpeBloque(g, p.techo.x, p.techo.y);
+    if (p.techo && J.Quiz) { const tt = w.get(p.techo.x, p.techo.y); if (tt === 5) J.Quiz.golpeBloque(g, p.techo.x, p.techo.y); else if (tt === 8) J.Quiz.golpeLadrillo(g, p.techo.x, p.techo.y); }
     if (p.suelo && !suelo && vyAntes > 5) polvo(g, cx * J.T, (p.y + p.h) * J.T, 5);
     if (Math.abs(p.vx) > 0.5) p.tAnim += dt * (0.6 + Math.abs(p.vx) / F.vmax); else p.tAnim = 0;
     // foso (en el agua no mata: se puede volver a subir nadando)
@@ -294,6 +302,7 @@
     g.tm += dtM;
     // plataformas móviles
     for (const m of w.movers) {
+      if (m.cae) { J.Quiz.pasoCae(g, m, dtM); continue; }
       const s = 0.5 - 0.5 * Math.cos((2 * Math.PI * g.tm) / m.per);
       const nx = m.eje === 'x' ? m.bx + m.rec * s : m.bx, ny = m.eje === 'y' ? m.by + m.rec * s : m.by;
       m.dx = nx - m.x; m.dy = ny - m.y; m.x = nx; m.y = ny;

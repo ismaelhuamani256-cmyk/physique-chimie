@@ -179,6 +179,49 @@
    "largo": 4
   },
   {
+   "tipo": "plataforma_cae",
+   "x": 50,
+   "y": 11,
+   "largo": 3,
+   "retardo": 0.6,
+   "reaparece": 4
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 44,
+   "y": 10,
+   "largo": 3,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 47,
+   "y": 10,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 48,
+   "y": 10,
+   "largo": 1,
+   "contenido": "moneda_multi"
+  },
+  {
+   "tipo": "planta_carnivora",
+   "x": 40,
+   "y": 14,
+   "ciclo": 3.0,
+   "visible": 1.2
+  },
+  {
+   "tipo": "planta_carnivora",
+   "x": 88,
+   "y": 14,
+   "ciclo": 3.4,
+   "visible": 1.3
+  },
+  {
    "tipo": "plataforma",
    "x": 54,
    "y": 14,

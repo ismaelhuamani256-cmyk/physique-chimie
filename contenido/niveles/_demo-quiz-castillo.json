@@ -205,6 +205,43 @@
    "periodo": 4.5
   },
   {
+   "tipo": "plataforma_cae",
+   "x": 70,
+   "y": 11,
+   "largo": 3,
+   "retardo": 0.5,
+   "reaparece": 3
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 74,
+   "y": 10,
+   "largo": 2,
+   "contenido": "pregunta",
+   "pregunta": {
+    "id": "c5",
+    "tipo": "opcion",
+    "enunciado": "D'après la loi de Beer-Lambert $A=\\varepsilon\\,\\ell\\,c$, si l'on double la concentration $c$ (même cuve, même longueur d'onde), l'absorbance…",
+    "opciones": [
+     "double",
+     "est divisée par deux",
+     "ne change pas",
+     "est multipliée par quatre"
+    ],
+    "correcta": 0,
+    "explicacion": "$A$ est proportionnelle à $c$ : si $c$ double, $A$ double.",
+    "pagina_pdf": 0
+   },
+   "premio": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 60,
+   "y": 10,
+   "largo": 4,
+   "contenido": "moneda"
+  },
+  {
    "tipo": "plataforma",
    "x": 88,
    "y": 14,

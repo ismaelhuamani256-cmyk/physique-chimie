@@ -40,6 +40,65 @@
     if (tipo !== 'moneda') g.ui.aviso(msg); else g.ui.pop(msg);
   };
 
+  // ---------- ladrillos: se rompen desde abajo ----------
+  /** Fragmentos de cerámica que caen con gravedad. */
+  Q.fragmentos = function (g, wx, wy, colores) {
+    const n = g.reducido ? 4 : 10;
+    for (let i = 0; i < n; i++) g.part.push({ x: wx * T + (Math.random() - 0.5) * 10, y: wy * T + (Math.random() - 0.5) * 10, vx: (Math.random() - 0.5) * 5, vy: -2 - Math.random() * 3, vida: 0.9 + Math.random() * 0.5, max: 1.4, color: colores[i % colores.length], size: 3, grav: 26 });
+  };
+  Q.golpeLadrillo = function (g, tx, ty) {
+    const w = g.w, b = w.ladrillos.find((k) => k.x === tx && k.y === ty && !k.roto);
+    if (!b) return;
+    const pal = g.tema.pal, colores = [J.mezcla(pal.marco, '#8fd8e8', 0.45), '#ffffff', J.mezcla(pal.marco, '#0b1230', 0.35)];
+    b.bump = 1;
+    if (b.contenido === 'moneda_multi' && b.monedas > 1) {   // varias monedas: el ladrillo aguanta hasta agotarlas
+      b.monedas--; Q.premio(g, 'moneda', tx + 0.5, ty - 0.2); J.Audio.sfx('tonk'); return;
+    }
+    if (b.contenido === 'moneda_multi') {   // última moneda: queda como bloque usado
+      Q.premio(g, 'moneda', tx + 0.5, ty - 0.2);
+      b.roto = true; w.tiles[ty * w.ancho + tx] = 5;
+      w.bloques.push({ x: tx, y: ty, q: null, premio: 'moneda', fallo: 'cierra', estado: 'abierto', bump: 1, reserva: [] });
+      return;
+    }
+    b.roto = true; w.tiles[ty * w.ancho + tx] = 0;
+    g.shake = Math.max(g.shake, 2); J.Audio.sfx('romper'); Q.fragmentos(g, tx + 0.5, ty + 0.5, colores);
+    if (b.contenido === 'moneda') Q.premio(g, 'moneda', tx + 0.5, ty - 0.2);
+  };
+
+  // ---------- plataformas que caen ----------
+  Q.pasoCae = function (g, m, dt) {
+    const w = g.w, p = g.jugador;
+    m.dx = 0; m.dy = 0;
+    if (m.estado === 'firme') { if (p.sobre === m) { m.estado = 'tiembla'; m.t = 0; J.Audio.sfx('tiembla'); } }
+    else if (m.estado === 'tiembla') { m.t += dt; if (Math.random() < 0.3) J.chispas(g, (m.x + Math.random() * m.largo) * T, (m.y + 0.5) * T, 1, '#ffd9a0', 1.2, 6); if (m.t >= m.retardo) { m.estado = 'cae'; m.vy = 0; m.t = 0; } }
+    else if (m.estado === 'cae') {
+      m.vy = Math.min(14, m.vy + 24 * dt); const d = m.vy * dt; m.y += d; m.dy = d; m.t += dt;
+      if (m.y > w.alto + 1) { m.estado = 'ausente'; m.ausente = true; m.t = 0; m.dy = 0; }
+    } else if (m.estado === 'ausente') {
+      m.t += dt;
+      if (m.t >= m.reaparece) { m.estado = 'firme'; m.ausente = false; m.x = m.bx; m.y = m.by; J.chispas(g, (m.x + m.largo / 2) * T, (m.y + 0.5) * T, 10, '#ffd9a0', 3, 0); }
+    }
+  };
+
+  // ---------- plantas carnívoras ----------
+  function pasoPlantas(g, dt) {
+    const p = g.jugador, w = g.w;
+    for (const pl of w.plantas) {
+      const t = (g.tm + pl.fase) % pl.ciclo;
+      let quiere = t < pl.visible;
+      const pcx = p.x + p.w / 2, pegado = Math.abs(pcx - pl.cx) < 1.6 && p.y + p.h > pl.baseY - 3 && p.y + p.h < pl.baseY + 4;
+      if (pl.forzar > 0) { pl.forzar -= dt; quiere = true; }
+      else if (pegado && pl.alt < 0.05) quiere = false;     // no sale si estás pegado al borde de su tubería
+      pl.alt += ((quiere ? 1 : 0) - pl.alt) * Math.min(1, dt * (quiere ? 12 : 8));
+      if (pl.alt > 0.35 && !pl.mordio) { pl.mordio = true; J.Audio.sfx('mordisco'); }
+      if (pl.alt < 0.1) pl.mordio = false;
+      if (pl.alt > 0.3 && !p.muriendo) {
+        const h = 1.75 * pl.alt, r = { x: pl.cx - 0.55, y: pl.baseY - h, w: 1.1, h };
+        if (J.solapa(p, r)) J.herir(g, pl.cx);
+      }
+    }
+  }
+
   // ---------- bloques ? ----------
   Q.golpeBloque = function (g, tx, ty) {
     const b = g.w.bloques.find((k) => k.x === tx && k.y === ty);
@@ -133,8 +192,11 @@
     Q.preguntar(g, q, { titulo: 'Tubería' }, (ok) => {
       if (ok) { t.abierta = true; entrarTubo(g, t); }
       else {
-        J.Audio.sfx('fuego'); g.shake = 3;
-        g.proy.push({ tipo: 'bola', x: t.x + 1, y: t.top - 0.2, vx: (Math.random() < 0.5 ? -1 : 1) * 2.5, vy: -9, grav: 20, t: 0 });   // escupe una bola de fuego
+        g.shake = 3;
+        // la tubería escupe una planta carnívora (la suya, o una temporal si no tenía)
+        let pl = g.w.plantas.find((q) => q.tubo === t);
+        if (!pl) { pl = { cx: t.x + 1, baseY: t.top, tubo: t, ciclo: 9999, visible: 0, fase: 0, alt: 0, forzar: 0, mordio: false }; g.w.plantas.push(pl); }
+        pl.forzar = 1.9;
         if (t.reserva.length) { t.cooldown = 2.5; g.ui.aviso('La tubería se cierra… reinténtalo'); }
         else { t.agotada = true; g.ui.aviso('La tubería se atasca'); }
       }
@@ -191,6 +253,8 @@
       }
     }
     if (g.bonus) { g.bonus.t -= dt; if (g.bonus.t <= 0 && !g.anim) { const t = w.tuberias[0]; entrarTubo(g, t); } }
+    pasoPlantas(g, dt);
+    for (const l of w.ladrillos) l.bump = Math.max(0, l.bump - dt * 6);
     for (const f of g.flot) f.t += dt;
     g.flot = g.flot.filter((f) => f.t < 1.1);
     if (g.flash > 0) g.flash = Math.max(0, g.flash - dt * 2.5);
@@ -225,6 +289,9 @@
   // ---------- dibujo ----------
   Q.dibujar = function (ctx, g, camX, camY, vis) {
     const w = g.w, t = g.t, S = J.Sprites, tema = g.tema;
+    for (const pl of w.plantas) if (vis(pl.cx - 1, pl.cx + 1) && pl.alt > 0.02) S.dibujarPlanta(ctx, pl.cx * T - camX, pl.baseY * T - camY, pl.alt, t, pl.alt > 0.3);
+    for (const l of w.ladrillos) if (!l.roto && vis(l.x, l.x + 1)) S.dibujarLadrillo(ctx, l.x * T - camX, l.y * T - camY, tema.pal, l.bump);
+    for (const m of w.movers) if (m.cae && vis(m.x, m.x + m.largo + 1)) Q.dibujarCae(ctx, g, m, camX, camY);
     for (const d of w.puertas) {
       if (!vis(d.x, d.x + 1)) continue;
       if (d.abierta && d.disolver >= 1) continue;
@@ -254,6 +321,18 @@
       S.dibujarPremio(ctx, f.tipo, x, y, 1.5 + (k < 0.2 ? k : 0.2) * 2);
       ctx.globalAlpha = 1;
     }
+  };
+
+  /** Plataforma que cae: tiembla al pisarla; cuando falta, deja un fantasma tenue donde reaparecerá. */
+  Q.dibujarCae = function (ctx, g, m, camX, camY) {
+    const img = g.tema.tiles.cae;
+    if (m.estado === 'ausente') {
+      ctx.globalAlpha = 0.18 + 0.12 * Math.sin(g.t * 6) + (m.t > m.reaparece - 1 ? 0.3 : 0);
+      for (let i = 0; i < m.largo; i++) ctx.drawImage(img, Math.round(m.bx * T - camX) + i * T, Math.round(m.by * T - camY));
+      ctx.globalAlpha = 1; return;
+    }
+    const sh = m.estado === 'tiembla' ? Math.round(Math.sin(g.t * 90) * 1.2) : 0;
+    for (let i = 0; i < m.largo; i++) ctx.drawImage(img, Math.round(m.x * T - camX) + i * T + sh, Math.round(m.y * T - camY));
   };
 
   /** Capa de agua: tinte, rayos de luz, superficie y corrientes. Se dibuja encima de las entidades. */

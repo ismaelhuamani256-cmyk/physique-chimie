@@ -166,6 +166,17 @@
         salida_x: destino === 'atajo' ? salidaX : x, salida_y: GY - 1, preguntas: reserva, preguntas_reserva: reserva,
       });
       L.tuberias++; if (destino === 'bonus') L.bonus++;
+      // planta carnívora que sale de ESTA tubería (a veces; un fallo en la pregunta también suelta una, lo hace el motor)
+      if (rnd() < (destino === 'bonus' ? 0.5 : 0.4)) L.segs.push({ tipo: 'planta_carnivora', x, y: GY - alto, ciclo: Math.round((2.8 + rnd() * 1.2) * 10) / 10, visible: 1.2 });
+    };
+    /** Hilera de ladrillos (rompibles desde abajo) con contenido variado y, a veces, un `?` escondido. */
+    L.ladrillos = (x0, y) => {
+      const patron = U.shuffle(['nada', 'moneda', 'pregunta', 'moneda_multi', 'nada'], rnd);
+      patron.forEach((c, i) => {
+        const seg = { tipo: 'ladrillo', x: x0 + i, y, largo: 1, contenido: c };
+        if (c === 'pregunta') Object.assign(seg, { pregunta: B.opcion(), premio: premio(), fallo: 'cierra' });
+        L.segs.push(seg);
+      });
     };
     return L;
   }
@@ -209,6 +220,21 @@
       alturas.forEach((y, i) => { L.flotante(x, Math.max(3, y), ancho); if (i === Math.floor(alturas.length / 2)) L.col(x + 1, Math.max(3, y) - 2); x += ancho + 1; });
       const fin = x - 1 + gap;
       L.segs.push({ tipo: 'foso', x: f0, largo: fin - f0 }); L.x = fin;
+    },
+    /** Hilera de ladrillos sobre suelo llano (golpéalos desde abajo: monedas, nada o un ? escondido). */
+    ladrillos(L) {
+      const len = L.ri(14, 16), x0 = L.suelo(len);
+      L.ladrillos(x0 + L.ri(4, 6), GY - 4);
+      L.col(x0 + len - 3, GY - 2);
+    },
+    /** Foso corto con una plataforma que CAE al pisarla: la alternativa segura es saltar el foso (≤ salto seguro). */
+    cae(L) {
+      const gmax = Math.max(3, Math.min(4, Math.floor(L.F.gapSeguro - 2)));
+      const g = L.ri(3, gmax);
+      L.suelo(L.ri(7, 9));
+      const fx = L.foso(g);
+      L.segs.push({ tipo: 'plataforma_cae', x: fx, y: GY - 3, largo: 3, retardo: 0.7, reaparece: 4 });
+      L.col(fx + 1, GY - 5);
     },
     /** Foso ancho cubierto por una plataforma móvil. */
     movil(L) {
@@ -312,16 +338,18 @@
     const extras = [];
     if (base.resorte) extras.push('resorte');
     if (base.campo) extras.push('campo');
+    // los fosos simples se convierten (el 1.º siempre, el 2.º a veces) en fosos con plataforma que cae
+    const conCae = (arr, max) => { let n = 0; return arr.map((t) => (t === 'foso' && n < max && rnd() < 0.5 ? (n++, 'cae') : t)); };
     if (fase === 'tierra') {
-      const s = ['inicio', 'llano', libres[0], 'bonus', libres[1], 'puerta', libres[2], 'atajo', extras.length ? U.pick(extras, rnd) : libres[3], 'foso', 'puerta2', 'final'];
-      return s;
+      const s = ['inicio', 'llano', 'ladrillos', libres[0], 'bonus', libres[1], 'puerta', libres[2], 'atajo', extras.length ? U.pick(extras, rnd) : libres[3], 'cae', 'puerta2', 'final'];
+      return conCae(s, 1);   // + un segundo foso con plataforma que cae, a veces
     }
     if (fase === 'agua') {
-      const s = ['inicio', 'llano', 'foso', 'escalera', 'llano', 'puerta', libres[0] === 'movil' ? 'foso' : libres[0], 'llano'];
+      const s = ['inicio', 'llano', 'ladrillos', 'escalera', 'llano', 'puerta', libres[0] === 'movil' ? 'foso' : libres[0], 'llano'];
       s.push(ctx.jefeAgua ? 'arena' : 'final');
       return s;
     }
-    return ['inicio', 'llano', libres[0], 'movil', 'puerta', libres[1] === 'movil' ? 'escalera' : libres[1], 'llano', 'puente', 'arena'];
+    return conCae(['inicio', 'llano', libres[0], 'ladrillos', 'cae', 'movil', 'puerta', libres[1] === 'movil' ? 'escalera' : libres[1], 'llano', 'puente', 'arena'], 0);
   }
 
   function construirFase(fase, ctx) {
@@ -374,7 +402,8 @@
   QQ.vistaCompatible = function (nivel) {
     const v = JSON.parse(JSON.stringify(nivel));
     v.tipo_nivel = 'normal';
-    v.segmentos = v.segmentos.filter((s) => !['bloque_pregunta', 'tuberia', 'puerta', 'zona_agua'].includes(s.tipo)).map((s) => {
+    v.segmentos = v.segmentos.filter((s) => !['bloque_pregunta', 'tuberia', 'puerta', 'zona_agua', 'ladrillo', 'planta_carnivora'].includes(s.tipo)).map((s) => {
+      if (s.tipo === 'plataforma_cae') return { tipo: 'plataforma', x: s.x, y: s.y, largo: s.largo };   // para la alcanzabilidad cuenta como plataforma
       if (s.tipo !== 'jefe_quiz') return s;
       return { tipo: 'jefe', x: s.x, y: s.y, jefe: 'ejercicio_bac_1', titulo: s.titulo, preguntas: s.preguntas.map((q) => ({ pregunta: q.enunciado, opciones: q.opciones, correcta: q.correcta, explicacion: q.explicacion })) };
     });
@@ -401,6 +430,9 @@
     };
     por('bloque_pregunta').forEach((s) => { qOk(s.pregunta, 'bloque'); if (!['moneda', 'vida', 'pista', 'escudo', 'estrella', 'reloj'].includes(s.premio)) e.push('premio inválido ' + s.premio); });
     por('tuberia').forEach((s) => qOk(s.pregunta, 'tuberia'));
+    por('ladrillo').forEach((s) => { if (s.contenido === 'pregunta') qOk(s.pregunta, 'ladrillo'); });
+    if (nivel.tipo_nivel !== 'quiz_agua' && !por('plataforma_cae').length) e.push('fase sin plataforma_cae');
+    if (!por('ladrillo').length) e.push('fase sin ladrillos');
     por('puerta').forEach((s) => qOk(s.pregunta, 'puerta'));
     por('jefe_quiz').forEach((s) => { if (!s.preguntas || s.preguntas.length < 5) e.push('jefe_quiz con < 5 preguntas'); (s.preguntas || []).forEach((q) => qOk(q, 'jefe')); });
     if (nivel.tipo_nivel === 'quiz_tierra' && (!por('tuberia').length || !por('puerta').length)) e.push('tierra sin tubería o sin puerta');
@@ -438,7 +470,7 @@
       (cap.nociones_clave || []).forEach((n, i) => { if (formulas.length < 5) formulas.push({ id: 'n' + i, latex: '\\text{' + String(n.fr).replace(/[{}\\]/g, '') + '}', nombre: n.fr }); });
     }
 
-    let ultimo = null;
+    let ultimo = null; const fallos = [];
     for (let intento = 0; intento < MAX_INTENTOS; intento++) {
       const s = (semilla + Math.imul(intento, 7919)) | 0;
       const rnd = U.rng(U.hash('nivel|' + capId) ^ Math.imul(s, 2246822519));
@@ -459,9 +491,10 @@
         v.errores.forEach((m) => errores_.push(fase + ': ' + m));
         QQ.revisarContrato(res[fase]).forEach((m) => errores_.push(fase + ': ' + m));
       }
-      res.meta = { capId, semilla, intento, mundo, jefeAgua: jefes.agua, jefeCastillo: jefes.castillo, errores: errores_, repeticiones: B.repeticiones };
+      res.meta = { capId, semilla, intento, mundo, jefeAgua: jefes.agua, jefeCastillo: jefes.castillo, errores: errores_, repeticiones: B.repeticiones, fallosPrevios: fallos };
       ultimo = res;
       if (!errores_.length) return res;
+      fallos.push(errores_[0]);
     }
     return ultimo;      // mejor esfuerzo: meta.errores explica qué falla
   };

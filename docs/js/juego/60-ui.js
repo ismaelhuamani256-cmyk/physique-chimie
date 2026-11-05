@@ -19,13 +19,18 @@
   }
   const CORAZON = ['.XX.XX.', 'XXXXXXX', 'XXXXXXX', '.XXXXX.', '..XXX..', '...X...'];
   const GEMA = ['..XX..', '.XXXX.', 'XXXXXX', 'XXXXXX', '.XXXX.', '..XX..'];
+  const ESCUDO = ['XXXXXXX', 'XXXXXXX', 'XXXXXXX', '.XXXXX.', '.XXXXX.', '..XXX..', '...X...'];
+  const ESTRELLA = ['...X...', '...X...', 'XXXXXXX', '.XXXXX.', '..XXX..', '.XX.XX.', '.X...X.'];
+  const RELOJ = ['.XXXXX.', 'X..X..X', 'X..X..X', 'X..XXXX', 'X.....X', 'X.....X', '.XXXXX.'];
+  const MONEDA = ['.XXXX.', 'XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX', '.XXXX.'];
+  const CHECK = ['......X', '.....XX', 'X...XX.', 'XX.XX..', '.XXX...', '..X....'];
 
   /** PixelHUD (Press Start 2P) pinta mal algunas mayúsculas con tilde: las quitamos en el HUD. */
   const sinTildes = (s) => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[¡¿]/g, (c) => c);
 
   // ---------- entrada ----------
   J.crearInput = function (onPausa) {
-    const inp = { izq: false, der: false, salto: false, accion: false, saltoEdge: false, t: { izq: false, der: false, salto: false, acc: false }, dir: 0, destroy: null, bloqueado: false };
+    const inp = { izq: false, der: false, salto: false, accion: false, saltoEdge: false, accionEdge: false, arribaEdge: false, t: { izq: false, der: false, salto: false, acc: false }, dir: 0, destroy: null, bloqueado: false };
     const K = {
       izq: ['ArrowLeft', 'a', 'A'], der: ['ArrowRight', 'd', 'D'], salto: [' ', 'ArrowUp', 'w', 'W', 'z', 'Z'], acc: ['ArrowDown', 'e', 'E', 's', 'S'], pausa: ['Escape', 'p', 'P'],
     };
@@ -43,8 +48,8 @@
       let usada = true;
       if (K.izq.includes(e.key)) inp.izq = true;
       else if (K.der.includes(e.key)) inp.der = true;
-      else if (K.salto.includes(e.key)) { if (!teclas.salto) inp.saltoEdge = true; teclas.salto = true; }
-      else if (K.acc.includes(e.key)) teclas.acc = true;
+      else if (K.salto.includes(e.key)) { if (!teclas.salto) inp.saltoEdge = true; if (!e.repeat && ['ArrowUp', 'w', 'W'].includes(e.key)) inp.arribaEdge = true; teclas.salto = true; }
+      else if (K.acc.includes(e.key)) { if (!e.repeat) inp.accionEdge = true; teclas.acc = true; }
       else if (K.pausa.includes(e.key)) { if (!e.repeat) onPausa(); }
       else usada = false;
       if (usada) e.preventDefault();
@@ -63,7 +68,7 @@
     window.addEventListener('keydown', kd); window.addEventListener('keyup', ku); window.addEventListener('blur', blur);
     window.addEventListener('pointerdown', gesto);
     inp.recalcular = recalcular;
-    inp.setToque = (k, v) => { if (k === 'salto' && v && !inp.t.salto) inp.saltoEdge = true; inp.t[k] = v; recalcular(); };
+    inp.setToque = (k, v) => { if (k === 'salto' && v && !inp.t.salto) { inp.saltoEdge = true; inp.arribaEdge = true; } if (k === 'acc' && v && !inp.t.acc) inp.accionEdge = true; inp.t[k] = v; recalcular(); };
     /** Gamepad opcional: se consulta una vez por fotograma. */
     inp.sondear = function () {
       const pads = navigator.getGamepads ? navigator.getGamepads() : [];
@@ -98,9 +103,10 @@
     const hud = el('div', { class: 'jg-hud' }, el('div', { class: 'jg-hud-fila' }, hudVidas, hudTiempo, hudItems), jefeBar);
     const pops = el('div', { class: 'jg-pops' }), aviso = el('div', { class: 'jg-aviso' });
     const capa = el('div', { class: 'jg-capa' });
-    const wrap = el('div', { class: 'jg-wrap' }, canvas, hud, pops, aviso, capa);
+    const estadosEl = el('div', { class: 'jg-estados' });
+    const wrap = el('div', { class: 'jg-wrap' }, canvas, hud, estadosEl, pops, aviso);
     const tactil = el('div', { class: 'jg-touch' });
-    const root = el('div', { class: 'jg-root' }, wrap, tactil);
+    const root = el('div', { class: 'jg-root' }, wrap, tactil, capa);
     host.append(root);
     ui.canvas = canvas; ui.root = root; ui.wrap = wrap; ui.capa = capa;
 
@@ -122,22 +128,41 @@
     ui.vidas = function (n) {
       if (n === ultVidas) return; ultVidas = n;
       hudVidas.replaceChildren();
-      for (let i = 0; i < 3; i++) hudVidas.append(iconoSVG(CORAZON, i < n ? '#ff4d6d' : '#3a4266', 3));
+      for (let i = 0; i < Math.max(3, n); i++) hudVidas.append(iconoSVG(CORAZON, i < n ? '#ff4d6d' : '#3a4266', 3));
     };
     let ultItems = '';
     ui.hud = function (gg) {
       const s = Math.floor(gg.tiempo), t = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
       if (hudTiempo.textContent !== t) hudTiempo.textContent = t;
-      const it = gg.coleccionados + '/' + gg.w.items.length;
-      if (it !== ultItems) { ultItems = it; hudItems.replaceChildren(iconoSVG(GEMA, '#19e3ff', 3), document.createTextNode(' ' + it)); }
+      const nGemas = gg.w.items.filter((k) => !k.moneda).length;
+      const it = nGemas ? gg.coleccionados + '/' + nGemas : '';
+      if (it !== ultItems) { ultItems = it; hudItems.replaceChildren(...(it ? [iconoSVG(GEMA, '#19e3ff', 3), document.createTextNode(' ' + it)] : [])); }
+      ui.estados(gg, false);
     };
+    // insignias: escudo, estrella, reloj, monedas y respuestas ✔ c/t (se reconstruyen solo si cambian)
+    let ultEst = null, ultG = null;
+    ui.estados = function (gg, forzar) {
+      gg = gg || ultG; if (!gg) return; ultG = gg;
+      const p = gg.jugador, sig = [gg.escudo ? 1 : 0, p && p.estrella > 0 ? Math.ceil(p.estrella) : 0, gg.lento > 0 ? Math.ceil(gg.lento) : 0, gg.premios.moneda, gg.premios.pista, gg.resp.correctas, gg.resp.total, gg.modoQuiz ? 1 : 0].join('|');
+      if (sig === ultEst && forzar !== true) return; ultEst = sig;
+      const ins = (ico, col, txt) => el('span', { class: 'jg-ins' }, iconoSVG(ico, col, 3), txt != null ? document.createTextNode(' ' + txt) : null);
+      estadosEl.replaceChildren(...[
+        gg.escudo ? ins(ESCUDO, '#35d6ff') : null,
+        p && p.estrella > 0 ? ins(ESTRELLA, '#ffe27a', Math.ceil(p.estrella)) : null,
+        gg.lento > 0 ? ins(RELOJ, '#e8f0ff', Math.ceil(gg.lento)) : null,
+        gg.premios.moneda > 0 ? ins(MONEDA, '#ffd166', gg.premios.moneda) : null,
+        gg.premios.pista > 0 ? ins(['..XXX..', '.XXXXX.', 'XXXXXXX', 'XXXXXXX', '.XXXXX.', '..XXX..', '...X...'], '#fff0a0', gg.premios.pista) : null,
+        gg.modoQuiz || gg.resp.total > 0 ? ins(CHECK, '#2ee59d', gg.resp.correctas + '/' + gg.resp.total) : null,
+      ].filter(Boolean));
+    };
+    ui.pop = function (txt) { pop(el('div', { class: 'jg-pop jg-pop-s' }, txt), 1400); };
     ui.vidas(g.vidas);
 
     ui.jefe = function (b) {
       jefeBar.style.display = ''; jefeBar.replaceChildren();
       jefeBar.append(el('span', { class: 'jg-jefe-n' }, sinTildes(b.nombre).toUpperCase()));
       const pips = el('span', { class: 'jg-pips' });
-      for (let i = 0; i < 3; i++) pips.append(el('span', { class: 'jg-pip' + (i < b.aciertos ? ' on' : '') }));
+      for (let i = 0; i < (b.vidasMax || 3); i++) pips.append(el('span', { class: 'jg-pip' + (i < b.aciertos ? ' on' : '') }));
       jefeBar.append(pips);
     };
     ui.ocultarJefe = () => { jefeBar.style.display = 'none'; };
@@ -172,35 +197,74 @@
     }
     ui.cerrarModal = function () { capa.replaceChildren(); teclaModal = null; cb.input.onTecla = null; capa.style.pointerEvents = 'none'; };
 
-    ui.pregunta = function (q, info, alResponder) {
-      let respondida = false;
-      const opts = el('div', { class: 'jg-opts' }), expl = el('div', { class: 'jg-expl' });
-      const botones = q.opciones.map((o, i) => {
-        const b = el('button', { class: 'jg-opt', on: { click: () => elegir(i) } }, el('span', { class: 'jg-k' }, String(i + 1)), textoConTex(o, el('span', {})));
-        opts.append(b); return b;
-      });
+    /** Modal de pregunta (CONTRATO §4b): opción múltiple (teclas 1–6 o clic) o numérica (valor + unidad, corregida por
+     *  PCB.estudio.corregirNumerico). Texto y opciones admiten LaTeX en línea entre $…$; con q.latex_opciones las opciones
+     *  son LaTeX puro. Tras responder muestra explicación y pasos. alResponder(ok) se llama al pulsar «Continuar». */
+    ui.preguntaQ = function (q, info, alResponder) {
+      const tipo = q.tipo === 'numerico' ? 'numerico' : 'opcion';
+      const texto = q.enunciado != null ? q.enunciado : q.pregunta;
+      let respondida = false, ok = false;
+      const fb = el('div', { class: 'jg-expl', role: 'status', 'aria-live': 'polite' });
       const cont = el('button', { class: 'jg-btn jg-btn-p', style: { display: 'none' }, on: { click: () => seguir() } }, 'Continuar');
-      let ok = false;
-      function elegir(i) {
-        if (respondida) return; respondida = true;
-        ok = i === q.correcta;
-        botones.forEach((b, k) => { b.disabled = true; if (k === q.correcta) b.classList.add('ok'); else if (k === i) b.classList.add('mal'); });
-        expl.append(el('b', {}, ok ? '✔ ¡Correcto! ' : '✖ Incorrecto. '));
-        if (q.explicacion) textoConTex(q.explicacion, expl);
-        if (q.pagina_pdf) expl.append(el('span', { class: 'jg-pag' }, '  (p. ' + q.pagina_pdf + ')'));
+      function cerrar(esOk, mensaje) {
+        respondida = true; ok = esOk;
+        fb.append(el('b', { class: esOk ? 'jg-ok' : 'jg-mal' }, esOk ? '✔ ¡Correcto! ' : '✖ Incorrecto. '));
+        if (mensaje) fb.append(document.createTextNode(mensaje + ' '));
+        if (!esOk && tipo === 'numerico') fb.append(el('div', { class: 'jg-sol' }, 'Respuesta: ' + String(q.valor).replace('.', ',') + (q.unidad ? ' ' + q.unidad : '')));
+        if (q.explicacion) textoConTex(q.explicacion, fb);
+        if (Array.isArray(q.pasos) && q.pasos.length) { const ol = el('ol', { class: 'jg-pasos' }); q.pasos.forEach((p) => ol.append(textoConTex(p, el('li', {})))); fb.append(ol); }
+        if (q.pagina_pdf) fb.append(el('span', { class: 'jg-pag' }, '  (p. ' + q.pagina_pdf + ')'));
         cont.style.display = ''; cont.focus();
-        J.Audio.sfx(ok ? 'acierto' : 'fallo');
+        J.Audio.sfx(esOk ? 'acierto' : 'fallo');
       }
       function seguir() { if (!respondida) return; ui.cerrarModal(); alResponder(ok); }
-      const card = el('div', { class: 'jg-card' },
-        el('div', { class: 'jg-card-h' }, `${info.jefe} · Pregunta ${info.n} de 3`),
-        textoConTex(q.pregunta, el('div', { class: 'jg-q' })), opts, expl, cont);
+      let cuerpo, atajo;
+      if (tipo === 'opcion') {
+        const opts = el('div', { class: 'jg-opts', role: 'group', 'aria-label': 'Opciones' });
+        const botones = (q.opciones || []).map((o, i) => {
+          const txt = el('span', { class: 'jg-ot' });
+          if (q.latex_opciones) tex(o, txt); else textoConTex(o, txt);
+          const b = el('button', { class: 'jg-opt', on: { click: () => elegir(i) } }, el('span', { class: 'jg-k' }, String(i + 1)), txt);
+          opts.append(b); return b;
+        });
+        const elegir = (i) => {
+          if (respondida) return;
+          botones.forEach((b, k) => { b.disabled = true; if (k === q.correcta) b.classList.add('ok'); else if (k === i) b.classList.add('mal'); });
+          cerrar(i === q.correcta);
+        };
+        cuerpo = opts;
+        atajo = (e) => { if (/^[1-6]$/.test(e.key) && !respondida && +e.key <= botones.length) { elegir(+e.key - 1); return true; } return false; };
+        setTimeout(() => { if (botones[0] && !respondida) botones[0].focus(); }, 60);
+      } else {
+        const vi = el('input', { class: 'jg-in', type: 'text', inputmode: 'decimal', autocomplete: 'off', placeholder: 'valor', 'aria-label': 'Valor numérico' });
+        const ui2 = el('input', { class: 'jg-in jg-in-u', type: 'text', autocomplete: 'off', autocapitalize: 'off', placeholder: q.unidad ? 'unidad' : 'unidad (opcional)', 'aria-label': 'Unidad' });
+        const comprobar = () => {
+          if (respondida) return;
+          if (!vi.value.trim()) { vi.focus(); return; }
+          const E = window.PCB.estudio;
+          let r;
+          if (E && E.corregirNumerico) { try { r = E.corregirNumerico({ valor: vi.value, unidad: ui2.value }, { valor: q.valor, unidad: q.unidad || '', tolerancia_rel: q.tolerancia_rel, cifras_sig: q.cifras_sig }); } catch (x) { r = null; } }
+          if (!r) { const v = parseFloat(String(vi.value).replace(',', '.')); r = { ok: isFinite(v) && Math.abs(v - q.valor) <= Math.abs(q.valor) * (q.tolerancia_rel || 0.02), mensaje: '' }; }
+          vi.disabled = ui2.disabled = true; bt.disabled = true;
+          cerrar(!!r.ok, r.mensaje);
+        };
+        const bt = el('button', { class: 'jg-btn jg-btn-p', on: { click: comprobar } }, 'Comprobar');
+        [vi, ui2].forEach((n) => n.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); comprobar(); } }));
+        cuerpo = el('div', { class: 'jg-num' }, vi, ui2, bt);
+        atajo = () => false;
+        setTimeout(() => vi.focus(), 60);
+      }
+      const titulo = info.titulo + (info.n ? ` · Pregunta ${info.n} de ${info.total || 3}` : '');
+      const card = el('div', { class: 'jg-card', role: 'dialog', 'aria-modal': 'true', 'aria-label': titulo },
+        el('div', { class: 'jg-card-h' }, titulo),
+        textoConTex(texto || '', el('div', { class: 'jg-q' })), cuerpo, fb, cont);
       modal(card, (e) => {
-        if (/^[1-9]$/.test(e.key) && !respondida && +e.key <= q.opciones.length) { elegir(+e.key - 1); return true; }
+        if (atajo(e)) return true;
         if ((e.key === 'Enter' || e.key === ' ') && respondida) { seguir(); return true; }
         return true;   // bloquea el resto de teclas mientras hay pregunta
       });
     };
+    ui.pregunta = (q, info, cb2) => ui.preguntaQ(q, { titulo: info.jefe, n: info.n, total: info.total || 3 }, cb2);
 
     ui.pausa = function (acciones) {
       const estado = () => ({ m: window.PCB.settings.musica, s: window.PCB.settings.sfx !== false });
@@ -225,10 +289,12 @@
         el('div', { class: 'jg-gran' }, res.gano ? '✔' : '✖'),
         el('div', { class: 'jg-titulo' }, res.gano ? '¡NIVEL SUPERADO!' : 'SIN VIDAS'),
         el('div', { class: 'jg-stats' },
-          el('div', {}, 'Fórmulas: ' + res.coleccionados + ' / ' + res.total),
-          el('div', {}, 'Vidas: ' + res.vidasRestantes + ' / 3'),
+          res.total ? el('div', {}, 'Fórmulas: ' + res.coleccionados + ' / ' + res.total) : null,
+          res.respuestas && res.respuestas.total ? el('div', {}, 'Respuestas correctas: ' + res.respuestas.correctas + ' / ' + res.respuestas.total) : null,
+          res.premios && res.premios.moneda ? el('div', {}, 'Monedas: ' + res.premios.moneda) : null,
+          el('div', {}, 'Vidas: ' + res.vidasRestantes),
           res.jefeDerrotado ? el('div', {}, 'Jefe derrotado') : null,
-          el('div', { class: 'jg-xp' }, res.gano ? '+' + xp + ' XP' : 'Sin XP esta vez')),
+          res.modoQuiz ? null : el('div', { class: 'jg-xp' }, res.gano ? '+' + xp + ' XP' : 'Sin XP esta vez')),
         el('button', { class: 'jg-btn jg-btn-p', on: { click: acciones.continuar } }, 'Continuar →'),
         res.gano ? null : el('button', { class: 'jg-btn', on: { click: acciones.reintentar } }, 'Reintentar'));
       modal(card, (e) => { if (e.key === 'Enter') { acciones.continuar(); return true; } return true; });
@@ -250,7 +316,7 @@
         return b;
       };
       const pausaB = el('button', { class: 'jg-tb jg-tb-p', on: { click: () => cb.pausar() } }, 'II');
-      tactil.append(el('div', { class: 'jg-tg izq' }, boton('◀', 'a', 'izq'), boton('▶', 'a', 'der')), el('div', { class: 'jg-tg der' }, boton('▲', 'b', 'salto')), pausaB);
+      tactil.append(el('div', { class: 'jg-tg izq' }, boton('◀', 'a', 'izq'), boton('▶', 'a', 'der')), el('div', { class: 'jg-tg der' }, boton('⬇', 'c', 'acc'), boton('▲', 'b', 'salto')), pausaB);
     }
 
     ui.destroy = function () { ro.disconnect(); clearTimeout(tAviso); root.remove(); };

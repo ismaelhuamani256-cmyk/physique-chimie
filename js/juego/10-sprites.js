@@ -391,4 +391,51 @@
     }
     ctx.globalAlpha = 1;
   };
+
+  // =====================================================================================
+  // Ladrillo de cerámica de laboratorio, plantas carnívoras de ácido
+  // =====================================================================================
+  /** Ladrillo de cerámica/cristal esmaltado (propio): dos baldosas con junta, brillo diagonal y remaches. */
+  S.dibujarLadrillo = function (ctx, x, y, pal, bump) {
+    x = Math.round(x); y = Math.round(y - Math.sin(Math.min(1, bump || 0) * Math.PI) * 4);
+    const base = J.mezcla(pal.marco, '#8fd8e8', 0.45), osc = J.mezcla(pal.marco, '#0b1230', 0.35), luz = '#ffffff';
+    ctx.fillStyle = OUT; ctx.fillRect(x, y, 16, 16);
+    ctx.fillStyle = base; ctx.fillRect(x + 1, y + 1, 14, 14);
+    ctx.fillStyle = OUT; ctx.fillRect(x + 1, y + 7, 14, 1); ctx.fillRect(x + 7, y + 1, 1, 6); ctx.fillRect(x + 3, y + 8, 1, 7); ctx.fillRect(x + 11, y + 8, 1, 7);   // juntas
+    ctx.fillStyle = osc; ctx.fillRect(x + 1, y + 14, 14, 1); ctx.fillRect(x + 14, y + 8, 1, 6); ctx.fillRect(x + 6, y + 6, 1, 1);
+    // esmalte: brillo diagonal en cada baldosa
+    ctx.fillStyle = luz; [[2, 2], [3, 2], [2, 3], [9, 2], [10, 2], [9, 3], [5, 9], [4, 9], [4, 10], [12, 9], [13, 9], [12, 10]].forEach(([a, b]) => ctx.fillRect(x + a, y + b, 1, 1));
+    ctx.fillStyle = 'rgba(255,255,255,.28)'; ctx.fillRect(x + 1, y + 1, 6, 2); ctx.fillRect(x + 8, y + 1, 6, 2);
+  };
+
+  /** Planta carnívora ácida: tallo con espinas, bulbo turquesa con dos mandíbulas, colmillos y gotas de ácido.
+   *  (cx, baseY): píxeles de pantalla donde nace; alt 0..1 = cuánto ha salido. Se recorta por debajo de baseY. */
+  S.dibujarPlanta = function (ctx, cx, baseY, alt, t, mordiendo) {
+    if (alt <= 0.02) return;
+    cx = Math.round(cx); baseY = Math.round(baseY);
+    ctx.save(); ctx.beginPath(); ctx.rect(cx - 20, baseY - 60, 40, 60 + 2); ctx.clip();
+    const subida = Math.round(26 * alt), abre = mordiendo ? 0.5 + 0.5 * Math.sin(t * 16) : 0.4 + 0.2 * Math.sin(t * 5);
+    const hy = baseY - subida + 8;                    // centro del bulbo
+    // tallo
+    for (let y = baseY + 2; y > hy + 4; y -= 2) { const o = Math.round(Math.sin(t * 3 + y * 0.2) * 1); ctx.fillStyle = OUT; ctx.fillRect(cx - 3 + o, y - 2, 6, 3); ctx.fillStyle = '#2a8a4a'; ctx.fillRect(cx - 2 + o, y - 2, 4, 2); }
+    ctx.fillStyle = '#1b5a30'; ctx.fillRect(cx + 2, baseY - Math.round(subida * 0.45), 4, 2); ctx.fillRect(cx - 6, baseY - Math.round(subida * 0.7), 4, 2);   // espinas
+    const gap = Math.round(3 + abre * 7);
+    // mandíbula inferior
+    ctx.fillStyle = OUT; ctx.fillRect(cx - 9, hy + gap - 1, 18, 7);
+    ctx.fillStyle = '#1d9a8a'; ctx.fillRect(cx - 8, hy + gap, 16, 5); ctx.fillStyle = '#0f5a56'; ctx.fillRect(cx - 8, hy + gap + 3, 16, 2);
+    ctx.fillStyle = '#ffffff'; [-6, -2, 2, 6].forEach((o) => ctx.fillRect(cx + o - 1, hy + gap - 3, 2, 3));        // colmillos inferiores
+    // interior de la boca
+    ctx.fillStyle = '#ff3da6'; ctx.fillRect(cx - 7, hy - 1, 14, gap + 1);
+    ctx.fillStyle = '#9b1f66'; ctx.fillRect(cx - 5, hy + 1, 10, Math.max(1, gap - 2));
+    // mandíbula superior (cúpula) con manchas
+    ctx.fillStyle = OUT; ctx.fillRect(cx - 9, hy - 9, 18, 9); ctx.fillRect(cx - 7, hy - 11, 14, 3);
+    ctx.fillStyle = '#25b8a4'; ctx.fillRect(cx - 8, hy - 9, 16, 8); ctx.fillRect(cx - 6, hy - 10, 12, 2);
+    ctx.fillStyle = '#7ff0dc'; ctx.fillRect(cx - 6, hy - 9, 5, 2);
+    ctx.fillStyle = '#9dff3a'; ctx.fillRect(cx + 2, hy - 7, 3, 3); ctx.fillRect(cx - 4, hy - 5, 2, 2);
+    ctx.fillStyle = '#ffffff'; [-6, -2, 2, 6].forEach((o) => ctx.fillRect(cx + o - 1, hy - 1, 2, 3));              // colmillos superiores
+    ctx.fillStyle = '#ffe27a'; ctx.fillRect(cx - 3, hy - 7, 2, 2); ctx.fillRect(cx + 3, hy - 7, 2, 2);               // ojitos
+    // gotas de ácido que caen de la boca
+    for (let i = 0; i < 3; i++) { const f = (t * 1.5 + i * 0.37) % 1; ctx.fillStyle = '#b6ff3a'; ctx.fillRect(cx - 6 + i * 6, Math.round(hy + gap + 5 + f * 9), 1, 2); }
+    ctx.restore();
+  };
 })();

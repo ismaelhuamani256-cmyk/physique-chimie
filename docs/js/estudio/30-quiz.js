@@ -230,7 +230,12 @@
       return raizEj;
     }
 
-    raiz.append(barraModo, cuerpo);
+    // Aviso «🎮 Quiz Quest» (modo de juego de plataformas, módulo js/quizquest/). Carga perezosa: si el módulo no está, avisa.
+    const abrirQQ = () => (PCB.quizquest && PCB.quizquest.iniciar ? PCB.quizquest.iniciar(capId) : PCB.util.toast('Quiz Quest no está disponible'));
+    const bannerQQ = el('div', { class: 'est-qq' },
+      el('div', { class: 'est-qq-txt' }, el('b', {}, '🎮 Quiz Quest'), 'Aventura de plataformas: bloques ?, tuberías, puertas y jefes que solo se abren si respondes bien.'),
+      el('button', { class: 'btn est-qq-btn', title: 'Jugar a Quiz Quest con este capítulo', on: { click: abrirQQ } }, '🎮 Quiz Quest'));
+    raiz.append(bannerQQ, barraModo, cuerpo);
     render();
     return { el: raiz };
   };

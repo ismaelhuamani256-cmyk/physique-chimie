@@ -7,7 +7,7 @@
   const J = window.PCB.juego;
   const Temas = (J.Temas = {});
   const VW = 512, VH = 288, LW = 1024;   // ancho de cada capa de parallax (se repite)
-  const SOL = (t) => t === 1 || t === 3 || t === 4 || t === 5 || t === 6 || t === 7;   // 5/6/7: bloque ?, tubería, puerta (los dibuja 45-quiz.js)
+  const SOL = (t) => t === 1 || t === 3 || t === 4 || t === 5 || t === 6 || t === 7 || t === 8;   // 5/6/7/8: bloque ?, tubería, puerta (los dibuja 45-quiz.js)
 
   // ---------- primitivas pixel (sin antialias) ----------
   function poli(ctx, pts, color) {
@@ -116,6 +116,13 @@
     x.fillStyle = p.acento2; x.fillRect(0, 1, 16, 5); x.fillStyle = '#ffffff'; x.fillRect(0, 1, 16, 1);
     x.fillStyle = 'rgba(0,0,0,.3)'; x.fillRect(0, 5, 16, 1); x.fillStyle = p.acento; x.fillRect(3, 6, 10, 2);
     out.movil = c;
+    // plataforma que cae: losa ámbar agrietada con remaches
+    [c, x] = mk();
+    x.fillStyle = '#0b1230'; x.fillRect(0, 0, 16, 8);
+    x.fillStyle = '#c98a3a'; x.fillRect(0, 1, 16, 5); x.fillStyle = '#ffd9a0'; x.fillRect(0, 1, 16, 1);
+    x.fillStyle = 'rgba(0,0,0,.3)'; x.fillRect(0, 5, 16, 1); x.fillStyle = '#7a4a1a'; x.fillRect(0, 6, 16, 1);
+    x.fillStyle = '#0b1230'; x.fillRect(5, 2, 1, 3); x.fillRect(6, 4, 1, 2); x.fillRect(11, 1, 1, 3); x.fillRect(10, 3, 1, 2);
+    out.cae = c;
     // bloque sólido
     [c, x] = mk(); textura(x, p.fillB, p.fillA, 1);
     x.fillStyle = p.top2; x.fillRect(0, 0, 16, 2); x.fillRect(0, 0, 2, 16); x.fillStyle = p.linea; x.fillRect(14, 0, 2, 16); x.fillRect(0, 14, 16, 2);

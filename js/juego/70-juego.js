@@ -104,7 +104,7 @@
     for (const c of w.campos) if (vis(c.x, c.x + c.w)) dibujarCampo(ctx, c, camX, camY, t, tema);
     J.Temas.dibujarPeligro(ctx, w, tema, camX, camY, t);
     J.Temas.dibujarTiles(ctx, w, tema, camX, camY);
-    for (const m of w.movers) if (vis(m.x, m.x + m.largo)) J.Temas.dibujarMovil(ctx, tema, m, camX, camY);
+    for (const m of w.movers) if (!m.cae && vis(m.x, m.x + m.largo)) J.Temas.dibujarMovil(ctx, tema, m, camX, camY);
     for (const e of w.escombros) { ctx.save(); ctx.translate(Math.round((e.x + 0.5) * T - camX), Math.round((e.y + 0.5) * T - camY)); ctx.rotate(e.rot); ctx.drawImage(tema.tiles.puente, -8, -8); ctx.restore(); }
     // meta, checkpoints, palancas, resortes
     if (w.meta && vis(w.meta.x, w.meta.x + 2)) S2.dibujarMeta(ctx, w.meta.x * T - camX, w.meta.y * T - camY, t, tema, w.meta.bloqueada);

@@ -1,0 +1,1308 @@
+{
+ "id": "ondulatoires",
+ "titulo": "Les phénomènes ondulatoires",
+ "materia": "physique",
+ "mundo": "ondes",
+ "pdf_ini": 446,
+ "pdf_fin": 471,
+ "resumen": "Capítulo 17: cuatro fenómenos ondulatorios. (1) Nivel de intensidad sonora L = 10·log(I/I₀) en dB y atenuación geométrica y por absorción. (2) Difracción: una onda que encuentra una abertura de tamaño ≈ λ se abre con ángulo característico θ = λ/a (válida para el agua, el sonido y la luz). (3) Interferencias de dos ondas coherentes: constructivas si δ = kλ, destructivas si δ = (k+½)λ; con los agujeros de Young δ = e·x/D e interfranja i = λD/e. (4) Efecto Doppler: la fuente en movimiento cambia la frecuencia percibida, Δf = f_e·v/c.",
+ "resumen_fr": "Niveau d'intensité sonore et atténuation, diffraction (θ = λ/a), interférences de deux ondes (δ, interfrange i = λD/e) et effet Doppler (Δf = f_e·v/c).",
+ "nociones_clave": [
+  {
+   "id": "n1",
+   "fr": "Intensité sonore I",
+   "es": "Energía transportada por la onda sonora por unidad de tiempo y de superficie; se expresa en W·m⁻². Valor mínimo audible (seuil d'audibilité) I₀ = 1,0×10⁻¹² W·m⁻²; valor máximo (seuil de douleur) 1 W·m⁻².",
+   "pagina_pdf": 453
+  },
+  {
+   "id": "n2",
+   "fr": "Niveau d'intensité sonore L",
+   "es": "Como el intervalo de intensidades es enorme, se usa una escala logarítmica que representa mejor la percepción del oído humano. Se nota L (level) y se expresa en decibelios (dB). Fig. 1: 140 dB reactor a 100 m, 110 dB concierto de rock, 50 dB conversación normal, 10 dB umbral de percepción.",
+   "pagina_pdf": 453
+  },
+  {
+   "id": "n3",
+   "fr": "Atténuation géométrique",
+   "es": "Al aumentar la distancia fuente-receptor el nivel sonoro disminuye: la energía emitida se conserva pero se reparte sobre esferas de radio cada vez mayor (Fig. 2). Depende de la geometría del lugar y de la distancia.",
+   "pagina_pdf": 453
+  },
+  {
+   "id": "n4",
+   "fr": "Atténuation par absorption",
+   "es": "Aparece cuando se interpone un material entre fuente y receptor, que amortigua la intensidad sonora. En el aire, las moléculas vibran y disipan energía en forma de calor; esa disipación crece con la frecuencia y depende de la humedad del aire y de la naturaleza del material (poroso, hueco, lleno).",
+   "pagina_pdf": 453
+  },
+  {
+   "id": "n5",
+   "fr": "Source omnidirective / directive",
+   "es": "Una fuente es omnidireccional si el nivel de intensidad sonoro es el mismo en todas las direcciones; es directiva si existen direcciones privilegiadas de emisión. El nivel de referencia se toma a 1 m de la fuente.",
+   "pagina_pdf": 448
+  },
+  {
+   "id": "n6",
+   "fr": "Diffraction d'une onde",
+   "es": "Cuando una onda mecánica plana encuentra una abertura de tamaño inferior o igual a su longitud de onda, se transforma en onda circular y la vibración se propaga en una región más amplia que la abertura. También ocurre con la luz (láser y rendija fina: varias manchas luminosas alternadas con zonas oscuras); es común a ondas mecánicas y luminosas.",
+   "pagina_pdf": 453
+  },
+  {
+   "id": "n7",
+   "fr": "Características de la difracción",
+   "es": "Depende del tamaño a de la abertura y de la longitud de onda λ. Es tanto más marcada cuanto a es próximo o inferior a λ.",
+   "pagina_pdf": 453
+  },
+  {
+   "id": "n8",
+   "fr": "Angle caractéristique de la diffraction θ",
+   "es": "Semiángulo que delimita los primeros mínimos de amplitud (extinciones); se expresa en radianes. Cumple θ = λ/a.",
+   "pagina_pdf": 454
+  },
+  {
+   "id": "n9",
+   "fr": "Interférences de deux ondes",
+   "es": "Cuando dos ondas mecánicas de igual longitud de onda se encuentran, se superponen y en ciertos lugares se refuerzan (se suman) y en otros se anulan. Con la luz: dos haces de una misma fuente producen sobre una pantalla una alternancia de zonas brillantes y oscuras («luz + luz = oscuridad»), lo que confirma la naturaleza ondulatoria de la luz.",
+   "pagina_pdf": 454
+  },
+  {
+   "id": "n10",
+   "fr": "Conditions d'interférences",
+   "es": "Para observar interferencias las dos ondas deben: tener la misma longitud de onda (o frecuencia) y ser síncronas (coherentes), es decir, con un desfase constante entre ellas.",
+   "pagina_pdf": 454
+  },
+  {
+   "id": "n11",
+   "fr": "Interférences constructives et destructives",
+   "es": "Ondas en fase (desfasadas un múltiplo de λ): sus amplitudes se suman y la onda resultante se refuerza (interferencias constructivas). Ondas en oposición de fase (desfasadas un múltiplo impar de λ/2, es decir (k+½)·λ): sus amplitudes se anulan (interferencias destructivas).",
+   "pagina_pdf": 454
+  },
+  {
+   "id": "n12",
+   "fr": "Casque à réduction de bruit",
+   "es": "Aplicación de las interferencias destructivas: un micrófono interno detecta las ondas sonoras ambientales y el casco crea una señal en oposición de fase con el ruido ambiente para anularlo.",
+   "pagina_pdf": 455
+  },
+  {
+   "id": "n13",
+   "fr": "Expérience des trous de Young et différence de chemin optique δ",
+   "es": "Un haz láser de longitud de onda λ ilumina dos agujeros separados una distancia e; se comportan como dos fuentes síncronas S₁ y S₂. La superposición en un punto M de la pantalla depende de la diferencia de camino óptico δ = S₂M − S₁M (desplazamiento suplementario de la segunda onda respecto a la primera).",
+   "pagina_pdf": 455
+  },
+  {
+   "id": "n14",
+   "fr": "Interfrange i",
+   "es": "Menor valor de x que separa dos puntos donde se observan interferencias constructivas; se obtiene para δ = λ. Es la distancia entre los centros de dos franjas brillantes (o dos oscuras) consecutivas.",
+   "pagina_pdf": 455
+  },
+  {
+   "id": "n15",
+   "fr": "Effet Doppler",
+   "es": "Variación de la frecuencia de la onda percibida por un observador, si la fuente está en movimiento respecto al observador. El desfase Doppler es tanto mayor cuanto mayor es la velocidad de la fuente respecto al observador. El sonido de un tren que bocina es más agudo cuando se acerca y más grave cuando se aleja.",
+   "pagina_pdf": 456
+  },
+  {
+   "id": "n16",
+   "fr": "Redshift (décalage vers le rouge)",
+   "es": "En astronomía, el análisis del espectro de la luz de una estrella permite detectar el desplazamiento en longitud de onda respecto a la de un elemento en el laboratorio. Si la estrella se aleja de la Tierra, su longitud de onda (λ = c/f) aumenta: desplazamiento hacia el rojo.",
+   "pagina_pdf": 456
+  },
+  {
+   "id": "n17",
+   "fr": "Période, fréquence, longueur d'onde, célérité (acquis)",
+   "es": "Período T: menor duración tras la que el fenómeno periódico se repite idéntico. Frecuencia f: número de veces por segundo (f = 1/T, en Hz). Longitud de onda λ: menor distancia entre dos puntos que vibran en fase (distancia recorrida en un período). Celeridad c = d/Δt = λ/T.",
+   "pagina_pdf": 446
+  },
+  {
+   "id": "n18",
+   "fr": "Résolution d'un écran (dpi) et pixel",
+   "es": "Resolución en dpi = número de píxeles por pulgada que puede mostrar una pantalla; 1 pulgada = 2,54 cm. La pantalla de un smartphone es una cuadrícula de píxeles que se comporta como una red de cuadrados reflectantes.",
+   "pagina_pdf": 451
+  },
+  {
+   "id": "n19",
+   "fr": "Étoile double",
+   "es": "Sistema estelar compuesto por dos estrellas próximas que orbitan alrededor de un mismo punto (el centro de inercia del sistema). El efecto Doppler permite detectarla aunque un telescopio no distinga las dos componentes.",
+   "pagina_pdf": 468
+  },
+  {
+   "id": "n20",
+   "fr": "Intensité sonore: aplicaciones y peligro",
+   "es": "Seuil de danger: 85 dB (Situation 1) y en el Código de trabajo los obreros no deben estar sometidos a niveles superiores a 87 dB (ejercicio 10). Un percusionista y una guitarra suman intensidades (no niveles).",
+   "pagina_pdf": 459
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "I = \\dfrac{P}{S}",
+   "nombre": "Intensidad sonora",
+   "nombre_fr": "Intensité sonore",
+   "variables": [
+    {
+     "simbolo": "I",
+     "significado": "intensidad sonora",
+     "unidad": "W·m⁻²"
+    },
+    {
+     "simbolo": "P",
+     "significado": "potencia sonora entregada por la fuente",
+     "unidad": "W"
+    },
+    {
+     "simbolo": "S",
+     "significado": "superficie",
+     "unidad": "m²"
+    }
+   ],
+   "explicacion": "La intensidad sonora es la potencia transportada por la onda sonora por unidad de superficie (acquis de 1.ª). Al alejarse de la fuente, la misma potencia se reparte en una superficie mayor y I disminuye.",
+   "ejemplo": null,
+   "pagina_pdf": 446,
+   "animacion": {
+    "preset": "ondas",
+    "params": {
+     "f": 1000,
+     "v": 340
+    },
+    "leyenda": "Pulsa «Sonido · dB»: una fuente emite círculos de sonido y, al alejar el sonómetro, la misma energía se reparte en una superficie mayor y la intensidad baja."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "L = 10\\,\\log\\dfrac{I}{I_0}",
+   "nombre": "Nivel de intensidad sonora",
+   "nombre_fr": "Niveau d'intensité sonore",
+   "variables": [
+    {
+     "simbolo": "L",
+     "significado": "nivel de intensidad sonora",
+     "unidad": "dB"
+    },
+    {
+     "simbolo": "I",
+     "significado": "intensidad sonora",
+     "unidad": "W·m⁻²"
+    },
+    {
+     "simbolo": "I_0",
+     "significado": "intensidad sonora de referencia (umbral de audibilidad, I₀ = 1,0×10⁻¹²)",
+     "unidad": "W·m⁻²"
+    }
+   ],
+   "explicacion": "Escala logarítmica (logaritmo decimal) que se ajusta a la percepción del oído humano. Cada vez que I se multiplica por 10, L aumenta 10 dB. Los niveles sonoros NO se suman: se suman las intensidades.",
+   "ejemplo": {
+    "enunciado": "Situation 1 (Pour vérifier les acquis): un aparato mide I = 2,3×10⁻³ W·m⁻² en un casco de audio; el umbral de peligro es 85 dB. ¿Es razonable?",
+    "resultado": "L = 10·log(2,3×10⁻³ / 1,0×10⁻¹²) ≈ 93,6 dB > 85 dB: no es razonable (cálculo con la fórmula del cours). Vérifier l'essentiel 1: I = 5,9×10⁻⁷ W·m⁻² → L ≈ 58 dB.",
+    "pagina_pdf": 446
+   },
+   "pagina_pdf": 453,
+   "animacion": {
+    "preset": "ondas",
+    "params": {
+     "f": 1000,
+     "v": 340
+    },
+    "leyenda": "En el modo «Sonido · dB» ves la fuente y los sonómetros: al mover la distancia cambia el nivel L en decibelios."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "I = I_0\\cdot 10^{\\frac{L}{10}}",
+   "nombre": "Intensidad a partir del nivel sonoro",
+   "nombre_fr": "Intensité à partir du niveau sonore",
+   "variables": [
+    {
+     "simbolo": "I",
+     "significado": "intensidad sonora",
+     "unidad": "W·m⁻²"
+    },
+    {
+     "simbolo": "I_0",
+     "significado": "intensidad de referencia 1,0×10⁻¹²",
+     "unidad": "W·m⁻²"
+    },
+    {
+     "simbolo": "L",
+     "significado": "nivel de intensidad sonora",
+     "unidad": "dB"
+    }
+   ],
+   "explicacion": "Función recíproca del logaritmo decimal: sirve para pasar de dB a W·m⁻² antes de sumar intensidades de varias fuentes.",
+   "ejemplo": {
+    "enunciado": "Vérifier l'essentiel 2: nivel de intensidad sonora L = 104 dB.",
+    "resultado": "I = 1,0×10⁻¹² × 10^(104/10) = 2,5×10⁻² W·m⁻².",
+    "pagina_pdf": 458
+   },
+   "pagina_pdf": 457,
+   "animacion": {
+    "preset": "ondas",
+    "params": {
+     "f": 1000,
+     "v": 340
+    },
+    "leyenda": "Con el sonómetro de la animación (modo dB) se ve cómo un nivel L en dB corresponde a una intensidad que se multiplica por 10 cada 10 dB."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "L(x) = L_{(\\text{à }1\\text{ m})} - 20\\,\\log x",
+   "nombre": "Atenuación geométrica del nivel sonoro",
+   "nombre_fr": "Atténuation géométrique",
+   "variables": [
+    {
+     "simbolo": "L(x)",
+     "significado": "nivel de intensidad sonora a la distancia x de la fuente",
+     "unidad": "dB"
+    },
+    {
+     "simbolo": "L_{(\\text{à }1\\text{ m})}",
+     "significado": "nivel de referencia a 1 m de la fuente",
+     "unidad": "dB"
+    },
+    {
+     "simbolo": "x",
+     "significado": "distancia a la fuente (en m)",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Para una fuente omnidireccional, el nivel baja 20·log x al alejarse (la energía se reparte sobre esferas de radio creciente). Fórmula del DOC 2 de la actividad 1.",
+   "ejemplo": null,
+   "pagina_pdf": 448,
+   "animacion": {
+    "preset": "ondas",
+    "params": {
+     "f": 1000,
+     "v": 340
+    },
+    "leyenda": "En modo «Sonido · dB» arrastra el primer sonómetro: el segundo, al doble de distancia, marca unos 6 dB menos."
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "A_{\\text{dB}} = L_1 - L_2",
+   "nombre": "Atenuación en dB entre dos posiciones",
+   "nombre_fr": "Atténuation en dB",
+   "variables": [
+    {
+     "simbolo": "A_{dB}",
+     "significado": "atenuación",
+     "unidad": "dB"
+    },
+    {
+     "simbolo": "L_1",
+     "significado": "nivel sonoro en la posición 1",
+     "unidad": "dB"
+    },
+    {
+     "simbolo": "L_2",
+     "significado": "nivel sonoro en la posición 2",
+     "unidad": "dB"
+    }
+   ],
+   "explicacion": "Entre dos posiciones 1 y 2, la absorción en decibelios es la diferencia de niveles (vocabulario de la actividad 1).",
+   "ejemplo": null,
+   "pagina_pdf": 448,
+   "animacion": {
+    "preset": "ondas",
+    "params": {
+     "f": 1000,
+     "v": 340
+    },
+    "leyenda": "El modo dB muestra el nivel L1 y L2 de dos sonómetros y su diferencia A = L1 − L2."
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "\\theta = \\dfrac{\\lambda}{a}",
+   "nombre": "Ángulo característico de difracción",
+   "nombre_fr": "Angle caractéristique de la diffraction",
+   "variables": [
+    {
+     "simbolo": "\\theta",
+     "significado": "ángulo característico de difracción (semiángulo hasta el primer mínimo)",
+     "unidad": "rad"
+    },
+    {
+     "simbolo": "\\lambda",
+     "significado": "longitud de onda",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "a",
+     "significado": "tamaño de la abertura (ancho de la rendija)",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Cuanto más estrecha es la abertura (a cercano a λ), más se ensancha la figura de difracción: θ crece. La relación está en radianes.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 13: agujero de a = 200 µm iluminado por un láser verde (montaje del ejercicio 12, D = 1,7 m); se mide la mancha central de la foto para deducir λ.",
+    "resultado": "Con tan θ ≈ θ = L/(2D) = λ/a se obtiene λ = a·L/(2D) (relación a establecer, ver f7).",
+    "pagina_pdf": 460
+   },
+   "pagina_pdf": 454,
+   "animacion": {
+    "preset": "difraccion",
+    "params": {
+     "lam": 650,
+     "a": 200
+    },
+    "leyenda": "Un haz atraviesa una rendija de 200 µm: ves la mancha central y los primeros mínimos; baja el ancho a y la mancha se ensancha."
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "\\tan\\theta \\approx \\theta = \\dfrac{L}{2D} = \\dfrac{\\lambda}{a} \\;\\Rightarrow\\; a = \\dfrac{2\\lambda\\cdot D}{L}",
+   "nombre": "Tamaño de la abertura a partir de la mancha central",
+   "nombre_fr": "Taille de l'ouverture par diffraction",
+   "variables": [
+    {
+     "simbolo": "L",
+     "significado": "anchura de la mancha central (entre los primeros mínimos)",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "D",
+     "significado": "distancia rendija-pantalla",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "\\lambda",
+     "significado": "longitud de onda del láser",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "a",
+     "significado": "tamaño de la abertura",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "En la aproximación de ángulos pequeños, tan θ ≈ θ. Midiendo L y D con λ conocida se despeja a. Hay que trabajar en metros.",
+   "ejemplo": {
+    "enunciado": "Vérifier l'essentiel 4: rendija iluminada con λ = 650 nm, D = 2,70 m y d = L = 2,40 cm.",
+    "resultado": "a = 2λD/d = 2×650×10⁻⁹×2,70 / 2,40×10⁻² ≈ 1,46×10⁻⁴ m = 146 µm (respuesta B).",
+    "pagina_pdf": 458
+   },
+   "pagina_pdf": 454,
+   "animacion": {
+    "preset": "difraccion",
+    "params": {
+     "lam": 650,
+     "a": 150
+    },
+    "leyenda": "Mismo montaje de difracción: al fijar λ y la distancia a la pantalla, el ancho de la mancha te permite recuperar el tamaño a de la rendija."
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "\\theta_{\\text{diff}} = 1{,}22\\,\\dfrac{\\lambda}{D}",
+   "nombre": "Ángulo de difracción de una abertura circular",
+   "nombre_fr": "Diffraction par une ouverture circulaire",
+   "variables": [
+    {
+     "simbolo": "\\theta_{diff}",
+     "significado": "ángulo característico de difracción",
+     "unidad": "rad"
+    },
+    {
+     "simbolo": "\\lambda",
+     "significado": "longitud de onda del haz incidente",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "D",
+     "significado": "diámetro de la abertura circular (telescopio)",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Relación dada por el ejercicio 21 para una abertura circular: limita el poder separador de un telescopio (la observación se ve limitada por la difracción).",
+   "ejemplo": {
+    "enunciado": "Ejercicio resuelto 21: telescopio ELT de D = 39 m; λ = 700 nm (infrarrojo cercano).",
+    "resultado": "θ_diff = 1,22×700×10⁻⁹/39 = 2,2×10⁻⁸ rad. El ángulo de la exoplaneta-estrella vale α = 3,781×10⁻⁶ rad > θ_diff: la difracción no impide separar estrella y planeta.",
+    "pagina_pdf": 462
+   },
+   "pagina_pdf": 462,
+   "animacion": {
+    "preset": "difraccion",
+    "params": {
+     "lam": 700,
+     "a": 100
+    },
+    "leyenda": "La rendija se estrecha y el patrón se abre: ilustra por qué un telescopio de mayor diámetro difracta menos."
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "\\delta = e\\cdot\\dfrac{x}{D}",
+   "nombre": "Diferencia de camino óptico (trous de Young)",
+   "nombre_fr": "Différence de chemin optique",
+   "variables": [
+    {
+     "simbolo": "\\delta",
+     "significado": "diferencia de camino óptico en el punto M",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "e",
+     "significado": "distancia entre los dos agujeros (las dos fuentes)",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "x",
+     "significado": "abscisa del punto M de la pantalla",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "D",
+     "significado": "distancia agujeros-pantalla",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Con δ = S₂M − S₁M y ángulos pequeños se obtiene δ = e·x/D (de tan α ≈ x/D y sin α ≈ δ/e). Define dónde hay luz (δ = kλ) y dónde oscuridad (δ = (k+½)λ).",
+   "ejemplo": null,
+   "pagina_pdf": 455,
+   "animacion": {
+    "preset": "difraccion",
+    "params": {
+     "lam": 633,
+     "a": 100
+    },
+    "leyenda": "En el modo de dos rendijas verás el patrón de interferencias: franjas brillantes donde δ = kλ y oscuras donde δ = (k+½)λ."
+   }
+  },
+  {
+   "id": "f10",
+   "latex": "i = \\dfrac{\\lambda\\cdot D}{e}",
+   "nombre": "Interfranja",
+   "nombre_fr": "Interfrange",
+   "variables": [
+    {
+     "simbolo": "i",
+     "significado": "interfranja",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "\\lambda",
+     "significado": "longitud de onda",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "D",
+     "significado": "distancia entre las rendijas y la pantalla",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "e",
+     "significado": "distancia entre las dos rendijas",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Se obtiene para δ = λ: λ = e·i/D. Permite deducir e (o λ) midiendo i. Se usa también para medir el tamaño de un píxel (actividad 4).",
+   "ejemplo": {
+    "enunciado": "Ejercicio 18: λ = 633 nm, D = 2,6 m, interfranja i = 3,4 mm medida en la pantalla.",
+    "resultado": "e = λ·D/i = 633×10⁻⁹×2,6/3,4×10⁻³ ≈ 4,8×10⁻⁴ m = 480 µm.",
+    "pagina_pdf": 622
+   },
+   "pagina_pdf": 455,
+   "animacion": {
+    "preset": "difraccion",
+    "params": {
+     "lam": 633,
+     "a": 100
+    },
+    "leyenda": "En el patrón de dos rendijas, al aumentar λ o D las franjas se separan; al aumentar la separación e se juntan."
+   }
+  },
+  {
+   "id": "f11",
+   "latex": "\\delta = k\\cdot\\lambda \\;\\; (\\text{constructivas})\\qquad \\delta = \\left(k+\\tfrac{1}{2}\\right)\\lambda \\;\\; (\\text{destructivas})",
+   "nombre": "Condiciones de interferencia",
+   "nombre_fr": "Conditions d'interférences constructives/destructives",
+   "variables": [
+    {
+     "simbolo": "\\delta",
+     "significado": "diferencia de camino (o desfase expresado en longitud)",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "k",
+     "significado": "número entero",
+     "unidad": "—"
+    },
+    {
+     "simbolo": "\\lambda",
+     "significado": "longitud de onda",
+     "unidad": "m"
+    }
+   ],
+   "explicacion": "Si δ es un múltiplo entero de λ las ondas están en fase y se refuerzan; si δ es un múltiplo impar de λ/2 están en oposición de fase y se anulan. Con δ = d₁ − d₂ (DOC 2, actividad 3) se aplica a ondas del agua, del sonido y de la luz.",
+   "ejemplo": {
+    "enunciado": "Ejercicio 16: dos altavoces con el mismo generador emiten una onda de λ = 2,0 m. 1. Punto a 1 m del primero y 4 m del segundo. 2. Punto a 6 m y 14 m.",
+    "resultado": "1. δ = 4 − 1 = 3 m = (2k+1)λ/2 con δ = 3λ/2: mínimo de amplitud, interferencias destructivas. 2. δ = 14 − 6 = 8 m = 4λ: máximo, interferencias constructivas.",
+    "pagina_pdf": 621
+   },
+   "pagina_pdf": 454,
+   "animacion": {
+    "preset": "difraccion",
+    "params": {
+     "lam": 633,
+     "a": 100
+    },
+    "leyenda": "Cada punto de la pantalla es brillante si δ = kλ y oscuro si δ = (k+½)λ: cambia λ y mira cómo se desplazan las franjas."
+   }
+  },
+  {
+   "id": "f12",
+   "latex": "f_R = f_e\\left(\\dfrac{c}{c-v}\\right) \\;\\text{(fuente que se acerca)}\\qquad f_R = f_e\\left(\\dfrac{c}{c+v}\\right) \\;\\text{(fuente que se aleja)}",
+   "nombre": "Frecuencia percibida (efecto Doppler)",
+   "nombre_fr": "Fréquence perçue (effet Doppler)",
+   "variables": [
+    {
+     "simbolo": "f_R",
+     "significado": "frecuencia de la onda percibida por el observador",
+     "unidad": "Hz"
+    },
+    {
+     "simbolo": "f_e",
+     "significado": "frecuencia de la onda emitida por la fuente en reposo",
+     "unidad": "Hz"
+    },
+    {
+     "simbolo": "c",
+     "significado": "velocidad (celeridad) de la onda",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "v",
+     "significado": "velocidad de la fuente respecto al observador",
+     "unidad": "m·s⁻¹"
+    }
+   ],
+   "explicacion": "Deducción exacta del cours (p. 438): T_R = T_e(c−v)/c. Si la fuente se acerca, f_R > f_e (sonido más agudo); si se aleja se cambia −v por +v y f_R < f_e (más grave).",
+   "ejemplo": {
+    "enunciado": "Ejercicio 30: sirena de camión de bomberos a 800 Hz pasando a v = 30 m·s⁻¹ (c = 340 m·s⁻¹).",
+    "resultado": "Con la forma aproximada Δf = 71 Hz: se acerca → 800 + 71 = 871 Hz; se aleja → 800 − 71 = 729 Hz (la fórmula exacta daría 877 Hz y 735 Hz).",
+    "pagina_pdf": 622
+   },
+   "pagina_pdf": 456,
+   "animacion": {
+    "preset": "doppler",
+    "params": {
+     "f0": 800,
+     "vs": 30
+    },
+    "leyenda": "Una fuente sonora en movimiento: delante las ondas se comprimen (más agudo), detrás se estiran (más grave); mueve la velocidad de la fuente."
+   }
+  },
+  {
+   "id": "f13",
+   "latex": "\\Delta f = f_R - f_e = \\dfrac{f_e\\cdot v}{c}",
+   "nombre": "Desfase Doppler (v ≪ c)",
+   "nombre_fr": "Décalage Doppler",
+   "variables": [
+    {
+     "simbolo": "\\Delta f",
+     "significado": "desfase Doppler",
+     "unidad": "Hz"
+    },
+    {
+     "simbolo": "f_R",
+     "significado": "frecuencia percibida",
+     "unidad": "Hz"
+    },
+    {
+     "simbolo": "f_e",
+     "significado": "frecuencia emitida por la fuente en reposo",
+     "unidad": "Hz"
+    },
+    {
+     "simbolo": "v",
+     "significado": "velocidad del emisor respecto al observador",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "c",
+     "significado": "velocidad de la onda (sonido en el aire: 340 m·s⁻¹)",
+     "unidad": "m·s⁻¹"
+    }
+   ],
+   "explicacion": "Si v es muy pequeña frente a c, c − v ≈ c y Δf = f_e·v/c. Para una fuente que se aleja, Δf es negativo en el signo de la derivación exacta; en el cours se retiene el valor absoluto del desfase.",
+   "ejemplo": {
+    "enunciado": "Ejercicio resuelto 23: La₃ (f = 440 Hz) tocada por una pianista; el bailarín salta a v = 1,9 m / 0,75 s = 2,5 m·s⁻¹ hacia ella (c = 340 m·s⁻¹).",
+    "resultado": "Δf = 440 × 2,5/340 = 3,3 Hz; f_R = 443 Hz. Δf/f = 7,5×10⁻³ supera el umbral S_dr = 1/1000 de un oído entrenado: el bailarín percibe otra nota.",
+    "pagina_pdf": 463
+   },
+   "pagina_pdf": 456,
+   "animacion": {
+    "preset": "doppler",
+    "params": {
+     "f0": 440,
+     "vs": 100
+    },
+    "leyenda": "Sube la velocidad de la fuente y mira cómo crece el desfase Δf entre la frecuencia emitida y la percibida."
+   }
+  },
+  {
+   "id": "f14",
+   "latex": "c = \\dfrac{\\lambda}{T} = \\lambda\\cdot f \\qquad f=\\dfrac{1}{T}",
+   "nombre": "Celeridad, longitud de onda y frecuencia",
+   "nombre_fr": "Célérité d'une onde (acquis)",
+   "variables": [
+    {
+     "simbolo": "c",
+     "significado": "celeridad de la onda",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "\\lambda",
+     "significado": "longitud de onda",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "T",
+     "significado": "período",
+     "unidad": "s"
+    },
+    {
+     "simbolo": "f",
+     "significado": "frecuencia",
+     "unidad": "Hz"
+    }
+   ],
+   "explicacion": "Acquis: la celeridad es la distancia recorrida por unidad de tiempo (c = d/Δt) y, en un período, la onda recorre una longitud de onda: c = λ/T = λ·f. Necesaria para el efecto Doppler (c = 340 m·s⁻¹ para el sonido) y las interferencias.",
+   "ejemplo": {
+    "enunciado": "Situation 2 (Pour vérifier les acquis): vibrador a f = 20 Hz en la superficie del agua; se mide la distancia AB en la foto (AB = 5,0 cm).",
+    "resultado": "El cours no da el número de longitudes de onda entre A y B (viene de la foto): no está en el cours. Se usa λ = c/f.",
+    "pagina_pdf": 446
+   },
+   "pagina_pdf": 446,
+   "animacion": {
+    "preset": "ondas",
+    "params": {
+     "f": 440,
+     "v": 340
+    },
+    "leyenda": "Una onda viajera en la que cambias f y v: la longitud de onda λ = v/f se ajusta y ves el período."
+   }
+  },
+  {
+   "id": "f15",
+   "latex": "\\delta = 2\\,d\\,\\sin\\theta",
+   "nombre": "Diferencia de camino con rayos X (ejercicio 29)",
+   "nombre_fr": "Différence de chemin pour des rayons X",
+   "variables": [
+    {
+     "simbolo": "\\delta",
+     "significado": "diferencia de camino óptico entre ondas reflejadas en planos sucesivos",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "d",
+     "significado": "distancia entre dos planos de átomos",
+     "unidad": "m"
+    },
+    {
+     "simbolo": "\\theta",
+     "significado": "ángulo entre el rayo y el plano",
+     "unidad": "°"
+    }
+   ],
+   "explicacion": "Relación dada como dato en el ejercicio 29 («Interférences et rayons X»): con δ = kλ (constructivas) y k = 1 se obtiene d = λ/(2 sin θ).",
+   "ejemplo": {
+    "enunciado": "Ejercicio 29: θ = 11,5° y λ = 145 pm; interferencias constructivas con diferencia de camino mínima (k = 1).",
+    "resultado": "d = λ/(2 sin θ) = 145/(2 sin 11,5°) ≈ 364 pm.",
+    "pagina_pdf": 622
+   },
+   "pagina_pdf": 465,
+   "animacion": {
+    "preset": "difraccion",
+    "params": {
+     "lam": 380,
+     "a": 100
+    },
+    "leyenda": "Ilustra de nuevo la condición δ = kλ: cuando se cumple, las ondas reflejadas se refuerzan."
+   }
+  },
+  {
+   "id": "f16",
+   "latex": "v = c\\cdot\\dfrac{\\lambda-\\lambda_0}{\\lambda_0}",
+   "nombre": "Velocidad de alejamiento de una fuente luminosa (redshift)",
+   "nombre_fr": "Vitesse d'éloignement par décalage de longueur d'onde",
+   "variables": [
+    {
+     "simbolo": "v",
+     "significado": "velocidad de alejamiento de la fuente respecto al observador terrestre",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "c",
+     "significado": "celeridad de la luz en el vacío (2,9979×10⁸)",
+     "unidad": "m·s⁻¹"
+    },
+    {
+     "simbolo": "\\lambda",
+     "significado": "longitud de onda de la radiación emitida por la fuente en movimiento",
+     "unidad": "nm"
+    },
+    {
+     "simbolo": "\\lambda_0",
+     "significado": "longitud de onda de referencia de la raya (fuente inmóvil)",
+     "unidad": "nm"
+    }
+   ],
+   "explicacion": "Dado como DOC 1 del ejercicio 36: la raya del doblete del Ca²⁺ de la galaxia NGC 691 (λ₀ = 526,8 nm) aparece desplazada hacia el rojo si la galaxia se aleja. El corrigé del ejercicio 36 no figura en el manual (no está en el cours).",
+   "ejemplo": null,
+   "pagina_pdf": 468,
+   "animacion": {
+    "preset": "generico",
+    "params": {
+     "expr": "299790*(x-526.8)/526.8",
+     "xmin": 526.8,
+     "xmax": 530.8,
+     "vars": {}
+    },
+    "leyenda": "Gráfica v (km/s) en función de la longitud de onda λ observada (nm) de la raya: cuanto más desplazada al rojo, mayor velocidad de alejamiento (c = 299 790 km/s, λ₀ = 526,8 nm)."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "I₀ — intensidad sonora de referencia (umbral de audibilidad a 1 000 Hz)",
+   "valor": "1,0×10⁻¹²",
+   "unidad": "W·m⁻²",
+   "pagina_pdf": 453
+  },
+  {
+   "nombre": "Umbral de dolor (valor máximo de intensidad sonora)",
+   "valor": "1",
+   "unidad": "W·m⁻²",
+   "pagina_pdf": 453
+  },
+  {
+   "nombre": "Celeridad del sonido en el aire",
+   "valor": "340",
+   "unidad": "m·s⁻¹",
+   "pagina_pdf": 452
+  },
+  {
+   "nombre": "Celeridad de la luz (datos del cap. 17)",
+   "valor": "3,0×10⁸ (2,9979×10⁸ en el ej. 36)",
+   "unidad": "m·s⁻¹",
+   "pagina_pdf": 459
+  },
+  {
+   "nombre": "Umbral de peligro sonoro (Situation 1)",
+   "valor": "85",
+   "unidad": "dB",
+   "pagina_pdf": 446
+  },
+  {
+   "nombre": "Límite del Código de trabajo (ejercicio 10)",
+   "valor": "87",
+   "unidad": "dB",
+   "pagina_pdf": 459
+  },
+  {
+   "nombre": "Pulgada (para la resolución en dpi)",
+   "valor": "2,54",
+   "unidad": "cm",
+   "pagina_pdf": 451
+  },
+  {
+   "nombre": "Unidad astronómica (ua)",
+   "valor": "1,496×10¹¹",
+   "unidad": "m",
+   "pagina_pdf": 462
+  },
+  {
+   "nombre": "Año luz (al)",
+   "valor": "9,461×10¹⁵",
+   "unidad": "m",
+   "pagina_pdf": 462
+  },
+  {
+   "nombre": "Infrarrojo cercano (intervalo de longitud de onda)",
+   "valor": "700 a 1 000",
+   "unidad": "nm",
+   "pagina_pdf": 462
+  },
+  {
+   "nombre": "Seuil différentiel relatif S_dr del oído entrenado",
+   "valor": "1/1 000 = 1×10⁻³",
+   "unidad": "—",
+   "pagina_pdf": 463
+  },
+  {
+   "nombre": "λ₀ del doblete del Ca²⁺ (galaxia NGC 691, fuente en reposo)",
+   "valor": "526,8",
+   "unidad": "nm",
+   "pagina_pdf": 468
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Pasar de intensidad sonora a nivel sonoro (y al revés)",
+   "pasos": [
+    "Usar L = 10·log(I/I₀) con I₀ = 1,0×10⁻¹² W·m⁻² (logaritmo decimal).",
+    "Para el sentido inverso, usar la función recíproca: I = I₀·10^(L/10).",
+    "Comprobar la escala del cours (Fig. 1): 10 dB umbral de percepción, 50 dB conversación normal, 85–87 dB límite de peligro.",
+    "Dar el resultado en dB (un nivel) o en W·m⁻² (una intensidad)."
+   ],
+   "pagina_pdf": 457
+  },
+  {
+   "titulo": "Sumar niveles sonoros de varias fuentes",
+   "pasos": [
+    "Calcular la intensidad sonora de cada fuente: I = I₀·10^(L/10).",
+    "Sumar SOLO las intensidades (las intensidades se suman, los niveles en dB no).",
+    "Convertir la intensidad total en nivel: L = 10·log(I_total/I₀).",
+    "Alternativa del ejercicio 28: usar el gráfico «número de decibelios a añadir» según la diferencia de niveles entre los instrumentos."
+   ],
+   "pagina_pdf": 465
+  },
+  {
+   "titulo": "Determinar el tamaño de una abertura por difracción (protocolos 1 y 2)",
+   "pasos": [
+    "Iluminar la abertura con un láser de longitud de onda conocida (650 nm).",
+    "Protocolo 1: medir con una regla la distancia L entre los primeros mínimos secundarios (2L/2 + L + L/2 ...) y la distancia D abertura-pantalla.",
+    "Protocolo 2: fotografiar la mancha con una webcam (con escala de distancia) y medir L con un programa de tratamiento de imágenes.",
+    "Aplicar tan θ ≈ θ = L/(2D) = λ/a y despejar a = 2λD/L.",
+    "Convertir las distancias a metros antes de calcular."
+   ],
+   "pagina_pdf": 449
+  },
+  {
+   "titulo": "Evaluar la incertidumbre-tipo compuesta u(a)",
+   "pasos": [
+    "Determinar las incertidumbres-tipo u(λ), u(L), u(D) de las magnitudes que intervienen.",
+    "Aplicar la fórmula dada: u(a) = a × √[(u(λ)/λ)² + (u(L)/L)² + (u(D)/D)²].",
+    "Comparar con el valor de referencia del fabricante con |a_mes − a_ref| / u(a).",
+    "Concluir qué método da el valor más próximo al de referencia (la ficha método p. 538 no está en las páginas del capítulo: no está en el cours)."
+   ],
+   "pagina_pdf": 449
+  },
+  {
+   "titulo": "Probar las condiciones de interferencia en la cuba de ondas",
+   "pasos": [
+    "Con dos fuentes puntuales síncronas (en fase), definir δ = d₁ − d₂ para un punto M.",
+    "Interferencias constructivas si δ = kλ (ondas en fase); destructivas si δ = (k+½)λ (oposición de fase). El DOC 2 del manual lo expresa como «múltiplo de λ/2» para destructivas; el cours (p. 454) precisa (k+½)·λ.",
+    "Representar con un programa en Python la suma de dos funciones sinusoidales variando el desfase φ en sin(x + φ) (DOC 3)."
+   ],
+   "pagina_pdf": 450
+  },
+  {
+   "titulo": "Calcular la interfranja y el tamaño de un píxel (actividad 4)",
+   "pasos": [
+    "Iluminar la pantalla del smartphone con un láser; ver la figura de interferencia por reflexión sobre una pantalla.",
+    "Medir con la mayor precisión posible la interfranja i entre dos puntos luminosos.",
+    "Usar i = λ·D/e para deducir la distancia e entre centros de dos píxeles (tamaño del píxel).",
+    "Convertir a resolución en dpi con 1 pulgada = 2,54 cm."
+   ],
+   "pagina_pdf": 451
+  },
+  {
+   "titulo": "Medir una velocidad por efecto Doppler",
+   "pasos": [
+    "Con un programa o app de smartphone, grabar el sonido del claxon de un coche parado: determinar la frecuencia f_e.",
+    "Grabar el claxon del coche en movimiento y determinar la frecuencia f_R.",
+    "Aplicar Δf = f_R − f_e = f_e·v/c con c = 340 m·s⁻¹ y despejar v.",
+    "Comparar los dos métodos experimentales y mostrar espíritu crítico sobre las incertidumbres."
+   ],
+   "pagina_pdf": 452
+  },
+  {
+   "titulo": "Redactar la solución de un ejercicio (consejos del ejercicio 25)",
+   "pasos": [
+    "Razonar en fórmula literal antes de sustituir valores numéricos.",
+    "Convertir las distancias a metros.",
+    "Evitar «sé que...»: citar y justificar la relación del cours.",
+    "Explicar en vez de afirmar (p. ej. el centro de la figura de difracción es blanco porque se superponen todos los colores: síntesis aditiva).",
+    "Guardar el resultado exacto de la calculadora para el cálculo siguiente y redondear solo el resultado final (ejercicio 23)."
+   ],
+   "pagina_pdf": 464
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Sumar niveles sonoros en dB",
+   "correccion": "Se suman las intensidades (W·m⁻²), no los dB: log a + log b ≠ log(a+b).",
+   "pagina_pdf": 465
+  },
+  {
+   "id": "err2",
+   "nombre": "No convertir a metros",
+   "correccion": "nm, µm y cm deben pasarse a m antes de aplicar θ = λ/a o i = λD/e.",
+   "pagina_pdf": 464
+  },
+  {
+   "id": "err3",
+   "nombre": "Calcular sin fórmula literal",
+   "correccion": "Razonar en fórmula literal y luego sustituir los valores.",
+   "pagina_pdf": 464
+  },
+  {
+   "id": "err4",
+   "nombre": "Afirmar en vez de justificar",
+   "correccion": "Evitar «sé que...»: citar la relación del cours y explicar el razonamiento.",
+   "pagina_pdf": 464
+  },
+  {
+   "id": "err5",
+   "nombre": "Olvidar que θ es un semiángulo (falta el factor 2)",
+   "correccion": "θ delimita los primeros mínimos: tan θ ≈ L/(2D), no L/D.",
+   "pagina_pdf": 454
+  },
+  {
+   "id": "err6",
+   "nombre": "Confundir síntesis aditiva y sustractiva de colores",
+   "correccion": "Las luces de colores se combinan por síntesis aditiva: rojo+verde = amarillo, todas = blanco.",
+   "pagina_pdf": 464
+  },
+  {
+   "id": "err7",
+   "nombre": "Condición destructiva mal escrita (múltiplo de λ/2)",
+   "correccion": "Destructivas: δ = (k+½)·λ (múltiplo impar de λ/2); constructivas: δ = k·λ.",
+   "pagina_pdf": 454
+  },
+  {
+   "id": "err8",
+   "nombre": "Signo equivocado en la fórmula Doppler",
+   "correccion": "Fuente que se acerca: c − v (f_R > f_e); que se aleja: c + v (f_R < f_e).",
+   "pagina_pdf": 456
+  },
+  {
+   "id": "err9",
+   "nombre": "Redondear los resultados intermedios",
+   "correccion": "Conservar el valor exacto de la calculadora y redondear solo al final con las cifras significativas de los datos.",
+   "pagina_pdf": 463
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "Actividad 1 (TP, tarea compleja): Atténuation en dB",
+   "descripcion": "Un vecino de una vía rápida sufre ruido ambiental: ¿qué soluciones puede aplicar? Se ilustran con GBF + altavoz, sonómetro, cámara anecoica y varios materiales. DOC 2: L(x) = L(a 1 m) − 20 log x (atenuación geométrica); DOC 3: la absorción depende de la frecuencia, la humedad del aire y el material; A_dB = L₁ − L₂ (humedad relativa = agua presente / agua para saturar).",
+   "pagina_pdf": 448
+  },
+  {
+   "titulo": "Actividad 2 (TP): Diffraction",
+   "descripcion": "Con láser de 650 nm y una rendija o agujero de tamaño a, se determina a por dos protocolos (regla; webcam + software) usando θ = λ/a y tan θ ≈ L/(2D). Se calcula la incertidumbre-tipo u(a) y se compara con el valor del fabricante con (a_mes − a_ref)/u(a).",
+   "pagina_pdf": 449
+  },
+  {
+   "titulo": "Actividad 3 (TP, tarea compleja): Interférences de deux ondes à la surface de l'eau",
+   "descripcion": "Con una cuba de ondas y dos fuentes puntuales en fase se prueban las condiciones: δ = d₁ − d₂, constructivas si δ = kλ, destructivas si (k+½)λ. También se simula en Python la suma de sin(x) y sin(x + φ).",
+   "pagina_pdf": 450
+  },
+  {
+   "titulo": "Actividad 4 (TP): Résolution de l'écran d'un smartphone par interférences",
+   "descripcion": "Un láser ilumina la pantalla del móvil (cuadrícula de píxeles); por reflexión se obtiene una figura de interferencia, se mide la interfranja i y con i = λD/e se calcula el tamaño del píxel y la resolución en dpi.",
+   "pagina_pdf": 451
+  },
+  {
+   "titulo": "Actividad 5 (TP): Effet Doppler",
+   "descripcion": "Se registra el claxon de un coche parado y en movimiento con una app de smartphone y se determina la velocidad con Δf = f_R − f_e = f_e·v/c (c = 340 m·s⁻¹). Se discute si un coche respeta el límite de 80 km·h⁻¹.",
+   "pagina_pdf": 452
+  },
+  {
+   "titulo": "Pour préparer l'ECE: Diffraction et photographie d'étoiles",
+   "descripcion": "Explicar las agujas de difracción de las fotos de estrellas tomadas con telescopio y modelar θ = f(a) = k·aⁿ con una hoja de cálculo; con «arañas» de hilos de espesor a conocido se mide la mancha central en un software (con precaución con el láser).",
+   "pagina_pdf": 470
+  },
+  {
+   "titulo": "Piste pour le grand oral: ¿Cómo permite el efecto Doppler hacer un diagnóstico médico?",
+   "descripcion": "Plan: definición del efecto Doppler (esquema y fórmulas); aplicaciones corrientes (medida de velocidades con ultrasonidos, desplazamientos de longitud de onda en astronomía); el efecto Doppler al servicio de la medicina (diagnósticos en cardiología). Palabras clave: velocidad de flujo, ultrasonidos, desfase Doppler, expansión del Universo.",
+   "pagina_pdf": 471
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Vérifier l'essentiel 1 y 2 (Niveau d'intensité sonore). 1) El nivel de intensidad sonora correspondiente a I = 5,9×10⁻⁷ W·m⁻² vale: A) 59 dB, B) 132 dB, C) 58 dB. 2) La intensidad sonora asociada a un nivel L = 104 dB es: A) 2,5×10⁻² W·m⁻², B) 2,5×10¹⁰ W·m⁻², C) 10⁻¹²×10^(−104/10).",
+   "datos": {
+    "I": "5,9×10⁻⁷ W·m⁻²",
+    "L": "104 dB",
+    "I₀": "1,0×10⁻¹² W·m⁻²"
+   },
+   "respuesta": "1) C: L = 10·log(5,9×10⁻⁷/10⁻¹²) ≈ 58 dB. 2) A: I = 10⁻¹²×10^(104/10) = 2,5×10⁻² W·m⁻².",
+   "respuesta_numerica": {
+    "valor": 57.7,
+    "unidad": "dB",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Aplicar L = 10·log(I/I₀) con I₀ = 1,0×10⁻¹² W·m⁻².",
+    "L = 10·log(5,9×10⁵) = 57,7 dB ≈ 58 dB.",
+    "Para 2): I = I₀·10^(L/10) = 10⁻¹²×10^10,4 = 2,5×10⁻² W·m⁻²."
+   ],
+   "pagina_pdf": 458,
+   "corrige_pagina_pdf": 621
+  },
+  {
+   "id": "e2",
+   "enunciado": "Ejercicio 8 (Plus on est nombreux...): 1.a) Un grupo de músicos toca la guitarra: nivel sonoro 75 dB; ¿qué aparato usar para medirlo? b) Sabiendo que una guitarra sola da 65 dB, ¿cuántas guitarras idénticas hay en el grupo? 2) Un percusionista acompaña y golpea un triángulo, de nivel sonoro 50 dB: ¿cuál es la intensidad total? Comentar.",
+   "datos": {
+    "L(grupo)": "75 dB",
+    "L(1 guitarra)": "65 dB",
+    "L(triángulo)": "50 dB",
+    "I₀": "1,0×10⁻¹² W·m⁻²"
+   },
+   "respuesta": "1.a) Un sonómetro. b) I = 3,2×10⁻⁵ W·m⁻² (75 dB) e I' = 3,2×10⁻⁶ W·m⁻² (65 dB): N = I/I' = 10 guitarras. 2) I'' = 1,0×10⁻⁷ W·m⁻² (50 dB); I + I'' = 3,21×10⁻⁵ W·m⁻², es decir L'' ≈ 75 dB: la intensidad del triángulo es despreciable.",
+   "respuesta_numerica": {
+    "valor": 10,
+    "unidad": "guitarras",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "I = I₀·10^(L/10) para el grupo y para una guitarra.",
+    "N = I/I' = 3,2×10⁻⁵ / 3,2×10⁻⁶ = 10.",
+    "Sumar intensidades (no niveles): I + I'' y volver a L = 10 log(I_total/I₀) ≈ 75 dB."
+   ],
+   "pagina_pdf": 459,
+   "corrige_pagina_pdf": 621
+  },
+  {
+   "id": "e3",
+   "enunciado": "Ejercicio 16 (Interférences sonores): dos altavoces alimentados por el mismo generador emiten una onda sonora de longitud de onda λ = 2,0 m. 1.a) Un punto a 1 m del primer altavoz y a 4 m del segundo: ¿máximo o mínimo de amplitud? b) ¿Cómo se califican las interferencias? 2) Misma pregunta para un punto a 6 m de uno y 14 m del otro.",
+   "datos": {
+    "λ": "2,0 m",
+    "d₁, d₂ (caso 1)": "1 m ; 4 m",
+    "d₁, d₂ (caso 2)": "6 m ; 14 m"
+   },
+   "respuesta": "1) δ = 4 − 1 = 3 m = (2k+1)·λ/2 con δ = 3λ/2: mínimo de amplitud, interferencias destructivas. 2) δ = 14 − 6 = 8 m = 4λ = k·λ: máximo de amplitud, interferencias constructivas.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Calcular δ = d₂ − d₁.",
+    "Comparar con kλ (constructivas) y (k+½)λ (destructivas).",
+    "δ = 3 m = 1,5 λ → destructivas; δ = 8 m = 4 λ → constructivas."
+   ],
+   "pagina_pdf": 460,
+   "corrige_pagina_pdf": 621
+  },
+  {
+   "id": "e4",
+   "enunciado": "Ejercicio 18 (Différence de chemin optique): un láser rojo de λ = 633 nm ilumina dos agujeros separados e; se observa en M. D = 2,6 m. 1.a) Definir la diferencia de camino óptico δ y representarla. b) ¿El punto O, en el centro de la pantalla, es una franja oscura o brillante? 2) δ = e·x/D: condición del primer máximo de amplitud, aparte de x = 0. 3) El primer máximo define la interfranja i: x = i. Expresar i. 4) Deducir e para una interfranja medida de 3,4 mm.",
+   "datos": {
+    "λ": "633 nm",
+    "D": "2,6 m",
+    "i": "3,4 mm"
+   },
+   "respuesta": "1.a) δ = d₂ − d₁. b) O es una franja brillante: δ = 0 = kλ con k = 0. 2) Primer máximo para δ = λ (k = 1). 3) i = λ·D/e. 4) e = λ·D/i ≈ 4,8×10⁻⁴ m = 480 µm.",
+   "respuesta_numerica": {
+    "valor": 0.000484,
+    "unidad": "m",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Con δ = e·x/D y x = i, δ = λ ⇒ e·i/D = λ.",
+    "i = λD/e ⇒ e = λD/i.",
+    "e = 633×10⁻⁹ × 2,6 / 3,4×10⁻³ ≈ 4,8×10⁻⁴ m."
+   ],
+   "pagina_pdf": 461,
+   "corrige_pagina_pdf": 622
+  },
+  {
+   "id": "e5",
+   "enunciado": "Ejercicio 20 (Le bourdon): el abejorro puede accionar sus alas hasta 200 batidos por segundo. 1) Si el insecto se acerca a un observador inmóvil a 7 m·s⁻¹, ¿qué frecuencia percibe el observador? 2) Si otro abejorro vuela a la misma velocidad a su lado, ¿qué frecuencia percibe? (c = 340 m·s⁻¹).",
+   "datos": {
+    "f": "200 Hz",
+    "v": "7 m·s⁻¹",
+    "c": "340 m·s⁻¹"
+   },
+   "respuesta": "1.a) 200 batidos por segundo = 200 Hz. Δf = f·v/c = 200×7/340 = 4,1 Hz. Cuando se acerca: f + Δf = 204 Hz; cuando se aleja: f − Δf = 196 Hz. 2) Si el otro abejorro vuela a su lado, el observador lo percibe inmóvil y a la misma frecuencia: 200 Hz.",
+   "respuesta_numerica": {
+    "valor": 4.1,
+    "unidad": "Hz",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Δf = f·v/c = 200×7/340 ≈ 4,1 Hz.",
+    "Se acerca: f_R = 204 Hz. Se aleja: f_R = 196 Hz.",
+    "A su lado no hay velocidad relativa: sin desfase."
+   ],
+   "pagina_pdf": 461,
+   "corrige_pagina_pdf": 622
+  },
+  {
+   "id": "e6",
+   "enunciado": "Ejercicio resuelto 21 (Diffraction et astronomie): la exoplaneta 2M1207b orbita a 55 ua de 2M1207a, situada a 230 al de la Tierra. θ_diff = 1,22·λ/D para una abertura circular de diámetro D. 1. Citar una propiedad de la luz que explica la difracción. 2. Representar el ángulo α bajo el cual se ve el par estrella-planeta y calcularlo. 3. El telescopio separa los objetos si α ≥ θ_diff; el ELT tiene D = 39 m: estimar si permitirá observar la exoplaneta sin molestia por la difracción.",
+   "datos": {
+    "1 ua": "1,496×10¹¹ m",
+    "1 al": "9,461×10¹⁵ m",
+    "λ (IR cercano)": "700–1 000 nm"
+   },
+   "respuesta": "1. La difracción muestra el carácter ondulatorio de la luz. 2. tan α ≈ α = r/d_Tierra-estrella = 55×1,496×10¹¹/(230×9,461×10¹⁵) = 3,781×10⁻⁶ rad. 3. θ_diff = 1,22×700×10⁻⁹/39 = 2,2×10⁻⁸ rad < α: la difracción no impide separar estrella y exoplaneta.",
+   "respuesta_numerica": {
+    "valor": 3.781e-06,
+    "unidad": "rad",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Convertir ua y al a metros.",
+    "α ≈ tan α = r/d_Tierra-estrella.",
+    "Comparar α con θ_diff = 1,22λ/D."
+   ],
+   "pagina_pdf": 462,
+   "corrige_pagina_pdf": 462
+  },
+  {
+   "id": "e7",
+   "enunciado": "Ejercicio resuelto 23 (L'effet Doppler et la musique): un bailarín hace un salto de 1,9 m en 0,75 s hacia la pianista que toca La₃ (440 Hz). Seuil de variación de frecuencia relativa perceptible S_dr ≈ 1/1 000 para un oído entrenado. c_son = 340 m·s⁻¹. 1. Determinar la velocidad media del bailarín. 2.a) Calcular la frecuencia percibida por el bailarín. b) Justificar el desacuerdo entre pianista y bailarín.",
+   "datos": {
+    "d": "1,9 m",
+    "Δt": "0,75 s",
+    "f": "440 Hz",
+    "c_son": "340 m·s⁻¹"
+   },
+   "respuesta": "1. v = d/Δt = 1,9/0,75 = 2,5 m·s⁻¹. 2.a) Δf = f·v/c = 440×2,5/340 = 3,3 Hz; como se acerca, f_R = f + Δf = 443 Hz. b) Δf/f = 3,3/440 = 7,5×10⁻³ > S_dr = 1×10⁻³: un oído entrenado percibe la variación y cree que la nota cambió.",
+   "respuesta_numerica": {
+    "valor": 3.3,
+    "unidad": "Hz",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "v = d/Δt = 2,5 m·s⁻¹ (2 cifras significativas).",
+    "Δf = f·v/c = 440×2,5/340 = 3,3 Hz; f_R = 443 Hz.",
+    "Comparar Δf/f = 7,5×10⁻³ con S_dr = 1×10⁻³."
+   ],
+   "pagina_pdf": 463,
+   "corrige_pagina_pdf": 463
+  },
+  {
+   "id": "e8",
+   "enunciado": "Ejercicio 25 (corregir la solución de un alumno): fuente de luz blanca ilumina una rendija a = 200 µm; la figura de difracción se observa a D = 220 cm. 1. Relación entre a, D y la anchura L de la mancha central. 2. Calcular las anchuras de las manchas centrales para el azul (405 nm), verde (525 nm) y rojo (650 nm). 3. ¿De qué color son: a) el punto central x = 0, b) x = 4,5 mm, c) x = 7 mm? 4. Aspecto de la figura en luz blanca.",
+   "datos": {
+    "a": "200 µm",
+    "D": "220 cm",
+    "λ azul": "405 nm",
+    "λ verde": "525 nm",
+    "λ rojo": "650 nm"
+   },
+   "respuesta": "1. θ = λ/a = L/(2D) ⇒ L = 2λD/a. 2. L_B = 2×405×10⁻⁹×220×10⁻²/200×10⁻⁶ = 9,0 mm; L_V = 12 mm; L_R = 14 mm. 3.a) Blanco (síntesis aditiva de todos los colores). b) x = 4,5 mm: primer mínimo del azul, quedan verde + rojo = amarillo. c) x = 7 mm: primer mínimo del rojo, quedan azul + verde = cian. 4. Superposición de las figuras de difracción de cada color.",
+   "respuesta_numerica": {
+    "valor": 0.0089,
+    "unidad": "m",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Trabajar en metros y en fórmula literal: L = 2λD/a.",
+    "L_B = 2×405×10⁻⁹×2,20/200×10⁻⁶ = 8,9×10⁻³ m (el corrigé da 9,0 mm).",
+    "Usar la síntesis aditiva de colores para x = 0, 4,5 y 7 mm."
+   ],
+   "pagina_pdf": 464,
+   "corrige_pagina_pdf": 622
+  },
+  {
+   "id": "e9",
+   "enunciado": "Ejercicio 29 (Interférences et rayons X): un haz de rayos X de longitud de onda λ = 145 pm se refleja sobre los átomos de un cristal; la diferencia de camino entre ondas reflejadas en planos sucesivos es δ = 2d·sin θ con θ = 11,5°. a) Evaluar la diferencia de camino. b) Condiciones de interferencias destructivas y constructivas. c) Hallar d para interferencias constructivas con diferencia de camino mínima.",
+   "datos": {
+    "λ": "145 pm",
+    "θ": "11,5°"
+   },
+   "respuesta": "δ = k·λ (constructivas) o δ = (2k+1)λ/2 (destructivas). Para diferencia de camino mínima y constructivas, k = 1: 2d·sin θ = λ ⇒ d = λ/(2 sin θ) = 145/(2 sin 11,5°) ≈ 364 pm.",
+   "respuesta_numerica": {
+    "valor": 364,
+    "unidad": "pm",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "δ = 2d·sin θ.",
+    "Constructivas: δ = kλ; con k = 1: d = λ/(2 sin θ).",
+    "d = 145/(2×0,1994) ≈ 364 pm."
+   ],
+   "pagina_pdf": 465,
+   "corrige_pagina_pdf": 622
+  },
+  {
+   "id": "e10",
+   "enunciado": "Ejercicio 30 (Fire truck siren): la sirena de un camión de bomberos emite 800 Hz. Estás en la acera y el camión pasa a 30 m·s⁻¹. ¿Qué frecuencia oyes cuando: 1) el camión se acerca; 2) se aleja? Toma c = 340 m·s⁻¹.",
+   "datos": {
+    "f": "800 Hz",
+    "v": "30 m·s⁻¹",
+    "c": "340 m·s⁻¹"
+   },
+   "respuesta": "1) Δf = f·v/c = 800×30/340 = 71 Hz; f + Δf = 871 Hz. 2) f − Δf = 729 Hz.",
+   "respuesta_numerica": {
+    "valor": 71,
+    "unidad": "Hz",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "Δf = f·v/c = 800×30/340 ≈ 71 Hz.",
+    "Se acerca: 800 + 71 = 871 Hz.",
+    "Se aleja: 800 − 71 = 729 Hz."
+   ],
+   "pagina_pdf": 465,
+   "corrige_pagina_pdf": 622
+  },
+  {
+   "id": "e11",
+   "enunciado": "Ejercicio 24 (Vitesse d'un hélicoptère, ejercicio similar): un helicóptero emite a f₀ = 8,10×10² Hz; los círculos de la figura son máximos de amplitud (el punto A es el helicóptero y el observador inmóvil está en O). 1) Determinar la longitud de onda λ percibida por el observador cuando el helicóptero se mueve con movimiento rectilíneo uniforme y deducir la frecuencia percibida. 2) Estimar la velocidad del helicóptero con la expresión del desfase Doppler (c_son = 340 m·s⁻¹).",
+   "datos": {
+    "f₀": "8,10×10² Hz",
+    "c_son": "340 m·s⁻¹"
+   },
+   "respuesta": "1) Sobre el papel, 5λ = 1,4 cm, o sea λ = 0,28 cm; la escala indica que 0,8 cm representa 1 m, luego λ = 0,35 m y f = c/λ = 340/0,35 ≈ 971 Hz. 2) Δf = f·v/c ⇒ v = Δf·c/f₀ = (971 − 810)×340/810 ≈ 67,6 m·s⁻¹ ≈ 243 km·h⁻¹.",
+   "respuesta_numerica": {
+    "valor": 67.6,
+    "unidad": "m·s⁻¹",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "Medir 5λ en el dibujo y pasar a metros con la escala (0,8 cm ↔ 1 m).",
+    "f = c/λ = 340/0,35 ≈ 971 Hz.",
+    "v = (f − f₀)·c/f₀ = 161×340/810 ≈ 67,6 m·s⁻¹."
+   ],
+   "pagina_pdf": 463,
+   "corrige_pagina_pdf": 622
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "ondas",
+   "params": {
+    "f": 440,
+    "v": 340
+   },
+   "titulo": "Onda viajera y longitud de onda",
+   "relacion": "c = λ/T = λ·f: cambia f y v y observa λ (acquis y cap. 17)."
+  },
+  {
+   "preset": "ondas",
+   "params": {
+    "f": 1000,
+    "v": 340
+   },
+   "titulo": "Sonido y atenuación en dB",
+   "relacion": "L = 10 log(I/I₀) y atenuación geométrica L(x) = L(1 m) − 20 log x (modo «Sonido · dB»)."
+  },
+  {
+   "preset": "difraccion",
+   "params": {
+    "lam": 650,
+    "a": 100
+   },
+   "titulo": "Difracción por una rendija",
+   "relacion": "θ = λ/a: cuanto menor es a, más ancha es la mancha central."
+  },
+  {
+   "preset": "difraccion",
+   "params": {
+    "lam": 633,
+    "a": 100
+   },
+   "titulo": "Interferencias de dos rendijas (Young)",
+   "relacion": "δ = e·x/D e interfranja i = λD/e (modo de dos rendijas)."
+  },
+  {
+   "preset": "doppler",
+   "params": {
+    "f0": 800,
+    "vs": 30
+   },
+   "titulo": "Efecto Doppler: sirena que pasa",
+   "relacion": "Δf = f_e·v/c; f_R > f_e al acercarse y f_R < f_e al alejarse."
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "lava-fortaleza",
+  "mecanica_especial": "Ondas: plataformas oscilantes (movimiento ondulatorio de período fijo), zonas de campo que empujan (interferencia constructiva/destructiva), resortes y un puente sobre lava que cae al accionar la palanca de Entropía; el Rey Entropía guarda la fortaleza del mundo «Ondes et signaux»"
+ },
+ "estilo_intro_sugerido": "matrix"
+}

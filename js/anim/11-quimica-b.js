@@ -1070,7 +1070,7 @@
       for (const q of s.q) {
         if (q.vis < 0.02) continue;
         const x = cx + 4 + q.x * (cw - 8), y = yP + 4 + q.y * (Hc - 8), k = clamp((q.f * Math.sqrt(p.T / 300) - 0.4) / 1.6, 0, 1);
-        bola(ctx, x, y, rp, mezcla('#4cc9f0', '#ff4d5e', k), q.vis);
+        bola(ctx, x, y, rp, k < 0.5 ? mezcla('#3fc8ff', '#ffd166', k * 2) : mezcla('#ffd166', '#ff3d5a', k * 2 - 1), q.vis);
       }
       // pistón (placa + vástago) y flechas de presión exterior
       const pg = ctx.createLinearGradient(0, yP - 9, 0, yP); pg.addColorStop(0, '#8d97b5'); pg.addColorStop(1, '#4b5575');

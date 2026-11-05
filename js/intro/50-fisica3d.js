@@ -128,8 +128,7 @@
     const aro = new T.Mesh(lib.geo('cohete_aro', () => new T.TorusGeometry(0.19, 0.04, 6, 16)), mOsc); aro.position.set(0, 0.25, 0.4); g.add(aro);
     const aleta = lib.geo('cohete_aleta', () => { const s = new T.Shape(); [[0.38, 0.1], [0.92, -0.5], [0.92, -1.0], [0.38, -0.8]].forEach((p, i) => (i ? s.lineTo(p[0], p[1]) : s.moveTo(p[0], p[1]))); const e = new T.ExtrudeGeometry(s, { depth: 0.06, bevelEnabled: false }); e.translate(0, 0, -0.03); return e; });
     for (let i = 0; i < 3; i++) { const al = new T.Mesh(aleta, mRojo); al.rotation.y = (i * 2 * PI) / 3; g.add(al); }
-    g.add(lib.mesh(G.cone(), mOsc, 0, -1.12, 0, 0.3, 0.3, 0.3)).rotation.x = 0;
-    g.children[g.children.length - 1].rotation.x = PI; // tobera (cono invertido)
+    const tobera = lib.mesh(G.cone(), mOsc, 0, -1.12, 0, 0.3, 0.3, 0.3); tobera.rotation.x = PI; g.add(tobera); // cono invertido
     // llama: dos conos aditivos + chorro de partículas
     const llama = new T.Group(); llama.position.y = -1.2; g.add(llama);
     const mF1 = lib.basic('#ff8a1f', { additive: true, opacity: 0.85 }), mF2 = lib.basic('#fff2a8', { additive: true, opacity: 0.95 });

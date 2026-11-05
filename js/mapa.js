@@ -98,6 +98,7 @@
     let tooltipNodo = null, tooltipFijo = false, tooltipTimer = 0;
     let firmaEstados = '';
     let mundoActivo = '';
+    let contadorFrames = 0;                      // frames pintados (para pruebas)
 
     // =============================================================================
     // Renderer, escena, cámara
@@ -1254,7 +1255,7 @@
       if (Math.floor(now / 500) !== Math.floor((now - dt * 1000) / 500)) rm = PCB.util.reducedMotion();
       if (rm && !dirty && !viaje) return; // modo reducido: solo se pinta cuando algo cambió
       actualizar(dt);
-      renderer.render(scene, camera);
+      renderer.render(scene, camera); contadorFrames++;
       if (rm && !viaje && camaraQuieta()) dirty = false;
     }
     function arrancar() {
@@ -1286,6 +1287,7 @@
       },
       estado: (id) => (porId.get(id) || {}).estado,
       viajando: () => !!viaje,
+      frames: () => contadorFrames,
       atoEn: () => ato.u,
       volarA: (id) => volarA(id === 'todo' ? VISTA_TODO : vistaMundo(id)),
     };

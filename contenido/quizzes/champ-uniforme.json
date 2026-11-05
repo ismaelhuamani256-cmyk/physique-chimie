@@ -1,0 +1,251 @@
+{
+ "capitulo_id": "champ-uniforme",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "opcion",
+   "enunciado": "Pour un objet lancé dans un champ de pesanteur uniforme, soumis uniquement à son poids, le vecteur accélération de son centre de masse est :",
+   "opciones": [
+    "constant et égal au vecteur champ de pesanteur g₀",
+    "nul, car la composante horizontale de la vitesse est constante",
+    "égal à −g₀·t, donc croissant avec le temps",
+    "dépendant de la masse de l'objet"
+   ],
+   "correcta": 0,
+   "explicacion": "m·a = P = m·g₀ ⇒ a = g₀ : constant, vertical, vers le bas, indépendant de la masse (cours p. 316; QCM 1 et 2 de la p. 320).",
+   "pagina_pdf": 316
+  },
+  {
+   "id": "q2",
+   "tipo": "opcion",
+   "enunciado": "Un projectile est lancé de O avec v₀ de composantes (v₀cos α ; v₀sin α ; 0) dans le champ g₀ (axe Oy vers le haut). Les coordonnées du vecteur vitesse sont :",
+   "opciones": [
+    "v_x = v₀cos α ; v_y = −g₀·t + v₀sin α",
+    "v_x = v₀cos α·t ; v_y = −½g₀t² + v₀sin α·t",
+    "v_x = −g₀·t ; v_y = v₀sin α",
+    "v_x = v₀cos α − g₀·t ; v_y = v₀sin α"
+   ],
+   "correcta": 0,
+   "explicacion": "On intègre a = (0 ; −g₀ ; 0) et on utilise v(0) = v₀ : v_x est constante et v_y est une fonction affine décroissante du temps (cours p. 316; QCM 3).",
+   "pagina_pdf": 316
+  },
+  {
+   "id": "q3",
+   "tipo": "opcion",
+   "enunciado": "La trajectoire du centre de masse d'un système dans un champ de pesanteur uniforme est :",
+   "opciones": [
+    "une droite verticale uniquement",
+    "une portion de parabole",
+    "une portion d'hyperbole",
+    "un arc de cercle"
+   ],
+   "correcta": 1,
+   "explicacion": "En éliminant t entre x(t) et y(t), on obtient y(x) = (−g₀/(2v₀²cos²α))x² + x·tan α : une portion de parabole (cours p. 317).",
+   "pagina_pdf": 317
+  },
+  {
+   "id": "q4",
+   "tipo": "opcion",
+   "enunciado": "Dans un condensateur plan, la tension entre les armatures est U_AB > 0. Le champ électrique E est :",
+   "opciones": [
+    "parallèle aux armatures et proportionnel à d",
+    "perpendiculaire aux armatures, orienté vers l'armature négative, et proportionnel à U_AB",
+    "perpendiculaire aux armatures, orienté vers l'armature positive",
+    "nul à l'intérieur du condensateur"
+   ],
+   "correcta": 1,
+   "explicacion": "E = U_AB/d : uniforme, perpendiculaire aux armatures et orienté vers l'armature chargée négativement (cours p. 317; QCM 4 → B).",
+   "pagina_pdf": 317
+  },
+  {
+   "id": "q5",
+   "tipo": "opcion",
+   "enunciado": "Un électron entre dans un condensateur plan avec une vitesse v₀ perpendiculaire à E. Son accélération est :",
+   "opciones": [
+    "a = (q/m)·E avec q = −e : de sens opposé à E",
+    "a = (m/e)·E : de même sens que E",
+    "a = g₀ : le poids domine",
+    "nulle, car v₀ est constante"
+   ],
+   "correcta": 0,
+   "explicacion": "a = (q/m)E ; pour un électron q = −e, donc a est opposée à E. Le poids est négligeable devant F_e (cours p. 317; QCM 6).",
+   "pagina_pdf": 317
+  },
+  {
+   "id": "q6",
+   "tipo": "opcion",
+   "enunciado": "Dans un condensateur plan, un proton entre avec v₀ perpendiculaire à E. Parmi les propositions suivantes, laquelle est correcte ?",
+   "opciones": [
+    "sa trajectoire est un arc de parabole et la force est orientée vers l'armature négative",
+    "sa trajectoire est une droite et la force est orientée vers l'armature positive",
+    "son accélération vaut a = (m/e)·E",
+    "sa vitesse reste constante en norme"
+   ],
+   "correcta": 0,
+   "explicacion": "Charge positive : F_e = eE est dans le sens de E, vers l'armature négative ; le mouvement est plan et parabolique (corrigé du QCM 6 : A et B, p. 617).",
+   "pagina_pdf": 320
+  },
+  {
+   "id": "q7",
+   "tipo": "opcion",
+   "enunciado": "En l'absence de force non conservative, dans un champ uniforme :",
+   "opciones": [
+    "l'énergie cinétique se conserve",
+    "l'énergie mécanique E_m = E_c + E_p se conserve, donc ΔE_c = −ΔE_p",
+    "ΔE_c = ΔE_p",
+    "l'énergie potentielle est toujours nulle"
+   ],
+   "correcta": 1,
+   "explicacion": "ΔE_m = 0 ⇒ ΔE_c + ΔE_p = 0 (cours p. 318; QCM 7 : A et B).",
+   "pagina_pdf": 318
+  },
+  {
+   "id": "q8",
+   "tipo": "opcion",
+   "enunciado": "Dans un accélérateur linéaire formé d'un condensateur plan d'armatures A et B, une particule de charge q gagne en énergie cinétique :",
+   "opciones": [
+    "ΔE_c = q·U_AB (travail de la force électrique)",
+    "ΔE_c = q·E·t",
+    "ΔE_c = −m·g₀·d",
+    "ΔE_c = U_AB/q"
+   ],
+   "correcta": 0,
+   "explicacion": "ΔE_c = W_AB(F_e) = q·E·AB = q·U_AB ; si v_A = 0, v_B = √(2qU_AB/m) (cours p. 318; QCM 8 : A et C).",
+   "pagina_pdf": 318
+  },
+  {
+   "id": "q9",
+   "tipo": "numerico",
+   "enunciado": "Une bille est lâchée sans vitesse d'une hauteur h = 1,00 m (chute libre verticale, g₀ = 9,81 m·s⁻²). Calculer la durée de chute t_C.",
+   "valor": 0.452,
+   "unidad": "s",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "z(t) = ½·g₀·t² (axe Oz vers le bas)",
+    "z(t_C) = h ⇒ t_C = √(2h/g₀)",
+    "t_C = √(2×1,00/9,81) = 0.452 s"
+   ],
+   "pagina_pdf": 321
+  },
+  {
+   "id": "q10",
+   "tipo": "numerico",
+   "enunciado": "Même bille (h = 1,00 m, g₀ = 9,81 m·s⁻²). Calculer sa vitesse à l'impact v_z(t_C).",
+   "valor": 4.43,
+   "unidad": "m·s⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "v_z(t) = g₀·t",
+    "v_z(t_C) = 9,81 × 0.452 = 4.43 m·s⁻¹"
+   ],
+   "pagina_pdf": 321
+  },
+  {
+   "id": "q11",
+   "tipo": "numerico",
+   "enunciado": "Un projectile est lancé du sol avec v₀ = 10,0 m·s⁻¹ et α = 60° (g₀ = 9,81 m·s⁻²). Calculer la flèche y_max = v₀²sin²α/(2g₀).",
+   "valor": 3.82,
+   "unidad": "m",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "v_y(t_s) = 0 ⇒ t_s = v₀sin α/g₀",
+    "y_max = v₀²sin²α/(2g₀)",
+    "y_max = 100×0,75/(2×9,81) = 3.82 m"
+   ],
+   "pagina_pdf": 321
+  },
+  {
+   "id": "q12",
+   "tipo": "numerico",
+   "enunciado": "Même lancer (v₀ = 10,0 m·s⁻¹, α = 60°, g₀ = 9,81 m·s⁻²). Calculer la portée x_max = v₀²sin 2α/g₀.",
+   "valor": 8.83,
+   "unidad": "m",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "y(t_p) = 0 ⇒ t_p = 2v₀sin α/g₀",
+    "x_max = x(t_p) = v₀²·sin 2α/g₀",
+    "x_max = 100×sin 120°/9,81 = 8.83 m"
+   ],
+   "pagina_pdf": 321
+  },
+  {
+   "id": "q13",
+   "tipo": "numerico",
+   "enunciado": "Dans un canon à électrons, la tension entre les armatures vaut U_AB = −5,0 kV. Calculer le travail de la force électrique W_AB(F_e) = q·U_AB sur un électron (e = 1,6×10⁻¹⁹ C).",
+   "valor": 8e-16,
+   "unidad": "J",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "q = −e",
+    "W_AB = q·U_AB = −1,6×10⁻¹⁹ × (−5 000)",
+    "W_AB = 8.0e-16 J (travail moteur)"
+   ],
+   "pagina_pdf": 318
+  },
+  {
+   "id": "q14",
+   "tipo": "numerico",
+   "enunciado": "Le même électron part sans vitesse initiale (m = 9,11×10⁻³¹ kg). Calculer sa vitesse en B : v_B = √(−2eU_AB/m).",
+   "valor": 42000000.0,
+   "unidad": "m·s⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "ΔE_c = ½mv_B² = −e·U_AB",
+    "v_B = √(2×1,6×10⁻¹⁹×5 000/9,11×10⁻³¹)",
+    "v_B = 4.19e+07 m·s⁻¹ ≈ 4,2×10⁷ m·s⁻¹"
+   ],
+   "pagina_pdf": 318
+  },
+  {
+   "id": "q15",
+   "tipo": "numerico",
+   "enunciado": "Un noyau d'hélium He²⁺ (masse 4m_n, m_n = 1,7×10⁻²⁷ kg, charge +2e) entre sans vitesse dans une cavité de longueur AB = 0,50 m où règne E = 400 kV·m⁻¹. Calculer sa vitesse v_B en sortie.",
+   "valor": 4300000.0,
+   "unidad": "m·s⁻¹",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "W_AB(F_e) = 2e·E·AB",
+    "½·(4m_n)·v_B² = 2eE·AB",
+    "v_B = √(4eE·AB/(4m_n)) = 4.34e+06 m·s⁻¹ ≈ 4,3×10⁶ m·s⁻¹"
+   ],
+   "pagina_pdf": 325
+  },
+  {
+   "id": "q16",
+   "tipo": "numerico",
+   "enunciado": "Un électron (m = 9,11×10⁻³¹ kg) entre en y₀ = 5,0 cm avec v₀ = 1,0×10⁷ m·s⁻¹ parallèle aux plaques d'un condensateur (E = 5 200 V·m⁻¹, longueur ℓ = 10 cm). Calculer l'ordonnée de sortie y(x_S) = −eEℓ²/(2mv₀²) + y₀.",
+   "valor": 0.0043,
+   "unidad": "m",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "y(x) = −eE·x²/(2mv₀²) + y₀",
+    "On prend x_S = ℓ = 0,10 m",
+    "y(x_S) = 4.34e-03 m ≈ 4,3×10⁻³ m > 0 : l'électron sort du condensateur"
+   ],
+   "pagina_pdf": 324
+  },
+  {
+   "id": "q17",
+   "tipo": "numerico",
+   "enunciado": "Une gymnaste quitte le trampoline à l'altitude z₀ = 1,50 m avec v₀ = 7,0 m·s⁻¹ verticale vers le haut (g₀ = 9,81 m·s⁻²). Calculer la hauteur maximale h_max = z(t_a).",
+   "valor": 4.0,
+   "unidad": "m",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "v_z(t_a) = 0 ⇒ t_a = v₀/g₀ = 0,71 s",
+    "z(t) = −½g₀t² + v₀t + z₀",
+    "h_max = z(0,71) = 4.00 m ≈ 4,0 m"
+   ],
+   "pagina_pdf": 326
+  }
+ ]
+}

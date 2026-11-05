@@ -204,7 +204,9 @@
   };
   const emS = (em) => em; // alias (los emisores escriben directo en el array plano)
   function burbujasDin(o, t, ancho, y0, y1, n) { for (let i = 0; i < n; i++) { const u = fract(t * (0.25 + 0.2 * hash(i)) + hash(i + 3)); o.push((hash(i + 8) - 0.5) * 2 * ancho + Math.sin(t * 3 + i) * 0.03, y1 - u * (y1 - y0), 2); } }
-  const RADIO = { auto: 1.25, perro: 1.1, humano: 1.2, cohete: 1.6, planeta: 1.8, luna: 0.7, bola: 0.55, vaso: 1.1, tubo_ensayo: 1.6, lente: 1.9, flecha: 1.3, bloque: 1.0, rayo: 1.6, atomo: 2.0, ion: 0.7, electron: 0.45, molecula: 1.3, circuito: 2.1, pendulo: 1.9, resorte: 1.9, onda: 2.1, fluido: 2.3, termometro: 1.5, texto: 1 };
+  // Tamaño natural de cada silueta [ancho, alto, cy(centro vertical local)] y cajas del motor (EXT, en alturas de escena)
+  const NAT = { auto: [2.2, 1.16, 0], perro: [2.4, 1.6, 0], humano: [0.8, 2.25, -0.18], cohete: [1.5, 2.55, -0.3], planeta: [2.2, 2.2, 0], luna: [1.24, 1.24, 0], tubo_ensayo: [0.92, 2.7, -0.15], vaso: [1.6, 1.9, 0], bola: [1, 1, 0], lente: [0.7, 2.6, 0], flecha: [2.4, 0.6, 0], bloque: [1.6, 1, 0], rayo: [3.1, 0.4, 0], atomo: [3.9, 3.9, 0], ion: [1.6, 1.6, 0], electron: [1, 1, 0], circuito: [3.8, 2.4, 0], pendulo: [1.4, 2.2, -0.35], resorte: [3.9, 0.8, 0], onda: [3.8, 0.9, 0], fluido: [4.2, 1.1, 0], termometro: [0.8, 2.8, 0], molecula: [2.4, 2.0, 0], texto: [3, 0.8, 0] };
+  const EXT = { auto: [0.32, 0.15, 'base'], perro: [0.18, 0.13, 'base'], humano: [0.11, 0.28, 'base'], cohete: [0.08, 0.24, 'centro'], planeta: [0.17, 0.17, 'centro'], luna: [0.09, 0.09, 'centro'], tubo_ensayo: [0.07, 0.24, 'base'], vaso: [0.13, 0.16, 'base'], bola: [0.07, 0.07, 'centro'], molecula: [0.15, 0.13, 'centro'], atomo: [0.15, 0.15, 'centro'], ion: [0.09, 0.09, 'centro'], electron: [0.035, 0.035, 'centro'], circuito: [0.36, 0.24, 'centro'], pendulo: [0.12, 0.34, 'pivote'], resorte: [0.34, 0.07, 'izq'], onda: [0.5, 0.13, 'centro'], lente: [0.09, 0.3, 'centro'], rayo: [0.28, 0.04, 'centro'], flecha: [0.16, 0.05, 'centro'], bloque: [0.12, 0.1, 'base'], fluido: [0.5, 0.2, 'centro'], termometro: [0.05, 0.24, 'base'], texto: [0.22, 0.06, 'centro'] };
 
   // ---------- moléculas en 2D (usa la biblioteca de 40-quimica3d.js si está) ----------
   function moleculaPlana(spec) {
@@ -293,39 +295,54 @@
 
       // ---------- actores ----------
       const ents = {}; let lastT = 0;
-      const tmp = [];
+      const ELEMS = 'H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn'.split(' ');
       function crearEnt(id, a) {
-        const spec = Object.assign({}, defs[id] || {}); for (const k in a) if (a[k] != null) spec[k] = a[k];
-        const tipo = spec.tipo; const e = { id, spec, tipo, t0: null, face: 1, ang: 0, st: {}, radio: RADIO[tipo] || 1.2, pts: null, ov: null, hablaTxt: null, hablaT: 0, mol: null };
+        const spec = Object.assign({}, defs[id] || {}, a.def || {}); for (const k in a) if (a[k] != null && k !== 'def') spec[k] = a[k];
+        const tipo = spec.tipo, L3 = PCB.intro3d;
+        const e = { id, spec, tipo, t0: null, ang: 0, st: {}, pts: null, ov: null, hablaTxt: null, hablaT: 0, mol: null, face: 1 };
         const o = [];
         if (FORMAS[tipo]) FORMAS[tipo](o);
+        const fOf = L3 && L3.formulaDeActor ? L3.formulaDeActor(spec) : null;
+        const nat = (NAT[tipo] || [2, 2, 0]).slice();
         if (tipo === 'molecula') {
           const m = e.mol = moleculaPlana(spec); let rm = 0.6;
-          m.atomos.forEach((at) => { rm = Math.max(rm, Math.hypot(at.p[0], at.p[1]) * 1.1 + 0.5); });
-          e.radio = rm + 0.3;
+          m.atomos.forEach((at) => { rm = Math.max(rm, Math.hypot(at.p[0], at.p[1]) * 0.95 + 0.45); });
+          nat[0] = rm * 2.1; nat[1] = rm * 1.8;
         }
         if (tipo === 'ion') {
-          const p = PCB.intro3d && PCB.intro3d.parseFormula ? PCB.intro3d.parseFormula(spec.formula || spec.texto || spec.etiqueta || spec.nombre || spec.id) : null;
-          let carga = spec.carga != null ? (typeof spec.carga === 'number' ? spec.carga : (PCB.intro3d && PCB.intro3d.parseFormula && (PCB.intro3d.parseFormula('X' + spec.carga) || {}).carga) || 1) : p ? p.carga : 0;
-          e.el = (p && p.orden[0]) || 'Na'; e.carga = carga || (/^(Cl|F|Br|I|O)/.test(e.el) ? -1 : 1);
+          const p = L3 && L3.parseFormula ? L3.parseFormula(fOf || spec.texto || spec.etiqueta || spec.id) : null;
+          let carga = spec.carga != null ? (typeof spec.carga === 'number' ? spec.carga : (L3 && L3.parseFormula && (L3.parseFormula('X' + spec.carga) || {}).carga) || 1) : p ? p.carga : 0;
+          e.el = (p && p.orden[0]) || 'Na'; e.carga = carga || (/^(Cl|F|Br|I|O|S)/.test(e.el) ? -1 : 1);
+          e.poli = !!(p && (p.orden.length > 1 || p.cuentas[p.orden[0]] > 1));
+          const SUB = '₀₁₂₃₄₅₆₇₈₉'; e.etq = p ? p.orden.map((x) => x + (e.poli && p.cuentas[x] > 1 ? String(p.cuentas[x]).replace(/\d/g, (d) => SUB[d]) : '')).join('') : e.el;
+          if (!e.poli) e.etq = e.el;
           P_.arc(o, 0, 0, 0.55, 0.55, 0, TAU, 0); P_.disco(o, 0, 0, 0.48, 0, 0.15); P_.arc(o, 0, 0, 0.8, 0.8, 0, TAU, 1, 0.16);
         }
-        if (tipo === 'atomo') { const L = PCB.intro3d; const Z = +(spec.Z || spec.z) || 0; let z = Z; if (!z) { for (const c of [spec.elemento, spec.simbolo, spec.formula, spec.texto, spec.etiqueta, spec.nombre]) { if (!c) continue; const SYM = 'H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar'.split(' '); const i = SYM.indexOf(String(c).replace(/[^A-Za-z]/g, '')); if (i >= 0) { z = i + 1; break; } } } e.st.Z = z || 6; }
+        if (tipo === 'atomo') {
+          let z = +(spec.Z || spec.z) || 0;
+          if (!z) for (const c of [spec.elemento, spec.simbolo, spec.formula, fOf, spec.texto, spec.etiqueta]) { if (!c) continue; const i = ELEMS.indexOf(String(c).replace(/[^A-Za-z]/g, '')); if (i >= 0) { z = i + 1; break; } }
+          e.st.Z = z || 6;
+        }
         e.pts = new Float32Array(o); e.n = o.length / 3;
+        // fit: px por unidad local = k * alto del escenario * escala; ancla local (ax,ay) = punto de la silueta que está en `pos`
+        const ex = EXT[tipo] || [0.12, 0.12, 'centro'];
+        e.nw = nat[0]; e.nh = nat[1]; e.cy = nat[2]; e.k = Math.sqrt((ex[0] / nat[0]) * (ex[1] / nat[1]));
+        e.ax = tipo === 'resorte' ? -1.3 : 0;
+        e.ay = ex[2] === 'base' ? e.cy + e.nh / 2 : ex[2] === 'pivote' ? e.cy - e.nh / 2 : e.cy;
         return e;
       }
       function glifoActor(at, idx, x, y, sz, alpha) { g.globalAlpha = alpha; g.drawImage(at.cv, (idx % at.cols) * CELL, ((idx / at.cols) | 0) * CELL, CELL, CELL, x - sz / 2, y - sz / 2, sz, sz); }
 
-      /** Dibuja una nube de puntos locales. fm = formación 0..1; res = resaltado */
-      function nube(e, arr, n, X, Y, rot, sc, flipX, alpha, fm, res, t, a, offset, tintes) {
-        const cr = Math.cos(rot), sr = Math.sin(rot), gs = clamp(U * 0.17 * (1 + 0.3 * res), 8, 26) * Math.max(0.6, Math.min(1.4, sc / U));
+      /** Dibuja una nube de puntos locales. fm = formación 0..1; res = resaltado. (ax,ay) = ancla local */
+      function nube(e, arr, n, X, Y, rot, sc, flipX, alpha, fm, res, t, a, offset, tintes, ax, ay) {
+        const cr = Math.cos(rot), sr = Math.sin(rot), gs = clamp(sc * 0.145 * (1 + 0.3 * res), 7, 21);
         for (let i = 0; i < n; i++) {
-          let lx = arr[i * 3] * flipX, ly = arr[i * 3 + 1]; const k = arr[i * 3 + 2];
+          let lx = arr[i * 3] * flipX - ax * flipX, ly = arr[i * 3 + 1] - ay; const k = arr[i * 3 + 2];
           const seed = (i + offset) * 1.37, d = hash(seed), u = smooth(0, 1, clamp((fm * 1.6 - d * 0.9) / 0.7, 0, 1));
           if (u <= 0) continue;
           let X0 = X + (lx * cr - ly * sr) * sc, Y0 = Y + (lx * sr + ly * cr) * sc;
-          let al = alpha * (0.3 + 0.7 * u);
-          if (u < 1) { const e2 = 1 - u; X0 += (hash(seed + 3) - 0.5) * U * 1.2 * e2; Y0 -= e2 * e2 * (120 + hash(seed + 5) * 260); }
+          const al = alpha * (0.3 + 0.7 * u);
+          if (u < 1) { const e2 = 1 - u; X0 += (hash(seed + 3) - 0.5) * sc * 1.2 * e2; Y0 -= e2 * e2 * (120 + hash(seed + 5) * 260); }
           const flick = reduced ? 0 : Math.floor(t * (1.4 + hash(seed + 1) * 2) + hash(seed + 2) * 20);
           const idx = (Math.floor(hash(seed + 4) * 997) + flick * 31) % GL.length;
           let at;
@@ -335,82 +352,90 @@
         }
       }
 
-      function dibujarActor(e, a, t, dt, zi) {
+      function dibujarActor(e, a, t, dt) {
         const alphaS = a.alpha != null ? a.alpha : 1;
         let vis = a.visible !== false && alphaS > 0.01;
         if (e.forzar) vis = true;
         if (e.oculto) vis = false;
+        e.pend = null;
         if (!vis) { e.t0 = null; return; }
+        if (e.ov != null) e.t0 = t - 10;       // durante una reacción la formación la controla `ov`
         if (e.t0 == null) e.t0 = t;
         let fm = clamp((t - e.t0) / 1.5, 0, 1);
         if (e.ov != null) fm = e.ov;
-        const X = px(a.x), Y = py(a.y), sc = U * (a.escala != null ? a.escala : 1) * camZ;
-        let rot = (a.rot || 0) * PI / 180;
+        const esc = a.escala != null ? a.escala : 1, sc = e.k * bh * esc * camZ;
+        const X = px(a.x), Y = py(a.y);
+        let rot = a.rot || 0;                     // RADIANES (00-engine.js)
         const vx = a.vx || 0, vy = a.vy || 0, sp = Math.hypot(vx * 16, vy * 9);
-        if (Math.abs(vx) > 0.01 && (e.tipo === 'auto' || e.tipo === 'perro' || e.tipo === 'humano')) e.face += ((vx < 0 ? -1 : 1) - e.face) * Math.min(1, dt * 8);
-        const flipX = e.tipo === 'auto' || e.tipo === 'perro' || e.tipo === 'humano' ? (e.face < 0 ? -1 : 1) : 1;
-        if (e.tipo === 'cohete') { const tgt = sp > 0.4 ? Math.atan2(-vy * 9, vx * 16) - 0 : PI / 2; const rel = PI / 2 - tgt; let d = ((rel - e.ang + PI) % TAU + TAU) % TAU - PI; e.ang += d * Math.min(1, dt * 5); rot += e.ang; }
+        const conDir = e.tipo === 'auto' || e.tipo === 'perro' || e.tipo === 'humano';
+        if (conDir) e.face += ((a.dir != null ? a.dir : vx < 0 ? -1 : 1) - e.face) * Math.min(1, dt * 8);
+        const flipX = conDir && e.face < 0 ? -1 : 1;
+        if (e.tipo === 'cohete') { const tgt = sp > 0.4 ? Math.atan2(vy * 9, vx * 16) + PI / 2 : 0; let d = ((tgt - e.ang + PI) % TAU + TAU) % TAU - PI; e.ang += d * Math.min(1, dt * 5); rot += e.ang; }
         const res = clamp(a.resaltado || 0, 0, 1);
         const col = a.color || e.spec.color;
         const tintes = { cuerpo: atlasDe(tinte(col, 0.35)), claro: atlasDe(tinte(col, 0.2, [184, 255, 203])), blanco: atlasDe('#f2fff6'), rojo: atlasDe('#ff5a5a') };
         const al = e.forzar && alphaS < 0.01 ? 1 : alphaS;
-        // sacudida/estela al moverse
+        const ax = e.ax, ay = e.ay;
+        // estela al moverse: copias fantasma dispersas detrás del actor
         if (!reduced && sp > 0.5 && e.n) {
           for (let k = 1; k <= 3; k++) {
-            const gx = X - vx * 16 * U * 0.035 * k * camZ, gy = Y - vy * 9 * U * 0.035 * k * camZ;
-            const sub = Math.max(1, Math.floor(e.n / 7));
-            nubeFantasma(e, e.pts, e.n, gx, gy, rot, sc, flipX, al * 0.5 / k, t, tintes, k, sub);
+            const gx = X - vx * bw * 0.06 * k, gy = Y - vy * bh * 0.06 * k, sub = Math.max(1, Math.floor(e.n / 7));
+            nubeFantasma(e, e.pts, e.n, gx, gy, rot, sc, flipX, al * 0.5 / k, t, tintes, k, sub, ax, ay);
           }
         }
-        if (e.tipo === 'texto') { dibujarTexto(e, a, X, Y, sc, fm, res, al, t); }
-        else if (e.tipo === 'molecula') { dibujarMolecula(e, a, X, Y, sc, rot, fm, res, al, t, tintes); }
+        if (e.tipo === 'texto') dibujarTexto(e, a, X, Y, esc, fm, res, al, t);
+        else if (e.tipo === 'molecula') dibujarMolecula(e, a, X, Y, sc, rot, fm, res, al, t, tintes);
         else {
-          if (e.n) nube(e, e.pts, e.n, X, Y, rot, sc, flipX, al, fm, res, t, a, 0, tintes);
+          if (e.n) nube(e, e.pts, e.n, X, Y, rot, sc, flipX, al, fm, res, t, a, 0, tintes, ax, ay);
           if (DINAMICAS[e.tipo] && fm > 0.35) {
-            const em = e.dyn || (e.dyn = []); em.length = 0; e.st.red = reduced;
-            DINAMICAS[e.tipo](em, t, a, e.st);
-            // los puntos dinámicos comparten la formación (aparecen tras la estática)
-            const cat = em; nube(e, cat, cat.length / 3, X, Y, rot, sc, flipX, al, Math.min(1, (fm - 0.35) / 0.65 + 0.001), res, t, a, 1000, tintes);
+            const em = e.dyn || (e.dyn = []); em.length = 0; e.st.red = reduced; e.st.tieneGiro = a.tieneGiro;
+            DINAMICAS[e.tipo](em, tt(t, a), a, e.st);
+            nube(e, em, em.length / 3, X, Y, rot, sc, flipX, al, Math.min(1, (fm - 0.35) / 0.65 + 0.001), res, t, a, 1000, tintes, ax, ay);
           }
-          if (e.tipo === 'ion') dibujarIon(e, X, Y, sc, al, fm, t);
-          if (e.tipo === 'auto' && a.frenando && !reduced) { for (let i = 0; i < 6; i++) { const u = fract(t * 3 + i / 6); glifoActor(tintes.rojo, gi('#'), X - flipX * (U * 1.0 + u * U * 1.4) * camZ, Y + sc * 0.58, 9, (1 - u) * 0.8 * al); } }
+          if (e.tipo === 'ion') dibujarIon(e, X, Y, sc, al, fm);
+          if (e.tipo === 'auto' && a.frenando && !reduced) { for (let i = 0; i < 6; i++) { const u = fract(t * 3 + i / 6); glifoActor(tintes.rojo, gi('#'), X - flipX * (sc * 1.1 + u * sc * 1.4), Y - sc * 0.02, 9, (1 - u) * 0.8 * al); } }
         }
-        // marco de objetivo al resaltar
-        if (res > 0.02) marco(X, Y, e.radio * sc * 1.25, res, t);
-        // bocadillo
-        e.hablaPend = a.hablando ? { txt: String(a.hablando), X, Y: Y - e.radio * sc * 0.95, al } : null;
+        const cxp = X + (0 - ax) * sc * 0, cyp = Y + (e.cy - ay) * sc; // centro visual (sin rotar)
+        e.cx = X; e.cyp = cyp; e.rpx = Math.max(e.nw, e.nh) * sc / 2;
+        if (res > 0.02) marco(X, cyp, e.nw * sc / 2 * 1.2, e.nh * sc / 2 * 1.2, res, t);
+        if (a.hablando) e.pend = { txt: String(a.hablando), X, Y: cyp - e.nh * sc / 2 - 6, al };
         if (a.hablando !== e.hablaTxt) { e.hablaTxt = a.hablando || null; e.hablaT = t; }
       }
-      function nubeFantasma(e, arr, n, X, Y, rot, sc, flipX, alpha, t, tintes, k, sub) {
-        const cr = Math.cos(rot), sr = Math.sin(rot), gs = clamp(U * 0.15, 7, 22);
+      let TI = 0;                          // reloj "idle" (S.reloj): sigue corriendo en las pausas del guion
+      const tt = () => TI;
+      function nubeFantasma(e, arr, n, X, Y, rot, sc, flipX, alpha, t, tintes, k, sub, ax, ay) {
+        const cr = Math.cos(rot), sr = Math.sin(rot), gs = clamp(sc * 0.13, 7, 19);
         for (let i = k % sub; i < n; i += sub) {
-          const lx = arr[i * 3] * flipX, ly = arr[i * 3 + 1];
+          const lx = (arr[i * 3] - ax) * flipX, ly = arr[i * 3 + 1] - ay;
           glifoActor(tintes.cuerpo, ((i * 13 + k * 7) % GL.length), X + (lx * cr - ly * sr) * sc, Y + (lx * sr + ly * cr) * sc, gs, alpha);
         }
       }
-      function marco(X, Y, r, res, t) {
-        const p = 1 + 0.06 * Math.sin(t * 8), s = r * p, L = s * 0.35;
+      function marco(X, Y, hw, hh, res, t) {
+        const p = 1 + 0.05 * Math.sin(t * 8), w = hw * p, h = hh * p, L = Math.min(w, h) * 0.4;
         g.globalAlpha = res; g.strokeStyle = '#ffffff'; g.lineWidth = 2; g.beginPath();
-        [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(([sx, sy]) => { g.moveTo(X + sx * s, Y + sy * (s - L)); g.lineTo(X + sx * s, Y + sy * s); g.lineTo(X + sx * (s - L), Y + sy * s); });
+        [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(([sx, sy]) => { g.moveTo(X + sx * w, Y + sy * (h - L)); g.lineTo(X + sx * w, Y + sy * h); g.lineTo(X + sx * (w - L), Y + sy * h); });
         g.stroke(); g.globalAlpha = 1;
       }
-      function dibujarTexto(e, a, X, Y, sc, fm, res, al, t) {
-        const txt = String(e.spec.texto || e.spec.etiqueta || e.spec.formula || e.spec.nombre || ''); if (!txt) return;
-        g.save(); g.globalAlpha = al; g.font = `bold ${Math.round(clamp(sc * 0.42, 14, 60))}px "DejaVu Sans Mono",monospace`; g.textAlign = 'center'; g.textBaseline = 'middle';
+      function dibujarTexto(e, a, X, Y, esc, fm, res, al, t) {
+        const raw = e.spec.texto != null ? e.spec.texto : e.spec.etiqueta != null ? e.spec.etiqueta : e.spec.formula != null ? e.spec.formula : e.spec.nombre;
+        const L3 = PCB.intro3d, txt = String(raw == null ? '' : L3 && L3.texPlano ? L3.texPlano(raw) : raw); if (!txt) return;
+        g.save(); g.globalAlpha = al; const px0 = Math.round(clamp(bh * 0.052 * esc * camZ, 13, 90)); g.font = `bold ${px0}px "DejaVu Sans Mono",monospace`; g.textAlign = 'center'; g.textBaseline = 'middle';
         // "descifrado": los caracteres se resuelven de izquierda a derecha
         const n = txt.length, fijos = Math.floor(fm * (n + 2)); let s = '';
         for (let i = 0; i < n; i++) s += i < fijos || txt[i] === ' ' ? txt[i] : GL[(Math.floor(hash(i + Math.floor(t * 12)) * GL.length))];
-        g.shadowColor = '#2bff6b'; g.shadowBlur = 10; g.fillStyle = res > 0.5 ? '#ffffff' : '#9dffb9'; g.fillText(s, X, Y); g.restore();
+        g.shadowColor = '#2bff6b'; g.shadowBlur = 10; g.fillStyle = res > 0.5 ? '#ffffff' : '#a6ffbf'; g.fillText(s, X, Y); g.restore();
+        e.nw = Math.max(1, g.measureText ? n * 0.6 : 3); // (solo para el marco de resalte)
+        e.k = 1; e.cy = 0; e.nh = 0.8 * px0 / Math.max(1, bh * 0.052 * esc * camZ) ;
       }
-      function dibujarIon(e, X, Y, sc, al, fm, t) {
+      function dibujarIon(e, X, Y, sc, al, fm) {
         if (fm < 0.6) return;
         const q = e.carga, txt = (Math.abs(q) > 1 ? Math.abs(q) : '') + (q > 0 ? '+' : '−');
         g.save(); g.globalAlpha = al; g.textAlign = 'center'; g.textBaseline = 'middle'; g.shadowColor = '#fff'; g.shadowBlur = 8;
-        g.fillStyle = '#ffffff'; g.font = `bold ${Math.round(sc * 0.5)}px "DejaVu Sans Mono",monospace`; g.fillText(e.el, X, Y);
+        g.fillStyle = '#ffffff'; g.font = `bold ${Math.round(sc * (e.etq.length > 2 ? 0.34 : 0.5))}px "DejaVu Sans Mono",monospace`; g.fillText(e.etq, X, Y);
         g.font = `bold ${Math.round(sc * 0.42)}px "DejaVu Sans Mono",monospace`; g.fillStyle = q > 0 ? '#ff8aa0' : '#8ab4ff'; g.fillText(txt, X + sc * 0.62, Y - sc * 0.62); g.restore();
       }
       function dibujarMolecula(e, a, X, Y, sc, rot, fm, res, al, t, tintes) {
-        const m = e.mol, K = 0.95, cr = Math.cos(rot), sr = Math.sin(rot), ang = t * 0.5, ca = Math.cos(ang), sa = Math.sin(ang);
+        const m = e.mol, K = 0.95, cr = Math.cos(rot), sr = Math.sin(rot), ang = tt(t, a) * 0.5, ca = Math.cos(ang), sa = Math.sin(ang);
         const P = m.atomos.map((at) => { const x = at.p[0] * ca + at.p[2] * sa, z = -at.p[0] * sa + at.p[2] * ca, y = at.p[1]; return { x: (x * cr - y * sr) * K, y: (x * sr + y * cr) * K, z, el: at.el }; });
         const pp = [];
         (m.enlaces || []).forEach(([i, j, ord]) => {
@@ -419,13 +444,13 @@
           offs.forEach((o) => P_.line(pp, P[i].x + nx * o, P[i].y + ny * o, P[j].x + nx * o, P[j].y + ny * o, 1, 0.1));
         });
         const orden = P.map((p, i) => i).sort((p, q) => P[p].z - P[q].z);
-        nube(e, pp, pp.length / 3, X, Y, 0, sc, 1, al, fm, res, t, a, 500, tintes);
+        nube(e, pp, pp.length / 3, X, Y, 0, sc, 1, al, fm, res, t, a, 500, tintes, 0, 0);
         orden.forEach((i) => {
           const r = (RAT[P[i].el] || 0.5) * 0.85, o = []; P_.arc(o, P[i].x, P[i].y, r, r, 0, TAU, 0, 0.1); P_.disco(o, P[i].x, P[i].y, r * 0.75, 0, 0.17);
-          nube(e, o, o.length / 3, X, Y, 0, sc, 1, al * (0.8 + 0.2 * P[i].z), fm, res, t, a, 100 + i * 200, tintes);
-          if (fm > 0.7) { g.save(); g.globalAlpha = al; g.fillStyle = '#ffffff'; g.shadowColor = '#2bff6b'; g.shadowBlur = 8; g.font = `bold ${Math.round(sc * 0.4)}px "DejaVu Sans Mono",monospace`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(P[i].el, X + P[i].x * sc, Y + P[i].y * sc); g.restore(); }
+          nube(e, o, o.length / 3, X, Y, 0, sc, 1, al * (0.8 + 0.2 * P[i].z), fm, res, t, a, 100 + i * 200, tintes, 0, 0);
+          if (fm > 0.7) { g.save(); g.globalAlpha = al; g.fillStyle = '#ffffff'; g.shadowColor = '#2bff6b'; g.shadowBlur = 8; g.font = `bold ${Math.round(sc * 0.36)}px "DejaVu Sans Mono",monospace`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(P[i].el, X + P[i].x * sc, Y + P[i].y * sc); g.restore(); }
         });
-        if (m.carga && fm > 0.7) { const q = m.carga, txt = (Math.abs(q) > 1 ? Math.abs(q) : '') + (q > 0 ? '+' : '−'); g.save(); g.globalAlpha = al; g.fillStyle = q > 0 ? '#ff8aa0' : '#8ab4ff'; g.font = `bold ${Math.round(sc * 0.45)}px "DejaVu Sans Mono",monospace`; g.fillText(txt, X + e.radio * sc * 0.75, Y - e.radio * sc * 0.75); g.restore(); }
+        if (m.carga && fm > 0.7) { const q = m.carga, txt = (Math.abs(q) > 1 ? Math.abs(q) : '') + (q > 0 ? '+' : '−'); g.save(); g.globalAlpha = al; g.fillStyle = q > 0 ? '#ff8aa0' : '#8ab4ff'; g.font = `bold ${Math.round(sc * 0.45)}px "DejaVu Sans Mono",monospace`; g.fillText(txt, X + e.nw * sc * 0.4, Y - e.nh * sc * 0.4); g.restore(); }
       }
 
       // ---------- vectores, trayectorias, partículas, bocadillos, reacciones ----------
@@ -435,8 +460,8 @@
         (S.vectores || []).forEach((v, vi) => {
           const e = ents[v.actor], a = S.actores && S.actores[v.actor]; if (!e || !a || a.visible === false) return;
           const al = v.alpha != null ? v.alpha : 1; if (al < 0.02) return;
-          const x0 = px(a.x), y0 = py(a.y); let dx = (v.dx || 0) * bw * camZ, dy = (v.dy || 0) * bh * camZ; const L = Math.hypot(dx, dy); if (L < 2) return;
-          const ux = dx / L, uy = dy / L, off = e.radio * U * (a.escala || 1) * camZ * 0.45, sx = x0 + ux * off, sy = y0 + uy * off, len = Math.min(L, Math.min(bw, bh) * 0.7);
+          const x0 = e.cx != null ? e.cx : px(a.x), y0 = e.cyp != null ? e.cyp : py(a.y); let dx = (v.dx || 0) * bw * camZ, dy = (v.dy || 0) * bh * camZ; const L = Math.hypot(dx, dy); if (L < 2) return;
+          const ux = dx / L, uy = dy / L, off = (e.rpx || U) * 0.55, sx = x0 + ux * off, sy = y0 + uy * off, len = Math.min(L, Math.min(bw, bh) * 0.7);
           const n = Math.max(2, Math.floor(len / (U * 0.14))), gs = clamp(U * 0.2, 9, 24);
           for (let i = 0; i <= n; i++) {
             const f = i / n, flow = fract(f * 6 - t * 1.2), cx = sx + ux * len * f, cy = sy + uy * len * f;
@@ -489,7 +514,7 @@
       }
       function bocadillos(S, t) {
         for (const id in ents) {
-          const e = ents[id]; const h = e.hablaPend; if (!h) continue;
+          const e = ents[id]; const h = e.pend; if (!h) continue;
           const txt = h.txt, nCar = Math.min(txt.length, Math.floor((t - e.hablaT) * 32)), fs = Math.round(clamp(bh * 0.032, 12, 20));
           g.save(); g.font = `bold ${fs}px "DejaVu Sans Mono",monospace`;
           const maxW = bw * 0.34, palabras = txt.split(' '), lin = []; let cur = '';
@@ -505,16 +530,15 @@
           g.restore();
         }
       }
-      const hechas = new Set();
       function reaccionesPre(S) {
         for (const id in ents) { const e = ents[id]; e.ov = null; e.oculto = false; e.forzar = false; }
         const act = [];
-        (S.reacciones || []).forEach((r, idx) => {
-          const key = (r.de || []).join() + '>' + (r.a || []).join() + '#' + idx, p = r.progreso || 0;
+        // El motor funde `de`/`a` con alpha; aquí, mientras 0<progreso<1, los reactivos se "disuelven" en código y los
+        // productos se "compilan" (ov = fracción de formación), ignorando ese alpha.
+        (S.reacciones || []).forEach((r) => {
+          const p = r.progreso || 0;
           const de = (r.de || []).map((i) => ents[i]).filter(Boolean), pr = (r.a || []).map((i) => ents[i]).filter(Boolean);
-          if (p >= 1) hechas.add(key);
-          if (p > 0 && p < 1) { de.forEach((e) => { e.ov = 1 - smooth(0, 0.55, p); }); pr.forEach((e) => { e.ov = smooth(0.45, 1, p); e.forzar = true; }); act.push({ de, pr, p }); }
-          else if (hechas.has(key)) { de.forEach((e) => { e.oculto = true; }); pr.forEach((e) => { e.forzar = true; }); }
+          if (p > 0.002 && p < 1) { de.forEach((e) => { e.ov = 1 - smooth(0, 0.6, p); e.forzar = true; }); pr.forEach((e) => { e.ov = smooth(0.4, 1, p); e.forzar = true; }); act.push({ de, pr, p }); }
         });
         return act;
       }
@@ -533,14 +557,15 @@
       // ---------- bucle ----------
       function update(S, dt) {
         dt = clamp(dt || 0.016, 0, 0.1); const t = S.t || 0;
-        if (t < lastT - 0.4) { hechas.clear(); for (const id in ents) ents[id].t0 = null; }
-        lastT = t;
+        TI = S.reloj != null ? S.reloj : t;
+        if (TI < lastT - 0.4) { for (const id in ents) ents[id].t0 = null; }
+        lastT = TI;
         const c = S.camara || {}; camZ = clamp(c.zoom || 1, 0.3, 6); camX = c.cx != null ? c.cx : 0.5; camY = c.cy != null ? c.cy : 0.5;
         U = bh * 0.135;
         g.setTransform(dpr, 0, 0, dpr, 0, 0);
         g.globalCompositeOperation = 'source-over'; g.globalAlpha = 1;
         g.fillStyle = '#010a04'; g.fillRect(0, 0, Wd, Hd);
-        lluvia(dt, t);
+        lluvia(dt, TI);
         const acts = S.actores || {};
         for (const id in acts) if (!ents[id]) ents[id] = crearEnt(id, acts[id]);
         const act = reaccionesPre(S);
@@ -548,11 +573,11 @@
         let zi = 0;
         for (const id in ents) {
           const a = acts[id]; if (!a) continue; const e = ents[id];
-          if (a.visible !== false && (a.alpha == null || a.alpha > 0.05) && !e.oculto && e.t0 != null) { const r = e.radio * U * (a.escala || 1) * camZ * 1.1; const gr = g.createRadialGradient(px(a.x), py(a.y), r * 0.2, px(a.x), py(a.y), r * 1.5); gr.addColorStop(0, 'rgba(0,6,2,.55)'); gr.addColorStop(1, 'rgba(0,6,2,0)'); g.globalAlpha = 1; g.fillStyle = gr; g.fillRect(px(a.x) - r * 1.5, py(a.y) - r * 1.5, r * 3, r * 3); }
+          if (a.visible !== false && (a.alpha == null || a.alpha > 0.05) && !e.oculto && e.t0 != null) { const r = (e.rpx || U) * 1.1, cx = e.cx != null ? e.cx : px(a.x), cy = e.cyp != null ? e.cyp : py(a.y); const gr = g.createRadialGradient(cx, cy, r * 0.2, cx, cy, r * 1.5); gr.addColorStop(0, 'rgba(0,6,2,.55)'); gr.addColorStop(1, 'rgba(0,6,2,0)'); g.globalAlpha = 1; g.fillStyle = gr; g.fillRect(cx - r * 1.5, cy - r * 1.5, r * 3, r * 3); }
         }
-        for (const id in ents) { const a = acts[id]; if (a) dibujarActor(ents[id], a, t, dt, zi++); }
+        for (const id in ents) { const a = acts[id]; if (a) dibujarActor(ents[id], a, TI, dt); }
         g.globalAlpha = 1;
-        reaccionesDib(act, S, t); trayectorias(S, t); vectores(S, t); particulas(S, t); bocadillos(S, t);
+        reaccionesDib(act, S, TI); trayectorias(S, t); vectores(S, TI); particulas(S, t); bocadillos(S, TI);
         g.globalAlpha = 1;
         // post: bloom + scanlines + viñeta
         g.setTransform(1, 0, 0, 1, 0, 0);

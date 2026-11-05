@@ -136,6 +136,7 @@
     h3o: { c: hex('#ff5a5f'), r: 1.18, glyph: '+' },
     ho: { c: hex('#4aa3ff'), r: 1.18, glyph: '-' },
     agua: { c: hex('#8fc8ff'), r: 1.0, al: 0.9, sat: [{ c: hex('#f2f8ff'), r: 0.5, d: 0.98, off: 0 }, { c: hex('#f2f8ff'), r: 0.5, d: 0.98, off: 1.82 }] },
+    aguaMed: { c: hex('#8fc8ff'), r: 0.95, al: 0.6, sat: [{ c: hex('#f2f8ff'), r: 0.5, d: 0.98, off: 0 }, { c: hex('#f2f8ff'), r: 0.5, d: 0.98, off: 1.82 }] },
     aguaTenue: { c: hex('#8fc8ff'), r: 0.7, al: 0.28, sat: [{ c: hex('#f2f8ff'), r: 0.45, d: 0.95, off: 0 }, { c: hex('#f2f8ff'), r: 0.45, d: 0.95, off: 1.82 }] },
     na: { c: hex('#a78bfa'), r: 1.02, glyph: '+' },
     cl: { c: hex('#35d07f'), r: 1.3, glyph: '-' },
@@ -423,6 +424,7 @@
     ctx.fillStyle = o.c || '#cfd9f7';
     ctx.textAlign = o.al || 'left';
     ctx.textBaseline = o.bl || 'alphabetic';
+    if (o.halo) { ctx.lineWidth = 3.5; ctx.lineJoin = 'round'; ctx.strokeStyle = 'rgba(8,12,28,.85)'; ctx.strokeText(s, x, y); }
     ctx.fillText(s, x, y);
   }
   /** Texto que reduce su tamaño hasta caber en maxW. */
@@ -493,7 +495,7 @@
     ctx.restore();
   }
   /** Color del líquido (agua → soluto) para una intensidad I∈[0,1] y su opacidad. */
-  const liq = (I, tint) => ({ c: mixC(COL.water, tint || COL.violet, I), a: lerp(0.15, 0.8, I) });
+  const liq = (I, tint) => ({ c: mixC(COL.water, tint || COL.violet, I), a: lerp(0.2, 0.82, I) });
   const nice = (x) => { const e = Math.pow(10, Math.floor(Math.log10(x))), f = x / e; return (f < 1.5 ? 1 : f < 3.5 ? 2 : f < 7.5 ? 5 : 10) * e; };
 
   // =================================================================================
@@ -527,7 +529,7 @@
       s.slosh = Math.min(3.2, s.slosh * Math.exp(-2.4 * dt) + Math.abs(s.level - prev) * 80);  // el líquido "chapotea" al cambiar V
       s.I = approach(s.I, intensC(p.n / p.V), 5, dt);
       const L0 = s.lay, N = Math.max(2, Math.round(p.n * 200 * (s.red ? 0.5 : 1)));
-      s.sw.sync([N], (k, sw) => sw.add(k, (rnd() - 0.5) * 0.5, 0.04 + rnd() * Math.max(0.05, s.level - 0.08)), dt);
+      s.sw.sync([N], (k, sw) => sw.add(k, (rnd() * 2 - 1) * 0.3, 0.04 + rnd() * Math.max(0.05, s.level - 0.08)), dt);
       s.sw.step(dt, { hw: L0.V.hwIn, ymin: 0, ymax: s.level, ru: L0.rpx / L0.V.H, speed: s.red ? 0.045 : 0.085 });
     },
     draw(s, ctx, w, h, p) {
@@ -612,7 +614,8 @@
   function layD(w, h, Vf) {
     const wide = w >= 560, fs = fsOf(w, h), yb = h - 44;
     const sF = 0.7 + 0.3 * Math.cbrt(clamp(Vf, 1, 250) / 250);     // el matraz crece con Vf
-    const Hf = Math.min(h * 0.46, w * 0.5) * sF, Hm = Math.min(h * 0.34, w * 0.3), Hp = h * 0.3;
+    const tt = clamp((h - 260) / 200, 0, 1);   // en pantallas bajas se reduce para que quepa la pipeta levantada
+    const Hf = Math.min(h * lerp(0.46, 0.52, tt), w * 0.5) * sF, Hm = Math.min(h * lerp(0.34, 0.4, tt), w * 0.3), Hp = h * lerp(0.28, 0.32, tt);
     const xm = Math.max(0.4 * Hm + 10, w * 0.17), xf = w * (wide ? 0.76 : 0.74);
     return { wide, fs, yb, Hf, Hm, Hp, xm, xf, rpx: clamp(h / 62, 3.4, 7),
       M: makeVessel(PROF.beaker(0.4, 0.07), xm, yb, Hm, 3), F: makeVessel(FIOLE, xf, yb, Hf, 2.5),
@@ -717,14 +720,14 @@
       const ly = L0.yb + 17;
       txtFit(ctx, 'Solución madre · C₀ = ' + T(k.C0, 2) + ' mol/L', M.cx, ly, Math.max(90, 2.6 * L0.Hm * 0.7), { s: fs - 0.5, c: COL.txt2, al: 'center' });
       txtFit(ctx, 'Fiola aforada Vf = ' + T(k.Vf, 0) + ' mL', F.cx, ly, Math.max(90, 0.9 * L0.Hf), { s: fs - 0.5, c: COL.txt2, al: 'center' });
-      txtFit(ctx, (k.Cf < 0.1 ? 'C = ' + T(k.Cf, 3) : 'C = ' + T(k.Cf, 2)) + ' mol/L', F.cx, F.yb - F.H * 0.30, 0.55 * F.H, { s: fs, w: 700, c: COL.amber, al: 'center', bl: 'middle' });
+      if (k.drain > 0.08) txtFit(ctx, (k.Cf < 0.1 ? 'C = ' + T(k.Cf, 3) : 'C = ' + T(k.Cf, 2)) + ' mol/L', F.cx, F.yb - F.H * 0.30, 0.55 * F.H, { s: fs, w: 700, c: COL.amber, al: 'center', bl: 'middle', halo: true });
       const F_ = k.Vf / k.V0, fTxt = 'F = Vf/V₀ = ' + T(F_, F_ < 10 ? 2 : 1);
       ctx.font = '700 ' + (fs + 1) + 'px ' + FONT;
       const fw = ctx.measureText(fTxt).width + 20;
       pill(ctx, fTxt, w - fw / 2 - 8, h - 14, { s: fs + 1, c: COL.green, border: 'rgba(46,229,157,.55)' });
       txtFit(ctx, nStage + ' · ' + stage, 10, h - 10, w - fw - 36, { s: fs + 0.5, w: 600, c: COL.txt });
       // etiqueta del volumen de la pipeta
-      txtFit(ctx, 'V₀ = ' + T(k.V0, 0) + ' mL', x + 14 + PP.prof(0.5) * PP.H, y - L0.Hp * 0.5, 80, { s: fs - 1, c: COL.cyan });
+      txtFit(ctx, 'V₀ = ' + T(k.V0, 0) + ' mL', x + gw + 6, gy + 4, 90, { s: fs - 0.5, w: 700, c: COL.cyan, halo: true });
     },
     formula(p) {
       const Vf = Math.max(p.Vf, p.V0), Cf = p.C0 * p.V0 / Vf, F = Vf / p.V0;
@@ -743,7 +746,7 @@
   // =================================================================================
   function layM(w, h) {
     const fs = fsOf(w, h), yb = h - 36, Lw = Math.max(150, w * 0.46);
-    const bw = Math.min(Lw * 0.92, 290), bh = bw * 0.3, cxB = Lw / 2 + 4;
+    const bw = Math.min(Lw * 0.92, 340), bh = bw * 0.3, cxB = Lw / 2 + 4;
     const yPan = yb - bh - bw * 0.26;
     return { fs, yb, Lw, bw, bh, cxB, yPan, panW: bw * 0.84 };
   }
@@ -770,7 +773,7 @@
     },
     step(s, dt, p) {
       s.t += dt;
-      const n = p.m / p.M, G = clamp(Math.round(n * 12), 2, 150), L0 = s.lay;
+      const n = p.m / p.M, G = clamp(Math.round(n * 16), 2, 150), L0 = s.lay;     // 16 moléculas dibujadas por mol (escala didáctica)
       s.disp = approach(s.disp, p.m, 4, dt);
       // altas/bajas de granos (los de arriba del montón se van primero)
       let alive = 0; for (const g of s.g) if (!g.dying) alive++;
@@ -828,7 +831,7 @@
       const J = Math.max(1, Math.ceil(n / u));
       let best = { cell: 0, cols: 1 };
       for (let c = 1; c <= 6; c++) { const r = Math.ceil(J / c), cell = Math.min(aw / c, ah / r / 1.25); if (cell > best.cell) best = { cell, cols: c }; }
-      const cell = Math.min(best.cell, 96), cols = best.cols, rowsN = Math.ceil(J / cols);
+      const cell = Math.min(best.cell, J <= 1 ? 150 : J <= 4 ? 120 : 96), cols = best.cols, rowsN = Math.ceil(J / cols);
       const jw = cell * 0.74, jh = jw * 1.18;
       const gx0 = ax0 + (aw - cols * cell) / 2, gy0 = ay0 + (ah - rowsN * cell * 1.25) / 2;
       txtFit(ctx, u === 1 ? '1 frasco = 1 mol = M = ' + T(p.M, 1) + ' g' : '1 frasco = ' + u + ' mol = ' + T(p.M * u, 0) + ' g', (ax0 + ax1) / 2, 22, aw, { s: fs + 0.5, w: 700, c: COL.amber, al: 'center' });
@@ -906,7 +909,7 @@
       table(ctx, w, h, L0.yb);
       const ci = univ(pH);
       shadow(ctx, L0.yb, L0.cx, 0.4 * L0.H, ci, 0.32);
-      drawLiquid(ctx, V, { level: 0.62, stops: [{ p: 0, c: ci, a: 0.62 }, { p: 1, c: ci, a: 0.5 }], t: s.t, amp: s.red ? 0 : 0.9, cb: (c) => s.sw.draw(c, V, L0.rpx) });
+      drawLiquid(ctx, V, { level: 0.62, stops: [{ p: 0, c: ci, a: 0.72 }, { p: 1, c: ci, a: 0.58 }], t: s.t, amp: s.red ? 0 : 0.9, cb: (c) => s.sw.draw(c, V, L0.rpx) });
       drawGlass(ctx, V);
       drawTicks(ctx, V, [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8].map((y, i) => ({ y, big: i % 2 === 0 })), fs);
       // ---- tira de pH
@@ -971,7 +974,7 @@
   //   Debajo, el diagrama de predominio: frontera en pH = pKa, marcador en el pH de la disolución.
   // =================================================================================
   function layAB(w, h) {
-    const fs = fsOf(w, h), top = 10, H = clamp(h * 0.58 - 10, 110, 400), yb = top + H, hw0 = (w - 28) / 2 / H;
+    const fs = fsOf(w, h), top = 10, H = clamp(h * 0.62 - 10, 110, 420), yb = top + H, hw0 = (w - 28) / 2 / H;
     const barH = clamp(h * 0.065, 14, 22), barY = yb + 46;
     return { fs, top, H, yb, barH, barY, x0: 28, x1: w - 28, V: makeVessel(PROF.box(hw0, 0.05), w / 2, yb, H, 3), rpx: clamp(H / 24, 4.6, 9) };
   }
@@ -985,7 +988,7 @@
     ],
     create(host, p) {
       const L0 = layAB(host.w, host.h), red = !!host.reduced, N = red ? 22 : 34, NW = red ? 8 : 14;
-      const s = { t: 0, red, N, NW, pHd: p.pH, ex: 0, cv: 0, hops: [], sw: new Swarm([SPC.AH, SPC.A, SPC.aguaTenue]), lay: L0 };
+      const s = { t: 0, red, N, NW, pHd: p.pH, ex: 0, cv: 0, hops: [], sw: new Swarm([SPC.AH, SPC.A, SPC.aguaMed]), lay: L0 };
       const R = Math.pow(10, p.pH - p.pKa), alpha = R / (1 + R), hw = L0.V.hwIn(0.4) * 0.92;
       for (let i = 0; i < N; i++) { const q = s.sw.add(0, (rnd() * 2 - 1) * hw, 0.05 + rnd() * 0.78); q.hasH = i >= Math.round(N * alpha); }
       for (let i = 0; i < NW; i++) s.sw.add(2, (rnd() * 2 - 1) * hw, 0.05 + rnd() * 0.78);
@@ -1077,7 +1080,7 @@
       // leyenda dentro de la cubeta
       const lx = V.cx - V.hwIn(0.5) * V.H + 14, ly = L0.top + 6 + fs;
       let xx = lx;
-      const leg = [[SPC.AH.c, 'AH (ácido)', null], [SPC.A.c, 'A⁻ (base conjugada)', '-'], [HC, 'H⁺ (protón)', null], [SPC.aguaTenue.c, 'H₂O', null]];
+      const leg = [[SPC.AH.c, 'AH (ácido)', null], [SPC.A.c, 'A⁻ (base conjugada)', '-'], [HC, 'H⁺ (protón)', null], [SPC.aguaMed.c, 'H₂O', null]];
       leg.forEach(([c, t, g]) => {
         blit(ctx, c, fs * 0.55, xx + 5, ly - fs * 0.32, g);
         ctx.font = '600 ' + (fs - 1) + 'px ' + FONT;
@@ -1224,7 +1227,7 @@
       drawGlass(ctx, E);
       drawTicks(ctx, E, [{ y: lvErl(25), big: true, lab: null }, { y: lvErl(50), big: false }, { y: lvErl(75), big: true }, { y: lvErl(100), big: false }], fs);
       // bureta
-      drawLiquid(ctx, B, { level: LVB(s.vb), stops: [{ p: 0, c: [190, 215, 255], a: 0.34 }, { p: 1, c: [190, 215, 255], a: 0.26 }], t: s.t, amp: 0 });
+      drawLiquid(ctx, B, { level: LVB(s.vb), stops: [{ p: 0, c: [150, 190, 255], a: 0.5 }, { p: 1, c: [150, 190, 255], a: 0.4 }], t: s.t, amp: 0 });
       drawGlass(ctx, B, { noHi: true });
       const tk = [];
       for (let v = 0; v <= 60; v += 5) tk.push({ y: LVB(v), big: v % 10 === 0, lab: v % 10 === 0 ? String(v) : null });
@@ -1236,7 +1239,7 @@
       // gota colgante y gotas cayendo
       if (s.dispensing) { const ph = (s.dropT / 0.09), rd = 1.3 + 2.1 * ph; ctx.fillStyle = 'rgba(210,230,255,.9)'; ctx.beginPath(); ctx.ellipse(cx, L0.yTip + rd * 0.9, rd * 0.85, rd, 0, 0, TAU); ctx.fill(); }
       for (const g of s.drops) { ctx.fillStyle = 'rgba(215,235,255,.95)'; ctx.beginPath(); ctx.ellipse(cx, g.y, 2.3, 3.6, 0, 0, TAU); ctx.fill(); }
-      txtFit(ctx, 'NaOH ' + T(p.Cb, 2) + ' mol/L', rx + 8, L0.yTop + 8, L0.cx - rx - L0.hwB - 22, { s: fs - 1.5, c: COL.txt2 });
+      txtFit(ctx, 'NaOH ' + T(p.Cb, 2) + ' mol/L', rx + 8, L0.yTop + L0.Hb * 0.35 - 8, L0.cx - rx - L0.hwB - 22, { s: fs - 1.5, c: COL.txt2 });
       txtFit(ctx, 'HCl ' + T(p.Ca, 2) + ' mol/L · ' + T(p.Va, 0) + ' mL + BBT', cx, L0.yb + 18, L0.appW + 10, { s: fs - 1, c: COL.txt2, al: 'center' });
       // ---------------- curva pH = f(Vb)
       const P = L0.plot, px0 = P.x0 + 30, px1 = P.x1, py0 = P.y0, py1 = P.y1;

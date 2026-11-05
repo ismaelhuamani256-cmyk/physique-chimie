@@ -195,12 +195,13 @@
     }
     if (p.saltando && !inp.salto && p.vy < 0) { p.vy *= FIS.CORTE_SALTO; p.saltando = false; }
     if (p.vy >= 0) p.saltando = false;
+    const vyPrev = p.vy;
     p.vy = Math.min(FIS.CAIDA_MAX, p.vy + (F.g + fyZona * FIS.G0) * dt);
-    // --- movimiento ---
+    // --- movimiento (integración con velocidad media: la altura del salto sale exacta, v²/2g) ---
     const vyAntes = p.vy;
     p.suelo = false;
     J.moverX(w, p, p.vx * dt);
-    J.moverY(w, p, p.vy * dt);
+    J.moverY(w, p, ((vyPrev + p.vy) / 2) * dt);
     if (p.suelo && !suelo && vyAntes > 5) polvo(g, cx * J.T, (p.y + p.h) * J.T, 5);
     if (Math.abs(p.vx) > 0.5) p.tAnim += dt * (0.6 + Math.abs(p.vx) / F.vmax); else p.tAnim = 0;
     // foso

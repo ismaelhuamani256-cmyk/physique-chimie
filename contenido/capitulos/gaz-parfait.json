@@ -1,0 +1,888 @@
+{
+ "id": "gaz-parfait",
+ "titulo": "Modèle du gaz parfait",
+ "materia": "physique",
+ "mundo": "energie",
+ "pdf_ini": 394,
+ "pdf_fin": 413,
+ "resumen": "Un gas se describe a escala macroscópica con tres magnitudes interdependientes: la presión P (choques de las partículas contra las paredes), la temperatura T y la masa volúmica ρ (dispersión de las partículas). La temperatura termodinámica T = θ + 273,15 (en kelvin) mide la agitación microscópica; T = 0 K es el cero absoluto. El gas perfecto es un modelo (moléculas puntuales, sin interacciones salvo los choques, movimiento rectilíneo uniforme entre choques) cuya ecuación de estado es P·V = n·R·T, con R = 8,31 J·K⁻¹·mol⁻¹. Es una buena aproximación para los gases reales a presiones bajas (hasta unos pocos bar). De ella salen la ley de Mariotte (P·V = cte a T y n constantes), la ley de Avogadro-Ampère (Vm = R·T/P, igual para todos los gases) y ρ = P·M/(R·T).",
+ "resumen_fr": "Grandeurs macroscopiques P, T, ρ et interprétation microscopique ; température thermodynamique T = θ + 273,15 ; modèle du gaz parfait, équation d'état P·V = n·R·T, limites du modèle, lois de Mariotte et d'Avogadro-Ampère, volume molaire.",
+ "nociones_clave": [
+  {
+   "id": "n1",
+   "fr": "Grandeurs macroscopiques d'un gaz : T, P, ρ",
+   "es": "El estado de un gas se describe con la temperatura T (K; termómetro), la presión P (Pa; manómetro) y la masa volúmica ρ (kg·m⁻³; se mide masa y volumen y se calcula). Son interdependientes: variar una modifica al menos otra. Ej.: al hinchar un globo hasta su forma final, V ya no varía pero ρ aumenta.",
+   "pagina_pdf": 399
+  },
+  {
+   "id": "n2",
+   "fr": "Interprétation microscopique de P, T et ρ",
+   "es": "Un gas es un conjunto de partículas muy separadas y en movimiento incesante. La presión tiene su origen en los choques de las partículas sobre las paredes (más frecuentes → P mayor). La temperatura mide el grado de agitación (más agitación → mayor velocidad → T mayor). La masa volúmica mide la masa de partículas por unidad de volumen (partículas dispersas y/o poco masivas → ρ pequeña).",
+   "pagina_pdf": 399
+  },
+  {
+   "id": "n3",
+   "fr": "Température thermodynamique T et zéro absolu",
+   "es": "T traduce el grado de agitación de las moléculas; se expresa en kelvin (K) con T = θ + 273,15. Cuando no hay agitación microscópica, T = 0 K (cero absoluto = −273,15 °C); por tanto T es obligatoriamente positiva.",
+   "pagina_pdf": 399
+  },
+  {
+   "id": "n4",
+   "fr": "Gaz parfait (définition)",
+   "es": "Gas para el que la relación P·V = n·R·T se verifica exactamente. Es un modelo (simplificación de la realidad): a escala microscópica las moléculas son puntos materiales animados de un movimiento rectilíneo uniforme entre dos choques.",
+   "pagina_pdf": 400
+  },
+  {
+   "id": "n5",
+   "fr": "Hypothèses du modèle du gaz parfait",
+   "es": "Moléculas puntuales (su volumen propio es despreciable frente al ocupado por el gas), muy alejadas unas de otras, sin interacción entre ellas salvo durante los choques; peso y volumen de las moléculas despreciados.",
+   "pagina_pdf": 398
+  },
+  {
+   "id": "n6",
+   "fr": "Équation d'état du gaz parfait",
+   "es": "Relación matemática entre las magnitudes macroscópicas (P, V, n, T) que describen el estado de un gas; para muchos gases reales se verifica casi exactamente (P·V ≈ n·R·T).",
+   "pagina_pdf": 400
+  },
+  {
+   "id": "n7",
+   "fr": "Limites du modèle du gaz parfait",
+   "es": "Un gas perfecto no existe como tal; a presiones bajas (hasta unos pocos bar), cuando las moléculas están muy alejadas, un gas real se comporta como gas perfecto. En un gas real las moléculas interaccionan más o menos, y tienen masa y volumen según su naturaleza.",
+   "pagina_pdf": 400
+  },
+  {
+   "id": "n8",
+   "fr": "Loi de Mariotte",
+   "es": "Si T y la cantidad de materia n son constantes, n·R·T es constante; por tanto el producto P·V es constante.",
+   "pagina_pdf": 400
+  },
+  {
+   "id": "n9",
+   "fr": "Loi d'Avogadro-Ampère",
+   "es": "«En las mismas condiciones de temperatura y de presión, todos los gases tienen el mismo volumen molar». Dos volúmenes iguales de gases perfectos distintos contienen el mismo número de moléculas.",
+   "pagina_pdf": 400
+  },
+  {
+   "id": "n10",
+   "fr": "Volume molaire d'un gaz",
+   "es": "Volumen ocupado por 1 mol de un gas; depende de T y P, no de la naturaleza del gas. A T y P fijas conserva el mismo valor sea cual sea el gas.",
+   "pagina_pdf": 394
+  },
+  {
+   "id": "n11",
+   "fr": "Évolution de P avec θ puis T à V constant (TP 2)",
+   "es": "Con V y n constantes, P = f(θ) es una función afín; su extrapolación a P = 0 da θ ≈ −273 °C (cero absoluto) y P = f(T) es proporcional (coeficiente director nR/V).",
+   "pagina_pdf": 397
+  }
+ ],
+ "formulas": [
+  {
+   "id": "f1",
+   "latex": "P \\cdot V = n \\cdot R \\cdot T",
+   "nombre": "Ecuación de estado del gas perfecto",
+   "nombre_fr": "Équation d'état du gaz parfait",
+   "variables": [
+    {
+     "simbolo": "P",
+     "significado": "presión del gas",
+     "unidad": "Pa"
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen",
+     "unidad": "m³"
+    },
+    {
+     "simbolo": "n",
+     "significado": "cantidad de materia",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "R",
+     "significado": "constante del gas perfecto, R = 8,31",
+     "unidad": "J·K⁻¹·mol⁻¹"
+    },
+    {
+     "simbolo": "T",
+     "significado": "temperatura termodinámica",
+     "unidad": "K"
+    }
+   ],
+   "explicacion": "Relaciona las magnitudes macroscópicas de un gas perfecto. Hay que usar unidades del SI: P en Pa, V en m³, T en K. Para los gases reales es una buena aproximación a presiones bajas (hasta unos pocos bar).",
+   "ejemplo": {
+    "enunciado": "Ex. 23 : ballon de basket (V_B = 7,5 L, P_B = 1,55 bar, θ = 21 °C), air assimilé à un gaz parfait. Quantité de matière d'air ?",
+    "resultado": "n = P_B·V_B/(R·T) = (1,55×10⁵ × 7,5×10⁻³)/(8,31 × (273+21)) = 4,8×10⁻¹ mol",
+    "pagina_pdf": 406
+   },
+   "pagina_pdf": 400,
+   "animacion": {
+    "preset": "gas-ideal",
+    "params": {
+     "n": 0.5,
+     "T": 290,
+     "V": 7.5
+    },
+    "leyenda": "Partículas en una caja con pistón: sube T o baja V y verás más choques sobre las paredes, es decir, más presión (P = nRT/V)."
+   }
+  },
+  {
+   "id": "f2",
+   "latex": "T = \\theta + 273{,}15",
+   "nombre": "Température thermodynamique (kelvin)",
+   "nombre_fr": "Température thermodynamique",
+   "variables": [
+    {
+     "simbolo": "T",
+     "significado": "temperatura termodinámica",
+     "unidad": "K"
+    },
+    {
+     "simbolo": "\\theta",
+     "significado": "temperatura en la escala Celsius",
+     "unidad": "°C"
+    }
+   ],
+   "explicacion": "Traslación de la escala Celsius a la escala Kelvin. T mide la agitación microscópica de las partículas; T = 0 K (θ = −273,15 °C) es el cero absoluto, y T es siempre positiva.",
+   "ejemplo": {
+    "enunciado": "Fiche mémo : θ = 20 °C (thermomètre).",
+    "resultado": "T = 20 + 273,15 = 293,15 K",
+    "pagina_pdf": 401
+   },
+   "pagina_pdf": 399,
+   "animacion": {
+    "preset": "gas-ideal",
+    "params": {
+     "n": 1,
+     "T": 290,
+     "V": 24
+    },
+    "leyenda": "Al subir la temperatura T (en K) las partículas se agitan más rápido: es la traducción microscópica de T = θ + 273,15."
+   }
+  },
+  {
+   "id": "f3",
+   "latex": "P \\cdot V = \\text{constante}\\quad (n,\\ T\\ \\text{constantes})",
+   "nombre": "Loi de Mariotte",
+   "nombre_fr": "Loi de Mariotte",
+   "variables": [
+    {
+     "simbolo": "P",
+     "significado": "presión del gas",
+     "unidad": "Pa o bar"
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen",
+     "unidad": "m³ o L (mismas unidades en los dos estados)"
+    }
+   ],
+   "explicacion": "A temperatura constante y para una cantidad de materia dada, el producto P·V es constante (porque n·R·T lo es). Se puede usar con cualquier unidad de P y V mientras se use la misma en los dos estados.",
+   "ejemplo": {
+    "enunciado": "Ex. 22 : air enfermé dans une seringue à T = 298 K, V₁ = 18,0 cm³ à P₁ = 1 021 hPa ; on comprime jusqu'à V₂ = 6,0 cm³ (valeur mesurée P = 3 042 hPa).",
+    "resultado": "Valeur théorique P = P₁V₁/V₂ = 1021×18,0/6,0 ≈ 3 063 hPa (cálculo derivado del enunciado; la medida da 3 042 hPa).",
+    "pagina_pdf": 405
+   },
+   "pagina_pdf": 400,
+   "animacion": {
+    "preset": "gas-ideal",
+    "params": {},
+    "leyenda": "Con n y T fijos, comprime el pistón (baja V): el número de choques por segundo sube y P sube en la misma proporción en que baja V."
+   }
+  },
+  {
+   "id": "f4",
+   "latex": "V_m = \\dfrac{R\\cdot T}{P}",
+   "nombre": "Volume molaire d'un gaz parfait",
+   "nombre_fr": "Volume molaire d'un gaz (loi d'Avogadro-Ampère)",
+   "variables": [
+    {
+     "simbolo": "V_m",
+     "significado": "volumen molar (de n = 1 mol)",
+     "unidad": "m³·mol⁻¹"
+    },
+    {
+     "simbolo": "R",
+     "significado": "constante del gas perfecto",
+     "unidad": "J·K⁻¹·mol⁻¹"
+    },
+    {
+     "simbolo": "T",
+     "significado": "temperatura termodinámica",
+     "unidad": "K"
+    },
+    {
+     "simbolo": "P",
+     "significado": "presión",
+     "unidad": "Pa"
+    }
+   ],
+   "explicacion": "Para n = 1 mol, V_m = R·T/P depende solo de T y P, no de la naturaleza del gas (ley de Avogadro-Ampère).",
+   "ejemplo": {
+    "enunciado": "20 °C y 1,0 bar : V_m = ?",
+    "resultado": "V_m = 8,31 × (273,15 + 20)/(1,0×10⁵) = 2,4×10⁻² m³·mol⁻¹ = 24 L·mol⁻¹",
+    "pagina_pdf": 400
+   },
+   "pagina_pdf": 400,
+   "animacion": {
+    "preset": "gas-ideal-quimico",
+    "params": {
+     "n": 1,
+     "T": 295,
+     "P": 100
+    },
+    "leyenda": "Un mol de gas a unos 20 °C y 1 bar ocupa ≈ 24 L, sea el gas que sea; cambia T o P y mira cómo cambia el volumen molar."
+   }
+  },
+  {
+   "id": "f5",
+   "latex": "n = \\dfrac{V}{V_m}",
+   "nombre": "Cantidad de materia de un gas a partir del volumen molar",
+   "nombre_fr": "Quantité de matière d'un gaz (acquis de 1re)",
+   "variables": [
+    {
+     "simbolo": "n",
+     "significado": "cantidad de materia",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen de gas",
+     "unidad": "L o m³"
+    },
+    {
+     "simbolo": "V_m",
+     "significado": "volumen molar",
+     "unidad": "L·mol⁻¹ o m³·mol⁻¹"
+    }
+   ],
+   "explicacion": "Aprendizaje previo («Avant d'aborder»): el volumen molar de un gas depende solo de T y P; n es el cociente entre el volumen ocupado y el volumen molar.",
+   "ejemplo": {
+    "enunciado": "Situation 3 : à 20 °C et 1 013 hPa, 2,0 mol de CO₂ occupent 48,1 L. Valeur de V_m de l'hélium dans les mêmes conditions ?",
+    "resultado": "V_m = V/n = 48,1/2,0 = 24,05 L·mol⁻¹ (cálculo derivado; igual para el hélium por Avogadro-Ampère; el cours da 24,1 L·mol⁻¹ a 20 °C y 1 atm).",
+    "pagina_pdf": 394
+   },
+   "pagina_pdf": 394,
+   "animacion": {
+    "preset": "gas-ideal-quimico",
+    "params": {
+     "n": 2,
+     "T": 295,
+     "P": 100
+    },
+    "leyenda": "Doble cantidad de gas = doble volumen a T y P iguales: n = V/V_m."
+   }
+  },
+  {
+   "id": "f6",
+   "latex": "n = \\dfrac{m}{M} = \\dfrac{\\rho\\cdot V}{M}",
+   "nombre": "Cantidad de materia, masa y masa volúmica",
+   "nombre_fr": "Quantité de matière d'un gaz et masse volumique",
+   "variables": [
+    {
+     "simbolo": "n",
+     "significado": "cantidad de materia",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "m",
+     "significado": "masa del sistema",
+     "unidad": "g o kg"
+    },
+    {
+     "simbolo": "M",
+     "significado": "masa molar",
+     "unidad": "g·mol⁻¹ o kg·mol⁻¹"
+    },
+    {
+     "simbolo": "\\rho",
+     "significado": "masa volúmica",
+     "unidad": "kg·m⁻³"
+    },
+    {
+     "simbolo": "V",
+     "significado": "volumen",
+     "unidad": "m³"
+    }
+   ],
+   "explicacion": "La cantidad de materia n de un gas está ligada a su masa volúmica ρ (n = m/M con m = ρ·V). Sustituyendo en P·V = nRT se obtiene P = ρ·R·T/M.",
+   "ejemplo": {
+    "enunciado": "Ex. 16 : ballon de volley-ball de 4,8 L contenant 7,5 g d'air à 17 °C (M_air = 28,9 g·mol⁻¹).",
+    "resultado": "n = m/M = 7,5/28,9 = 2,6×10⁻¹ mol",
+    "pagina_pdf": 404
+   },
+   "pagina_pdf": 400,
+   "animacion": {
+    "preset": "masa-molar",
+    "params": {
+     "m": 7.5,
+     "M": 28.9
+    },
+    "leyenda": "7,5 g de aire (M = 28,9 g·mol⁻¹) son ≈ 0,26 mol: cambia m o M y mira cómo cambia n = m/M."
+   }
+  },
+  {
+   "id": "f7",
+   "latex": "\\rho = \\dfrac{P\\cdot M}{R\\cdot T}",
+   "nombre": "Masa volúmica de un gas perfecto",
+   "nombre_fr": "Masse volumique d'un gaz parfait",
+   "variables": [
+    {
+     "simbolo": "\\rho",
+     "significado": "masa volúmica",
+     "unidad": "kg·m⁻³"
+    },
+    {
+     "simbolo": "P",
+     "significado": "presión",
+     "unidad": "Pa"
+    },
+    {
+     "simbolo": "M",
+     "significado": "masa molar (en kg·mol⁻¹)",
+     "unidad": "kg·mol⁻¹"
+    },
+    {
+     "simbolo": "R",
+     "significado": "constante del gas perfecto",
+     "unidad": "J·K⁻¹·mol⁻¹"
+    },
+    {
+     "simbolo": "T",
+     "significado": "temperatura",
+     "unidad": "K"
+    }
+   ],
+   "explicacion": "Resulta de P·V = (ρ·V/M)·R·T. A P constante, si T sube la masa volúmica baja (las partículas se dispersan); a T constante, si P sube ρ aumenta.",
+   "ejemplo": {
+    "enunciado": "Données du TP : M_air = 29,0 g·mol⁻¹ ; ρ_air = 1,2 kg·m⁻³ (20 °C, 1 atm).",
+    "resultado": "ρ = P·M/(R·T) = 1,013×10⁵ × 0,0290/(8,31 × 293,15) ≈ 1,2 kg·m⁻³ (cálculo derivado de los datos del cours).",
+    "pagina_pdf": 397
+   },
+   "pagina_pdf": 400,
+   "animacion": {
+    "preset": "gas-ideal",
+    "params": {},
+    "leyenda": "Si calientas el gas a presión constante el pistón sube y las partículas quedan más dispersas: baja la masa volúmica ρ (idea de la montgolfière)."
+   }
+  },
+  {
+   "id": "f8",
+   "latex": "N = n \\cdot N_A",
+   "nombre": "Número de moléculas",
+   "nombre_fr": "Nombre de molécules (constante d'Avogadro)",
+   "variables": [
+    {
+     "simbolo": "N",
+     "significado": "número de moléculas",
+     "unidad": "sin unidad"
+    },
+    {
+     "simbolo": "n",
+     "significado": "cantidad de materia",
+     "unidad": "mol"
+    },
+    {
+     "simbolo": "N_A",
+     "significado": "constante de Avogadro, 6,02×10²³",
+     "unidad": "mol⁻¹"
+    }
+   ],
+   "explicacion": "Cuenta las moléculas de una muestra de gas; se usa en el ejercicio sobre gas real/gas perfecto para comparar el volumen propio de las moléculas con el del recipiente.",
+   "ejemplo": {
+    "enunciado": "Ex. 19 : n(N₂) = 4,4×10⁻² mol (1 L, 1,1 bar, 25 °C).",
+    "resultado": "N = n·N_A = 2,6×10²² moléculas (según el corrigé); volumen propio ≈ 19 µL ≪ 1 L.",
+    "pagina_pdf": 404
+   },
+   "pagina_pdf": 404,
+   "animacion": {
+    "preset": "gas-ideal-quimico",
+    "params": {},
+    "leyenda": "Cada mol de gas contiene N_A moléculas; más n, más partículas dentro del mismo recipiente."
+   }
+  },
+  {
+   "id": "f9",
+   "latex": "u_P = P\\cdot\\sqrt{\\left(\\dfrac{u_T}{T}\\right)^2+\\left(\\dfrac{u_V}{V}\\right)^2}",
+   "nombre": "Incertidumbre-tipo de la presión calculada (gas perfecto)",
+   "nombre_fr": "Incertitude-type sur P_GP",
+   "variables": [
+    {
+     "simbolo": "u_P",
+     "significado": "incertidumbre-tipo de P",
+     "unidad": "Pa"
+    },
+    {
+     "simbolo": "P",
+     "significado": "presión calculada con P = nRT/V",
+     "unidad": "Pa"
+    },
+    {
+     "simbolo": "u_T",
+     "significado": "incertidumbre-tipo de T",
+     "unidad": "K"
+    },
+    {
+     "simbolo": "u_V",
+     "significado": "incertidumbre-tipo de V",
+     "unidad": "m³"
+    }
+   ],
+   "explicacion": "Fórmula dada en el ejercicio 29 para encuadrar el valor de P calculado con el modelo y compararlo con el valor medido P_GR (el modelo es válido si P_GR cae dentro del encuadramiento).",
+   "ejemplo": {
+    "enunciado": "Ex. 29 : n = 2,00×10⁻³ mol, T = 299 K (u_T = 1 K), V = 28,0 mL (u_V = 1 mL).",
+    "resultado": "P_GP = 1,78×10⁵ Pa ; u_P = 6,4×10³ Pa ; 1,71 bar < P_GP < 1,84 bar",
+    "pagina_pdf": 408
+   },
+   "pagina_pdf": 408,
+   "animacion": {
+    "preset": "gas-ideal",
+    "params": {},
+    "leyenda": "Pequeñas variaciones de T y V mueven la presión calculada P = nRT/V: de ahí el encuadramiento ± u_P."
+   }
+  }
+ ],
+ "constantes": [
+  {
+   "nombre": "R (constante del gas perfecto)",
+   "valor": "8,31",
+   "unidad": "J·K⁻¹·mol⁻¹",
+   "pagina_pdf": 400
+  },
+  {
+   "nombre": "R (valor usado en los ejercicios)",
+   "valor": "8,314",
+   "unidad": "J·K⁻¹·mol⁻¹",
+   "pagina_pdf": 404
+  },
+  {
+   "nombre": "Cero absoluto",
+   "valor": "0 K = −273,15 °C",
+   "unidad": "K",
+   "pagina_pdf": 399
+  },
+  {
+   "nombre": "Relación K / °C",
+   "valor": "T = θ + 273,15",
+   "unidad": "K",
+   "pagina_pdf": 399
+  },
+  {
+   "nombre": "Constante de Avogadro N_A",
+   "valor": "6,02×10²³",
+   "unidad": "mol⁻¹",
+   "pagina_pdf": 404
+  },
+  {
+   "nombre": "M_air",
+   "valor": "29,0 (TP) ; 28,9 (ejercicios)",
+   "unidad": "g·mol⁻¹",
+   "pagina_pdf": 397
+  },
+  {
+   "nombre": "ρ_air (20 °C, 1 atm)",
+   "valor": "1,2",
+   "unidad": "kg·m⁻³",
+   "pagina_pdf": 397
+  },
+  {
+   "nombre": "V_m (20 °C y 1 atm)",
+   "valor": "24,1",
+   "unidad": "L·mol⁻¹",
+   "pagina_pdf": 397
+  },
+  {
+   "nombre": "V_m (20 °C y 1,0 bar, ejemplo del cours)",
+   "valor": "24",
+   "unidad": "L·mol⁻¹",
+   "pagina_pdf": 400
+  },
+  {
+   "nombre": "1 atm",
+   "valor": "1 013",
+   "unidad": "hPa",
+   "pagina_pdf": 404
+  },
+  {
+   "nombre": "1 bar",
+   "valor": "1,0×10⁵",
+   "unidad": "Pa",
+   "pagina_pdf": 400
+  },
+  {
+   "nombre": "M(O) ; M(N)",
+   "valor": "16,0 ; 14,0",
+   "unidad": "g·mol⁻¹",
+   "pagina_pdf": 411
+  }
+ ],
+ "metodos": [
+  {
+   "titulo": "Aplicar la ecuación de estado del gas perfecto (ex. 23 resuelto)",
+   "pasos": [
+    "Comprobar que el gas puede asimilarse a gas perfecto (presión baja, unos pocos bar): el modelo solo es aplicable a los gases reales en ciertas condiciones.",
+    "Convertir todas las magnitudes a unidades del SI: P en Pa, V en m³, T en K (T = θ + 273,15).",
+    "Despejar la incógnita (p. ej. n = P·V/(R·T)) y dar primero la expresión literal; luego la aplicación numérica.",
+    "Dar el resultado con el número correcto de cifras significativas y con su unidad (K y no °K).",
+    "Comparar el resultado con otras cantidades del problema (p. ej. cuántos golpes de bomba hacen falta: N = n_B/n_bomba = 120)."
+   ],
+   "pagina_pdf": 406
+  },
+  {
+   "titulo": "Relacionar propiedades microscópicas y magnitudes macroscópicas",
+   "pasos": [
+    "Presión mayor ↔ choques más frecuentes sobre las paredes (más partículas por unidad de volumen o más agitación).",
+    "Temperatura mayor ↔ más agitación microscópica (mayor velocidad de las partículas).",
+    "Masa volúmica menor ↔ partículas más dispersas y/o menos masivas.",
+    "Decidir qué magnitud se mantiene constante (n, V, T o P) y razonar con P·V = n·R·T."
+   ],
+   "pagina_pdf": 399
+  },
+  {
+   "titulo": "Validar P·V = n·R·T con un microcontrolador (TP 2)",
+   "pasos": [
+    "Montaje: balón cerrado con aire a 20 °C enfriado en baño de hielo y luego calentado al baño María; sensores de presión y de temperatura conectados a un microcontrolador.",
+    "Adaptar las líneas del programa a los sensores y adquirir P = f(θ).",
+    "Trazar P = f(θ) con un tablero y comprobar que, a V constante, es una función afín; extrapolar a P = 0 para hallar la abscisa en el origen (≈ −273 °C: cero absoluto).",
+    "Trazar P = f(T) (T en K): debe ser proporcional; el coeficiente director corresponde a n·R/V.",
+    "Concluir si el aire puede asimilarse a un gas perfecto y si el cero absoluto de referencia valida el estudio."
+   ],
+   "pagina_pdf": 397
+  },
+  {
+   "titulo": "Estimar los límites del modelo (TP 3, loi de Mariotte con CO₂)",
+   "pasos": [
+    "Producir CO₂ (ácido sobre carbonato de calcio) y medir, a T constante, pares presión-volumen con una jeringa (desplazar el émbolo lentamente para evitar el calentamiento).",
+    "Representar P_GR = f(V) y modelizar con P = a/V.",
+    "Calcular P_GP = nRT/V con el modelo del gas perfecto y superponerla a la curva medida.",
+    "Comparar la diferencia entre gas real y gas perfecto para cada presión.",
+    "Concluir para qué valores de P el modelo es aplicable e interpretar a escala microscópica."
+   ],
+   "pagina_pdf": 398
+  },
+  {
+   "titulo": "Encuadrar la presión calculada con incertidumbres (ex. 29)",
+   "pasos": [
+    "Anotar T y V con sus incertidumbres-tipo u_T y u_V (precisión de los instrumentos).",
+    "Convertir V a m³ y T a K; calcular P_GP = n·R·T/V.",
+    "Calcular u_P = P·√((u_T/T)² + (u_V/V)²) y encuadrar P_GP.",
+    "Comprobar si el valor medido P_GR cae dentro del encuadramiento: entonces el aire puede asimilarse a un gas perfecto."
+   ],
+   "pagina_pdf": 408
+  },
+  {
+   "titulo": "Modelizar P = f(T) con Python (ex. 30)",
+   "pasos": [
+    "Pasar θ a T en K y P de hPa a Pa antes de trazar con numpy/matplotlib.",
+    "Trazar los puntos (T, P) con plt.plot, poniendo título y etiquetas de ejes.",
+    "Modelizar con scipy.stats.linregress (P = a·T + b) y leer a y b.",
+    "Concluir: si b ≈ 0 y P es proporcional a T, la muestra puede asimilarse a un gas perfecto."
+   ],
+   "pagina_pdf": 408
+  }
+ ],
+ "errores_tipicos": [
+  {
+   "id": "err1",
+   "nombre": "Usar la temperatura en °C en P·V = nRT",
+   "correccion": "La temperatura debe ir en kelvin: T = θ + 273,15, nunca θ en °C.",
+   "pagina_pdf": 620
+  },
+  {
+   "id": "err2",
+   "nombre": "No convertir el volumen a m³ (ni P a Pa)",
+   "correccion": "Convertir antes de calcular: V en m³ y P en Pa (1 L = 10⁻³ m³ ; 1 bar = 10⁵ Pa).",
+   "pagina_pdf": 407
+  },
+  {
+   "id": "err3",
+   "nombre": "Escribir «°K» o dar T en °C",
+   "correccion": "Escribir K y no °K (la temperatura termodinámica se da en kelvin).",
+   "pagina_pdf": 407
+  },
+  {
+   "id": "err4",
+   "nombre": "Duplicar θ (°C) creyendo que se duplica T",
+   "correccion": "A V y n constantes, P se duplica cuando T (en K) se duplica: 290,15 K × 2 = 580,3 K = 307,15 °C.",
+   "pagina_pdf": 620
+  },
+  {
+   "id": "err5",
+   "nombre": "Creer que el gas perfecto vale para cualquier gas real y a cualquier P",
+   "correccion": "Es un modelo aplicable a los gases reales solo a presiones bajas (hasta unos pocos bar).",
+   "pagina_pdf": 402
+  },
+  {
+   "id": "err6",
+   "nombre": "Aplicar P·V = cte sin T ni n constantes",
+   "correccion": "La ley de Mariotte exige T y la cantidad de materia n constantes.",
+   "pagina_pdf": 400
+  },
+  {
+   "id": "err7",
+   "nombre": "Mezclar expresión literal y aplicación numérica / cifras significativas",
+   "correccion": "Separar la expresión literal de la AN y dar el resultado con el número correcto de cifras significativas.",
+   "pagina_pdf": 407
+  }
+ ],
+ "experiencias": [
+  {
+   "titulo": "Activité 1 · Décrire le comportement d'un gaz",
+   "descripcion": "Con las animaciones «Gonflage d'un ballon» y «Gaz parfait» relacionar el comportamiento de las partículas con P, T, V y ρ medidas, y justificar entre cuatro relaciones (P·V = n·R·T, etc.) la que modeliza el gas perfecto.",
+   "pagina_pdf": 396
+  },
+  {
+   "titulo": "TP 2 · L'équation d'état du gaz parfait",
+   "descripcion": "Balón con aire a 20 °C enfriado en hielo y calentado en baño María; sensores de P y θ con microcontrolador (Arduino/Python). Se estudia P = f(θ) a V constante (afín), la extrapolación al cero absoluto y P = f(T) proporcional.",
+   "pagina_pdf": 397
+  },
+  {
+   "titulo": "TP 3 · Estimer les limites du modèle du gaz parfait",
+   "descripcion": "Con CO₂ y una jeringa, medir pares (P, V) a T constante y comparar la presión real con P = nRT/V; hipótesis: modelo válido a bajas presiones.",
+   "pagina_pdf": 398
+  },
+  {
+   "titulo": "Pour préparer l'ECE · Vitesse de corrosion des gouttières",
+   "descripcion": "Seguimiento por presiometría de la reacción Zn(s) + 2 H₃O⁺(aq) → Zn²⁺(aq) + H₂(g) + 2 H₂O(ℓ): la sobrepresión (P − P_i) es proporcional a n(H₂); se deduce el avance x y la velocidad volumétrica v = (1/V)·dx/dt.",
+   "pagina_pdf": 412
+  },
+  {
+   "titulo": "Piste pour le Grand oral · Comment développer un ballon météorologique ?",
+   "descripcion": "Plan de exposición sobre globos sonda: estructura de la atmósfera (T, P, ρ vs altitud), principio del globo, pliego de condiciones, instrumentación y proyecto.",
+   "pagina_pdf": 413
+  }
+ ],
+ "ejercicios_bac": [
+  {
+   "id": "e1",
+   "enunciado": "Ex. 23 (résolu) · Gonflage d'un ballon de basket-ball. La pression de l'air dans le ballon (V_B = 7,5 L) doit être de 1,55 bar à θ = 21 °C ; on le gonfle avec une pompe manuelle (V_P = 100 mL, P_atm = 970 hPa). L'air est assimilé à un gaz parfait. 2.a. Calculer la quantité de matière d'air du ballon. 2.b. En déduire le nombre de coups de pompe nécessaire.",
+   "datos": {
+    "R": "8,31 J·K⁻¹·mol⁻¹",
+    "0 K": "−273,15 °C",
+    "V_B": "7,5 L",
+    "P_B": "1,55 bar",
+    "θ": "21 °C",
+    "V_P": "100 mL",
+    "P_atm": "970 hPa"
+   },
+   "respuesta": "n = P_B·V_B/(R·T) = 4,8×10⁻¹ mol ; cada golpe de bomba introduce n = 4,0×10⁻³ mol ; N = 120 golpes.",
+   "respuesta_numerica": {
+    "valor": 0.476,
+    "unidad": "mol",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "T = 273 + 21 = 294 K ; P_B = 1,55×10⁵ Pa ; V_B = 7,5×10⁻³ m³",
+    "n = (1,55×10⁵ × 7,5×10⁻³)/(8,31 × 294) = 4,8×10⁻¹ mol",
+    "Por golpe: n = (970×10² × 100×10⁻⁶)/(8,31 × 294) = 4,0×10⁻³ mol",
+    "N = 4,8×10⁻¹ / 4,0×10⁻³ = 120 golpes"
+   ],
+   "pagina_pdf": 406,
+   "corrige_pagina_pdf": 406
+  },
+  {
+   "id": "e2",
+   "enunciado": "Ex. 16 · Pression et température. Un ballon de volley-ball de 4,8 L contient 7,5 g d'air à 17 °C (air = gaz parfait). a. Calculer la quantité de matière. b. Convertir T en K et V en m³. c. Déduire la pression de l'air. 2. La température est doublée et sa valeur atteint 34 °C : pourquoi la pression mesurée n'est-elle pas doublée ? Nouvelle pression ? À quelle température en °C la pression serait-elle doublée ?",
+   "datos": {
+    "M_air": "28,9 g·mol⁻¹",
+    "R": "8,314 J·K⁻¹·mol⁻¹",
+    "m": "7,5 g",
+    "V": "4,8 L",
+    "θ": "17 °C"
+   },
+   "respuesta": "n = 2,6×10⁻¹ mol ; T = 290,15 K, V = 4,8×10⁻³ m³ ; P = 1,30×10⁵ Pa. Con 34 °C = 307,15 K : P = 1,38×10⁵ Pa (la T termodinámica debe ir en K, no en °C). Presión doble para T = 580,3 K = 307,15 °C.",
+   "respuesta_numerica": {
+    "valor": 130000.0,
+    "unidad": "Pa",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "n = m/M = 7,5/28,9 = 2,6×10⁻¹ mol",
+    "T = 273,15 + 17 = 290,15 K ; V = 4,8×10⁻³ m³",
+    "P = n·R·T/V = 1,30×10⁵ Pa",
+    "2.b T = 273,15 + 34 = 307,15 K ; P = 1,38×10⁵ Pa",
+    "2.c T = 290,15 × 2 = 580,3 K = 307,15 °C"
+   ],
+   "pagina_pdf": 404,
+   "corrige_pagina_pdf": 620
+  },
+  {
+   "id": "e3",
+   "enunciado": "Ex. 19 · Gaz réel – gaz parfait. 1. Calculer la quantité de matière de diazote contenue dans un récipient d'un litre à la pression de 1,1 bar et à la température de 25 °C. 2. En déduire le nombre de molécules puis le volume propre des molécules (volume d'une molécule de diazote : 7,0×10⁻²⁸ L). 3. Comparer au volume occupé par le gaz. Le diazote peut-il être assimilé à un gaz parfait ?",
+   "datos": {
+    "V": "1 L",
+    "P": "1,1 bar",
+    "θ": "25 °C",
+    "N_A": "6,02×10²³ mol⁻¹",
+    "v_molécule": "7,0×10⁻²⁸ L"
+   },
+   "respuesta": "n = P·V/(R·T) = 4,4×10⁻² mol ; N = n·N_A = 2,6×10²² molécules ; volume propre = 1,9×10⁻⁵ L = 19 µL ≪ 1 L : le volume propre est négligeable, le diazote peut être assimilé à un gaz parfait.",
+   "respuesta_numerica": {
+    "valor": 0.044,
+    "unidad": "mol",
+    "tolerancia_rel": 0.03
+   },
+   "pasos": [
+    "n = PV/(RT) = (1,1×10⁵ × 1×10⁻³)/(8,314 × 298,15) = 4,4×10⁻² mol",
+    "N = n·N_A = 2,6×10²² molécules ; V_propre = 1,9×10⁻⁵ L = 19 µL",
+    "19 µL ≪ 1 L : volume propre négligeable → modèle du gaz parfait applicable"
+   ],
+   "pagina_pdf": 404,
+   "corrige_pagina_pdf": 620
+  },
+  {
+   "id": "e4",
+   "enunciado": "Ex. 24 · Réaction explosive. La décomposition de la trinitroglycérine produit une quantité de matière de gaz 7 fois plus importante que celle du réactif consommé. On considère la décomposition à 20 °C d'un volume de 10,0 mL de trinitroglycérine constitué de 7,0×10⁻² mol. Le mélange gazeux est assimilé à un gaz parfait confiné dans le volume initial. 1.a. Calculer la pression du mélange gazeux. 2.a. À la pression atmosphérique (1013 hPa), calculer le volume total des gaz et le comparer au volume initial.",
+   "datos": {
+    "R": "8,31 J·K⁻¹·mol⁻¹",
+    "P_atm": "1013 hPa",
+    "n_réactif": "7,0×10⁻² mol",
+    "V": "10,0 mL",
+    "θ": "20 °C"
+   },
+   "respuesta": "P = n·R·T/V = 1,2×10⁸ Pa = 1200 bar ; à P_atm : V = 1,2×10⁻² m³ (≈ 12 L), soit 1200 fois plus grand que le volume initial. (El corrigé de la p. 602 lo etiqueta «25»; corresponde a este ejercicio.)",
+   "respuesta_numerica": {
+    "valor": 119000000.0,
+    "unidad": "Pa",
+    "tolerancia_rel": 0.02
+   },
+   "pasos": [
+    "n_gaz = 7 × 7,0×10⁻² = 0,49 mol ; T = 293,15 K ; V = 1,0×10⁻⁵ m³",
+    "P = nRT/V = 0,49 × 8,31 × 293,15 / 1,0×10⁻⁵ ≈ 1,2×10⁸ Pa = 1200 bar",
+    "À P_atm : V = nRT/P = 1,2×10⁻² m³, soit 1200 fois plus grand",
+    "Microscopique : l'augmentation excessive de la pression traduit une augmentation de la fréquence des chocs sur les parois et du volume."
+   ],
+   "pagina_pdf": 406,
+   "corrige_pagina_pdf": 620
+  },
+  {
+   "id": "e5",
+   "enunciado": "Ex. 31 · Pression de gonflage. Un pneu de 16 L est gonflé à froid (20 °C) à 2,5 bar ; à chaud l'écart de pression peut atteindre 0,3 bar. L'air est assimilé à un gaz parfait. 1.a. Expliquer l'effet de l'échauffement sur T, P, ρ. 1.b. Justifier qualitativement la valeur de la pression mesurée à chaud. 1.c. Déterminer la valeur de la température de l'air chaud dans le pneu.",
+   "datos": {
+    "V": "16 L",
+    "P_froid": "2,5 bar",
+    "θ_froid": "20 °C",
+    "ΔP": "0,3 bar"
+   },
+   "respuesta": "n = 1,6 mol (constante) ; T = P·V/(n·R) = 328,6 K ≈ 55 °C. A V y n constantes, si T aumenta, P aumenta (más agitación → más choques); la masa volúmica no cambia.",
+   "respuesta_numerica": {
+    "valor": 328.6,
+    "unidad": "K",
+    "tolerancia_rel": 0.01
+   },
+   "pasos": [
+    "Macroscópico: T y P aumentan; n y V del neumático constantes → ρ constante",
+    "P·V = n·R·T : si T aumenta, P aumenta",
+    "n = 1,6 mol (a 20 °C, 2,5 bar)",
+    "T = P·V/(n·R) = 328,6 K = 55,4 °C ≈ 55 °C"
+   ],
+   "pagina_pdf": 408,
+   "corrige_pagina_pdf": 620
+  },
+  {
+   "id": "e6",
+   "enunciado": "Ex. 32 · Dilatation d'un gaz. Un ballon de 250 mL contient de l'air (P = 1,0×10⁵ Pa, θ = 19,0 °C). Chauffé, il pousse un index dans un tube de diamètre d = 7,0 mm. Quand l'index se déplace de 2,0 cm vers la gauche, quelle est la variation de température de l'air (P constante) ?",
+   "datos": {
+    "P": "1,0×10⁵ Pa",
+    "M_air": "29 g·mol⁻¹",
+    "V": "250 mL",
+    "d": "7,0 mm",
+    "θ_initial": "19,0 °C"
+   },
+   "respuesta": "n = P·V/(R·T) = 1,0×10⁻² mol (constante) ; V_final = (250 + 3,1)×10⁻⁶ m³ = 253,1 mL ; T = P·V/(n·R) = 304,4 K ≈ 31 °C : augmentation de 12 °C. Macroscópico: V y T cambian; P y n no.",
+   "respuesta_numerica": {
+    "valor": 304.4,
+    "unidad": "K",
+    "tolerancia_rel": 0.01
+   },
+   "pasos": [
+    "n = 1,0×10⁻² mol (valor inicial)",
+    "V_final = V_i + l·π·d²/4 = 253,1 mL",
+    "T = P·V/(n·R) = 304,4 K ≈ 31 °C",
+    "ΔT ≈ +12 °C"
+   ],
+   "pagina_pdf": 409,
+   "corrige_pagina_pdf": 620
+  },
+  {
+   "id": "e7",
+   "enunciado": "Ex. 38 · Le ballon météorologique (démarche experte). Un ballon-sonde gonflé à l'hélium (gaz parfait) doit atteindre la couche d'ozone stratosphérique. Le volume maximal avant éclatement est 6 fois le volume initial (ballon de 3,6 m de diamètre réel). Peut-il atteindre la couche d'ozone (≈ 50 km) ?",
+   "datos": {
+    "V_sphère": "(4/3)·π·R³",
+    "R": "8,31 J·K⁻¹·mol⁻¹",
+    "V_max": "6 V₀",
+    "P (couche d'ozone)": "3 hPa",
+    "θ": "−5 °C"
+   },
+   "respuesta": "V₀ = 25 m³ → V_max = 150 m³ ; n = P·V/(R·T) = 1,0×10³ mol ; à 3 hPa et −5 °C : V = 7,4×10² m³ > V_max → le ballon éclate avant : il ne peut pas atteindre la couche d'ozone (≈ 50 km). Il peut atteindre ≈ 10 km (V = 91 m³ à −55 °C, 200 hPa).",
+   "respuesta_numerica": null,
+   "pasos": [
+    "V₀ = (4/3)·π·R³ = 25 m³ ; V_max = 6 V₀ = 150 m³",
+    "n = P·V/(R·T) = 1,0×10³ mol",
+    "À 3 hPa et −5 °C : V = n·R·T/P = 7,4×10² m³ > 150 m³",
+    "Conclusion : l'éclatement se produit avant 50 km ; à ≈ 10 km (−55 °C, 200 hPa) V = 91 m³ < V_max"
+   ],
+   "pagina_pdf": 411,
+   "corrige_pagina_pdf": 620
+  },
+  {
+   "id": "e8",
+   "enunciado": "Ex. 12 · Échelles de température. 1. Qu'appelle-t-on température thermodynamique d'un système ? Quel lien existe-t-il avec la température Celsius ? 2. Classer par ordre de degré d'agitation moléculaire décroissant les systèmes dont les températures sont : A −22 °C, B 275 K (dans le corrigé : 1,85 °C), C 16 °C. 3. Quelle est la signification microscopique du zéro de la température thermodynamique ?",
+   "datos": {
+    "A": "−22 °C",
+    "B": "275 K",
+    "C": "16 °C"
+   },
+   "respuesta": "T traduit le degré d'agitation des molécules ; T = θ + 273,15. 275 K = 1,85 °C, donc −22 °C < 275 K (1,85 °C) < 16 °C : l'ordre décroissant d'agitation est C > B > A. À T = 0 K il n'y a plus d'agitation des particules (zéro absolu) ; T est obligatoirement positive.",
+   "respuesta_numerica": null,
+   "pasos": [
+    "Convertir : 275 K = 275 − 273,15 = 1,85 °C",
+    "Comparer en °C : −22 < 1,85 < 16 → agitation C > B > A",
+    "T = 0 K : plus d'agitation des particules"
+   ],
+   "pagina_pdf": 403,
+   "corrige_pagina_pdf": 620
+  }
+ ],
+ "laboratorio": [
+  {
+   "preset": "gas-ideal",
+   "params": {
+    "n": 0.5,
+    "T": 290,
+    "V": 7.5
+   },
+   "titulo": "Partículas en una caja con pistón",
+   "relacion": "Ilustra P·V = n·R·T (f1), la ley de Mariotte (f3), T = θ + 273,15 (f2) y la interpretación microscópica de P, T y ρ."
+  },
+  {
+   "preset": "gas-ideal-quimico",
+   "params": {
+    "n": 1,
+    "T": 295,
+    "P": 100
+   },
+   "titulo": "Volumen molar de un gas",
+   "relacion": "Ilustra V_m = R·T/P (f4), n = V/V_m (f5) y la ley de Avogadro-Ampère."
+  },
+  {
+   "preset": "masa-molar",
+   "params": {
+    "m": 7.5,
+    "M": 28.9
+   },
+   "titulo": "Cantidad de materia del aire de un balón",
+   "relacion": "Ilustra n = m/M (f6) del ejercicio 16 (balón de voleibol)."
+  },
+  {
+   "preset": "arquimedes",
+   "params": {},
+   "titulo": "Pregunta de apertura: ¿por qué despega la montgolfière?",
+   "relacion": "Con ρ = P·M/(R·T) (f7), calentar el aire disminuye su masa volúmica; sirve de apoyo a la pregunta del ejercicio 35 (el empuje de Arquímedes se estudia en otro capítulo)."
+  }
+ ],
+ "nivel_juego": {
+  "tema_visual": "lava-fortaleza",
+  "mecanica_especial": "Castillo con lava y puente que cae con la palanca de Entropía; corrientes térmicas (zona_campo hacia arriba, como el aire caliente que sube sobre el balón) sobre algunos fosos, plataformas móviles y gravedad reducida; jefe Rey Entropía."
+ },
+ "estilo_intro_sugerido": "fisica3d"
+}

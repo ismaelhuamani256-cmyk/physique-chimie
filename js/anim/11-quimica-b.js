@@ -409,8 +409,11 @@
     ],
     create(host, p) {
       const rng = host.rng, mk = (n) => Array.from({ length: n }, () => ({ u: rng(), v: rng(), a: rng() * TAU, vis: 0, want: false, fl: 0 }));
-      const red = host.reduced;
-      return { t: 0, rng, K: red ? 18 : 30, A: mk(70), B: mk(70), C: mk(110), burst: [], rings: [], red };
+      const red = host.reduced, K = red ? 18 : 30, e = estadoAvance(p);
+      const s = { t: 0, rng, K, A: mk(70), B: mk(70), C: mk(110), burst: [], rings: [], red };
+      // estado inicial coherente con los parámetros (sin ráfaga de destellos al abrir)
+      [[s.A, e.nA], [s.B, e.nB], [s.C, e.nC]].forEach(([pool, n]) => { const obj = Math.min(pool.length, Math.max(0, Math.round(n * K))); pool.forEach((q, i) => { q.want = i < obj; q.vis = q.want ? 1 : 0; }); });
+      return s;
     },
     step(s, dt, p) {
       const e = estadoAvance(p), rng = s.rng, K = s.K;
@@ -667,7 +670,7 @@
     ],
     create(host, p) {
       const rng = host.rng, N = 120;
-      const q = Array.from({ length: N }, (_, i) => ({ u: rng(), v: rng(), a: rng() * TAU, th: baja(i), cb: 0, fl: 0, vis: 0, estado: 0 }));
+      const q = Array.from({ length: N }, (_, i) => ({ u: rng(), v: rng(), a: rng() * TAU, th: baja(i), cb: baja(i) > Math.exp(-p.k * p.t) ? 1 : 0, fl: 0, vis: 0, estado: baja(i) > Math.exp(-p.k * p.t) ? 1 : 0 }));
       const s = { t: 0, rng, q, tv: p.t, play: false, red: host.reduced };
       clics(s, host); return s;
     },
@@ -903,6 +906,209 @@
     },
     lecturas(p) {
       return [{ label: 'E (f.é.m.)', valor: num(Epila(p), 2) + ' V' }, { label: 'avance', valor: num(p.t, 0) + ' %' }, { label: 'e⁻', valor: 'ánodo (−) → cátodo (+)' }, { label: 'I', valor: 'cátodo (+) → ánodo (−)' }];
+    },
+  });
+
+  // =====================================================================================
+  // 6. RADIOACTIVIDAD — N(t) = N0·e^(−λt),  t½ = ln2/λ,  actividad A = λ·N
+  // Cada núcleo tiene un umbral u_i (baja discrepancia, posiciones en la rejilla mezcladas) y se desintegra en
+  // t_i = −ln(u_i)/λ; así el nº de núcleos sin desintegrar coincide con la fórmula (decaimiento estratificado,
+  // sin el ruido estadístico de una muestra pequeña). El botón ▶ reproduce el tiempo de 0 al valor de t.
+  // =====================================================================================
+  const COL_PADRE = '#ff3da6', COL_HIJO = '#4a6a9c', TMAX_R = 40;
+  PCB.anim.register('radioactividad', {
+    titulo: 'Décroissance radioactive', materia: 'chimie',
+    params: [
+      { id: 'N0', label: 'Noyaux initiaux N₀', min: 20, max: 300, step: 10, def: 150, unit: '' },
+      { id: 'lam', label: 'Constante radioactive λ', min: 0.02, max: 0.5, step: 0.01, def: 0.1, unit: 's⁻¹' },
+      { id: 't', label: 'Temps t', min: 0, max: TMAX_R, step: 0.5, def: 10, unit: 's' },
+    ],
+    create(host, p) {
+      const rng = host.rng, M = host.reduced ? 220 : 300;
+      const perm = Array.from({ length: M }, (_, i) => i);
+      for (let i = M - 1; i > 0; i--) { const j = Math.floor(rng() * (i + 1)); [perm[i], perm[j]] = [perm[j], perm[i]]; }
+      const sv0 = Math.exp(-p.lam * p.t); // estado inicial coherente con el slider: sin ráfaga de destellos al abrir
+      const nu = perm.map((cell, i) => ({ cell, th: baja(i), vis: 0, dec: baja(i) > sv0, fl: 0 }));
+      const s = { t: 0, rng, nu, tv: p.t, play: false, part: [], red: host.reduced, M };
+      clics(s, host); return s;
+    },
+    onParam(s, id) { if (id === 't') s.play = false; },
+    step(s, dt, p) {
+      s.t += dt; tiempoPaso(s, dt, p, TMAX_R, 9);
+      const N0 = Math.min(p.N0, s.M), surv = Math.exp(-p.lam * s.tv), rng = s.rng;
+      s.nu.forEach((n, i) => {
+        n.vis = suav(n.vis, i < N0 ? 1 : 0, 6, dt);
+        const dec = n.th > surv;                      // ya se desintegró (e^(−λt) < u_i)
+        if (dec !== n.dec) {
+          n.dec = dec; n.fl = 1;
+          if (dec && i < N0 && s.part.length < 80) { const a = rng() * TAU; s.part.push({ i, a, d: 0, t: 0 }); } // partícula emitida
+        }
+        n.fl = Math.max(0, n.fl - dt * 2.4);
+      });
+      for (let i = s.part.length - 1; i >= 0; i--) { const q = s.part[i]; q.t += dt; q.d += dt * 60; if (q.t > 0.9) s.part.splice(i, 1); }
+    },
+    draw(s, ctx, w, h, p) {
+      const fs = FS(w, h), peq = w < 520, tv = s.tv, N0 = Math.min(p.N0, s.M), thalf = Math.LN2 / p.lam;
+      s.btns.length = 0; fondo(ctx, w, h);
+      // ---------- rejilla de núcleos (izquierda)
+      const gx0 = w * 0.04, gy0 = h * 0.16, gW = w * (peq ? 0.38 : 0.4), gH = h * 0.66;
+      panel(ctx, gx0 - 4, gy0 - 4, gW + 8, gH + 8, 10);
+      const cols = Math.max(1, Math.ceil(Math.sqrt((N0 * gW) / gH))), rows = Math.ceil(N0 / cols), cell = Math.min(gW / cols, gH / rows);
+      const ox = gx0 + (gW - cell * cols) / 2, oy = gy0 + (gH - cell * rows) / 2, rn = cell * 0.36;
+      const cen = (cellIdx) => { const k = cellIdx % (cols * Math.max(rows, 1)); return [ox + ((k % cols) + 0.5) * cell, oy + (Math.floor(k / cols) + 0.5) * cell]; };
+      // el índice de celda se re-compacta a las N0 casillas visibles según el orden de las celdas permutadas
+      if (s._n0 !== N0) { const orden = s.nu.slice(0, N0).map((n, i) => [n.cell, i]).sort((a, b) => a[0] - b[0]); orden.forEach(([, i], rank) => (s.nu[i].slot = rank)); s._n0 = N0; }
+      let vivos = 0;
+      for (let i = 0; i < N0; i++) {
+        const n = s.nu[i]; if (!n.dec) vivos++;
+        if (n.vis < 0.02) continue;
+        const [x, y] = cen(n.slot);
+        if (n.fl > 0) brillo(ctx, x, y, rn * 5, n.dec ? '#fff2a8' : '#ffffff', n.fl * 0.85);
+        if (n.dec) bola(ctx, x, y, rn * 0.62, '#5b7db3', n.vis); else { brillo(ctx, x, y, rn * 2.2, COL_PADRE, 0.22 * n.vis); bola(ctx, x, y, rn, COL_PADRE, n.vis); }
+      }
+      // partículas emitidas (α/β didácticas): salen del núcleo y se desvanecen
+      ctx.save(); ctx.globalCompositeOperation = 'lighter';
+      for (const q of s.part) { const n = s.nu[q.i]; if (n.slot == null) continue; const [x, y] = cen(n.slot), k = q.t / 0.9; brillo(ctx, x + Math.cos(q.a) * q.d, y + Math.sin(q.a) * q.d, 7, '#ffe27a', 1 - k); }
+      ctx.restore();
+      txt(ctx, 'N(t) = ' + vivos, gx0, h * 0.1, fs + 4, COL_PADRE, 'left', 700);
+      txt(ctx, 't = ' + num(tv, 1) + ' s', gx0 + gW, h * 0.1, fs + 1, '#eaf0ff', 'right', 700);
+      const ly = gy0 + gH + fs + 10;
+      bola(ctx, gx0 + 4, ly - fs * 0.35, 4.5, COL_PADRE); txt(ctx, 'noyau père', gx0 + 12, ly, fs - 1, '#c9d6f5', 'left', 400);
+      bola(ctx, gx0 + gW * 0.52, ly - fs * 0.35, 3.5, '#5b7db3'); txt(ctx, 'noyau fils', gx0 + gW * 0.52 + 8, ly, fs - 1, '#c9d6f5', 'left', 400);
+      // ---------- gráfica N(t)
+      const gx = w * (peq ? 0.5 : 0.53), gw = w * (peq ? 0.46 : 0.43), gy = h * 0.16, gh = h * 0.62;
+      const ax = ejes(ctx, gx, gy, gw, gh, { x0: 0, x1: TMAX_R, y0: 0, y1: p.N0, xt: [0, 10, 20, 30, 40], yt: [0, p.N0 / 2, p.N0], fs: fs - 1, xl: 't (s)', yl: 'N', fx: (z) => num(z, 0), fy: (z) => num(z, 0) });
+      ctx.save(); ctx.beginPath(); ctx.rect(gx, gy, gw, gh); ctx.clip();
+      [1, 2, 3].forEach((k) => { // marcas t½, 2t½, 3t½ con N0/2, N0/4, N0/8
+        const tk = k * thalf; if (tk > TMAX_R) return; const nk = p.N0 / Math.pow(2, k);
+        ctx.setLineDash([5, 4]); ctx.strokeStyle = `rgba(255,209,102,${k === 1 ? 0.85 : 0.5})`; ctx.lineWidth = 1.2; ctx.beginPath();
+        ctx.moveTo(ax.X(tk), ax.Y(0)); ctx.lineTo(ax.X(tk), ax.Y(nk)); ctx.lineTo(ax.X(0), ax.Y(nk)); ctx.stroke(); ctx.setLineDash([]);
+        ctx.fillStyle = '#ffd166'; ctx.beginPath(); ctx.arc(ax.X(tk), ax.Y(nk), 3.4, 0, TAU); ctx.fill();
+      });
+      ctx.lineWidth = 2; ctx.strokeStyle = 'rgba(0,212,255,.35)'; ctx.beginPath();
+      for (let i = 0; i <= 120; i++) { const t = (TMAX_R * i) / 120, y = p.N0 * Math.exp(-p.lam * t); i ? ctx.lineTo(ax.X(t), ax.Y(y)) : ctx.moveTo(ax.X(t), ax.Y(y)); }
+      ctx.stroke();
+      ctx.lineWidth = 3.2; ctx.strokeStyle = '#00d4ff'; ctx.beginPath(); const nn = Math.max(2, Math.round((120 * tv) / TMAX_R));
+      for (let i = 0; i <= nn; i++) { const t = (tv * i) / nn, y = p.N0 * Math.exp(-p.lam * t); i ? ctx.lineTo(ax.X(t), ax.Y(y)) : ctx.moveTo(ax.X(t), ax.Y(y)); }
+      ctx.stroke(); ctx.restore();
+      const Nt = p.N0 * Math.exp(-p.lam * tv);
+      brillo(ctx, ax.X(tv), ax.Y(Nt), 18, '#ffd166', 0.75); bola(ctx, ax.X(tv), ax.Y(Nt), 6, '#ffd166');
+      [1, 2, 3].forEach((k) => { const tk = k * thalf; if (tk <= TMAX_R && (k === 1 || !peq)) txt(ctx, k === 1 ? 't½' : k + 't½', ax.X(tk), gy + gh - 5, fs - 1, '#ffd166', 'center', 700); });
+      txt(ctx, 't½ = ' + num(thalf, 1) + ' s', gx + gw - 6, gy + fs + 4, fs, '#ffd166', 'right', 700);
+      txt(ctx, 'A = λN = ' + num(p.lam * Nt, 1) + ' Bq', gx + gw - 6, gy + 2 * fs + 8, fs - 1, '#ff9f1c', 'right', 700);
+      if (!s.play) boton(ctx, s, gx + gw - (peq ? 100 : 140), h - 30, peq ? 100 : 140, 24, '▶ Reproducir t', () => { s.tv = 0; s.play = p.t > 0; }, '#2ee59d', fs - 1);
+      else boton(ctx, s, gx + gw - (peq ? 100 : 140), h - 30, peq ? 100 : 140, 24, '⏹ Parar', () => { s.play = false; s.tv = p.t; }, '#ffd166', fs - 1);
+    },
+    formula(p) {
+      const Nt = p.N0 * Math.exp(-p.lam * p.t), th = Math.LN2 / p.lam;
+      if (window.innerWidth < 640) return `\\begin{gathered}N(t)=N_0\\,e^{-\\lambda t}=${tx(Nt, 0)}\\\\ t_{1/2}=\\dfrac{\\ln 2}{\\lambda}=${tx(th, 2)}\\ \\text{s}\\end{gathered}`;
+      return `\\begin{gathered}N(t)=N_0\\,e^{-\\lambda t}=${tx(p.N0, 0)}\\,e^{-${tx(p.lam)}\\times${tx(p.t, 1)}}=${tx(Nt, 0)}\\ \\text{noyaux}\\\\[2pt] t_{1/2}=\\dfrac{\\ln 2}{\\lambda}=\\dfrac{0{,}693}{${tx(p.lam)}}=${tx(th, 2)}\\ \\text{s}\\end{gathered}`;
+    },
+    lecturas(p) {
+      const Nt = p.N0 * Math.exp(-p.lam * p.t);
+      return [{ label: 'N(t)', valor: num(Nt, 0) + ' noyaux' }, { label: 't½', valor: num(Math.LN2 / p.lam, 2) + ' s' }, { label: 'N/N₀', valor: num((100 * Nt) / p.N0, 0) + ' %' }, { label: 'A = λN', valor: num(p.lam * Nt, 1) + ' Bq' }];
+    },
+    dispose(s) { if (s._offClics) s._offClics(); },
+  });
+
+  // =====================================================================================
+  // 7. GAS-IDEAL-QUIMICO — ley del gas ideal:  P·V = n·R·T  →  V = n·R·T / P
+  //   R = 8,314 J·K⁻¹·mol⁻¹ (constante del cours). Unidades SI en el cálculo: P en Pa (kPa·10³), V en m³ (1 m³ = 1000 L).
+  // Simplificación visual: el nº de partículas dibujadas es ∝ n (≈ 55 por mol) y su velocidad ∝ √T (v_rms ∝ √(T/M));
+  // la altura del pistón usa una escala NO lineal (∝ √V) para que se vea tanto 0,5 L como 250 L; la regla lateral
+  // marca los volúmenes reales. El pistón soporta la presión exterior P (flechas hacia abajo).
+  // =====================================================================================
+  const R_GAS = 8.314, V_REF = 250;
+  const Vgas = (p) => (p.n * R_GAS * p.T) / (p.P * 1000) * 1000; // en litros
+  const hFrac = (V) => 0.08 + 0.92 * Math.sqrt(clamp(V, 0, V_REF) / V_REF);
+
+  PCB.anim.register('gas-ideal-quimico', {
+    titulo: 'Gaz parfait : V = nRT/P', materia: 'chimie',
+    params: [
+      { id: 'n', label: 'Quantité de gaz n', min: 0.1, max: 3, step: 0.1, def: 1, unit: 'mol' },
+      { id: 'T', label: 'Température T', min: 200, max: 500, step: 5, def: 300, unit: 'K' },
+      { id: 'P', label: 'Pression P', min: 50, max: 300, step: 5, def: 100, unit: 'kPa' },
+    ],
+    create(host, p) {
+      const rng = host.rng, M = host.reduced ? 100 : 180;
+      const q = Array.from({ length: M }, () => ({ x: rng(), y: rng(), a: rng() * TAU, f: 0.55 + (rng() + rng() + rng()) / 3 * 0.9, vis: 0 }));
+      return { t: 0, rng, q, M, H: hFrac(Vgas(p)), vp: 0, red: host.reduced };
+    },
+    step(s, dt, p) {
+      s.t += dt;
+      const Hobj = hFrac(Vgas(p)), Hn = suav(s.H, Hobj, 4, dt); s.vp = (Hn - s.H) / Math.max(dt, 1e-3); s.H = Hn; // vp: velocidad del pistón (fracción/s)
+      const nObj = Math.round(p.n * (s.red ? 30 : 55)), vT = Math.sqrt(p.T / 300);
+      s.q.forEach((q, i) => {
+        q.vis = suav(q.vis, i < nObj ? 1 : 0, 5, dt);
+        const v = 0.55 * q.f * vT; // en fracciones del ancho/s
+        q.x += Math.cos(q.a) * v * dt; q.y += Math.sin(q.a) * v * dt * 0.8;
+        if (q.x < 0.03) { q.x = 0.03; q.a = Math.PI - q.a; } else if (q.x > 0.97) { q.x = 0.97; q.a = Math.PI - q.a; }
+        if (q.y > 0.97) { q.y = 0.97; q.a = -q.a; }                                           // suelo
+        if (q.y < 0.03) { q.y = 0.03; q.a = -q.a; if (s.vp < 0) q.a = Math.atan2(Math.abs(Math.sin(q.a)) + 0.4, Math.cos(q.a)); } // pistón (empuja si baja)
+      });
+    },
+    draw(s, ctx, w, h, p) {
+      const fs = FS(w, h), peq = w < 520, V = Vgas(p);
+      fondo(ctx, w, h);
+      // ---------- cilindro con pistón (izquierda)
+      const cw = Math.min(w * (peq ? 0.34 : 0.3), h * 0.55), cx = w * (peq ? 0.12 : 0.1), yB = h * 0.9, Hmax = h * 0.7;
+      const Hc = Hmax * s.H, yP = yB - Hc;
+      // calor bajo el cilindro ∝ (T − 200)
+      const calor = clamp((p.T - 200) / 300, 0, 1);
+      brillo(ctx, cx + cw / 2, yB + 4, cw * 0.9, mezcla('#ff9f1c', '#ff3d3d', calor), 0.15 + 0.5 * calor);
+      // paredes de vidrio
+      const gg = ctx.createLinearGradient(cx, 0, cx + cw, 0); gg.addColorStop(0, 'rgba(255,255,255,.14)'); gg.addColorStop(0.2, 'rgba(255,255,255,.03)'); gg.addColorStop(1, 'rgba(255,255,255,.07)');
+      ctx.fillStyle = gg; ctx.fillRect(cx, yP, cw, Hc);
+      ctx.strokeStyle = 'rgba(200,225,255,.65)'; ctx.lineWidth = 2.2; ctx.beginPath(); ctx.moveTo(cx, h * 0.18); ctx.lineTo(cx, yB); ctx.lineTo(cx + cw, yB); ctx.lineTo(cx + cw, h * 0.18); ctx.stroke();
+      // regla de volúmenes reales (escala no lineal)
+      [1, 5, 25, 50, 100, 250].forEach((v) => {
+        const y = yB - Hmax * hFrac(v); ctx.strokeStyle = 'rgba(255,255,255,.45)'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(cx + cw, y); ctx.lineTo(cx + cw + 6, y); ctx.stroke();
+        if (!(peq && (v === 5))) txt(ctx, v + ' L', cx + cw + 9, y + fs * 0.35, fs - 2, '#7f8fb8', 'left', 400);
+      });
+      // partículas (color según su velocidad: azul frío → rojo caliente)
+      const rp = clamp(cw * 0.026, 2.4, 4.4);
+      for (const q of s.q) {
+        if (q.vis < 0.02) continue;
+        const x = cx + 4 + q.x * (cw - 8), y = yP + 4 + q.y * (Hc - 8), k = clamp((q.f * Math.sqrt(p.T / 300) - 0.4) / 1.6, 0, 1);
+        bola(ctx, x, y, rp, mezcla('#4cc9f0', '#ff4d5e', k), q.vis);
+      }
+      // pistón (placa + vástago) y flechas de presión exterior
+      const pg = ctx.createLinearGradient(0, yP - 9, 0, yP); pg.addColorStop(0, '#8d97b5'); pg.addColorStop(1, '#4b5575');
+      rr(ctx, cx - 3, yP - 9, cw + 6, 9, 3); ctx.fillStyle = pg; ctx.fill(); ctx.strokeStyle = 'rgba(255,255,255,.4)'; ctx.lineWidth = 1; ctx.stroke();
+      ctx.fillStyle = '#6b7596'; ctx.fillRect(cx + cw / 2 - 3, h * 0.1, 6, yP - 9 - h * 0.1);
+      const na = clamp(Math.ceil(p.P / 60), 1, 5), la = clamp(h * 0.07 + (p.P - 50) / 250 * h * 0.05, 14, h * 0.14);
+      for (let i = 0; i < na; i++) {
+        const ax = cx + cw * ((i + 0.5) / na); const ya = Math.max(h * 0.1, yP - 9 - la - 4);
+        if (Math.abs(ax - (cx + cw / 2)) < 5) continue;
+        flecha(ctx, ax, ya, ax, yP - 11, '#ffd166', 2.2, 6);
+      }
+      txt(ctx, 'P = ' + num(p.P, 0) + ' kPa', cx + cw / 2, h * 0.07, fs + 1, '#ffd166', 'center', 700);
+      txt(ctx, 'T = ' + num(p.T, 0) + ' K', cx + cw / 2, yB + fs + 4, fs, rgbStr(mezcla('#7ad7ff', '#ff6b6b', calor)), 'center', 700);
+      // ---------- panel de cálculo (derecha)
+      const px = cx + cw + (peq ? 38 : 56), pw = w - px - w * 0.03, py = h * 0.08, ph = h * 0.84;
+      panel(ctx, px, py, pw, ph, 12);
+      const lh = clamp(ph / 9, fs + 6, 38);
+      let y = py + lh * 0.8;
+      const fila = (nm, val, col) => { txt(ctx, nm, px + 14, y, fs + 1, '#9fb0d9', 'left', 600); txt(ctx, val, px + pw - 14, y, fs + 2, col, 'right', 700); y += lh; };
+      fila('n', num(p.n, 1) + ' mol', '#2ee59d');
+      fila('T', num(p.T, 0) + ' K', '#ff9f9f');
+      fila('P', num(p.P, 0) + ' kPa', '#ffd166');
+      ctx.strokeStyle = 'rgba(255,255,255,.14)'; ctx.beginPath(); ctx.moveTo(px + 12, y - lh * 0.45); ctx.lineTo(px + pw - 12, y - lh * 0.45); ctx.stroke();
+      txt(ctx, 'V = n·R·T / P', px + pw / 2, y + lh * 0.1, fs + 2, '#c9d6f5', 'center', 600); y += lh * 1.15;
+      const big = clamp(pw / 7, 16, 34);
+      txt(ctx, (V >= 100 ? num(V, 0) : V >= 10 ? num(V, 1) : num(V, 2)) + ' L', px + pw / 2, y + big * 0.4, big, '#00d4ff', 'center', 700); y += big * 1.0 + lh * 0.2;
+      txt(ctx, 'Vm = V/n = ' + num(V / p.n, 1) + ' L·mol⁻¹', px + pw / 2, y, fs, '#9fb0d9', 'center', 400); y += lh * 0.9;
+      txt(ctx, 'R = 8,314 J·K⁻¹·mol⁻¹', px + pw / 2, y, fs, '#ff9f1c', 'center', 700);
+      txt(ctx, '(constante du cours)', px + pw / 2, y + fs + 3, fs - 2, '#c9a56a', 'center', 400);
+    },
+    formula(p) {
+      const V = Vgas(p), Vm3 = V / 1000;
+      if (window.innerWidth < 640) return `\\begin{gathered}V=\\dfrac{nRT}{P}=${V >= 10 ? tx(V, 1) : tx(V, 2)}\\ \\text{L}\\\\ R=8{,}314\\ \\text{J}\\cdot\\text{K}^{-1}\\cdot\\text{mol}^{-1}\\end{gathered}`;
+      return `\\begin{gathered}V=\\dfrac{nRT}{P}=\\dfrac{${tx(p.n, 1)}\\times8{,}314\\times${tx(p.T, 0)}}{${texSci(p.P * 1000, 1)}}=${texSci(Vm3, 2)}\\ \\text{m}^3=${V >= 10 ? tx(V, 1) : tx(V, 2)}\\ \\text{L}\\\\[2pt] R=8{,}314\\ \\text{J}\\cdot\\text{K}^{-1}\\cdot\\text{mol}^{-1}\\ \\text{(constante)}\\qquad P\\ \\text{en Pa},\\ V\\ \\text{en m}^3\\end{gathered}`;
+    },
+    lecturas(p) {
+      const V = Vgas(p);
+      return [{ label: 'V', valor: num(V, V >= 10 ? 1 : 2) + ' L' }, { label: 'V', valor: txtSci(V / 1000, 2) + ' m³' }, { label: 'Vm = V/n', valor: num(V / p.n, 1) + ' L·mol⁻¹' }, { label: 'R', valor: '8,314 J·K⁻¹·mol⁻¹' }];
     },
   });
 })();

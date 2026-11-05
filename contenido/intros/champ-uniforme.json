@@ -1,0 +1,479 @@
+{
+ "titulo": "Champ uniforme: la pelota y el electrón",
+ "estilo": "fisica3d",
+ "duracion_seg": 27,
+ "actores": [
+  {
+   "id": "perro",
+   "tipo": "perro",
+   "pos": [
+    0.1,
+    0.74
+   ],
+   "color": "#ffb347",
+   "escala": 1.4
+  },
+  {
+   "id": "pelota",
+   "tipo": "bola",
+   "pos": [
+    0.16,
+    0.7
+   ],
+   "color": "#ff4d6d",
+   "escala": 0.7
+  },
+  {
+   "id": "placa_sup",
+   "tipo": "bloque",
+   "pos": [
+    0.6,
+    0.34
+   ],
+   "color": "#3da5ff",
+   "escala": 2.6
+  },
+  {
+   "id": "placa_inf",
+   "tipo": "bloque",
+   "pos": [
+    0.6,
+    0.8
+   ],
+   "color": "#ff4d6d",
+   "escala": 2.6
+  },
+  {
+   "id": "electron",
+   "tipo": "electron",
+   "pos": [
+    0.22,
+    0.58
+   ],
+   "color": "#00d4ff",
+   "escala": 0.9
+  },
+  {
+   "id": "cohete",
+   "tipo": "cohete",
+   "pos": [
+    0.08,
+    0.22
+   ],
+   "color": "#e6eeff",
+   "escala": 0.8
+  }
+ ],
+ "pasos": [
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "perro",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "aparece",
+   "actor": "pelota",
+   "dur": 1
+  },
+  {
+   "t": 0,
+   "accion": "subtitulo",
+   "texto": "Mouvement dans un champ uniforme: una fuerza constante dibuja parábolas."
+  },
+  {
+   "t": 1.5,
+   "accion": "habla",
+   "actor": "perro",
+   "texto": "¡Lanzo la pelota en diagonal!"
+  },
+  {
+   "t": 2.5,
+   "accion": "vector",
+   "actor": "pelota",
+   "dx": 0.1,
+   "dy": -0.12,
+   "etiqueta": "v₀"
+  },
+  {
+   "t": 3,
+   "accion": "vector",
+   "actor": "pelota",
+   "dx": 0,
+   "dy": 0.12,
+   "etiqueta": "g₀"
+  },
+  {
+   "t": 3,
+   "accion": "formula",
+   "latex": "\\vec{a}=\\vec{g}_0"
+  },
+  {
+   "t": 3,
+   "accion": "subtitulo",
+   "texto": "Solo actúa el peso: la aceleración es constante e igual a g₀, siempre hacia abajo."
+  },
+  {
+   "t": 4.5,
+   "accion": "trayectoria",
+   "actor": "pelota",
+   "puntos": [
+    [
+     0.16,
+     0.7
+    ],
+    [
+     0.243,
+     0.478
+    ],
+    [
+     0.327,
+     0.344
+    ],
+    [
+     0.41,
+     0.3
+    ],
+    [
+     0.493,
+     0.344
+    ],
+    [
+     0.577,
+     0.478
+    ],
+    [
+     0.66,
+     0.7
+    ]
+   ]
+  },
+  {
+   "t": 4.5,
+   "accion": "mueve",
+   "actor": "pelota",
+   "a": [
+    0.243,
+    0.478
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 5,
+   "accion": "subtitulo",
+   "texto": "En x la velocidad no cambia; en y la pelota frena, sube y cae."
+  },
+  {
+   "t": 5.5,
+   "accion": "mueve",
+   "actor": "pelota",
+   "a": [
+    0.327,
+    0.344
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 6.5,
+   "accion": "mueve",
+   "actor": "pelota",
+   "a": [
+    0.41,
+    0.3
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 7.5,
+   "accion": "mueve",
+   "actor": "pelota",
+   "a": [
+    0.493,
+    0.344
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 7.5,
+   "accion": "resalta",
+   "actor": "pelota"
+  },
+  {
+   "t": 8.5,
+   "accion": "mueve",
+   "actor": "pelota",
+   "a": [
+    0.577,
+    0.478
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 9.5,
+   "accion": "mueve",
+   "actor": "pelota",
+   "a": [
+    0.66,
+    0.7
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 10.5,
+   "accion": "formula",
+   "latex": "y(x)=\\dfrac{-g_0}{2v_0^2\\cos^2\\alpha}\\,x^2+x\\tan\\alpha"
+  },
+  {
+   "t": 10.5,
+   "accion": "subtitulo",
+   "texto": "La trayectoria es una porción de parábola."
+  },
+  {
+   "t": 11,
+   "accion": "particulas",
+   "tipo": "polvo",
+   "pos": [
+    0.66,
+    0.72
+   ]
+  },
+  {
+   "t": 11.5,
+   "accion": "desaparece",
+   "actor": "pelota"
+  },
+  {
+   "t": 11.5,
+   "accion": "desaparece",
+   "actor": "perro"
+  },
+  {
+   "t": 12.5,
+   "accion": "aparece",
+   "actor": "placa_sup",
+   "dur": 0.8
+  },
+  {
+   "t": 12.5,
+   "accion": "aparece",
+   "actor": "placa_inf",
+   "dur": 0.8
+  },
+  {
+   "t": 12.5,
+   "accion": "aparece",
+   "actor": "electron",
+   "dur": 0.8
+  },
+  {
+   "t": 13,
+   "accion": "subtitulo",
+   "texto": "En un condensador plano hay un campo eléctrico E uniforme, de + hacia −."
+  },
+  {
+   "t": 13.5,
+   "accion": "vector",
+   "actor": "placa_sup",
+   "dx": 0,
+   "dy": 0.14,
+   "etiqueta": "E"
+  },
+  {
+   "t": 15,
+   "accion": "habla",
+   "actor": "electron",
+   "texto": "Soy negativo: la fuerza va contra E."
+  },
+  {
+   "t": 16,
+   "accion": "vector",
+   "actor": "electron",
+   "dx": 0,
+   "dy": -0.12,
+   "etiqueta": "F = −eE"
+  },
+  {
+   "t": 16,
+   "accion": "formula",
+   "latex": "\\vec{a}=\\dfrac{q}{m}\\,\\vec{E}"
+  },
+  {
+   "t": 16,
+   "accion": "subtitulo",
+   "texto": "Peso despreciable: m·a = qE. Con q = −e, la aceleración apunta hacia la armadura positiva."
+  },
+  {
+   "t": 17,
+   "accion": "trayectoria",
+   "actor": "electron",
+   "puntos": [
+    [
+     0.22,
+     0.58
+    ],
+    [
+     0.34,
+     0.575
+    ],
+    [
+     0.46,
+     0.555
+    ],
+    [
+     0.58,
+     0.52
+    ],
+    [
+     0.7,
+     0.47
+    ],
+    [
+     0.82,
+     0.4
+    ]
+   ]
+  },
+  {
+   "t": 17.0,
+   "accion": "mueve",
+   "actor": "electron",
+   "a": [
+    0.34,
+    0.575
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 18.0,
+   "accion": "mueve",
+   "actor": "electron",
+   "a": [
+    0.46,
+    0.555
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 18,
+   "accion": "resalta",
+   "actor": "electron"
+  },
+  {
+   "t": 19.0,
+   "accion": "mueve",
+   "actor": "electron",
+   "a": [
+    0.58,
+    0.52
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 19,
+   "accion": "aparece",
+   "actor": "cohete",
+   "dur": 0.5
+  },
+  {
+   "t": 19,
+   "accion": "habla",
+   "actor": "cohete",
+   "texto": "¡Vuelo parabólico: todo cae a la vez!"
+  },
+  {
+   "t": 19.5,
+   "accion": "mueve",
+   "actor": "cohete",
+   "a": [
+    0.3,
+    0.14
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 20.0,
+   "accion": "mueve",
+   "actor": "electron",
+   "a": [
+    0.7,
+    0.47
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 20.5,
+   "accion": "mueve",
+   "actor": "cohete",
+   "a": [
+    0.5,
+    0.11
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 21.0,
+   "accion": "mueve",
+   "actor": "electron",
+   "a": [
+    0.82,
+    0.4
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 21.5,
+   "accion": "mueve",
+   "actor": "cohete",
+   "a": [
+    0.7,
+    0.14
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 22,
+   "accion": "subtitulo",
+   "texto": "Misma idea: aceleración constante ⇒ movimiento plano y trayectoria parabólica."
+  },
+  {
+   "t": 22.5,
+   "accion": "mueve",
+   "actor": "cohete",
+   "a": [
+    0.9,
+    0.22
+   ],
+   "dur": 1.0
+  },
+  {
+   "t": 23.5,
+   "accion": "formula",
+   "latex": "\\Delta E_c=q\\,U_{AB}"
+  },
+  {
+   "t": 23.5,
+   "accion": "subtitulo",
+   "texto": "Y la energía: el trabajo de la fuerza eléctrica acelera partículas en un acelerador lineal."
+  },
+  {
+   "t": 23.5,
+   "accion": "particulas",
+   "tipo": "chispas",
+   "pos": [
+    0.82,
+    0.4
+   ]
+  },
+  {
+   "t": 23.6,
+   "accion": "desaparece",
+   "actor": "cohete"
+  },
+  {
+   "t": 26,
+   "accion": "pausa",
+   "dur": 1
+  }
+ ]
+}

@@ -72,6 +72,8 @@
   const easeIO = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
   const h = (...a) => PCB.util.el(...a);
   const lienzo = (w, hh) => { const c = document.createElement('canvas'); c.width = w; c.height = hh; return c; };
+  /** Fija --a/--b (colores del mundo) en un elemento: PCB.util.el no admite variables CSS en style */
+  const colorear = (el, pal) => { if (pal) { el.style.setProperty('--a', pal.a); el.style.setProperty('--b', pal.b); } return el; };
   const delay = (ms) => new Promise((r) => setTimeout(r, ms));
 
   // =================================================================================
@@ -796,7 +798,7 @@
     // =============================================================================
     // Cámara orbital
     // =============================================================================
-    const VISTA_TODO = { target: new T.Vector3(5, 6, -12), radius: 118, phi: 0.98, theta: 0 };
+    const VISTA_TODO = { target: new T.Vector3(8, 6, -12), radius: 100, phi: 0.98, theta: 0 };
     const goal = { theta: VISTA_TODO.theta, phi: VISTA_TODO.phi, radius: VISTA_TODO.radius, target: VISTA_TODO.target.clone() };
     const cur = { theta: goal.theta - (rm ? 0 : 0.6), phi: goal.phi, logR: Math.log(rm ? goal.radius : goal.radius * 1.5), target: goal.target.clone() };
     const par = { x: 0, y: 0 };      // parallax suavizado
@@ -826,7 +828,7 @@
       if (!rm) { // parallax con el ratón: desplaza la cámara en el plano de la pantalla
         const kp = 1 - Math.exp(-dt * 3);
         par.x += (ptr.nx - par.x) * kp; par.y += (ptr.ny - par.y) * kp;
-        camera.translateX(par.x * r * 0.03); camera.translateY(par.y * r * 0.018);
+        camera.translateX(par.x * r * 0.02); camera.translateY(par.y * r * 0.012);
       }
     }
     const camaraQuieta = () => Math.abs(goal.theta - cur.theta) < 0.002 && Math.abs(goal.phi - cur.phi) < 0.002
@@ -889,8 +891,8 @@
     // ---- selector de mundos ----
     const botonesMundo = {};
     const mkMundoBtn = (id, etiqueta, sub, onClick, extra) => {
-      const b = h('button', { type: 'button', class: 'mm ' + (extra || ''), style: id ? { '--a': PAL[id].a, '--b': PAL[id].b } : {}, 'aria-label': `Ir a ${etiqueta}`, on: { click: onClick } },
-        h('span', { class: 'pt' }), etiqueta, sub ? h('small', {}, sub) : null);
+      const b = colorear(h('button', { type: 'button', class: 'mm ' + (extra || ''), 'aria-label': `Ir a ${etiqueta}`, on: { click: onClick } },
+        h('span', { class: 'pt' }), etiqueta, sub ? h('small', {}, sub) : null), id ? PAL[id] : null);
       botonesMundo[id || 'todo'] = b; return b;
     };
     const barraMundos = h('nav', { class: 'mapa-mundos vidrio', 'aria-label': 'Saltar entre mundos' },
@@ -902,8 +904,9 @@
 
     // ---- tooltip ----
     const tooltip = h('div', { class: 'mapa-tooltip vidrio', role: 'dialog', 'aria-label': 'Detalle del capítulo' });
-    tooltip.addEventListener('pointerenter', () => { clearTimeout(tooltipTimer); });
-    tooltip.addEventListener('pointerleave', () => { if (!tooltipFijo) programarOcultar(); });
+    let tooltipSobre = false; // con el puntero encima, el tooltip se queda quieto para poder pulsar sus botones
+    tooltip.addEventListener('pointerenter', () => { clearTimeout(tooltipTimer); tooltipSobre = true; });
+    tooltip.addEventListener('pointerleave', () => { tooltipSobre = false; if (!tooltipFijo) programarOcultar(); });
 
     function filaProg(etq, valor, ok) { return [h('dt', {}, etq), h('dd', { class: ok === true ? 'si' : ok === false ? 'no' : '' }, valor)]; }
     function contenidoTooltip(n) {
@@ -938,11 +941,11 @@
       tooltipFijo = !!fijo;
       tooltip.classList.add('visible'); posicionarTooltip();
     }
-    function ocultarTooltip() { clearTimeout(tooltipTimer); tooltipNodo = null; tooltipFijo = false; tooltip.classList.remove('visible'); }
+    function ocultarTooltip() { clearTimeout(tooltipTimer); tooltipSobre = false; tooltipNodo = null; tooltipFijo = false; tooltip.classList.remove('visible'); }
     function programarOcultar() { clearTimeout(tooltipTimer); tooltipTimer = setTimeout(() => { if (!tooltipFijo || !hover) ocultarTooltip(); }, 380); }
     const _v = new T.Vector3();
     function posicionarTooltip() {
-      if (!tooltipNodo) return;
+      if (!tooltipNodo || tooltipSobre) return;
       const n = tooltipNodo, w = host.clientWidth, hh = host.clientHeight;
       _v.copy(n.torrePos); _v.y = n.baseY + n.lift * 0.55 + (n.altura + 1.9) * n.escala; _v.project(camera);
       const sx = (_v.x * 0.5 + 0.5) * w, sy = (-_v.y * 0.5 + 0.5) * hh;
@@ -973,8 +976,8 @@
           return h('li', { class: 'ml-fila' }, principal,
             bloq ? null : h('button', { type: 'button', class: 'directo', 'aria-label': `Ir directo al capítulo ${n.num}`, title: 'Saltar el nivel y la intro', on: { click: () => irDirecto(n) } }, 'Directo →'));
         });
-        return h('div', { class: 'ml-mundo', style: { '--a': PAL[id].a, '--b': PAL[id].b } },
-          h('h3', {}, nombre, h('small', {}, `${hechos}/${del.length} completados`)), h('ul', {}, filas));
+        return colorear(h('div', { class: 'ml-mundo' },
+          h('h3', {}, nombre, h('small', {}, `${hechos}/${del.length} completados`)), h('ul', {}, filas)), PAL[id]);
       });
       contLista.replaceChildren(h('div', { class: 'ml-in' },
         h('div', { class: 'ml-cab' }, h('h2', {}, 'Capítulos'),
@@ -1211,7 +1214,7 @@
         n.grupo.scale.setScalar(n.escala * (1 + n.lift * 0.07));
         // las insignias crecen con la distancia para seguir siendo legibles
         _wp.copy(n.torrePos); const d = camera.position.distanceTo(_wp);
-        const s = 1.55 * clamp(d / 38, 0.85, 3.2);
+        const s = 1.4 * clamp(Math.pow(d / 38, 0.58), 0.85, 2.1);
         n.badge.scale.set(s, s, 1); n.badge.position.y = n.altura + 0.75 + s * 0.45;
         const ss = s * 0.34;
         n.estrellasSpr.forEach((e, i) => { e.scale.set(ss, ss, 1); e.position.set((i - 1) * ss * 1.05, n.badge.position.y + s * 0.5 + ss * 0.55, 0); });
@@ -1313,7 +1316,8 @@
   function crearSoloLista(host, indice, disponibles) {
     const hay = disponibles && Array.isArray(disponibles.capitulos) ? new Set(disponibles.capitulos) : null;
     const cont = h('section', { class: 'mapa-lista', style: { display: 'block' }, 'aria-label': 'Lista de capítulos' });
-    const secciones = (indice.mundos || []).map((m) => h('div', { class: 'ml-mundo' },
+    const defPal = (id) => ({ a: (MUNDOS[id] || {}).def ? MUNDOS[id].def[0] : '#2f6bff', b: (MUNDOS[id] || {}).def ? MUNDOS[id].def[1] : '#00d4ff' });
+    const secciones = (indice.mundos || []).map((m) => colorear(h('div', { class: 'ml-mundo' },
       h('h3', {}, m.nombre),
       h('ul', {}, indice.capitulos.filter((c) => c.mundo === m.id).map((c) => {
         const ok = hay ? hay.has(c.id) : true;
@@ -1321,7 +1325,7 @@
           type: 'button', class: 'principal', 'aria-disabled': ok ? null : 'true',
           on: { click: () => { if (ok) { ultimoId = c.id; PCB.flow.entrarCapitulo(c.id); } else PCB.util.toast('Contenido en preparación'); } },
         }, h('span', { class: 'n' }, String(c.num)), h('span', { class: 't' }, h('b', {}, c.titulo)), h('span', { class: 'st' }, ok ? '' : '🔒 En preparación')));
-      }))));
+      }))), defPal(m.id)));
     cont.append(h('div', { class: 'ml-in' }, h('div', { class: 'ml-cab' }, h('h2', {}, 'Capítulos')),
       h('p', { class: 'ml-nota' }, 'No se pudo iniciar la vista 3D en este navegador (WebGL no disponible). Esta lista funciona igual.'), secciones));
     host.append(cont);

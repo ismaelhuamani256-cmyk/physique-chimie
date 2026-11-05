@@ -37,7 +37,7 @@
       const humo = [];                        // bocanadas de humo (estado propio del estilo)
       const rumbo = {};                       // orientación suavizada de cohetes
       let ultimoReloj = 0, sueloY = null;
-      const pen = { s: 1, sd: 1, fr: 0, lw: 4, alpha: 1, red: false };
+      const pen = { s: 1, sd: 1, fr: 0, lw: 4, alpha: 1, ink: TINTA };
 
       // ---------------------------------------------------------------------------
       // Fondo: cuaderno cuadriculado con margen rojo (se cachea en un canvas 1.6×)
@@ -106,7 +106,7 @@
       /** círculo a mano con ligero sobretrazo; o.fill rellena (desplazado como un rotulador) */
       function circulo(cx, cy, r, o) {
         o = o || {};
-        const s = pen.s, N = K.clamp(Math.round((r * s) / 3.4), 9, 38), a0 = K.hrand(pen.sd + ((cx * 977) | 0) + ((cy * 331) | 0)) * TAU;
+        const s = pen.s, N = K.clamp(Math.round((r * s) / 2.3), 13, 40), a0 = K.hrand(pen.sd + ((cx * 977) | 0) + ((cy * 331) | 0)) * TAU;
         if (o.fill) { c.beginPath(); c.arc(cx + 0.9 / s, cy + 1.2 / s, r * 0.985, 0, TAU); c.fillStyle = o.fill; c.fill(); }
         const tot = N + Math.max(1, Math.round(N * 0.1)), pts = [];
         for (let k = 0; k <= tot; k++) { const an = a0 + (k / N) * TAU, rr = r * (1 + 0.03 * K.noise(k * 0.8, pen.sd + 3)); pts.push([cx + Math.cos(an) * rr, cy + Math.sin(an) * rr]); }
@@ -179,9 +179,9 @@
         const pata = (x, off, delante) => {
           let an = Math.sin(fase + off) * 0.75 * balanceo;
           if (a.frenando && sp > 0.01) an = delante ? -0.7 : -0.45; // patas estiradas hacia delante al frenar
-          const [sx, cy] = ang2(an), top = -0.058 - sube;
-          linea(x, top, x + sx * 0.058, top + cy * 0.058 + sube, { w: 4.4, c: osc, amp: 0.7 });
-          circulo(x + sx * 0.058 + 0.004, top + cy * 0.058 + sube, 0.007, { fill: osc, w: 2, nostroke: true });
+          const [sx, cy] = ang2(an), top = -0.05 - sube;
+          linea(x, top, x + sx * 0.052, top + cy * 0.052 + sube, { w: 5, c: osc, amp: 0.7 });
+          circulo(x + sx * 0.052 + 0.004, top + cy * 0.052 + sube, 0.008, { fill: osc, w: 2, nostroke: true });
         };
         pata(-0.05, 0, false); pata(0.05, Math.PI, true);
         // cola: se menea
@@ -211,7 +211,7 @@
         const cadera = [0, -0.125 - bote], hombro = [0, -0.2 - bote + resp];
         // piernas
         [0, 1].forEach((i) => {
-          const an = Math.sin(fase + i * Math.PI) * 0.6 * w + (i ? 0.06 : -0.06) * (1 - w);
+          const an = Math.sin(fase + i * Math.PI) * 0.6 * w + (i ? 0.13 : -0.13) * (1 - w);
           const [sx, cy] = ang2(an), rodilla = [cadera[0] + sx * 0.06, cadera[1] + cy * 0.06], pie = [cadera[0] + sx * 0.06 + Math.sin(an * 0.3) * 0.03, 0 - (i && w > 0.1 ? Math.max(0, Math.sin(fase + Math.PI)) * 0.02 : 0)];
           trazo([cadera, rodilla, pie, [pie[0] + 0.03, pie[1]]], { w: 4.6, dbl: false });
         });
@@ -290,7 +290,7 @@
       function recipiente(a, col, kind) {
         const tubo = kind === 'tubo';
         const hw = tubo ? 0.027 : 0.05, hwB = tubo ? 0.027 : 0.045, Ht = tubo ? 0.22 : 0.13, rB = tubo ? 0.027 : 0;
-        const liq = a.def.liquido || col, nivel = K.clamp(K.num(a.def.nivel, tubo ? 0.55 : 0.6), 0.05, 0.95);
+        const liq = a.color || a.def.liquido || col, nivel = K.clamp(K.num(a.def.nivel, tubo ? 0.55 : 0.6), 0.05, 0.95);
         const yb = tubo ? -rB : 0, ytop = yb - nivel * (Ht - (tubo ? rB : 0)), oscila = S.reducido ? 0 : 1;
         // líquido
         const sup = [];
@@ -412,7 +412,6 @@
           const u = d / tl[i];
           circulo(K.lerp(camino[i][0], camino[i + 1][0], u), K.lerp(camino[i][1], camino[i + 1][1], u), 0.0065, { fill: '#2f6bff', nostroke: true });
         }
-        etiqueta('I', -0.06, -h - 0.002 + 0.0, 0, 'transparent');
       };
 
       D.pendulo = (a, col) => {
@@ -506,7 +505,12 @@
         const t = String(a.texto != null ? a.texto : a.def.texto || '');
         const lineas = t.split('\n');
         if (a.def.resaltar) { const w = Math.max(...lineas.map((l) => l.length)) * 0.018; rellena([[-w / 2 - 0.01, -0.025 * lineas.length], [w / 2 + 0.01, -0.025 * lineas.length], [w / 2 + 0.01, 0.025 * lineas.length], [-w / 2 - 0.01, 0.025 * lineas.length]], 'rgba(255,225,0,.5)'); }
-        lineas.forEach((l, i) => etiqueta(K.texPlano(l), 0, (i - (lineas.length - 1) / 2) * 0.054, px, col, { peso: '700' }));
+        lineas.forEach((l, i) => {
+          const m = c.getTransform(), lx = 0, ly = (i - (lineas.length - 1) / 2) * 0.054;
+          c.save(); c.setTransform(1, 0, 0, 1, 0, 0);
+          K.textoRico(c, l, m.a * lx + m.c * ly + m.e, m.b * lx + m.d * ly + m.f, px * dpr, { fill: col, fam: FUENTE });
+          c.restore();
+        });
       };
 
       D.generico = (a, col) => { circulo(0, 0, 0.04, { fill: fillC(col, 0.1), seed: 171 }); etiqueta('?', 0, 0, 18, TINTA); };
@@ -623,10 +627,9 @@
           if (v.etiqueta) {
             c.save(); c.setTransform(dpr, 0, 0, dpr, 0, 0);
             const px = Math.max(15, H * 0.04), nx = -Math.sin(an), ny = Math.cos(an);
-            c.font = '700 ' + px + 'px ' + FUENTE; c.textAlign = 'center'; c.textBaseline = 'middle';
-            const tx = (x0 + x1) / 2 + nx * px * 0.95, ty = (y0 + y1) / 2 + ny * px * 0.95 - (Math.abs(ny) < 0.5 ? 0 : 0);
-            c.lineWidth = 5; c.strokeStyle = 'rgba(252,250,241,.95)'; c.lineJoin = 'round'; c.strokeText(K.texPlano(v.etiqueta), tx, ty);
-            c.fillStyle = col; c.fillText(K.texPlano(v.etiqueta), tx, ty); c.restore();
+            const tx = (x0 + x1) / 2 + nx * px * 1.0, ty = (y0 + y1) / 2 + ny * px * 1.0;
+            K.textoRico(c, v.etiqueta, tx, ty, px, { fill: col, halo: 'rgba(252,250,241,.95)', fam: FUENTE });
+            c.restore();
           }
         });
         c.globalAlpha = 1;
@@ -653,7 +656,7 @@
         V.forEach((v) => {
           const u = v.u, arco = Math.sin(u * Math.PI) * 0.05;
           const x = K.lerp(v.x0, v.x1, u), y = K.lerp(v.y0, v.y1, u) - arco;
-          const col = v.el ? K.elem(v.el).c : '#9aa3b2', r = 0.021 * (v.el ? K.elem(v.el).r : 1) * H * cam.z;
+          const col = v.el ? K.elem(v.el).c : '#9aa3b2', r = 0.025 * (v.el ? K.elem(v.el).r : 1) * K.lerp(v.esc0 || 1, v.esc1 || 1, u) * H * cam.z;
           pen.s = 1; pen.sd = 600 + (K.hash(v.el || 'x') % 30);
           c.globalAlpha = v.k === 'viaja' ? 1 : v.k === 'sale' ? 1 - u : u;
           const rr = r * (v.k === 'viaja' ? 1 : v.k === 'sale' ? 1 - 0.5 * u : 0.5 + 0.5 * u);

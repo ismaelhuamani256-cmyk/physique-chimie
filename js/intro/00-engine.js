@@ -145,7 +145,7 @@
   K.layoutMolecula = (def) => {
     def = def || {};
     if (_lay.has(def)) return _lay.get(def);
-    const L = 0.05; // longitud de enlace
+    const L = 0.058; // longitud de enlace
     const sym = [];
     let explicit = null;
     if (Array.isArray(def.atomos) && def.atomos.length) {
@@ -190,7 +190,7 @@
     }
     // centrar
     let cx = 0, cy = 0; atomos.forEach((a) => { cx += a.x; cy += a.y; }); cx /= atomos.length || 1; cy /= atomos.length || 1;
-    atomos.forEach((a) => { a.x -= cx; a.y -= cy; a.r = 0.021 * K.elem(a.el).r; });
+    atomos.forEach((a) => { a.x -= cx; a.y -= cy; a.r = 0.025 * K.elem(a.el).r; });
     const res = { atomos, enlaces };
     _lay.set(def, res);
     return res;
@@ -237,18 +237,59 @@
     return lineas.slice(0, 5);
   };
 
+  const GRIEGO = { alpha: 'α', beta: 'β', gamma: 'γ', delta: 'δ', Delta: 'Δ', lambda: 'λ', mu: 'μ', nu: 'ν', omega: 'ω', Omega: 'Ω', pi: 'π', rho: 'ρ', sigma: 'σ', Sigma: 'Σ', sum: 'Σ', tau: 'τ', theta: 'θ', phi: 'φ', varphi: 'φ', epsilon: 'ε', varepsilon: 'ε', eta: 'η', cdot: '·', times: '×', rightarrow: '→', Rightarrow: '⇒', approx: '≈', neq: '≠', infty: '∞', degree: '°' };
   /** LaTeX sencillo -> texto plano con Unicode (para etiquetas dibujadas en canvas): \vec F -> F⃗, v_0 -> v₀, \Delta -> Δ */
   K.texPlano = (s) => {
     s = String(s == null ? '' : s);
-    const sub = { 0: '₀', 1: '₁', 2: '₂', 3: '₃', 4: '₄', 5: '₅', 6: '₆', 7: '₇', 8: '₈', 9: '₉', '+': '₊', '-': '₋', n: 'ₙ', i: 'ᵢ', x: 'ₓ' };
+    const sub = { 0: '₀', 1: '₁', 2: '₂', 3: '₃', 4: '₄', 5: '₅', 6: '₆', 7: '₇', 8: '₈', 9: '₉', '+': '₊', '-': '₋' };
     const sup = { 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴', 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹', '+': '⁺', '-': '⁻', n: 'ⁿ' };
-    const gr = { alpha: 'α', beta: 'β', gamma: 'γ', delta: 'δ', Delta: 'Δ', lambda: 'λ', mu: 'μ', nu: 'ν', omega: 'ω', Omega: 'Ω', pi: 'π', rho: 'ρ', sigma: 'σ', Sigma: 'Σ', sum: 'Σ', tau: 'τ', theta: 'θ', phi: 'φ', varphi: 'φ', epsilon: 'ε', varepsilon: 'ε', eta: 'η', cdot: '·', times: '×', rightarrow: '→', Rightarrow: '⇒', approx: '≈', neq: '≠', infty: '∞', degree: '°' };
+    const gr = GRIEGO;
     s = s.replace(/\$/g, '').replace(/\\(?:vec|overrightarrow)\s*\{([^}]*)\}/g, '$1⃗').replace(/\\(?:vec|overrightarrow)\s*([A-Za-z])/g, '$1⃗')
       .replace(/\\(?:text|mathrm|mathit|mathbf)\s*\{([^}]*)\}/g, '$1').replace(/\\([A-Za-z]+)/g, (m, k) => (gr[k] != null ? gr[k] : k))
       .replace(/_\{([^}]*)\}/g, (m, t) => t.split('').map((ch) => sub[ch] || ch).join('')).replace(/_([0-9a-z])/g, (m, ch) => sub[ch] || ch)
       .replace(/\^\{([^}]*)\}/g, (m, t) => t.split('').map((ch) => sup[ch] || ch).join('')).replace(/\^([0-9n+-])/g, (m, ch) => sup[ch] || ch)
       .replace(/[{}]/g, '').replace(/\\,|\\;|\\ /g, ' ');
     return s;
+  };
+
+  /** trocea un LaTeX sencillo en partes [{t,k:'n'|'sub'|'sup',vec?}] para dibujar subíndices/vectores en canvas */
+  K.partesTex = (s) => {
+    s = String(s == null ? '' : s).replace(/\$/g, '').replace(/\\(?:text|mathrm|mathit|mathbf)\s*\{([^}]*)\}/g, '$1');
+    const parts = []; let buf = '', i = 0;
+    const flush = () => { if (buf) { parts.push({ t: buf, k: 'n' }); buf = ''; } };
+    const grupo = () => { let g; if (s[i] === '{') { const j = s.indexOf('}', i); g = s.slice(i + 1, j < 0 ? s.length : j); i = j < 0 ? s.length : j + 1; } else { g = s[i] || ''; i++; } return g; };
+    const gr = (g) => g.replace(/\\([A-Za-z]+)/g, (m, k) => (GRIEGO[k] != null ? GRIEGO[k] : k));
+    while (i < s.length) {
+      if (s.startsWith('\\vec', i) || s.startsWith('\\overrightarrow', i)) { flush(); i += s.startsWith('\\vec', i) ? 4 : 15; while (s[i] === ' ') i++; parts.push({ t: gr(grupo()), k: 'n', vec: true }); continue; }
+      if (s[i] === '\\') { const m = /^\\([A-Za-z]+)/.exec(s.slice(i)); if (m) { buf += GRIEGO[m[1]] != null ? GRIEGO[m[1]] : m[1]; i += m[0].length; } else i += 2; continue; }
+      if (s[i] === '_' || s[i] === '^') { flush(); const k = s[i] === '_' ? 'sub' : 'sup'; i++; parts.push({ t: gr(grupo()), k }); continue; }
+      if (s[i] === '{' || s[i] === '}') { i++; continue; }
+      buf += s[i++];
+    }
+    flush(); return parts;
+  };
+  /** dibuja LaTeX sencillo en un canvas 2D con subíndices, superíndices y flechas de vector. o:{fill,halo,align,peso,fam} */
+  K.textoRico = (ctx, str, x, y, px, o) => {
+    o = o || {};
+    const parts = K.partesTex(str), fam = o.fam || 'sans-serif', peso = o.peso || '700';
+    const fs = (k) => (k === 'n' ? px : px * 0.66);
+    let tot = 0;
+    parts.forEach((p) => { ctx.font = peso + ' ' + fs(p.k) + 'px ' + fam; p.w = ctx.measureText(p.t).width; tot += p.w; });
+    let cx = o.align === 'left' ? x : o.align === 'right' ? x - tot : x - tot / 2;
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    parts.forEach((p) => {
+      const yy = y + (p.k === 'sub' ? px * 0.24 : p.k === 'sup' ? -px * 0.36 : 0);
+      ctx.font = peso + ' ' + fs(p.k) + 'px ' + fam;
+      if (o.halo) { ctx.lineWidth = o.haloW || 5; ctx.strokeStyle = o.halo; ctx.lineJoin = 'round'; ctx.strokeText(p.t, cx, yy); }
+      ctx.fillStyle = o.fill || '#000'; ctx.fillText(p.t, cx, yy);
+      if (p.vec) { // flecha sobre la letra
+        const ay = yy - px * 0.58, a0 = cx + p.w * 0.1, a1 = cx + p.w * 0.95;
+        ctx.save(); ctx.strokeStyle = o.fill || '#000'; ctx.lineWidth = Math.max(1.2, px * 0.07); ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(a0, ay); ctx.lineTo(a1, ay); ctx.moveTo(a1 - px * 0.12, ay - px * 0.1); ctx.lineTo(a1, ay); ctx.lineTo(a1 - px * 0.12, ay + px * 0.1); ctx.stroke(); ctx.restore();
+      }
+      cx += p.w;
+    });
+    return tot;
   };
 
   /**
@@ -287,7 +328,7 @@
   /**
    * Átomos "viajeros" de las reacciones activas: para cada reacción con 0<progreso<1 empareja los
    * átomos de los actores `de` con los de `a` (por elemento) y devuelve
-   * [{el, x0,y0, x1,y1, u, k:'viaja'|'sale'|'entra'}] en coordenadas normalizadas.
+   * [{el, esc0,esc1 (escala origen/destino), x0,y0, x1,y1, u, k:'viaja'|'sale'|'entra'}] en coordenadas normalizadas.
    */
   K.viajeros = (S, aspecto) => {
     const out = [];
@@ -296,9 +337,9 @@
       const sc = a.escala || 1;
       if (a.tipo === 'molecula' || a.tipo === 'atomo' || a.tipo === 'ion') {
         const lay = a.tipo === 'molecula' ? K.layoutMolecula(a.def) : { atomos: [{ el: (a.def && (a.def.elemento || a.def.simbolo)) || 'C', x: 0, y: 0 }] };
-        return lay.atomos.map((q) => ({ el: q.el, x: a.x + (q.x * sc) / aspecto, y: a.y + q.y * sc }));
+        return lay.atomos.map((q) => ({ el: q.el, esc: sc, x: a.x + (q.x * sc) / aspecto, y: a.y + q.y * sc }));
       }
-      return [{ el: null, x: a.x, y: a.y }];
+      return [{ el: null, esc: sc, x: a.x, y: a.y }];
     };
     (S.reacciones || []).forEach((r) => {
       if (!(r.progreso > 0 && r.progreso < 1)) return;
@@ -311,10 +352,10 @@
       A.forEach((p) => {
         let best = -1, bd = 1e9;
         B.forEach((q, j) => { if (usado[j]) return; if (p.el && q.el && p.el !== q.el) return; const d = Math.hypot(q.x - p.x, q.y - p.y); if (d < bd) { bd = d; best = j; } });
-        if (best >= 0) { usado[best] = true; out.push({ el: p.el || B[best].el, x0: p.x, y0: p.y, x1: B[best].x, y1: B[best].y, u, k: 'viaja' }); }
-        else out.push({ el: p.el, x0: p.x, y0: p.y, x1: cB.x, y1: cB.y, u, k: 'sale' });
+        if (best >= 0) { usado[best] = true; out.push({ el: p.el || B[best].el, esc0: p.esc, esc1: B[best].esc, x0: p.x, y0: p.y, x1: B[best].x, y1: B[best].y, u, k: 'viaja' }); }
+        else out.push({ el: p.el, esc0: p.esc, esc1: p.esc, x0: p.x, y0: p.y, x1: cB.x, y1: cB.y, u, k: 'sale' });
       });
-      B.forEach((q, j) => { if (!usado[j]) out.push({ el: q.el, x0: cA.x, y0: cA.y, x1: q.x, y1: q.y, u, k: 'entra' }); });
+      B.forEach((q, j) => { if (!usado[j]) out.push({ el: q.el, esc0: q.esc, esc1: q.esc, x0: cA.x, y0: cA.y, x1: q.x, y1: q.y, u, k: 'entra' }); });
     });
     return out;
   };

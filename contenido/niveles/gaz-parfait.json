@@ -1,0 +1,372 @@
+{
+ "capitulo_id": "gaz-parfait",
+ "tipo_nivel": "fortaleza",
+ "tema_visual": "lava-fortaleza",
+ "fisica_juego": {
+  "gravedad": 0.8,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 180,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 18
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 6,
+   "y": 12,
+   "ref": "f1",
+   "latex": "P \\cdot V = n \\cdot R \\cdot T",
+   "nombre": "Ecuación de estado del gas perfecto"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 13,
+   "y": 13,
+   "enemigo": "temperatura_celsius",
+   "nombre": "Usar la temperatura en °C en P·V = nRT",
+   "correccion": "Usar T en kelvin: T = θ + 273,15."
+  },
+  {
+   "tipo": "foso",
+   "x": 18,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 22,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 27,
+   "y": 12,
+   "ref": "f2",
+   "latex": "T = \\theta + 273{,}15",
+   "nombre": "Temperatura termodinámica T = θ + 273,15"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 30,
+   "y": 13,
+   "enemigo": "volumen_sin_convertir",
+   "nombre": "No convertir el volumen a m³ (ni P a Pa)",
+   "correccion": "Convertir V a m³ y P a Pa antes de calcular."
+  },
+  {
+   "tipo": "foso",
+   "x": 34,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 38,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "resorte",
+   "x": 41,
+   "y": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 44,
+   "y": 12,
+   "largo": 12
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 50,
+   "y": 10,
+   "ref": "f3",
+   "latex": "P \\cdot V = \\text{constante}\\quad (n,\\ T\\ \\text{constantes})",
+   "nombre": "Ley de Mariotte"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 52,
+   "y": 11,
+   "enemigo": "mariotte_sin_condiciones",
+   "nombre": "Aplicar P·V = cte sin T ni n constantes",
+   "correccion": "La ley de Mariotte exige T y n constantes."
+  },
+  {
+   "tipo": "foso",
+   "x": 56,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 56,
+   "y": 12,
+   "largo": 4,
+   "recorrido": 2,
+   "eje": "x",
+   "periodo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 60,
+   "y": 12,
+   "largo": 10
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 62
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 65,
+   "y": 10,
+   "ref": "f4",
+   "latex": "V_m = \\dfrac{R\\cdot T}{P}",
+   "nombre": "Volumen molar V_m = RT/P"
+  },
+  {
+   "tipo": "foso",
+   "x": 70,
+   "largo": 4
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 70,
+   "y": 5,
+   "w": 4,
+   "h": 9,
+   "fx": 0,
+   "fy": -0.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 74,
+   "y": 12,
+   "largo": 12
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 79,
+   "y": 10,
+   "ref": "f5",
+   "latex": "n = \\dfrac{V}{V_m}",
+   "nombre": "n = V/V_m"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 82,
+   "y": 11,
+   "enemigo": "grados_kelvin",
+   "nombre": "Escribir «°K» o dar T en °C",
+   "correccion": "Escribir K y no °K; la temperatura termodinámica se da en kelvin."
+  },
+  {
+   "tipo": "foso",
+   "x": 86,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 86,
+   "y": 12,
+   "largo": 4,
+   "recorrido": 2,
+   "eje": "x",
+   "periodo": 3
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 86,
+   "y": 5,
+   "w": 4,
+   "h": 9,
+   "fx": 0,
+   "fy": -0.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 90,
+   "y": 12,
+   "largo": 10
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 94,
+   "y": 10,
+   "ref": "f6",
+   "latex": "n = \\dfrac{m}{M} = \\dfrac{\\rho\\cdot V}{M}",
+   "nombre": "n = m/M = ρV/M"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 97,
+   "y": 11,
+   "enemigo": "duplicar_celsius",
+   "nombre": "Duplicar θ (°C) creyendo que se duplica T",
+   "correccion": "P se duplica al duplicar T en K, no al duplicar θ en °C."
+  },
+  {
+   "tipo": "puente",
+   "x": 100,
+   "y": 12,
+   "largo": 14,
+   "id": "puente1",
+   "cae_con": "palanca_entropia"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 107,
+   "y": 10,
+   "ref": "f7",
+   "latex": "\\rho = \\dfrac{P\\cdot M}{R\\cdot T}",
+   "nombre": "Masa volúmica ρ = PM/(RT)"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 114,
+   "y": 12,
+   "largo": 14
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 116
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 119,
+   "y": 10,
+   "ref": "f8",
+   "latex": "N = n \\cdot N_A",
+   "nombre": "N = n·N_A"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 121,
+   "y": 11,
+   "enemigo": "modelo_siempre_valido",
+   "nombre": "Creer que el gas perfecto vale para cualquier gas real y a cualquier P",
+   "correccion": "El gas perfecto solo aproxima a los gases reales a presiones bajas (unos pocos bar)."
+  },
+  {
+   "tipo": "palanca",
+   "x": 124,
+   "y": 11,
+   "id": "palanca_entropia",
+   "nombre": "Palanca de Entropía",
+   "efecto": "cae_puente",
+   "objetivo": "puente1"
+  },
+  {
+   "tipo": "foso",
+   "x": 128,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 128,
+   "y": 12,
+   "largo": 4,
+   "recorrido": 2,
+   "eje": "x",
+   "periodo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 132,
+   "y": 12,
+   "largo": 44
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 133
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 138,
+   "y": 10,
+   "ref": "f9",
+   "latex": "u_P = P\\cdot\\sqrt{\\left(\\dfrac{u_T}{T}\\right)^2+\\left(\\dfrac{u_V}{V}\\right)^2}",
+   "nombre": "Incertidumbre de P calculada"
+  },
+  {
+   "tipo": "jefe",
+   "x": 156,
+   "y": 11,
+   "jefe": "rey_entropia",
+   "titulo": "Rey Entropía: guardián de la fortaleza del gas perfecto",
+   "preguntas": [
+    {
+     "pregunta": "Dans l'équation d'état du gaz parfait P·V = n·R·T, les unités à utiliser pour exprimer P, V et T sont :",
+     "opciones": [
+      "P en Pa ; V en L ; T en °C",
+      "P en bar ; V en m³ ; T en K",
+      "P en Pa ; V en m³ ; T en K",
+      "P en hPa ; V en cm³ ; T en °C"
+     ],
+     "correcta": 2,
+     "explicacion": "Dans P·V = n·R·T avec R = 8,31 J·K⁻¹·mol⁻¹ : P en Pa, V en m³ et T en K.",
+     "pagina_pdf": 402
+    },
+    {
+     "pregunta": "À l'échelle microscopique, la valeur de la pression mesurée d'un gaz dans un récipient est liée :",
+     "opciones": [
+      "au degré d'agitation seul des molécules, sans lien avec les parois",
+      "à la fréquence des chocs des molécules sur les parois du récipient",
+      "à la masse seule des molécules, quel que soit leur nombre",
+      "à la température exprimée en °C uniquement"
+     ],
+     "correcta": 1,
+     "explicacion": "La pression d'un gaz a pour origine les chocs des particules sur les parois : plus ils sont fréquents, plus P est élevée.",
+     "pagina_pdf": 399
+    },
+    {
+     "pregunta": "La température thermodynamique T d'un système s'exprime en kelvin et vérifie :",
+     "opciones": [
+      "T = θ − 273,15",
+      "T = θ + 273,15",
+      "T = θ × 273,15",
+      "T = θ + 273,15 en °C"
+     ],
+     "correcta": 1,
+     "explicacion": "T (K) = θ (°C) + 273,15 ; à 0 K il n'y a plus d'agitation (zéro absolu).",
+     "pagina_pdf": 399
+    },
+    {
+     "pregunta": "Le modèle du gaz parfait est applicable aux gaz réels :",
+     "opciones": [
+      "toujours, quelle que soit la pression",
+      "seulement pour des pressions inférieures à quelques bars",
+      "uniquement aux très hautes pressions",
+      "quelle que soit la température et la pression"
+     ],
+     "correcta": 1,
+     "explicacion": "À faibles pressions (jusqu'à quelques bars) les molécules sont très éloignées : un gaz réel se comporte comme un gaz parfait.",
+     "pagina_pdf": 402
+    },
+    {
+     "pregunta": "Pour une quantité de gaz donnée à température constante, l'équation d'état du gaz parfait conduit à :",
+     "opciones": [
+      "P / T = constante",
+      "P·V = constante (loi de Mariotte)",
+      "V / P = constante",
+      "P + V = constante"
+     ],
+     "correcta": 1,
+     "explicacion": "Si n et T sont constantes, n·R·T l'est aussi donc P·V = constante : c'est la loi de Mariotte.",
+     "pagina_pdf": 400
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 172,
+   "y": 12
+  }
+ ]
+}

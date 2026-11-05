@@ -578,9 +578,9 @@
         txt(ctx, 'L₀ = ' + fmt(k.L0, 0) + ' dB a 1 m', xSrc - 14, yAx - 24, { size: fs, color: C.cian2, w: 700 });
         // sonómetros a d y 2d
         const sono = (d, L, col, lab) => {
-          const x = xd(d); if (d > Dmax + 0.1) return; ctx.strokeStyle = col; ctx.setLineDash([3, 3]); ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(x, yAx); ctx.lineTo(x, yTop + 34); ctx.stroke(); ctx.setLineDash([]);
-          ctx.fillStyle = 'rgba(18,26,51,.95)'; rr(ctx, x - 34, yTop, 68, 34, 7); ctx.fill(); ctx.strokeStyle = col; ctx.lineWidth = 1.8; ctx.stroke();
-          txt(ctx, fmt(L, 1) + ' dB', x, yTop + 15, { size: fs + 1, color: col, align: 'center', w: 700, base: 'middle' }); txt(ctx, lab, x, yTop + 28, { size: fs - 2, color: C.txt2, align: 'center', base: 'middle' });
+          const x = xd(d); if (d > Dmax + 0.1) return; ctx.strokeStyle = col; ctx.setLineDash([3, 3]); ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(x, yAx); ctx.lineTo(x, yTop + 40); ctx.stroke(); ctx.setLineDash([]);
+          ctx.fillStyle = 'rgba(18,26,51,.95)'; rr(ctx, x - 34, yTop, 68, 40, 7); ctx.fill(); ctx.strokeStyle = col; ctx.lineWidth = 1.8; ctx.stroke();
+          txt(ctx, fmt(L, 1) + ' dB', x, yTop + 15, { size: fs + 1, color: col, align: 'center', w: 700, base: 'middle' }); txt(ctx, lab, x, yTop + 32, { size: fs - 2, color: C.txt2, align: 'center', base: 'middle' });
           ctx.fillStyle = col; ctx.beginPath(); ctx.arc(x, yAx, 5, 0, TAU); ctx.fill();
         };
         sono(k.d, k.L1, C.ambar, 'd = ' + fmt(k.d, 1) + ' m'); sono(k.d2, k.L2, C.magenta, '2d = ' + fmt(k.d2, 1) + ' m');
@@ -608,5 +608,197 @@
   };
   PCB.anim.register('ondas', ONDAS);
 
-//@@FIN_PARTE_2@@
+  // =====================================================================================
+  // 5. DIFRACCIÓN — θ ≈ λ/a ; anchura de la tache centrale L = 2λD/a ; interfranja i = λD/b
+  //    El campo de ondas se calcula sumando fuentes de Huygens repartidas en cada rendija
+  //    (cada celda: Σ cos(kr − ωt)/√r) y se pinta como imagen: es una simulación real, no un dibujo.
+  //    ESCALA DIDÁCTICA: con a ≈ 50 µm y λ ≈ 550 nm (a/λ ≈ 90) la difracción no se vería en un esquema.
+  //    Se exagera la proporción rendija/longitud de onda con una función monótona
+  //    (a/λ)_dibujo = 1,2 + 6·(a/λ / 90)^0,6 — misma para a y b — y el esquema lo avisa.
+  //    Las LECTURAS (θ, L, i) usan siempre los valores reales (λ, a, b, D).
+  // =====================================================================================
+  const modoDif = (p) => (p.modo === 1 || p.modo === 2 || p.modo === true || p.modo === '1' || /dos|2/i.test(String(p.modo)) ? 1 : 0);
+  const difCalc = (p) => {
+    const lam = Math.max(100, num(p.lam, 550)), a = Math.max(1, num(p.a, 50)), b = Math.max(a * 1.2, num(p.b, 250)), D = Math.max(0.1, num(p.D, 2));
+    return { lam, a, b, D, th: (lam * 1e-9) / (a * 1e-6), Lc: (2 * lam * 1e-9 * D) / (a * 1e-6), i: (lam * 1e-9 * D) / (b * 1e-6), modo: modoDif(p) };
+  };
+  const visR = (rho) => 1.2 + 6 * Math.pow(rho / 90, 0.6);
+  const sinc2 = (x) => { if (Math.abs(x) < 1e-6) return 1; const s = Math.sin(x) / x; return s * s; };
+  const DIFR = {
+    titulo: 'Difracción e interferencias', materia: 'physique',
+    params: [
+      { id: 'lam', label: 'Longitud de onda λ', min: 380, max: 780, step: 5, def: 550, unit: 'nm' },
+      { id: 'a', label: 'Anchura de la rendija a', min: 10, max: 200, step: 5, def: 50, unit: 'µm' },
+      { id: 'modo', label: 'Modo', min: 0, max: 1, step: 1, def: 0, oculto: true },
+      { id: 'b', label: 'Separación de rendijas b (2 rendijas)', min: 100, max: 500, step: 10, def: 250, unit: 'µm' },
+      { id: 'D', label: 'Distancia a la pantalla D', min: 1, max: 5, step: 0.1, def: 2, unit: 'm' }],
+    create(host, p) {
+      const S = { host, t: 0, btns: [], key: '', off: document.createElement('canvas') };
+      punteros(S, {}); return S;
+    },
+    step(S, dt) { S.t += dt; },
+    /** Geometría del esquema (px) a partir del tamaño y de los parámetros. */
+    geo(S, w, h, p) {
+      const k = difCalc(p), sc = clamp(Math.min(w / 700, h / 340), 0.5, 1.3);
+      const y0 = h * 0.14, y1 = h * 0.9, Hs = y1 - y0, xb = w * 0.26, xs = w * 0.7, cyc = (y0 + y1) / 2;
+      let lamv = clamp(14 * (k.lam / 550) * sc, 4, 22), aR = visR((k.a * 1000) / k.lam), bR = Math.max(visR((k.b * 1000) / k.lam), aR * 1.6 + 1);
+      let aV = aR * lamv, bV = bR * lamv; const need = k.modo ? bV + aV : aV, lim = Hs * (k.modo ? 0.86 : 0.62);
+      if (need > lim) { const f = lim / need; lamv *= f; aV *= f; bV *= f; }
+      return { k, sc, y0, y1, Hs, xb, xs, cyc, lamv, aV, bV, aR: aV / lamv, bR: bV / lamv, Dv: xs - xb };
+    },
+    /** Precalcula Σ cos(kr), Σ sin(kr) (con compensación 1/√r) para cada celda del campo difractado. */
+    campo(S, g, w, h) {
+      const cs = Math.max(3, Math.round(4 * g.sc)), nx = Math.ceil(g.xs / cs), ny = Math.ceil(g.Hs / cs), kk = TAU / g.lamv;
+      const slits = g.k.modo ? [g.cyc - g.bV / 2, g.cyc + g.bV / 2] : [g.cyc], src = [];
+      slits.forEach((yc) => { const n = clamp(Math.ceil(g.aV / (g.lamv * 0.4)), 3, 14); for (let i = 0; i < n; i++) src.push(yc - g.aV / 2 + ((i + 0.5) * g.aV) / n); });
+      const c = new Float32Array(nx * ny), s = new Float32Array(nx * ny), amps = [];
+      for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) {
+        const x = i * cs + cs / 2, y = g.y0 + j * cs + cs / 2; if (x <= g.xb) continue;
+        let sc_ = 0, ss = 0; for (const ys of src) { const r = Math.hypot(x - g.xb, y - ys) + 1e-3, a = 1 / Math.sqrt(r + g.lamv * 2); sc_ += Math.cos(kk * r) * a; ss += Math.sin(kk * r) * a; }
+        const comp = Math.sqrt(x - g.xb + g.lamv * 3); c[j * nx + i] = sc_ * comp; s[j * nx + i] = ss * comp; amps.push(Math.hypot(sc_, ss) * comp);
+      }
+      amps.sort((a, b) => a - b); const ref = (amps[Math.floor(amps.length * 0.96)] || 1) * 1.05;
+      for (let q = 0; q < c.length; q++) { c[q] /= ref; s[q] /= ref; }
+      S.cmp = { c, s, nx, ny, cs }; S.off.width = nx; S.off.height = ny; S.img = S.off.getContext('2d').createImageData(nx, ny); S.d32 = new Uint32Array(S.img.data.buffer);
+    },
+    draw(S, ctx, w, h, p) {
+      fondo(ctx, w, h); S.btns = []; const g = DIFR.geo(S, w, h, p), k = g.k, fs = fsz(w), hue = nmRGB(k.lam);
+      const key = [w | 0, h | 0, k.lam, k.a, k.b, k.modo].join('|'); if (key !== S.key) { S.key = key; DIFR.campo(S, g, w, h); }
+      const { c, s, nx, ny, cs } = S.cmp, om = (TAU * S.t) / 0.8, co = Math.cos(om), si = Math.sin(om), kk = TAU / g.lamv;
+      // paleta E∈[−1,1] → color (cresta = color de la luz, valle = fondo)
+      if (S.palKey !== hue.join()) { S.palKey = hue.join(); S.pal = new Uint32Array(256); for (let i = 0; i < 256; i++) { const f = Math.pow(i / 255, 1.7), r = Math.round(lerp(12, hue[0], f)), gg = Math.round(lerp(18, hue[1], f)), b = Math.round(lerp(36, hue[2], f)); S.pal[i] = (255 << 24) | (b << 16) | (gg << 8) | r; } }
+      for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) {
+        const x = i * cs + cs / 2; let E;
+        if (x <= g.xb) E = 0.85 * Math.cos(kk * (x - g.xb) - om); else { const q = j * nx + i; E = c[q] * co + s[q] * si; }
+        S.d32[j * nx + i] = S.pal[clamp(Math.round((E * 0.5 + 0.5) * 255), 0, 255)];
+      }
+      S.off.getContext('2d').putImageData(S.img, 0, 0); ctx.imageSmoothingEnabled = true; ctx.drawImage(S.off, 0, g.y0, nx * cs, ny * cs);
+      ctx.fillStyle = C.bg; ctx.fillRect(nx * cs - 1, g.y0, w - nx * cs + 1, g.Hs + 1); // limpia el sobrante a la derecha de xs
+      // pared con la(s) rendija(s)
+      const slits = k.modo ? [g.cyc - g.bV / 2, g.cyc + g.bV / 2] : [g.cyc]; ctx.fillStyle = '#5c6a96'; let yy = g.y0 - 6;
+      slits.forEach((yc) => { ctx.fillRect(g.xb - 4, yy, 8, yc - g.aV / 2 - yy); yy = yc + g.aV / 2; }); ctx.fillRect(g.xb - 4, yy, 8, g.y1 + 6 - yy);
+      ctx.strokeStyle = '#9fb0d9'; ctx.lineWidth = 1; ctx.strokeRect(g.xb - 4, g.y0 - 6, 8, g.Hs + 12);
+      // abanico: primeros mínimos (sen θ = λ/a) — solo en una rendija
+      const yfan = g.Dv * Math.tan(Math.asin(Math.min(1, 1 / g.aR)));
+      if (!k.modo) {
+        ctx.setLineDash([6, 5]); ctx.strokeStyle = C.ambar; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(g.xb, g.cyc); ctx.lineTo(g.xs, g.cyc - yfan); ctx.moveTo(g.xb, g.cyc); ctx.lineTo(g.xs, g.cyc + yfan); ctx.stroke(); ctx.setLineDash([]);
+        ctx.strokeStyle = C.ambar; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.arc(g.xb, g.cyc, g.Dv * 0.17, -Math.asin(Math.min(1, 1 / g.aR)), 0); ctx.stroke();
+        txt(ctx, 'θ ≈ λ/a = ' + fmt(k.th, 4) + ' rad', g.xb + g.Dv * 0.19, g.cyc - 6 - fs * 0.2, { size: fs, color: C.ambar, w: 700, halo: true });
+      }
+      // ---- pantalla con el patrón de intensidad
+      const I = (y) => { const s_ = (y - g.cyc) / Math.hypot(y - g.cyc, g.Dv); let v = sinc2(Math.PI * g.aR * s_); if (k.modo) { const cc = Math.cos(Math.PI * g.bR * s_); v *= cc * cc; } return v; };
+      const cw = Math.max(40, w - 12 - (g.xs + 20)), x0c = g.xs + 18;
+      for (let y = g.y0; y <= g.y1; y += 2) { const v = I(y); ctx.fillStyle = rgb(hue, 0.08 + 0.92 * Math.pow(v, 0.65)); ctx.fillRect(g.xs, y, 10, 2.2); }
+      ctx.strokeStyle = '#9fb0d9'; ctx.lineWidth = 1.4; ctx.strokeRect(g.xs - 0.5, g.y0 - 0.5, 11, g.Hs + 1);
+      ctx.beginPath(); for (let y = g.y0; y <= g.y1; y += 2) { const X = x0c + I(y) * cw; y === g.y0 ? ctx.moveTo(X, y) : ctx.lineTo(X, y); } ctx.strokeStyle = rgb(hue, 1); ctx.lineWidth = 2.4; ctx.stroke();
+      ctx.lineTo(x0c, g.y1); ctx.lineTo(x0c, g.y0); ctx.closePath(); ctx.fillStyle = rgb(hue, 0.18); ctx.fill();
+      txt(ctx, 'Pantalla', g.xs + 5, g.y0 - 9, { size: fs - 1, color: C.txt2, align: 'center' }); txt(ctx, 'Intensidad', x0c + cw / 2, g.y0 - 9, { size: fs - 1, color: C.txt2, align: 'center' });
+      // cotas sobre la pantalla (valores reales)
+      if (!k.modo) {
+        cota(ctx, g.xs - 10, g.cyc - yfan, g.xs - 10, g.cyc + yfan, null, C.ambar, fs);
+        txt(ctx, 'L = 2λD/a', g.xs - 16, g.cyc - 4, { size: fs, color: C.ambar, align: 'right', w: 700, halo: true }); txt(ctx, '= ' + lfmt(k.Lc, 1), g.xs - 16, g.cyc + fs, { size: fs, color: C.ambar, align: 'right', w: 700, halo: true });
+      } else {
+        const yi = g.Dv * Math.tan(Math.asin(Math.min(1, 1 / g.bR)));
+        if (g.cyc - yi > g.y0 + 4) { cota(ctx, g.xs - 10, g.cyc, g.xs - 10, g.cyc - yi, null, C.ambar, fs); txt(ctx, 'i = λD/b', g.xs - 16, g.cyc - yi / 2 - 3, { size: fs, color: C.ambar, align: 'right', w: 700, halo: true }); txt(ctx, '= ' + lfmt(k.i, 1), g.xs - 16, g.cyc - yi / 2 + fs, { size: fs, color: C.ambar, align: 'right', w: 700, halo: true }); }
+      }
+      txt(ctx, 'onda plana →', g.xb * 0.5, g.y0 - 9, { size: fs - 1, color: C.txt2, align: 'center' });
+      btn(S, ctx, { x: 10, y: 6, w: 96, h: 26, label: 'Una rendija', active: !k.modo, on: () => { p.modo = 0; S._vt = 9; vivo(S, DIFR, p, 0); }, size: fs });
+      btn(S, ctx, { x: 112, y: 6, w: 104, h: 26, label: 'Dos rendijas', active: !!k.modo, on: () => { p.modo = 1; S._vt = 9; vivo(S, DIFR, p, 0); }, size: fs });
+      txt(ctx, 'Esquema no a escala: proporciones exageradas', w - 10, h - 6, { size: fs - 2, color: C.txt2, align: 'right' });
+      chip(ctx, 'λ = ' + fmt(k.lam, 0) + ' nm', w - 10, 19, { size: fs, align: 'right', color: rgb(hue), border: rgb(hue, 0.8) });
+    },
+    formula(p) {
+      const k = difCalc(p);
+      if (k.modo) return '\\begin{aligned}i&=\\dfrac{\\lambda D}{b}=\\dfrac{' + tx(k.lam, 0) + '\\times10^{-9}\\times' + tx(k.D, 1) + '}{' + tx(k.b, 0) + '\\times10^{-6}}=' + ltex(k.i, 2) + '\\\\[3pt]\\theta&\\approx\\dfrac{\\lambda}{a}=' + tx(k.th, 4) + '\\ \\text{rad}\\end{aligned}';
+      return '\\begin{aligned}\\theta&\\approx\\dfrac{\\lambda}{a}=\\dfrac{' + tx(k.lam, 0) + '\\times10^{-9}}{' + tx(k.a, 0) + '\\times10^{-6}}=' + tx(k.th, 4) + '\\ \\text{rad}=' + tx((k.th * 180) / Math.PI, 2) + '^{\\circ}\\\\[3pt]L&=\\dfrac{2\\lambda D}{a}=' + ltex(k.Lc, 1) + '\\end{aligned}';
+    },
+    lecturas(p) {
+      const k = difCalc(p);
+      const r = [{ label: 'θ ≈ λ/a', valor: fmt(k.th, 4) + ' rad (' + fmt((k.th * 180) / Math.PI, 2) + '°)' }, { label: 'L = 2λD/a', valor: lfmt(k.Lc, 1) }, { label: 'D', valor: fmt(k.D, 1) + ' m' }];
+      if (k.modo) r.push({ label: 'i = λD/b', valor: lfmt(k.i, 2) }, { label: 'b', valor: fmt(k.b, 0) + ' µm' });
+      return r;
+    },
+    dispose(S) { disposeComun(S); },
+  };
+  PCB.anim.register('difraccion', DIFR);
+
+  // =====================================================================================
+  // 6. DOPPLER — f = f₀·v/(v ∓ vs). Fuente móvil a velocidad vs; v = 340 m·s⁻¹ (dato típico del sonido en el aire).
+  //    Geometría EXACTA a escala relativa (v y vs en proporción): cada frente es un círculo centrado
+  //    en el punto de emisión. Tiempo ralentizado ×200 (f₀ en pantalla = f₀/200). Los dos observadores
+  //    CUENTAN los frentes que llegan: la "f medida" sale del intervalo entre llegadas y coincide con la fórmula.
+  //    Solo régimen subsónico (vs < v). La fuente recorre la escena y vuelve a empezar.
+  // =====================================================================================
+  const VSON = 340, SLOW = 200;
+  const dopCalc = (p) => {
+    const f0 = Math.max(10, num(p.f0, 440)), vs = clamp(num(p.vs, 100), 0, 330);
+    return { f0, vs, fF: (f0 * VSON) / (VSON - vs), fB: (f0 * VSON) / (VSON + vs), lF: (VSON - vs) / f0, lB: (VSON + vs) / f0, l0: VSON / f0 };
+  };
+  const CF = 0.2; // celeridad de las ondas en la pantalla: fracción de la anchura de la escena por segundo
+  const DOPPLER = {
+    titulo: 'Efecto Doppler', materia: 'physique',
+    params: [
+      { id: 'f0', label: 'Frecuencia de la fuente f₀', min: 100, max: 1000, step: 10, def: 440, unit: 'Hz' },
+      { id: 'vs', label: 'Celeridad de la fuente vₛ', min: 0, max: 250, step: 5, def: 100, unit: 'm/s' }],
+    create(host, p) { return { host, t: 0, sx: 0.2, ems: [], eacc: 1e9, last: { A: null, B: null }, meas: { A: 0, B: 0 }, flash: { A: 0, B: 0 } }; },
+    onParam(S) { S.last = { A: null, B: null }; S.meas = { A: 0, B: 0 }; },
+    step(S, dt, p) {
+      const k = dopCalc(p), xo = { A: 0.06, B: 0.94 }; S.t += dt;
+      S.sx += (k.vs / VSON) * CF * dt; if (S.sx > 0.72) { S.sx = 0.2; S.ems = []; S.last = { A: null, B: null }; S.eacc = 1e9; }
+      S.eacc += dt; const T0 = SLOW / k.f0; while (S.eacc >= T0) { S.eacc -= T0; S.ems.push({ x: S.sx, t: S.t - S.eacc, hit: {} }); }
+      for (const e of S.ems) ['A', 'B'].forEach((o) => { if (e.hit[o]) return; const ta = e.t + Math.abs(xo[o] - e.x) / CF; if (S.t >= ta) { e.hit[o] = 1; if (S.last[o] != null && ta > S.last[o]) S.meas[o] = (1 / (ta - S.last[o])) * SLOW; S.last[o] = ta; S.flash[o] = 1; } });
+      S.ems = S.ems.filter((e) => (S.t - e.t) * CF < 1.1); S.flash.A *= Math.pow(0.02, dt); S.flash.B *= Math.pow(0.02, dt);
+    },
+    draw(S, ctx, w, h, p) {
+      fondo(ctx, w, h); const k = dopCalc(p), fs = fsz(w), wide = w >= 560;
+      const R = wide ? { x: 6, y: 6, w: w * 0.64, h: h - 12 } : { x: 6, y: 4, w: w - 12, h: h * 0.56 };
+      const G = wide ? { x: w * 0.64 + 54, y: 34, w: w * 0.36 - 70, h: h - 96 } : { x: 48, y: h * 0.56 + 26, w: w - 66, h: h * 0.44 - 66 };
+      const cy = R.y + R.h * (wide ? 0.5 : 0.56), X = (f) => R.x + f * R.w, rad = Math.min(R.h * 0.34, 36);
+      ctx.fillStyle = 'rgba(18,26,51,.5)'; rr(ctx, R.x, R.y, R.w, R.h, 12); ctx.fill(); ctx.strokeStyle = 'rgba(42,55,107,.9)'; ctx.stroke();
+      ctx.strokeStyle = 'rgba(159,176,217,.2)'; ctx.setLineDash([4, 6]); ctx.beginPath(); ctx.moveTo(R.x + 6, cy); ctx.lineTo(R.x + R.w - 6, cy); ctx.stroke(); ctx.setLineDash([]);
+      // frentes de onda (círculos centrados en el punto de emisión)
+      ctx.save(); rr(ctx, R.x, R.y, R.w, R.h, 12); ctx.clip();
+      S.ems.forEach((e) => { const r = (S.t - e.t) * CF * R.w, a = clamp(1 - ((S.t - e.t) * CF) / 1.1, 0.05, 1); if (r < 1) return; ctx.strokeStyle = 'rgba(0,212,255,' + (0.85 * a) + ')'; ctx.lineWidth = 2.2; ctx.beginPath(); ctx.arc(X(e.x), cy, r, 0, TAU); ctx.stroke(); });
+      ctx.restore();
+      // cotas de longitud de onda delante y detrás (entre dos frentes consecutivos)
+      const ahead = S.ems.map((e) => X(e.x) + (S.t - e.t) * CF * R.w).filter((x) => x > X(S.sx) + 20 && x < R.x + R.w - 14).sort((a, b) => a - b), behind = S.ems.map((e) => X(e.x) - (S.t - e.t) * CF * R.w).filter((x) => x < X(S.sx) - 20 && x > R.x + 14).sort((a, b) => b - a);
+      if (ahead.length >= 2) cota(ctx, ahead[0], cy + rad + 14, ahead[1], cy + rad + 14, 'λ′ = ' + lfmt(k.lF), C.magenta, fs, false);
+      if (behind.length >= 2) cota(ctx, behind[1], cy + rad + 14, behind[0], cy + rad + 14, 'λ″ = ' + lfmt(k.lB), C.verde, fs, false);
+      // fuente móvil
+      const sx = X(S.sx), gS = ctx.createRadialGradient(sx, cy, 0, sx, cy, 15); gS.addColorStop(0, '#fff3c4'); gS.addColorStop(1, C.ambar); ctx.fillStyle = gS; ctx.beginPath(); ctx.arc(sx, cy, 10, 0, TAU); ctx.fill();
+      if (k.vs > 0) arrow(ctx, sx + 14, cy - 22, sx + 14 + 14 + k.vs * 0.18, cy - 22, C.ambar, 3, 10);
+      txt(ctx, 'fuente f₀ = ' + fmt(k.f0, 0) + ' Hz · vₛ = ' + fmt(k.vs, 0) + ' m/s', sx, cy - 34, { size: fs, color: C.ambar, align: 'center', w: 700, halo: true });
+      // observadores (A detrás, B delante)
+      const obs = (xf, o, col, lab, fth) => { const x = X(xf), fl = S.flash[o]; const y = cy + 2;
+        ctx.fillStyle = 'rgba(' + (o === 'A' ? '0,212,255' : '255,61,166') + ',' + (0.12 + 0.4 * fl) + ')'; ctx.beginPath(); ctx.arc(x, y, 20 + 14 * fl, 0, TAU); ctx.fill();
+        ctx.fillStyle = '#cfd8ff'; ctx.beginPath(); ctx.arc(x, y - 4, 7, 0, TAU); ctx.fill(); ctx.fillStyle = col; rr(ctx, x - 9, y + 4, 18, 14, 5); ctx.fill();
+        const tx_ = clamp(x, R.x + 62, R.x + R.w - 62); txt(ctx, lab, tx_, R.y + R.h - (wide ? 40 : 30), { size: fs, color: col, align: 'center', w: 700, halo: true });
+        txt(ctx, 'f = ' + fmt(fth, 0) + ' Hz', tx_, R.y + R.h - (wide ? 24 : 14), { size: fs + 1, color: C.txt, align: 'center', w: 700, halo: true });
+        if (S.meas[o] > 0) txt(ctx, 'medida: ' + fmt(S.meas[o], 0) + ' Hz', tx_, R.y + R.h - (wide ? 8 : -2), { size: fs - 1.5, color: C.txt2, align: 'center', halo: true }); };
+      obs(0.06, 'A', C.verde, k.vs > 0 ? 'A (detrás): más grave' : 'A', k.fB); obs(0.94, 'B', C.magenta, k.vs > 0 ? 'B (delante): más agudo' : 'B', k.fF);
+      chip(ctx, 'v = 340 m/s (sonido en el aire) · tiempo ÷200', R.x + R.w / 2, R.y + 16, { size: fs - 1.5, align: 'center', color: C.txt2, border: C.borde, w: 400 });
+      // gráfica f(vs)
+      const ymax = 4 * k.f0, ax = ejes(ctx, G, 0, 250, 0, ymax, { xt: [0, 50, 100, 150, 200, 250], fx: (v) => fmt(v, 0), fy: (v) => fmt(v, 0), xl: 'vₛ (m/s)', yl: 'f percibida (Hz)', ny: 4 });
+      ctx.save(); ctx.beginPath(); ctx.rect(G.x, G.y, G.w, G.h); ctx.clip();
+      ctx.setLineDash([5, 5]); ctx.strokeStyle = C.txt2; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(G.x, ax.Y(k.f0)); ctx.lineTo(G.x + G.w, ax.Y(k.f0)); ctx.stroke(); ctx.setLineDash([]);
+      [[(v) => (k.f0 * VSON) / (VSON - v), C.magenta], [(v) => (k.f0 * VSON) / (VSON + v), C.verde]].forEach(([fn, col]) => { ctx.strokeStyle = col; ctx.lineWidth = 2.6; ctx.beginPath(); for (let i = 0; i <= 100; i++) { const v = (250 * i) / 100; i ? ctx.lineTo(ax.X(v), ax.Y(fn(v))) : ctx.moveTo(ax.X(v), ax.Y(fn(v))); } ctx.stroke(); });
+      ctx.restore();
+      [[k.fF, C.magenta], [k.fB, C.verde]].forEach(([f, col]) => { ctx.fillStyle = col; ctx.beginPath(); ctx.arc(ax.X(k.vs), ax.Y(Math.min(f, ymax)), 5.5, 0, TAU); ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke(); });
+      ctx.setLineDash([3, 4]); ctx.strokeStyle = 'rgba(255,209,102,.6)'; ctx.beginPath(); ctx.moveTo(ax.X(k.vs), G.y + G.h); ctx.lineTo(ax.X(k.vs), G.y); ctx.stroke(); ctx.setLineDash([]);
+      txt(ctx, 'delante: f₀v/(v−vₛ)', G.x + 6, G.y + 14, { size: fs - 1, color: C.magenta, w: 700 }); txt(ctx, 'detrás: f₀v/(v+vₛ)', G.x + G.w - 6, G.y + G.h - 8, { size: fs - 1, color: C.verde, w: 700, align: 'right' });
+      txt(ctx, 'f₀', G.x + G.w - 4, ax.Y(k.f0) - 5, { size: fs - 1, color: C.txt2, align: 'right' });
+    },
+    formula(p) {
+      const k = dopCalc(p);
+      return '\\begin{aligned}f_{\\text{delante}}&=f_0\\dfrac{v}{v-v_s}=' + tx(k.f0, 0) + '\\cdot\\dfrac{340}{340-' + tx(k.vs, 0) + '}=' + tx(k.fF, 1) + '\\ \\text{Hz}\\\\[3pt]'
+        + 'f_{\\text{detrás}}&=f_0\\dfrac{v}{v+v_s}=' + tx(k.f0, 0) + '\\cdot\\dfrac{340}{340+' + tx(k.vs, 0) + '}=' + tx(k.fB, 1) + '\\ \\text{Hz}\\end{aligned}';
+    },
+    lecturas(p) {
+      const k = dopCalc(p);
+      return [{ label: 'f delante', valor: fmt(k.fF, 1) + ' Hz' }, { label: 'f detrás', valor: fmt(k.fB, 1) + ' Hz' }, { label: 'f₀', valor: fmt(k.f0, 0) + ' Hz' }, { label: 'v (dato típico)', valor: '340 m·s⁻¹' }, { label: 'Δf delante', valor: sgn(k.fF - k.f0, 1) + ' Hz' }];
+    },
+  };
+  PCB.anim.register('doppler', DOPPLER);
+
+//@@FIN_PARTE_3@@
 })();

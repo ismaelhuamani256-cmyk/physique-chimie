@@ -127,10 +127,10 @@
   },
   {
    "tipo": "plataforma_movil",
-   "x": 146,
-   "y": 12,
+   "x": 152,
+   "y": 11,
    "largo": 3,
-   "recorrido": 3,
+   "recorrido": 2,
    "eje": "y",
    "periodo": 3
   },

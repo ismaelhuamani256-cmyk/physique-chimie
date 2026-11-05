@@ -19,7 +19,7 @@
     const w = g.w, A = w.arena, seg = w.jefeSeg, rey = !!A.fort;
     const floorY = w.topAt(A.izq + 1);
     const b = {
-      rey, w: rey ? 3 : 2.2, h: rey ? 3.6 : 2.6, hNormal: rey ? 3.6 : 2.6, hAt: rey ? 2.2 : 2.0,
+      rey, w: rey ? 3 : 2.2, h: rey ? 3.6 : 2.6, hNormal: rey ? 3.6 : 2.6, hAt: rey ? 2.6 : 2.2,
       floorY, xmin: A.izq + 1, xmax: A.der, vx: 0, vy: 0, dir: -1, estado: 'entra', t: 0, anim: 0, flash: 0, reloj: 0,
       aire: true, aciertos: A.progreso.aciertos, furia: A.progreso.furia, pIdx: A.progreso.pIdx, ciclo: 0, ronda: 0, prog: [],
       preguntas: seg.preguntas || [], titulo: seg.titulo || (rey ? 'Rey Entropía' : 'Gran Ejercicio'), nombre: rey ? 'Rey Entropía' : 'Gran Ejercicio',
@@ -310,9 +310,9 @@
     // brazos / puños de lava
     const sw = Math.round(Math.sin(t * 2.5) * 2);
     [[x - 9, 1], [x + w - 5, -1]].forEach(([ax, s]) => {
-      ctx.fillStyle = OUT; ctx.fillRect(ax, ty + 6 + levanta + (kneel ? 14 : 0), 14, 22);
-      ctx.fillStyle = roca2; ctx.fillRect(ax + 1, ty + 7 + levanta + (kneel ? 14 : 0) + s * sw, 12, 20);
-      ctx.fillStyle = lava; ctx.fillRect(ax + 1, ty + 21 + levanta + (kneel ? 14 : 0) + s * sw, 12, 6); ctx.fillStyle = lava2; ctx.fillRect(ax + 3, ty + 22 + levanta + (kneel ? 14 : 0) + s * sw, 8, 2);
+      ctx.fillStyle = OUT; ctx.fillRect(ax, ty + 6 + levanta + (kneel ? 3 : 0), 14, 22);
+      ctx.fillStyle = roca2; ctx.fillRect(ax + 1, ty + 7 + levanta + (kneel ? 3 : 0) + s * sw, 12, 20);
+      ctx.fillStyle = lava; ctx.fillRect(ax + 1, ty + 21 + levanta + (kneel ? 3 : 0) + s * sw, 12, 6); ctx.fillStyle = lava2; ctx.fillRect(ax + 3, ty + 22 + levanta + (kneel ? 3 : 0) + s * sw, 8, 2);
     });
     // cabeza con corona de engranaje en llamas
     const hy = y + (kneel ? 0 : 2);

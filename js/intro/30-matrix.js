@@ -79,7 +79,7 @@
   //  Siluetas: nubes de puntos [x, y, categoría] en coordenadas locales (unidad ≈ 1, y hacia abajo)
   //   categoría 0 = cuerpo (verde), 1 = detalle (verde claro), 2 = acento brillante (blanco), 3 = alerta (rojo)
   // =====================================================================================
-  const ST = 0.1; // separación entre glifos del contorno
+  const ST = 0.085; // separación entre glifos del contorno
   const P_ = { // primitivas que rellenan un array plano
     line(o, x0, y0, x1, y1, k, st) { const n = Math.max(1, Math.round(Math.hypot(x1 - x0, y1 - y0) / (st || ST))); for (let i = 0; i <= n; i++) o.push(lerp(x0, x1, i / n), lerp(y0, y1, i / n), k); },
     arc(o, cx, cy, rx, ry, a0, a1, k, st) { const n = Math.max(3, Math.round(Math.abs(a1 - a0) * Math.max(rx, ry) / (st || ST))); for (let i = 0; i <= n; i++) { const a = lerp(a0, a1, i / n); o.push(cx + Math.cos(a) * rx, cy + Math.sin(a) * ry, k); } },
@@ -280,7 +280,7 @@
             let idx = glifoDe(c, r);
             if (d.frag && k < d.frag.length) idx = gi(d.frag[d.frag.length - 1 - k]);
             else if (!reduced && Math.random() < 0.012) { idx = (Math.random() * GL.length) | 0; d.chars[r] = idx; }
-            const f = 1 - k / d.len, a = (k === 0 ? 0.95 : Math.pow(f, 1.5) * d.alpha) * 0.62;
+            const f = 1 - k / d.len, a = (k === 0 ? 0.95 : Math.pow(f, 1.4) * d.alpha) * 0.8;
             const at = k === 0 ? aHead : aRain;
             g.globalAlpha = a; g.drawImage(at.cv, (idx % at.cols) * CELL, ((idx / at.cols) | 0) * CELL, CELL, CELL, x - sz / 2, r * ch + ch / 2 - sz / 2, sz, sz);
           }
@@ -335,7 +335,7 @@
 
       /** Dibuja una nube de puntos locales. fm = formación 0..1; res = resaltado. (ax,ay) = ancla local */
       function nube(e, arr, n, X, Y, rot, sc, flipX, alpha, fm, res, t, a, offset, tintes, ax, ay) {
-        const cr = Math.cos(rot), sr = Math.sin(rot), gs = clamp(sc * 0.145 * (1 + 0.3 * res), 7, 21);
+        const cr = Math.cos(rot), sr = Math.sin(rot), gs = clamp(sc * 0.185 * (1 + 0.3 * res), 8, 25);
         for (let i = 0; i < n; i++) {
           let lx = arr[i * 3] * flipX - ax * flipX, ly = arr[i * 3 + 1] - ay; const k = arr[i * 3 + 2];
           const seed = (i + offset) * 1.37, d = hash(seed), u = smooth(0, 1, clamp((fm * 1.6 - d * 0.9) / 0.7, 0, 1));
@@ -473,7 +473,7 @@
             glifoActor(aBlanco, GA, tx - rx * i * gs * 0.8, ty - ry * i * gs * 0.8, gs, al);
           }
           if (v.etiqueta) {
-            const txt = String(v.etiqueta).replace(/\$/g, ''); g.save(); g.globalAlpha = al; const fs = Math.round(clamp(bh * 0.034, 12, 22)); g.font = `bold ${fs}px "DejaVu Sans Mono",monospace`;
+            const L3 = PCB.intro3d, txt = L3 && L3.texPlano ? L3.texPlano(v.etiqueta) : String(v.etiqueta).replace(/\$/g, ''); g.save(); g.globalAlpha = al; const fs = Math.round(clamp(bh * 0.034, 12, 22)); g.font = `bold ${fs}px "DejaVu Sans Mono",monospace`;
             const tw = g.measureText(txt).width + 12, lx = tx + ux * 18 - tw / 2 + (Math.abs(ux) < 0.3 ? 0 : ux * tw / 2), ly = ty + uy * 18 - fs / 2 - 8;
             g.fillStyle = 'rgba(0,10,4,.82)'; g.fillRect(lx, ly - fs / 2 - 3, tw, fs + 8); g.strokeStyle = '#2bff6b'; g.lineWidth = 1; g.strokeRect(lx, ly - fs / 2 - 3, tw, fs + 8);
             g.fillStyle = '#eafff0'; g.textBaseline = 'middle'; g.textAlign = 'center'; g.fillText(txt, lx + tw / 2, ly + 1); g.restore();
@@ -550,7 +550,7 @@
             const u = fract(t * 0.9 + i / 30), x = lerp(A[0], B[0], u) + Math.sin(u * 9 + i) * U * 0.25, y = lerp(A[1], B[1], u) + Math.cos(u * 7 + i * 2) * U * 0.25;
             glifoActor(i % 4 ? aClaro : aBlanco, gi(i % 3 ? '=' : '>'), x, y, clamp(U * 0.22, 10, 22), Math.sin(u * PI) * 0.9);
           }
-          const f = Math.exp(-Math.pow((r.p - 0.5) / 0.15, 2)); if (f > 0.02) { const gr = g.createRadialGradient((A[0] + B[0]) / 2, (A[1] + B[1]) / 2, 0, (A[0] + B[0]) / 2, (A[1] + B[1]) / 2, U * 2.2); gr.addColorStop(0, `rgba(220,255,230,${0.5 * f})`); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(bx, by, bw, bh); }
+          const f = Math.exp(-Math.pow((r.p - 0.5) / 0.15, 2)); if (f > 0.02) { const gr = g.createRadialGradient((A[0] + B[0]) / 2, (A[1] + B[1]) / 2, 0, (A[0] + B[0]) / 2, (A[1] + B[1]) / 2, U * 1.7); gr.addColorStop(0, `rgba(190,255,215,${0.28 * f})`); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.fillRect(bx, by, bw, bh); }
         });
       }
 

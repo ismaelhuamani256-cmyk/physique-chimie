@@ -20,6 +20,9 @@
   const CORAZON = ['.XX.XX.', 'XXXXXXX', 'XXXXXXX', '.XXXXX.', '..XXX..', '...X...'];
   const GEMA = ['..XX..', '.XXXX.', 'XXXXXX', 'XXXXXX', '.XXXX.', '..XX..'];
 
+  /** PixelHUD (Press Start 2P) pinta mal algunas mayúsculas con tilde: las quitamos en el HUD. */
+  const sinTildes = (s) => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[¡¿]/g, (c) => c);
+
   // ---------- entrada ----------
   J.crearInput = function (onPausa) {
     const inp = { izq: false, der: false, salto: false, accion: false, saltoEdge: false, t: { izq: false, der: false, salto: false, acc: false }, dir: 0, destroy: null, bloqueado: false };
@@ -132,7 +135,7 @@
 
     ui.jefe = function (b) {
       jefeBar.style.display = ''; jefeBar.replaceChildren();
-      jefeBar.append(el('span', { class: 'jg-jefe-n' }, b.nombre.toUpperCase()));
+      jefeBar.append(el('span', { class: 'jg-jefe-n' }, sinTildes(b.nombre).toUpperCase()));
       const pips = el('span', { class: 'jg-pips' });
       for (let i = 0; i < 3; i++) pips.append(el('span', { class: 'jg-pip' + (i < b.aciertos ? ' on' : '') }));
       jefeBar.append(pips);
@@ -156,7 +159,7 @@
     };
     let tAviso = 0;
     ui.aviso = function (txt) {
-      aviso.textContent = txt; aviso.classList.remove('on'); void aviso.offsetWidth; aviso.classList.add('on');
+      aviso.textContent = sinTildes(txt); aviso.classList.remove('on'); void aviso.offsetWidth; aviso.classList.add('on');
       clearTimeout(tAviso); tAviso = setTimeout(() => aviso.classList.remove('on'), 1600);
     };
 

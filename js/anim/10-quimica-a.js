@@ -248,7 +248,7 @@
     },
     /** Erlenmeyer: cono truncado + cuello. */
     erlen: () => {
-      const hb = 0.43, hn = 0.1, ys = 0.62, rc = 0.06;
+      const hb = 0.39, hn = 0.1, ys = 0.62, rc = 0.06;
       return (y) => {
         let w = y < ys ? hn + (hb - hn) * Math.pow(1 - y / ys, 1.25) : hn;
         if (y < rc) { const u = (rc - y) / rc; w -= rc * (1 - Math.sqrt(Math.max(0, 1 - u * u))); }
@@ -718,9 +718,13 @@
       const stage = P < 0.95 ? 'Tomar V₀ con la pipeta aforada' : P < 1.95 ? 'Verter V₀ en la fiola aforada' : P < 3.15 ? 'Añadir agua hasta la marca de aforo' : P < 3.9 ? 'Agitar: la disolución se homogeneiza' : 'Disolución hija lista: Cf = C₀·V₀ / Vf';
       const nStage = P < 0.95 ? 1 : P < 1.95 ? 2 : P < 3.15 ? 3 : 4;
       const ly = L0.yb + 17;
-      txtFit(ctx, 'Solución madre · C₀ = ' + T(k.C0, 2) + ' mol/L', M.cx, ly, Math.max(90, 2.6 * L0.Hm * 0.7), { s: fs - 0.5, c: COL.txt2, al: 'center' });
-      txtFit(ctx, 'Fiola aforada Vf = ' + T(k.Vf, 0) + ' mL', F.cx, ly, Math.max(90, 0.9 * L0.Hf), { s: fs - 0.5, c: COL.txt2, al: 'center' });
-      if (k.drain > 0.08) txtFit(ctx, (k.Cf < 0.1 ? 'C = ' + T(k.Cf, 3) : 'C = ' + T(k.Cf, 2)) + ' mol/L', F.cx, F.yb - F.H * 0.30, 0.55 * F.H, { s: fs, w: 700, c: COL.amber, al: 'center', bl: 'middle', halo: true });
+      txtFit(ctx, (L0.wide ? 'Solución madre · C₀ = ' : 'C₀ = ') + T(k.C0, 2) + ' mol/L', M.cx, ly, Math.min(2 * M.cx - 8, 230), { s: fs - 0.5, c: COL.txt2, al: 'center' });
+      txtFit(ctx, (L0.wide ? 'Fiola aforada · ' : '') + 'Vf = ' + T(k.Vf, 0) + ' mL', F.cx, ly, Math.min(2 * (w - F.cx) - 8, 230), { s: fs - 0.5, c: COL.txt2, al: 'center' });
+      if (k.drain > 0.08) {   // etiqueta de la concentración actual, a la derecha de la fiola
+        const tx = F.cx + 0.3 * F.H + 10, tw = w - tx - 4;
+        txtFit(ctx, 'C = ' + (k.Cf < 0.1 ? T(k.Cf, 3) : T(k.Cf, 2)), tx, F.yb - F.H * 0.22, tw, { s: fs + 3, w: 700, c: COL.amber, halo: true });
+        txt(ctx, 'mol·L⁻¹', tx, F.yb - F.H * 0.22 + fs + 3, { s: fs - 1, c: COL.txt2, halo: true });
+      }
       const F_ = k.Vf / k.V0, fTxt = 'F = Vf/V₀ = ' + T(F_, F_ < 10 ? 2 : 1);
       ctx.font = '700 ' + (fs + 1) + 'px ' + FONT;
       const fw = ctx.measureText(fTxt).width + 20;
@@ -741,7 +745,7 @@
 
   // =================================================================================
   // 3) MASA-MOLAR — n = m / M
-  //   Balanza con un montón de moléculas (nº ∝ n = m/M: 12 por mol, escala didáctica) a la izquierda,
+  //   Balanza con un montón de moléculas (nº ∝ n = m/M: 16 por mol, escala didáctica) a la izquierda,
   //   y a la derecha frascos de "1 mol" que se llenan: cada frasco contiene M gramos.
   // =================================================================================
   function layM(w, h) {
@@ -842,11 +846,11 @@
         rr(ctx, jx, jy + jh * 0.12, jw, jh * 0.88, jw * 0.16);
         ctx.fillStyle = 'rgba(160,200,255,.08)'; ctx.fill(); ctx.strokeStyle = 'rgba(205,230,255,.55)'; ctx.lineWidth = 1.2; ctx.stroke();
         rr(ctx, jx + jw * 0.16, jy, jw * 0.68, jh * 0.16, 2.5); ctx.fillStyle = 'rgba(120,150,230,.55)'; ctx.fill();
-        // granos dentro (3 columnas × 4 filas = 12 granos = 1 mol)
-        const cnt = Math.round(12 * f), gr = jw * 0.1;
+        // granos dentro (4 columnas × 4 filas = 16 granos = 1 mol, igual que el montón de la balanza)
+        const cnt = Math.round(16 * f), gr = jw * 0.085;
         for (let i = 0; i < cnt; i++) {
-          const ci = i % 3, ri = (i / 3) | 0;
-          drawMol(ctx, i % 3 === 2 ? SPC.grano2 : SPC.grano, jx + jw * (0.22 + 0.28 * ci), jy + jh * (0.86 - 0.17 * ri), gr * 1.15, 0, 1);
+          const ci = i % 4, ri = (i / 4) | 0;
+          drawMol(ctx, i % 3 === 2 ? SPC.grano2 : SPC.grano, jx + jw * (0.185 + 0.21 * ci), jy + jh * (0.87 - 0.16 * ri), gr * 1.15, 0, 1);
         }
         ctx.globalAlpha = 1;
         if (f > 0.01 && f < 0.99) txt(ctx, T(f, 2) + ' mol', jx + jw / 2, jy + jh + 12, { s: fs - 2, c: COL.txt2, al: 'center' });
@@ -974,8 +978,8 @@
   //   Debajo, el diagrama de predominio: frontera en pH = pKa, marcador en el pH de la disolución.
   // =================================================================================
   function layAB(w, h) {
-    const fs = fsOf(w, h), top = 10, H = clamp(h * 0.62 - 10, 110, 420), yb = top + H, hw0 = (w - 28) / 2 / H;
-    const barH = clamp(h * 0.065, 14, 22), barY = yb + 46;
+    const fs = fsOf(w, h), top = 10, H = clamp(Math.min(h * 0.62 - 10, h - 150), 90, 420), yb = top + H, hw0 = (w - 28) / 2 / H;
+    const barH = clamp(h * 0.06, 13, 22), barY = yb + 50;
     return { fs, top, H, yb, barH, barY, x0: 28, x1: w - 28, V: makeVessel(PROF.box(hw0, 0.05), w / 2, yb, H, 3), rpx: clamp(H / 24, 4.6, 9) };
   }
   const nearest = (list, ref) => { let b = null, bd = 1e9; for (const q of list) { const d = (q.x - ref.x) ** 2 + (q.y - ref.y) ** 2; if (d < bd) { bd = d; b = q; } } return b; };
@@ -1080,7 +1084,7 @@
       // leyenda dentro de la cubeta
       const lx = V.cx - V.hwIn(0.5) * V.H + 14, ly = L0.top + 6 + fs;
       let xx = lx;
-      const leg = [[SPC.AH.c, 'AH (ácido)', null], [SPC.A.c, 'A⁻ (base conjugada)', '-'], [HC, 'H⁺ (protón)', null], [SPC.aguaMed.c, 'H₂O', null]];
+      const wd = w >= 560, leg = [[SPC.AH.c, wd ? 'AH (ácido)' : 'AH', null], [SPC.A.c, wd ? 'A⁻ (base conjugada)' : 'A⁻', '-'], [HC, wd ? 'H⁺ (protón)' : 'H⁺', null], [SPC.aguaMed.c, 'H₂O', null]];
       leg.forEach(([c, t, g]) => {
         blit(ctx, c, fs * 0.55, xx + 5, ly - fs * 0.32, g);
         ctx.font = '600 ' + (fs - 1) + 'px ' + FONT;
@@ -1105,16 +1109,16 @@
       // frontera pKa
       ctx.setLineDash([4, 3]); ctx.strokeStyle = COL.amber; ctx.lineWidth = 1.6;
       ctx.beginPath(); ctx.moveTo(xk, by - 6); ctx.lineTo(xk, by + bh + 3); ctx.stroke(); ctx.setLineDash([]);
-      txt(ctx, 'pKa = ' + T(pKa, 1), xk, by - 10, { s: fs, w: 700, c: COL.amber, al: 'center' });
+      txt(ctx, 'pKa = ' + T(pKa, 1), xk, by - 6, { s: fs, w: 700, c: COL.amber, al: 'center' });
       // marcador de pH
       const mx = X(pH);
       ctx.fillStyle = '#fff';
       ctx.beginPath(); ctx.moveTo(mx, by + bh + 1); ctx.lineTo(mx - 6, by + bh + 10); ctx.lineTo(mx + 6, by + bh + 10); ctx.closePath(); ctx.fill();
       ctx.fillRect(mx - 1, by - 2, 2, bh + 4);
-      pill(ctx, 'pH = ' + T(pH, 1), clamp(mx, x0 + 42, x1 - 42), L0.yb + 21, { s: fs + 1, border: 'rgba(255,255,255,.5)' });
+      pill(ctx, 'pH = ' + T(pH, 1), clamp(mx, x0 + 42, x1 - 42), L0.yb + 17, { s: fs + 1, border: 'rgba(255,255,255,.5)' });
       // lecturas
       const ratioT = R >= 0.01 && R < 1000 ? Ts(R, 3) : sciT(R, 1);
-      const yL = by + bh + 34, pc = Math.round(alpha * 100);
+      const yL = by + bh + 32, pc = Math.round(alpha * 100);
       txtFit(ctx, 'pH − pKa = ' + T(p.pH - pKa, 1) + '   →   [A⁻]/[AH] = 10^' + T(p.pH - pKa, 1) + ' = ' + ratioT, w / 2, yL, w - 30, { s: fs + 1, w: 700, c: COL.txt, al: 'center' });
       txtFit(ctx, 'AH: ' + (100 - pc) + ' %     A⁻: ' + pc + ' %     ·     ' + (p.pH < pKa - 0.05 ? 'predomina AH (pH < pKa)' : p.pH > pKa + 0.05 ? 'predomina A⁻ (pH > pKa)' : 'pH = pKa: [A⁻] = [AH]'), w / 2, yL + fs + 8, w - 30, { s: fs, c: COL.txt2, al: 'center' });
     },
@@ -1144,7 +1148,7 @@
   //   LÍMITE CONOCIDO: el deslizador Vb llega a 60 mL; si Véq = Ca·Va/Cb > 60 mL la equivalencia no se alcanza.
   // =================================================================================
   const ERL = PROF.erlen(), ERL_TBL = volTable(ERL), ERL_VCAP = volAt(ERL_TBL, 0.62);
-  const lvErl = (V) => levelForVol(ERL_TBL, clamp(V / 125, 0, 1.3) * ERL_VCAP);   // erlenmeyer de 125 mL
+  const lvErl = (V) => Math.min(0.9, levelForVol(ERL_TBL, clamp(V / 55, 0, 3) * ERL_VCAP));   // erlenmeyer "de 55 mL" (ficticio: así el líquido se ve con grosor)
   const KE = 1e-14;
   /** pH exacto (incluye la autoprotólisis del agua) en función del volumen versado. */
   function pHtit(Ca, Va, Cb, Vb) {
@@ -1225,7 +1229,7 @@
       shadow(ctx, L0.yb, cx, 0.43 * L0.Hv, ind, 0.30);
       drawLiquid(ctx, E, { level: s.lvl, stops: [{ p: 0, c: ind, a: 0.62 }, { p: 1, c: ind, a: 0.5 }], t: s.t, amp: s.red ? 0 : 0.8 + s.slosh, cb: (c) => s.sw.draw(c, E, L0.rpx) });
       drawGlass(ctx, E);
-      drawTicks(ctx, E, [{ y: lvErl(25), big: true, lab: null }, { y: lvErl(50), big: false }, { y: lvErl(75), big: true }, { y: lvErl(100), big: false }], fs);
+      drawTicks(ctx, E, [10, 20, 30, 40, 50].map((v, i) => ({ y: lvErl(v), big: i % 2 === 1 })), fs);
       // bureta
       drawLiquid(ctx, B, { level: LVB(s.vb), stops: [{ p: 0, c: [150, 190, 255], a: 0.5 }, { p: 1, c: [150, 190, 255], a: 0.4 }], t: s.t, amp: 0 });
       drawGlass(ctx, B, { noHi: true });
@@ -1239,7 +1243,7 @@
       // gota colgante y gotas cayendo
       if (s.dispensing) { const ph = (s.dropT / 0.09), rd = 1.3 + 2.1 * ph; ctx.fillStyle = 'rgba(210,230,255,.9)'; ctx.beginPath(); ctx.ellipse(cx, L0.yTip + rd * 0.9, rd * 0.85, rd, 0, 0, TAU); ctx.fill(); }
       for (const g of s.drops) { ctx.fillStyle = 'rgba(215,235,255,.95)'; ctx.beginPath(); ctx.ellipse(cx, g.y, 2.3, 3.6, 0, 0, TAU); ctx.fill(); }
-      txtFit(ctx, 'NaOH ' + T(p.Cb, 2) + ' mol/L', rx + 8, L0.yTop + L0.Hb * 0.35 - 8, L0.cx - rx - L0.hwB - 22, { s: fs - 1.5, c: COL.txt2 });
+      if (L0.wide) txtFit(ctx, 'NaOH ' + T(p.Cb, 2) + ' mol/L', rx + 8, L0.yTop + L0.Hb * 0.35 - 8, L0.cx - rx - L0.hwB - 22, { s: fs - 1.5, c: COL.txt2 });
       txtFit(ctx, 'HCl ' + T(p.Ca, 2) + ' mol/L · ' + T(p.Va, 0) + ' mL + BBT', cx, L0.yb + 18, L0.appW + 10, { s: fs - 1, c: COL.txt2, al: 'center' });
       // ---------------- curva pH = f(Vb)
       const P = L0.plot, px0 = P.x0 + 30, px1 = P.x1, py0 = P.y0, py1 = P.y1;
@@ -1264,7 +1268,8 @@
         ctx.setLineDash([4, 3]); ctx.strokeStyle = COL.amber; ctx.lineWidth = 1.3;
         ctx.beginPath(); ctx.moveTo(xe, py0); ctx.lineTo(xe, py1); ctx.stroke(); ctx.setLineDash([]);
         ctx.beginPath(); ctx.arc(xe, Y(7), 5, 0, TAU); ctx.fillStyle = COL.amber; ctx.fill(); ctx.strokeStyle = '#0a0f20'; ctx.lineWidth = 1.5; ctx.stroke();
-        txtFit(ctx, 'equivalencia · Véq = ' + T(Veq, 1) + ' mL', xe + (xe > (px0 + px1) / 2 ? -6 : 6), py0 + 10, px1 - px0 - 10, { s: fs - 0.5, w: 700, c: COL.amber, al: xe > (px0 + px1) / 2 ? 'right' : 'left' });
+        const right = xe > (px0 + px1) / 2;
+        txtFit(ctx, (L0.wide ? 'equivalencia · ' : '') + 'Véq = ' + T(Veq, 1) + ' mL', xe + (right ? -6 : 6), py0 + 10, right ? xe - px0 - 8 : px1 - xe - 8, { s: fs - 0.5, w: 700, c: COL.amber, al: right ? 'right' : 'left' });
       }
       // curva completa (tenue) y tramo recorrido (sólido)
       const NS = 360, vmaxC = xmax;
@@ -1284,12 +1289,14 @@
       const names = ['H₃O⁺', 'Cl⁻', 'Na⁺', 'HO⁻', 'H₂O'];
       names.forEach((nm, i) => {
         const sp = TSPC[i];
+        ctx.font = '400 ' + (fs - 1) + 'px ' + FONT;
+        const iw = 14 + ctx.measureText(nm).width + 8;
+        if (lx + iw > px1 + 4 && lx > P.x0) { lx = P.x0; ly += fs + 3; }      // pasa a otra fila si no cabe
         blit(ctx, sp.c, 4.5, lx + 5, ly - 4, sp.glyph);
         txt(ctx, nm, lx + 14, ly, { s: fs - 1, c: COL.txt2 });
-        ctx.font = '400 ' + (fs - 1) + 'px ' + FONT;
-        lx += 14 + ctx.measureText(nm).width + 10;
+        lx += iw;
       });
-      if (L0.wide) txt(ctx, 'H₃O⁺ + HO⁻ → 2 H₂O', px1, ly, { s: fs, w: 700, c: COL.green, al: 'right' });
+      if (L0.wide) txt(ctx, 'H₃O⁺ + HO⁻ → 2 H₂O', px1, py1 + 54, { s: fs, w: 700, c: COL.green, al: 'right' });
     },
     formula(p) {
       const Veq = p.Ca * p.Va / p.Cb, na = p.Ca * p.Va, nb = p.Cb * p.Vb, Vt = p.Va + p.Vb, x = (na - nb) / Vt;
@@ -1402,7 +1409,6 @@
         ctx.strokeStyle = 'rgba(140,165,235,.18)'; ctx.lineWidth = 1;
         for (let v = 0; v <= smax; v += 250) { ctx.beginPath(); ctx.moveTo(gx0, Y(v)); ctx.lineTo(gx1, Y(v)); ctx.stroke(); txt(ctx, String(v), gx0 - 5, Y(v), { s: fs - 2, c: COL.txt2, al: 'right', bl: 'middle' }); }
         for (let v = 0; v <= 100; v += 25) txt(ctx, String(v), X(v), gy1 + 14, { s: fs - 2, c: COL.txt2, al: 'center' });
-        txt(ctx, 'σ (mS·m⁻¹)', gx0 - 5, gy0 - 14, { s: fs - 1, w: 700, c: COL.txt2, al: 'right' });
         txt(ctx, 'c (mmol·L⁻¹)', gx1, gy1 + 28, { s: fs - 1, w: 700, c: COL.txt2, al: 'right' });
         ctx.beginPath(); ctx.moveTo(X(0), Y(0)); ctx.lineTo(X(100), Y(sigma(100)));
         ctx.strokeStyle = 'rgba(0,212,255,.35)'; ctx.lineWidth = 2; ctx.stroke();
@@ -1411,7 +1417,7 @@
         ctx.setLineDash([3, 3]); ctx.strokeStyle = 'rgba(255,209,102,.7)'; ctx.lineWidth = 1;
         ctx.beginPath(); ctx.moveTo(X(c), gy1); ctx.lineTo(X(c), Y(sg)); ctx.lineTo(gx0, Y(sg)); ctx.stroke(); ctx.setLineDash([]);
         ctx.beginPath(); ctx.arc(X(c), Y(sg), 6, 0, TAU); ctx.fillStyle = COL.amber; ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.6; ctx.stroke();
-        txtFit(ctx, 'σ = (λ₊ + λ₋)·c   (recta por el origen)', gx0 + 6, gy0 - 14, gx1 - gx0 - 10, { s: fs - 0.5, w: 700, c: COL.green });
+        txtFit(ctx, L0.wide ? 'σ (mS·m⁻¹) = (λ₊ + λ₋)·c   recta por el origen' : 'σ (mS·m⁻¹) = (λ₊+λ₋)·c', G.x0 + 8, gy0 - 14, G.x1 - G.x0 - 6, { s: fs - 0.5, w: 700, c: COL.green });
       }
     },
     formula(p) {

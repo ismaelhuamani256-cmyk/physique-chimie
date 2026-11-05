@@ -45,17 +45,23 @@
    "largo": 20
   },
   {
+   "tipo": "resorte",
+   "x": 28,
+   "y": 13
+  },
+  {
+   "tipo": "plataforma",
+   "x": 31,
+   "y": 8,
+   "largo": 5
+  },
+  {
    "tipo": "coleccionable",
-   "x": 32,
-   "y": 11,
+   "x": 33,
+   "y": 6,
    "ref": "f2",
    "latex": "\\mathrm{pH} = -\\log\\dfrac{[\\mathrm{H_3O^+}]}{c^\\circ}",
    "nombre": "Définition du pH"
-  },
-  {
-   "tipo": "resorte",
-   "x": 38,
-   "y": 13
   },
   {
    "tipo": "foso",

@@ -64,7 +64,7 @@
     box: () => lib.geo('box', () => new T.BoxGeometry(1, 1, 1)),
     cone: () => lib.geo('cone', () => new T.ConeGeometry(1, 1, 14)),
     circle: () => lib.geo('circle', () => new T.CircleGeometry(1, 36)),
-    ring: () => lib.geo('ring', () => new T.RingGeometry(0.86, 1, 48)),
+    ring: () => lib.geo('ring', () => new T.RingGeometry(0.94, 1, 56)),
     unitCircle: () => lib.geo('unitCircle', () => {
       const p = []; for (let i = 0; i < 72; i++) { const a = (i / 72) * Math.PI * 2; p.push(new T.Vector3(Math.cos(a), Math.sin(a), 0)); }
       return new T.BufferGeometry().setFromPoints(p);
@@ -352,7 +352,7 @@
       }
       if (b.caja) { nw = b.caja[0]; nh = b.caja[1]; }
       if (b.ancla) { ax = b.ancla[0]; ay = b.ancla[1]; }
-      const fit = b.fit != null ? b.fit : Math.sqrt((ext[0] * H / nw) * (ext[1] * H / nh));
+      const fit = (b.fit != null ? b.fit : Math.sqrt((ext[0] * H / nw) * (ext[1] * H / nh))) * (b.fitK || 1);
       const holder = new T.Group(); holder.scale.setScalar(fit); holder.position.set(-ax * fit, -ay * fit, 0); holder.add(b.obj);
       const root = new T.Group(); root.add(holder); scene.add(root);
       const w = nw * fit, h = nh * fit;
@@ -381,10 +381,15 @@
       }
       if (!e.bubble) return;
       e.bubbleK = Math.min(1, e.bubbleK + dt * 5);
-      const k = 1 + 0.12 * Math.sin(e.bubbleK * Math.PI); const pop = smooth(0, 1, e.bubbleK) * k, bs = e.bubble.userData.base;
+      const vz = api.vista || { tx: 0, ty: 0, z: 1 }, zi = 1 / Math.max(0.6, vz.z);   // el bocadillo mantiene su tamaño en pantalla
+      const k = 1 + 0.12 * Math.sin(e.bubbleK * Math.PI); const pop = smooth(0, 1, e.bubbleK) * k, bs0 = e.bubble.userData.base;
+      const bs = [bs0[0] * zi, bs0[1] * zi];
       e.bubble.scale.set(bs[0] * pop, bs[1] * pop, 1);
-      const hw = bs[0] / 2;
-      e.bubble.position.set(clamp(e.root.position.x, -W / 2 + hw + 0.2, W / 2 - hw - 0.2), Math.min(e.root.position.y + e.arriba * e.root.scale.x + 0.3, H / 2 - bs[1] - 0.1), 1.2);
+      // se mantiene dentro de lo que ve la cámara (zoom/centro) con un margen; el plano z=1.2 está algo más cerca
+      const vw = (W / 2) / vz.z * 0.9, vh = (H / 2) / vz.z * 0.9, hw = bs[0] / 2;
+      const bx = clamp(e.root.position.x, vz.tx - vw + hw + 0.2, vz.tx + vw - hw - 0.2);
+      const by = Math.min(e.root.position.y + e.arriba * e.root.scale.x + 0.3, vz.ty + vh - bs[1] - 0.1);
+      e.bubble.position.set(bx, by, 1.2);
     }
     const _c = new T.Vector3();
     function halo(e, a, t) {
@@ -459,6 +464,7 @@
       const az = cfg.camAz ? cfg.camAz(t, reduced) : 0, el = cfg.camEl ? cfg.camEl(t, reduced) : 0, d = D0 / z;
       camera.position.set(tx + Math.sin(az) * Math.cos(el) * d, ty + Math.sin(el) * d, Math.cos(az) * Math.cos(el) * d);
       camera.lookAt(tx, ty, 0);
+      api.vista = { tx, ty, z };
     }
 
     // ----- bucle principal -----
@@ -613,8 +619,8 @@
   /** LaTeX sencillo -> texto plano unicode (usa el kit del motor si existe) */
   lib.texPlano = function (s) {
     const K = PCB.intro && PCB.intro.kit;
-    if (K && K.texPlano) return K.texPlano(s);
-    return String(s == null ? '' : s).replace(/\$|\\(?:vec|text|mathrm)|[{}]/g, '').replace(/\\([A-Za-z]+)/g, '$1');
+    const r = K && K.texPlano ? K.texPlano(s) : String(s == null ? '' : s).replace(/\$|\\(?:vec|text|mathrm)|[{}]/g, '').replace(/\\([A-Za-z]+)/g, '$1');
+    return r.replace(/\u20d7/g, ''); // la flecha combinante no existe en la mayoría de fuentes
   };
 
   /** spec -> {atomos:[{el,p:[x,y,z]}], enlaces:[[i,j,ord]], carga, generica} */
@@ -676,7 +682,7 @@
     let colAct = null;
     const pintar = (c) => {
       colAct = c; const cc = c && !/^#f{3,6}$/i.test(c) ? lib.color(c) : null;
-      for (const el in matEl) { const m0 = matEl[el]; m0.color.copy(lib.color(infoEl(el).c)); if (cc && el !== 'H') m0.color.lerp(cc, 0.5); m0.userData.baseOp = m0.opacity; }
+      for (const el in matEl) { const m0 = matEl[el]; m0.color.copy(lib.color(infoEl(el).c)); if (cc && el !== 'H') m0.color.lerp(cc, 0.2); m0.emissive.copy(m0.color).multiplyScalar(0.28); if (m0.userData.baseEm) m0.userData.baseEm.copy(m0.emissive); }
       glow.visible = !!cc; if (cc) glow.material.color.copy(cc);
     };
     pintar(spec.color);
@@ -684,7 +690,7 @@
     return {
       obj: grp, radio: rmax + 0.3, mol: { atomos, enlaces, spin, K, m },
       update(a, S, dt) {
-        spin.rotation.y = S.i * 0.55 + fase; spin.rotation.x = 0.35 * Math.sin(S.i * 0.4 + fase);
+        spin.rotation.y = 0.8 * Math.sin(S.i * 0.7 + fase); spin.rotation.x = 0.3 * Math.sin(S.i * 0.45 + fase * 1.7); // vaivén: nunca queda de canto
         if (a.color && a.color !== colAct) pintar(a.color);
       },
     };
@@ -692,14 +698,15 @@
 
   // ---------- átomo con núcleo, órbitas y electrones ----------
   function zDe(spec) {
-    if (spec.Z || spec.z) return +(spec.Z || spec.z);
+    if (spec.Z || spec.z) { zDe.conocido = true; return +(spec.Z || spec.z); }
+    zDe.conocido = false;
     for (const c of [spec.elemento, spec.simbolo, spec.formula, spec.texto, spec.etiqueta, spec.nombre, lib.formulaDeActor(spec)]) {
-      if (!c) continue; const p = parseFormula(c); if (p && p.orden.length === 1) { const i = SIMBOLOS.indexOf(p.orden[0]); if (i >= 0) return i + 1; }
+      if (!c) continue; const p = parseFormula(c); if (p && p.orden.length === 1) { const i = SIMBOLOS.indexOf(p.orden[0]); if (i >= 0) { zDe.conocido = true; return i + 1; } }
     }
     return 6;
   }
   B.atomo = function (spec) {
-    const Z = zDe(spec), el = SIMBOLOS[Z - 1] || 'C', inf = infoEl(el), col = spec.color || (el === 'C' ? '#4cc9f0' : inf.c);
+    const Z = zDe(spec), conocido = zDe.conocido, el = SIMBOLOS[Z - 1] || 'C', inf = infoEl(el), col = spec.color || (el === 'C' ? '#4cc9f0' : inf.c);
     const grp = new T.Group(), nuc = new T.Group(); grp.add(nuc);
     const mr = lib.mat('#ff5d73', { shininess: 80 }), mb = lib.mat('#8ea0ff', { shininess: 80 });
     for (let i = 0; i < 8; i++) {
@@ -717,9 +724,9 @@
       for (let i = 0; i < n; i++) { const e = lib.mesh(G.sphereLo(), matEl2, 0, 0, 0, 0.1); og.add(e); elec.push({ e, R, ph: (i / n) * Math.PI * 2 + k, w: 1.7 / (1 + 0.55 * k) }); }
       grp.add(og);
     });
-    const etq = lib.textSprite(el, { color: '#fff', h: 0.42, px: 60 }); etq.position.set(0, -(0.95 + 0.7 * (capas.length - 1)) - 0.45, 0.3); grp.add(etq);
+    if (conocido) { const etq = lib.textSprite(el, { color: '#fff', h: 0.42, px: 60 }); etq.position.set(0, -(0.95 + 0.7 * (capas.length - 1)) * 0.6 - 0.3, 0.3); grp.add(etq); }
     return {
-      obj: grp, radio: 0.95 + 0.7 * (capas.length - 1) + 0.3, tint: null, caja: [2 * (0.95 + 0.7 * (capas.length - 1)), 2 * (0.95 + 0.7 * (capas.length - 1))], ancla: [0, 0],
+      obj: grp, radio: 0.95 + 0.7 * (capas.length - 1) + 0.3, tint: null, caja: [2 * (0.95 + 0.7 * (capas.length - 1)), 2 * (0.95 + 0.7 * (capas.length - 1))], ancla: [0, 0], fitK: 1.6,
       update(a, S) {
         for (const q of elec) { const th = q.ph + S.i * q.w; q.e.position.set(Math.cos(th) * q.R, Math.sin(th) * q.R, 0); }
         grp.rotation.y = 0.4 * Math.sin(S.i * 0.3);
@@ -827,8 +834,8 @@
     fondo: 'radial-gradient(ellipse at 50% 38%, #174a4c 0%, #0c2036 48%, #170a2a 100%)',
     trayColor: '#2ee59d',
     luces(scene) {
-      scene.add(new T.HemisphereLight(0xcfe8ff, 0x2a1240, 0.95));
-      const d = new T.DirectionalLight(0xffffff, 0.95); d.position.set(-5, 8, 10); scene.add(d);
+      scene.add(new T.HemisphereLight(0xdcefff, 0x3a2058, 1.25));
+      const d = new T.DirectionalLight(0xffffff, 1.05); d.position.set(-5, 8, 10); scene.add(d);
       const r = new T.PointLight(0xff3da6, 0.9, 40); r.position.set(7, -3, 6); scene.add(r);
     },
     ambiente(scene, api) {
@@ -916,7 +923,7 @@
     v.enR.forEach((b) => { b.mesh.visible = kR > 0.02; if (b.mesh.visible) lib.ponerVarilla(b.mesh, v.atomos[b.i].p, v.atomos[b.j].p, 0.08 * v.atomos[b.i].sc * kR * (b.ord > 1 ? 1.4 : 1)); });
     v.enP.forEach((b) => { b.mesh.visible = kP > 0.02; if (b.mesh.visible) lib.ponerVarilla(b.mesh, v.atomos[b.i].p, v.atomos[b.j].p, 0.08 * v.atomos[b.i].sc * kP * (b.ord > 1 ? 1.4 : 1)); });
     v.flash.position.set(cx / n, cy / n, cz / n + 0.5);
-    const f = Math.exp(-Math.pow((p - 0.5) / 0.12, 2)); v.flash.material.opacity = 0.85 * f; v.flash.scale.setScalar(2.5 + 2.5 * f);
+    const f = Math.exp(-Math.pow((p - 0.5) / 0.12, 2)); v.flash.material.opacity = 0.6 * f; v.flash.scale.setScalar(1.6 + 1.8 * f);
   }
 
   lib.registrar('quimica3d', { nombre: 'Química 3D', init(ctx) { return lib.crearEstilo3D(ctx, cfgQuimica); } });

@@ -130,7 +130,8 @@
     ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
   }
   function txt(ctx, s, x, y, o = {}) {
-    ctx.font = FONT(o.size || 12, o.weight || 600);
+    o = Object.assign({}, o, { size: Math.max(o.size || 12, 10) }); // nunca por debajo de 10 px (móvil)
+    ctx.font = FONT(o.size, o.weight || 600);
     ctx.textAlign = o.align || 'left'; ctx.textBaseline = o.base || 'middle';
     if (o.bg) {
       const tw = ctx.measureText(s).width, sz = o.size || 12, pad = 3;
@@ -205,7 +206,7 @@
   }
 
   /** Escala de longitudes de tamaño de pantalla: 1 en 720 px de ancho */
-  const kPant = (w, h) => clamp(Math.min(w / 720, h / 405), 0.55, 1.5);
+  const kPant = (w, h) => clamp(Math.min(w / 720, h / 405), 0.7, 1.5);
 
   /** Cada preset llama a esto para registrarse (todos materia: physique) */
   const reg = (id, def) => PCB.anim.register(id, Object.assign({ materia: 'physique' }, def));
@@ -568,7 +569,7 @@
       txt(ctx, `t = ${num(t, 2)} s  /  T = ${num(f.T, 2)} s`, hx, 14, { align: 'right', size: 12 * k, color: C.ambar });
       txt(ctx, `v = ${num(v, 1)} m/s`, hx, 14 + 17 * k, { align: 'right', size: 12 * k, color: C.vel });
       txt(ctx, `vx = ${num(f.vx, 1)}  vy = ${num(vyn, 1)} m/s`, hx, 14 + 34 * k, { align: 'right', size: 11 * k + 0.5, color: vcol, weight: 400 });
-      boton(s, ctx, 10, h - 34, 92, 26, '🚀 Lanzar', s.lanzar, false);
+      boton(s, ctx, 10, 10, 92, 26, '🚀 Lanzar', s.lanzar, false);
     },
     formula(p) {
       const f = proyFisica(p);
@@ -673,7 +674,7 @@
         flecha(ctx, bx, by, bx, by + (f.sig < 0 ? -LF : LF), C.fuerza, { lw: 3.4 * k, label: 'F = qE', lsize: 11 * k + 1, lside: -1 });
         flecha(ctx, bx + 12 * k, by, bx + 12 * k, by + (f.sig < 0 ? -LF * 1.55 : LF * 1.55), C.acel, { lw: 3.4 * k, label: 'a', lsize: 12 * k + 1 });
       }
-      if (parada) txt(ctx, 'impacto en la placa', bx, by + (f.sig < 0 ? -28 : 28) * k, { align: 'center', size: 12 * k, color: C.ambar, bg: 'rgba(10,15,32,.75)' });
+      if (parada) txt(ctx, 'impacto en la placa', bx, by + (f.sig < 0 ? 30 : -30) * k, { align: 'center', size: 12 * k, color: C.ambar, bg: 'rgba(10,15,32,.75)' });
       // cotas: L, d
       ctx.strokeStyle = C.tenue; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(pxl, yB + th + 26 * k); ctx.lineTo(pxl + pw, yB + th + 26 * k); ctx.stroke();
       txt(ctx, 'L = 10 cm', pxl + pw / 2, yB + th + 38 * k, { align: 'center', size: 11 * k, color: C.tenue, weight: 400 });
@@ -794,7 +795,7 @@
     },
     lecturas(p) {
       const f = gravFisica(p), o = [{ label: 'F', valor: `${snum(f.F, 2)} N` }, { label: 'g(r) = GM/r²', valor: `${num(f.g, 2)} m·s⁻²` },
-        { label: 'v = √(GM/r)', valor: `${num(f.vc / 1000, 2)} km·s⁻¹` }, { label: 'T', valor: `${fmtT(f.T)} (${snum(f.T, 2)} s)` }];
+        { label: f.e > 0.005 ? 'v circular (r = a)' : 'v = √(GM/r)', valor: `${num(f.vc / 1000, 2)} km·s⁻¹` }, { label: 'T', valor: `${fmtT(f.T)} (${snum(f.T, 2)} s)` }];
       return o;
     },
   });
@@ -832,7 +833,7 @@
     step(s, dt, p) {
       s.p = p; const mu = p.mu || 0;
       if (s.reposo > 0) { s.reposo += dt; if (s.reposo > 2.5) s.reinicia(p); return; }
-      pasos(s, dt, 1 / 600, (hh) => {
+      pasos(s, dt, 1 / 1200, (hh) => {
         const sl = 2 * EM_C * s.x, cosT = 1 / Math.sqrt(1 + sl * sl), sinT = sl * cosT;
         // rozamiento estático: si la pendiente es menor que μ y la bola está parada, se queda
         if (mu > 0 && Math.abs(s.vs) < 1e-3 && Math.abs(sl) <= mu) { s.vs = 0; return; }
@@ -841,9 +842,12 @@
         if (mu > 0 && Math.abs(s.vs) > 1e-3) at -= mu * G0 * cosT * sgn(s.vs);
         s.vs += at * hh; s.x += s.vs * cosT * hh;                 // Euler semi-implícito
         if (mu > 0) s.Q += mu * G0 * cosT * Math.abs(s.vs) * hh;  // J/kg disipados
-        // conservación: la rapidez sale de la energía disponible (E0 − Q − g·y)
-        const ek = s.E0 - s.Q - G0 * EM_C * s.x * s.x;
-        s.vs = ek > 0 ? sgn(s.vs) * Math.sqrt(2 * ek) : 0;
+        // conservación: con rapidez apreciable, |v| sale de la energía disponible (E0 − Q − g·y);
+        // cerca de los puntos de retorno se deja la integración natural (así la bola puede dar la vuelta)
+        if (Math.abs(s.vs) > 0.3) {
+          const ek = s.E0 - s.Q - G0 * EM_C * s.x * s.x;
+          s.vs = ek > 0 ? sgn(s.vs) * Math.sqrt(2 * ek) : 0;
+        }
       });
       if (mu > 0 && s.vs === 0 && Math.abs(2 * EM_C * s.x) <= mu) s.reposo = 1e-6;
     },
@@ -856,7 +860,6 @@
       const cx = sceneW * 0.5, base = h * 0.84, X = (xm) => cx + xm * sc, Y = (ym) => base - ym * sc;
       // línea de referencia Ep = 0
       ctx.strokeStyle = 'rgba(142,160,207,.45)'; ctx.setLineDash([5, 5]); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(6, base); ctx.lineTo(sceneW - 6, base); ctx.stroke(); ctx.setLineDash([]);
-      txt(ctx, 'Ep = 0 (referencia)', cx, base - 9 * k, { align: 'center', size: 10.5 * k, color: C.tenue, weight: 400 });
       // tobogán (relleno + borde)
       const xe = Xt * 1.08, N = 60;
       ctx.beginPath(); ctx.moveTo(X(-xe), base + 14 * k);
@@ -867,6 +870,7 @@
       ctx.strokeStyle = mu > 0 ? '#9aa8e0' : '#6a82d6'; ctx.lineWidth = 3; ctx.beginPath();
       for (let i = 0; i <= N; i++) { const x = -xe + (2 * xe * i) / N; i ? ctx.lineTo(X(x), Y(EM_C * x * x)) : ctx.moveTo(X(x), Y(EM_C * x * x)); }
       ctx.stroke();
+      txt(ctx, 'Ep = 0 (referencia)', 8, base + 9 * k, { size: 10.5 * k, color: C.tenue, weight: 400 });
       // posición de la bola sobre la superficie (centro desplazado una distancia rb por la normal)
       const rb = (6 + 3 * Math.cbrt(m)) * k;
       const centro = (xm) => { const sl = 2 * EM_C * xm, c = 1 / Math.sqrt(1 + sl * sl), sn = sl * c; return [X(xm) - sn * rb, Y(EM_C * xm * xm) - c * rb, c, sn]; };
@@ -1039,7 +1043,7 @@
       fila('Immergé', `${num(s.f * 100, 0)} %`, C.acento);
       fila('Π', `${num(ph.Pi, 2)} N`, C.fuerza);
       fila('P', `${num(ph.P, 2)} N`, C.fuerza);
-      if (s.modo === 'dina') fila('P apparent = P − Π', `${num(ph.T, 2)} N`, C.fuerza);
+      if (s.modo === 'dina') fila('P apparent', `${num(ph.T, 2)} N`, C.fuerza);
       else if (s.yb <= 0) fila('Réaction N', `${num(Math.max(0, ph.P - ph.Pi), 2)} N`, C.fuerza);
       // botones
       const bw2 = Math.min(pw - 20, 110 * k + 20);
@@ -1258,7 +1262,7 @@
       for (let i = 0; i <= nt; i++) {
         const ang = a0 + (i / nt) * span, c = Math.cos(ang), sn = Math.sin(ang), val = (s.pmax * i) / nt;
         ctx.strokeStyle = i > nt * 0.85 ? C.fuerza : '#b9c7ff'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(gx + c * Rg * 0.82, gyc + sn * Rg * 0.82); ctx.lineTo(gx + c * Rg * 0.95, gyc + sn * Rg * 0.95); ctx.stroke();
-        txt(ctx, val >= 100 ? num(val, 0) : num(val, val < 10 ? 1 : 0), gx + c * Rg * 0.62, gyc + sn * Rg * 0.62, { align: 'center', size: 9.5 * k + 0.5, color: C.tenue, weight: 400 });
+        txt(ctx, val === 0 ? '0' : val >= 100 ? num(val, 0) : num(val, val < 10 ? 1 : 0), gx + c * Rg * 0.62, gyc + sn * Rg * 0.62, { align: 'center', size: 9.5 * k + 0.5, color: C.tenue, weight: 400 });
       }
       const fr = clamp(s.pn / s.pmax, 0, 1.03), na = a0 + fr * span;
       flecha(ctx, gx, gyc, gx + Math.cos(na) * Rg * 0.8, gyc + Math.sin(na) * Rg * 0.8, C.ambar, { lw: 3 * k, head: 8 });

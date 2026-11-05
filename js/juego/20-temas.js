@@ -142,7 +142,7 @@
       let px = 0;
       while (px < LW) {
         const tipo = (r() * 3) | 0, w = 40 + ((r() * 40) | 0), base = 232, col = '#0c1440';
-        const liq = r() < 0.5 ? p.acento2 : '#2ee59d';
+        const liq = J.mezcla(r() < 0.5 ? p.acento2 : '#2ee59d', '#0c1440', 0.6);
         if (tipo === 0) {        // matraz Erlenmeyer
           poli(x, [[px + w / 2 - 5, base - 90], [px + w / 2 + 5, base - 90], [px + w / 2 + 5, base - 60], [px + w - 4, base], [px + 4, base], [px + w / 2 - 5, base - 60]], col);
           poli(x, [[px + w / 2 - 14, base - 30], [px + w / 2 + 14, base - 30], [px + w - 4, base], [px + 4, base]], liq); x.globalAlpha = 0.55; x.globalAlpha = 1;

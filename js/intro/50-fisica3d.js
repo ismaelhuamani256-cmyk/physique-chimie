@@ -170,7 +170,7 @@
     });
     const mt = new T.MeshPhongMaterial({ vertexColors: true, flatShading: true, shininess: 25 });
     const grp = new T.Group(), p = new T.Mesh(geo, mt); grp.add(p);
-    const atm = lib.basic(base, { additive: true, opacity: 0.2, side: T.BackSide }); grp.add(lib.mesh(G.sphere(), atm, 0, 0, 0, 1.4));
+    const atm = lib.basic(base, { additive: true, opacity: 0.1, side: T.BackSide }); const am = lib.mesh(G.sphere(), atm, 0, 0, 0, 1.38); am.userData.noBox = true; grp.add(am);
     grp.add(lib.glow(base, 4.4, 0.25));
     if (spec.anillo || /saturn/i.test(String(spec.nombre || spec.id || ''))) {
       const ring = new T.Mesh(new T.RingGeometry(1.7, 2.45, 64), lib.mat('#d9c08a', { opacity: 0.75, transparent: true, side: T.DoubleSide, flat: true })); ring.rotation.x = PI / 2 - 0.35; grp.add(ring);
@@ -281,9 +281,9 @@
   // ------------------------------------------------------------------------------ bloque
   B.bloque = function (spec) {
     const m = lib.mat(spec.color && spec.color !== '#ffffff' ? spec.color : '#b9824b', { shininess: 40, flat: true }), grp = new T.Group();
-    grp.add(caja(m, 1.6, 1.05, 1.1, 0, 0, 0));
-    const ed = new T.LineSegments(lib.geo('bloque_ed', () => new T.EdgesGeometry(new T.BoxGeometry(1.6, 1.05, 1.1))), new T.LineBasicMaterial({ color: 0x2a1a0c, transparent: true, opacity: 0.7 })); grp.add(ed);
-    grp.add(caja(lib.mat('#ffffff', { opacity: 0.12, transparent: true }), 1.4, 0.04, 0.9, 0, 0.54, 0));
+    grp.add(caja(m, 1.6, 1.05, 0.6, 0, 0, 0));
+    const ed = new T.LineSegments(lib.geo('bloque_ed', () => new T.EdgesGeometry(new T.BoxGeometry(1.6, 1.05, 0.6))), new T.LineBasicMaterial({ color: 0x2a1a0c, transparent: true, opacity: 0.7 })); grp.add(ed);
+    grp.add(caja(lib.mat('#ffffff', { opacity: 0.12, transparent: true }), 1.4, 0.04, 0.5, 0, 0.54, 0));
     return { obj: grp, radio: 1.0, tint: [m] };
   };
 

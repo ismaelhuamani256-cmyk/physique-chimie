@@ -517,7 +517,7 @@
       const S = { host, ph: 0, t: 0, lam0: k.lam, f0: k.f, btns: [], rings: [], emit: 0, pend: 0 };
       punteros(S, {
         down: (x, y) => { if (modoOnda(p) !== 1 || !S.geo) return false; return Math.abs(x - S.geo.xd1) < 22 && y > S.geo.yTop - 10 && y < S.geo.yAx + 20; },
-        move: (x) => { const g = S.geo; if (!g) return; const d = ((x - g.xSrc) / g.axLen) * g.Dmax; p.d = clamp(Math.round(d * 2) / 2, 1, 25); S._vt = 9; vivo(S, ONDAS, p, 0); const inp = S.host.host.parentElement.querySelector('.anim-ctrl input[aria-label="Distancia d (modo dB)"]'); if (inp) { inp.value = p.d; const b = inp.parentElement.querySelector('b'); if (b) b.textContent = fmt(p.d, 1) + ' m'; } },
+        move: (x) => { const g = S.geo; if (!g) return; setParamUI(S, ONDAS, p, 'd', clamp(Math.round(((x - g.xSrc) / g.axLen) * g.Dmax * 2) / 2, 1, 25)); },
         hover: (x, y) => modoOnda(p) === 1 && S.geo && Math.abs(x - S.geo.xd1) < 22 && y > S.geo.yTop - 10 && y < S.geo.yAx + 20,
       });
       return S;
@@ -570,9 +570,9 @@
         ctx.strokeStyle = C.borde; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(xSrc, yAx); ctx.lineTo(xSrc + axLen, yAx); ctx.stroke();
         [0, 10, 20, 30, 40, 50].forEach((d) => { ctx.beginPath(); ctx.moveTo(xd(d), yAx - 3); ctx.lineTo(xd(d), yAx + 3); ctx.stroke(); txt(ctx, d + (d === 50 ? ' m' : ''), xd(d), yAx + fs + 6, { size: fs - 1.5, color: C.txt2, align: 'center' }); });
         // círculos que se alejan; opacidad ∝ nivel sonoro a esa distancia
-        const spd = axLen / 3.6;
+        const spd = axLen / 3.6; ctx.save(); ctx.beginPath(); ctx.rect(0, h * 0.1, w, h * 0.5); ctx.clip();
         S.rings.forEach((tb) => { const r = (S.t - tb) * spd; if (r < 4 || r > axLen) return; const d = Math.max(1, (r / axLen) * Dmax), Ld = k.L0 - 20 * Math.log10(d), a = clamp((Ld - 15) / (k.L0 - 15), 0.04, 1);
-          ctx.strokeStyle = 'rgba(0,212,255,' + (0.8 * a) + ')'; ctx.lineWidth = 1 + 3 * a; ctx.beginPath(); ctx.arc(xSrc, yAx, r, -1.0, 1.0); ctx.stroke(); ctx.beginPath(); ctx.arc(xSrc, yAx, r, Math.PI - 1.0, Math.PI + 1.0); ctx.stroke(); });
+          ctx.strokeStyle = 'rgba(0,212,255,' + (0.8 * a) + ')'; ctx.lineWidth = 1 + 3 * a; ctx.beginPath(); ctx.arc(xSrc, yAx, r, -1.0, 1.0); ctx.stroke(); ctx.beginPath(); ctx.arc(xSrc, yAx, r, Math.PI - 1.0, Math.PI + 1.0); ctx.stroke(); }); ctx.restore();
         // fuente (altavoz)
         ctx.fillStyle = '#7e8cb8'; ctx.beginPath(); ctx.moveTo(xSrc - 14, yAx - 7); ctx.lineTo(xSrc - 4, yAx - 7); ctx.lineTo(xSrc + 8, yAx - 16); ctx.lineTo(xSrc + 8, yAx + 16); ctx.lineTo(xSrc - 4, yAx + 7); ctx.lineTo(xSrc - 14, yAx + 7); ctx.closePath(); ctx.fill();
         txt(ctx, 'L₀ = ' + fmt(k.L0, 0) + ' dB a 1 m', xSrc - 14, yAx - 24, { size: fs, color: C.cian2, w: 700 });
@@ -745,7 +745,7 @@
     step(S, dt, p) {
       const k = dopCalc(p), xo = { A: 0.06, B: 0.94 }; S.t += dt;
       S.sx += (k.vs / VSON) * CF * dt; if (S.sx > 0.72) { S.sx = 0.2; S.ems = []; S.last = { A: null, B: null }; S.eacc = SLOW / k.f0; }
-      S.eacc += dt; const T0 = SLOW / k.f0; for (let guard = 0; S.eacc >= T0 && guard < 6; guard++) { S.eacc -= T0; S.ems.push({ x: S.sx, t: S.t - S.eacc, hit: {} }); }
+      S.eacc += dt; const T0 = SLOW / k.f0; for (let guard = 0; S.eacc >= T0 && guard < 6; guard++) { S.eacc -= T0; S.ems.push({ x: S.sx - (k.vs / VSON) * CF * S.eacc, t: S.t - S.eacc, hit: {} }); }
       for (const e of S.ems) ['A', 'B'].forEach((o) => { if (e.hit[o]) return; const ta = e.t + Math.abs(xo[o] - e.x) / CF; if (S.t >= ta) { e.hit[o] = 1; if (S.last[o] != null && ta > S.last[o]) S.meas[o] = (1 / (ta - S.last[o])) * SLOW; S.last[o] = ta; S.flash[o] = 1; } });
       S.ems = S.ems.filter((e) => (S.t - e.t) * CF < 1.1); S.flash.A *= Math.pow(0.02, dt); S.flash.B *= Math.pow(0.02, dt);
     },
@@ -762,8 +762,8 @@
       ctx.restore();
       // cotas de longitud de onda delante y detrás (entre dos frentes consecutivos)
       const ahead = S.ems.map((e) => X(e.x) + (S.t - e.t) * CF * R.w).filter((x) => x > X(S.sx) + 20 && x < R.x + R.w - 14).sort((a, b) => a - b), behind = S.ems.map((e) => X(e.x) - (S.t - e.t) * CF * R.w).filter((x) => x < X(S.sx) - 20 && x > R.x + 14).sort((a, b) => b - a);
-      if (ahead.length >= 2) cota(ctx, ahead[0], cy + rad + 14, ahead[1], cy + rad + 14, 'λ′ = ' + lfmt(k.lF), C.magenta, fs, false);
-      if (behind.length >= 2) cota(ctx, behind[1], cy + rad + 14, behind[0], cy + rad + 14, 'λ″ = ' + lfmt(k.lB), C.verde, fs, false);
+      if (ahead.length >= 2) cota(ctx, ahead[0], cy + rad + 14, ahead[1], cy + rad + 14, 'λ delante = ' + lfmt(k.lF), C.magenta, fs, false);
+      if (behind.length >= 2) cota(ctx, behind[1], cy + rad + 14, behind[0], cy + rad + 14, 'λ detrás = ' + lfmt(k.lB), C.verde, fs, false);
       // fuente móvil
       const sx = X(S.sx), gS = ctx.createRadialGradient(sx, cy, 0, sx, cy, 15); gS.addColorStop(0, '#fff3c4'); gS.addColorStop(1, C.ambar); ctx.fillStyle = gS; ctx.beginPath(); ctx.arc(sx, cy, 10, 0, TAU); ctx.fill();
       if (k.vs > 0) arrow(ctx, sx + 14, cy - 22, sx + 14 + 14 + k.vs * 0.18, cy - 22, C.ambar, 3, 10);
@@ -800,5 +800,210 @@
   };
   PCB.anim.register('doppler', DOPPLER);
 
-//@@FIN_PARTE_3@@
+  // =====================================================================================
+  // 7. LENTE CONVERGENTE — 1/OA′ − 1/OA = 1/f′ ; γ = A′B′/AB = OA′/OA  (convenio algebraico del cours francés)
+  //    OA < 0 para un objeto real (a la izquierda de la lente); el parámetro `OA` es la DISTANCIA |OA| en cm.
+  //    Lente delgada, rayos paraxiales. Escala vertical dilatada (como en los esquemas de clase): las rectas
+  //    siguen siendo rectas, así que los 3 rayos principales siguen siendo exactos.
+  //    Rayos: (1) paralelo al eje → pasa por F′ ; (2) por O → no se desvía ; (3) pasa por F → sale paralelo al eje.
+  // =====================================================================================
+  const lenCalc = (p) => {
+    const f = Math.max(1, num(p.f, 10)), d = Math.max(0.5, Math.abs(num(p.OA, 25))), inf = Math.abs(d - f) < 0.06;
+    const OAp = inf ? Infinity : (f * d) / (d - f), gam = inf ? Infinity : -f / (d - f);
+    return { f, d, inf, OAp, gam, real: !inf && d > f, OA: -d };
+  };
+  /** Sincroniza el slider del modal con un cambio hecho desde el canvas (arrastre). */
+  function setParamUI(S, def, p, id, v) {
+    p[id] = v; const q = def.params.find((a) => a.id === id), wrap = S.host.host, pe = wrap && wrap.parentElement;
+    const inp = pe && q && pe.querySelector('.anim-ctrl input[aria-label="' + q.label + '"]');
+    if (inp) { inp.value = v; const b = inp.parentElement.querySelector('b'); if (b) { const dec = q.step && q.step < 1 ? Math.min(4, Math.ceil(-Math.log10(q.step))) : 0; b.textContent = Number(v).toFixed(dec).replace('.', ',') + (q.unit ? ' ' + q.unit : ''); } }
+    S._vt = 9; vivo(S, def, p, 0);
+  }
+  const LENTE = {
+    titulo: 'Lente convergente: relación de conjugación', materia: 'physique',
+    params: [
+      { id: 'f', label: 'Distancia focal imagen f′', min: 5, max: 20, step: 0.5, def: 10, unit: 'cm' },
+      { id: 'OA', label: 'Distancia objeto–lente |OA|', min: 2, max: 36, step: 0.5, def: 25, unit: 'cm' }],
+    create(host, p) {
+      const S = { host, t: 0, d: Math.abs(num(p.OA, 25)), btns: [], pulse: 0 };
+      punteros(S, {
+        down: (x, y) => !!S.geo && Math.abs(x - S.geo.xA) < 26 && y > S.geo.cy - S.geo.hObj - 22 && y < S.geo.cy + 24,
+        move: (x) => { const g = S.geo; setParamUI(S, LENTE, p, 'OA', clamp(Math.round(((g.xL - x) / g.sx) * 2) / 2, 2, 36)); },
+        hover: (x, y) => !!S.geo && Math.abs(x - S.geo.xA) < 26 && y > S.geo.cy - S.geo.hObj - 22 && y < S.geo.cy + 24,
+      });
+      return S;
+    },
+    step(S, dt, p) { const k = lenCalc(p); S.d += (k.d - S.d) * Math.min(1, dt * 9); S.t += dt; S.pulse += dt * 170; },
+    draw(S, ctx, w, h, p) {
+      fondo(ctx, w, h); const k = lenCalc(p), fs = fsz(w), d = S.d, f = k.f;
+      const xL = w * 0.42, cy = h * 0.5, sx = (w * 0.96) / 88, sy = sx * 2.3, hcm = 2.5, hObj = hcm * sy;
+      const X = (c) => xL + c * sx, Y = (c) => cy - c * sy; S.geo = { xL, cy, sx, hObj, xA: X(-d) };
+      // d efectivo (animado) para el trazado
+      const inf = Math.abs(d - f) < 0.06, OAp = inf ? Infinity : (f * d) / (d - f), gam = inf ? Infinity : -f / (d - f);
+      ctx.save(); ctx.beginPath(); ctx.rect(0, 0, w, h); ctx.clip();
+      // eje óptico + graduación
+      ctx.strokeStyle = 'rgba(159,176,217,.55)'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(w, cy); ctx.stroke();
+      for (let c = -30; c <= 50; c += 10) { ctx.beginPath(); ctx.moveTo(X(c), cy - 3); ctx.lineTo(X(c), cy + 3); ctx.stroke(); if (c !== 0 && w > 420) txt(ctx, c + '', X(c), cy + 16, { size: fs - 3, color: 'rgba(159,176,217,.55)', align: 'center' }); }
+      // lente
+      const Hl = Math.min(h * 0.4, hObj * 3.2 + 30), bulge = 11 + sx * 0.25; ctx.beginPath(); ctx.moveTo(xL, cy - Hl); ctx.quadraticCurveTo(xL + bulge * 1.9, cy, xL, cy + Hl); ctx.quadraticCurveTo(xL - bulge * 1.9, cy, xL, cy - Hl); ctx.closePath();
+      const gl = ctx.createLinearGradient(xL - bulge, 0, xL + bulge, 0); gl.addColorStop(0, 'rgba(120,200,255,.28)'); gl.addColorStop(1, 'rgba(0,212,255,.42)'); ctx.fillStyle = gl; ctx.fill(); ctx.strokeStyle = C.cian2; ctx.lineWidth = 2; ctx.stroke();
+      arrow(ctx, xL, cy - Hl + 2, xL, cy - Hl - 6, C.cian2, 2, 9); arrow(ctx, xL, cy + Hl - 2, xL, cy + Hl + 6, C.cian2, 2, 9);
+      // F, F′, O
+      [[-f, 'F'], [f, 'F′']].forEach(([c, l]) => { ctx.fillStyle = C.ambar; ctx.beginPath(); ctx.arc(X(c), cy, 3.6, 0, TAU); ctx.fill(); txt(ctx, l, X(c), cy + fs + 8, { size: fs, color: C.ambar, align: 'center', w: 700 }); });
+      txt(ctx, 'O', xL + 7, cy - 6, { size: fs, color: C.cian2, w: 700 });
+      // objeto AB
+      const bx = X(-d), by = Y(hcm); arrow(ctx, bx, cy, bx, by, '#cfe0ff', 3.4, 12); txt(ctx, 'B', bx - 6, by - 3, { size: fs, color: '#cfe0ff', align: 'right', w: 700 }); txt(ctx, 'A', bx - 6, cy + fs + 6, { size: fs, color: '#cfe0ff', align: 'right', w: 700 });
+      // rayos principales
+      const xEnd = w + 10, hv = hcm;
+      const rays = [
+        { col: C.ambar, pts: [[bx, by], [xL, by]], out: [f, -hv] },                                  // 1: ∥ eje → F′
+        { col: C.cian, pts: [[bx, by], [xL, cy]], out: [d, -hv] },                                   // 2: por O
+        { col: C.magenta, pts: null, out: null },                                                    // 3: por F → ∥ eje
+      ];
+      const y3 = inf ? Infinity : (-hv * f) / (d - f);                                                // altura (cm) del rayo 3 en la lente (d≠f)
+      if (!inf) rays[2].pts = [[bx, by], [xL, Y(y3)]]; else rays.pop(); // objeto en F: el rayo por F es vertical y no llega a la lente
+      rays.forEach((r, i) => {
+        const [x1, y1] = r.pts[1]; let end;
+        if (i === 0) { const t = (xEnd - xL) / (f * sx); end = [xEnd, y1 + (cy - y1) * t]; }          // hacia F′ (llega al eje en x = F′ y sigue)
+        else if (i === 1) { const sl = (cy - by) / (xL - bx); end = [xEnd, cy + sl * (xEnd - xL)]; }
+        else end = [xEnd, y1];
+        r.full = [[bx, by], [x1, y1], end];
+      });
+      // trazos: incidente (sólido) + saliente (sólido) ; prolongación virtual (discontinua) si d < f
+      rays.forEach((r) => { ctx.strokeStyle = r.col; ctx.lineWidth = 2.2; ctx.beginPath(); ctx.moveTo(r.full[0][0], r.full[0][1]); ctx.lineTo(r.full[1][0], r.full[1][1]); ctx.lineTo(r.full[2][0], r.full[2][1]); ctx.stroke(); });
+      if (!inf && d < f) { const ix = X(OAp), iy = Y(gam * hcm); ctx.setLineDash([5, 5]); ctx.lineWidth = 1.6; rays.forEach((r) => { ctx.strokeStyle = r.col; ctx.globalAlpha = 0.7; ctx.beginPath(); ctx.moveTo(r.full[1][0], r.full[1][1]); ctx.lineTo(ix, iy); ctx.stroke(); }); ctx.setLineDash([]); ctx.globalAlpha = 1; }
+      // pulsos de luz que recorren los rayos
+      if (!S.host.reduced) rays.forEach((r, i) => { const P = r.full, L1 = Math.hypot(P[1][0] - P[0][0], P[1][1] - P[0][1]), L2 = Math.hypot(P[2][0] - P[1][0], P[2][1] - P[1][1]), Lt = L1 + L2;
+        for (let j = 0; j < 3; j++) { const s = (S.pulse + j * Lt / 3) % Lt; let px, py; if (s < L1) { const u = s / L1; px = lerp(P[0][0], P[1][0], u); py = lerp(P[0][1], P[1][1], u); } else { const u = (s - L1) / L2; px = lerp(P[1][0], P[2][0], u); py = lerp(P[1][1], P[2][1], u); }
+          ctx.fillStyle = '#fff'; ctx.globalAlpha = 0.9; ctx.beginPath(); ctx.arc(px, py, 3.2, 0, TAU); ctx.fill(); ctx.globalAlpha = 1; } });
+      // imagen A′B′
+      if (!inf) { const ix = X(OAp), iy = Y(gam * hcm), vir = d < f; ctx.strokeStyle = C.verde; ctx.fillStyle = C.verde; ctx.globalAlpha = vir ? 0.7 : 1; if (vir) ctx.setLineDash([6, 4]);
+        arrow(ctx, ix, cy, ix, iy, C.verde, 3.4, 12); ctx.setLineDash([]); ctx.globalAlpha = 1;
+        if (ix > -20 && ix < w + 20) { txt(ctx, "B′", ix + 7, iy + (iy < cy ? -4 : fs + 2), { size: fs, color: C.verde, w: 700, halo: true }); txt(ctx, "A′", ix + 7, cy + (iy < cy ? fs + 6 : -6), { size: fs, color: C.verde, w: 700, halo: true }); } else txt(ctx, 'imagen a ' + fmt(Math.abs(OAp), 0) + ' cm →', w - 8, cy - 14, { size: fs, color: C.verde, align: 'right', w: 700 }); }
+      ctx.restore();
+      // cotas |OA| y OA′
+      const yc = cy + hObj * 0.0 + fs * 3.2 + 12; cota(ctx, X(-d), yc, xL, yc, '|OA| = ' + fmt(k.d, 1) + ' cm', '#cfe0ff', fs, true);
+      if (!inf && Math.abs(OAp) < 48 && Math.abs(OAp) > 1) cota(ctx, xL, yc + 2, X(OAp), yc + 2, "OA′ = " + fmt(k.OAp, 1) + ' cm', C.verde, fs, false);
+      // naturaleza de la imagen
+      const nat = inf ? 'Objeto en F: imagen en el infinito (rayos paralelos)' : k.real ? 'Imagen REAL, ' + 'invertida, ' + (Math.abs(k.gam) > 1 ? 'ampliada' : Math.abs(k.gam) < 1 ? 'reducida' : 'del mismo tamaño') : 'Imagen VIRTUAL, derecha, ampliada (se ve como con una lupa)';
+      chip(ctx, nat, w / 2, 20, { size: fs, align: 'center', color: inf ? C.ambar : C.verde, border: inf ? C.ambar : C.verde });
+      chip(ctx, 'γ = ' + (inf ? '∞' : fmt(k.gam, 2)), w - 10, h - 16, { size: fs + 1, align: 'right', color: C.verde, border: C.verde });
+      txt(ctx, 'arrastra el objeto ◂ ▸ · escala vertical dilatada', 10, h - 12, { size: fs - 1.5, color: C.txt2 });
+    },
+    formula(p) {
+      const k = lenCalc(p);
+      if (k.inf) return '\\dfrac{1}{\\overline{OA\'}}-\\dfrac{1}{\\overline{OA}}=\\dfrac{1}{f\'}\\ \\Rightarrow\\ \\dfrac{1}{\\overline{OA\'}}=\\dfrac{1}{' + tx(k.f, 1) + '}-\\dfrac{1}{' + tx(k.d, 1) + '}=0\\ \\Rightarrow\\ \\overline{OA\'}\\to\\infty';
+      return '\\begin{aligned}\\dfrac{1}{\\overline{OA\'}}-\\dfrac{1}{\\overline{OA}}&=\\dfrac{1}{f\'}\\Rightarrow\\dfrac{1}{\\overline{OA\'}}=\\dfrac{1}{' + tx(k.f, 1) + '}+\\dfrac{1}{-' + tx(k.d, 1) + '}\\Rightarrow\\overline{OA\'}=' + tx(k.OAp, 1) + '\\ \\text{cm}\\\\[3pt]'
+        + '\\gamma&=\\dfrac{\\overline{A\'B\'}}{\\overline{AB}}=\\dfrac{\\overline{OA\'}}{\\overline{OA}}=' + tx(k.gam, 2) + '\\end{aligned}';
+    },
+    lecturas(p) {
+      const k = lenCalc(p);
+      return [{ label: 'OA (algebraico)', valor: fmt(k.OA, 1) + ' cm' }, { label: "OA′", valor: k.inf ? '∞' : fmt(k.OAp, 1) + ' cm' }, { label: 'γ', valor: k.inf ? '∞' : fmt(k.gam, 2) },
+        { label: "f′", valor: fmt(k.f, 1) + ' cm' }, { label: 'Imagen', valor: k.inf ? 'en el infinito' : k.real ? 'real, invertida' : 'virtual, derecha' }];
+    },
+    dispose(S) { disposeComun(S); },
+  };
+  PCB.anim.register('lente', LENTE);
+
+  // =====================================================================================
+  // 8. FOTONES — E = hν ; efecto fotoeléctrico: Ec = hν − W₀ si hν > W₀
+  //    Constantes del cours: h = 6,63×10⁻³⁴ J·s ; 1 eV = 1,60×10⁻¹⁹ J (no se usa ninguna otra constante).
+  //    La velocidad visual del electrón ∝ √Ec (Ec = ½mv²) — sin dar un valor en m/s (no hay m_e en las constantes).
+  //    El color de cada fotón se calcula solo con fines gráficos a partir de ν (visible ≈ 430–750 THz;
+  //    por encima: ultravioleta, violeta pálido; por debajo: infrarrojo, rojo apagado). Un fotón = un electrón como máximo.
+  // =====================================================================================
+  const H_PL = 6.63e-34, EV = 1.60e-19;
+  const fotCalc = (p) => {
+    const nu = Math.max(1, num(p.nu, 700)), W0 = Math.max(0.01, num(p.W0, 2.3)), EJ = H_PL * nu * 1e12, Eev = EJ / EV, Ec = Eev - W0;
+    return { nu, W0, EJ, Eev, Ec, emite: Ec > 0, nu0: ((W0 * EV) / H_PL) / 1e12, lamNm: 3e5 / nu };
+  };
+  const FOT = {
+    titulo: 'Fotones y efecto fotoeléctrico', materia: 'physique',
+    params: [
+      { id: 'nu', label: 'Frecuencia ν', min: 200, max: 1500, step: 10, def: 700, unit: 'THz' },
+      { id: 'W0', label: 'Trabajo de extracción W₀', min: 0.5, max: 6, step: 0.1, def: 2.3, unit: 'eV' }],
+    create(host, p) { return { host, t: 0, ph: [], el: [], fx: [], acc: 0, rnd: host.rng, btns: [] }; },
+    step(S, dt, p) {
+      const k = fotCalc(p), g = S.geo; S.t += dt; if (!g) return;
+      S.acc += dt; const per = S.host.reduced ? 0.6 : 0.32;
+      while (S.acc > per) { S.acc -= per; S.ph.push({ s: 0, u: 0.06 + S.rnd() * 0.5 }); }
+      const spd = g.W * 0.42;
+      S.ph.forEach((q) => { q.s += spd * dt; });
+      S.ph = S.ph.filter((q) => { const x = g.sx0 + q.u * g.W * 0.9 + Math.sin(g.ang) * q.s, y = g.y0 + Math.cos(g.ang) * q.s;
+        if (y >= g.yPlate) { // impacto
+          S.fx.push({ x, y: g.yPlate, t: 0, emite: k.emite });
+          if (k.emite) { const a = -Math.PI / 2 + (S.rnd() - 0.5) * 1.1, v = 55 + 170 * Math.sqrt(Math.max(k.Ec, 0) / 6); S.el.push({ x, y: g.yPlate - 3, vx: Math.cos(a) * v, vy: Math.sin(a) * v, t: 0 }); }
+          return false; }
+        return true; });
+      S.el.forEach((e) => { e.x += e.vx * dt; e.y += e.vy * dt; e.t += dt; }); S.el = S.el.filter((e) => e.y > -10 && e.x < g.W + g.x0 + 20 && e.x > g.x0 - 20);
+      S.fx.forEach((e) => (e.t += dt)); S.fx = S.fx.filter((e) => e.t < 0.7);
+    },
+    draw(S, ctx, w, h, p) {
+      fondo(ctx, w, h); const k = fotCalc(p), fs = fsz(w), wide = w >= 560;
+      const A = wide ? { x: 8, y: 8, w: w * 0.56, h: h - 16 } : { x: 8, y: 6, w: w - 16, h: h * 0.52 };
+      const B = wide ? { x: w * 0.6, y: 8, w: w * 0.38, h: h - 16 } : { x: 8, y: h * 0.56, w: w - 16, h: h * 0.43 };
+      const yPlate = A.y + A.h * 0.8, ang = 0.62; // los fotones llegan inclinados desde arriba-izquierda
+      S.geo = { x0: A.x, y0: A.y + 20, W: A.w, yPlate, ang, sx0: A.x + A.w * 0.0 };
+      const col = nmRGB(k.lamNm), uv = k.nu > 750, ir = k.nu < 430;
+      ctx.fillStyle = 'rgba(18,26,51,.5)'; rr(ctx, A.x, A.y, A.w, A.h, 12); ctx.fill(); ctx.strokeStyle = 'rgba(42,55,107,.9)'; ctx.lineWidth = 1; ctx.stroke();
+      ctx.save(); rr(ctx, A.x, A.y, A.w, A.h, 12); ctx.clip();
+      // placa metálica con red de iones y mar de electrones
+      const pg = ctx.createLinearGradient(0, yPlate, 0, A.y + A.h); pg.addColorStop(0, '#aab6d8'); pg.addColorStop(0.15, '#7b88b0'); pg.addColorStop(1, '#3d4670'); ctx.fillStyle = pg; ctx.fillRect(A.x, yPlate, A.w, A.y + A.h - yPlate);
+      const nIon = Math.floor(A.w / 26); for (let i = 0; i < nIon; i++) for (let j = 0; j < 2; j++) { const x = A.x + 13 + i * 26 + (j % 2) * 13, y = yPlate + 12 + j * 16; ctx.fillStyle = 'rgba(255,255,255,.28)'; ctx.beginPath(); ctx.arc(x, y, 5, 0, TAU); ctx.fill(); txt(ctx, '+', x, y + 0.5, { size: 8, color: 'rgba(10,15,32,.7)', align: 'center', base: 'middle', w: 700 }); }
+      for (let i = 0; i < 14; i++) { const x = A.x + ((i * 0.37 + S.t * (0.04 + (i % 3) * 0.01) * (i % 2 ? 1 : -1)) % 1 + 1) % 1 * A.w, y = yPlate + 8 + ((i * 7) % 5) * 7; ctx.fillStyle = 'rgba(120,200,255,.8)'; ctx.beginPath(); ctx.arc(x, y + Math.sin(S.t * 3 + i) * 2, 2.2, 0, TAU); ctx.fill(); }
+      txt(ctx, 'metal', A.x + 10, A.y + A.h - 8, { size: fs - 1, color: '#dfe6ff' });
+      // fotones (paquetes de onda; más ciclos = mayor ν)
+      const ncyc = clamp(k.nu / 150, 1.5, 10), Lp = 40;
+      S.ph.forEach((q) => { const x = S.geo.sx0 + q.u * A.w * 0.9 + Math.sin(ang) * q.s, y = S.geo.y0 + Math.cos(ang) * q.s; if (y < A.y) return;
+        const dx = Math.sin(ang), dy = Math.cos(ang), nx_ = -dy, ny_ = dx; ctx.strokeStyle = rgb(col, 1); ctx.lineWidth = 2.6; ctx.lineCap = 'round';
+        if (uv) { ctx.shadowColor = rgb(col, 1); ctx.shadowBlur = 8; } ctx.beginPath();
+        for (let i = 0; i <= 24; i++) { const u = i / 24, s = (u - 1) * Lp, a = Math.sin(u * ncyc * TAU) * 4.6 * Math.sin(u * Math.PI); const px = x + dx * s + nx_ * a, py = y + dy * s + ny_ * a; i ? ctx.lineTo(px, py) : ctx.moveTo(px, py); } ctx.stroke(); ctx.shadowBlur = 0;
+        ctx.fillStyle = rgb(col, 1); ctx.beginPath(); ctx.arc(x, y, 3.4, 0, TAU); ctx.fill(); });
+      // impactos: destello (si emite) o calor (si no)
+      S.fx.forEach((e) => { const u = e.t / 0.7; ctx.strokeStyle = e.emite ? 'rgba(255,255,255,' + (0.8 * (1 - u)) + ')' : 'rgba(255,107,74,' + (0.7 * (1 - u)) + ')'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(e.x, e.y, 4 + 16 * u, Math.PI, TAU); ctx.stroke(); });
+      // electrones emitidos
+      S.el.forEach((e) => { const sp = Math.hypot(e.vx, e.vy), tl = Math.min(34, sp * 0.13); ctx.strokeStyle = 'rgba(46,229,157,.4)'; ctx.lineWidth = 3; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(e.x - (e.vx / sp) * tl, e.y - (e.vy / sp) * tl); ctx.lineTo(e.x, e.y); ctx.stroke();
+        ctx.fillStyle = C.verde; ctx.beginPath(); ctx.arc(e.x, e.y, 5, 0, TAU); ctx.fill(); txt(ctx, '−', e.x, e.y + 0.5, { size: 9, color: C.bg, align: 'center', base: 'middle', w: 700 }); });
+      ctx.restore();
+      // rótulos de la escena
+      chip(ctx, 'luz ν = ' + fmt(k.nu, 0) + ' THz' + (uv ? ' (ultravioleta)' : ir ? ' (infrarrojo)' : ''), A.x + 10, A.y + 18, { size: fs, color: rgb(col), border: rgb(col, 0.8) });
+      if (!k.emite) chip(ctx, 'hν < W₀: ningún electrón sale (la energía se disipa en calor)', A.x + A.w / 2, yPlate - 16, { size: fs - 0.5, align: 'center', color: C.rojo, border: C.rojo });
+      else chip(ctx, 'e⁻ con Ec = ' + fmt(k.Ec, 2) + ' eV', A.x + A.w - 10, yPlate - 16, { size: fs, align: 'right', color: C.verde, border: C.verde });
+      // ---------- panel de energías ----------
+      ctx.fillStyle = 'rgba(18,26,51,.5)'; rr(ctx, B.x, B.y, B.w, B.h, 12); ctx.fill(); ctx.strokeStyle = 'rgba(42,55,107,.9)'; ctx.stroke();
+      const Emax = 6.6, bar = { x: B.x + (wide ? 50 : 56), y: B.y + 30, h: B.h - (wide ? 108 : 86), w: wide ? 70 : 90 }, yE = (e) => bar.y + bar.h - (clamp(e, 0, Emax) / Emax) * bar.h;
+      ctx.strokeStyle = C.borde; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(bar.x - 6, bar.y); ctx.lineTo(bar.x - 6, bar.y + bar.h); ctx.stroke();
+      [0, 2, 4, 6].forEach((e) => { txt(ctx, e + '', bar.x - 10, yE(e), { size: fs - 1.5, color: C.txt2, align: 'right', base: 'middle' }); ctx.beginPath(); ctx.moveTo(bar.x - 9, yE(e)); ctx.lineTo(bar.x - 6, yE(e)); ctx.stroke(); });
+      txt(ctx, 'E (eV)', bar.x - 8, bar.y - 12, { size: fs, color: C.txt2 });
+      const gE = Math.min(k.Eev, k.W0); ctx.fillStyle = '#8590b8'; rr(ctx, bar.x, yE(gE), bar.w, bar.y + bar.h - yE(gE), 4); ctx.fill();
+      if (k.emite) { ctx.fillStyle = C.verde; rr(ctx, bar.x, yE(k.Eev), bar.w, yE(k.W0) - yE(k.Eev), 4); ctx.fill(); txt(ctx, 'Ec', bar.x + bar.w / 2, (yE(k.Eev) + yE(k.W0)) / 2 + 1, { size: fs, color: C.bg, align: 'center', base: 'middle', w: 700 }); }
+      txt(ctx, 'W₀', bar.x + bar.w / 2, (yE(gE) + bar.y + bar.h) / 2, { size: fs, color: C.bg, align: 'center', base: 'middle', w: 700 });
+      ctx.setLineDash([5, 4]); ctx.strokeStyle = C.ambar; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(bar.x - 6, yE(k.W0)); ctx.lineTo(bar.x + bar.w + 16, yE(k.W0)); ctx.stroke(); ctx.setLineDash([]);
+      ctx.strokeStyle = rgb(col); ctx.lineWidth = 2.2; ctx.beginPath(); ctx.moveTo(bar.x - 6, yE(k.Eev)); ctx.lineTo(bar.x + bar.w + 16, yE(k.Eev)); ctx.stroke();
+      txt(ctx, 'hν = ' + fmt(k.Eev, 2) + ' eV', bar.x + bar.w + 20, yE(k.Eev) + 4, { size: fs, color: rgb(col), w: 700 });
+      txt(ctx, 'W₀ = ' + fmt(k.W0, 2) + ' eV', bar.x + bar.w + 20, yE(k.W0) + (Math.abs(yE(k.Eev) - yE(k.W0)) < 16 ? 16 : 4), { size: fs, color: C.ambar, w: 700 });
+      // regla de frecuencias con el umbral ν₀ = W₀/h
+      const rx = B.x + 14, rw = B.w - 28, ry = B.y + B.h - 34, nu0 = 100, nu1 = 1500, xN = (v) => rx + ((clamp(v, nu0, nu1) - nu0) / (nu1 - nu0)) * rw;
+      for (let i = 0; i < rw; i++) { const nu = nu0 + (i / rw) * (nu1 - nu0), c2 = nmRGB(3e5 / nu); ctx.fillStyle = rgb(c2, nu < 430 || nu > 750 ? 0.55 : 1); ctx.fillRect(rx + i, ry, 1.6, 9); }
+      ctx.strokeStyle = C.borde; ctx.strokeRect(rx, ry, rw, 9);
+      const tri = (x, col, up) => { ctx.fillStyle = col; ctx.beginPath(); if (up) { ctx.moveTo(x, ry + 10); ctx.lineTo(x - 5, ry + 18); ctx.lineTo(x + 5, ry + 18); } else { ctx.moveTo(x, ry - 1); ctx.lineTo(x - 5, ry - 9); ctx.lineTo(x + 5, ry - 9); } ctx.closePath(); ctx.fill(); };
+      tri(xN(k.nu), '#fff', false); tri(xN(k.nu0), C.ambar, true);
+      txt(ctx, 'ν', xN(k.nu), ry - 12, { size: fs, color: '#fff', align: 'center', w: 700 }); txt(ctx, 'ν₀ = ' + fmt(k.nu0, 0) + ' THz', clamp(xN(k.nu0), rx + 40, rx + rw - 40), ry + 18 + fs, { size: fs - 0.5, color: C.ambar, align: 'center', w: 700 });
+      txt(ctx, 'IR', rx, ry + 9 + fs + 2, { size: fs - 3, color: C.txt2 }); txt(ctx, 'UV', rx + rw, ry + 9 + fs + 2, { size: fs - 3, color: C.txt2, align: 'right' });
+      chip(ctx, k.emite ? 'ν > ν₀ → hay emisión' : 'ν < ν₀ → sin emisión', B.x + B.w / 2, B.y + 15, { size: fs - 0.5, align: 'center', color: k.emite ? C.verde : C.rojo, border: k.emite ? C.verde : C.rojo });
+    },
+    formula(p) {
+      const k = fotCalc(p);
+      return '\\begin{aligned}E&=h\\nu=6{,}63\\times10^{-34}\\times' + tx(k.nu, 0) + '\\times10^{12}=' + texSci(k.EJ, 2) + '\\ \\text{J}=' + tx(k.Eev, 2) + '\\ \\text{eV}\\\\[3pt]'
+        + (k.emite ? 'E_c&=h\\nu-W_0=' + tx(k.Eev, 2) + '-' + tx(k.W0, 2) + '=' + tx(k.Ec, 2) + '\\ \\text{eV}' : 'h\\nu&=' + tx(k.Eev, 2) + '\\ \\text{eV}<W_0=' + tx(k.W0, 2) + '\\ \\text{eV}\\ \\Rightarrow\\ \\text{no hay emisión}') + '\\end{aligned}';
+    },
+    lecturas(p) {
+      const k = fotCalc(p);
+      return [{ label: 'E = hν', valor: sci(k.EJ, 2) + ' J = ' + fmt(k.Eev, 2) + ' eV' }, { label: 'W₀', valor: fmt(k.W0, 2) + ' eV' }, { label: 'ν₀ = W₀/h', valor: fmt(k.nu0, 0) + ' THz' },
+        { label: 'Ec', valor: k.emite ? fmt(k.Ec, 2) + ' eV = ' + sci(k.Ec * EV, 2) + ' J' : '0 (sin emisión)' }, { label: 'h', valor: '6,63×10⁻³⁴ J·s' }, { label: '1 eV', valor: '1,60×10⁻¹⁹ J' }];
+    },
+  };
+  PCB.anim.register('fotones', FOT);
+
+//@@FIN_PARTE_4@@
 })();

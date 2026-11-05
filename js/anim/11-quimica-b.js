@@ -374,6 +374,7 @@
     },
     formula(p) {
       const A = p.eps * p.l * p.c, T = Math.pow(10, -A);
+      if (window.innerWidth < 640) return `\\begin{gathered}A=\\varepsilon\\,\\ell\\,c=${tx(A, 2)}\\\\ T=\\dfrac{I}{I_0}=10^{-A}=${T < 0.0001 ? texSci(T, 1) : tx(T * 100, 1) + '\\ \\%'}\\end{gathered}`;
       return `\\begin{gathered}A=\\varepsilon\\,\\ell\\,c=${tx(p.eps, 0)}\\times${tx(p.l, 1)}\\times${texSci(p.c, 1)}=${tx(A, 2)}\\\\[2pt] T=\\dfrac{I}{I_0}=10^{-A}=${T < 0.0001 ? texSci(T, 1) : tx(T * 100, 1) + '\\ \\%'}\\end{gathered}`;
     },
     lecturas(p) {
@@ -461,7 +462,7 @@
       const ly = vy + vh + fs + 8, lw = vw / 3;
       [[COL_A, 'A', e.nA, 'A'], [COL_B, 'B', e.nB, 'B'], [COL_C, 'C', e.nC, 'C']].forEach(([col, nm, v, k], i) => {
         const lx = vx + i * lw + 6;
-        bola(ctx, lx, ly - fs * 0.35, 4.5, col); txt(ctx, `${nm} ${num(v, 2)}`, lx + 9, ly, fs - 1, '#c9d6f5', 'left', 600);
+        bola(ctx, lx, ly - fs * 0.35, 4.5, col); txt(ctx, `${nm} ${num(v, 2)}`, lx + 8, ly, peq ? fs - 2.5 : fs - 1, '#c9d6f5', 'left', 600);
       });
       // ---------- barra de avance + tableau (derecha)
       const rx = w * (peq ? 0.39 : 0.45), rw = w * (peq ? 0.59 : 0.52);
@@ -494,7 +495,7 @@
         const y = ty + rh * (i + 1);
         ctx.strokeStyle = 'rgba(255,255,255,.12)'; ctx.beginPath(); ctx.moveTo(rx + 6, y); ctx.lineTo(rx + rw - 6, y); ctx.stroke();
         if (i === 1) { rr(ctx, rx + 3, y + 2, rw - 6, rh - 4, 6); ctx.fillStyle = 'rgba(255,209,102,.10)'; ctx.fill(); ctx.strokeStyle = 'rgba(255,209,102,.45)'; ctx.stroke(); }
-        txt(ctx, fl[0], rx + cw0 / 2, y + rh * (sub ? 0.45 : 0.62), fsT, i === 1 ? '#ffd166' : '#c9d6f5', 'center', 700);
+        txt(ctx, fl[0], rx + cw0 / 2, y + rh * (sub ? 0.45 : 0.62), peq ? fsT - 1.5 : fsT, i === 1 ? '#ffd166' : '#c9d6f5', 'center', 700);
         for (let k = 0; k < 4; k++) {
           const cx = rx + cw0 + cwi * (k + 0.5), v = fl[1 + k], cero = Math.abs(v) < 1e-9;
           const esLim = i === 2 && ((k === 1 && lim('A')) || (k === 2 && lim('B')));

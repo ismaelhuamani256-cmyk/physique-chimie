@@ -44,6 +44,7 @@
     estilos[String(id)] = def;
   };
   intro.estilos = () => Object.keys(estilos);
+  intro._reg = estilos; // (depuración) registro interno
 
   // ---------------------------------------------------------------------------------
   // KIT de utilidades (compartido por monigotes y minimalista; otros estilos pueden usarlo)

@@ -1,0 +1,260 @@
+{
+ "capitulo_id": "photons",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "numerico",
+   "enunciado": "Un laser bleu a pour longueur d'onde λ = 450 nm. Calculer l'énergie d'un photon E = hc/λ (h = 6,63×10⁻³⁴ J·s ; c = 3,00×10⁸ m·s⁻¹).",
+   "valor": 4.42e-19,
+   "unidad": "J",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "E = h·c/λ",
+    "E = 6,63×10⁻³⁴ × 3,00×10⁸ / (450×10⁻⁹) = 4,42×10⁻¹⁹ J"
+   ],
+   "pagina_pdf": 505
+  },
+  {
+   "id": "q2",
+   "tipo": "numerico",
+   "enunciado": "La fréquence seuil du zinc vaut ν_s = 8,11×10¹⁴ Hz. Calculer son travail d'extraction W = h·ν_s en eV (1 eV = 1,602×10⁻¹⁹ J).",
+   "valor": 3.36,
+   "unidad": "eV",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "W = h·ν_s = 6,63×10⁻³⁴ × 8,11×10¹⁴ = 5,38×10⁻¹⁹ J",
+    "W = 5,38×10⁻¹⁹ / 1,602×10⁻¹⁹ = 3,36 eV"
+   ],
+   "pagina_pdf": 500
+  },
+  {
+   "id": "q3",
+   "tipo": "numerico",
+   "enunciado": "Un rayonnement de fréquence ν = 10,0×10¹⁴ Hz éclaire du zinc (W = 5,38×10⁻¹⁹ J). Calculer l'énergie cinétique E_c de l'électron extrait.",
+   "valor": 1.25e-19,
+   "unidad": "J",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 3,
+   "pasos": [
+    "E_c = E_photon − W = hν − W",
+    "E_c = 6,63×10⁻³⁴ × 10,0×10¹⁴ − 5,38×10⁻¹⁹ = 1,25×10⁻¹⁹ J"
+   ],
+   "pagina_pdf": 500
+  },
+  {
+   "id": "q4",
+   "tipo": "numerico",
+   "enunciado": "Avec E_c = 1,25×10⁻¹⁹ J et mₑ = 9,11×10⁻³¹ kg, calculer la vitesse v de l'électron (E_c = ½·mₑ·v²).",
+   "valor": 524000.0,
+   "unidad": "m·s⁻¹",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "v = √(2E_c/mₑ)",
+    "v = √(2 × 1,25×10⁻¹⁹ / 9,11×10⁻³¹) = 5,24×10⁵ m·s⁻¹"
+   ],
+   "pagina_pdf": 500
+  },
+  {
+   "id": "q5",
+   "tipo": "numerico",
+   "enunciado": "Or : travail d'extraction W = 5,10 eV. Calculer la longueur d'onde seuil λ_s = c/ν_s avec ν_s = W/h (en nm).",
+   "valor": 244.0,
+   "unidad": "nm",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "W = 5,10 × 1,602×10⁻¹⁹ = 8,17×10⁻¹⁹ J",
+    "ν_s = W/h = 1,23×10¹⁵ Hz",
+    "λ_s = c/ν_s = 2,44×10⁻⁷ m = 244 nm"
+   ],
+   "pagina_pdf": 507
+  },
+  {
+   "id": "q6",
+   "tipo": "numerico",
+   "enunciado": "Un panneau photovoltaïque de rendement 11 % reçoit un rayonnement de puissance 900 W (exercice 20). Quelle puissance électrique produit-il ?",
+   "valor": 99.0,
+   "unidad": "W",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "η = P_électrique/P_lumineuse × 100",
+    "P_électrique = P_lumineuse × η/100 = 900 × 11/100 = 99 W"
+   ],
+   "pagina_pdf": 505
+  },
+  {
+   "id": "q7",
+   "tipo": "numerico",
+   "enunciado": "Module photovoltaïque de surface S = 0,25 m² éclairé à 97 W·m⁻² (exercice 29) ; la puissance électrique maximale est 2,4 W. Calculer le rendement η en %.",
+   "valor": 9.9,
+   "unidad": "%",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "P_lumineuse = E × S = 97 × 0,25 = 24,25 W",
+    "η = 2,4 / 24,25 × 100 ≈ 9,9 % (le corrigé : ≈ 10 %)"
+   ],
+   "pagina_pdf": 508
+  },
+  {
+   "id": "q8",
+   "tipo": "numerico",
+   "enunciado": "Exercice 23 : cellule de 5 cm × 4 cm éclairée à 7 000 lx (on admet 100 lx = 1 W·m⁻²) ; au point de puissance maximale I = 0,18 A et U = 0,35 V. Calculer le rendement en %.",
+   "valor": 45.0,
+   "unidad": "%",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "E = 70 W·m⁻² ; S = 2,0×10⁻³ m² ; P_lumineuse = 0,14 W",
+    "P_électrique = U×I = 0,35 × 0,18 = 0,063 W",
+    "η = 0,063/0,14 × 100 = 45 %"
+   ],
+   "pagina_pdf": 506
+  },
+  {
+   "id": "q9",
+   "tipo": "numerico",
+   "enunciado": "Le silicium a un gap de 1,12 eV. Quelle est la longueur d'onde maximale (en nm) d'un photon qui peut être absorbé ? (λ = hc/E_gap)",
+   "valor": 1109.0,
+   "unidad": "nm",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "E_gap = 1,12 × 1,602×10⁻¹⁹ = 1,79×10⁻¹⁹ J",
+    "λ_max = hc/E_gap = 6,63×10⁻³⁴ × 3,00×10⁸ / 1,79×10⁻¹⁹ ≈ 1,11×10⁻⁶ m = 1109 nm"
+   ],
+   "pagina_pdf": 497
+  },
+  {
+   "id": "q10",
+   "tipo": "numerico",
+   "enunciado": "Zinc (W = 3,36 eV) éclairé par la raie du mercure λ = 302 nm (exercice 27). Calculer l'énergie cinétique de l'électron extrait, en J.",
+   "valor": 1.2e-19,
+   "unidad": "J",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 3,
+   "pasos": [
+    "E_photon = hc/λ = 6,59×10⁻¹⁹ J",
+    "W = 3,36 × 1,602×10⁻¹⁹ = 5,38×10⁻¹⁹ J",
+    "E_c = 6,59×10⁻¹⁹ − 5,38×10⁻¹⁹ = 1,20×10⁻¹⁹ J"
+   ],
+   "pagina_pdf": 507
+  },
+  {
+   "id": "q11",
+   "tipo": "opcion",
+   "enunciado": "L'effet photoélectrique s'explique avec :",
+   "opciones": [
+    "l'aspect ondulatoire de la lumière uniquement",
+    "l'aspect particulaire de la lumière (photons)",
+    "l'aspect ondulatoire, car plus l'intensité est grande plus l'énergie augmente",
+    "aucun modèle : on ne peut pas l'expliquer"
+   ],
+   "correcta": 1,
+   "explicacion": "Le modèle ondulatoire n'explique pas l'existence d'une fréquence seuil ; Einstein (1905) utilise le modèle particulaire : photons d'énergie E = hν.",
+   "pagina_pdf": 503
+  },
+  {
+   "id": "q12",
+   "tipo": "opcion",
+   "enunciado": "Parmi ces caractéristiques, laquelle est celle d'un photon ?",
+   "opciones": [
+    "masse de l'électron, charge −e, énergie E = hν",
+    "masse nulle, charge +e, vitesse variable",
+    "masse nulle, charge nulle, énergie E = hν, vitesse c dans le vide",
+    "masse m, charge nulle, énergie E = mc"
+   ],
+   "correcta": 2,
+   "explicacion": "Carte d'identité du photon : m = 0, q = 0 C, E = hν, v = c = 3,00×10⁸ m·s⁻¹ dans le vide.",
+   "pagina_pdf": 499
+  },
+  {
+   "id": "q13",
+   "tipo": "opcion",
+   "enunciado": "Le cobalt a une fréquence seuil de 1,2×10¹⁵ Hz. L'effet photoélectrique se produit :",
+   "opciones": [
+    "pour une longueur d'onde dans le vide inférieure à 250 nm",
+    "pour une longueur d'onde dans le vide supérieure à 250 nm",
+    "pour une longueur d'onde dans le vide égale à 250 nm seulement",
+    "pour n'importe quelle longueur d'onde"
+   ],
+   "correcta": 0,
+   "explicacion": "λ_s = c/ν_s = 250 nm ; effet si ν ≥ ν_s, c'est-à-dire si λ ≤ λ_s (inégalité inversée).",
+   "pagina_pdf": 503
+  },
+  {
+   "id": "q14",
+   "tipo": "opcion",
+   "enunciado": "Dans l'effet photoélectrique, si on augmente l'intensité du rayonnement à fréquence constante (ν > ν_s) :",
+   "opciones": [
+    "l'énergie cinétique de chaque électron augmente",
+    "l'effet disparaît",
+    "la fréquence seuil augmente",
+    "le nombre d'électrons émis augmente"
+   ],
+   "correcta": 3,
+   "explicacion": "Le nombre d'électrons émis est proportionnel à l'intensité ; l'énergie cinétique d'un électron ne dépend que de la fréquence.",
+   "pagina_pdf": 499
+  },
+  {
+   "id": "q15",
+   "tipo": "opcion",
+   "enunciado": "Quelles sont les représentations correctes de la courbe E_c = f(ν) de l'électron extrait ?",
+   "opciones": [
+    "droite horizontale d'ordonnée W",
+    "droite de coefficient directeur h, qui coupe l'axe des abscisses en ν_s",
+    "parabole de sommet ν_s",
+    "droite de coefficient directeur −h passant par l'origine"
+   ],
+   "correcta": 1,
+   "explicacion": "E_c = h(ν − ν_s) : droite de pente h, nulle en ν_s, d'ordonnée à l'origine −W.",
+   "pagina_pdf": 500
+  },
+  {
+   "id": "q16",
+   "tipo": "opcion",
+   "enunciado": "Quel(s) dispositif(s) exploite(nt) l'effet photoélectrique ?",
+   "opciones": [
+    "la résistance et le fil conducteur",
+    "le rhéostat",
+    "le luxmètre (cellule photoélectrique)",
+    "la bobine"
+   ],
+   "correcta": 2,
+   "explicacion": "Le luxmètre et le spectrophotomètre exploitent l'effet photoélectrique (cellule photoélectrique). Réponses B et C du livre.",
+   "pagina_pdf": 503
+  },
+  {
+   "id": "q17",
+   "tipo": "opcion",
+   "enunciado": "Une diode électroluminescente (DEL) :",
+   "opciones": [
+    "absorbe des photons et produit un courant",
+    "convertit l'énergie lumineuse en énergie électrique",
+    "n'a pas de jonction PN",
+    "émet des photons par recombinaison électron-trou"
+   ],
+   "correcta": 3,
+   "explicacion": "Dans une DEL (jonction PN polarisée en direct) la recombinaison électron-trou libère de l'énergie sous forme de photon : émission.",
+   "pagina_pdf": 501
+  },
+  {
+   "id": "q18",
+   "tipo": "opcion",
+   "enunciado": "Pour mesurer la puissance électrique maximale d'une cellule photovoltaïque, on réalise un montage :",
+   "opciones": [
+    "cellule, ampèremètre en série, voltmètre en dérivation et résistance variable",
+    "cellule seule avec un ampèremètre",
+    "cellule avec un générateur et un voltmètre uniquement",
+    "cellule en court-circuit sans appareil"
+   ],
+   "correcta": 0,
+   "explicacion": "Montage A du livre : on fait varier R pour obtenir des couples (I, U), puis P = U·I et le maximum de P.",
+   "pagina_pdf": 503
+  }
+ ]
+}

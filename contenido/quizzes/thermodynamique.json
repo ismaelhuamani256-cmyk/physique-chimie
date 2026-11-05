@@ -1,0 +1,263 @@
+{
+ "capitulo_id": "thermodynamique",
+ "preguntas": [
+  {
+   "id": "q1",
+   "tipo": "opcion",
+   "enunciado": "Premier principe de la thermodynamique : pour un système fermé au repos, la variation d'énergie interne s'écrit :",
+   "opciones": [
+    "ΔU = W + Q",
+    "ΔU = W · Q",
+    "ΔU = C / ΔT",
+    "ΔU = σ · T⁴"
+   ],
+   "correcta": 0,
+   "explicacion": "Si un système fermé au repos a une énergie qui varie, c'est qu'il échange de l'énergie avec l'extérieur sous forme de travail W ou de transfert thermique Q : ΔU = W + Q.",
+   "pagina_pdf": 421
+  },
+  {
+   "id": "q2",
+   "tipo": "opcion",
+   "enunciado": "Quelles énergies microscopiques contribuent à l'énergie interne U d'un système ?",
+   "opciones": [
+    "Les énergies cinétiques microscopiques (agitation thermique) et les énergies potentielles d'interaction",
+    "Seulement l'énergie cinétique macroscopique du système",
+    "Seulement l'énergie potentielle de pesanteur",
+    "Uniquement la température du système, exprimée en kelvin"
+   ],
+   "correcta": 0,
+   "explicacion": "U = E_c,micro + E_pp,micro : agitation thermique des particules (elle augmente avec la température) et interactions entre particules.",
+   "pagina_pdf": 420
+  },
+  {
+   "id": "q3",
+   "tipo": "numerico",
+   "enunciado": "Exercice 21 (mug de thé au micro-ondes) : on chauffe V = 250 mL d'eau (ρ = 1,00 kg·L⁻¹, c_eau = 4 180 J·kg⁻¹·K⁻¹) de 10 °C à 90 °C. Calculer la variation d'énergie interne ΔU = m·c·ΔT.",
+   "valor": 83600.0,
+   "unidad": "J",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "m = ρ·V = 1,00×0,250 = 0,250 kg",
+    "ΔT = 90 − 10 = 80 K (on peut raisonner en °C)",
+    "ΔU = 0,250 × 4 180 × 80 = 8,36×10⁴ J ≈ 8,4×10⁴ J"
+   ],
+   "pagina_pdf": 428
+  },
+  {
+   "id": "q4",
+   "tipo": "numerico",
+   "enunciado": "Le four micro-ondes de l'exercice 21 a une puissance P = 900 W et on le suppose parfaitement isolé. Au bout de combien de temps l'eau (ΔU = 8,36×10⁴ J) est-elle prête ? (E = P·Δt)",
+   "valor": 92.89,
+   "unidad": "s",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "E = P·Δt = ΔU",
+    "Δt = ΔU/P = 8,36×10⁴ / 900 = 92,9 s ≈ 93 s (≈ 1 min 33 s)"
+   ],
+   "pagina_pdf": 428
+  },
+  {
+   "id": "q5",
+   "tipo": "numerico",
+   "enunciado": "Exercice 23 (café chaud dans un thermos) : 1,0 L de café (c = 4,18 kJ·kg⁻¹·K⁻¹, ρ = 1,0 kg·L⁻¹) passe de 60 °C à 52 °C. Calculer la variation d'énergie interne du café en kJ.",
+   "valor": -33.44,
+   "unidad": "kJ",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "m = ρ·V = 1,0 × 1,0 = 1,0 kg",
+    "ΔU = m·c·ΔT = 1,0 × 4,18 × (52 − 60)",
+    "ΔU = −33 kJ (le café cède de l'énergie)"
+   ],
+   "pagina_pdf": 621
+  },
+  {
+   "id": "q6",
+   "tipo": "opcion",
+   "enunciado": "Le radiateur d'une pièce chauffe l'air par circulation des masses d'air : l'air chaud, moins dense, monte et l'air froid descend. Quel est ce mode de transfert thermique ?",
+   "opciones": [
+    "La convection",
+    "La conduction",
+    "Le rayonnement",
+    "Le travail W"
+   ],
+   "correcta": 0,
+   "explicacion": "Dans la convection le transfert thermique se fait par mouvement de matière au sein du système. La conduction se fait de proche en proche sans transport de matière ; le rayonnement par ondes électromagnétiques.",
+   "pagina_pdf": 422
+  },
+  {
+   "id": "q7",
+   "tipo": "opcion",
+   "enunciado": "Dans quel sens se fait un transfert thermique entre deux milieux de températures différentes ?",
+   "opciones": [
+    "De la source chaude vers la source froide, jusqu'à égalité des températures",
+    "De la source froide vers la source chaude",
+    "Dans les deux sens à la fois, par moitié",
+    "Dans le sens qui dépend de la masse des milieux, pas de leurs températures"
+   ],
+   "correcta": 0,
+   "explicacion": "Un transfert thermique ne peut se faire que dans un seul sens : du milieu de température la plus élevée vers celui de température la plus faible, jusqu'à ce que leurs températures soient égales.",
+   "pagina_pdf": 422
+  },
+  {
+   "id": "q8",
+   "tipo": "numerico",
+   "enunciado": "Exercice 33 (réfrigérateur) : intérieur à 4 °C, extérieur à 20 °C, résistance thermique R = 0,89 K·W⁻¹. Calculer le flux thermique Φ = ΔT/R échangé.",
+   "valor": 17.98,
+   "unidad": "W",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "ΔT = 20 − 4 = 16 K",
+    "Φ = ΔT/R = 16 / 0,89 = 18 W"
+   ],
+   "pagina_pdf": 432
+  },
+  {
+   "id": "q9",
+   "tipo": "numerico",
+   "enunciado": "Exercice résolu 29 (maison passive) : vitres de surface S = 15 m², épaisseur e = 3,6 cm, conductivité λ = 0,023 W·m⁻¹·K⁻¹. Calculer la résistance thermique R_V = e/(λ·S).",
+   "valor": 0.1043,
+   "unidad": "K·W⁻¹",
+   "tolerancia_rel": 0.05,
+   "cifras_sig": 2,
+   "pasos": [
+    "Convertir l'épaisseur en mètres : e = 3,6×10⁻² m",
+    "R_V = 3,6×10⁻² / (0,023 × 15) = 0,104 K·W⁻¹",
+    "(le corrigé arrondit à 2 chiffres significatifs : 0,10 K·W⁻¹)"
+   ],
+   "pagina_pdf": 430
+  },
+  {
+   "id": "q10",
+   "tipo": "numerico",
+   "enunciado": "Ballon d'eau chaude (exercice de synthèse 2) : e = 70 mm de laine de roche (λ = 0,036 W·m⁻¹·K⁻¹) et surface d'échange S = 2,9 m². Calculer la résistance thermique R = e/(λ·S) du ballon.",
+   "valor": 0.6705,
+   "unidad": "K·W⁻¹",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "e = 0,070 m",
+    "R = 0,070 / (0,036 × 2,9) = 0,67 K·W⁻¹"
+   ],
+   "pagina_pdf": 441
+  },
+  {
+   "id": "q11",
+   "tipo": "numerico",
+   "enunciado": "Exercice de synthèse 1 : la température du sol terrestre est de 15 °C. Calculer le flux F_s = σ·T⁴ émis par unité de surface (σ = 5,67×10⁻⁸ W·m⁻²·K⁻⁴), avec T en kelvin.",
+   "valor": 390.08,
+   "unidad": "W·m⁻²",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 3,
+   "pasos": [
+    "T = 15 + 273 = 288 K",
+    "F_s = 5,67×10⁻⁸ × 288⁴ = 390 W·m⁻²"
+   ],
+   "pagina_pdf": 440
+  },
+  {
+   "id": "q12",
+   "tipo": "numerico",
+   "enunciado": "Le flux solaire reçu au sommet de l'atmosphère, perpendiculaire aux rayons, est F = 1 368 W·m⁻². Quel est le flux F' reçu par unité de surface terrestre (surface d'un disque πR² répartie sur une sphère 4πR²) ?",
+   "valor": 342.0,
+   "unidad": "W·m⁻²",
+   "tolerancia_rel": 0.01,
+   "cifras_sig": 3,
+   "pasos": [
+    "F·πR² = F'·4πR²",
+    "F' = F/4 = 1 368/4 = 342 W·m⁻²"
+   ],
+   "pagina_pdf": 424
+  },
+  {
+   "id": "q13",
+   "tipo": "opcion",
+   "enunciado": "Comment appelle-t-on la proportion de l'énergie reçue par la Terre qui est réfléchie et donc non absorbée (≈ 0,30 pour la Terre et son atmosphère) ?",
+   "opciones": [
+    "L'albédo",
+    "L'effet de serre",
+    "Le flux thermique",
+    "La résistance thermique"
+   ],
+   "correcta": 0,
+   "explicacion": "L'albédo A est la proportion de l'énergie reçue qui est réfléchie ; pour la Terre et son atmosphère A = 0,30 (≈ 70 % de l'énergie est absorbée).",
+   "pagina_pdf": 424
+  },
+  {
+   "id": "q14",
+   "tipo": "opcion",
+   "enunciado": "Loi thermique de Newton dT/dt = −γ·(T − T_th) avec γ > 0 : que devient la température T du système quand t → ∞ ?",
+   "opciones": [
+    "Elle tend vers la température T_th du thermostat",
+    "Elle tend vers 0 K",
+    "Elle croît indéfiniment",
+    "Elle reste égale à sa valeur initiale T₀"
+   ],
+   "correcta": 0,
+   "explicacion": "Solution T(t) = (T₀ − T_th)·e^(−γt) + T_th : fonction exponentielle qui tend vers T_th.",
+   "pagina_pdf": 424
+  },
+  {
+   "id": "q15",
+   "tipo": "numerico",
+   "enunciado": "Exercice 28 (tasse de café) : le café passe de 75 °C à 50 °C en 5 min dans une pièce à 25 °C, avec T(t) = 50·e^(−γt) + 25. Calculer la constante γ (en min⁻¹).",
+   "valor": 0.1386,
+   "unidad": "min⁻¹",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "T(5) = 50 ⇒ 50·e^(−5γ) + 25 = 50",
+    "e^(−5γ) = 1/2",
+    "γ = (ln 2)/5 = 0,139 min⁻¹"
+   ],
+   "pagina_pdf": 621
+  },
+  {
+   "id": "q16",
+   "tipo": "numerico",
+   "enunciado": "Exercice résolu 31 (muffins) : T(0) = 100 °C, T(10 min) = 80 °C, cuisine à 20 °C, donc γ = ln(4/3)/10 min⁻¹. Au bout de combien de minutes la température a-t-elle été divisée par 2 (50 °C) ?",
+   "valor": 34.09,
+   "unidad": "min",
+   "tolerancia_rel": 0.03,
+   "cifras_sig": 2,
+   "pasos": [
+    "T(t) = 50 ⇒ 80·e^(−γt) + 20 = 50 ⇒ e^(−γt) = 3/8",
+    "t = ln(8/3)/γ = ln(8/3)/(0,1×ln(4/3))",
+    "t ≈ 34 min"
+   ],
+   "pagina_pdf": 431
+  },
+  {
+   "id": "q17",
+   "tipo": "numerico",
+   "enunciado": "Exercice 35 (bouilloire) : P = 1 500 W, 0,40 L d'eau chauffés de 18 °C à 85 °C en 80 s (c = 4,18×10³ J·kg⁻¹·K⁻¹, ρ = 1,0 kg·L⁻¹). Calculer le rendement η = E_utile/E_dépensée en %.",
+   "valor": 93.35,
+   "unidad": "%",
+   "tolerancia_rel": 0.02,
+   "cifras_sig": 2,
+   "pasos": [
+    "E_utile = ρ·V·c·ΔT = 1,0×0,40×4,18×10³×67 ≈ 1,12×10⁵ J",
+    "E_dépensée = P·Δt = 1 500×80 = 1,2×10⁵ J",
+    "η ≈ 0,93 (le corrigé imprime 0,94 = 94 %)"
+   ],
+   "pagina_pdf": 432
+  },
+  {
+   "id": "q18",
+   "tipo": "opcion",
+   "enunciado": "Pour calculer un flux avec la loi de Stefan-Boltzmann F = σ·T⁴, quelle erreur faut-il éviter ?",
+   "opciones": [
+    "Utiliser T en °C au lieu de kelvin",
+    "Utiliser T en kelvin",
+    "Prendre σ = 5,67×10⁻⁸ W·m⁻²·K⁻⁴",
+    "Considérer la Terre avec son albédo"
+   ],
+   "correcta": 0,
+   "explicacion": "T doit s'exprimer en kelvin : T(K) = θ(°C) + 273. C'est seulement pour une variation ΔT (Q = C·ΔT) qu'on peut raisonner directement en °C.",
+   "pagina_pdf": 423
+  }
+ ]
+}

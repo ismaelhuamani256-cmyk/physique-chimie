@@ -309,7 +309,10 @@
     if (cfg.init) cfg.init(api);
 
     // ----- actores -----
-    const fusionar = (d, a) => { const o = Object.assign({}, d); for (const k in a) if (a[k] != null) o[k] = a[k]; return o; };
+    // Cajas de cada tipo (alto de escena, igual que el motor/monigotes): [ancho, alto, ancla]
+    //  ancla: 'base' (pies/ruedas), 'centro', 'pivote' (pendulo, arriba), 'izq' (resorte, pared)
+    const EXT = lib.EXT;
+    const fusionar = (d, a) => { const o = Object.assign({}, d); for (const k in a) if (a[k] != null && k !== 'def') o[k] = a[k]; return o; };
     function coleccionarMats(root) {
       const mats = [];
       root.traverse((o) => {
@@ -322,15 +325,45 @@
       });
       return mats;
     }
+    /** Caja (x,y) de las mallas del objeto, ignorando sprites/puntos/líneas y lo marcado userData.noBox */
+    const _bb = new T.Box3(), _bt = new T.Box3();
+    function cajaDe(obj) {
+      obj.updateMatrixWorld(true); _bb.makeEmpty();
+      obj.traverse((o) => {
+        if (!o.isMesh || o.userData.noBox || !o.geometry) return;
+        if (!o.geometry.boundingBox) o.geometry.computeBoundingBox();
+        _bt.copy(o.geometry.boundingBox).applyMatrix4(o.matrixWorld); _bb.union(_bt);
+      });
+      return _bb.isEmpty() ? null : _bb.clone();
+    }
     function crearActor(id, a) {
-      const spec = fusionar(defs[id] || {}, a);
+      const spec = fusionar(Object.assign({}, defs[id] || {}, a.def || {}), a);
       const fab = lib.builders[spec.tipo] || lib.builders.__fallback;
       let b;
       try { b = fab(spec, api); } catch (err) { console.error('[intro3d] error construyendo', spec.tipo, err); b = lib.builders.__fallback(spec, api); }
-      const root = new T.Group(); root.add(b.obj); scene.add(root);
-      const e = { id, spec, b, root, mats: coleccionarMats(root), alpha: 1, res: 0, lastColor: spec.color, bubble: null, bubbleTxt: null, bubbleK: 0, halo: null, oculto: false, forzarVisible: false };
-      return e;
+      const ext = EXT[spec.tipo] || [0.12, 0.12, 'centro'];
+      // tamaño natural del modelo -> se ajusta a la caja del tipo (misma composición que monigotes)
+      let nw = 2, nh = 2, ax = 0, ay = 0;
+      const bx = cajaDe(b.obj);
+      if (bx) {
+        nw = Math.max(0.05, bx.max.x - bx.min.x); nh = Math.max(0.05, bx.max.y - bx.min.y);
+        const cx = (bx.max.x + bx.min.x) / 2, cy = (bx.max.y + bx.min.y) / 2;
+        if (ext[2] === 'base') { ax = cx; ay = bx.min.y; } else if (ext[2] === 'pivote') { ax = cx; ay = bx.max.y; } else if (ext[2] === 'izq') { ax = bx.min.x; ay = cy; } else { ax = cx; ay = cy; }
+      }
+      if (b.caja) { nw = b.caja[0]; nh = b.caja[1]; }
+      if (b.ancla) { ax = b.ancla[0]; ay = b.ancla[1]; }
+      const fit = b.fit != null ? b.fit : Math.sqrt((ext[0] * H / nw) * (ext[1] * H / nh));
+      const holder = new T.Group(); holder.scale.setScalar(fit); holder.position.set(-ax * fit, -ay * fit, 0); holder.add(b.obj);
+      const root = new T.Group(); root.add(holder); scene.add(root);
+      const w = nw * fit, h = nh * fit;
+      // centro visual del actor respecto al ancla (escala 1) y distancia al borde superior
+      const cOff = ext[2] === 'base' ? [0, h / 2] : ext[2] === 'pivote' ? [0, -h / 2] : ext[2] === 'izq' ? [w / 2, 0] : [0, 0];
+      const arriba = ext[2] === 'base' ? h : ext[2] === 'pivote' ? 0.1 : h / 2;
+      return { id, spec, b, root, holder, mats: coleccionarMats(root), alpha: 1, res: 0, lastColor: spec.color, bubble: null, bubbleTxt: null, bubbleK: 0, halo: null, oculto: false,
+        radio: Math.max(w, h) / 2, w, h, cOff, arriba, ext };
     }
+    /** centro visual del actor en el mundo (aprox., sin rotación) */
+    const centroDe = (e, out) => out.set(e.root.position.x + e.cOff[0] * e.root.scale.x, e.root.position.y + e.cOff[1] * e.root.scale.x, 0);
     function aplicarEstado(e, alpha, res) {
       if (Math.abs(alpha - e.alpha) < 0.002 && Math.abs(res - e.res) < 0.004) return;
       e.alpha = alpha; e.res = res;
@@ -348,23 +381,23 @@
       }
       if (!e.bubble) return;
       e.bubbleK = Math.min(1, e.bubbleK + dt * 5);
-      const k = 1 + 0.12 * Math.sin(e.bubbleK * Math.PI) ; const pop = smooth(0, 1, e.bubbleK) * k, bs = e.bubble.userData.base;
+      const k = 1 + 0.12 * Math.sin(e.bubbleK * Math.PI); const pop = smooth(0, 1, e.bubbleK) * k, bs = e.bubble.userData.base;
       e.bubble.scale.set(bs[0] * pop, bs[1] * pop, 1);
-      const alto = (e.b.radio || 0.8) * (e.spec.escala || 1) * (e.root.scale.x / Math.max(0.001, e.spec.escala || 1)) * 0.9 + 0.35;
       const hw = bs[0] / 2;
-      e.bubble.position.set(clamp(e.root.position.x, -W / 2 + hw + 0.2, W / 2 - hw - 0.2), Math.min(e.root.position.y + alto, H / 2 - bs[1] - 0.1), 1.2);
+      e.bubble.position.set(clamp(e.root.position.x, -W / 2 + hw + 0.2, W / 2 - hw - 0.2), Math.min(e.root.position.y + e.arriba * e.root.scale.x + 0.3, H / 2 - bs[1] - 0.1), 1.2);
     }
+    const _c = new T.Vector3();
     function halo(e, a, t) {
       if (e.res < 0.01) { if (e.halo) e.halo.visible = false; return; }
       if (!e.halo) { e.halo = new T.Mesh(G.ring(), new T.MeshBasicMaterial({ color: 0xffffff, transparent: true, blending: T.AdditiveBlending, depthTest: false, depthWrite: false, side: T.DoubleSide })); e.halo.renderOrder = 10; scene.add(e.halo); }
-      const r = (e.b.radio || 0.9) * e.root.scale.x * 1.35 * (1 + 0.06 * Math.sin(t * 7));
-      e.halo.visible = true; e.halo.position.copy(e.root.position); e.halo.position.z += 0.3; e.halo.quaternion.copy(camera.quaternion);
+      const r = e.radio * e.root.scale.x * 1.3 * (1 + 0.06 * Math.sin(t * 7));
+      e.halo.visible = true; centroDe(e, _c); e.halo.position.copy(_c); e.halo.position.z += 0.3; e.halo.quaternion.copy(camera.quaternion);
       e.halo.scale.set(r, r, 1); e.halo.material.opacity = e.res * 0.85;
     }
 
     // ----- vectores (flechas con etiqueta) -----
     const vecPool = [];
-    const colorVec = (et) => { const c = String(et || '').replace(/[\\$\s{]/g, '')[0]; return c === 'v' || c === 'V' ? '#4cc9f0' : c === 'a' ? '#2ee59d' : c === 'p' ? '#c77dff' : '#ffb830'; };
+    const colorVec = (et) => { const c = String(et || '').replace(/[\\$\s{]|vec/g, '')[0]; return c === 'v' || c === 'V' ? '#4cc9f0' : c === 'a' ? '#2ee59d' : c === 'p' ? '#c77dff' : c === 'F' || c === 'f' || c === 'Σ' ? '#ff6b6b' : '#ffb830'; };
     function vectores(S) {
       const lista = S.vectores || [];
       for (let i = 0; i < Math.max(lista.length, vecPool.length); i++) {
@@ -377,12 +410,13 @@
         let dx = (v.dx || 0) * W, dy = -(v.dy || 0) * H; const L = Math.hypot(dx, dy);
         if (L > 6.5) { dx *= 6.5 / L; dy *= 6.5 / L; }
         const ux = L > 1e-4 ? dx / Math.hypot(dx, dy) : 1, uy = L > 1e-4 ? dy / Math.hypot(dx, dy) : 0;
-        const off = (e.b.radio || 0.7) * e.root.scale.x * 0.45;
-        const x0 = e.root.position.x + ux * off, y0 = e.root.position.y + uy * off;
+        centroDe(e, _c);
+        const off = e.radio * e.root.scale.x * 0.5;
+        const x0 = _c.x + ux * off, y0 = _c.y + uy * off;
         const alpha = v.alpha != null ? v.alpha : 1;
         slot.arrow.visible = alpha > 0.01; slot.arrow.userData.mat.opacity = alpha;
         lib.ponerFlecha(slot.arrow, x0, y0, x0 + dx, y0 + dy, 1.0, 0.075);
-        const et = v.etiqueta ? String(v.etiqueta).replace(/\$/g, '') : '';
+        const et = v.etiqueta ? lib.texPlano(v.etiqueta) : '';
         if (et !== slot.txt) { if (slot.lab) { scene.remove(slot.lab); slot.lab.material.dispose(); slot.lab = null; } slot.txt = et; if (et) { slot.lab = lib.textSprite(et, { color: '#ffffff', h: 0.5, px: 60 }); scene.add(slot.lab); } }
         if (slot.lab) { slot.lab.visible = alpha > 0.01; slot.lab.material.opacity = alpha; slot.lab.position.set(x0 + dx + ux * 0.5 - uy * 0.15, y0 + dy + uy * 0.5 + 0.28, 1.2); }
       }
@@ -432,6 +466,7 @@
     function update(S, dt) {
       dt = clamp(dt || 0.016, 0, 0.1);
       const t = S.t || 0; const acts = S.actores || {};
+      S.i = S.reloj != null ? S.reloj : t; // reloj "idle": sigue corriendo durante las pausas del guion
       if (t < lastT - 0.4 && cfg.reinicio) cfg.reinicio(api);
       lastT = t;
       for (const id in acts) if (!ents[id]) ents[id] = crearActor(id, acts[id]);
@@ -441,25 +476,25 @@
         const e = ents[id], a = acts[id];
         if (!a) { e.root.visible = false; if (e.bubble) e.bubble.visible = false; continue; }
         const alphaS = a.alpha != null ? a.alpha : 1;
-        const vis = !e.oculto && (e.forzarVisible || (a.visible !== false && alphaS > 0.01));
+        const vis = !e.oculto && a.visible !== false && alphaS > 0.01;
         const res = clamp(a.resaltado || 0, 0, 1);
-        const esc = (a.escala != null ? a.escala : 1) * (e.b.base || 1);
         e.root.position.set(lib.mapX(a.x), lib.mapY(a.y), (zi++ % 7) * 0.02);
-        e.root.scale.setScalar(Math.max(0.001, esc * (1 + 0.1 * res * (0.6 + 0.4 * Math.sin(t * 8)))));
-        e.root.rotation.z = e.b.rotPropia ? 0 : -(a.rot || 0) * RAD;
+        e.root.scale.setScalar(Math.max(0.001, (a.escala != null ? a.escala : 1) * (1 + 0.1 * res * (0.6 + 0.4 * Math.sin(S.i * 8)))));
+        e.root.rotation.z = e.b.rotPropia ? 0 : -(a.rot || 0);   // rot llega en RADIANES (00-engine.js)
         e.root.visible = vis;
+        if (e.oculto && e.b.update) e.b.update(a, S, dt, e);       // sigue "viva" para que la reacción lea sus átomos
         if (!vis) { if (e.bubble) e.bubble.visible = false; continue; }
         if (a.color && a.color !== e.lastColor && e.b.tint) { e.lastColor = a.color; const c = lib.color(a.color); e.b.tint.forEach((m) => m.color.copy(c)); }
         if (e.b.update) e.b.update(a, S, dt, e);
-        aplicarEstado(e, e.forzarVisible && alphaS < 0.01 ? 1 : alphaS, res);
+        aplicarEstado(e, alphaS, res);
         if (e.bubble) e.bubble.visible = true;
-        bocadillo(e, a, dt); halo(e, a, t);
+        bocadillo(e, a, dt); halo(e, a, S.i);
       }
       if (cfg.despues) cfg.despues(S, dt, api);
       vectores(S); trayectorias(S);
       fx.update(S.particulas || [], t);
-      camara(S, t);
-      if (amb && amb.tick) amb.tick(t);
+      camara(S, S.i);
+      if (amb && amb.tick) amb.tick(S.i);
       if (cfg.frame) cfg.frame(S, dt, api);
       renderer.render(scene, camera);
     }

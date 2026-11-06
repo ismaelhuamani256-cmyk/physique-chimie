@@ -178,7 +178,7 @@
     const ancho = Math.round(num(nivel.ancho_tiles, 0)), alto = Math.round(num(nivel.alto_tiles, 0));
     const segs = Array.isArray(nivel.segmentos) ? nivel.segmentos : [];
     const tiles = new Uint8Array(Math.max(0, ancho * alto));
-    const G = { techo: new Set(), ancho, alto, tiles, movers: [], resortes: [], campos: [], fosos: [], puentes: [], palancas: [], bloques: [], tuberias: [], puertas: [], aguas: [], ladrillos: [], caes: [], plantas: [], minas: [], prensas: [], pendulos: [], cintas: [], picos: [], rebotes: [], sprints: [], rastros: [], carteles: [], atomos: [], estaciones: [], interruptores: [], platEstado: [], arena: null, meta: null, jefe: null };
+    const G = { techo: new Set(), ancho, alto, tiles, movers: [], resortes: [], campos: [], fosos: [], puentes: [], palancas: [], bloques: [], tuberias: [], puertas: [], aguas: [], ladrillos: [], caes: [], plantas: [], minas: [], prensas: [], pendulos: [], cintas: [], picos: [], rebotes: [], sprints: [], rastros: [], carteles: [], atomos: [], estaciones: [], interruptores: [], platEstado: [], llaves: [], arena: null, meta: null, jefe: null };
     const get = (x, y) => (x < 0 || x >= ancho || y < 0 || y >= alto ? 0 : tiles[y * ancho + x]);
     const set = (x, y, v) => { if (x >= 0 && x < ancho && y >= 0 && y < alto) tiles[y * ancho + x] = v; };
     G.get = get;
@@ -243,6 +243,7 @@
       else if (s.tipo === 'estacion_molecula') G.estaciones.push({ x: Math.round(num(s.x, 0)), y: Math.round(num(s.y, 0)), seg: s });
       else if (s.tipo === 'interruptor_estado') G.interruptores.push({ x: Math.round(num(s.x, 0)), y: Math.round(num(s.y, 0)), variable: s.variable, valores: Array.isArray(s.valores) ? s.valores : [], seg: s });
       else if (s.tipo === 'plataforma_estado') G.platEstado.push({ x: num(s.x, 0), y: num(s.y, 0), largo: Math.max(1, Math.round(num(s.largo, 3))), requiere: s.requiere || {}, seg: s });
+      else if (s.tipo === 'llave') G.llaves.push({ x: num(s.x, 0), y: num(s.y, 0), seg: s });
       else if (s.tipo === 'zona_agua') G.aguas.push({ x: num(s.x, 0), y: num(s.y, 0), w: num(s.w, 1), h: num(s.h, 1), cx: num(s.corriente_x, 0), cy: num(s.corriente_y, 0), seg: s });
       else if (s.tipo === 'bloque_pregunta') {
         const x = Math.round(num(s.x, 0)), y = Math.round(num(s.y, 0));
@@ -336,7 +337,7 @@
     if (F.hSeguro < 2.2) E(`Con esta física el salto solo alcanza ${F.hMax.toFixed(2)} tiles: demasiado bajo para jugar.`);
     const segs = nivel.segmentos;
     const TIPOS = ['plataforma', 'puente', 'palanca', 'foso', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'checkpoint', 'jefe', 'meta', 'bloque_pregunta', 'tuberia', 'puerta', 'zona_agua', 'jefe_quiz', 'ladrillo', 'plataforma_cae', 'planta_carnivora',
-      'mina', 'prensa', 'pendulo', 'cinta', 'picos', 'bloque_rebote', 'sprint', 'rastro_monedas', 'cartel', 'atomo', 'estacion_molecula', 'puerta_ecuacion', 'interruptor_estado', 'plataforma_estado', 'item', 'bicho', 'estalactita', 'lluvia_rocas', 'sierra', 'torreta', 'canon_bala', 'geiser', 'laser', 'planta_techo', 'fauna'];
+      'mina', 'prensa', 'pendulo', 'cinta', 'picos', 'bloque_rebote', 'sprint', 'rastro_monedas', 'cartel', 'atomo', 'estacion_molecula', 'puerta_ecuacion', 'interruptor_estado', 'plataforma_estado', 'item', 'bicho', 'estalactita', 'lluvia_rocas', 'sierra', 'torreta', 'canon_bala', 'geiser', 'laser', 'planta_techo', 'fauna', 'llave'];
     const G = geometria(nivel, { revelar: true });   // los puentes ocultos (que aparecen con una estación) cuentan como presentes
     const dentroX = (x) => x >= 0 && x < ancho, dentroY = (y) => y >= 0 && y < alto;
     const desc = (s, i) => `segmento #${i} (${s.tipo}${s.x != null ? ' x=' + s.x : ''}${s.y != null ? ' y=' + s.y : ''})`;
@@ -686,7 +687,8 @@
       const sg = d.seg, id = `puerta (x=${sg.x}, y=${sg.y})`;
       if (d.base < 0) { E(`${id}: no hay suelo debajo.`); continue; }
       if (!(d.alto >= 2 && d.alto <= 6)) E(`${id}: "alto" debe estar entre 2 y 6 (vale ${sg.alto}).`);
-      if (sg.tipo === 'puerta_ecuacion') validarEcuacion(sg, id); else valQs(sg, id);
+      if (sg.llave) { if (!G.llaves.some((k) => !sg.llave || sg.llave === true || k.seg.id === sg.llave || !k.seg.id)) E(`${id}: puerta con llave pero no hay ningún segmento llave.`); }
+      else if (sg.tipo === 'puerta_ecuacion') validarEcuacion(sg, id); else valQs(sg, id);
     }
     // natación: alcanzabilidad por flood-fill en celdas (4 vecinos; se sube solo dentro del agua)
     if (esAgua && G.aguas.length && spawnY > 0) {

@@ -1083,6 +1083,18 @@
    "x": 143,
    "y": 11,
    "item": "escopeta"
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 81,
+   "y": 6
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 47,
+   "y": 10
   }
  ],
  "ambiente": "lab",

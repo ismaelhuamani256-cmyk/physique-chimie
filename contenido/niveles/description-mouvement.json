@@ -854,6 +854,12 @@
    "x": 83,
    "y": 11,
    "item": "escopeta"
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 72,
+   "y": 9
   }
  ],
  "ambiente": "castillo",

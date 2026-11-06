@@ -1013,6 +1013,18 @@
    "x": 105,
    "y": 12,
    "item": "escopeta"
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 81,
+   "y": 4
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 110,
+   "y": 9
   }
  ],
  "ambiente": "cueva",

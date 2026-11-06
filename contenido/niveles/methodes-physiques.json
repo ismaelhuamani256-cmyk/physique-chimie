@@ -966,6 +966,24 @@
    "x": 65,
    "y": 11,
    "item": "fuego"
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 139,
+   "y": 9
+  },
+  {
+   "tipo": "llave",
+   "x": 33,
+   "y": 13
+  },
+  {
+   "tipo": "puerta",
+   "x": 50,
+   "y": 7,
+   "alto": 6,
+   "llave": true
   }
  ],
  "ambiente": "lab",

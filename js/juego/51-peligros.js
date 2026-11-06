@@ -28,6 +28,7 @@
     g.lasers = S.filter((s) => s.tipo === 'laser').map((s) => ({ x: s.x, y: s.y, eje: s.eje === 'v' ? 'v' : 'h', largo: s.largo || 5, per: s.periodo || 3.6, ret: s.retardo || 0, on: false, aviso: false }));
     g.plantasT = S.filter((s) => s.tipo === 'planta_techo').map((s) => ({ x: s.x, largo: s.largo || 3, ciclo: s.ciclo || 3.4, vis: s.visible || 1.3, fase: (J.hash('pt' + s.x) % 100) / 100, alt: 0 }));
     g.bolasT = [];
+    g.llaves = S.filter((s) => s.tipo === 'llave').map((s) => ({ x: s.x + 0.5, y: s.y + 0.5, id: s.id || null, tomada: false, fase: (J.hash('k' + s.x + s.y) % 100) / 16 }));
   };
 
   /** Disparos del jugador (fotones, fuego, balas): ¿matan algo de aquí? Devuelve true si el disparo se gasta. */
@@ -41,6 +42,12 @@
   P.paso = function (g, dt) {
     if (!g.sierras) return;
     const w = g.w, p = g.jugador, F = g.F, t = g.t, pcx = p.x + p.w / 2, pcy = p.y + p.h / 2;
+    for (const k of g.llaves || []) {   // llave dorada: abre las puertas con llave del nivel
+      if (k.tomada || p.muriendo || Math.hypot(pcx - k.x, pcy - k.y) > 0.9) continue;
+      k.tomada = true; J.Audio.sfx('premio'); J.chispas(g, k.x * T, k.y * T, 16, '#ffd166', 4, 2);
+      let abiertas = 0; for (const d of w.puertas) if (d.llave && !d.abierta && (d.llave === true || !k.id || d.llave === k.id)) { J.Quiz.abrirPuerta(g, d); abiertas++; }
+      if (g.ui) g.ui.aviso(abiertas ? '¡Llave! Puerta abierta' : '¡Llave!');
+    }
     // ---- sierras ----
     for (const s of g.sierras) {
       s.ang += dt * 11;
@@ -154,6 +161,13 @@
     else if (l.aviso) { ctx.fillStyle = 'rgba(255,209,102,.6)'; if (l.eje === 'h') ctx.fillRect(a[0], y, a[2] - a[0], 1); else ctx.fillRect(x, a[1], 1, a[3] - a[1]); }
   }
   P.dibujar = function (ctx, g, camX, camY, vis) {
+    for (const k of g.llaves || []) {   // llave dorada flotante con destello
+      if (k.tomada || !vis(k.x - 1, k.x + 1)) continue;
+      const x = r(k.x * T - camX), y = r(k.y * T - camY + Math.sin(g.t * 3 + k.fase) * 2);
+      ctx.globalAlpha = 0.3 + 0.2 * Math.sin(g.t * 5 + k.fase); D(ctx, x, y, 11, '#ffd166'); ctx.globalAlpha = 1;
+      ctx.fillStyle = OUT; ctx.fillRect(x - 7, y - 5, 10, 10); ctx.fillRect(x + 1, y - 2, 8, 4); ctx.fillRect(x + 6, y + 1, 3, 5);
+      D(ctx, x - 3, y, 4, '#ffd166'); D(ctx, x - 3, y, 1, OUT); ctx.fillStyle = '#ffd166'; ctx.fillRect(x + 1, y - 1, 7, 2); ctx.fillRect(x + 6, y + 1, 2, 4); ctx.fillRect(x + 3, y + 1, 2, 3);
+    }
     if (!g.sierras) return;
     const t = g.t, S = J.Sprites;
     for (const s of g.sierras) if (vis(s.bx - 1, s.bx + 1 + Math.abs(s.rec))) {

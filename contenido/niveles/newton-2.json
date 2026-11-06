@@ -883,6 +883,18 @@
    "x": 28,
    "y": 14,
    "item": "grande"
+  },
+  {
+   "tipo": "llave",
+   "x": 32,
+   "y": 12
+  },
+  {
+   "tipo": "puerta",
+   "x": 148,
+   "y": 9,
+   "alto": 6,
+   "llave": true
   }
  ],
  "ambiente": "hielo",

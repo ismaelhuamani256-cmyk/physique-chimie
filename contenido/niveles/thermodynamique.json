@@ -986,6 +986,12 @@
    "x": 147,
    "y": 12,
    "item": "escopeta"
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 88,
+   "y": 5
   }
  ],
  "ambiente": "horno",

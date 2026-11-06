@@ -1380,6 +1380,12 @@
    "x": 82,
    "y": 13,
    "item": "fuego"
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 36,
+   "y": 9
   }
  ],
  "ambiente": "castillo",

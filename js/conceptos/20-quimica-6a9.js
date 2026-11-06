@@ -993,7 +993,7 @@
         c.fillStyle = '#16204a'; c.fillRect(gx, gy, gw, 12); c.fillStyle = (forzado ? K.m : K.v) + '88'; c.fillRect(gx, gy, gw * zz, 12); bola(c, gx + gw * zz, gy + 6, 9, forzado ? K.m : K.v);
         c.strokeStyle = K.am; c.lineWidth = 3; c.beginPath(); c.moveTo(gx + gw, gy - 8); c.lineTo(gx + gw, gy + 20); c.stroke(); S.txt('K', gx + gw, gy - 18, { size: 13, weight: 800, color: K.am, align: 'center' }); S.txt('Qr', gx + gw * zz, gy + 28, { size: 13, color: forzado ? K.m : K.v, align: 'center', weight: 700 });
         S.txt(forzado ? 'el generador aleja Qr de K' : 'Qr,i < K : Qr → K', 715, 336, { size: 12, color: K.tx2, align: 'center' });
-        if (verAcu) { S.txt(forzado ? 'CARGA del acumulador = electrólisis' : 'DESCARGA del acumulador = pila', 400, 24, { size: 16, weight: 800, color: forzado ? K.m : K.v, align: 'center' }); }
+        if (verAcu) { S.txt(forzado ? 'CARGA del acumulador = electrólisis' : 'DESCARGA del acumulador = pila', 400, 12, { size: 16, weight: 800, color: forzado ? K.m : K.v, align: 'center' }); }
         if (hl === 'ac') void 0;
       },
     });
@@ -1049,13 +1049,13 @@
           S.txt(tt, x + 68, 42, { size: 12, color: K.tx2, align: 'center' }); S.txt(v, x + 68, 72, { size: 16, weight: 800, color: hl === i ? K.v : K.txt, align: 'center' });
           if (i < 4) flecha(c, x + 138, 59, x + 156, 59, hl === i + 1 ? K.v : K.gris, 2.5, 8);
         });
-        S.txt('N_A·e = 9,64×10⁴ C·mol⁻¹  ·  M(Zn) = 65,4 g·mol⁻¹', 400, 396, { size: 12, color: K.tx2, align: 'center' });
+        S.txt('N_A·e = 9,64×10⁴ C·mol⁻¹  ·  M(Zn) = 65,4 g·mol⁻¹', 400, 110, { size: 12, color: K.tx2, align: 'center' });
         if (verDt) S.txt('Despejando: Δt = n(e⁻)·N_A·e / I', 400, 200, { size: 15, weight: 700, color: K.am, align: 'center' });
         // cuba
         c.fillStyle = '#35508a33'; c.fillRect(170, 250, 460, 120); c.strokeStyle = '#c9d3ff'; c.lineWidth = 3; c.beginPath(); c.moveTo(170, 215); c.lineTo(170, 370); c.lineTo(630, 370); c.lineTo(630, 215); c.stroke();
-        c.fillStyle = '#4a4f66'; c.fillRect(250, 170, 18, 200); S.txt('ánodo (+)', 259, 116, { size: 13, color: K.m, align: 'center', weight: 700 });
+        c.fillStyle = '#4a4f66'; c.fillRect(250, 170, 18, 200); S.txt('ánodo (+)', 259, 130, { size: 13, color: K.m, align: 'center', weight: 700 });
         const dep = clamp(m / 1.2, 0, 1) * 50; c.fillStyle = '#a7b0c9'; c.fillRect(530, 170, 18, 200); c.fillStyle = '#d4dbee'; c.fillRect(548, 170, dep, 200); c.fillRect(530 - dep, 170, dep, 200);
-        S.txt('cátodo (−)', 539, 116, { size: 13, color: K.v, align: 'center', weight: 700 }); S.txt('Zn depositado', 539, 388, { size: 12, color: K.tx2, align: 'center' });
+        S.txt('cátodo (−)', 539, 130, { size: 13, color: K.v, align: 'center', weight: 700 }); S.txt('Zn depositado', 539, 388, { size: 12, color: K.tx2, align: 'center' });
         // hilo + generador
         c.strokeStyle = '#e0e6ff'; c.lineWidth = 3; c.beginPath(); c.moveTo(259, 170); c.lineTo(259, 146); c.lineTo(350, 146); c.moveTo(450, 146); c.lineTo(539, 146); c.lineTo(539, 170); c.stroke();
         c.fillStyle = '#16204a'; c.strokeStyle = K.am; rrect(c, 350, 130, 100, 32, 8); c.fill(); c.stroke(); S.txt('G', 400, 146, { size: 16, weight: 800, color: K.am, align: 'center' });
@@ -1087,6 +1087,316 @@
     test: [
       { pregunta: 'En el cátodo Zn²⁺ + 2 e⁻ = Zn. Si han pasado 4,0×10⁻³ mol de electrones, ¿cuántos mol de Zn se depositan?', opciones: ['4,0×10⁻³ mol', '2,0×10⁻³ mol', '8,0×10⁻³ mol'], correcta: 1, explicacion: 'n(Zn) = n(e⁻)/2 = 2,0×10⁻³ mol (2 electrones por átomo de Zn).' },
       { pregunta: 'Si duplicas la intensidad y mantienes Δt, ¿qué pasa con la masa depositada?', opciones: ['Se duplica', 'No cambia', 'Se reduce a la mitad'], correcta: 0, explicacion: 'q = I·Δt se duplica, también n(e⁻), n(Zn) y m.' },
+    ],
+  });
+
+  // =============================================================================================================
+  // 9 · synthese-organique (resto)
+  // =============================================================================================================
+  // ---------- 9 · Etapas de una síntesis (cours p. 226 «protocole de synthèse», p. 230 TP 2: reflujo → extracción → lavado → secado → filtración → rendimiento)
+  function montarEtapas(host, api) {
+    const NM = ['1 · Mise en œuvre', '2 · Isolement', '3 · Purification: lavado', '4 · Purification: secado y filtración', '5 · Producto aislado', '6 · Identificación y rendimiento'];
+    // 6 posiciones: 0 reflujo · 1 decantación · 2 lavado · 3 secado · 4 filtración · 5 vial
+    const R = rng(17), pts = [];
+    const circ = (cx, cy, r) => { const a = R() * 6.283, d = Math.sqrt(R()) * r; return [cx + Math.cos(a) * d, cy + Math.sin(a) * d]; };
+    const rect = (x0, y0, x1, y1) => [lerp(x0, x1, R()), lerp(y0, y1, R())];
+    const add = (tp, n, g) => { for (let i = 0; i < n; i++) pts.push({ tp, pos: g(i), j: R() * 6.28 }); };
+    const org = () => rect(292, 142, 368, 205), acu = () => rect(292, 226, 368, 290), fl0 = () => circ(300, 292, 56), er = () => rect(262, 318, 338, 356), vial = () => rect(284, 300, 316, 352);
+    // posiciones [etapa] → [x,y,alfa]
+    add('P', 18, () => [0, 0]); pts.forEach((p) => { const a = fl0(), b = org(), c2 = org(), d = er(), e = rect(268, 318, 332, 355), f = vial(); p.pos = [[...a, 1], [...b, 1], [...c2, 1], [...d, 1], [...e, 1], [...f, 1]]; });
+    const mk = (tp, fn) => { const p = { tp, j: R() * 6.28 }; p.pos = fn(); pts.push(p); };
+    for (let i = 0; i < 10; i++) mk('R', () => { const a = fl0(), b = org(), c2 = acu(), d = acu(); return [[...a, 1], [...b, 1], [...c2, 1], [d[0], d[1] + 70, 0], [d[0], d[1] + 120, 0], [d[0], d[1] + 120, 0]]; });
+    for (let i = 0; i < 10; i++) mk('W', () => { const a = fl0(), b = acu(), c2 = acu(); return [[...a, 1], [...b, 1], [...c2, 1], [c2[0], c2[1] + 70, 0], [c2[0], c2[1] + 120, 0], [c2[0], c2[1] + 120, 0]]; });
+    for (let i = 0; i < 6; i++) mk('C', () => { const a = fl0(), b = acu(), c2 = acu(); return [[...a, 1], [...b, 1], [...c2, 1], [c2[0], c2[1] + 70, 0], [c2[0], c2[1] + 120, 0], [c2[0], c2[1] + 120, 0]]; });
+    for (let i = 0; i < 4; i++) mk('t', () => { const a = fl0(), b = org(), c2 = org(), d = rect(270, 340, 330, 354), e = rect(280, 192, 322, 206); return [[...a, 1], [...b, 1], [...c2, 1], [...d, 1], [...e, 1], [e[0], e[1] + 40, 0]]; });
+    const COL = { P: K.v, R: K.am, W: '#7fd3ff', C: K.m, t: '#7fd3ff' };
+    let u = 0, objetivo = 0, mObt = 5.5;
+    const ctl = barra(host, [
+      { t: 'slider', id: 'u', txt: 'Etapa', min: 0, max: 5, step: 0.05, val: 0, fmt: (v) => String(Math.round(v) + 1) + '/6', on: (v) => { objetivo = u = v; S.pedir(); } },
+      { t: 'slider', id: 'm', txt: 'masa obtenida', min: 0, max: 8.8, step: 0.1, val: mObt, fmt: (v) => fnum(v, 1) + ' g', on: (v) => { mObt = v; S.pedir(); } },
+    ]);
+    const TXT = [
+      ['Reactivos + catalizador (H⁺) y piedra pómez en el matraz;', 'calentar a reflujo con refrigerante vertical.', 'Se forma el producto (éster) y agua.'],
+      ['Enfriar y trasvasar a la ampolla de decantación.', 'Las fases no se mezclan: la orgánica (con el éster)', 'y la acuosa (agua, H⁺, ácido) se separan.'],
+      ['Lavar la fase orgánica con NaHCO₃(aq): neutraliza', 'el ácido restante (efervescencia de CO₂) y lo', 'pasa a la fase acuosa. Quedan trazas de agua.'],
+      ['Se secan las trazas de agua con MgSO₄ anhidro', 'y se filtra: las sales quedan en el filtro,', 'el producto atraviesa.'],
+      ['Producto purificado, aislado del resto de', 'especies de la mezcla inicial.', ''],
+      ['Identificar (espectro IR, CCM…) y pesar el producto.', 'Rendimiento R = n_obtenue / n_attendue × 100', 'con n_attendue fijada por el reactivo limitante.'],
+    ];
+    const S = lienzo(host, api, {
+      alt: 'Las especies de una síntesis (producto, reactivo sobrante, agua, catalizador) se separan etapa a etapa: reflujo, decantación, lavado, secado, filtración, identificación.',
+      continuo: !api.reducido,
+      paso(dt) { if (Math.abs(objetivo - u) > 0.002) { u = api.reducido ? objetivo : u + clamp(objetivo - u, -1.6 * dt, 1.6 * dt); ctl.u.set(u); } return !api.reducido || Math.abs(objetivo - u) > 0.002; },
+      dibujar(S) {
+        const c = S.ctx, t = S.t, i0 = Math.floor(clamp(u, 0, 5 - 1e-6)), f = suave(u - i0), est = Math.round(u);
+        c.save();
+        // aparatos con fundido
+        const aparatos = [aReflujo, aDecantacion, aLavado, aSecado, aFiltro, aVial];
+        aparatos.forEach((fn, i) => { const a = i === i0 ? 1 - f : i === i0 + 1 ? f : 0; if (a > 0.01) { c.globalAlpha = a; fn(c, S, t); } });
+        c.globalAlpha = 1;
+        // partículas
+        pts.forEach((p) => {
+          const A = p.pos[i0], B = p.pos[Math.min(5, i0 + 1)], x = lerp(A[0], B[0], f), y = lerp(A[1], B[1], f), al = lerp(A[2], B[2], f);
+          if (al < 0.03) return;
+          const jx = api.reducido ? 0 : Math.sin(t * 1.7 + p.j) * 3, jy = api.reducido ? 0 : Math.cos(t * 1.3 + p.j) * 3;
+          let col = COL[p.tp]; if (p.tp === 'R') col = u >= 1.5 ? '#6aa7ff' : K.am; // el ácido se convierte en su sal (carboxilato) al lavar con NaHCO₃
+          c.globalAlpha = al; bola(c, x + jx, y + jy, p.tp === 'P' ? 6.5 : 5.5, col); c.globalAlpha = 1;
+        });
+        // panel derecho
+        S.txt(NM[est], 470, 34, { size: 19, weight: 800, color: K.v });
+        TXT[est].forEach((l, i) => S.txt(l, 470, 70 + i * 22, { size: 14, color: K.txt }));
+        // leyenda
+        [['P', 'producto (éster)'], ['R', u >= 1.5 ? 'ácido → su sal (acuosa)' : 'reactivo ácido'], ['W', 'agua'], ['C', 'catalizador H⁺']].forEach(([k, n], i) => { bola(c, 482, 160 + i * 24, 7, k === 'R' && u >= 1.5 ? '#6aa7ff' : COL[k]); S.txt(n, 496, 160 + i * 24, { size: 13, color: K.tx2 }); });
+        if (est === 5) {
+          const nObt = mObt / 88, nAtt = 0.1, Rr = (nObt / nAtt) * 100;
+          c.fillStyle = K.panel; c.strokeStyle = K.gris; c.lineWidth = 2; rrect(c, 462, 262, 322, 128, 12); c.fill(); c.stroke();
+          S.txt('M(éster) = 88 g/mol · n_attendue = 0,10 mol', 474, 282, { size: 12, color: K.tx2 });
+          S.txt('n_obtenue = m/M = ' + fnum(nObt, 4) + ' mol', 474, 306, { size: 14 });
+          S.txt('R = ' + fnum(nObt, 4) + ' / 0,10 × 100', 474, 332, { size: 14 });
+          S.txt('R = ' + fnum(Rr, 1) + ' %', 474, 364, { size: 24, weight: 800, color: Rr > 100 ? K.m : K.v });
+          if (Rr > 100.01) S.txt('¡imposible: R ≤ 100 %!', 640, 364, { size: 13, color: K.m });
+          S.txt('(Situación 1, p. 208: 5,5 g → R = 62,5 %)', 474, 384, { size: 11, color: K.tx2 });
+        }
+        c.restore();
+        ctl.m.inp.parentElement.style.display = est === 5 ? '' : 'none';
+      },
+    });
+    function aReflujo(c, S, t) {
+      c.fillStyle = '#5a2b1f'; rrect(c, 218, 366, 160, 18, 4); c.fill(); c.fillStyle = K.am + '66'; c.beginPath(); c.arc(298, 366, 46, 3.14, 6.28); c.fill();
+      c.strokeStyle = '#c9d3ff'; c.lineWidth = 3; c.fillStyle = '#1a3f6a66'; c.beginPath(); c.arc(300, 300, 74, 0, 6.283); c.fill(); c.stroke();
+      c.fillStyle = '#1a3f6a66'; c.fillRect(284, 176, 32, 54); c.strokeRect(284, 176, 32, 54);
+      c.fillStyle = '#2b78c966'; c.fillRect(268, 70, 64, 108); c.strokeStyle = '#8fd0ff'; c.strokeRect(268, 70, 64, 108); c.strokeStyle = '#c9d3ff'; c.strokeRect(286, 70, 28, 108);
+      S.txt('refrigerante vertical', 268, 60, { size: 13, color: '#8fd0ff', align: 'right' }); S.txt('agua fría ↑', 262, 160, { size: 12, color: '#8fd0ff', align: 'right' });
+      S.txt('calentador', 300, 398, { size: 12, color: K.am, align: 'center' });
+      for (let k = 0; k < 4; k++) { const y = 150 - ((t * 40 + k * 28) % 110); if (!S.reducido) { c.fillStyle = 'rgba(255,255,255,.5)'; c.beginPath(); c.arc(300 + Math.sin(k * 2 + t) * 8, 70 + ((y % 110) + 110) % 110 + 8, 2.5, 0, 6.3); c.fill(); } }
+    }
+    function funnel(c, S, tapon) {
+      c.strokeStyle = '#c9d3ff'; c.lineWidth = 3; c.fillStyle = '#1a3f6a40';
+      c.beginPath(); c.moveTo(300, 100); c.bezierCurveTo(232, 118, 236, 250, 270, 300); c.lineTo(292, 340); c.lineTo(308, 340); c.lineTo(330, 300); c.bezierCurveTo(364, 250, 368, 118, 300, 100); c.closePath(); c.fill(); c.stroke();
+      c.fillStyle = '#c9d3ff'; c.fillRect(290, 80, 20, 20); c.strokeRect(290, 80, 20, 20); c.fillStyle = K.am; c.fillRect(286, 336, 28, 8); S.txt('llave', 322, 340, { size: 12, color: K.tx2 });
+      c.setLineDash([5, 4]); c.strokeStyle = '#ffffff88'; c.lineWidth = 2; c.beginPath(); c.moveTo(262, 216); c.lineTo(338, 216); c.stroke(); c.setLineDash([]);
+      S.txt('fase orgánica', 372, 175, { size: 13, color: K.v }); S.txt('fase acuosa', 372, 258, { size: 13, color: '#7fd3ff' }); S.txt('(el líquido menos denso queda arriba)', 372, 196, { size: 11, color: K.tx2 }); void tapon;
+    }
+    function aDecantacion(c, S) { funnel(c, S); S.txt('ampolla de decantación', 300, 66, { size: 13, color: K.tx2, align: 'center' }); }
+    function aLavado(c, S, t) {
+      funnel(c, S); S.txt('+ NaHCO₃(aq)', 170, 130, { size: 14, weight: 700, color: K.am }); flecha(c, 220, 130, 280, 110, K.am, 2.5, 9);
+      if (!S.reducido) for (let k = 0; k < 6; k++) { const y = 200 - ((t * 30 + k * 22) % 90); c.strokeStyle = '#ffffffaa'; c.lineWidth = 1.5; c.beginPath(); c.arc(270 + (k * 23) % 60, y + 10, 3 + (k % 3), 0, 6.3); c.stroke(); }
+      S.txt('CO₂ (efervescencia)', 160, 190, { size: 12, color: '#ffffffcc' });
+    }
+    function aSecado(c, S) {
+      c.strokeStyle = '#c9d3ff'; c.lineWidth = 3; c.fillStyle = '#1a3f6a40'; c.beginPath(); c.moveTo(300, 250); c.lineTo(300, 290); c.lineTo(236, 366); c.lineTo(364, 366); c.lineTo(300, 290); c.closePath(); c.fill(); c.stroke();
+      c.fillStyle = '#ffffffbb'; for (let k = 0; k < 14; k++) c.fillRect(256 + ((k * 37) % 90), 346 + ((k * 13) % 14), 5, 4);
+      S.txt('MgSO₄ anhidro (granos blancos)', 300, 388, { size: 13, color: K.txt, align: 'center' }); S.txt('seca la fase orgánica', 300, 238, { size: 13, color: K.tx2, align: 'center' });
+    }
+    function aFiltro(c, S) {
+      c.strokeStyle = '#c9d3ff'; c.lineWidth = 3; c.fillStyle = '#1a3f6a30'; c.beginPath(); c.moveTo(240, 150); c.lineTo(360, 150); c.lineTo(310, 220); c.lineTo(290, 220); c.closePath(); c.fill(); c.stroke();
+      c.strokeStyle = K.am; c.lineWidth = 2.5; c.beginPath(); c.moveTo(255, 158); c.lineTo(300, 214); c.lineTo(345, 158); c.stroke();
+      c.strokeStyle = '#c9d3ff'; c.lineWidth = 3; c.beginPath(); c.moveTo(300, 220); c.lineTo(300, 290); c.stroke(); c.fillStyle = '#1a3f6a40'; c.beginPath(); c.moveTo(300, 270); c.lineTo(300, 290); c.lineTo(236, 366); c.lineTo(364, 366); c.lineTo(300, 290); c.closePath(); c.fill(); c.stroke();
+      S.txt('papel de filtro', 370, 176, { size: 13, color: K.am }); S.txt('queda en el filtro: MgSO₄ + agua', 370, 198, { size: 12, color: K.tx2 }); S.txt('filtrado: el producto', 370, 330, { size: 13, color: K.v });
+    }
+    function aVial(c, S) {
+      c.strokeStyle = '#c9d3ff'; c.lineWidth = 3; c.fillStyle = '#1a3f6a40'; rrect(c, 276, 276, 48, 84, 8); c.fill(); c.stroke(); c.fillStyle = '#c9d3ff'; c.fillRect(280, 268, 40, 10);
+      S.txt('producto puro', 300, 380, { size: 13, color: K.v, align: 'center' });
+    }
+    const irEtapa = (n) => { objetivo = n; if (api.reducido) u = n; ctl.u.set(u); S.pedir(); };
+    return { ir(n) { irEtapa(clamp(n, 0, 5)); }, dispose() { S.dispose(); host.replaceChildren(); } };
+  }
+  registrar({
+    id: 'etapas-sintesis', capitulos: ['synthese-organique'],
+    titulo: 'Las etapas de una síntesis', fr: 'Protocole de synthèse : mise en œuvre, isolement, purification, identification',
+    resumen: 'Un protocolo de síntesis comprende las condiciones de puesta en marcha (reflujo), el aislamiento y la purificación del producto (decantación, lavado, secado, filtración) y su identificación; el rendimiento mide la eficacia.',
+    pagina_pdf: 226,
+    pasos: [
+      { titulo: 'Puesta en marcha: calentar a reflujo', texto: 'Cours p. 226: un protocolo incluye las condiciones de puesta en marcha, los métodos de aislamiento y purificación y la identificación del producto. Aquí, como en la actividad 2 (p. 230): reactivos, catalizador y piedra pómez en el matraz, calentamiento a reflujo. En el matraz hay de todo: producto, reactivo sobrante, agua, catalizador.', fr: 'Conditions de mise en œuvre de la synthèse.' },
+      { titulo: 'Aislar: decantar', texto: 'Se enfría y se pasa a la ampolla de decantación (p. 230). Producto y reactivo sobrante, orgánicos, forman una fase; agua y catalizador, la fase acuosa. Se separan abriendo la llave. Observa cómo cada partícula va a su fase (la menos densa queda arriba).', fr: 'Méthodes d’isolement : extraction, décantation.' },
+      { titulo: 'Purificar: lavar con hidrogenocarbonato', texto: 'La fase orgánica aún lleva ácido sin reaccionar. Se lava con NaHCO₃(aq) hasta el fin de la efervescencia (CO₂): el ácido pasa a su sal, soluble en agua, y abandona la fase orgánica (p. 230). Arrastra el deslizador «Etapa» para ir y volver.', fr: 'Lavage de la phase organique.' },
+      { titulo: 'Purificar: secar y filtrar', texto: 'Quedan trazas de agua en la fase orgánica: se secan con sulfato de magnesio anhidro (los granos blancos las retienen) y se filtra (p. 230). El producto atraviesa el papel; el sólido con el agua se queda.', fr: 'Séchage au sulfate de magnésium anhydre, filtration.' },
+      { titulo: 'Producto aislado', texto: 'Tras estas etapas la fase que queda contiene casi solo el producto buscado. Ninguna etapa lo «fabrica»: la transformación ocurrió en la puesta en marcha; el resto solo elimina lo que sobra.', fr: 'Isolement et purification du produit recherché.' },
+      { titulo: 'Identificar y calcular el rendimiento', texto: 'Se identifica el producto (en las actividades, por ejemplo con un espectro IR) y se pesa: R = n_obtenue / n_attendue × 100 (p. 208, 226). Juega con la masa obtenida: con 5,5 g de etanoato de etilo (M = 88 g/mol) y n_attendue = 0,10 mol, R = 62,5 % (situación 1, p. 208). R nunca puede pasar de 100 %.', fr: 'Rendement : R = n_obtenue / n_attendue × 100.' },
+    ],
+    montar: montarEtapas,
+    test: [
+      { pregunta: 'Después de la decantación, la fase orgánica aún contiene ácido sin reaccionar. ¿Qué etapa lo elimina?', opciones: ['Lavado con NaHCO₃(aq)', 'Secado con MgSO₄', 'Calentar a reflujo más tiempo'], correcta: 0, explicacion: 'NaHCO₃ neutraliza el ácido (efervescencia de CO₂) y lo pasa a la fase acuosa.' },
+      { pregunta: 'Se obtienen 0,050 mol de producto y se esperaban 0,10 mol. ¿Cuál es el rendimiento?', opciones: ['200 %', '50 %', '5 %'], correcta: 1, explicacion: 'R = n_obtenue / n_attendue × 100 = 0,050 / 0,10 × 100 = 50 %.' },
+    ],
+  });
+
+  // ---------- 10 · Reflujo (cours p. 233, 235: calentamiento a reflujo, destilación, Dean-Stark; error típico p. 238)
+  function montarReflujo(host, api) {
+    const N = 60, NP = 15;
+    let modo = 'abierto', pot = 0.6, P = [], perdido = 0, recogido = 0;
+    const R = rng(31);
+    const RUTA = { abierto: [[250, 262], [250, 195], [250, 50]], reflujo: [[250, 262], [250, 195], [250, 100]], destila: [[250, 262], [250, 195], [250, 112], [418, 172], [440, 196]] };
+    const lonRuta = (m) => { let L = 0; const r = RUTA[m]; for (let i = 1; i < r.length; i++) L += Math.hypot(r[i][0] - r[i - 1][0], r[i][1] - r[i - 1][1]); return L; };
+    const posRuta = (m, d) => { const r = RUTA[m]; for (let i = 1; i < r.length; i++) { const l = Math.hypot(r[i][0] - r[i - 1][0], r[i][1] - r[i - 1][1]); if (d <= l) return [lerp(r[i - 1][0], r[i][0], d / l), lerp(r[i - 1][1], r[i][1], d / l)]; d -= l; } return r[r.length - 1].slice(); };
+    function reiniciar() {
+      P = []; perdido = recogido = 0;
+      for (let i = 0; i < N; i++) { const a = R() * 6.28, rr = Math.sqrt(R()) * 52; P.push({ pr: i < NP, st: 'liq', x: 250 + Math.cos(a) * rr, y: 318 + Math.sin(a) * rr * 0.7 + 4, d: 0, ph: R() * 6.28, w: R() }); }
+      S && S.pedir();
+    }
+    function tick(dt) {
+      const L = lonRuta(modo), fc = modo === 'reflujo' ? 0.72 : modo === 'destila' ? 0.7 : 2;
+      P.forEach((p) => {
+        if (p.st === 'liq') {
+          const pv = pot * pot * 0.45 * (modo === 'destila' ? (p.pr ? 2.2 : 0.12) : 1);
+          if (Math.random() < pv * dt) { p.st = 'vap'; p.d = 0; }
+          else { p.x += (Math.random() - 0.5) * 120 * dt; p.y += (Math.random() - 0.5) * 120 * dt; const dx = p.x - 250, dy = (p.y - 318) / 0.75; const rr = Math.hypot(dx, dy); if (rr > 54) { p.x = 250 + dx / rr * 54; p.y = 318 + dy / rr * 54 * 0.75; } }
+        } else if (p.st === 'vap') {
+          p.d += (45 + pot * 70) * dt; const q = posRuta(modo, Math.min(p.d, L)); p.x = q[0] + Math.sin(p.ph + p.d * 0.1) * 5; p.y = q[1];
+          if (modo === 'abierto' && p.d >= L) { p.st = 'gone'; perdido++; }
+          else if (modo === 'reflujo' && p.d >= L * fc) { p.st = 'cond'; p.cd = 0; p.side = p.w < 0.5 ? -1 : 1; }
+          else if (modo === 'destila' && p.d >= L * fc) { p.st = 'dest'; p.cd = 0; }
+        } else if (p.st === 'cond') { p.cd += 60 * dt; p.y = 112 + p.cd; p.x = 250 + p.side * 17; if (p.y >= 268) { p.st = 'liq'; p.x = 250 + (R() - 0.5) * 60; p.y = 300 + R() * 20; } }
+        else if (p.st === 'dest') { p.cd += 70 * dt; const f = clamp(p.cd / 120, 0, 1); p.x = lerp(418 + (p.w - 0.5) * 8, 470, f); p.y = lerp(172, 330, f * f); if (f >= 1) { p.st = 'recv'; recogido++; p.x = 440 + R() * 60; p.y = 335 + R() * 18; } }
+      });
+    }
+    function avanzar(s) { for (let t = 0; t < s; t += 0.05) tick(0.05); }
+    const ctl = barra(host, [
+      { t: 'slider', id: 'pot', txt: 'Calefacción', min: 0.1, max: 1, step: 0.05, val: pot, fmt: (v) => Math.round(v * 100) + ' %', on: (v) => { pot = v; S.pedir(); } },
+      { t: 'btn', id: 'a', txt: 'Sin refrigerante', on: () => fijar('abierto') }, { t: 'btn', id: 'b', txt: 'Reflujo', on: () => fijar('reflujo') }, { t: 'btn', id: 'c', txt: 'Destilación', on: () => fijar('destila') },
+      { t: 'btn', id: 'av', txt: 'Avanzar ▶▶', on: () => { avanzar(3); S.pedir(); } },
+    ]);
+    ctl.av.style.display = api.reducido ? '' : 'none';
+    function fijar(m) { modo = m; ['a', 'b', 'c'].forEach((k) => ctl[k].setAttribute('aria-pressed', String((k === 'a' && m === 'abierto') || (k === 'b' && m === 'reflujo') || (k === 'c' && m === 'destila')))); reiniciar(); if (api.reducido) avanzar(6); }
+    const S = lienzo(host, api, {
+      alt: 'Matraz con calefactor. Según el montaje (abierto, reflujo, destilación) los vapores escapan, vuelven al matraz o se recogen.',
+      continuo: !api.reducido,
+      paso(dt) { if (!api.reducido) tick(dt); return !api.reducido; },
+      dibujar(S) {
+        const c = S.ctx, t = S.t;
+        // calefactor
+        const glow = pot; c.fillStyle = '#3a2418'; rrect(c, 170, 384, 160, 14, 4); c.fill(); c.fillStyle = 'rgba(255,140,40,' + (0.15 + glow * 0.6) + ')'; c.beginPath(); c.ellipse(250, 384, 60, 10 + 14 * glow, 0, 3.14, 6.28); c.fill();
+        S.txt('calefactor', 250, 408, { size: 12, color: K.am, align: 'center' });
+        // matraz
+        c.strokeStyle = '#c9d3ff'; c.lineWidth = 3; c.fillStyle = '#1a3f6a55'; c.beginPath(); c.arc(250, 318, 72, 0.0 - 1.18, Math.PI + 1.18, true); c.lineTo(236, 190); c.lineTo(264, 190); c.closePath(); c.fill(); c.stroke();
+        c.fillStyle = '#2a6fb055'; c.beginPath(); c.arc(250, 318, 66, 0.2, Math.PI - 0.2); c.closePath(); c.fill();
+        if (modo === 'reflujo') { c.fillStyle = '#2b78c966'; c.fillRect(226, 100, 48, 92); c.strokeStyle = '#8fd0ff'; c.lineWidth = 2; c.strokeRect(226, 100, 48, 92); c.strokeStyle = '#c9d3ff'; c.strokeRect(238, 100, 24, 92); S.txt('refrigerante', 216, 120, { size: 13, color: '#8fd0ff', align: 'right' }); S.txt('agua ↑', 216, 170, { size: 12, color: '#8fd0ff', align: 'right' }); flecha(c, 296, 182, 276, 182, '#8fd0ff', 2, 7); flecha(c, 276, 110, 296, 110, '#8fd0ff', 2, 7); }
+        if (modo === 'destila') {
+          c.strokeStyle = '#c9d3ff'; c.lineWidth = 3; c.beginPath(); c.moveTo(238, 190); c.lineTo(238, 108); c.lineTo(250, 104); c.lineTo(262, 108); c.lineTo(262, 190); c.stroke();
+          c.save(); c.translate(262, 112); c.rotate(Math.atan2(60, 156)); c.fillStyle = '#2b78c966'; c.fillRect(0, -13, 170, 26); c.strokeStyle = '#8fd0ff'; c.lineWidth = 2; c.strokeRect(0, -13, 170, 26); c.restore();
+          S.txt('refrigerante inclinado', 330, 118, { size: 13, color: '#8fd0ff' });
+          c.strokeStyle = '#c9d3ff'; c.lineWidth = 3; c.fillStyle = '#1a3f6a40'; c.beginPath(); c.moveTo(466, 290); c.lineTo(466, 320); c.lineTo(436, 360); c.lineTo(514, 360); c.lineTo(484, 320); c.lineTo(484, 290); c.stroke(); S.txt('receptor', 475, 380, { size: 13, color: K.tx2, align: 'center' });
+        }
+        if (modo === 'abierto') { S.txt('cuello abierto', 250, 36, { size: 13, color: K.rojo, align: 'center' }); }
+        // partículas
+        P.forEach((p) => { if (p.st === 'gone') return; bola(c, p.x, p.y, p.st === 'vap' ? 4.5 : 5.5, p.pr ? K.v : K.am); });
+        // vapores huidos (abierto): nube de partículas que se desvanecen
+        if (modo === 'abierto' && perdido > 0) { S.txt('↑ ' + perdido + ' partículas perdidas al aire', 250, 52, { size: 14, weight: 700, color: K.rojo, align: 'center', halo: true }); }
+        // panel derecho
+        const px = 560;
+        const enMatraz = P.filter((p) => p.st !== 'gone' && p.st !== 'recv' && p.st !== 'dest').length;
+        S.txt('Balance de materia', px, 36, { size: 15, weight: 700 });
+        const filas = [['en el montaje', enMatraz, N, K.v]]; if (modo === 'abierto') filas.push(['perdido al aire', perdido, N, K.rojo]); if (modo === 'destila') filas.push(['producto recogido', recogido, NP, K.am]);
+        filas.forEach(([n, v, mx, col], i) => { const y = 72 + i * 44; S.txt(n + ': ' + v, px, y, { size: 13, color: col }); c.fillStyle = '#16204a'; c.fillRect(px, y + 12, 200, 12); c.fillStyle = col; c.fillRect(px, y + 12, 200 * (v / mx), 12); });
+        S.txt('Velocidad de la reacción (relativa)', px, 190, { size: 13, color: K.tx2 }); c.fillStyle = '#16204a'; c.fillRect(px, 202, 200, 12); c.fillStyle = K.m; c.fillRect(px, 202, 200 * pot, 12);
+        S.txt('↑ T → más choques eficaces', px, 232, { size: 12, color: K.tx2 });
+        const msg = modo === 'abierto' ? 'Sin refrigerante la materia escapa' : modo === 'reflujo' ? 'Reflujo: todo vuelve al matraz' : 'Destilación: se elimina el producto';
+        S.txt(msg, px, 280, { size: 15, weight: 700, color: modo === 'abierto' ? K.rojo : modo === 'reflujo' ? K.v : K.am });
+        if (modo === 'reflujo') S.txt('T alta, sin pérdidas: v ↑ y rendimiento intacto', px, 302, { size: 12, color: K.tx2 });
+        if (modo === 'destila') S.txt('Desplaza el equilibrio → R ↑ (fig. 7, p. 233)', px, 302, { size: 12, color: K.tx2 });
+        void t;
+      },
+    });
+    reiniciar(); ctl.a.setAttribute('aria-pressed', 'true');
+    return {
+      ir(n) {
+        if (n === 0) { pot = 0.35; ctl.pot.set(pot); fijar('abierto'); } else if (n === 1) { pot = 0.9; ctl.pot.set(pot); fijar('abierto'); }
+        else if (n === 2) { pot = 0.9; ctl.pot.set(pot); fijar('reflujo'); } else if (n === 3) { pot = 0.8; ctl.pot.set(pot); fijar('destila'); }
+        S.pedir();
+      },
+      dispose() { S.dispose(); host.replaceChildren(); },
+    };
+  }
+  registrar({
+    id: 'reflujo', capitulos: ['synthese-organique'],
+    titulo: 'Reflujo: calentar sin perder materia', fr: 'Chauffage à reflux, distillation',
+    resumen: 'Calentar acelera una síntesis, pero en un recipiente abierto se pierde materia. El calentamiento a reflujo (refrigerante vertical) condensa los vapores y los devuelve al matraz; la destilación, en cambio, elimina un producto para aumentar el rendimiento.',
+    pagina_pdf: 235,
+    pasos: [
+      { titulo: 'Por qué calentar', texto: 'Para aumentar la velocidad de formación de un producto se actúa sobre los factores cinéticos, entre ellos la temperatura (p. 233): más agitación, más choques eficaces. La barra rosa sube con la calefacción. Pero el matraz está abierto…', fr: 'Augmenter la vitesse de formation : température…' },
+      { titulo: 'Con un matraz abierto, se pierde materia', texto: 'Al calentar mucho sin refrigerante los vapores escapan: la barra roja crece y la materia del matraz baja. Calentar sin reflujo es un error típico (p. 238): pierdes reactivos y producto.', fr: 'Sans réfrigérant, on perd de la matière.' },
+      { titulo: 'Reflujo: el refrigerante devuelve los vapores', texto: 'Con el refrigerante vertical (agua fría circulando) los vapores se condensan en la pared y las gotas vuelven al matraz: puedes calentar fuerte durante todo el tiempo necesario sin ninguna pérdida de materia. (p. 235)', fr: 'Le chauffage à reflux accélère la réaction sans perte de matière.' },
+      { titulo: 'Destilación: otro montaje, otro objetivo', texto: 'Si el refrigerante se inclina y se añade un receptor, lo que se evapora no vuelve: se recoge. Eliminar un producto durante la síntesis (destilación, Dean-Stark) desplaza el equilibrio y aumenta el rendimiento (p. 233, fig. 7). Ojo: hay que destilar el producto, no el reactivo (error típico, p. 240).', fr: 'Éliminer un produit : distillation, Dean-Stark.' },
+    ],
+    montar: montarReflujo,
+    test: [
+      { pregunta: '¿Para qué sirve el refrigerante vertical en un calentamiento a reflujo?', opciones: ['Para enfriar la mezcla y frenar la reacción', 'Para condensar los vapores y devolverlos al matraz sin perder materia', 'Para recoger el producto aparte'], correcta: 1, explicacion: 'Permite calentar (acelerar la reacción) sin pérdida de materia (p. 235).' },
+      { pregunta: 'Quieres aumentar el rendimiento eliminando un producto durante la síntesis. ¿Qué montaje usas?', opciones: ['Reflujo', 'Matraz abierto', 'Destilación (o Dean-Stark)'], correcta: 2, explicacion: 'Retirar un producto desplaza el equilibrio en sentido directo (fig. 7, p. 233).' },
+    ],
+  });
+
+  // ---------- 11 · Velocidad frente a rendimiento (cours p. 233 fig. 5-7; error típico p. 242; K = 4,0 de la esterificación, ej. 28 p. 168)
+  function montarVelRend(host, api) {
+    const A = 0.1, KK = 4, K0 = 0.03;
+    let T = 20, cat = false, B = 0.1, rem = false;
+    const sim = (T_, cat_, b_, rem_) => {
+      const k = K0 * Math.pow(2, (T_ - 20) / 10) * (cat_ ? 6 : 1), out = []; let x = 0, t = 0; const dt = 0.1;
+      for (let i = 0; i <= 1000; i++) { if (i % 10 === 0) out.push(x); const y = rem_ ? 0 : x; x += k * ((A - x) * (b_ - x) - (x * y) / KK) * dt; t += dt; }
+      return out; // x cada minuto, 0…100
+    };
+    const plat = (b_, rem_) => { if (rem_) return Math.min(A, b_); const q = 1 - 1 / KK, s = A + b_; return (s - Math.sqrt(s * s - 4 * q * A * b_)) / (2 * q); };
+    const t90 = (cur, pl) => { const i = cur.findIndex((v) => v >= 0.9 * pl); return i < 0 ? null : i; };
+    const ctl = barra(host, [
+      { t: 'slider', id: 't', txt: 'T', min: 20, max: 80, step: 5, val: T, fmt: (v) => v + ' °C', on: (v) => { T = v; S.pedir(); } },
+      { t: 'tog', id: 'cat', txt: 'Catalizador (H₂SO₄)', val: false, on: (v) => { cat = v; S.pedir(); } },
+      { t: 'slider', id: 'b', txt: 'n(alcohol)', min: 0.1, max: 0.5, step: 0.05, val: B, fmt: (v) => fnum(v, 2) + ' mol', on: (v) => { B = v; S.pedir(); } },
+      { t: 'tog', id: 'rem', txt: 'Eliminar el agua', val: false, on: (v) => { rem = v; S.pedir(); } },
+    ]);
+    const S = lienzo(host, api, {
+      alt: 'Cantidad de éster formada en función del tiempo para la referencia y para las condiciones elegidas: temperatura, catalizador, exceso de un reactivo o eliminación de un producto.',
+      dibujar(S) {
+        const c = S.ctx, ref = sim(20, false, 0.1, false), cur = sim(T, cat, B, rem), pRef = plat(0.1, false), pCur = plat(B, rem);
+        const gx = 60, gy = 56, gw = 440, gh = 270, X = (t) => gx + (t / 100) * gw, Y = (n) => gy + gh - (n / 0.12) * gh;
+        S.txt('Ácido (0,10 mol) + alcohol ⇌ éster + agua   ·   K = 4,0', 400, 24, { size: 16, weight: 700, align: 'center' });
+        c.strokeStyle = K.gris; c.lineWidth = 1.5; c.strokeRect(gx, gy, gw, gh);
+        [0, 0.05, 0.1].forEach((v) => S.txt(fnum(v, 2), gx - 6, Y(v), { size: 12, color: K.tx2, align: 'right' })); [0, 50, 100].forEach((v) => S.txt(String(v), X(v), gy + gh + 14, { size: 12, color: K.tx2, align: 'center' }));
+        S.txt('t (min) →', gx + gw, gy + gh + 30, { size: 12, color: K.tx2, align: 'right' }); S.txt('n(éster) en mol', gx, gy - 8, { size: 12, color: K.tx2 });
+        c.setLineDash([6, 4]); c.strokeStyle = '#ffffffaa'; c.lineWidth = 1.5; c.beginPath(); c.moveTo(gx, Y(0.1)); c.lineTo(gx + gw, Y(0.1)); c.stroke();
+        c.strokeStyle = K.m + 'aa'; c.beginPath(); c.moveTo(gx, Y(pCur)); c.lineTo(gx + gw, Y(pCur)); c.stroke(); c.setLineDash([]);
+        S.txt('n_attendue = xmax = 0,10 mol', gx + gw - 4, Y(0.1) - 9, { size: 12, color: '#ffffffcc', align: 'right' });
+        S.txt('meseta (equilibrio)', gx + gw - 4, Y(pCur) + 12, { size: 12, color: K.m, align: 'right' });
+        const trazar = (arr, col, lw) => { c.strokeStyle = col; c.lineWidth = lw; c.beginPath(); arr.forEach((v, i) => (i ? c.lineTo(X(i), Y(v)) : c.moveTo(X(i), Y(v)))); c.stroke(); };
+        const igual = T === 20 && !cat && B === 0.1 && !rem;
+        if (!igual) trazar(ref, '#8d97c4', 2.5); trazar(cur, K.v, 3.5);
+        S.txt(igual ? 'referencia (20 °C, sin catalizador, equimolar)' : 'referencia', X(60), Y(ref[60]) + 22, { size: 12, color: '#8d97c4' }); if (!igual) S.txt('condiciones elegidas', X(30), Y(cur[30]) - 12, { size: 13, color: K.v, weight: 700 });
+        // tabla
+        const tx = 530; c.fillStyle = K.panel; c.strokeStyle = K.gris; c.lineWidth = 2; rrect(c, tx, 56, 254, 270, 12); c.fill(); c.stroke();
+        S.txt('', tx, 0); S.txt('referencia', tx + 150, 78, { size: 12, color: '#8d97c4', align: 'right' }); S.txt('elegida', tx + 242, 78, { size: 12, color: K.v, align: 'right', weight: 700 });
+        const t1 = t90(ref, pRef), t2 = t90(cur, pCur);
+        const fila = (y, nom, a, b, col) => { S.txt(nom, tx + 10, y, { size: 12, color: K.txt }); S.txt(a, tx + 150, y + 22, { size: 14, color: '#8d97c4', align: 'right' }); S.txt(b, tx + 242, y + 22, { size: 16, weight: 800, color: col, align: 'right' }); };
+        fila(104, 'VELOCIDAD · tiempo al 90 % de la meseta', t1 == null ? '> 100 min' : t1 + ' min', t2 == null ? '> 100 min' : t2 + ' min', K.m);
+        fila(172, 'RENDIMIENTO · meseta  R = n/n_att', fnum(pRef / 0.1 * 100, 0) + ' %', fnum(pCur / 0.1 * 100, 0) + ' %', K.am);
+        fila(240, 'R tras 100 min', fnum(ref[100] / 0.1 * 100, 0) + ' %', fnum(cur[100] / 0.1 * 100, 0) + ' %', K.v);
+        const mensaje = rem ? 'Eliminar un producto: R → 100 %' : B > 0.1 ? 'Exceso de un reactivo: meseta ↑ (R ↑)' : (T > 20 || cat) ? 'Más rápido, misma meseta: R no cambia' : 'Prueba a subir T o añadir catalizador';
+        S.txt(mensaje, 400, 372, { size: 16, weight: 700, color: K.am, align: 'center' });
+        S.txt('modelo cualitativo inspirado en la fig. 5 (p. 233)', 400, 392, { size: 11, color: K.tx2, align: 'center' });
+      },
+    });
+    return {
+      ir(n) {
+        const f = (t, ca, b, r) => { T = t; cat = ca; B = b; rem = r; ctl.t.set(t); ctl.cat.setAttribute('aria-pressed', String(ca)); ctl.b.set(b); ctl.rem.setAttribute('aria-pressed', String(r)); };
+        if (n === 0) f(20, false, 0.1, false); else if (n === 1) f(60, false, 0.1, false); else if (n === 2) f(20, true, 0.1, false); else if (n === 3) f(20, true, 0.4, false); else if (n === 4) f(50, true, 0.1, true);
+        S.pedir();
+      },
+      dispose() { S.dispose(); host.replaceChildren(); },
+    };
+  }
+  registrar({
+    id: 'velocidad-rendimiento', capitulos: ['synthese-organique'],
+    titulo: 'Velocidad no es rendimiento', fr: 'Vitesse de formation et rendement',
+    resumen: 'Calentar o añadir un catalizador hace llegar antes al equilibrio pero no cambia cuánto producto se obtiene (R). Para aumentar R hay que desplazar el equilibrio: exceso de un reactivo o eliminación de un producto.',
+    pagina_pdf: 233,
+    pasos: [
+      { titulo: 'Referencia: lenta y con meseta baja', texto: 'La esterificación (K = 4,0, ejercicio 28 de la p. 168) a 20 °C y sin catalizador: la curva sube muy despacio y su meseta (equilibrio) está por debajo de xmax. Esta es la referencia gris que verás en las demás pantallas. (p. 233)', fr: 'Rendement R = n_obtenue / n_attendue.' },
+      { titulo: 'Subir la temperatura: más rápido, misma meseta', texto: 'Con T alta la curva se acerca antes a la meseta (tiempo al 90 % mucho menor) pero la meseta, es decir el rendimiento final, no cambia. (p. 233; error típico «confundir velocidad y rendimiento», p. 242)', fr: 'Augmenter la vitesse de formation : température, concentration, catalyseur.' },
+      { titulo: 'Un catalizador: lo mismo', texto: 'El catalizador (H₂SO₄ en la esterificación, p. 242) también acelera: misma meseta, llegada más rápida. Solo actúa sobre la velocidad, no sobre el equilibrio. (p. 233)', fr: 'Un catalyseur augmente la vitesse mais pas le rendement.' },
+      { titulo: 'Exceso de un reactivo: sube la meseta', texto: 'Con 0,40 mol de alcohol (4 veces más) la meseta sube: R mayor. Modificar Qr cambia el sentido de evolución, y el sistema tiende al mismo K. (p. 233: «introducir un exceso de un reactivo»)', fr: 'Déplacer l’équilibre : excès d’un réactif.' },
+      { titulo: 'Eliminar un producto: R → 100 %', texto: 'Si se retira el agua a medida que se forma (destilación o Dean-Stark, fig. 7), el sistema nunca alcanza el equilibrio y la meseta llega a xmax. Con n_attendue = 0,10 mol, R sube hacia 100 %. (p. 233)', fr: 'Éliminer un produit au fur et à mesure.' },
+    ],
+    montar: montarVelRend,
+    test: [
+      { pregunta: 'Calientas más una síntesis con equilibrio y esperas el mismo tiempo. ¿Qué cambia?', opciones: ['La meseta (rendimiento final) sube', 'Llega antes a la meseta, pero esta no cambia', 'Baja la velocidad'], correcta: 1, explicacion: 'La temperatura actúa sobre la velocidad, no sobre el equilibrio (error típico p. 242).' },
+      { pregunta: '¿Qué dos acciones aumentan el rendimiento de una síntesis con equilibrio?', opciones: ['Calentar y añadir catalizador', 'Exceso de un reactivo y eliminar un producto', 'Enfriar y agitar'], correcta: 1, explicacion: 'Ambas desplazan el equilibrio en sentido directo (p. 233).' },
     ],
   });
 

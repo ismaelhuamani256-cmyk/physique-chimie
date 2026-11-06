@@ -35,7 +35,7 @@
     w.bloques = G.bloques.map((b) => ({ x: b.x, y: b.y, q: b.seg.pregunta, premio: b.seg.premio || 'moneda', fallo: b.seg.fallo || 'cierra', estado: 'listo', bump: 0, reserva: (b.seg.preguntas_reserva || []).slice() }));
     w.tuberias = G.tuberias.filter((t) => t.base >= 0).map((t) => ({ x: t.x, top: t.top, base: t.base, alto: t.alto, q: t.seg.pregunta, reserva: (t.seg.preguntas_reserva || []).slice(), destino: t.seg.destino || 'atajo',
       sx: t.seg.salida_x, sy: t.seg.salida_y, abierta: false, usada: false, cooldown: 0, agotada: false }));
-    w.puertas = G.puertas.filter((d) => d.base >= 0).map((d) => ({ id: d.seg.id || null, eq: d.seg.ecuacion || null, ayuda: d.seg.ayuda || '', x: d.x, top: d.top, base: d.base, alto: d.alto, q: d.seg.pregunta, reserva: (d.seg.preguntas_reserva || []).slice(), abierta: false, cooldown: 0, disolver: 0, intentos: 0 }));
+    w.puertas = G.puertas.filter((d) => d.base >= 0).map((d) => ({ id: d.seg.id || null, eq: d.seg.ecuacion || null, ayuda: d.seg.ayuda || '', x: d.x, top: d.top, base: d.base, alto: d.alto, q: d.seg.pregunta, reserva: (d.seg.preguntas_reserva || []).slice(), abierta: false, cooldown: 0, disolver: 0, intentos: 0, llave: d.seg.llave || null }));
     // ladrillos rompibles, plataformas que caen (viven en w.movers con cae:true) y plantas carnívoras
     w.ladrillos = G.ladrillos.map((b) => ({ x: b.x, y: b.y, contenido: b.contenido, monedas: b.contenido === 'moneda_multi' ? 6 : b.contenido === 'moneda' ? 1 : 0, bump: 0, roto: false }));
     for (const c of G.caes) w.movers.push({ x: c.x, y: c.y, bx: c.x, by: c.y, largo: c.largo, rec: 0, eje: 'x', per: 1, dx: 0, dy: 0, cae: true, retardo: c.retardo, reaparece: c.reaparece, estado: 'firme', t: 0, vy: 0, ausente: false });

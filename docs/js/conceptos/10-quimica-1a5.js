@@ -1102,7 +1102,7 @@
   const nuc = (Z, A) => sup(A) + sub(Z) + (SIMB[Z - 1] || '?');
   // valle de estabilidad (esquema aproximado: N = Z hasta Z = 20 y exceso de neutrones después)
   const nEst = (Z) => (Z <= 20 ? Z + Math.min(1, Z / 12) : Z + 1 + 0.6263 * (Z - 20) + 0.001344 * (Z - 20) * (Z - 20));
-  const tolN = (Z) => 0.85 + 0.012 * Z;
+  const tolN = (Z) => 0.7 + 0.01 * Z;
   const diagnostico = (Z, N) => { const d = N - nEst(Z); if (Z >= 84) return 'alpha'; if (d > tolN(Z)) return 'beta-'; if (d < -tolN(Z)) return 'beta+'; return 'estable'; };
 
   // ---- 5.1 Diagrama (N, Z): valle de estabilidad (p. 136) ----
@@ -1136,7 +1136,7 @@
           // fondo por zonas
           c.save(); c.beginPath(); c.rect(PX0, PY1, PX1 - PX0, PY0 - PY1); c.clip();
           const banda = (k) => { c.beginPath(); for (let z = 0; z <= 92; z++) { const x = gx(z), y = gy(nEst(z) + k * tolN(z)); z ? c.lineTo(x, y) : c.moveTo(x, y); } };
-          if (n >= 1) { c.beginPath(); for (let z = 0; z <= 92; z++) { const x = gx(z), y = gy(nEst(z) + tolN(z)); z ? c.lineTo(x, y) : c.moveTo(x, y); } for (let z = 92; z >= 0; z--) c.lineTo(gx(z), gy(nEst(z) - tolN(z))); c.closePath(); c.fillStyle = '#2ee59d33'; c.fill();
+          if (n >= 1) { c.beginPath(); for (let z = 0; z <= 92; z++) { const x = gx(z), y = gy(nEst(z) + tolN(z) + 1.6); z ? c.lineTo(x, y) : c.moveTo(x, y); } for (let z = 92; z >= 0; z--) c.lineTo(gx(z), gy(nEst(z) - tolN(z) - 1.6)); c.closePath(); c.fillStyle = '#2ee59d44'; c.fill();
             c.beginPath(); for (let z = 0; z <= 92; z++) { const x = gx(z), y = gy(nEst(z) + tolN(z)); z ? c.lineTo(x, y) : c.moveTo(x, y); } c.lineTo(gx(92), gy(NM)); c.lineTo(gx(0), gy(NM)); c.closePath(); c.fillStyle = '#4cc9f018'; c.fill();
             c.beginPath(); for (let z = 0; z <= 92; z++) { const x = gx(z), y = gy(nEst(z) - tolN(z)); z ? c.lineTo(x, y) : c.moveTo(x, y); } c.lineTo(gx(92), gy(0)); c.lineTo(gx(0), gy(0)); c.closePath(); c.fillStyle = '#ff3da618'; c.fill();
             c.fillStyle = '#ffd16618'; c.fillRect(gx(83.5), PY1, PX1 - gx(83.5), PY0 - PY1);
@@ -1145,8 +1145,8 @@
           lin(c, PX0, PY0, PX1, PY0, T2, 1.2); lin(c, PX0, PY0, PX0, PY1, T2, 1.2);
           [0, 20, 40, 60, 80].forEach((z) => { lin(c, gx(z), PY0, gx(z), PY0 + 4, T2, 1); txt(c, String(z), gx(z), PY0 + 14, { s: 11, c: T2 }); }); [0, 40, 80, 120].forEach((v) => { lin(c, PX0 - 4, gy(v), PX0, gy(v), T2, 1); txt(c, String(v), PX0 - 16, gy(v), { s: 11, c: T2 }); });
           txt(c, 'Z (protons)', PX1, PY0 + 28, { s: 12, c: T2, a: 'right' }); txt(c, 'N (neutrons)', PX0 + 6, PY1 - 10, { s: 12, c: T2, a: 'left' });
-          lin(c, gx(0), gy(0), gx(60), gy(60), '#e8eefc', 1.4, [3, 4]); txt(c, 'N = Z', gx(60) + 6, gy(60) + 2, { s: 12, c: '#e8eefc', a: 'left' });
-          if (n >= 1) { txt(c, 'vallée de la stabilité', gx(46), gy(66) + 24, { s: 12, c: VE, b: 1, a: 'left' }); txt(c, 'excès de neutrons', gx(10), gy(110), { s: 12, c: AZ, a: 'left' }); txt(c, 'excès de protons', gx(52), gy(18), { s: 12, c: MG, a: 'left' }); txt(c, 'noyaux lourds', gx(88), gy(140) + 4, { s: 12, c: AM, a: 'right' }); }
+          lin(c, gx(0), gy(0), gx(60), gy(60), '#e8eefc', 1.4, [3, 4]); txt(c, 'N = Z', gx(60) + 6, gy(60) + 12, { s: 12, c: '#e8eefc', a: 'left' });
+          if (n >= 1) { txt(c, 'vallée de la stabilité', gx(64), gy(108), { s: 12, c: VE, b: 1, a: 'left' }); lin(c, gx(64) + 6, gy(108) + 8, gx(52), gy(nEst(52)) - 4, VE, 1); txt(c, 'excès de neutrons', gx(10), gy(110), { s: 12, c: AZ, a: 'left' }); txt(c, 'excès de protons', gx(52), gy(18), { s: 12, c: MG, a: 'left' }); txt(c, 'noyaux lourds', gx(88), gy(140) + 4, { s: 12, c: AM, a: 'right' }); }
           // flecha de desintegración
           const dZ = dg === 'beta-' ? 1 : dg === 'beta+' ? -1 : dg === 'alpha' ? -2 : 0, dN = dg === 'beta-' ? -1 : dg === 'beta+' ? 1 : dg === 'alpha' ? -2 : 0;
           if (dg !== 'estable') { const k = 1 + 0.2 * Math.sin(S.t * 5); const x1 = gx(Z), y1 = gy(N), x2 = gx(Z + dZ), y2 = gy(N + dN); const L = Math.hypot(x2 - x1, y2 - y1) || 1; flecha(c, x1, y1, x1 + (x2 - x1) * 4 * k, y1 + (y2 - y1) * 4 * k, dg === 'alpha' ? AM : dg === 'beta-' ? AZ : MG, 3); }
@@ -1196,8 +1196,8 @@
       ];
       const S = { tipo: 0, p: 0, meta: null };
       const rng0 = PCB.util.rng ? PCB.util.rng : (s) => Math.random;
-      const bolas = TIPOS.map((t, ti) => { const rg = rng0(40 + ti), arr = []; for (let i = 0; i < t.p + t.nn; i++) arr.push({ k: i % 2 ? 'n' : 'p', r: 0, a: 0 }); // reparto
-        const ps = [], ns = []; const lista = []; for (let i = 0; i < t.p; i++) lista.push('p'); for (let i = 0; i < t.nn; i++) lista.push('n'); for (let i = lista.length - 1; i > 0; i--) { const j = Math.floor(rg() * (i + 1)); [lista[i], lista[j]] = [lista[j], lista[i]]; }
+      const bolas = TIPOS.map((t, ti) => { const rg = rng0(40 + ti);
+        const lista = []; for (let i = 0; i < t.p; i++) lista.push('p'); for (let i = 0; i < t.nn; i++) lista.push('n'); for (let i = lista.length - 1; i > 0; i--) { const j = Math.floor(rg() * (i + 1)); [lista[i], lista[j]] = [lista[j], lista[i]]; }
         return lista.map((k, i) => { const R = (t.A > 100 ? 9 : 14) * Math.sqrt(i + 0.5) * (t.A > 100 ? 1.0 : 1.0), a = i * 2.39996; return { k, x: Math.cos(a) * R, y: Math.sin(a) * R }; }); });
       const CX = 270, CY = 215;
       return escena(host, api, {
@@ -1213,18 +1213,17 @@
         ir(n, S, E) { S.meta = null; if (n === 0) { E.el.tipo.value = 1; S.tipo = 1; E.set('p', 0); } else { S.tipo = n - 1; E.el.tipo.value = n - 1; E.set('p', 0); if (S.red) E.set('p', 1); else S.meta = 1; } },
         dibujar(c, S) {
           const T = TIPOS[S.tipo], p = S.p, B = bolas[S.tipo], big = T.A > 100, r = big ? 8 : 12, ease = p * p * (3 - 2 * p);
-          const sale = (T.id === 'a') ? B.slice(0, 4) : null;
-          // marca de los emitidos (α: dos p y dos n)
+                    // marca de los emitidos (α: dos p y dos n)
           let idxA = [];
           if (T.id === 'a') { let pp = 0, nn = 0; B.forEach((b, i) => { if (b.k === 'p' && pp < 2 && Math.hypot(b.x, b.y) > 22) { idxA.push(i); pp++; } else if (b.k === 'n' && nn < 2 && Math.hypot(b.x, b.y) > 22) { idxA.push(i); nn++; } }); }
           let cambio = -1; if (T.id === 'b-') cambio = B.findIndex((b) => b.k === 'n'); if (T.id === 'b+') cambio = B.findIndex((b) => b.k === 'p');
           const glow = T.id === 'g' ? 0.5 + 0.5 * Math.sin(S.t * 6) * (1 - ease) : 0;
-          if (T.id === 'g' && p < 1) { c.globalAlpha = 0.25 * (1 - ease) + 0.1 * glow; circ(c, CX, CY, 100, '#ffffff', null); c.globalAlpha = 1; }
-          B.forEach((b, i) => { let x = CX + b.x, y = CY + b.y, k = b.k, a = 1; if (T.id === 'a' && idxA.includes(i)) { const d = Math.hypot(b.x, b.y) || 1, mv = ease * 180; x = CX + b.x + (b.x / d) * mv + 0, y = CY + b.y + (-1) * mv * 0.25; } if (i === cambio && p > 0.4) k = T.id === 'b-' ? 'p' : 'n'; const col = k === 'p' ? MG : '#9aa3c4'; circ(c, x, y, r, col + 'cc', col, 1.6); });
+          if (T.id === 'g' && p < 1) { c.globalAlpha = 0.1 + 0.12 * glow; circ(c, CX, CY, 78, '#ffffff', null); c.globalAlpha = 1; circ(c, CX, CY, 78, null, '#ffffff66', 1.5); }
+          B.forEach((b, i) => { let x = CX + b.x, y = CY + b.y, k = b.k, a = 1; if (T.id === 'a' && idxA.includes(i)) { const j = idxA.indexOf(i), tx = CX + 150 + (j % 2) * 15 + 150 * ease * 0.0, ty = CY - 90 + (j >> 1) * 15; x = lerp(CX + b.x, tx + 30 * ease, ease); y = lerp(CY + b.y, ty - 10 * ease, ease); } if (i === cambio && p > 0.4) k = T.id === 'b-' ? 'p' : 'n'; const col = k === 'p' ? MG : '#9aa3c4'; circ(c, x, y, r, col + 'cc', col, 1.6); });
           // partículas emitidas
           if (T.id === 'b-' || T.id === 'b+') { const q = ph2(p, 0.3, 1); if (q > 0) { const x = CX + 40 + q * 260, y = CY - 30 - q * 60, col = T.col; circ(c, x, y, 7, col + 'aa', col, 2); txt(c, T.id === 'b-' ? 'e⁻' : 'e⁺', x, y - 18, { s: 13, c: col, b: 1 }); } if (cambio >= 0 && p > 0.3 && p < 0.9) { const b = B[cambio]; circ(c, CX + b.x, CY + b.y, r + 5 + 3 * Math.sin(S.t * 10), null, AM, 2); } }
           if (T.id === 'g') { const q = ph2(p, 0.3, 1); if (q > 0) { c.beginPath(); for (let x = 0; x < q * 300; x += 3) { const xx = CX + 70 + x, yy = CY - 20 - x * 0.2 + 10 * Math.sin(x * 0.28 - S.t * 12); x ? c.lineTo(xx, yy) : c.moveTo(xx, yy); } c.strokeStyle = '#ffffff'; c.lineWidth = 2.5; c.stroke(); txt(c, 'γ', CX + 80 + q * 300, CY - 40 - q * 60, { s: 18, c: '#fff', b: 1 }); } }
-          if (T.id === 'a' && p > 0.3) txt(c, '⁴₂He', CX + 70 + ease * 180, CY - 54, { s: 15, c: AM, b: 1 });
+          if (T.id === 'a' && p > 0.3) txt(c, '⁴₂He (α)', CX + 190, CY - 126, { s: 15, c: AM, b: 1 });
           // etiquetas del núcleo
           const desp = p > 0.5, Zc = desp ? T.hijo[0] : T.Z, Ac = desp ? T.hijo[1] : T.A;
           txt(c, T.id === 'g' && !desp ? '¹⁴₇N*' : nuc(Zc, Ac), CX, CY + 128, { s: 26, b: 1, c: TX });
@@ -1262,7 +1261,7 @@
     ],
     montar(host, api) {
       const rng = PCB.util.rng ? PCB.util.rng(99) : Math.random;
-      const TV = 5; // segundos de pantalla por t½
+      const TV = 3; // segundos de pantalla por t½
       const S = { N0: 20, tau: 0, vivos: [], hist: [], corre: false, hechas: [], act: 0, bin: [] };
       function reinicia(S) { S.vivos = []; for (let i = 0; i < S.N0; i++) S.vivos.push(true); S.tau = 0; S.hist = [[0, S.N0]]; S.bin = []; S.corre = false; S.flash = []; }
       reinicia(S);
@@ -1324,19 +1323,19 @@
       const LAM = 3.87e-12, AN = 365.25 * 86400, T12 = Math.LN2 / LAM / AN, A0 = 13.6; // años, desint/min/g
       const rng = PCB.util.rng ? PCB.util.rng(21) : Math.random;
       const S = { edad: 0, meta: null, vivo: true };
-      const gx = (t) => 410 + (t / 20000) * 350, gy = (a) => 330 - (a / 14) * 240;
+      const gx = (t) => 410 + (t / 20000) * 350, gy = (a) => 298 - (a / 14) * 215;
       const C12 = []; for (let i = 0; i < 30; i++) C12.push({ x: 70 + rng() * 270, y: 118 + rng() * 150, ph: rng() * 6 });
       const C14 = []; for (let i = 0; i < 24; i++) C14.push({ x: 70 + rng() * 270, y: 118 + rng() * 150, ph: rng() * 6, u: rng() });
       return escena(host, api, {
         estado: S,
         controles: [
           { tipo: 'rango', id: 'edad', txt: 'Edad', min: 0, max: 20000, paso: 50, val: 0, fmt: (v) => Math.round(v).toLocaleString('es') + ' años' },
-          { tipo: 'btn', txt: '🛶 Madera del drakkar', al: (S, E) => { S.vivo = false; S.meta = null; E.set('edad', 1030); S.drak = true; } },
+          { tipo: 'btn', txt: '🛶 Madera del drakkar', al: (S, E) => { S.vivo = false; S.meta = null; E.set('edad', 1025); S.drak = true; } },
           { tipo: 'btn', txt: '▶ Recorrer', al: (S, E) => { S.vivo = false; E.set('edad', 0); S.meta = 20000; S.drak = false; if (S.red) { S.meta = null; E.set('edad', 5700); } } },
         ],
         alCambiar(id, v, S) { S.meta = null; S.drak = false; S.vivo = false; },
         paso(dt, S, E) { if (S.meta != null) { const v = S.edad + dt * 2600; if (v >= S.meta) { E.set('edad', S.meta); S.meta = null; } else E.set('edad', v); } },
-        ir(n, S, E) { S.meta = null; S.drak = false; S.vivo = n === 0; if (n === 0) E.set('edad', 0); else if (n === 1) E.set('edad', 0); else if (n === 2) { E.set('edad', 0); if (S.red) E.set('edad', 5700); else S.meta = 11500; } else if (n === 3) { E.set('edad', 1030); S.drak = true; } else { E.set('edad', 0); if (S.red) E.set('edad', 17100); else S.meta = 17200; } },
+        ir(n, S, E) { S.meta = null; S.drak = false; S.vivo = n === 0; if (n === 0) E.set('edad', 0); else if (n === 1) E.set('edad', 0); else if (n === 2) { E.set('edad', 0); if (S.red) E.set('edad', 5700); else S.meta = 11500; } else if (n === 3) { E.set('edad', 1025); S.drak = true; } else { E.set('edad', 0); if (S.red) E.set('edad', 17100); else S.meta = 17200; } },
         dibujar(c, S) {
           const n = S.n, t = S.edad, f = Math.exp(-LAM * t * AN), A = A0 * f, vivo = S.vivo && n === 0;
           // organismo
@@ -1351,17 +1350,17 @@
           txt(c, '¹⁴C/¹²C : ' + (vivo ? '100' : Math.round(f * 100)) + ' % del valor en vida', 205, 350, { s: 14, b: 1, c: TX });
           // gráfica A(t)
           lin(c, gx(0), gy(0), gx(20000), gy(0), T2, 1); lin(c, gx(0), gy(0), gx(0), gy(14), T2, 1);
-          txt(c, 'A (desint./min/g de C)', gx(0) + 4, gy(14) - 12, { s: 12, c: T2, a: 'left' }); txt(c, 'edad (años)', gx(20000), gy(0) + 28, { s: 12, c: T2, a: 'right' });
+          txt(c, 'A (desint./min/g de C)', gx(0) + 4, gy(14) - 12, { s: 12, c: T2, a: 'left' }); txt(c, 'edad (años)', gx(20000), gy(0) + 27, { s: 12, c: T2, a: 'right' });
           [0, 5000, 10000, 15000, 20000].forEach((v) => { lin(c, gx(v), gy(0), gx(v), gy(0) + 4, T2, 1); txt(c, v / 1000 + ' k', gx(v), gy(0) + 14, { s: 11, c: T2 }); }); [0, 5, 10].forEach((v) => { lin(c, gx(0) - 4, gy(v), gx(0), gy(v), T2, 1); txt(c, String(v), gx(0) - 14, gy(v), { s: 11, c: T2 }); });
           lin(c, gx(0), gy(A0), gx(20000), gy(A0), '#ffffff22', 1, [5, 5]); txt(c, 'A₀ = 13,6', gx(20000) - 4, gy(A0) - 10, { s: 12, c: T2, a: 'right' });
           c.beginPath(); for (let tt = 0; tt <= 20000; tt += 200) { const x = gx(tt), y = gy(A0 * Math.exp(-LAM * tt * AN)); tt ? c.lineTo(x, y) : c.moveTo(x, y); } c.strokeStyle = MG; c.lineWidth = 3; c.stroke();
           if (n >= 2) { [1, 2, 3].forEach((k) => { const tk = k * T12, ak = A0 * Math.pow(0.5, k); if (tk < 20000) { lin(c, gx(tk), gy(0), gx(tk), gy(ak), AM, 1.2, [4, 4]); lin(c, gx(0), gy(ak), gx(tk), gy(ak), AM, 1.2, [4, 4]); circ(c, gx(tk), gy(ak), 3.5, AM); txt(c, (k === 1 ? 't½ ' : k + ' t½ ') + '→ ' + (ak).toFixed(1).replace('.', ','), gx(tk) + 6, gy(ak) - 10, { s: 11, c: AM, a: 'left' }); } }); }
           if (!vivo) { circ(c, gx(t), gy(A), 6, '#fff', MG, 2); lin(c, gx(t), gy(A), gx(t), gy(0), '#fff', 1, [3, 3]); }
-          if (S.drak || n === 3) { lin(c, gx(0), gy(12.0), gx(1030), gy(12.0), VE, 1.5, [5, 4]); txt(c, 'A = 12,0', gx(1030) + 160, gy(12.0) - 14, { s: 12, c: VE, b: 1 }); }
+          if (S.drak || n === 3) { lin(c, gx(0), gy(12.0), gx(1025), gy(12.0), VE, 1.5, [5, 4]); txt(c, 'A = 12,0', gx(1025) + 150, gy(12.0) - 14, { s: 12, c: VE, b: 1 }); }
           panel(c, 410, 332 - 0, 350, 74, GR);
           txt(c, 'A(t) = ' + A0.toString().replace('.', ',') + ' · e^(−λt) = ' + A.toFixed(1).replace('.', ',') + ' desint./min/g', 585, 350, { s: 13, b: 1, c: TX });
           txt(c, vivo ? 'ser vivo: A ≈ A₀ (se renueva)' : 'edad = ' + Math.round(t).toLocaleString('es') + ' años  ·  t½ ≈ ' + Math.round(T12).toLocaleString('es') + ' años', 585, 372, { s: 13, c: AM });
-          txt(c, S.drak ? 't = (1/λ)·ln(13,6/12,0) ≈ ' + Math.round(Math.log(13.6 / 12.0) / LAM / AN).toLocaleString('es') + ' años' : 't = (1/λ)·ln(A₀/A)', 585, 394, { s: 12, c: T2 });
+          txt(c, S.drak ? 't = (1/λ)·ln(13,6/12,0) ≈ 1,03·10³ años' : 't = (1/λ)·ln(A₀/A)', 585, 394, { s: 12, c: T2 });
         },
       });
     },

@@ -23,6 +23,8 @@ Mapa 3D ─▶ eliges capítulo ─▶ NIVEL de plataformas ─▶ (ganar o mori
 - Ganar da XP extra y una pista gratis en el quiz. Morir no bloquea nada.
 - Controles del juego: flechas / WASD, Espacio o ↑ para saltar, P pausa. Hay botones táctiles.
 - **🎮 Quiz Quest** (botón en la pestaña Quiz de cada capítulo): aventura de 3 fases (tierra, agua, castillo) donde bloques ?, tuberías, puertas y jefes solo se abren si respondes bien; hay ladrillos, plataformas que caen y plantas carnívoras.
+- **🧬 Moléculas 3D**: pestaña en los capítulos de química (bolas y varillas CPK, geometría VSEPR, reacciones animadas) y constructor 3D dentro del juego (estaciones de moléculas).
+- **Ítems**: botas de Hooke, imán, mochila propulsora, cañón de fotones y reserva de 3 casillas (Q). Jefes de física moderna: Isótopo Inestable, Fotón Veloz y Bombardero Neutrón.
 - **Fortalezas** (castillo de lava + jefe «Rey Entropía», que se derrota respondiendo preguntas del cours): capítulos 1, 10, 15, 17 y 20.
 
 ## Fórmulas animadas

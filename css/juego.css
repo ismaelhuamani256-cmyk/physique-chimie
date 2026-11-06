@@ -113,3 +113,14 @@
 .jg-mol-op{display:flex;flex-wrap:wrap;gap:.4em;justify-content:center}
 .jg-esferab{border-radius:50%;width:2.6em;height:2.6em;padding:0;font-weight:700}
 .jg-mal{color:#ff6b86}
+
+/* ---- Ítems y reserva (48-items.js) ---- */
+.jg-itemhud{position:absolute;left:10px;bottom:10px;display:flex;flex-direction:column;gap:4px;z-index:6;pointer-events:none}
+.jg-itemchip{display:inline-flex;align-items:center;gap:6px;background:#0b1230cc;border:2px solid;border-radius:8px;padding:2px 8px 2px 2px;font:11px/1.2 UI,system-ui,sans-serif;color:#eaf0ff}
+.jg-itemchip b,.jg-slot b{display:inline-block;min-width:18px;height:18px;line-height:18px;text-align:center;border-radius:5px;color:#0b1230;font:10px PixelHUD,monospace}
+.jg-itemchip i{font-style:normal;color:#ffd166;font-weight:700}
+.jg-reserva{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);display:flex;gap:6px;z-index:6}
+.jg-slot{width:34px;height:34px;border-radius:8px;border:2px solid #3c4a7e;background:#0b1230b0;display:flex;align-items:center;justify-content:center;padding:0;cursor:default}
+.jg-slot.llena{border-color:#ffd166;cursor:pointer;box-shadow:0 0 10px #ffd16688}
+.jg-slot.llena:hover{transform:translateY(-2px)}
+.jg-slot b{min-width:22px;height:22px;line-height:22px}

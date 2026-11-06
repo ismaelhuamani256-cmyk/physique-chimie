@@ -24,7 +24,7 @@
     S.ui.cerrarModal(); S.ui.ocultarJefe(); S.ui.vidas(-1); S.ui.vidas(3);
     g.terminar = (gano) => terminar(g, gano);
     g.preguntar = (b) => preguntar(g, b);
-    J.Quim.iniciar(g); g.ui.cartel(null);
+    J.Quim.iniciar(g); if (J.Items) J.Items.iniciar(g); g.ui.cartel(null);
     g.ui.estados(g, true);
     J.pasoCamara(g, 0);
     J.Audio.musica(tema.musica);
@@ -104,7 +104,7 @@
     for (const c of w.campos) if (vis(c.x, c.x + c.w)) dibujarCampo(ctx, c, camX, camY, t, tema);
     J.Temas.dibujarPeligro(ctx, w, tema, camX, camY, t);
     J.Temas.dibujarTiles(ctx, w, tema, camX, camY);
-    for (const m of w.movers) if (!m.cae && vis(m.x, m.x + m.largo)) J.Temas.dibujarMovil(ctx, tema, m, camX, camY);
+    for (const m of w.movers) if (!m.cae && !m.est && vis(m.x, m.x + m.largo)) J.Temas.dibujarMovil(ctx, tema, m, camX, camY);
     for (const e of w.escombros) { ctx.save(); ctx.translate(Math.round((e.x + 0.5) * T - camX), Math.round((e.y + 0.5) * T - camY)); ctx.rotate(e.rot); ctx.drawImage(tema.tiles.puente, -8, -8); ctx.restore(); }
     // meta, checkpoints, palancas, resortes
     if (w.meta && vis(w.meta.x, w.meta.x + 2)) S2.dibujarMeta(ctx, w.meta.x * T - camX, w.meta.y * T - camY, t, tema, w.meta.bloqueada);
@@ -118,6 +118,7 @@
     J.Quiz.dibujar(ctx, g, camX, camY, vis);
     J.Quim.dibujar(ctx, g, camX, camY, vis);
     J.Parkour.dibujar(ctx, g, camX, camY, vis);
+    if (J.Items) J.Items.dibujar(ctx, g, camX, camY, vis);
     for (const k of w.bloqueos) if (k.activo && vis(k.x, k.x + 1)) dibujarMuro(ctx, k, camX, camY, t, w);
     for (const e of w.enemigos) if (e.vivo && vis(e.x, e.x + 1)) { if (e.acuatico) S2.dibujarAcuatico(ctx, e, t, camX, camY); else S2.dibujarEnemigo(ctx, e, t, camX, camY); }
     J.Jefe.dibujar(ctx, g, camX, camY);
@@ -134,6 +135,7 @@
       const bx = Math.round((pj.x + pj.w / 2) * T - camX), by = Math.round((pj.y + pj.h / 2) * T - camY);
       for (let i = 0; i < 12; i++) { const a = (i / 12) * Math.PI * 2 + t * 5; ctx.fillStyle = ['#ffe27a', '#ff3da6', '#6ff0ff', '#2ee59d'][i % 4]; ctx.fillRect(Math.round(bx + Math.cos(a) * 12), Math.round(by + Math.sin(a) * 13), 2, 2); }
     }
+    if (J.Items) J.Items.dibujarJugador(ctx, g, camX, camY);
     J.Jefe.dibujarProy(ctx, g, camX, camY);
     J.Quiz.dibujarAgua(ctx, g, camX, camY);
     for (const q of g.part) {

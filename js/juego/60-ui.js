@@ -32,7 +32,7 @@
   J.crearInput = function (onPausa) {
     const inp = { izq: false, der: false, salto: false, accion: false, saltoEdge: false, accionEdge: false, arribaEdge: false, t: { izq: false, der: false, salto: false, acc: false }, dir: 0, destroy: null, bloqueado: false };
     const K = {
-      izq: ['ArrowLeft', 'a', 'A'], der: ['ArrowRight', 'd', 'D'], salto: [' ', 'ArrowUp', 'w', 'W', 'z', 'Z'], acc: ['ArrowDown', 'e', 'E', 's', 'S'], pausa: ['Escape', 'p', 'P'],
+      izq: ['ArrowLeft', 'a', 'A'], der: ['ArrowRight', 'd', 'D'], salto: [' ', 'ArrowUp', 'w', 'W', 'z', 'Z'], acc: ['ArrowDown', 'e', 'E', 's', 'S'], disp: ['x', 'X', 'f', 'F', 'j', 'J'], usar: ['q', 'Q'], pausa: ['Escape', 'p', 'P'],
     };
     const teclas = {};
     let gpPrev = { pausa: false };
@@ -50,6 +50,8 @@
       else if (K.der.includes(e.key)) inp.der = true;
       else if (K.salto.includes(e.key)) { if (!teclas.salto) inp.saltoEdge = true; if (!e.repeat && ['ArrowUp', 'w', 'W'].includes(e.key)) inp.arribaEdge = true; teclas.salto = true; }
       else if (K.acc.includes(e.key)) { if (!e.repeat) inp.accionEdge = true; teclas.acc = true; }
+      else if (K.disp.includes(e.key)) { if (!e.repeat) inp.dispEdge = true; }
+      else if (K.usar.includes(e.key)) { if (!e.repeat) inp.usarEdge = true; }
       else if (K.pausa.includes(e.key)) { if (!e.repeat) onPausa(); }
       else usada = false;
       if (usada) e.preventDefault();

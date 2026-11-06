@@ -89,7 +89,7 @@
     for (const it of w.interruptores) {
       it.cd = Math.max(0, it.cd - dt);
       if (inp.accionEdge && it.cd <= 0 && cerca(g, it.x, it.y, 1.4, 1.8)) {
-        it.idx = (it.idx + 1) % it.valores.length; it.cd = 0.3; g.vars[it.variable] = it.valores[it.idx];
+        it.idx = (Math.max(0, it.valores.indexOf(g.vars[it.variable])) + 1) % it.valores.length; /* siempre pasa al SIGUIENTE valor del estado global */ it.cd = 0.3; g.vars[it.variable] = it.valores[it.idx];
         J.Audio.sfx('interruptor'); g.shake = Math.max(g.shake, 2);
         J.chispas(g, (it.x + 0.5) * T, (it.y + 0.5) * T, 14, Q.colorValor(g.vars[it.variable]), 4, 1);
         g.ui.aviso(it.variable + ': ' + g.vars[it.variable]); g.ui.estados(g, true);

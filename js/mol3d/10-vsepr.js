@@ -147,11 +147,15 @@
     if (X === 2 && E === 1) return a.el === 'S' && els.every((e) => e === 'O') ? 119 : (a.el === 'N' ? 115 : 117);
     if (X === 2 && E === 2) {
       if (a.el === 'S' || a.el === 'Se') return nH === 2 ? 92 : 99;
-      if (a.el === 'O') return nH === 2 ? 104.5 : nH === 1 ? 108.5 : 111;
+      if (a.el === 'O') {
+        if (nH === 1 && els.includes('O')) return 95;      // H₂O₂: H–O–O ≈ 95°
+        if (nH === 1 && els.includes('Cl')) return 103;    // HClO
+        return nH === 2 ? 104.5 : nH === 1 ? 108.5 : 111;
+      }
       return 104.5;
     }
     if (X === 3 && E === 1) {
-      if (a.el === 'N') return 107;
+      if (a.el === 'N' || a.el === 'O') return 107;   // NH₃ 107° · H₃O⁺ (valor de enseñanza)
       if (a.el === 'P') return nH === 3 ? 93.5 : 100;
       return 106;
     }

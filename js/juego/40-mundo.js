@@ -280,7 +280,7 @@
       p.coyote = suelo ? FIS.COYOTE : p.coyote - dt;
       if (g.congelado) p.buffer = 0;
       if (p.buffer > 0 && p.coyote > 0) {
-        p.vy = -F.v0; p.buffer = 0; p.coyote = 0; p.suelo = false; p.saltando = true;
+        p.vy = -F.v0 * (J.Items ? J.Items.saltoMult(g) : 1); p.buffer = 0; p.coyote = 0; p.suelo = false; p.saltando = true;
         J.Audio.sfx('salto'); polvo(g, cx * J.T, (p.y + p.h) * J.T, 4);
       }
       if (p.saltando && !inp.salto && p.vy < 0) { p.vy *= FIS.CORTE_SALTO; p.saltando = false; }
@@ -388,6 +388,7 @@
     if (J.Quiz) J.Quiz.paso(g, dt);
     if (J.Parkour) J.Parkour.paso(g, dt);
     if (J.Quim) J.Quim.paso(g, dt);
+    if (J.Items) J.Items.paso(g, dt);
     inp.accionEdge = inp.arribaEdge = false;
     // partículas
     for (const q of g.part) { q.vida -= dt; q.vy += q.grav * dt; q.x += q.vx * dt * 16; q.y += q.vy * dt * 16; }

@@ -314,13 +314,16 @@
    "x": 120
   },
   {
-   "tipo": "jefe",
+   "tipo": "jefe_quiz",
    "x": 160,
-   "jefe": "ejercicio_bac_1",
-   "titulo": "Ejercicio bac: el reactor inestable",
+   "jefe": "isotopo_inestable",
+   "titulo": "Isótopo Inestable · núcleo que se desintegra",
+   "vidas": 3,
    "preguntas": [
     {
-     "pregunta": "Désintégration α du radium: ²²⁶₈₈Ra → ²²²₈₆Rn + ᴬ_Z X. Quelle est la particule émise ?",
+     "id": "b1",
+     "tipo": "opcion",
+     "enunciado": "Désintégration α du radium: ²²⁶₈₈Ra → ²²²₈₆Rn + ᴬ_Z X. Quelle est la particule émise ?",
      "opciones": [
       "⁴₂He (noyau d'hélium)",
       "⁰₋₁e (électron)",
@@ -332,7 +335,9 @@
      "pagina_pdf": 136
     },
     {
-     "pregunta": "Quelle relation lie le temps de demi-vie t½ et la constante radioactive λ ?",
+     "id": "b2",
+     "tipo": "opcion",
+     "enunciado": "Quelle relation lie le temps de demi-vie t½ et la constante radioactive λ ?",
      "opciones": [
       "t½ = ln2 / λ",
       "t½ = λ / ln2",
@@ -344,7 +349,9 @@
      "pagina_pdf": 138
     },
     {
-     "pregunta": "Dans ³⁰₁₅P → ³⁰₁₄Si + ⁰₁e, de quel type de désintégration s'agit-il ?",
+     "id": "b3",
+     "tipo": "opcion",
+     "enunciado": "Dans ³⁰₁₅P → ³⁰₁₄Si + ⁰₁e, de quel type de désintégration s'agit-il ?",
      "opciones": [
       "β⁺ (émission d'un positon)",
       "β⁻ (émission d'un électron)",
@@ -356,7 +363,9 @@
      "pagina_pdf": 136
     },
     {
-     "pregunta": "Quel rayonnement est le plus pénétrant ?",
+     "id": "b4",
+     "tipo": "opcion",
+     "enunciado": "Quel rayonnement est le plus pénétrant ?",
      "opciones": [
       "Le rayonnement γ",
       "Les particules α",
@@ -366,6 +375,34 @@
      "correcta": 0,
      "explicacion": "Les rayons γ sont très pénétrants ; α et β sont complètement absorbés par la matière, pas γ (il faut blinder avec un matériau lourd comme le plomb).",
      "pagina_pdf": 138
+    },
+    {
+     "id": "q1",
+     "tipo": "opcion",
+     "enunciado": "Dans l'équation ²⁷₁₃Al + ⁴₂He → ³⁰₁₅P + ᴬ_Z X, quelle est la particule X ?",
+     "opciones": [
+      "Un neutron ¹₀n",
+      "Un proton ¹₁H",
+      "Un électron ⁰₋₁e",
+      "Un positon ⁰₁e"
+     ],
+     "correcta": 0,
+     "explicacion": "A : 27 + 4 = 30 + A donc A = 1 ; Z : 13 + 2 = 15 + Z donc Z = 0. C'est un neutron ¹₀n.",
+     "pagina_pdf": 146
+    },
+    {
+     "id": "q2",
+     "tipo": "opcion",
+     "enunciado": "Le carbone 14 se désintègre selon ¹⁴₆C → ¹⁴₇N + ⁰₋₁e. Il s'agit d'une radioactivité :",
+     "opciones": [
+      "β⁻",
+      "β⁺",
+      "α",
+      "γ"
+     ],
+     "correcta": 0,
+     "explicacion": "La particule émise est un électron ⁰₋₁e : radioactivité β⁻ ; un neutron se transforme en proton (Z passe de 6 à 7).",
+     "pagina_pdf": 136
     }
    ]
   },

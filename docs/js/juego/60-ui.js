@@ -32,7 +32,7 @@
   J.crearInput = function (onPausa) {
     const inp = { izq: false, der: false, salto: false, accion: false, saltoEdge: false, accionEdge: false, arribaEdge: false, t: { izq: false, der: false, salto: false, acc: false }, dir: 0, destroy: null, bloqueado: false };
     const K = {
-      izq: ['ArrowLeft', 'a', 'A'], der: ['ArrowRight', 'd', 'D'], salto: [' ', 'ArrowUp', 'w', 'W', 'z', 'Z'], acc: ['ArrowDown', 'e', 'E', 's', 'S'], pausa: ['Escape', 'p', 'P'],
+      izq: ['ArrowLeft', 'a', 'A'], der: ['ArrowRight', 'd', 'D'], salto: [' ', 'ArrowUp', 'w', 'W', 'z', 'Z'], acc: ['ArrowDown', 'e', 'E', 's', 'S'], disp: ['x', 'X', 'f', 'F', 'j', 'J'], usar: ['q', 'Q'], pausa: ['Escape', 'p', 'P'],
     };
     const teclas = {};
     let gpPrev = { pausa: false };
@@ -50,6 +50,8 @@
       else if (K.der.includes(e.key)) inp.der = true;
       else if (K.salto.includes(e.key)) { if (!teclas.salto) inp.saltoEdge = true; if (!e.repeat && ['ArrowUp', 'w', 'W'].includes(e.key)) inp.arribaEdge = true; teclas.salto = true; }
       else if (K.acc.includes(e.key)) { if (!e.repeat) inp.accionEdge = true; teclas.acc = true; }
+      else if (K.disp.includes(e.key)) { if (!e.repeat) inp.dispEdge = true; }
+      else if (K.usar.includes(e.key)) { if (!e.repeat) inp.usarEdge = true; }
       else if (K.pausa.includes(e.key)) { if (!e.repeat) onPausa(); }
       else usada = false;
       if (usada) e.preventDefault();
@@ -143,7 +145,7 @@
     let ultEst = null, ultG = null;
     ui.estados = function (gg, forzar) {
       gg = gg || ultG; if (!gg) return; ultG = gg;
-      const p = gg.jugador, sig = [gg.escudo ? 1 : 0, p && p.estrella > 0 ? Math.ceil(p.estrella) : 0, gg.lento > 0 ? Math.ceil(gg.lento) : 0, gg.premios.moneda, gg.premios.pista, gg.resp.correctas, gg.resp.total, gg.modoQuiz ? 1 : 0].join('|');
+      const p = gg.jugador, sig = [gg.escudo ? 1 : 0, p && p.estrella > 0 ? Math.ceil(p.estrella) : 0, gg.lento > 0 ? Math.ceil(gg.lento) : 0, gg.premios.moneda, gg.premios.pista, gg.resp.correctas, gg.resp.total, gg.modoQuiz ? 1 : 0, JSON.stringify(gg.inv || {}), JSON.stringify(gg.vars || {})].join('|');
       if (sig === ultEst && forzar !== true) return; ultEst = sig;
       const ins = (ico, col, txt) => el('span', { class: 'jg-ins' }, iconoSVG(ico, col, 3), txt != null ? document.createTextNode(' ' + txt) : null);
       estadosEl.replaceChildren(...[
@@ -153,6 +155,8 @@
         gg.premios.moneda > 0 ? ins(MONEDA, '#ffd166', gg.premios.moneda) : null,
         gg.premios.pista > 0 ? ins(['..XXX..', '.XXXXX.', 'XXXXXXX', 'XXXXXXX', '.XXXXX.', '..XXX..', '...X...'], '#fff0a0', gg.premios.pista) : null,
         gg.modoQuiz || gg.resp.total > 0 ? ins(CHECK, '#2ee59d', gg.resp.correctas + '/' + gg.resp.total) : null,
+        ...Object.keys(gg.inv || {}).filter((k) => gg.inv[k] > 0).map((k) => el('span', { class: 'jg-ins jg-atomo-chip' }, el('span', { class: 'jg-esfera', style: { background: J.Sprites.colorCPK(k) } }, k), document.createTextNode('×' + gg.inv[k]))),
+        ...Object.keys(gg.vars || {}).map((k) => el('span', { class: 'jg-ins jg-var' }, el('span', { class: 'jg-punto', style: { background: J.Quim.colorValor(gg.vars[k]) } }), document.createTextNode(k + ': ' + gg.vars[k]))),
       ].filter(Boolean));
     };
     ui.pop = function (txt) { pop(el('div', { class: 'jg-pop jg-pop-s' }, txt), 1400); };
@@ -265,6 +269,106 @@
       });
     };
     ui.pregunta = (q, info, cb2) => ui.preguntaQ(q, { titulo: info.jefe, n: info.n, total: info.total || 3 }, cb2);
+
+    // --- cartel tutorial dentro del nivel ---
+    const cartelEl = el('div', { class: 'jg-cartel', style: { display: 'none' } });
+    wrap.append(cartelEl);
+    ui.cartel = function (texto) { if (!texto) { cartelEl.style.display = 'none'; return; } cartelEl.replaceChildren(el('span', { class: 'jg-cartel-i' }, 'i'), textoConTex(texto, el('span', {}))); cartelEl.style.display = ''; };
+
+    /** Fórmula química en HTML: subíndices y carga en superíndice ("H3O+" -> H₃O⁺). */
+    function formulaHTML(f) {
+      const txt = J.Quim.bonita(f);   // ya con ₂ y ⁺
+      return el('span', { class: 'jg-formula' }, txt);
+    }
+
+    /** Modal de coeficientes: el código comprueba conservación de átomos y de carga. cb(true) al resolverla. */
+    ui.ecuacion = function (eq0, ayuda, cb2) {
+      const Qm = J.Quimica, eq = Qm.normalizar(eq0), nR = eq.reactivos.length, n = nR + eq.productos.length;
+      const coef = Array(n).fill(1), nodos = [];
+      const panel = el('div', { class: 'jg-balance' }), msg = el('div', { class: 'jg-expl jg-msgeq' }), cont = el('button', { class: 'jg-btn jg-btn-p', style: { display: 'none' }, on: { click: () => fin(true) } }, 'Continuar');
+      let resuelta = false;
+      function fin(ok) { ui.cerrarModal(); cb2(ok); }
+      function pintar() {
+        nodos.forEach((nd, i) => { nd.textContent = coef[i]; });
+        const v = Qm.verificar(eq, coef);
+        panel.replaceChildren(el('div', { class: 'jg-bal-fila jg-bal-h' }, el('span', {}, ''), el('span', {}, 'Reactivos'), el('span', {}, 'Productos'), el('span', {}, '')));
+        Object.keys(v.atomos).forEach((e) => { const [a, b] = v.atomos[e]; panel.append(el('div', { class: 'jg-bal-fila ' + (a === b ? 'ok' : 'mal') }, el('span', {}, e), el('span', {}, String(a)), el('span', {}, String(b)), el('span', {}, a === b ? '✔' : '✖'))); });
+        panel.append(el('div', { class: 'jg-bal-fila ' + (v.carga[0] === v.carga[1] ? 'ok' : 'mal') }, el('span', {}, 'carga'), el('span', {}, (v.carga[0] > 0 ? '+' : '') + v.carga[0]), el('span', {}, (v.carga[1] > 0 ? '+' : '') + v.carga[1]), el('span', {}, v.carga[0] === v.carga[1] ? '✔' : '✖')));
+        return v;
+      }
+      function comprobar() {
+        if (resuelta) return;
+        const v = pintar();
+        if (v.ok && v.simplificada) { resuelta = true; msg.replaceChildren(el('b', { class: 'jg-ok' }, '✔ ¡Equilibrada! '), document.createTextNode('Se conservan los átomos de cada elemento y la carga eléctrica.')); cont.style.display = ''; cont.focus(); J.Audio.sfx('acierto'); }
+        else if (v.ok) { msg.replaceChildren(el('b', { class: 'jg-mal' }, 'Casi: '), document.createTextNode('está equilibrada, pero se pueden dividir todos los coeficientes (usa los más pequeños).')); J.Audio.sfx('aviso'); }
+        else { const mal = Object.keys(v.atomos).filter((e) => v.atomos[e][0] !== v.atomos[e][1]); msg.replaceChildren(el('b', { class: 'jg-mal' }, '✖ No se conserva '), document.createTextNode(mal.length ? 'el número de átomos de ' + mal.join(', ') + (v.carga[0] !== v.carga[1] ? ' ni la carga.' : '.') : 'la carga eléctrica.')); J.Audio.sfx('fallo'); }
+      }
+      const fila = el('div', { class: 'jg-eq' });
+      const celda = (f, i) => {
+        const num = el('span', { class: 'jg-coef' }, '1'); nodos[i] = num;
+        const paso = (d) => () => { if (resuelta) return; coef[i] = J.clamp(coef[i] + d, 1, 9); pintar(); msg.replaceChildren(); J.Audio.sfx('menu'); };
+        return el('span', { class: 'jg-esp' }, el('span', { class: 'jg-step' }, el('button', { class: 'jg-mini', 'aria-label': 'menos', on: { click: paso(-1) } }, '−'), num, el('button', { class: 'jg-mini', 'aria-label': 'más', on: { click: paso(1) } }, '+')), formulaHTML(f));
+      };
+      eq.reactivos.forEach((f, i) => { if (i) fila.append(el('span', { class: 'jg-op' }, '+')); fila.append(celda(f, i)); });
+      fila.append(el('span', { class: 'jg-op jg-flecha' }, '→'));
+      eq.productos.forEach((f, k) => { if (k) fila.append(el('span', { class: 'jg-op' }, '+')); fila.append(celda(f, nR + k)); });
+      const card = el('div', { class: 'jg-card', role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Ajusta la ecuación' },
+        el('div', { class: 'jg-card-h' }, 'Puerta de ecuación · ajusta los coeficientes'),
+        el('div', { class: 'jg-q' }, 'Equilibra la ecuación: debe conservarse cada elemento y la carga.'), fila, panel,
+        ayuda ? el('div', { class: 'jg-ayudaeq' }, '💡 ' + ayuda) : null, msg,
+        el('div', { class: 'jg-botones' }, el('button', { class: 'jg-btn jg-btn-p', on: { click: comprobar } }, 'Comprobar'), el('button', { class: 'jg-btn', on: { click: () => fin(false) } }, 'Cerrar'), cont));
+      pintar();
+      modal(card, (e) => { if (e.key === 'Escape') { fin(false); return true; } if (e.key === 'Enter') { if (resuelta) fin(true); else comprobar(); return true; } return false; });
+    };
+
+    /** Estación de moléculas: usa PCB.mol3d.constructor si existe; si no, un puzle propio (átomo central + geometría). */
+    ui.constructor = function (e, atomos, alResolver, alCerrar) {
+      const M = window.PCB.mol3d, host = el('div', { class: 'jg-mol3d' });
+      let inst = null, hecho = false;
+      const msg = el('div', { class: 'jg-expl' }), cont = el('button', { class: 'jg-btn jg-btn-p', style: { display: 'none' }, on: { click: () => terminar(true) } }, 'Continuar');
+      function terminar(ok) { try { if (inst && inst.dispose) inst.dispose(); } catch (x) {} ui.cerrarModal(); if (ok) alResolver(); alCerrar(); }
+      function exito() { if (hecho) return; hecho = true; msg.replaceChildren(el('b', { class: 'jg-ok' }, '✔ ¡Molécula montada! '), document.createTextNode(e.molecula + ': geometría ' + (J.Quimica.GEOMETRIA[e.molecula] || 'según VSEPR') + '.')); cont.style.display = ''; cont.focus(); J.Audio.sfx('acierto'); }
+      const card = el('div', { class: 'jg-card jg-card-mol', role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Estación de moléculas' },
+        el('div', { class: 'jg-card-h' }, 'Estación de moléculas · ' + J.Quim.bonita(e.molecula)),
+        el('div', { class: 'jg-q' }, 'Monta la molécula con los átomos recogidos (' + atomos.join(' ') + ').'), host, msg,
+        el('div', { class: 'jg-botones' }, cont, el('button', { class: 'jg-btn', on: { click: () => terminar(false) } }, 'Cerrar')));
+      modal(card, (ev) => { if (ev.key === 'Escape') { terminar(false); return true; } if (ev.key === 'Enter' && hecho) { terminar(true); return true; } return false; });
+      const tiene = M && Object.prototype.hasOwnProperty.call(M, 'constructor') && typeof M.constructor === 'function' && M.constructor !== Object;
+      if (tiene) {
+        try { inst = M.constructor(host, { molecula: e.molecula, atomos, onResuelto: exito, onCerrar: () => terminar(false) }); return; }
+        catch (err) { console.warn('[juego] PCB.mol3d.constructor falló; uso el puzle propio.', err); host.replaceChildren(); }
+      }
+      fallbackConstructor(host, e, atomos, exito);
+    };
+
+    /** Puzle propio mínimo: 1) átomo central, 2) geometría VSEPR; dibuja el resultado. */
+    function fallbackConstructor(host, e, atomos, exito) {
+      const els = [...new Set(atomos)], pf = J.Quimica.parsear(e.molecula), geo = J.Quimica.GEOMETRIA[e.molecula] || 'lineal';
+      const centro = els.filter((k) => k !== 'H').sort((a, b) => (pf.atomos[a] - pf.atomos[b]) || (a < b ? -1 : 1))[0] || els[0];
+      const cv = el('canvas', { width: 220, height: 130, class: 'jg-mol-cv' }), ctx = cv.getContext('2d');
+      const dibujar = (conCentro, conGeo) => {
+        ctx.clearRect(0, 0, 220, 130); ctx.fillStyle = '#0a1030'; ctx.fillRect(0, 0, 220, 130);
+        const lig = atomos.filter((a, i) => !(a === centro && i === atomos.indexOf(centro)));
+        const esfera = (x, y, el2, r) => { ctx.fillStyle = '#0b1230'; ctx.beginPath(); ctx.arc(x, y, r + 2, 0, 7); ctx.fill(); ctx.fillStyle = J.Sprites.colorCPK(el2); ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill(); ctx.fillStyle = '#0b1230'; ctx.font = 'bold 12px UI, sans-serif'; ctx.fillText(el2, x - 4 * el2.length, y + 4); };
+        if (!conCentro) { atomos.forEach((a, i) => esfera(30 + i * 36, 65, a, 13)); return; }
+        const cx = 110, cy = 65, n = lig.length;
+        const ang = !conGeo ? lig.map((_, i) => (i / n) * Math.PI * 2) : geo === 'lineal' || n === 1 ? lig.map((_, i) => i * Math.PI) : geo === 'angular' ? [Math.PI / 2 + 0.9, Math.PI / 2 - 0.9] : geo.indexOf('pirámide') === 0 ? lig.map((_, i) => Math.PI / 2 + (i - (n - 1) / 2) * 1.5) : lig.map((_, i) => (i / n) * Math.PI * 2 + 0.4);
+        lig.forEach((a, i) => { const x = cx + Math.cos(ang[i]) * 52, y = cy + Math.sin(ang[i]) * 40; ctx.strokeStyle = '#cfd8f0'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(x, y); ctx.stroke(); esfera(x, y, a, 10); });
+        esfera(cx, cy, centro, 15);
+      };
+      dibujar(false, false);
+      const fase = el('div', { class: 'jg-mol-fase' }, '1) ¿Qué átomo va en el centro?');
+      const opts = el('div', { class: 'jg-mol-op' });
+      host.append(cv, fase, opts);
+      function paso2() {
+        dibujar(true, false); fase.textContent = '2) ¿Qué geometría (VSEPR) tiene ' + J.Quim.bonita(e.molecula) + '?'; opts.replaceChildren();
+        const gs = [...new Set(['lineal', 'angular', 'pirámide trigonal', 'tetraédrica', geo])].slice(0, 4);
+        gs.sort(); gs.forEach((g2) => opts.append(el('button', { class: 'jg-btn', on: { click: (ev) => { if (g2 === geo || geo.indexOf(g2) === 0) { dibujar(true, true); fase.textContent = '✔ ' + geo; opts.replaceChildren(); exito(); } else { ev.target.disabled = true; ev.target.classList.add('jg-mal'); J.Audio.sfx('fallo'); } } } }, g2)));
+      }
+      if (els.length === 1 || atomos.length < 3) { dibujar(true, false); fase.textContent = 'Molécula diatómica: lineal.'; exito(); return; }
+      els.forEach((k) => opts.append(el('button', { class: 'jg-btn jg-esferab', style: { background: J.Sprites.colorCPK(k), color: '#0b1230' }, on: { click: (ev) => { if (k === centro) paso2(); else { ev.target.disabled = true; J.Audio.sfx('fallo'); msg2.textContent = 'Pista: el átomo central es el que se une a los demás (en el cours: dobletes liants/no liantes: H 1/0, C 4/0, N 3/1, O 2/2).'; } } } }, k)));
+      const msg2 = el('div', { class: 'jg-pag' }); host.append(msg2);
+    }
 
     ui.pausa = function (acciones) {
       const estado = () => ({ m: window.PCB.settings.musica, s: window.PCB.settings.sfx !== false });

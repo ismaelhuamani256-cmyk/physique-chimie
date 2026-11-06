@@ -67,7 +67,7 @@
       if (tb === 9) { const c = w.cintas.find((q) => q.y === ty && tx >= q.x && tx < q.x + q.largo); if (c) J.moverX(w, p, c.v * dt); }
       else if (tb === 10) {
         const r = w.rebotes.find((q) => q.y === ty && tx >= q.x && tx < q.x + q.largo);
-        p.vy = -F.vResorte * (inp.salto ? 1 : 0.88); p.suelo = false; p.coyote = 0; p.saltando = false;
+        p.vy = -F.vResorte * (inp.salto ? 1 : 0.92);   // ≤ resorte (7.4 tiles): el validador lo trata como resorte p.suelo = false; p.coyote = 0; p.saltando = false;
         if (r) r.comp = 1;
         J.Audio.sfx('resorte'); J.chispas(g, pcx * T, (p.y + p.h) * T, 8, '#7ff3ff', 3, 3);
       }
@@ -84,8 +84,7 @@
         sp.cam = Math.min(sp.cam + sp.v * dt, Math.max(0, w.ancho - J.VW / T));
         const izq = sp.cam, der = sp.cam + J.VW / T;
         if (vivo) {
-          if (p.x + p.w < izq + 0.6) { g.ui.aviso('¡La oleada te alcanzó!'); J.caerEnFoso(g); }
-          else if (p.x < izq + 0.25) { p.x = izq + 0.25; if (p.vx < 0) p.vx = 0; }
+          if (p.x < izq + 0.2) { g.ui.aviso('¡La oleada te alcanzó!'); J.caerEnFoso(g); }   // la oleada mata al tocarte
           if (p.x + p.w > der - 0.3) { p.x = der - 0.3 - p.w; if (p.vx > sp.v) p.vx = sp.v; }
         }
         if (vivo && p.x >= sp.fin) { sp.activo = false; sp.hecho = true; g.sprintActivo = null; g.ui.aviso('¡Tramo superado!'); J.Audio.sfx('checkpoint'); J.chispas(g, pcx * T, pcy * T, 20, '#2ee59d', 5, 3); }

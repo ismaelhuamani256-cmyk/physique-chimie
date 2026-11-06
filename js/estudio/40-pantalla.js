@@ -8,7 +8,7 @@
   const PCB = window.PCB, { el } = PCB.util;
   const E = PCB.estudio, H = E.h;
 
-  const TABS = [
+  const TABS_BASE = [
     { id: 'resumen', ico: '📘', txt: 'Resumen' },
     { id: 'formulas', ico: '∑', txt: 'Fórmulas' },
     { id: 'metodos', ico: '🧭', txt: 'Métodos' },
@@ -18,6 +18,13 @@
     { id: 'progreso', ico: '🏆', txt: 'Progreso' },
   ];
   let limpiar = []; // funciones a ejecutar en unmount
+
+  /** Pestañas base + las que otros módulos registran en PCB.estudio.tabsExtra ({id,ico,txt,corto,visible(ctx)}); su
+   *  contenido lo da PCB.estudio.tabs[id](ctx). Ej.: «🧬 Moléculas 3D» (js/estudio/35-moleculas.js) solo en capítulos con moléculas. */
+  function tabsDe(ctx) {
+    const extra = (E.tabsExtra || []).filter((t) => { try { return !t.visible || t.visible(ctx); } catch (e) { return false; } });
+    return TABS_BASE.concat(extra.map((t) => ({ id: t.id, ico: t.ico, txt: t.txt, corto: t.corto })));
+  }
 
   async function mount(host, ctx) {
     ctx = ctx || {};
@@ -90,6 +97,7 @@
     }
 
     // --- pestañas ---
+    const TABS = tabsDe({ capId, cap, quiz, materia: materiaId });
     const tablist = el('div', { class: 'est-tabs', role: 'tablist', 'aria-label': 'Secciones del capítulo' });
     const paneles = el('div', { class: 'est-paneles' });
     const scroll = el('div', { class: 'est-scroll' }, paneles);
@@ -142,9 +150,9 @@
       scroll.scrollTo({ top: 0 });
       btn[id].scrollIntoView({ block: 'nearest', inline: 'center' });
     }
-    // atajos 1..7 (fuera de campos de texto)
+    // atajos 1..7 (u 8 si hay pestaña extra), fuera de campos de texto
     const onKey = (e) => {
-      if (e.ctrlKey || e.metaKey || e.altKey || !/^[1-7]$/.test(e.key)) return;
+      if (e.ctrlKey || e.metaKey || e.altKey || !/^[1-9]$/.test(e.key) || +e.key > TABS.length) return;
       const t = e.target; if (t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
       if (document.querySelector('.anim-modal')) return;
       irA(TABS[+e.key - 1].id);

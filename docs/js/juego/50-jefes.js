@@ -19,20 +19,21 @@
   const GOLEM = ['carga', 'salto', 'carga', 'salto'];
   const PULPO = ['tinta', 'chorro', 'tentaculos', 'tinta'];
   const DRAGON = ['rayo', 'embestida', 'rafaga', 'rayo'];
-  const TAM = { golem: { w: 2.2, h: 2.6, hAt: 2.2 }, rey: { w: 3, h: 3.6, hAt: 2.6 }, bomba: { w: 3, h: 3, hAt: 2.2 }, pulpo: { w: 3.2, h: 3, hAt: 3, flota: 1.0 }, dragon: { w: 3.6, h: 2, hAt: 2, flota: 0.7 } };
-  const NOMBRE = { golem: 'Gran Ejercicio', rey: 'Rey Entropía', bomba: 'Rey Bomba', pulpo: 'Pulpo Ácido', dragon: 'Dragón de Tormenta' };
+  const TAM = { golem: { w: 2.2, h: 2.6, hAt: 2.2 }, rey: { w: 3, h: 3.6, hAt: 2.6 }, bomba: { w: 3, h: 3, hAt: 2.2 }, calavera: { w: 1.8, h: 2.4, hAt: 1.7 }, pulpo: { w: 3.2, h: 3, hAt: 3, flota: 1.0 }, dragon: { w: 3.6, h: 2, hAt: 2, flota: 0.7 } };
+  const NOMBRE = { golem: 'Gran Ejercicio', rey: 'Rey Entropía', bomba: 'Rey Bomba', calavera: 'Maestro Calavera', pulpo: 'Pulpo Ácido', dragon: 'Dragón de Tormenta' };
   // Jefes de física moderna: reutilizan la IA del dragón (flotante) con otra piel, otros ataques y otro nombre.
   const SKIN_ID = { isotopo_inestable: 'isotopo', foton_veloz: 'foton', bombardero_neutron: 'bombardero' };
   const SKIN_NOMBRE = { isotopo: 'Isótopo Inestable', foton: 'Fotón Veloz', bombardero: 'Bombardero Neutrón' };
   const SKIN_ATAQUES = { isotopo: ['rafaga', 'rayo', 'rafaga', 'embestida'], foton: ['embestida', 'embestida', 'rafaga', 'rayo', 'embestida'], bombardero: ['bombardeo', 'rafaga', 'bombardeo', 'rayo'] };
   const SKIN_TAM = { isotopo: { w: 3.2, h: 3.0 }, foton: { w: 2.4, h: 2.4 }, bombardero: { w: 4.6, h: 1.9 } };
+  const CAL = ['huesos', 'blink', 'rayos', 'huesos', 'rayos', 'blink'];
   const BOMBA = ['lanzar', 'rodar', 'lanzar', 'salto', 'mecha'];
   const REY = [['bola', 'bola', 'arco'], ['onda', 'abanico', 'lluvia'], ['onda', 'abanico', 'lluvia', 'arco']];
 
   Jefe.crear = function (g) {
     const w = g.w, A = w.arena, seg = w.jefeSeg;
     const skin = SKIN_ID[seg.jefe] || null;
-    let kind = skin ? 'dragon' : seg.jefe === 'rey_entropia' ? 'rey' : seg.jefe === 'rey_bomba' ? 'bomba' : seg.jefe === 'pulpo_acido' ? 'pulpo' : seg.jefe === 'dragon_tormenta' ? 'dragon' : 'golem';
+    let kind = skin ? 'dragon' : seg.jefe === 'rey_entropia' ? 'rey' : seg.jefe === 'rey_bomba' ? 'bomba' : seg.jefe === 'maestro_calavera' ? 'calavera' : seg.jefe === 'pulpo_acido' ? 'pulpo' : seg.jefe === 'dragon_tormenta' ? 'dragon' : 'golem';
     if (A.fort && kind === 'golem' && seg.tipo !== 'jefe_quiz') kind = 'rey';
     const rey = kind === 'rey', tam = skin ? Object.assign({}, TAM.dragon, SKIN_TAM[skin]) : TAM[kind], quiz = kind !== 'bomba' && (seg.tipo === 'jefe_quiz' || kind === 'pulpo' || kind === 'dragon');
     const floorY = w.topAt(A.izq + 1);
@@ -92,6 +93,10 @@
     const pat = patronFase(b);
     if (b.kind === 'pulpo') { const l = pat || PULPO; estado(b, 'aviso_' + l[b.ciclo++ % l.length]); return; }
     if (b.kind === 'dragon') { const l = pat || (b.skin ? SKIN_ATAQUES[b.skin] : DRAGON); estado(b, 'aviso_' + l[b.ciclo++ % l.length]); return; }
+    if (b.kind === 'calavera') {   // 4 ataques y se cansa: aturdido -> pisotón -> pregunta
+      if (b.ronda >= 4) { b.ronda = 0; ponerAltura(b, b.hAt); estado(b, 'aturdido'); J.Audio.sfx('fallo'); J.chispas(g, (b.x + b.w / 2) * J.T, (b.y + 1) * J.T, 16, '#e8f0ff', 2, -3); return; }
+      b.ronda++; const l = pat || CAL; estado(b, 'aviso_' + l[b.ciclo++ % l.length]); return;
+    }
     if (b.kind === 'bomba') { const l = pat || BOMBA; estado(b, 'aviso_' + l[b.ciclo++ % l.length]); return; }
     if (!b.rey) { const l = pat || GOLEM, a = l[b.ciclo++ % l.length]; estado(b, a === 'carga' ? 'aviso_carga' : 'aviso_salto'); return; }
     const lim = 3 + (fase(b) > 0 ? 1 : 0);
@@ -168,6 +173,29 @@
         }
         break;
       }
+      case 'aviso_huesos': {   // oleada de huesos que recorren el suelo: salta los bajos y los altos
+        b.vx = 0; if (b.t > 0.7 / f) {
+          const dir = b.dir, x0 = dir < 0 ? b.xmax - 0.5 : b.xmin + 0.5, hs = [1.0, 1.0, 1.7, 1.0, 1.7];
+          hs.forEach((h, i) => programar(b, (i * 0.62) / f, () => { if (g.jefe !== b || b.estado === 'pregunta' || b.estado === 'aturdido') return; g.proy.push({ tipo: 'hueso', x: dir < 0 ? b.xmax - 0.3 : b.xmin + 0.3, y: b.floorY, vx: -dir * (5.2 + f), h, t: 0 }); J.Audio.sfx('aviso'); }));
+          estado(b, 'espera', 0.2 - 3.0 / f);
+        }
+        break;
+      }
+      case 'aviso_blink':   // se teletransporta al otro lado
+        b.vx = 0; if (b.t > 0.45 / f) {
+          J.chispas(g, (b.x + b.w / 2) * J.T, (b.y + b.h / 2) * J.T, 16, '#e8f0ff', 3);
+          const lado = (p.x + p.w / 2) < (b.xmin + b.xmax) / 2 ? 1 : -1; b.x = lado > 0 ? b.xmax - b.w - 1.5 : b.xmin + 1.5; b.dir = -lado; b.flash = 0.2;
+          J.chispas(g, (b.x + b.w / 2) * J.T, (b.y + b.h / 2) * J.T, 16, '#e8f0ff', 3); J.Audio.sfx('aviso');
+          estado(b, 'espera', 0.4);
+        }
+        break;
+      case 'aviso_rayos':   // calaveras láser: uno bajo (salta) y/o uno alto (agáchate: quédate en el suelo)
+        b.vx = 0; if (b.t > 0.5 / f) {
+          const alto = b.floorY - 2.0, bajo = b.floorY - 0.45, orden = Math.random() < 0.5 ? [bajo, alto] : [alto, bajo];
+          orden.forEach((y, i) => g.proy.push({ tipo: 'haz', y, x0: b.xmin, x1: b.xmax, aviso: 0.85 + i * 0.7, t: 0, dur: 0.45, h: 0.8, lado: i % 2 ? 1 : -1 }));
+          J.Audio.sfx('aviso'); estado(b, 'espera', 0.1 - 2.2 / f);
+        }
+        break;
       case 'aviso_rodar':
         b.vx = 0; if (b.t > 0.8 / f) { estado(b, 'carga'); b.vx = b.dir * (7.5 + f); J.Audio.sfx('fuego'); }
         break;
@@ -398,7 +426,8 @@
     const blanco = b.flash > 0 && Math.floor(b.flash * 20) % 2 === 0;
     ctx.save();
     if (b.estado === 'vencido') ctx.globalAlpha = Math.max(0, 1 - b.t / 1.5);
-    if (b.kind === 'bomba') dibujarBomba(ctx, b, px + tiembla, py, wpx, hpx, t, blanco);
+    if (b.kind === 'calavera') dibujarCalavera(ctx, b, px + tiembla, py, wpx, hpx, t, blanco);
+    else if (b.kind === 'bomba') dibujarBomba(ctx, b, px + tiembla, py, wpx, hpx, t, blanco);
     else if (b.kind === 'rey') dibujarRey(ctx, b, px + tiembla, py, wpx, hpx, t, blanco);
     else if (b.kind === 'pulpo') dibujarPulpo(ctx, b, px + tiembla, py, wpx, hpx, t, blanco);
     else if (b.kind === 'dragon' && b.skin) ({ isotopo: dibujarIsotopo, foton: dibujarFoton, bombardero: dibujarBombardero }[b.skin])(ctx, b, px + tiembla, py, wpx, hpx, t, blanco);
@@ -598,6 +627,29 @@
     ctx.fillStyle = OUT; ctx.fillRect(cx - R - 3, cy + 1, 5, 9); ctx.fillRect(cx + R - 2, cy + 1, 5, 9); ctx.fillStyle = cuerpo; ctx.fillRect(cx - R - 2, cy + 2, 3, 7); ctx.fillRect(cx + R - 1, cy + 2, 3, 7);
   }
 
+  /** Maestro Calavera (diseño propio): esqueleto con birrete, gafas redondas y capa verde. */
+  function dibujarCalavera(ctx, b, x, y, w, h, t, bl) {
+    const D = J.Temas.disco, cx = Math.round(x + w / 2), aturdido = b.estado === 'aturdido' || b.estado === 'pregunta', atq = String(b.estado).startsWith('aviso');
+    const hueso = bl ? '#fff' : '#f2efe4', capa = bl ? '#fff' : '#2f7a56', capa2 = bl ? '#fff' : '#43a578';
+    const by = Math.round(y + h) + (aturdido ? 0 : Math.round(Math.sin(t * 3) * 1)), dy = aturdido ? 8 : 0;
+    // capa y cuerpo
+    ctx.fillStyle = OUT; ctx.fillRect(cx - 11, by - 24 + dy, 22, 24 - dy); ctx.fillStyle = capa; ctx.fillRect(cx - 10, by - 23 + dy, 20, 23 - dy); ctx.fillStyle = capa2; ctx.fillRect(cx - 10, by - 23 + dy, 20, 3);
+    ctx.fillStyle = hueso; ctx.fillRect(cx - 3, by - 22 + dy, 6, 8); ctx.fillStyle = OUT; for (let i = 0; i < 3; i++) ctx.fillRect(cx - 3, by - 21 + dy + i * 3, 6, 1);
+    // piernas
+    ctx.fillStyle = OUT; ctx.fillRect(cx - 7, by - 3, 5, 3); ctx.fillRect(cx + 2, by - 3, 5, 3); ctx.fillStyle = hueso; ctx.fillRect(cx - 6, by - 3, 3, 2); ctx.fillRect(cx + 3, by - 3, 3, 2);
+    // manos
+    const al = atq ? -6 : 0; ctx.fillStyle = OUT; ctx.fillRect(cx - 15, by - 17 + al + dy, 5, 6); ctx.fillRect(cx + 10, by - 17 + al + dy, 5, 6); ctx.fillStyle = hueso; ctx.fillRect(cx - 14, by - 16 + al + dy, 3, 4); ctx.fillRect(cx + 11, by - 16 + al + dy, 3, 4);
+    // cráneo
+    const hy = by - 38 + dy; ctx.fillStyle = OUT; ctx.fillRect(cx - 11, hy, 22, 17); ctx.fillStyle = hueso; ctx.fillRect(cx - 10, hy + 1, 20, 15);
+    ctx.fillStyle = OUT; ctx.fillRect(cx - 8, hy + 5, 6, 6); ctx.fillRect(cx + 2, hy + 5, 6, 6); ctx.fillRect(cx - 1, hy + 11, 2, 2);
+    if (aturdido) { ctx.fillStyle = '#fff'; ctx.fillRect(cx - 7, hy + 6, 4, 1); ctx.fillRect(cx + 3, hy + 6, 4, 1); ctx.fillRect(cx - 6, hy + 8, 2, 2); ctx.fillRect(cx + 4, hy + 8, 2, 2); }
+    else { ctx.fillStyle = atq ? '#ff4d6d' : '#8fe3ff'; ctx.fillRect(cx - 6 + b.dir, hy + 7, 2, 2); if (atq || Math.floor(t * 2) % 2) ctx.fillRect(cx + 4 + b.dir, hy + 7, 2, 2); if (atq) { ctx.globalAlpha = 0.4; D(ctx, cx + 5, hy + 8, 6, '#ff4d6d'); ctx.globalAlpha = 1; } }
+    ctx.fillStyle = OUT; for (let i = 0; i < 4; i++) ctx.fillRect(cx - 5 + i * 3, hy + 13, 1, 3);
+    // gafas redondas y birrete
+    ctx.strokeStyle = '#c9a43a'; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(cx - 5, hy + 8, 4.5, 0, 6.3); ctx.arc(cx + 5, hy + 8, 4.5, 0, 6.3); ctx.stroke();
+    ctx.fillStyle = OUT; ctx.fillRect(cx - 12, hy - 4, 24, 5); ctx.fillRect(cx - 7, hy - 8, 14, 5); ctx.fillStyle = '#26304f'; ctx.fillRect(cx - 11, hy - 3, 22, 3); ctx.fillRect(cx - 6, hy - 7, 12, 4); ctx.fillStyle = '#ffd166'; ctx.fillRect(cx + 9, hy - 2, 2, 8); ctx.fillRect(cx + 8, hy + 5, 4, 2);
+  }
+
   function dibujarRey(ctx, b, x, y, w, h, t, blanco) {
     const S = J.Sprites;
     const roca = blanco ? '#fff' : '#2a0f10', roca2 = blanco ? '#eee' : '#3d1816', lava = blanco ? '#fff' : '#ff7a1a', lava2 = '#ffd166';
@@ -675,6 +727,16 @@
         for (let i = 3; i > 0; i--) { ctx.globalAlpha = 0.18 * (4 - i); ctx.fillStyle = '#ff7a1a'; ctx.fillRect(sx - Math.round(q.vx * i * 1.2) - 3, sy - Math.round(q.vy * i * 0.6) - 3, 6, 6); }
         ctx.globalAlpha = 1;
         J.Temas.disco(ctx, sx, sy, 6, OUT); J.Temas.disco(ctx, sx, sy, 5, '#ff4d2e'); J.Temas.disco(ctx, sx + (Math.floor(t * 12) % 2) - 1, sy, 3, '#ffb020'); ctx.fillStyle = '#fff3c0'; ctx.fillRect(sx - 1, sy - 1, 2, 2);
+      } else if (q.tipo === 'hueso') {
+        const sx = Math.round(q.x * T - camX), gy = Math.round(q.y * T - camY), hh = Math.round(q.h * T);
+        ctx.fillStyle = OUT; ctx.fillRect(sx - 4, gy - hh - 1, 8, hh + 1); ctx.fillStyle = '#f2efe4'; ctx.fillRect(sx - 2, gy - hh + 2, 4, hh - 2);
+        ctx.fillStyle = OUT; ctx.fillRect(sx - 5, gy - hh - 3, 10, 4); ctx.fillStyle = '#f2efe4'; ctx.fillRect(sx - 4, gy - hh - 2, 8, 3); ctx.fillStyle = OUT; ctx.fillRect(sx - 5, gy - 2, 10, 3); ctx.fillStyle = '#f2efe4'; ctx.fillRect(sx - 4, gy - 2, 8, 2);
+      } else if (q.tipo === 'haz') {
+        const y = Math.round(q.y * T - camY), xa = Math.round(q.x0 * T - camX), xb = Math.round(q.x1 * T - camX), hh = Math.round(q.h * T), act = q.t > q.aviso;
+        const sx = q.lado > 0 ? xa : xb;
+        ctx.fillStyle = OUT; ctx.fillRect(sx - 8, y - 8, 16, 14); ctx.fillStyle = '#f2efe4'; ctx.fillRect(sx - 7, y - 7, 14, 12); ctx.fillStyle = OUT; ctx.fillRect(sx - 5, y - 5, 4, 4); ctx.fillRect(sx + 1, y - 5, 4, 4); ctx.fillStyle = act ? '#ff4d6d' : '#ffd166'; ctx.fillRect(sx - 4, y - 4, 2, 2); ctx.fillRect(sx + 2, y - 4, 2, 2);
+        if (!act) { if (Math.floor(q.t * 14) % 2) { ctx.fillStyle = 'rgba(255,209,102,.55)'; ctx.fillRect(xa, y - 1, xb - xa, 2); } }
+        else { ctx.fillStyle = 'rgba(255,77,109,.4)'; ctx.fillRect(xa, y - hh / 2 - 3, xb - xa, hh + 6); ctx.fillStyle = '#ff4d6d'; ctx.fillRect(xa, y - hh / 2, xb - xa, hh); ctx.fillStyle = '#fff'; ctx.fillRect(xa, y - 2, xb - xa, 4); }
       } else if (q.tipo === 'bomba') {
         const sx = Math.round(q.x * T - camX), sy = Math.round(q.y * T - camY), parp = q.fuse < 0.7 && Math.floor(q.t * 18) % 2;
         J.Temas.disco(ctx, sx, sy, 6, OUT); J.Temas.disco(ctx, sx, sy, 5, parp ? '#ff4d6d' : '#232a48'); ctx.fillStyle = parp ? '#ffd0d0' : '#3a4470'; ctx.fillRect(sx - 3, sy - 3, 2, 2);

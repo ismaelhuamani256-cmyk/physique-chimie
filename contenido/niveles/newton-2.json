@@ -895,6 +895,24 @@
    "y": 9,
    "alto": 6,
    "llave": true
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 115,
+   "y": 9
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 126,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "gigante",
+   "x": 76,
+   "y": 14
   }
  ],
  "ambiente": "hielo",

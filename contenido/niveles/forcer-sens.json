@@ -271,7 +271,7 @@
   {
    "tipo": "jefe",
    "x": 168,
-   "jefe": "ejercicio_bac_1",
+   "jefe": "maestro_calavera",
    "titulo": "Ejercicio bac: électrolyse (ex. 12, 19, 22 del cours)",
    "preguntas": [
     {
@@ -967,6 +967,24 @@
    "especie": "mago",
    "x": 104,
    "y": 10
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 121,
+   "y": 10
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 121,
+   "y": 10
+  },
+  {
+   "tipo": "item",
+   "x": 160,
+   "y": 12,
+   "item": "escopeta"
   }
  ],
  "ambiente": "lab",

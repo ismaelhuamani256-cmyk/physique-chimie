@@ -29,6 +29,7 @@ Mapa 3D ─▶ eliges capítulo ─▶ NIVEL de plataformas ─▶ (ganar o mori
 - **Jefes de disparo**: el **Rey Bomba** (bombas con mecha, coraza que se rompe a tiros y luego pisotón + pregunta) en 4 capítulos.
 - **Cuevas submarinas** (Quiz Quest, fase de agua): techo rocoso, pirañas que persiguen, tiburón gigante, langostas con cavitación, submarinos, peces globo, magos y minas.
 - **🧠 Conceptos (química 1–9)**: visualizaciones de ideas (transferencia de H⁺, isomería, equilibrio, pila, catálisis, datación C-14…) con mini-test; lo que no es del cours está marcado.
+- **Lagos de lava** (parkour + magma), **gigantes y alados**, **espectros tímidos**, **Maestro Calavera**, doble salto y gravedad lunar.
 - **Torres verticales**: champ-gravitation, images y evolution-temporelle se suben en zigzag hasta el jefe.
 - **Fortalezas** (castillo de lava + jefe «Rey Entropía», que se derrota respondiendo preguntas del cours): capítulos 1, 10, 15, 17 y 20.
 

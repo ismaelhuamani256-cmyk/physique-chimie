@@ -252,7 +252,7 @@
   {
    "tipo": "jefe",
    "x": 156,
-   "jefe": "ejercicio_bac_1",
+   "jefe": "maestro_calavera",
    "titulo": "Ejercicio de bac: fuerza de ácidos y bases",
    "preguntas": [
     {
@@ -978,6 +978,18 @@
    "y": 8,
    "alto": 6,
    "llave": true
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 116,
+   "y": 11
+  },
+  {
+   "tipo": "item",
+   "x": 145,
+   "y": 12,
+   "item": "escopeta"
   }
  ],
  "ambiente": "lab",

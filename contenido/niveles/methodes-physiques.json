@@ -984,6 +984,18 @@
    "y": 7,
    "alto": 6,
    "llave": true
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 73,
+   "y": 9
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 100,
+   "y": 10
   }
  ],
  "ambiente": "lab",

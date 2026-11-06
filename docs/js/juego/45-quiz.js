@@ -29,7 +29,7 @@
   // ---------- premios ----------
   Q.premio = function (g, tipo, wx, wy) {
     const p = g.jugador;
-    if (['zapatos', 'iman', 'mochila', 'canon', 'fuego', 'hielo', 'escopeta', 'grande'].includes(tipo) && J.Items) { J.Items.dar(g, tipo); return; }   // ítems con temporizador (48-items.js)
+    if (['zapatos', 'iman', 'mochila', 'canon', 'fuego', 'hielo', 'escopeta', 'grande', 'doble', 'luna'].includes(tipo) && J.Items) { J.Items.dar(g, tipo); return; }   // ítems con temporizador (48-items.js)
     g.premios[tipo] = (g.premios[tipo] || 0) + 1;
     g.flot.push({ tipo, x: wx, y: wy, t: 0 });
     J.Audio.sfx(tipo === 'moneda' ? 'moneda' : 'premio');

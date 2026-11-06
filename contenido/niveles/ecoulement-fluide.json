@@ -982,6 +982,24 @@
    "x": 142,
    "y": 12,
    "item": "escopeta"
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 97,
+   "y": 9
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 119,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "gigante",
+   "x": 91,
+   "y": 12
   }
  ],
  "ambiente": "cueva",

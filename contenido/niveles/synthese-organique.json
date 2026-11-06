@@ -1118,6 +1118,18 @@
    "especie": "mago",
    "x": 160,
    "y": 7
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 85,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "gigante",
+   "x": 105,
+   "y": 13
   }
  ],
  "ambiente": "lab",

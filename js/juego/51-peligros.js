@@ -28,6 +28,7 @@
     g.lasers = S.filter((s) => s.tipo === 'laser').map((s) => ({ x: s.x, y: s.y, eje: s.eje === 'v' ? 'v' : 'h', largo: s.largo || 5, per: s.periodo || 3.6, ret: s.retardo || 0, on: false, aviso: false }));
     g.plantasT = S.filter((s) => s.tipo === 'planta_techo').map((s) => ({ x: s.x, largo: s.largo || 3, ciclo: s.ciclo || 3.4, vis: s.visible || 1.3, fase: (J.hash('pt' + s.x) % 100) / 100, alt: 0 }));
     g.bolasT = [];
+    g.magmas = S.filter((s) => s.tipo === 'magma').map((s) => ({ x: s.x + 0.5, y: s.y, alto: s.altura || 8, per: s.periodo || 3.4, ret: s.retardo || 0, bx: s.x + 0.5, by: s.y, k: 0 }));
     g.llaves = S.filter((s) => s.tipo === 'llave').map((s) => ({ x: s.x + 0.5, y: s.y + 0.5, id: s.id || null, tomada: false, fase: (J.hash('k' + s.x + s.y) % 100) / 16 }));
   };
 
@@ -42,6 +43,11 @@
   P.paso = function (g, dt) {
     if (!g.sierras) return;
     const w = g.w, p = g.jugador, F = g.F, t = g.t, pcx = p.x + p.w / 2, pcy = p.y + p.h / 2;
+    for (const m of g.magmas || []) {   // bola de magma que salta desde la lava en parábola (con burbujas de aviso)
+      m.k = (((g.tm + m.ret) % m.per) + m.per) % m.per / m.per;
+      if (m.k < 0.55) { const u = m.k / 0.55; m.by = m.y - m.alto * 4 * u * (1 - u); m.act = true; } else { m.act = false; m.by = m.y + 1; }
+      if (m.act && !p.muriendo && Math.hypot(pcx - m.bx, pcy - m.by) < 0.7) J.herir(g, m.bx);
+    }
     for (const k of g.llaves || []) {   // llave dorada: abre las puertas con llave del nivel
       if (k.tomada || p.muriendo || Math.hypot(pcx - k.x, pcy - k.y) > 0.9) continue;
       k.tomada = true; J.Audio.sfx('premio'); J.chispas(g, k.x * T, k.y * T, 16, '#ffd166', 4, 2);
@@ -161,6 +167,15 @@
     else if (l.aviso) { ctx.fillStyle = 'rgba(255,209,102,.6)'; if (l.eje === 'h') ctx.fillRect(a[0], y, a[2] - a[0], 1); else ctx.fillRect(x, a[1], 1, a[3] - a[1]); }
   }
   P.dibujar = function (ctx, g, camX, camY, vis) {
+    for (const m of g.magmas || []) {
+      if (!vis(m.x - 1, m.x + 1)) continue;
+      const x = r(m.bx * T - camX), sy = r(m.y * T - camY);
+      if (!m.act) { if (m.k > 0.8) { ctx.fillStyle = '#ffb020'; for (let i = 0; i < 3; i++) D(ctx, x + (i - 1) * 4, sy - 2 - ((g.t * 14 + i * 3) % 6), 1 + (i % 2), '#ffb020'); } continue; }
+      const y = r(m.by * T - camY), v = m.k < 0.275 ? -1 : 1;
+      for (let i = 4; i > 0; i--) { ctx.globalAlpha = 0.16 * (5 - i); D(ctx, x, y + v * i * -3, 6 - i, '#ff7a1a'); }
+      ctx.globalAlpha = 1; D(ctx, x, y, 8, OUT); D(ctx, x, y, 7, '#ff4d2e'); D(ctx, x, y, 5, '#ff9f1c'); D(ctx, x, y, 3, '#ffe27a'); ctx.fillStyle = '#fff'; ctx.fillRect(x - 1, y - 1, 2, 2);
+      ctx.fillStyle = OUT; ctx.fillRect(x - 4, y - 3, 3, 2); ctx.fillRect(x + 1, y - 3, 3, 2);   // ojos furiosos
+    }
     for (const k of g.llaves || []) {   // llave dorada flotante con destello
       if (k.tomada || !vis(k.x - 1, k.x + 1)) continue;
       const x = r(k.x * T - camX), y = r(k.y * T - camY + Math.sin(g.t * 3 + k.fase) * 2);

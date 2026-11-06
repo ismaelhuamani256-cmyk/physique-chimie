@@ -18,16 +18,16 @@
   const D = (...a) => J.Temas.disco(...a);
   const ESP = {
     pirana: { w: 0.95, h: 0.6, hp: 1 }, tiburon: { w: 4, h: 1.5, hp: 6 }, langosta: { w: 1.5, h: 1.0, hp: 2 },
-    submarino: { w: 2.6, h: 1.3, hp: 4 }, globo: { w: 0.9, h: 0.9, hp: 1 }, mago: { w: 0.9, h: 1.3, hp: 1 }, mina: { w: 1, h: 1, hp: 1 },
+    submarino: { w: 2.6, h: 1.3, hp: 4 }, gigante: { w: 2.4, h: 2.0, hp: 3 }, alado: { w: 2.4, h: 2.0, hp: 3 }, espectro: { w: 1.0, h: 1.1, hp: 1 }, globo: { w: 0.9, h: 0.9, hp: 1 }, mago: { w: 0.9, h: 1.3, hp: 1 }, mina: { w: 1, h: 1, hp: 1 },
   };
   F.ESPECIES = Object.keys(ESP);
   const DANO = { fuego: 1, perdigon: 0.6, foton: 1 };
-  const nom = { pirana: 'Piraña', tiburon: 'Tiburón gigante', langosta: 'Langosta', submarino: 'Submarino', globo: 'Pez globo', mago: 'Mago de coral', mina: 'Mina' };
+  const nom = { pirana: 'Piraña', gigante: 'Error gigante', alado: 'Error alado', espectro: 'Espectro tímido', tiburon: 'Tiburón gigante', langosta: 'Langosta', submarino: 'Submarino', globo: 'Pez globo', mago: 'Mago de coral', mina: 'Mina' };
 
   F.iniciar = function (g) {
     const S = g.nivel.segmentos || [];
     g.fauna = S.filter((s) => s.tipo === 'fauna' && ESP[s.especie]).map((s) => {
-      const d = ESP[s.especie], cx = s.x + 0.5, cy = s.especie === 'langosta' ? s.y + 1 - d.h / 2 : s.y + 0.5;
+      const d = ESP[s.especie], cx = s.x + 0.5, cy = (s.especie === 'langosta' || s.especie === 'gigante') ? s.y + 1 - d.h / 2 : s.y + 0.5;
       return { esp: s.especie, w: d.w, h: d.h, x: cx - d.w / 2, y: cy - d.h / 2, x0: cx, y0: cy, dir: -1, vx: 0, vy: 0, estado: 'nada', t: 0, cd: 1 + (J.hash('f' + s.x + s.y) % 100) / 50, hp: d.hp, vivo: true, muertoT: 0, flash: 0, infl: 0, oculto: 0, ph: (J.hash('p' + s.x + s.y) % 628) / 100 };
     });
     g.faunaProy = []; g.faunaFx = [];
@@ -161,6 +161,34 @@
           if (e.oculto <= 0) contacto(g, e, p, false);
           break;
         }
+        case 'gigante': case 'alado': {
+          // gravedad propia; 2 pisotones para vencerlo (el primero lo aplasta y lo enfurece); el alado salta en arcos y pierde las alas al primer pisotón
+          const alado = e.esp === 'alado';
+          if (e.aplastado > 0) { e.aplastado -= dt; e.vx = 0; }
+          else if (alado) { e.cd -= dt; e.dir = dx >= 0 ? 1 : -1; if (e.cd <= 0 && e.suelo) { e.vy = -10; e.vx = e.dir * 3.2; e.cd = 1.3; e.suelo = false; } else if (e.suelo) e.vx *= 0.8; }
+          else { if (d < 14 && vivoP) e.dir = dx >= 0 ? 1 : -1; e.vx = e.dir * (1.5 + (e.furia ? 1.3 : 0)); }
+          e.vy = Math.min(14, (e.vy || 0) + (alado && !e.suelo ? 20 : 26) * dt);
+          const x0 = e.x; mover(g, e, (e.vx || 0) * dt, 0); if (e.bloq && Math.abs(e.x - x0) < 1e-6) { e.dir = -e.dir; e.vx = 0; }
+          const y0 = e.y; e.bloq = false; mover(g, e, 0, e.vy * dt); if (e.bloq) { if (e.vy > 0) e.suelo = true; e.vy = 0; e.y = y0 + (e.suelo ? 0 : 0); } else e.suelo = false;
+          if (!p.muriendo && e.aplastado <= 0 && toca(p, e)) {
+            const encima = p.vy > 0.3 && p.y + p.h - e.y < e.h * 0.55;
+            if (p.estrella > 0) matar(g, e);
+            else if (encima) {
+              p.vy = -g.F.v0 * 0.8; p.suelo = false; p.coyote = 0; p.saltando = !!g.inp.salto; J.Audio.sfx('pisoton'); g.shake = Math.max(g.shake, 3);
+              if (alado) { e.esp = 'gigante'; e.alasPerdidas = true; e.aplastado = 1.0; e.furia = true; J.chispas(g, (e.x + e.w / 2) * T, e.y * T, 14, '#ffffff', 3, -2); }
+              else if (!e.furia) { e.furia = true; e.aplastado = 1.1; J.chispas(g, (e.x + e.w / 2) * T, (e.y + e.h) * T, 12, '#ffd166', 3); }
+              else { if (g.ui && g.ui.error) g.ui.error({ nombre: 'Error gigante', correccion: '' }); matar(g, e); }
+            } else J.herir(g, e.x + e.w / 2);
+          }
+          break;
+        }
+        case 'espectro': {
+          const mira = (p.dir > 0 && dx > 0) || (p.dir < 0 && dx < 0);
+          e.timido = mira; e.dir = dx >= 0 ? 1 : -1;
+          if (!mira && d < 18 && vivoP) { e.x += (dx / (d || 1)) * 2.3 * dt; e.y += (dy / (d || 1)) * 2.3 * dt; }
+          e.y += Math.sin(e.t * 3 + e.ph) * 0.3 * dt;
+          contacto(g, e, p, false); break;
+        }
         case 'mina': {
           const by = e.y0 + Math.sin((e.t + e.ph) * 1.4) * 0.3; e.y = by - e.h / 2; e.x = e.x0 - e.w / 2;
           if (e.estado === 'mecha') { if (e.t > 0.25) { e.muertoT = 0.001; boom(g, e.x0, by, 2.3, e); } break; }
@@ -257,6 +285,25 @@
     D(ctx, cx + dir * 9 + 1, by - 24, carga ? 4 + (Math.floor(t * 20) % 2) : 3, carga ? '#ffffff' : '#c9a6ff'); D(ctx, cx + dir * 9 + 1, by - 24, 2, '#ff8ad8');
     ctx.globalAlpha = 1;
   }
+  function dGigante(ctx, e, x, y, t, bl) {
+    const w = r(e.w * T), h = r(e.h * T), cx = x + w / 2, ap = e.aplastado > 0, alado = e.esp === 'alado', cu = bl ? '#fff' : e.furia ? '#a8324a' : '#8a5a3a', cu2 = bl ? '#fff' : e.furia ? '#c9506a' : '#b07a52';
+    const hh = ap ? r(h * 0.5) : h, top = y + h - hh;
+    if (alado) { const f = Math.sin(t * 16) * 7; ctx.fillStyle = OUT; ctx.fillRect(x - 16, top + 4 - f, 18, 10); ctx.fillRect(x + w - 2, top + 4 - f, 18, 10); ctx.fillStyle = '#fff'; ctx.fillRect(x - 15, top + 5 - f, 16, 8); ctx.fillRect(x + w - 1, top + 5 - f, 16, 8); ctx.fillStyle = '#cfe0ff'; ctx.fillRect(x - 12, top + 8 - f, 10, 2); ctx.fillRect(x + w + 2, top + 8 - f, 10, 2); }
+    ctx.fillStyle = OUT; ctx.fillRect(x + 1, top, w - 2, hh - 6); ctx.fillRect(x + 4, top - 2, w - 8, 3);
+    ctx.fillStyle = cu; ctx.fillRect(x + 2, top + 1, w - 4, hh - 8); ctx.fillRect(x + 5, top - 1, w - 10, 2); ctx.fillStyle = cu2; ctx.fillRect(x + 6, top + 3, w - 12, 3);
+    const pie = Math.floor(t * 7) % 2 && !ap ? 2 : 0; ctx.fillStyle = OUT; ctx.fillRect(x + 3, y + h - 8 + pie, 12, 8); ctx.fillRect(x + w - 15, y + h - 8 + (2 - pie), 12, 8); ctx.fillStyle = '#e9d8b8'; ctx.fillRect(x + 4, y + h - 7 + pie, 10, 6); ctx.fillRect(x + w - 14, y + h - 7 + (2 - pie), 10, 6);
+    if (!ap) { ctx.fillStyle = '#fff'; ctx.fillRect(cx - 11, top + 8, 8, 8); ctx.fillRect(cx + 3, top + 8, 8, 8); ctx.fillStyle = OUT; ctx.fillRect(cx - 7 + e.dir * 2, top + 10, 3, 6); ctx.fillRect(cx + 5 + e.dir * 2, top + 10, 3, 6); ctx.fillRect(cx - 13, top + 5, 12, 3); ctx.fillRect(cx + 1, top + 5, 12, 3); ctx.fillStyle = '#fff'; ctx.fillRect(cx - 5, top + 20, 10, 3); ctx.fillStyle = OUT; for (let i = 0; i < 4; i++) ctx.fillRect(cx - 5 + i * 3, top + 20, 1, 3); }
+    else { ctx.fillStyle = OUT; ctx.fillRect(cx - 9, top + 4, 7, 1); ctx.fillRect(cx + 3, top + 4, 7, 1); ctx.fillRect(cx - 6, top + 6, 3, 3); ctx.fillRect(cx + 5, top + 6, 3, 3); }
+  }
+  function dEspectro(ctx, e, x, y, t, bl) {
+    const cx = r(x + e.w * T / 2), cy = r(y + e.h * T / 2), tim = e.timido, o = r(Math.sin(t * 5) * 1.5);
+    ctx.globalAlpha = tim ? 0.55 : 0.92;
+    ctx.fillStyle = OUT; ctx.fillRect(cx - 8, cy - 9 + o, 16, 18); ctx.fillStyle = bl ? '#fff' : '#e8f0ff'; ctx.fillRect(cx - 7, cy - 8 + o, 14, 15);
+    for (let i = 0; i < 4; i++) { ctx.fillStyle = OUT; ctx.fillRect(cx - 8 + i * 4, cy + 8 + o + (Math.floor(t * 8 + i) % 2), 4, 3); ctx.fillStyle = '#e8f0ff'; ctx.fillRect(cx - 7 + i * 4, cy + 7 + o, 3, 3); }
+    if (tim) { ctx.fillStyle = OUT; ctx.fillRect(cx - 6, cy - 3 + o, 5, 4); ctx.fillRect(cx + 1, cy - 3 + o, 5, 4); ctx.fillStyle = '#cfe0ff'; ctx.fillRect(cx - 5, cy - 2 + o, 3, 2); ctx.fillRect(cx + 2, cy - 2 + o, 3, 2); }
+    else { ctx.fillStyle = OUT; ctx.fillRect(cx - 5, cy - 5 + o, 3, 4); ctx.fillRect(cx + 2, cy - 5 + o, 3, 4); ctx.fillRect(cx - 3, cy + 1 + o, 6, 4); ctx.fillStyle = '#ff4d6d'; ctx.fillRect(cx - 4, cy - 4 + o, 1, 2); ctx.fillRect(cx + 3, cy - 4 + o, 1, 2); }
+    ctx.globalAlpha = 1;
+  }
   function dMina(ctx, e, x, y, t, bl, g, camY) {
     const cx = r(x + e.w * T / 2), cy = r(y + e.h * T / 2), mecha = e.estado === 'mecha';
     let fila = Math.floor(e.y0); while (fila < g.w.alto && !SOL(g.w.get(Math.floor(e.x0), fila))) fila++;
@@ -273,7 +320,7 @@
       const x = r(e.x * T - camX), y = r(e.y * T - camY), bl = e.flash > 0 && Math.floor(e.flash * 30) % 2 === 0, t = g.t + e.ph;
       ctx.save();
       if (e.muertoT > 0) { ctx.globalAlpha = Math.max(0, 1 - e.muertoT / 0.45); }
-      ({ pirana: dPirana, tiburon: dTiburon, langosta: dLangosta, submarino: dSubmarino, globo: dGlobo, mago: dMago, mina: dMina })[e.esp](ctx, e, x, y, t, bl, g, camY);
+      ({ pirana: dPirana, tiburon: dTiburon, langosta: dLangosta, submarino: dSubmarino, globo: dGlobo, mago: dMago, mina: dMina, gigante: dGigante, alado: dGigante, espectro: dEspectro })[e.esp](ctx, e, x, y, t, bl, g, camY);
       ctx.restore();
       if (e.helado > 0) { ctx.globalAlpha = 0.5; ctx.fillStyle = '#bfefff'; ctx.fillRect(x - 1, y - 1, r(e.w * T) + 2, r(e.h * T) + 2); ctx.globalAlpha = 1; ctx.fillStyle = '#fff'; ctx.fillRect(x + 2, y + 1, 3, 1); ctx.fillRect(x + r(e.w * T) - 6, y + r(e.h * T) - 3, 4, 1); }
     }

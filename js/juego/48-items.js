@@ -16,6 +16,8 @@
   const DEF = {
     zapatos: { nombre: 'Botas de Hooke', col: '#ff3da6', letra: 'H', dur: 15, aviso: '¡Botas de Hooke! Salto +35 %' },
     iman: { nombre: 'Imán', col: '#ff4d6d', letra: 'N', dur: 15, aviso: '¡Imán! Atrae átomos, gemas y monedas' },
+    doble: { nombre: 'Botas de doble salto', col: '#c9a6ff', letra: 'D', dur: 25, aviso: '¡Doble salto! Salta otra vez en el aire' },
+    luna: { nombre: 'Gravedad lunar', col: '#e8f0ff', letra: 'M', dur: 20, aviso: '¡Gravedad lunar! Saltas el doble de alto' },
     mochila: { nombre: 'Mochila propulsora', col: '#ffb020', letra: 'P', dur: 25, aviso: '¡Mochila! Mantén SALTO en el aire' },
     canon: { nombre: 'Cañón de fotones', col: '#6ff0ff', letra: 'F', dur: 30, municion: 10, aviso: '¡Cañón de fotones! Pulsa X / F' },
     escudo: { nombre: 'Escudo', col: '#35d6ff', letra: 'E', reserva: true, aviso: 'Escudo guardado en la reserva (Q)' },
@@ -32,7 +34,7 @@
 
   // ---------- estado por partida ----------
   I.iniciar = function (g) {
-    g.it = { zapatos: 0, iman: 0, mochila: 0, canon: 0, fuel: 2.8, municion: 0, cd: 0, fuego: false, hielo: false, escopeta: 0, grande: false, alt: false };
+    g.it = { doble: 0, luna: 0, zapatos: 0, iman: 0, mochila: 0, canon: 0, fuel: 2.8, municion: 0, cd: 0, fuego: false, hielo: false, escopeta: 0, grande: false, alt: false };
     g.reserva = [];
     g.fotones = []; g.fuegos = []; g.perdigones = [];
     g.itemsMundo = (g.nivel.segmentos || []).filter((s) => s.tipo === 'item' && DEF[s.item]).map((s) => ({ x: Math.floor(s.x), y: Math.floor(s.y), item: s.item, tomado: false, fase: (J.hash('it' + s.x + s.y) % 100) / 16 }));
@@ -109,7 +111,7 @@
   I.paso = function (g, dt) {
     const w = g.w, p = g.jugador, inp = g.inp, it = g.it; if (!it) return;
     const pcx = p.x + p.w / 2, pcy = p.y + p.h / 2;
-    for (const k of ['zapatos', 'iman', 'mochila', 'canon']) if (it[k] > 0) { it[k] = Math.max(0, it[k] - dt); if (it[k] === 0) { g.ui.aviso(DEF[k].nombre + ': se acabó'); hud(g, true); } }
+    for (const k of ['zapatos', 'doble', 'luna', 'iman', 'mochila', 'canon']) if (it[k] > 0) { it[k] = Math.max(0, it[k] - dt); if (it[k] === 0) { g.ui.aviso(DEF[k].nombre + ': se acabó'); hud(g, true); } }
     it.cd = Math.max(0, it.cd - dt);
     // capsulas del nivel
     if (!p.muriendo) for (const c of g.itemsMundo) if (!c.tomado && Math.abs(pcx - (c.x + 0.5)) < 0.9 && Math.abs(pcy - (c.y + 0.5)) < 1.0) { c.tomado = true; I.dar(g, c.item); }
@@ -247,9 +249,9 @@
   }
   function hud(g, forzar) {
     if (!g.hudItems) return;
-    const it = g.it, sig = ['zapatos', 'iman', 'mochila', 'canon'].map((k) => Math.ceil(it[k])).join(',') + '|' + it.municion + '|' + it.escopeta + '|' + it.fuego + '|' + it.hielo + '|' + it.grande + '|' + Math.round(it.fuel * 3) + '|' + g.reserva.join(',');
+    const it = g.it, sig = ['zapatos', 'doble', 'luna', 'iman', 'mochila', 'canon'].map((k) => Math.ceil(it[k])).join(',') + '|' + it.municion + '|' + it.escopeta + '|' + it.fuego + '|' + it.hielo + '|' + it.grande + '|' + Math.round(it.fuel * 3) + '|' + g.reserva.join(',');
     if (sig === g._sigHud && !forzar) return; g._sigHud = sig;
-    g.hudItems.replaceChildren(...['grande', 'fuego', 'hielo', 'escopeta', 'zapatos', 'iman', 'mochila', 'canon'].filter((k) => it[k] > 0 || it[k] === true).map((k) => {
+    g.hudItems.replaceChildren(...['grande', 'fuego', 'hielo', 'escopeta', 'zapatos', 'doble', 'luna', 'iman', 'mochila', 'canon'].filter((k) => it[k] > 0 || it[k] === true).map((k) => {
       const d = DEF[k], s = document.createElement('span'); s.className = 'jg-itemchip'; s.style.borderColor = d.col;
       s.innerHTML = '<b style="background:' + d.col + '">' + d.letra + '</b>' + d.nombre + ' <i>' + (k === 'canon' ? '×' + it.municion : k === 'escopeta' ? '×' + it.escopeta : (k === 'fuego' || k === 'grande' || k === 'hielo') ? '' : k === 'mochila' ? Math.round(Math.max(0, it.fuel) / 2.8 * 100) + '%' : Math.ceil(it[k]) + 's') + '</i>';
       return s;

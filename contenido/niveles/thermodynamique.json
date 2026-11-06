@@ -992,6 +992,24 @@
    "especie": "mago",
    "x": 88,
    "y": 5
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 110,
+   "y": 9
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 90,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "gigante",
+   "x": 48,
+   "y": 13
   }
  ],
  "ambiente": "horno",

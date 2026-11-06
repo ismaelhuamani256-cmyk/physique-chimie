@@ -70,7 +70,7 @@
   // 5 = bloque ? (bloque_pregunta), 6 = tubería, 7 = puerta, 8 = ladrillo, 9 = cinta, 10 = bloque_rebote: sólidos que dibuja el motor como entidades
   const SOLIDO = (t) => t === 1 || t === 3 || t === 4 || t === 5 || t === 6 || t === 7 || t === 8 || t === 9 || t === 10;
   const SUELO_T = (t) => t === 1 || t === 2 || t === 3 || t === 4 || t === 9 || t === 10;   // lo que cuenta como "suelo" para topAt
-  const JEFES_QUIZ = ['rey_entropia', 'golem_formulas', 'pulpo_acido', 'dragon_tormenta', 'isotopo_inestable', 'foton_veloz', 'bombardero_neutron', 'rey_bomba'];
+  const JEFES_QUIZ = ['rey_entropia', 'golem_formulas', 'pulpo_acido', 'dragon_tormenta', 'isotopo_inestable', 'foton_veloz', 'bombardero_neutron', 'rey_bomba', 'maestro_calavera'];
   const ACUATICOS = ['medusa', 'pez', 'erizo', 'anguila'];
 
   // ---------- química: fórmulas con cargas, conservación de átomos y de carga ----------
@@ -337,7 +337,7 @@
     if (F.hSeguro < 2.2) E(`Con esta física el salto solo alcanza ${F.hMax.toFixed(2)} tiles: demasiado bajo para jugar.`);
     const segs = nivel.segmentos;
     const TIPOS = ['plataforma', 'puente', 'palanca', 'foso', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'checkpoint', 'jefe', 'meta', 'bloque_pregunta', 'tuberia', 'puerta', 'zona_agua', 'jefe_quiz', 'ladrillo', 'plataforma_cae', 'planta_carnivora',
-      'mina', 'prensa', 'pendulo', 'cinta', 'picos', 'bloque_rebote', 'sprint', 'rastro_monedas', 'cartel', 'atomo', 'estacion_molecula', 'puerta_ecuacion', 'interruptor_estado', 'plataforma_estado', 'item', 'bicho', 'estalactita', 'lluvia_rocas', 'sierra', 'torreta', 'canon_bala', 'geiser', 'laser', 'planta_techo', 'fauna', 'llave'];
+      'mina', 'prensa', 'pendulo', 'cinta', 'picos', 'bloque_rebote', 'sprint', 'rastro_monedas', 'cartel', 'atomo', 'estacion_molecula', 'puerta_ecuacion', 'interruptor_estado', 'plataforma_estado', 'item', 'bicho', 'estalactita', 'lluvia_rocas', 'sierra', 'torreta', 'canon_bala', 'geiser', 'laser', 'planta_techo', 'fauna', 'llave', 'magma'];
     const G = geometria(nivel, { revelar: true });   // los puentes ocultos (que aparecen con una estación) cuentan como presentes
     const dentroX = (x) => x >= 0 && x < ancho, dentroY = (y) => y >= 0 && y < alto;
     const desc = (s, i) => `segmento #${i} (${s.tipo}${s.x != null ? ' x=' + s.x : ''}${s.y != null ? ' y=' + s.y : ''})`;
@@ -505,7 +505,7 @@
         if (jefe.vidas != null && !(Number.isInteger(jefe.vidas) && jefe.vidas >= 1 && jefe.vidas <= 6)) E('jefe_quiz: "vidas" debe ser un entero entre 1 y 6.');
       } else if (jefe.jefe === 'pulpo_acido' || jefe.jefe === 'dragon_tormenta') W(`${jefe.jefe} como "jefe" normal se comporta como jefe_quiz.`);
       if (conFases) {
-        const PAT = { rey_entropia: ['bola', 'arco', 'onda', 'abanico', 'lluvia'], golem_formulas: ['carga', 'salto'], pulpo_acido: ['tinta', 'chorro', 'tentaculos'], dragon_tormenta: ['rayo', 'embestida', 'rafaga'], isotopo_inestable: ['rafaga', 'rayo', 'embestida'], foton_veloz: ['embestida', 'rafaga', 'rayo'], bombardero_neutron: ['bombardeo', 'rafaga', 'rayo'], rey_bomba: ['lanzar', 'rodar', 'salto', 'mecha'] }[jefe.jefe] || [];
+        const PAT = { rey_entropia: ['bola', 'arco', 'onda', 'abanico', 'lluvia'], golem_formulas: ['carga', 'salto'], pulpo_acido: ['tinta', 'chorro', 'tentaculos'], dragon_tormenta: ['rayo', 'embestida', 'rafaga'], isotopo_inestable: ['rafaga', 'rayo', 'embestida'], foton_veloz: ['embestida', 'rafaga', 'rayo'], bombardero_neutron: ['bombardeo', 'rafaga', 'rayo'], rey_bomba: ['lanzar', 'rodar', 'salto', 'mecha'], maestro_calavera: ['huesos', 'blink', 'rayos'] }[jefe.jefe] || [];
         if (jefe.fases.length < 2 || jefe.fases.length > 5) E(`jefe_quiz: "fases" debe tener entre 2 y 5 fases (tiene ${jefe.fases.length}).`);
         jefe.fases.forEach((f, k) => {
           const idf = `jefe, fase ${k + 1}`;
@@ -609,7 +609,7 @@
       const sg = b.seg, id = `bloque_pregunta (x=${sg.x}, y=${sg.y})`;
       if (b.x < 0 || b.x >= ancho || b.y < 1 || b.y >= alto - 1) { E(`${id}: fuera de los límites del nivel.`); continue; }
       const k = b.x + ',' + b.y; if (bloquesVistos.has(k)) E(`${id}: dos bloques en la misma casilla.`); bloquesVistos.add(k);
-      if (!['moneda', 'vida', 'pista', 'escudo', 'estrella', 'reloj', 'fuego', 'hielo', 'escopeta', 'grande', 'zapatos', 'iman', 'mochila', 'canon'].includes(sg.premio)) E(`${id}: premio debe ser moneda|vida|pista|escudo|estrella|reloj|fuego|hielo|escopeta|grande|zapatos|iman|mochila|canon (vale ${JSON.stringify(sg.premio)}).`);
+      if (!['moneda', 'vida', 'pista', 'escudo', 'estrella', 'reloj', 'fuego', 'hielo', 'escopeta', 'grande', 'doble', 'luna', 'zapatos', 'iman', 'mochila', 'canon'].includes(sg.premio)) E(`${id}: premio debe ser moneda|vida|pista|escudo|estrella|reloj|fuego|hielo|doble|luna|escopeta|grande|zapatos|iman|mochila|canon (vale ${JSON.stringify(sg.premio)}).`);
       if (sg.fallo != null && !['cierra', 'enemigo'].includes(sg.fallo)) E(`${id}: fallo debe ser cierra|enemigo.`);
       valQs(sg, id);
       for (const o of [...G.tuberias, ...G.puertas]) if (b.x >= o.x && b.x < o.x + (o.seg.tipo === 'tuberia' ? 2 : 1) && b.y >= o.top && b.y < o.base) E(`${id}: solapa con ${o.seg.tipo} en x=${o.x}.`);

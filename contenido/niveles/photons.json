@@ -1065,6 +1065,18 @@
    "especie": "mago",
    "x": 128,
    "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 107,
+   "y": 9
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 126,
+   "y": 8
   }
  ],
  "ambiente": "campo",

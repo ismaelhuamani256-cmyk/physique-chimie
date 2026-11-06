@@ -288,10 +288,14 @@
         p.vy = -F.v0 * (J.Items ? J.Items.saltoMult(g) : 1); p.buffer = 0; p.coyote = 0; p.suelo = false; p.saltando = true;
         J.Audio.sfx('salto'); polvo(g, cx * J.T, (p.y + p.h) * J.T, 4);
       }
+      if (suelo) p.dobleUsado = false;
+      if (p.buffer > 0 && p.coyote <= 0 && !p.dobleUsado && g.it && g.it.doble > 0 && !g.congelado) {   // botas de doble salto
+        p.vy = -F.v0 * 0.92; p.buffer = 0; p.dobleUsado = true; p.suelo = false; p.saltando = true; J.Audio.sfx('salto'); polvo(g, cx * J.T, (p.y + p.h) * J.T, 6); J.chispas(g, cx * J.T, (p.y + p.h) * J.T, 8, '#c9a6ff', 2, 1);
+      }
       if (p.saltando && !inp.salto && p.vy < 0) { p.vy *= FIS.CORTE_SALTO; p.saltando = false; }
       if (p.vy >= 0) p.saltando = false;
       vyPrev = p.vy;
-      p.vy = Math.min(FIS.CAIDA_MAX, p.vy + (F.g + fyZona * FIS.G0) * dt);
+      p.vy = Math.min(FIS.CAIDA_MAX, p.vy + (F.g * (g.it && g.it.luna > 0 ? 0.5 : 1) + fyZona * FIS.G0) * dt);
     }
     // --- movimiento (integración con velocidad media: la altura del salto sale exacta, v²/2g) ---
     const vyAntes = p.vy;
@@ -469,6 +473,14 @@
         if (SOL(w.get(Math.floor(q.x), Math.floor(q.y + 0.2)))) { q.muerto = true; J.chispas(g, q.x * J.T, q.y * J.T, 8, '#ffb020', 3); }
         if (q.x < -2 || q.x > w.ancho + 2 || q.y > w.alto + 1) q.muerto = true;
         if (!q.muerto && !p.muriendo && Math.hypot(p.x + p.w / 2 - q.x, p.y + p.h / 2 - q.y) < 0.55) { q.muerto = true; J.herir(g, q.x); }
+      } else if (q.tipo === 'hueso') {   // hueso del Maestro Calavera: recorre el suelo
+        q.x += q.vx * dt; const A = w.arena;
+        if (q.x < (A ? A.izq + 0.5 : -1) || q.x > (A ? A.der : w.ancho)) q.muerto = true;
+        if (!q.muerto && !p.muriendo && Math.abs(p.x + p.w / 2 - q.x) < 0.5 && p.y + p.h > q.y - q.h + 0.1 && p.y < q.y) J.herir(g, q.x);
+      } else if (q.tipo === 'haz') {   // láser de calavera: aviso y luego haz horizontal
+        if (q.t > q.aviso && !q.sono) { q.sono = true; J.Audio.sfx('onda'); g.shake = Math.max(g.shake, 4); }
+        if (q.t > q.aviso && q.t < q.aviso + q.dur && !p.muriendo && p.y + p.h > q.y - q.h / 2 && p.y < q.y + q.h / 2) J.herir(g, p.x + p.w / 2);
+        if (q.t > q.aviso + q.dur) q.muerto = true;
       } else if (q.tipo === 'bomba') {   // bomba del Rey Bomba: rebota, mecha de 2 s, explota (o se detona de un disparo)
         q.vy += q.grav * dt; q.x += q.vx * dt; q.y += q.vy * dt; q.fuse -= dt;
         if (SOL(w.get(Math.floor(q.x), Math.floor(q.y + 0.3))) && q.vy > 0) { q.y = Math.floor(q.y + 0.3) - 0.3; q.vy *= -0.35; q.vx *= 0.55; if (Math.abs(q.vy) < 1) q.vy = 0; }

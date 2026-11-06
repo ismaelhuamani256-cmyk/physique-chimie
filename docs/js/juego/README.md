@@ -218,3 +218,13 @@ Además se reparten `sierra` (en raíl) y `laser` horizontales de 51-peligros.js
 ## Llaves, puertas con llave y magos en tierra
 
 `{"tipo":"llave","x","y","id"?}` es una llave dorada flotante (51-peligros.js); `{"tipo":"puerta","x","y","alto":6,"llave":true|"id"}` es una puerta cerrada con cerradura dorada que **se abre sola al coger la llave** (no pide pregunta). El validador exige que exista alguna llave. `tools/llaves-niveles.js nivel…` coloca la llave junto a una fórmula y la puerta más adelante (methodes-physiques, newton-2 y force-acides-bases). `tools/magos-niveles.js` reparte 1–2 magos (`fauna`/`mago`, ver arriba) por nivel de capítulo.
+
+## Cristal de hielo y power-ups del mar
+`hielo` (letra H, persistente): X/F/J dispara un rayo recto que **congela** 5 s a la fauna (inmóvil, inofensiva, se puede pisar incluso a submarinos y langostas; el tiburón recibe 2 de daño). `Cueva.aplicar` deja cápsulas de hielo y fuego en las cuevas y el Quiz Quest los da como premio en la fase de agua.
+
+## Lagos de lava, gigantes, espectros y Maestro Calavera
+
+- **Lago de lava** (`tools/lava-niveles.js`, en las 5 fortalezas): tramo de 24–48 tiles de islotes de 2–3 tiles sobre fosos de lava de 3–5, un checkpoint a mitad, lluvia de brasas y `{"tipo":"magma","x","y","altura","periodo","retardo"}` (bolas de magma que saltan en parábola, con burbujas de aviso).
+- **Fauna de tierra** (`52-fauna.js`, `tools/gigantes-niveles.js`): `gigante` (Error Gigante: 2 pisotones, el primero lo enfurece), `alado` (salta en arcos; el primer pisotón le quita las alas y pasa a gigante) y `espectro` (solo avanza si le das la espalda; mirándolo se congela). Presentes en ~8 niveles.
+- **Maestro Calavera** (`jefe:"maestro_calavera"`, force-acides-bases y forcer-sens; `JEFE=maestro_calavera node tools/jefe-bomba.js nivel`): oleadas de huesos bajos/altos, calaveras láser (bajo: salta; alto: quédate en el suelo) y teletransporte. Tras 4 ataques se cansa → pisotón → pregunta del cours.
+- **Power-ups nuevos**: `doble` (doble salto, 25 s) y `luna` (gravedad a la mitad, 20 s).

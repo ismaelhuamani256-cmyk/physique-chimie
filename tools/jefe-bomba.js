@@ -6,9 +6,9 @@ for (const id of process.argv.slice(2)) {
   const f = path.join(dir, id + '.json'), n = JSON.parse(fs.readFileSync(f, 'utf8'));
   const j = n.segmentos.find((s) => s.tipo === 'jefe' || s.tipo === 'jefe_quiz');
   if (!j) { console.log('✖', id, 'sin jefe'); continue; }
-  if (j.jefe === 'rey_bomba') { console.log('=', id, 'ya tiene Rey Bomba'); continue; }
+  if (j.jefe === (process.env.JEFE || 'rey_bomba')) { console.log('=', id, 'ya tiene Rey Bomba'); continue; }
   const antes = JSON.stringify(n);
-  j.jefe = 'rey_bomba'; if (j.tipo === 'jefe') j.titulo = (j.titulo || '').replace(/^Ejercicio BAC/, 'Rey Bomba');
+  j.jefe = process.env.JEFE || 'rey_bomba'; if (j.tipo === 'jefe') j.titulo = (j.titulo || '').replace(/^Ejercicio BAC/, 'Rey Bomba');
   if (j.tipo === 'jefe_quiz') j.tipo = 'jefe';
   const piso = (x) => n.segmentos.find((s) => s.tipo === 'plataforma' && s.y >= n.alto_tiles - 6 && x >= s.x && x < s.x + s.largo);
   let puesto = false;

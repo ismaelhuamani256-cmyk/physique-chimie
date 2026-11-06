@@ -190,3 +190,23 @@ Los niveles ya no son una tira plana. `PCB.juego.Relieve.aplicar(nivel, {seed, i
 - **Segmentos**: `sierra` (fija, o en raíl con `eje:"x|y"` y `recorrido`, o en círculo `eje:"o"`), `torreta` (te apunta y dispara bolas de energía; se pisa o se dispara, muestra la corrección de un error típico), `canon_bala` (lanza una «bala cometa» gigante; se pisa o se dispara), `geiser` (columna de lava/ácido/agua según el tema; burbujea antes de brotar), `laser` (barrera horizontal o vertical que parpadea antes de encenderse) y `planta_techo` (tubería del techo con una planta carnívora que baja a morder).
 - Los disparos del jugador llaman a `J.Peligros.golpe(g, x, y, radio)`.
 - `tools/peligros-niveles.js` reparte peligros por los 20 niveles según su `ambiente` (laboratorio: láseres y torretas; castillo/horno: géiseres y sierras; cueva: picos y géiseres; hielo: cañones; espacio: láseres y minas…) con huecos de seguridad (nada junto a fosos, checkpoints, carteles, estaciones, sprint ni la arena del jefe) y valida cada resultado. De **27 peligros en total** (14 niveles sin ninguno) se pasó a **~230** (mínimo 9, media 11 por nivel). El generador del Quiz Quest hace lo mismo en sus fases de tierra y castillo.
+
+## Rey Bomba y jefes de disparo (`50-jefes.js`)
+
+`jefe: "rey_bomba"` (segmento `jefe`, 3+ preguntas): jefe **que se derrota disparando**. Tiene una *coraza* (8 puntos, +2 por fase): `fuego` = 1, perdigón de escopeta = 0,35, fotón = 1. Al romperla se apaga la mecha, queda **aturdido** y se le pisa para la pregunta del cours (acierto = nueva fase con coraza renovada; fallo = se enfurece). Ataques: `lanzar` (2–4 bombas en arco con mecha de 2 s; **si las disparas explotan lejos, y si explotan junto al rey le hacen 3 de daño**), `rodar` (embestida), `salto` (onda de choque), `mecha` (nova de explosión, hay que alejarse). Si no llevas munición al entrar en la arena, te da la flor de plasma. `tools/jefe-bomba.js nivel…` lo asigna a un nivel y deja una cápsula de escopeta antes de la arena (ya puesto en thermodynamique, ecoulement-fluide, sens-evolution y champ-uniforme). Hook genérico: `J.Jefe.recibirDisparo(g,x,y,por)` / `J.Jefe.danar(g,d)`.
+
+## Cuevas submarinas y fauna (`44-cueva.js`, `52-fauna.js`)
+
+`Cueva.aplicar(nivel,{seed,intensidad})` convierte un nivel `quiz_agua` en una **cueva**: techo rocoso (0–5 tiles, `plataforma{techo:true}`), jorobas de 0–3 tiles en el fondo y un pasillo siempre ≥ 6 tiles; no toca el inicio, puertas, tuberías, bloques, checkpoints ni la arena. El generador del Quiz Quest lo aplica a la fase de agua (con respaldo 1 → 0,7 → 0,45 si no valida) y `tools/cueva-niveles.js` mejora los niveles de agua ya guardados (`_demo-quiz-agua.json`). El validador acepta techos desde la fila 0 y `topAt` ignora los bloques de techo.
+
+Segmento `{"tipo":"fauna","especie":…,"x","y"}`:
+| especie | comportamiento |
+|---|---|
+| `pirana` | banco de 3; si te huele a < 9 tiles te **persigue** y se lanza en picado; se pisa o se dispara |
+| `tiburon` | gigante: ronda, avisa (ojos rojos + «!») y **embiste** en línea recta; queda cansado; solo a tiros (6) |
+| `langosta` | en el fondo; alza la pinza y suelta una **cavitación** (onda de choque que crece); se pisa o se dispara |
+| `submarino` | te **persigue** y lanza torpedos teledirigidos; solo a tiros (4) |
+| `globo` | se **hincha** si te acercas (hinchado = púas, no se pisa) |
+| `mago` | se teletransporta junto a ti y lanza orbes que te buscan |
+| `mina` | mina flotante con cadena; explota al tocarla o dispararla y arrastra a la fauna cercana |
+Además se reparten `sierra` (en raíl) y `laser` horizontales de 51-peligros.js. Los disparos del jugador (`Items.impacto` y fotones) llaman a `Fauna.golpe`.

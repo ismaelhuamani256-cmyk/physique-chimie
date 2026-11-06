@@ -811,5 +811,287 @@
     ],
   });
 
+  // =====================================================================================
+  // CAP. 4 · evolution-temporelle
+  // =====================================================================================
+
+  // ---- 4.1 Choques eficaces: temperatura y concentración (p. 114) ----
+  reg({
+    id: 'chocs-efficaces', capitulos: ['evolution-temporelle'], titulo: 'Choques eficaces: por qué T y c aceleran', fr: 'Interprétation microscopique des facteurs cinétiques', pagina_pdf: 114,
+    resumen: 'Dos entidades solo reaccionan si chocan y el choque modifica sus enlaces (choc efficace). Subir la temperatura o la concentración multiplica los choques eficaces por segundo.',
+    pasos: [
+      { titulo: 'Para reaccionar hay que chocar', texto: 'A (magenta) y B (verde) se agitan al azar. Para transformarse deben encontrarse: cada encuentro es un choque. Mira el contador de choques por segundo.', fr: 'Un choc entre deux entités réactives…' },
+      { titulo: 'No todos los choques son eficaces', texto: 'Un choque es eficaz solo si modifica los enlaces químicos de las dos entidades (aquí: si llegan con suficiente energía). Los choques eficaces se marcan con un destello verde; los demás son simples rebotes grises.', fr: 'Un choc est efficace s’il entraîne une modification des liaisons chimiques de ces deux entités.' },
+      { titulo: 'Más temperatura: choques más frecuentes y más violentos', texto: 'Sube la temperatura: la agitación térmica aumenta, hay más choques y además con más energía, por tanto muchos más son eficaces. Observa cómo salta el número de eficaces por segundo.', fr: 'Lorsque la température augmente, les chocs efficaces sont plus fréquents.' },
+      { titulo: 'Más concentración: más choques', texto: 'Ahora vuelve a la temperatura baja y añade moléculas: con más entidades por unidad de volumen se encuentran más a menudo, así que hay más choques eficaces por segundo.', fr: 'Lorsque la concentration augmente, les chocs efficaces sont plus fréquents.' },
+      { titulo: 'Los dos factores cinéticos', texto: 'Temperatura y concentración de los reactivos son factores cinéticos: modifican la duración de la transformación porque cambian el número de choques eficaces por segundo. Juega con los dos deslizadores.', fr: 'Les facteurs cinétiques : la température et la concentration.' },
+    ],
+    montar(host, api) {
+      const rng = PCB.util.rng ? PCB.util.rng(9) : Math.random;
+      const B = { x0: 50, y0: 60, x1: 520, y1: 372 }, R = 10, EA = api.reducido ? 10800 : 30000; // umbral (px/s)²
+      const S = { T: 20, nc: 8, ps: [], hist: [], tot: 0, efi: 0, flash: [] };
+      const sig = (T) => (T + 273) * (api.reducido ? 0.12 : 0.2);
+      const gauss = () => { let a = 0; for (let i = 0; i < 6; i++) a += rng(); return (a - 3) * 1.4142; };
+      function poblar(S) { S.ps = []; for (let k = 0; k < 2; k++) for (let i = 0; i < S.nc; i++) S.ps.push({ k, x: B.x0 + R + rng() * (B.x1 - B.x0 - 2 * R), y: B.y0 + R + rng() * (B.y1 - B.y0 - 2 * R), vx: gauss() * sig(S.T), vy: gauss() * sig(S.T), cd: 0 }); S.hist = []; S.tot = 0; S.efi = 0; S.t0 = S.t; }
+      poblar(S);
+      return escena(host, api, {
+        estado: S,
+        controles: [
+          { tipo: 'rango', id: 'T', txt: 'Temperatura', min: 0, max: 200, paso: 5, val: 20, fmt: (v) => v + ' °C' },
+          { tipo: 'rango', id: 'nc', txt: 'Concentración', min: 4, max: 16, paso: 1, val: 8, fmt: (v) => v + '+' + v },
+          { tipo: 'btn', txt: '↺', al: (S) => poblar(S) },
+        ],
+        alCambiar(id, v, S) { if (id === 'nc') poblar(S); else { const k = sig(S.T) / (S.sT || sig(S.T)); S.ps.forEach((p) => { p.vx *= k; p.vy *= k; }); S.hist = []; S.t0 = S.t; } S.sT = sig(S.T); },
+        paso(dt, S) {
+          S.sT = S.sT || sig(S.T);
+          const m = 2, sub = 2; dt /= sub;
+          for (let s = 0; s < sub; s++) {
+            S.ps.forEach((p) => { p.x += p.vx * dt; p.y += p.vy * dt; if (p.x < B.x0 + R) { p.x = B.x0 + R; p.vx = Math.abs(p.vx); } if (p.x > B.x1 - R) { p.x = B.x1 - R; p.vx = -Math.abs(p.vx); } if (p.y < B.y0 + R) { p.y = B.y0 + R; p.vy = Math.abs(p.vy); } if (p.y > B.y1 - R) { p.y = B.y1 - R; p.vy = -Math.abs(p.vy); } p.cd -= dt; });
+            for (let i = 0; i < S.ps.length; i++) for (let j = i + 1; j < S.ps.length; j++) { const a = S.ps[i], b = S.ps[j], dx = b.x - a.x, dy = b.y - a.y, d2 = dx * dx + dy * dy; if (d2 < 4 * R * R && d2 > 0.01) { const d = Math.sqrt(d2), nx = dx / d, ny = dy / d, rv = (b.vx - a.vx) * nx + (b.vy - a.vy) * ny; if (rv < 0) { const vr2 = Math.pow(b.vx - a.vx, 2) + Math.pow(b.vy - a.vy, 2); a.vx += rv * nx; a.vy += rv * ny; b.vx -= rv * nx; b.vy -= rv * ny; const ov = (2 * R - d) / 2; a.x -= nx * ov; a.y -= ny * ov; b.x += nx * ov; b.y += ny * ov; if (a.k !== b.k && a.cd <= 0 && b.cd <= 0) { S.tot++; a.cd = b.cd = 0.15; const ef = vr2 > EA; if (ef) { S.efi++; S.flash.push({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2, t: 0, ok: 1 }); S.hist.push([S.t, 1, 1]); } else { S.flash.push({ x: (a.x + b.x) / 2, y: (a.y + b.y) / 2, t: 0, ok: 0 }); S.hist.push([S.t, 1, 0]); } } } } }
+          }
+          S.flash.forEach((f) => (f.t += dt * sub)); while (S.flash.length && S.flash[0].t > 0.45) S.flash.shift();
+          while (S.hist.length && S.hist[0][0] < S.t - 6) S.hist.shift();
+        },
+        ir(n, S, E) { const set = (T, nn) => { E.set('T', T); E.set('nc', nn); S.sT = sig(S.T); poblar(S); }; if (n <= 1) set(20, 8); else if (n === 2) set(180, 8); else if (n === 3) set(20, 16); else set(120, 12); },
+        dibujar(c, S) {
+          const n = S.n;
+          rr(c, B.x0 - 4, B.y0 - 4, B.x1 - B.x0 + 8, B.y1 - B.y0 + 8, 10); c.fillStyle = '#0d1530'; c.fill(); c.strokeStyle = GR; c.lineWidth = 2; c.stroke();
+          S.ps.forEach((p) => { const col = p.k ? VE : MG; circ(c, p.x, p.y, R, col + '99', col, 1.8); txt(c, p.k ? 'B' : 'A', p.x, p.y, { s: 10, b: 1 }); });
+          S.flash.forEach((f) => { c.globalAlpha = 1 - f.t / 0.45; circ(c, f.x, f.y, 8 + f.t * (f.ok ? 70 : 30), null, f.ok ? '#7dffc8' : '#9aa3c4', f.ok ? 3 : 2); c.globalAlpha = 1; });
+          // panel de contadores
+          const win = Math.max(1, Math.min(6, S.t - (S.t0 || 0))), rates = (k) => (S.hist.length ? S.hist.filter((h) => h[1] && (k === 0 || h[2])).length / win : 0);
+          panel(c, 546, 60, 236, 312, GR);
+          txt(c, 'últimos 6 s', 664, 80, { s: 12, c: T2 });
+          txt(c, 'choques A–B / s', 664, 112, { s: 13, c: T2 }); txt(c, rates(0).toFixed(1).replace('.', ','), 664, 142, { s: 30, b: 1, c: TX });
+          txt(c, 'choques EFICACES / s', 664, 186, { s: 13, c: VE, b: 1 }); txt(c, rates(1).toFixed(1).replace('.', ','), 664, 218, { s: 36, b: 1, c: VE });
+          const tr = rates(0), ef = rates(1), fr = tr > 0 ? ef / tr : 0;
+          rr(c, 566, 262, 196, 14, 7); c.fillStyle = '#1b2650'; c.fill(); rr(c, 566, 262, Math.max(4, 196 * fr), 14, 7); c.fillStyle = VE; c.fill();
+          txt(c, 'fracción eficaz: ' + Math.round(fr * 100) + ' %', 664, 296, { s: 13, c: TX });
+          txt(c, 'T = ' + S.T + ' °C · ' + S.nc + ' A + ' + S.nc + ' B', 664, 336, { s: 13, c: AM, b: 1 });
+          txt(c, 'destello verde = eficaz · gris = rebote', 664, 356, { s: 11, c: T2 });
+          if (n === 0) txt(c, 'A + B → …', 285, 48, { s: 14, c: T2 });
+        },
+      });
+    },
+    test: [
+      { pregunta: '¿Cuándo es eficaz un choque?', opciones: ['Cuando modifica los enlaces químicos de las dos entidades', 'Siempre que dos moléculas se tocan', 'Solo cuando hay catalizador'], correcta: 0, explicacion: 'Un choque es eficaz si entraña una modificación de los enlaces de las dos entidades (p. 114).' },
+      { pregunta: 'Al subir la temperatura, los choques eficaces por segundo…', opciones: ['aumentan: más choques y más violentos', 'disminuyen', 'no cambian'], correcta: 0, explicacion: 'La agitación térmica aumenta: choques más frecuentes y de mayor energía.' },
+      { pregunta: 'Doblar la concentración de los reactivos hace que…', opciones: ['haya más choques por segundo y más eficaces', 'el catalizador se consuma', 'baje la velocidad'], correcta: 0, explicacion: 'Más entidades por unidad de volumen: se encuentran más a menudo.' },
+    ],
+  });
+
+  // ---- 4.2 Catálisis: otro camino con barrera más baja (p. 112, 114) ----
+  reg({
+    id: 'catalyse-barrera', capitulos: ['evolution-temporelle'], titulo: 'Catálisis: un camino con menos barrera', fr: 'Catalyseur · intermédiaire réactionnel', pagina_pdf: 114,
+    resumen: 'El catalizador cambia el mecanismo: abre un camino con intermediarios más reactivos y barreras más bajas. Acelera, pero no altera el estado final, y se regenera.',
+    pasos: [
+      { titulo: 'La barrera de energía', texto: 'Para pasar de reactivos a productos hay que superar una barrera. Cada molécula recibe energía térmica al azar; solo las que superan la barrera cruzan. A temperatura baja casi ninguna lo logra. (Perfil energético esquemático: no está en el cours.)', fr: 'Une transformation lente : la durée se compte en minutes, heures…' },
+      { titulo: 'Más temperatura: más moléculas cruzan', texto: 'Sube la temperatura: la energía media de agitación sube y más moléculas superan la barrera, la transformación va más deprisa (factor cinético).', fr: 'La température est un facteur cinétique.' },
+      { titulo: 'El catalizador abre otro camino', texto: 'Activa «Catalizador»: el mecanismo cambia y el camino pasa por un intermediario con dos barreras más bajas. Con la misma temperatura cruzan muchas más moléculas. Fíjate: el nivel de reactivos y de productos es el mismo, no cambia el estado final.', fr: 'L’ajout d’un catalyseur modifie le mécanisme réactionnel de la transformation.' },
+      { titulo: 'Se consume y se regenera', texto: 'El catalizador se consume en una etapa y se regenera en una etapa posterior: por eso no aparece en el balance. El intermediario, en cambio, se forma y luego se consume.', fr: 'Un catalyseur est consommé au cours d’une étape puis régénéré au cours d’une étape ultérieure.' },
+      { titulo: 'Intermediario ≠ catalizador', texto: 'No confundas los dos: intermediario = se forma y luego se consume; catalizador = se consume y luego se regenera. Ninguno de los dos va en la ecuación de la reacción.', fr: 'Intermédiaire réactionnel : formé puis consommé. Catalyseur : consommé puis régénéré.' },
+    ],
+    montar(host, api) {
+      const rng = PCB.util.rng ? PCB.util.rng(13) : Math.random;
+      const S = { kT: 0.1, cat: false, mol: [], hechas: 0, t0: 0 };
+      const X0 = 50, X1 = 530, Y0 = 350, Y1 = 90;
+      const base = (s) => 0.35 + (0.12 - 0.35) * (s * s * (3 - 2 * s));
+      const Ep = (s, cat) => (cat ? base(s) + 0.3 * Math.pow(Math.sin(2 * Math.PI * s), 2) * (1 - 0.1) : base(s) + 0.62 * Math.pow(Math.sin(Math.PI * s), 2));
+      const pos = (s, cat) => [X0 + s * (X1 - X0), Y0 - Ep(s, cat) * (Y0 - Y1) / 1.1];
+      const barrera = (cat) => (cat ? 0.3 : 0.62);
+      function poblar(S) { S.mol = []; for (let i = 0; i < 24; i++) S.mol.push({ s: rng() * 0.12, v: 0, estado: 0, ph: rng() * 6, dx: (rng() - 0.5) * 0.1, tm: rng() * 0.2 }); S.hechas = 0; S.t0 = S.t; }
+      poblar(S);
+      return escena(host, api, {
+        estado: S,
+        controles: [
+          { tipo: 'rango', id: 'kT', txt: 'Temperatura', min: 0.08, max: 0.24, paso: 0.01, val: 0.1, fmt: (v) => Math.round(300 + (v - 0.08) * 1500) + ' K' },
+          { tipo: 'btn', id: 'cat', txt: '⚗ Catalizador', al: (S, E, b) => { S.cat = !S.cat; b.classList.toggle('on', S.cat); poblar(S); } },
+          { tipo: 'btn', txt: '↺', al: (S) => poblar(S) },
+        ],
+        alCambiar(id, v, S) { if (id === 'kT') poblar(S); },
+        paso(dt, S) {
+          S.mol.forEach((m) => {
+            if (m.estado === 0) { m.tm -= dt; if (m.tm <= 0) { m.tm = 0.12; const E = -Math.log(1 - rng()) * S.kT; if (E > barrera(S.cat)) { m.estado = 1; } } }
+            else if (m.estado === 1) { m.s += dt * (S.red ? 0.9 : 0.55); if (m.s >= 0.98) { m.s = 1; m.estado = 2; S.hechas++; } }
+          });
+        },
+        ir(n, S, E) { const set = (kT, cat) => { if (S.kT === kT && S.cat === cat) return; E.set('kT', kT); S.cat = cat; E.el.cat.classList.toggle('on', cat); poblar(S); }; if (n === 0) set(0.1, false); else if (n === 1) set(0.2, false); else if (n >= 2) set(0.1, true); },
+        dibujar(c, S) {
+          const n = S.n;
+          lin(c, X0 - 8, Y0 + 8, X0 - 8, Y1 - 24, T2, 1.4); punta(c, X0 - 8, Y1 - 24, -Math.PI / 2, T2, 8); txt(c, 'énergie', X0 + 14, Y1 - 24, { s: 12, c: T2 }); lin(c, X0 - 8, Y0 + 8, X1 + 8, Y0 + 8, T2, 1.4); txt(c, 'coordenada de reacción (esquema)', X1, Y0 + 24, { s: 12, c: T2, a: 'right' });
+          const trazo = (cat, col, w, al) => { c.globalAlpha = al; c.beginPath(); for (let i = 0; i <= 120; i++) { const [x, y] = pos(i / 120, cat); i ? c.lineTo(x, y) : c.moveTo(x, y); } c.strokeStyle = col; c.lineWidth = w; c.stroke(); c.globalAlpha = 1; };
+          trazo(false, '#7b86ad', 2, S.cat ? 0.35 : 1); if (S.cat) trazo(true, VE, 3.2, 1); else trazo(false, MG, 3.2, 1);
+          // niveles reactivos / productos
+          lin(c, X0, pos(0, false)[1], X1, pos(0, false)[1], '#ffffff22', 1, [4, 5]); lin(c, X0, pos(1, false)[1], X1, pos(1, false)[1], '#ffffff22', 1, [4, 5]);
+          txt(c, 'réactifs', X0 + 24, pos(0, false)[1] + 22, { s: 13, b: 1 }); txt(c, 'produits', X1 - 24, pos(1, false)[1] + 22, { s: 13, b: 1 });
+          // alturas de las barreras
+          const bx = (X0 + X1) / 2, y0 = pos(0, false)[1];
+          const yb = S.cat ? pos(0.25, true)[1] : pos(0.5, false)[1];
+          lin(c, X0 + 90, y0, X0 + 90, yb, AM, 2); punta(c, X0 + 90, yb, -Math.PI / 2, AM, 8); txt(c, 'barrera', X0 + 100, (y0 + yb) / 2, { s: 13, c: AM, b: 1, a: 'left' });
+          if (S.cat) { const [ix, iy] = pos(0.5, true); chip(c, 'intermédiaire', ix, iy + 24, AZ, { s: 12 }); }
+          // moléculas
+          S.mol.forEach((m) => { const [x, y] = pos(m.s, S.cat && true); const jit = m.estado === 0 ? Math.sin(S.t * 14 + m.ph) * 2 : 0; const col = m.estado === 2 ? AZ : MG; circ(c, x + (m.dx * 80) + jit, y - 9 - (m.estado === 0 ? ((m.ph * 7) % 3) * 8 : 0), 6, col + 'aa', col, 1.6); });
+          // panel
+          panel(c, 560, 90, 220, 190, GR);
+          txt(c, 'moléculas que han cruzado', 670, 110, { s: 12, c: T2 }); txt(c, S.hechas + ' / 24', 670, 144, { s: 32, b: 1, c: VE });
+          const el = Math.max(0.5, S.t - S.t0); txt(c, (S.hechas / el).toFixed(1).replace('.', ',') + ' cruces / s', 670, 186, { s: 15, b: 1, c: AM });
+          txt(c, S.cat ? 'con catalizador' : 'sin catalizador', 670, 224, { s: 13, b: 1, c: S.cat ? VE : MG });
+          txt(c, 'Ea ' + (S.cat ? '↓ (2 barreras bajas)' : 'alta'), 670, 248, { s: 12, c: T2 });
+          if (n >= 3) { // ciclo del catalizador
+            panel(c, 560, 292, 220, 96, GR); [['① C + R → I₁', 'C consumido', MG], ['② I₁ → I₂', 'intermediarios', T2], ['③ I₂ → P + C', 'C regenerado', VE]].forEach((t, i) => { txt(c, t[0], 600, 314 + i * 28, { s: 13, b: 1, c: t[2], a: 'left' }); txt(c, t[1], 770, 314 + i * 28, { s: 11, c: t[2], a: 'right' }); });
+          }
+        },
+      });
+    },
+    test: [
+      { pregunta: '¿Qué hace un catalizador con el estado final de la transformación?', opciones: ['No lo modifica: solo acelera el camino', 'Lo desplaza hacia los productos', 'Lo hace imposible'], correcta: 0, explicacion: 'Un catalizador acelera sin modificar el estado final (p. 112).' },
+      { pregunta: 'Un catalizador se diferencia de un intermediario porque…', opciones: ['se consume y luego se regenera', 'se forma y luego se consume', 'aparece en la ecuación'], correcta: 0, explicacion: 'Catalizador: consumido y regenerado; intermediario: formado y consumido.' },
+      { pregunta: 'Con catalizador, la barrera de energía…', opciones: ['se divide en etapas con barreras más bajas', 'sube', 'desaparece sin intermediarios'], correcta: 0, explicacion: 'Modifica el mecanismo: pasa por intermediarios más reactivos.' },
+    ],
+  });
+
+  // ---- 4.3 Mecanismo con flechas curvas (p. 114, fig. 5 y 6) ----
+  reg({
+    id: 'mecanisme-fleche', capitulos: ['evolution-temporelle'], titulo: 'Mecanismo: la flecha curva mueve el doblete', fr: 'Mécanisme réactionnel · flèche courbe', pagina_pdf: 114,
+    resumen: 'Un mecanismo descompone una transformación en actos elementales. Cada flecha curva parte de un sitio donor de doblete (doblete no ligante o enlace) y apunta a un sitio aceptor (H⁺, C⁺).',
+    pasos: [
+      { titulo: 'Sitio donor y sitio aceptor', texto: 'Reactivos de la fig. 5: el alcohol (CH₃)₃C–OH y el ion H⁺ (catalizador). El oxígeno tiene dobletes no ligantes (sitio donor: alta densidad electrónica); H⁺ tiene una lacune électronique (sitio aceptor). Mira cómo se marcan.', fr: 'Site donneur / site accepteur de doublet d’électrons.' },
+      { titulo: 'Etapa 1: la flecha va del donor al aceptor', texto: 'La flecha curva nace en un doblete del O y apunta a H⁺: se forma el enlace O–H. Aparece el alcohol protonado, un intermediario reaccional (O con carga +).', fr: 'La flèche courbe part d’un site donneur et pointe vers un site accepteur.' },
+      { titulo: 'Etapa 2: el enlace C–O se rompe', texto: 'Ahora la flecha nace en el enlace C–O y termina en el O: el doblete del enlace se queda con el oxígeno. Sale una molécula de agua y queda un carbocation (C⁺), el segundo intermediario.', fr: 'Une flèche courbe unique peut modéliser la rupture d’une liaison.' },
+      { titulo: 'Etapa 3: se forma el doble enlace', texto: 'La flecha nace en un enlace C–H vecino y apunta al C⁺: se forma C=C (el alqueno) y se libera H⁺. El catalizador H⁺ se ha regenerado.', fr: 'La transformation d’un alcool en alcène, catalysée par H⁺, suit un mécanisme en trois étapes élémentaires.' },
+      { titulo: 'Balance: sin intermediarios ni catalizador', texto: 'Se suman las tres etapas: lo formado y consumido (intermediarios) y lo consumido y regenerado (H⁺) se cancelan. Queda (CH₃)₃C–OH → (CH₃)₂C=CH₂ + H₂O.', fr: 'On retrouve l’équation en faisant le bilan de tout ce qui est consommé et produit.' },
+    ],
+    montar(host, api) {
+      const S = { u: 0, meta: null };
+      const CX = 250, CY = 240, ease = (t) => t * t * (3 - 2 * t), ph = (p, a, b) => clamp((p - a) / (b - a), 0, 1);
+      const arco = (c, P, p, col) => { // P=[x1,y1,qx,qy,x2,y2]; dibuja la flecha hasta el progreso p
+        if (p <= 0) return; const N = 28, k = Math.max(1, Math.round(N * p)); c.beginPath(); let ax = P[0], ay = P[1], lx = P[0], ly = P[1]; c.moveTo(P[0], P[1]);
+        for (let i = 1; i <= k; i++) { const t = (i / N) * (p >= 1 ? 1 : 1), x = (1 - t) * (1 - t) * P[0] + 2 * (1 - t) * t * P[2] + t * t * P[4], y = (1 - t) * (1 - t) * P[1] + 2 * (1 - t) * t * P[3] + t * t * P[5]; c.lineTo(x, y); ax = lx; ay = ly; lx = x; ly = y; }
+        c.strokeStyle = col; c.lineWidth = 3.2; c.stroke(); if (p >= 0.98) punta(c, lx, ly, Math.atan2(ly - ay, lx - ax), col, 12);
+      };
+      const hat = (c, x, y, s, col, al) => { c.globalAlpha = al == null ? 1 : al; circ(c, x, y, 12, col || '#e8eefc', null); txt(c, s || 'H', x, y, { s: 12, b: 1, c: '#0a0f20' }); c.globalAlpha = 1; };
+      return escena(host, api, {
+        estado: S,
+        controles: [
+          { tipo: 'rango', id: 'u', txt: 'Mecanismo', min: 0, max: 3, paso: 0.01, val: 0, fmt: (v) => (v >= 3 ? 'fin' : 'etapa ' + (Math.floor(v) + 1) + ' · ' + Math.round((v % 1) * 100) + ' %') },
+          { tipo: 'btn', txt: '▶ Animar', al: (S, E) => { if (S.u >= 2.99) E.set('u', 0); S.meta = 3; if (S.red) { E.set('u', 3); S.meta = null; } } },
+          { tipo: 'btn', txt: '↺', al: (S, E) => { S.meta = null; E.set('u', 0); } },
+        ],
+        alCambiar(id, v, S) { S.meta = null; },
+        paso(dt, S, E) { if (S.meta != null) { const v = S.u + dt * 0.3; if (v >= S.meta) { E.set('u', S.meta); S.meta = null; } else E.set('u', v); } },
+        ir(n, S, E) { S.meta = null; if (n === 0) E.set('u', 0); else if (n >= 4) E.set('u', 3); else { E.set('u', n - 1 + (S.red ? 1 : 0.02)); if (!S.red) S.meta = n; } },
+        dibujar(c, S) {
+          const u = S.u, n = S.n, et = Math.min(2, Math.floor(u)), pe = u >= 3 ? 1 : u - et;
+          const p1 = et > 0 ? 1 : pe, p2 = et > 1 ? 1 : et === 1 ? pe : 0, p3 = et === 2 ? pe : 0, fin = u >= 3 ? 1 : p3;
+          const q1 = ph(p1, 0, 0.5), m1 = ph(p1, 0.4, 1), q2 = ph(p2, 0, 0.5), m2 = ph(p2, 0.4, 1), q3 = ph(p3, 0, 0.5), m3 = ph(u >= 3 ? 1 : p3, 0.4, 1);
+          const Wx = 120 * ease(m2), Wy = 26 * ease(m2), Ox = CX + 96 + Wx, Oy = CY + Wy;
+          const wal = p3 > 0 || u >= 3 ? 0.5 : 1;
+          // esqueleto de C y grupos
+          lin(c, CX - 66, CY, CX - 18, CY, TX, 3); txt(c, 'H₃C', CX - 90, CY, { s: 19, b: 1 });
+          lin(c, CX, CY + 18, CX, CY + 60, TX, 3); txt(c, 'CH₃', CX, CY + 80, { s: 19, b: 1 });
+          lin(c, CX, CY - 18, CX, CY - 52, TX, 3); txt(c, 'CH₂', CX, CY - 72, { s: 19, b: 1 });
+          atomo(c, CX, CY, 17, '#aab4d4', 'C');
+          // H del grupo superior (C–H que se rompe en la etapa 3)
+          const h0 = [CX + 50, CY - 100], h1 = [CX + 210, CY - 170], hx = lerp(h0[0], h1[0], ease(m3)), hy = lerp(h0[1], h1[1], ease(m3));
+          c.globalAlpha = 1 - ease(q3); lin(c, CX + 12, CY - 80, hx - 10, hy + 6, TX, 3); c.globalAlpha = 1;
+          // doble enlace C=C
+          if (q3 > 0) { c.globalAlpha = ease(q3); lin(c, CX - 6, CY - 18, CX - 6, CY - 52, TX, 3); lin(c, CX + 6, CY - 18, CX + 6, CY - 52, TX, 3); c.globalAlpha = 1; }
+          // enlace C–O
+          c.globalAlpha = 1 - ease(q2); lin(c, CX + 18, CY, Ox - 20, Oy, TX, 3); c.globalAlpha = 1;
+          // carga + sobre C (carbocation)
+          if (p2 > 0.5 && p3 < 0.5 && u < 3) { circ(c, CX + 26, CY - 24, 11, '#0a0f20', AM, 2); txt(c, '+', CX + 26, CY - 24, { c: AM, s: 15, b: 1 }); }
+          // grupo agua / OH
+          c.globalAlpha = wal;
+          atomo(c, Ox, Oy, 17, '#ff5a5a', 'O');
+          lin(c, Ox + 17, Oy, Ox + 46, Oy, TX, 3); hat(c, Ox + 56, Oy, 'H', null, wal);
+          pareja(c, Ox, Oy + 30, 0, MG, 1, 4);               // doblete inferior (siempre)
+          pareja(c, Ox, Oy - 30, 0, MG, 1 - q1, 4);          // doblete superior (donor, se usa en 1)
+          if (q1 > 0) { c.globalAlpha = wal * ease(q1); lin(c, Ox, Oy - 17, Ox, Oy - 44, TX, 3); c.globalAlpha = wal; }
+          if (p2 > 0.2) pareja(c, Ox - 30, Oy - 2, 1, VE, ph(q2, 0.2, 1), 4);   // doblete nuevo (ex enlace C–O)
+          if (p1 > 0.9 && p2 < 0.4) { circ(c, Ox + 24, Oy - 28, 11, '#0a0f20', AM, 2); txt(c, '+', Ox + 24, Oy - 28, { c: AM, s: 15, b: 1 }); }
+          c.globalAlpha = 1;
+          // H⁺ catalizador (llega a O en la etapa 1)
+          const hp0 = [CX + 250, CY - 110], hpx = lerp(hp0[0], Ox, ease(m1)), hpy = lerp(hp0[1], Oy - 56, ease(m1));
+          c.globalAlpha = wal; hat(c, hpx, hpy, 'H', '#ffd16688', 1); c.globalAlpha = 1;
+          if (u < 0.05 || p1 < 0.4) txt(c, 'H⁺', hp0[0] + 26, hp0[1], { s: 14, b: 1, c: AM, a: 'left' });
+          // H⁺ saliente (etapa 3)
+          if (p3 > 0.6 || u >= 3) txt(c, 'H⁺', hx + 22, hy, { s: 14, b: 1, c: AM, a: 'left' });
+          // flechas curvas
+          if (et === 0 && u < 3) arco(c, [Ox, Oy - 34, Ox + 80, Oy - 120, hpx - 4, hpy - 2], q1, AM);
+          if (et === 1) arco(c, [CX + 50, CY - 4, CX + 80, CY - 60, Ox - 14, Oy - 14], q2, AM);
+          if (et === 2 && u < 3) arco(c, [CX + 32, CY - 100, CX + 62, CY - 50, CX + 8, CY - 36], q3, AM);
+          // rótulos
+          if (n === 0) { txt(c, 'site donneur', Ox, Oy - 66, { s: 13, c: MG, b: 1 }); txt(c, '(doublets non liants)', Ox + 8, Oy - 50, { s: 12, c: MG }); txt(c, 'site accepteur', hp0[0] + 10, hp0[1] - 30, { s: 13, c: AM, b: 1 }); txt(c, '(lacune électronique)', hp0[0] + 10, hp0[1] - 14, { s: 12, c: AM }); }
+          chip(c, u >= 3 ? 'mecanismo completo' : 'étape ' + (et + 1) + ' / 3', 90, 40, VE, { s: 13 });
+          if (p1 > 0.98 && p2 < 0.5 && u < 3) chip(c, 'intermédiaire 1 : alcool protoné', 330, 396, AZ, { s: 12 });
+          if (p2 > 0.95 && p3 < 0.5 && u < 3) chip(c, 'intermédiaire 2 : carbocation', 330, 396, AZ, { s: 12 });
+          if (u >= 3) { chip(c, 'alcène formé', 160, 396, VE, { s: 12 }); chip(c, 'H⁺ régénéré (catalyseur)', 460, 396, AM, { s: 12 }); txt(c, 'H₂O', Ox + 10, Oy + 62, { s: 14, b: 1, c: T2 }); }
+          if (n === 4) { panel(c, 40, 60, 330, 62, AM); txt(c, 'bilan : (CH₃)₃C–OH → (CH₃)₂C=CH₂ + H₂O', 205, 82, { s: 14, b: 1 }); txt(c, 'sin H⁺ ni intermédiaires', 205, 106, { s: 12, c: T2 }); }
+          chip(c, u < 0.05 ? 'catalyseur H⁺ : disponible' : u >= 3 ? 'H⁺ régénéré' : 'H⁺ consommé', 650, 40, u >= 3 || u < 0.05 ? AM : MG, { s: 12 });
+        },
+      });
+    },
+    test: [
+      { pregunta: 'Una flecha curva siempre parte de…', opciones: ['un sitio donor de doblete (doblete no ligante o enlace) y apunta a un sitio aceptor', 'un sitio aceptor y apunta a un donor', 'un átomo cualquiera'], correcta: 0, explicacion: 'Modela el desplazamiento de un doblete: del donor al aceptor.' },
+      { pregunta: 'En el mecanismo, el H⁺ es…', opciones: ['un catalizador: consumido en la etapa 1 y regenerado en la 3', 'un intermediario', 'un producto'], correcta: 0, explicacion: 'H⁺ se consume y se regenera, así que no está en el balance.' },
+      { pregunta: 'El carbocation (C⁺) formado en la etapa 2 es…', opciones: ['un intermediario reaccional', 'el catalizador', 'un reactivo'], correcta: 0, explicacion: 'Se forma en una etapa y se consume en la siguiente.' },
+    ],
+  });
+
+  // ---- 4.4 Velocidad = pendiente de la tangente; t½ (p. 113) ----
+  reg({
+    id: 'vitesse-tangente', capitulos: ['evolution-temporelle'], titulo: 'La velocidad es la pendiente (y t½ la mitad)', fr: 'Vitesse volumique · temps de demi-réaction', pagina_pdf: 113,
+    resumen: 'La velocidad volúmica es la pendiente de la tangente a la curva [I₂](t): empieza alta y cae al agotarse los reactivos. El tiempo de semirreacción t½ es el instante en que x = x_f/2.',
+    pasos: [
+      { titulo: 'Seguimiento temporal', texto: 'Se sigue [I₂] en el tiempo en la reacción S₂O₈²⁻ + 2 I⁻ → I₂ + 2 SO₄²⁻: crece rápido al principio y se estabiliza. (Curva ilustrativa con la forma de la fig. 3 del cours.)', fr: 'Évolution de la concentration en diiode en fonction du temps.' },
+      { titulo: 'v = pendiente de la tangente', texto: 'Mueve el instante t: la tangente a la curva en ese punto tiene un coeficiente director; ése es v = d[I₂]/dt. En t = 0 la tangente es muy inclinada.', fr: 'La vitesse volumique d’apparition du diiode est le coefficient directeur de la tangente à la courbe.' },
+      { titulo: 'La velocidad disminuye con el tiempo', texto: 'Pulsa «Recorrer»: la tangente se va aplanando. Según avanza la reacción hay menos reactivos, menos choques eficaces, y la velocidad baja hasta casi cero.', fr: 'Les tangentes à t = 0, 20 et 80 min.' },
+      { titulo: 'Reactivo: el signo menos', texto: 'Para un reactivo la concentración baja, su pendiente es negativa: por eso v = −d[R]/dt (con el signo menos la velocidad sale positiva).', fr: 'v = −d[Réactif]/dt' },
+      { titulo: 'El tiempo de semirreacción t½', texto: 'Es la duración para que x valga x_f/2. En la curva es la abscisa del punto de ordenada x_f/2. Ojo: en t½ la reacción no ha terminado; se considera terminada hacia 6 a 7 t½.', fr: 't½ : durée au bout de laquelle l’avancement vaut la moitié de l’avancement final.' },
+    ],
+    montar(host, api) {
+      const XF = 47, TAU = 20, TH = TAU * Math.LN2; // mmol/L, min
+      const f = (t) => XF * (1 - Math.exp(-t / TAU)), df = (t) => (XF / TAU) * Math.exp(-t / TAU);
+      const gx = (t) => 90 + (t / 80) * 640, gy = (v) => 360 - (v / 55) * 290;
+      const S = { tm: 0, meta: null, reac: false };
+      return escena(host, api, {
+        estado: S,
+        controles: [
+          { tipo: 'rango', id: 'tm', txt: 't', min: 0, max: 80, paso: 0.5, val: 0, fmt: (v) => v.toFixed(0) + ' min' },
+          { tipo: 'btn', txt: '▶ Recorrer', al: (S, E) => { E.set('tm', 0); S.meta = 80; if (S.red) { S.meta = null; E.set('tm', 40); } } },
+        ],
+        alCambiar(id, v, S) { S.meta = null; },
+        paso(dt, S, E) { if (S.meta != null) { const v = S.tm + dt * 11; if (v >= S.meta) { E.set('tm', S.meta); S.meta = null; } else E.set('tm', v); } },
+        ir(n, S, E) { S.meta = null; S.reac = n === 3; E.set('tm', [0, 0, 0, 10, TH][n]); if (n === 2 && !S.red) S.meta = 80; },
+        dibujar(c, S) {
+          const t = S.tm, n = S.n;
+          lin(c, gx(0), gy(0), gx(80), gy(0), T2, 1); lin(c, gx(0), gy(0), gx(0), gy(55), T2, 1);
+          txt(c, S.reac ? 'concentración (mmol·L⁻¹)' : '[I₂] (mmol·L⁻¹)', gx(0) + 4, gy(55) - 10, { s: 12, c: T2, a: 'left' }); txt(c, 't (min)', gx(80), gy(0) + 28, { s: 12, c: T2, a: 'right' });
+          [0, 20, 40, 60, 80].forEach((v) => { lin(c, gx(v), gy(0), gx(v), gy(0) + 4, T2, 1); txt(c, String(v), gx(v), gy(0) + 14, { s: 11, c: T2 }); }); [10, 20, 30, 40, 50].forEach((v) => { lin(c, gx(0) - 4, gy(v), gx(0), gy(v), T2, 1); txt(c, String(v), gx(0) - 16, gy(v), { s: 11, c: T2 }); });
+          const fr = (tt) => (S.reac ? XF - f(tt) : f(tt)), dfr = (tt) => (S.reac ? -df(tt) : df(tt));
+          lin(c, gx(0), gy(XF), gx(80), gy(XF), '#ffffff22', 1, [5, 5]);
+          if (S.reac) { c.beginPath(); for (let tt = 0; tt <= 80; tt += 1) { const x = gx(tt), y = gy(f(tt)); tt ? c.lineTo(x, y) : c.moveTo(x, y); } c.strokeStyle = '#2a6a58'; c.lineWidth = 2; c.stroke(); txt(c, '[I₂]', gx(80) - 4, gy(f(80)) - 10, { s: 12, c: '#2a8a68', a: 'right' }); }
+          c.beginPath(); for (let tt = 0; tt <= 80; tt += 1) { const x = gx(tt), y = gy(fr(tt)); tt ? c.lineTo(x, y) : c.moveTo(x, y); } c.strokeStyle = S.reac ? MG : VE; c.lineWidth = 3.2; c.stroke();
+          if (S.reac) txt(c, '[S₂O₈²⁻]', gx(60), gy(fr(60)) - 16, { s: 12, c: MG, b: 1 });
+          // t½
+          if (n >= 4) { lin(c, gx(0), gy(XF / 2), gx(TH), gy(XF / 2), AM, 1.5, [5, 4]); lin(c, gx(TH), gy(XF / 2), gx(TH), gy(0), AM, 1.5, [5, 4]); circ(c, gx(TH), gy(XF / 2), 6, AM); txt(c, 'x_f / 2', gx(0) + 6, gy(XF / 2) - 12, { s: 12, c: AM, a: 'left' }); txt(c, 't½ ≈ ' + TH.toFixed(0) + ' min', gx(TH) + 6, gy(0) - 12, { s: 13, c: AM, b: 1, a: 'left' }); txt(c, 'x_f', gx(80) - 4, gy(XF) - 10, { s: 12, c: T2, a: 'right' }); txt(c, 'la reacción no ha terminado en t½', gx(TH) + 14, gy(XF / 2) + 26, { s: 12, c: T2, a: 'left' }); if (!S.reac) { const k = clamp(6.5 * TH, 0, 80); } }
+          // tangente
+          const y0 = fr(t), m = dfr(t), x1 = Math.max(0, t - 18), x2 = Math.min(80, t + 18);
+          c.save(); c.beginPath(); c.rect(gx(0), gy(55), gx(80) - gx(0), gy(0) - gy(55)); c.clip(); lin(c, gx(x1), gy(y0 + m * (x1 - t)), gx(x2), gy(y0 + m * (x2 - t)), AM, 2.2); c.restore();
+          circ(c, gx(t), gy(y0), 6, AM, '#fff', 1.5);
+          panel(c, 500, 190, 270, 74, GR);
+          txt(c, S.reac ? 'v = −d[S₂O₈²⁻]/dt' : 'v = d[I₂]/dt', 635, 210, { s: 13, c: T2 });
+          txt(c, (Math.abs(m)).toFixed(2).replace('.', ',') + ' mmol·L⁻¹·min⁻¹' + (S.reac ? '  (pendiente ' + m.toFixed(2).replace('.', ',') + ')' : ''), 635, 238, { s: 14, b: 1, c: AM });
+          txt(c, 't = ' + t.toFixed(0) + ' min', 635, 256, { s: 12, c: T2 });
+        },
+      });
+    },
+    test: [
+      { pregunta: 'Gráficamente, la velocidad volúmica de aparición de un producto en un instante es…', opciones: ['el coeficiente director de la tangente a la curva en ese instante', 'la altura de la curva', 'el área bajo la curva'], correcta: 0, explicacion: 'v = d[P]/dt es la pendiente de la tangente (p. 113).' },
+      { pregunta: '¿Por qué hay un signo menos en v = −d[R]/dt?', opciones: ['Porque [R] disminuye y la velocidad debe ser positiva', 'Porque R es un catalizador', 'Porque el tiempo va hacia atrás'], correcta: 0, explicacion: 'La derivada de una concentración que baja es negativa.' },
+      { pregunta: 'En t½ la reacción…', opciones: ['ha alcanzado la mitad del avance final, no ha terminado', 'ha terminado', 'ha avanzado un 75 %'], correcta: 0, explicacion: 't½: x = x_f/2. Se considera terminada hacia 6–7 t½.' },
+    ],
+  });
+
   // @@FIN@@
 })();

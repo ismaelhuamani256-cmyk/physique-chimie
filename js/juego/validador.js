@@ -182,7 +182,7 @@
     const get = (x, y) => (x < 0 || x >= ancho || y < 0 || y >= alto ? 0 : tiles[y * ancho + x]);
     const set = (x, y, v) => { if (x >= 0 && x < ancho && y >= 0 && y < alto) tiles[y * ancho + x] = v; };
     G.get = get;
-    G.topAt = (x) => { for (let y = 0; y < alto; y++) if (SUELO_T(get(x, y))) return y; return -1; };
+    G.topAt = (x) => { for (let y = 0; y < alto; y++) if (SUELO_T(get(x, y)) && !G.techo.has(x + ',' + y)) return y; return -1; };   // los bloques de techo de cueva no son suelo
     /** Fila del primer suelo desde y hacia abajo (base de tuberías/puertas/resortes). */
     G.baseDesde = (x, y) => { for (let yy = Math.max(0, y); yy < alto; yy++) if (SUELO_T(get(x, yy))) return yy; return -1; };
 
@@ -193,7 +193,7 @@
       const suelo = s.solido === true || (s.grosor == null && s.solido !== false && y >= alto - FIS.SUELO_PROF);
       for (let i = 0; i < l; i++) {
         if (suelo) for (let yy = y; yy < alto; yy++) set(x + i, yy, 1);
-        else if (s.grosor != null) for (let k = 0; k < Math.max(1, Math.round(s.grosor)); k++) { set(x + i, y + k, 4); if (s.techo === true && k === 0) G.techo.add((x + i) + ',' + (y + k)); }   // techo: bloque de cueva/horno, no hay que alcanzarlo
+        else if (s.grosor != null) for (let k = 0; k < Math.max(1, Math.round(s.grosor)); k++) { set(x + i, y + k, 4); if (s.techo === true) G.techo.add((x + i) + ',' + (y + k)); }   // techo: bloque de cueva/horno, no hay que alcanzarlo
         else set(x + i, y, 2);
       }
     }
@@ -336,7 +336,7 @@
     if (F.hSeguro < 2.2) E(`Con esta física el salto solo alcanza ${F.hMax.toFixed(2)} tiles: demasiado bajo para jugar.`);
     const segs = nivel.segmentos;
     const TIPOS = ['plataforma', 'puente', 'palanca', 'foso', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'checkpoint', 'jefe', 'meta', 'bloque_pregunta', 'tuberia', 'puerta', 'zona_agua', 'jefe_quiz', 'ladrillo', 'plataforma_cae', 'planta_carnivora',
-      'mina', 'prensa', 'pendulo', 'cinta', 'picos', 'bloque_rebote', 'sprint', 'rastro_monedas', 'cartel', 'atomo', 'estacion_molecula', 'puerta_ecuacion', 'interruptor_estado', 'plataforma_estado', 'item', 'bicho', 'estalactita', 'lluvia_rocas', 'sierra', 'torreta', 'canon_bala', 'geiser', 'laser', 'planta_techo'];
+      'mina', 'prensa', 'pendulo', 'cinta', 'picos', 'bloque_rebote', 'sprint', 'rastro_monedas', 'cartel', 'atomo', 'estacion_molecula', 'puerta_ecuacion', 'interruptor_estado', 'plataforma_estado', 'item', 'bicho', 'estalactita', 'lluvia_rocas', 'sierra', 'torreta', 'canon_bala', 'geiser', 'laser', 'planta_techo', 'fauna'];
     const G = geometria(nivel, { revelar: true });   // los puentes ocultos (que aparecen con una estación) cuentan como presentes
     const dentroX = (x) => x >= 0 && x < ancho, dentroY = (y) => y >= 0 && y < alto;
     const desc = (s, i) => `segmento #${i} (${s.tipo}${s.x != null ? ' x=' + s.x : ''}${s.y != null ? ' y=' + s.y : ''})`;
@@ -347,7 +347,7 @@
       if (!s || typeof s !== 'object' || !TIPOS.includes(s.tipo)) { E(`segmento #${i}: tipo desconocido ${JSON.stringify(s && s.tipo)}.`); return; }
       if (s.tipo === 'sprint' || s.tipo === 'rastro_monedas') return;   // se validan aparte (x_ini/x_fin, puntos)
       if (!esNum(s.x)) { E(`${desc(s, i)}: falta x numérica.`); return; }
-      if (['plataforma', 'puente', 'palanca', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'bloque_pregunta', 'tuberia', 'puerta', 'zona_agua', 'ladrillo', 'plataforma_cae', 'planta_carnivora', 'mina', 'prensa', 'pendulo', 'cinta', 'picos', 'bloque_rebote', 'cartel', 'atomo', 'estacion_molecula', 'puerta_ecuacion', 'interruptor_estado', 'plataforma_estado', 'item', 'bicho', 'sierra', 'torreta', 'canon_bala', 'geiser', 'laser'].includes(s.tipo) && !esNum(s.y)) E(`${desc(s, i)}: falta y numérica.`);
+      if (['plataforma', 'puente', 'palanca', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'bloque_pregunta', 'tuberia', 'puerta', 'zona_agua', 'ladrillo', 'plataforma_cae', 'planta_carnivora', 'mina', 'prensa', 'pendulo', 'cinta', 'picos', 'bloque_rebote', 'cartel', 'atomo', 'estacion_molecula', 'puerta_ecuacion', 'interruptor_estado', 'plataforma_estado', 'item', 'bicho', 'sierra', 'torreta', 'canon_bala', 'geiser', 'laser', 'fauna'].includes(s.tipo) && !esNum(s.y)) E(`${desc(s, i)}: falta y numérica.`);
       if (['plataforma', 'puente', 'foso', 'plataforma_movil', 'plataforma_cae', 'cinta', 'picos', 'bloque_rebote', 'plataforma_estado'].includes(s.tipo) && s.largo != null && !(esNum(s.largo) && s.largo >= 1)) E(`${desc(s, i)}: "largo" debe ser un número >= 1.`);
       if (s.x < 0 || s.x >= ancho) E(`${desc(s, i)}: x fuera de rango [0, ${ancho}).`);
       if (s.y != null && (s.y < 0 || s.y >= alto)) E(`${desc(s, i)}: y fuera de rango [0, ${alto}).`);
@@ -361,7 +361,7 @@
     for (const s of platsSuelo) {
       const suelo = s.solido === true || (s.grosor == null && s.solido !== false && s.y >= alto - FIS.SUELO_PROF);
       if (suelo && s.y > alto - 3) E(`plataforma de suelo en x=${s.x}: y=${s.y} demasiado abajo (máximo alto_tiles-3 = ${alto - 3}).`);
-      if (!suelo && s.y < 2) E(`plataforma flotante en x=${s.x}: y=${s.y} demasiado arriba (mínimo 2).`);
+      if (!suelo && !s.techo && s.y < 2) E(`plataforma flotante en x=${s.x}: y=${s.y} demasiado arriba (mínimo 2).`);
     }
 
     // --- metas, jefes ---

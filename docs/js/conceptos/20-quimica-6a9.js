@@ -626,11 +626,11 @@
         if (verEq) { S.txt('Zn = Zn²⁺ + 2 e⁻ (oxidación)', 180, 397, { size: 13, color: K.m, align: 'center' }); S.txt('Cu²⁺ + 2 e⁻ = Cu (reducción)', 510, 397, { size: 13, color: K.v, align: 'center' }); }
         // medidor Qr → K
         const mx = 700, my0 = 110, my1 = 350;
-        S.txt('Qr → K', mx, 82, { size: 14, weight: 700, align: 'center' });
+        S.txt('Qr → K', mx, 66, { size: 14, weight: 700, align: 'center' });
         c.fillStyle = '#16204a'; rrect(c, mx - 12, my0, 24, my1 - my0, 8); c.fill(); c.strokeStyle = K.gris; c.stroke();
         const yq = my1 - prog * (my1 - my0); c.fillStyle = K.v + '88'; c.fillRect(mx - 10, yq, 20, my1 - yq); bola(c, mx, yq, 9, K.v);
-        c.strokeStyle = K.m; c.lineWidth = 3; c.beginPath(); c.moveTo(mx - 24, my0); c.lineTo(mx + 24, my0); c.stroke(); S.txt('K = 2×10³⁷', mx, my0 - 12, { size: 12, color: K.m, align: 'center' });
-        S.txt('Qr', mx + 18, yq - 2, { size: 13, color: K.v }); S.txt('inicio', mx + 22, my1 + 12, { size: 12, color: K.tx2 });
+        c.strokeStyle = K.m; c.lineWidth = 3; c.beginPath(); c.moveTo(mx - 24, my0); c.lineTo(mx + 24, my0); c.stroke(); S.txt('K = 2×10³⁷', mx, my0 - 14, { size: 12, color: K.m, align: 'center' });
+        S.txt('Qr', mx + 18, yq - 2, { size: 13, color: K.v }); S.txt('inicio', mx - 18, my1 + 14, { size: 12, color: K.tx2, align: 'right' });
         S.txt(fin ? 'pila gastada' : 'U = ' + (cerrado || a > 0 ? '↓' : '1,10 V'), mx, 372, { size: 14, weight: 700, color: fin ? K.m : K.am, align: 'center' });
         if (fin) S.txt('Qr = K: pila gastada (U = 0)', 330, 150, { size: 17, weight: 700, color: K.m, align: 'center', halo: true });
         if (aviso > 0) S.txt('Cierra el interruptor: sin circuito no hay transformación', 330, 130, { size: 15, weight: 700, color: K.am, align: 'center', halo: true });
@@ -663,6 +663,430 @@
     test: [
       { pregunta: 'En el hilo exterior de la pila, ¿hacia dónde circulan los electrones?', opciones: ['Del Cu (+) al Zn (−)', 'Del Zn (−) al Cu (+)', 'No circulan: solo se mueven iones'], correcta: 1, explicacion: 'El reductor (Zn) cede e⁻ al borne −; viajan por el circuito exterior hacia el borne +. La corriente I va en sentido opuesto.' },
       { pregunta: '¿Para qué sirve el puente salino?', opciones: ['Para que circulen electrones', 'Para cerrar el circuito y mantener la neutralidad eléctrica con el movimiento de iones', 'Para calentar la pila'], correcta: 1, explicacion: 'Por el puente se mueven iones (no electrones); cierra el circuito y asegura la neutralidad de las disoluciones.' },
+    ],
+  });
+
+  // =============================================================================================================
+  // 7 · force-acides-bases
+  // =============================================================================================================
+  const fSci = (v) => { if (v === 0) return '0'; const e = Math.floor(Math.log10(v) + 1e-9), m = v / Math.pow(10, e); return (e >= -1 && e <= 2 ? fnum(v, 2) : fnum(m, 1) + '×10' + sup(e)); };
+
+  // ---------- 4 · Ácido fuerte frente a ácido débil (cours p. 184–187: force d'un acide, τ, concentration apportée / effective)
+  function montarFuerza(host, api) {
+    const N = 36, BX = { x0: 18, y0: 50, x1: 470, y1: 310 };
+    let pKa = 4.8, lc = -3, nombre = 'CH₃CO₂H / CH₃CO₂⁻', hlC = false, U = [];
+    const R = rng(9);
+    const PRE = [['HCl / Cl⁻ (ácido fuerte)', -3], ['HCO₂H / HCO₂⁻', 3.8], ['CH₃CO₂H / CH₃CO₂⁻', 4.8], ['NH₄⁺ / NH₃', 9.2]];
+    const tau = () => { const Ka = Math.pow(10, -pKa), c = Math.pow(10, lc); return Math.min(1, (-Ka + Math.sqrt(Ka * Ka + 4 * c * Ka)) / (2 * c)); };
+    const mk = () => { const x = lerp(BX.x0 + 20, BX.x1 - 20, R()), y = lerp(BX.y0 + 20, BX.y1 - 20, R()); return { x, y, vx: 0, vy: 0, dis: false, ang: R() * 6.28, hx: x + 12, hy: y, hvx: 0, hvy: 0 }; };
+    for (let i = 0; i < N; i++) U.push(mk());
+    function ajustar(snap) {
+      const t = tau(); const obj = t >= 0.995 ? N : Math.round(t * N);
+      let n = U.filter((u) => u.dis).length;
+      const lib = (v) => { const u = U.filter((q) => q.dis === v); return u[Math.floor(Math.random() * u.length)]; };
+      while (n < obj) { const u = lib(false); if (!u) break; u.dis = true; u.hvx = (Math.random() - 0.5) * 80; u.hvy = (Math.random() - 0.5) * 80; n++; }
+      while (n > obj) { const u = lib(true); if (!u) break; u.dis = false; n--; }
+      void snap;
+    }
+    const nombrePre = (i) => { pKa = PRE[i][1]; nombre = PRE[i][0]; ctl.pk.set(pKa); ajustar(); S.pedir(); };
+    const ctl = barra(host, [
+      { t: 'slider', id: 'pk', txt: 'pKA', min: -3, max: 11, step: 0.1, val: pKa, fmt: (v) => fnum(v, 1), on: (v) => { pKa = v; nombre = 'ácido genérico AH / A⁻'; ajustar(); S.pedir(); } },
+      { t: 'slider', id: 'c', txt: 'c', min: -4, max: -1, step: 0.1, val: lc, fmt: (v) => fSci(Math.pow(10, v)) + ' mol/L', on: (v) => { lc = v; ajustar(); S.pedir(); } },
+      { t: 'btn', id: 'p0', txt: 'HCl', on: () => nombrePre(0) }, { t: 'btn', id: 'p1', txt: 'HCO₂H', on: () => nombrePre(1) },
+      { t: 'btn', id: 'p2', txt: 'CH₃CO₂H', on: () => nombrePre(2) }, { t: 'btn', id: 'p3', txt: 'NH₄⁺', on: () => nombrePre(3) },
+    ]);
+    const S = lienzo(host, api, {
+      alt: 'Partículas de ácido AH en agua: se muestran las moléculas sin disociar y los iones A⁻ y H₃O⁺ según el taux d’avancement final τ.',
+      continuo: !api.reducido,
+      paso(dt) {
+        const t = tau(), fuerte = t >= 0.995, pa = fuerte ? 0 : 1.1, pd = fuerte ? 0 : pa * t / Math.max(1e-6, 1 - t);
+        U.forEach((u) => {
+          if (!api.reducido) {
+            u.vx = clamp(u.vx * 0.97 + (Math.random() - 0.5) * 700 * dt, -40, 40); u.vy = clamp(u.vy * 0.97 + (Math.random() - 0.5) * 700 * dt, -40, 40);
+            u.x += u.vx * dt; u.y += u.vy * dt;
+            if (u.x < BX.x0 + 14) { u.x = BX.x0 + 14; u.vx = Math.abs(u.vx); } if (u.x > BX.x1 - 14) { u.x = BX.x1 - 14; u.vx = -Math.abs(u.vx); }
+            if (u.y < BX.y0 + 14) { u.y = BX.y0 + 14; u.vy = Math.abs(u.vy); } if (u.y > BX.y1 - 14) { u.y = BX.y1 - 14; u.vy = -Math.abs(u.vy); }
+          }
+          if (u.dis) {
+            if (!api.reducido) { u.hvx = clamp(u.hvx + (Math.random() - 0.5) * 900 * dt, -50, 50); u.hvy = clamp(u.hvy + (Math.random() - 0.5) * 900 * dt, -50, 50); u.hx += u.hvx * dt; u.hy += u.hvy * dt; }
+            u.hx = clamp(u.hx, BX.x0 + 10, BX.x1 - 10); u.hy = clamp(u.hy, BX.y0 + 10, BX.y1 - 10);
+            if (!api.reducido && Math.random() < pa * dt) { u.dis = false; }
+          } else {
+            u.hx = u.x + Math.cos(u.ang) * 13; u.hy = u.y + Math.sin(u.ang) * 13;
+            if (!api.reducido && Math.random() < pd * dt) { u.dis = true; u.hvx = Math.cos(u.ang) * 60; u.hvy = Math.sin(u.ang) * 60; }
+          }
+        });
+        return !api.reducido;
+      },
+      dibujar(S) {
+        const c = S.ctx, t = tau(), cc = Math.pow(10, lc), fuerte = pKa <= 0;
+        S.txt(nombre + '  ·  pKA = ' + fnum(pKa, 1), 18, 24, { size: 16, weight: 700 });
+        S.txt(fuerte ? 'ÁCIDO FUERTE (pKA ≤ 0): reacción cuasi-total' : 'ácido DÉBIL: equilibrio, τ < 1', 18, 42, { size: 13, weight: 700, color: fuerte ? K.v : K.m });
+        c.fillStyle = '#0b2a4a55'; c.strokeStyle = K.gris; c.lineWidth = 2; rrect(c, BX.x0, BX.y0 + 6, BX.x1 - BX.x0, BX.y1 - BX.y0 - 6, 10); c.fill(); c.stroke();
+        U.forEach((u) => {
+          bola(c, u.x, u.y, 9, K.v);
+          if (u.dis) { S.txt('−', u.x, u.y, { size: 14, color: '#001', align: 'center', weight: 900 }); c.fillStyle = '#ffffff'; c.strokeStyle = K.m; c.lineWidth = 2; c.beginPath(); c.arc(u.hx, u.hy, 7, 0, 6.3); c.fill(); c.stroke(); S.txt('+', u.hx, u.hy + 0.5, { size: 12, color: K.m, align: 'center', weight: 900 }); }
+          else { bola(c, u.hx, u.hy, 5.5, '#ffffff'); }
+        });
+        // leyenda
+        const ly = 332; bola(c, 34, ly, 8, K.v); bola(c, 47, ly, 5, '#fff'); S.txt('AH (sin disociar)', 60, ly, { size: 13 });
+        bola(c, 200, ly, 8, K.v); S.txt('−', 200, ly, { size: 13, color: '#001', align: 'center', weight: 900 }); S.txt('A⁻', 212, ly, { size: 13 });
+        c.fillStyle = '#fff'; c.strokeStyle = K.m; c.lineWidth = 2; c.beginPath(); c.arc(262, ly, 6.5, 0, 6.3); c.fill(); c.stroke(); S.txt('H₃O⁺', 273, ly, { size: 13 });
+        const nd = U.filter((u) => u.dis).length;
+        S.txt('en este instante: ' + nd + ' de ' + N + ' moléculas disociadas', 18, 356, { size: 13, color: K.tx2 });
+        // panel derecho
+        const px = 508;
+        S.txt('Estado final (tabla de avance)', px, 30, { size: 14, weight: 700 });
+        S.txt('τ = xf / xmax = ' + (t >= 0.9995 ? '100 %' : fnum(t * 100, t < 0.01 ? 2 : 1) + ' %'), px, 56, { size: 17, weight: 700, color: K.m });
+        const bh = 150, by = 90 + bh;
+        const barras = [['[AH]f', cc * (1 - t), K.v + 'aa'], ['[A⁻]f = [H₃O⁺]f', cc * t, K.m + 'cc']];
+        c.strokeStyle = '#ffffff88'; c.setLineDash([5, 4]); c.lineWidth = 1.5; c.beginPath(); c.moveTo(px, by - bh); c.lineTo(px + 270, by - bh); c.stroke(); c.setLineDash([]);
+        S.txt('c aportada = ' + fSci(cc) + ' mol/L', px + 270, by - bh - 9, { size: hlC ? 14 : 12, color: hlC ? K.am : '#ffffffbb', align: 'right', weight: hlC ? 800 : 600 });
+        barras.forEach(([n, v, col], i) => {
+          const x = px + 20 + i * 135, h = clamp(v / cc, 0, 1) * bh; c.fillStyle = '#16204a'; c.fillRect(x, by - bh, 70, bh); c.fillStyle = col; c.fillRect(x, by - h, 70, h);
+          S.txt(fSci(v), x + 35, Math.min(by - h - 10, by - 8), { size: 13, weight: 700, align: 'center', halo: true }); S.txt(n, x + 35, by + 14, { size: 12, color: K.tx2, align: 'center' });
+        });
+        const pH = -Math.log10(cc * t), pHfuerte = -lc;
+        S.txt('pH medido ≈ ' + fnum(pH, 2), px, 296, { size: 16, weight: 700, color: K.am });
+        S.txt('−log c = ' + fnum(pHfuerte, 2) + (Math.abs(pH - pHfuerte) < 0.05 ? '  ✔ coincide (ácido fuerte)' : '  ✖ no coincide (ácido débil)'), px, 318, { size: 13, color: Math.abs(pH - pHfuerte) < 0.05 ? K.v : K.m });
+        S.txt('pH = −log c solo vale si la reacción es total', px, 338, { size: 12, color: K.tx2 });
+      },
+    });
+    ajustar();
+    return {
+      ir(n) {
+        hlC = n === 3;
+        if (n === 0) nombrePre(0); else if (n === 1) nombrePre(2); else if (n === 2) nombrePre(1); else if (n === 3) nombrePre(2); else if (n === 4) nombrePre(3);
+        lc = -3; ctl.c.set(-3); ajustar(); S.pedir();
+      },
+      dispose() { S.dispose(); host.replaceChildren(); },
+    };
+  }
+  registrar({
+    id: 'fuerza-acido-base', capitulos: ['force-acides-bases'],
+    titulo: 'Ácido fuerte frente a ácido débil', fr: 'Force d’un acide, taux d’avancement τ',
+    resumen: 'Un ácido fuerte reacciona de forma cuasi-total con el agua (τ ≈ 1); un ácido débil llega a un equilibrio con τ < 1 que depende de su KA (pKA) y de la concentración.',
+    pagina_pdf: 184,
+    pasos: [
+      { titulo: 'Ácido fuerte: transformación cuasi-total', texto: 'Con un ácido fuerte (pKA ≤ 0, p. ej. HCl o HNO₃) casi todas las moléculas AH han cedido su H⁺ al agua: no queda ninguna AH y la base conjugada (Cl⁻, NO₃⁻) es indiferente. (p. 185)', fr: 'Acide fort : transformation quasi-totale avec l’eau.' },
+      { titulo: 'Ácido débil: equilibrio con τ < 1', texto: 'El ácido etanoico (pKA 4,8) reacciona solo en parte: AH + H₂O ⇌ A⁻ + H₃O⁺. Con c = 1,0×10⁻³ mol/L, τ ≈ 11,8 %. Mira cómo algunas moléculas se disocian y otras se recomponen sin parar (equilibrio dinámico). (p. 184, 187)', fr: 'Acide faible : la transformation conduit à un équilibre chimique.' },
+      { titulo: 'Cuanto menor pKA, mayor τ', texto: 'A igual concentración (1,0×10⁻³ mol/L), el ácido metanoico (pKA 3,8) se disocia más que el etanoico (pKA 4,8) y mucho más que el ion amonio (pKA 9,2). Pulsa los botones HCO₂H, CH₃CO₂H y NH₄⁺ y mueve el pKA. (fig. 5, p. 187: 32,7 %, 11,8 %, 0,08 %)', fr: 'Plus KA est grand, plus τ est grand.' },
+      { titulo: 'Concentración aportada ≠ concentración efectiva', texto: 'La concentración c escrita en el frasco (línea discontinua) no es la de las especies presentes: en un ácido débil [AH]f = c(1 − τ) y [H₃O⁺]f = c·τ. Por eso pH = −log c solo es válido para un ácido fuerte; para el débil el pH medido es mayor. (p. 185, 196)', fr: 'Concentration apportée vs concentrations effectives.' },
+      { titulo: 'pKA alto: ácido muy débil, base conjugada más fuerte', texto: 'Con NH₄⁺ (pKA 9,2) casi nada se disocia: τ ≈ 0,08 %. Cuanto mayor es el pKA, menos reacciona el ácido (más débil) y más reacciona su base conjugada (NH₃ más fuerte). (p. 185)', fr: 'Plus le pKA est grand, plus l’acide est faible et sa base conjuguée forte.' },
+    ],
+    montar: montarFuerza,
+    test: [
+      { pregunta: 'Con c = 1,0×10⁻³ mol/L, ¿cuál se disocia más?', opciones: ['NH₄⁺ (pKA 9,2)', 'CH₃CO₂H (pKA 4,8)', 'HCO₂H (pKA 3,8)'], correcta: 2, explicacion: 'Menor pKA = mayor KA = mayor τ: HCO₂H ≈ 32,7 % (fig. 5, p. 187).' },
+      { pregunta: '¿Cuándo es válido pH = −log c?', opciones: ['Siempre', 'Solo para un ácido fuerte (transformación total)', 'Solo para un ácido débil'], correcta: 1, explicacion: 'Con un ácido débil [H₃O⁺]f = c·τ < c, así que hay que usar KA y τ (error típico, p. 196).' },
+    ],
+  });
+
+  // ---------- 5 · pKA y diagramas de predominio / distribución (cours p. 187–188)
+  function montarPKA(host, api) {
+    const PAR = [['H₃O⁺ / H₂O', 0, 'H₃O⁺', 'H₂O'], ['HCO₂H / HCO₂⁻', 3.8, 'AH', 'A⁻'], ['CH₃CO₂H / CH₃CO₂⁻', 4.8, 'AH', 'A⁻'], ['NH₄⁺ / NH₃', 9.2, 'AH', 'A⁻'], ['CH₃NH₃⁺ / CH₃NH₂', 10.7, 'AH', 'A⁻'], ['H₂O / HO⁻', 14, 'H₂O', 'HO⁻']];
+    let sel = 2, pH = 2.8, escala = false;
+    const ctl = barra(host, [
+      { t: 'slider', id: 'ph', txt: 'pH', min: 0, max: 14, step: 0.1, val: pH, fmt: (v) => fnum(v, 1), on: (v) => { pH = v; S.pedir(); } },
+      { t: 'btn', id: 'par', txt: 'Par: ' + PAR[sel][0] + ' ▸', on: () => { sel = (sel + 1) % PAR.length; ctl.par.textContent = 'Par: ' + PAR[sel][0] + ' ▸'; S.pedir(); } },
+    ]);
+    const pb = (ph, pk) => 100 / (1 + Math.pow(10, pk - ph));
+    const S = lienzo(host, api, {
+      alt: 'Eje de pH con el pKA del par, curvas de distribución de AH y A⁻ y composición para el pH elegido.',
+      dibujar(S) {
+        const c = S.ctx, [nom, pk, an, bn] = PAR[sel], ax0 = 50, ax1 = escala ? 750 : 440, ay = 96, X = (v) => ax0 + (v / 14) * (ax1 - ax0);
+        S.txt('Par ' + nom + '   ·   pKA = ' + fnum(pk, 1), 400, 24, { size: 17, weight: 700, align: 'center' });
+        // eje de predominio
+        const g = c.createLinearGradient(ax0, 0, ax1, 0); g.addColorStop(0, '#ff5d6c55'); g.addColorStop(0.5, '#2ee59d33'); g.addColorStop(1, '#6aa7ff66');
+        c.fillStyle = g; c.fillRect(ax0, ay - 14, ax1 - ax0, 28);
+        c.fillStyle = K.am + '33'; c.fillRect(ax0, ay - 14, X(pk) - ax0, 28); c.fillStyle = K.m + '33'; c.fillRect(X(pk), ay - 14, ax1 - X(pk), 28);
+        c.strokeStyle = K.tx2; c.lineWidth = 2; c.beginPath(); c.moveTo(ax0, ay + 14); c.lineTo(ax1, ay + 14); c.stroke();
+        for (let v = 0; v <= 14; v += 2) { c.beginPath(); c.moveTo(X(v), ay + 14); c.lineTo(X(v), ay + 20); c.stroke(); S.txt(String(v), X(v), ay + 32, { size: 13, color: K.tx2, align: 'center' }); }
+        S.txt('pH', ax1 + 14, ay + 32, { size: 13, color: K.tx2 });
+        if (!escala) S.txt('predominio según el pH', 500, ay, { size: 13, color: K.tx2 });
+        c.fillStyle = K.am; c.beginPath(); c.moveTo(X(pk), ay + 12); c.lineTo(X(pk) - 8, ay + 26); c.lineTo(X(pk) + 8, ay + 26); c.closePath(); c.fill();
+        if (!escala) {
+          if (X(pk) - ax0 > 80) S.txt(an + ' predomina', (ax0 + X(pk)) / 2, ay, { size: 14, weight: 700, color: K.am, align: 'center' }); if (ax1 - X(pk) > 80) S.txt(bn + ' predomina', (X(pk) + ax1) / 2, ay, { size: 14, weight: 700, color: K.m, align: 'center' });
+          S.txt('pKA', X(pk), ay - 26, { size: 13, color: K.am, align: 'center', weight: 700 });
+          const pc = pb(pH, pk); // marcador de pH
+          c.fillStyle = '#fff'; c.beginPath(); c.arc(X(pH), ay - 20, 6, 0, 6.3); c.fill(); c.strokeStyle = '#ffffff55'; c.lineWidth = 1.5; c.beginPath(); c.moveTo(X(pH), ay - 20); c.lineTo(X(pH), 150); c.stroke();
+          // distribución
+          const gx = 50, gy = 150, gw = 390, gh = 150, Xd = (v) => gx + (v / 14) * gw, Yd = (p) => gy + gh - (p / 100) * gh;
+          S.txt('Diagrama de distribución (% de cada especie)', gx, gy - 8, { size: 13, color: K.tx2 });
+          c.strokeStyle = K.gris; c.lineWidth = 1.5; c.strokeRect(gx, gy, gw, gh);
+          [0, 50, 100].forEach((p) => S.txt(p + '', gx - 6, Yd(p), { size: 11, color: K.tx2, align: 'right' }));
+          const curva = (f, col) => { c.strokeStyle = col; c.lineWidth = 3; c.beginPath(); for (let i = 0; i <= 140; i++) { const v = i / 10, x = Xd(v), y = Yd(f(v)); i ? c.lineTo(x, y) : c.moveTo(x, y); } c.stroke(); };
+          curva((v) => 100 - pb(v, pk), K.am); curva((v) => pb(v, pk), K.m);
+          c.setLineDash([4, 4]); c.strokeStyle = '#ffffff66'; c.lineWidth = 1; c.beginPath(); c.moveTo(Xd(pk), gy); c.lineTo(Xd(pk), gy + gh); c.moveTo(gx, Yd(50)); c.lineTo(gx + gw, Yd(50)); c.stroke(); c.setLineDash([]);
+          c.strokeStyle = '#fff'; c.lineWidth = 1.5; c.beginPath(); c.moveTo(Xd(pH), gy); c.lineTo(Xd(pH), gy + gh); c.stroke();
+          bola(c, Xd(pH), Yd(100 - pc), 6, K.am); bola(c, Xd(pH), Yd(pc), 6, K.m);
+          S.txt(an, gx + 8, gy + 14, { size: 13, color: K.am, weight: 700 }); S.txt(bn, gx + gw - 8, gy + 14, { size: 13, color: K.m, weight: 700, align: 'right' });
+          // iconos 5×6
+          const ix = 480, iy = 168; S.txt('Mezcla en el pH elegido', ix, gy - 8, { size: 13, color: K.tx2 });
+          const nB = Math.round((pc / 100) * 30);
+          for (let i = 0; i < 30; i++) { const col = i % 6, fil = Math.floor(i / 6), esB = i < nB; const x = ix + 24 + col * 44, y = iy + 16 + fil * 28; bola(c, x, y, 10, esB ? K.m : K.am); S.txt(esB ? bn : an, x, y, { size: 9, color: '#001', align: 'center', weight: 800 }); }
+          const dif = pH - pk; let msg = Math.abs(dif) < 0.05 ? 'pH = pKA → [' + an + '] = [' + bn + '] (50 % / 50 %)' : dif < 0 ? 'pH < pKA → predomina ' + an : 'pH > pKA → predomina ' + bn;
+          S.txt(msg, 400, 332, { size: 17, weight: 700, color: Math.abs(dif) < 0.05 ? K.v : dif < 0 ? K.am : K.m, align: 'center' });
+          S.txt('pH = ' + fnum(pH, 1) + '  ·  ' + an + ' ' + fnum(100 - pc, 0) + ' %  ·  ' + bn + ' ' + fnum(pc, 0) + ' %', 400, 358, { size: 14, color: K.tx2, align: 'center' });
+        } else {
+          S.txt('Cada par tiene su pKA: ordena los ácidos por fuerza', 400, 160, { size: 15, weight: 700, align: 'center', color: K.tx2 });
+          PAR.forEach((p, i) => {
+            const x = X(p[1]), y = 215 + (i % 3) * 52; c.strokeStyle = i === sel ? K.v : K.gris; c.lineWidth = 2; c.beginPath(); c.moveTo(x, ay + 20); c.lineTo(x, y - 14); c.stroke();
+            c.fillStyle = i === sel ? '#144a34' : K.panel; c.strokeStyle = i === sel ? K.v : K.gris; const w = 206; const bx = clamp(x - w / 2, 4, 796 - w); rrect(c, bx, y - 14, w, 30, 8); c.fill(); c.stroke();
+            S.txt(p[0] + '  ·  pKA ' + fnum(p[1], 1), bx + w / 2, y, { size: 12, align: 'center' });
+          });
+          flecha(c, 120, 340, 340, 340, K.v, 3, 11); S.txt('ácido más fuerte', 120, 362, { size: 14, color: K.v }); S.txt('base conjugada más débil', 120, 380, { size: 12, color: K.tx2 });
+          flecha(c, 680, 340, 460, 340, K.m, 3, 11); S.txt('ácido más débil', 680, 362, { size: 14, color: K.m, align: 'right' }); S.txt('base conjugada más fuerte', 680, 380, { size: 12, color: K.tx2, align: 'right' });
+          S.txt('pKA ↑', 400, 340, { size: 14, weight: 700, color: K.tx2, align: 'center' });
+        }
+      },
+    });
+    return {
+      ir(n) {
+        escala = n === 4;
+        const pk = PAR[sel][1];
+        const fijar = (v) => { pH = clamp(v, 0, 14); ctl.ph.set(pH); };
+        if (n === 0) { sel = 2; ctl.par.textContent = 'Par: ' + PAR[sel][0] + ' ▸'; fijar(2.8); } else if (n === 1) fijar(pk - 2); else if (n === 2) fijar(pk); else if (n === 3) fijar(pk + 2);
+        S.pedir();
+      },
+      dispose() { S.dispose(); host.replaceChildren(); },
+    };
+  }
+  registrar({
+    id: 'pka-predominio', capitulos: ['force-acides-bases'],
+    titulo: 'pKA, predominio y distribución', fr: 'Diagramme de prédominance et de distribution',
+    resumen: 'El pKA marca el pH en que [AH] = [A⁻]: por debajo predomina el ácido AH, por encima la base A⁻. El diagrama de distribución muestra el % de cada especie y las curvas se cortan al 50 % en pH = pKA.',
+    pagina_pdf: 187,
+    pasos: [
+      { titulo: 'Un par, un pKA, un eje de pH', texto: 'Cada par ácido-base (aquí CH₃CO₂H / CH₃CO₂⁻) tiene su pKA, característico del par y de la temperatura. Se marca en un eje de pH: es el triángulo amarillo. El diagrama de predominancia reparte el eje en dos dominios. (p. 184, 187)', fr: 'Diagramme de prédominance.' },
+      { titulo: 'pH < pKA: predomina el ácido AH', texto: 'Por debajo del pKA hay más AH que A⁻: [AH] > [A⁻]. Mira los iconos: dominan los amarillos (ácido) y la curva amarilla va por encima. (p. 187)', fr: 'AH prédomine si pH < pKA.' },
+      { titulo: 'pH = pKA: mitad y mitad', texto: 'En pH = pKA se cumple [AH] = [A⁻]: las dos curvas del diagrama de distribución se cortan en 50 %. Así se lee un pKA en un gráfico. (p. 187–188)', fr: '[AH] = [A⁻] en pH = pKA.' },
+      { titulo: 'pH > pKA: predomina la base A⁻', texto: 'Por encima del pKA predomina A⁻ (la base conjugada): iconos rosas y curva rosa arriba. Cambia de par con el botón y comprueba que siempre pasa lo mismo alrededor de su propio pKA. (p. 187)', fr: 'A⁻ prédomine si pH > pKA.' },
+      { titulo: 'Ordenar los pares: la fuerza', texto: 'Los pares colocados por su pKA: cuanto mayor es el pKA, menos reacciona el ácido (más débil) y más reacciona su base conjugada (más fuerte). H₃O⁺ (pKA 0) es el ácido más fuerte posible en agua; HO⁻ (pKA 14) la base más fuerte. (p. 185, fig. 3)', fr: 'Plus le pKA est grand, plus l’acide est faible.' },
+    ],
+    montar: montarPKA,
+    test: [
+      { pregunta: 'Si pH < pKA, ¿qué especie predomina?', opciones: ['La base A⁻', 'El ácido AH', 'Están al 50 %'], correcta: 1, explicacion: 'AH predomina si pH < pKA; A⁻ si pH > pKA; 50 %/50 % en pH = pKA.' },
+      { pregunta: 'Un par tiene pKA 4,8. ¿Cuánto vale [AH]/[A⁻] cuando pH = 4,8?', opciones: ['1 (iguales)', '10', '0,1'], correcta: 0, explicacion: 'En pH = pKA, [AH] = [A⁻]: las curvas del diagrama de distribución se cruzan al 50 %.' },
+    ],
+  });
+
+  // ---------- 6 · Ke: el producto que no cambia (cours p. 184: autoprotolyse, produit ionique de l'eau)
+  function montarKe(host, api) {
+    let pH = 7;
+    const ctl = barra(host, [{ t: 'slider', id: 'ph', txt: 'pH de la disolución', min: 0, max: 14, step: 0.1, val: pH, fmt: (v) => fnum(v, 1), on: (v) => { pH = v; S.pedir(); } }]);
+    const S = lienzo(host, api, {
+      alt: 'Dos barras logarítmicas, [H₃O⁺] y [HO⁻], que suben y bajan en sentido contrario con producto constante Ke = 1,0×10⁻¹⁴.',
+      dibujar(S) {
+        const c = S.ctx, lh = -pH, lo = pH - 14;
+        S.txt('2 H₂O  ⇌  H₃O⁺ + HO⁻          Ke = [H₃O⁺]·[HO⁻]', 400, 26, { size: 18, weight: 700, align: 'center' });
+        const tipo = Math.abs(pH - 7) < 0.15 ? 'NEUTRA: [H₃O⁺] = [HO⁻]' : pH < 7 ? 'ÁCIDA: [H₃O⁺] > [HO⁻]' : 'BÁSICA: [H₃O⁺] < [HO⁻]';
+        const col = Math.abs(pH - 7) < 0.15 ? K.v : pH < 7 ? K.am : K.az;
+        S.txt(tipo, 400, 60, { size: 17, weight: 700, color: col, align: 'center' });
+        const x0 = 120, bw = 150, yb = 360, ht = 250, Y = (lg) => yb - ((lg + 14) / 14) * ht;
+        c.strokeStyle = K.gris; c.lineWidth = 1.5;
+        for (let e = -14; e <= 0; e += 2) { c.beginPath(); c.moveTo(x0 - 20, Y(e)); c.lineTo(x0 + 2 * bw + 100, Y(e)); c.stroke(); S.txt('10' + sup(e), x0 - 26, Y(e), { size: 12, color: K.tx2, align: 'right' }); }
+        [[x0, 'H₃O⁺', lh, K.m], [x0 + bw + 40, 'HO⁻', lo, K.az]].forEach(([x, n, lg, cl]) => {
+          c.fillStyle = cl + 'cc'; c.fillRect(x, Y(lg), bw, yb - Y(lg)); S.txt('[' + n + '] = 10' + sup(Math.round(lg * 10) / 10), x + bw / 2, Math.min(Y(lg) - 12, yb - 10), { size: 14, weight: 700, align: 'center', halo: true });
+          S.txt(n, x + bw / 2, yb + 18, { size: 15, weight: 700, color: cl, align: 'center' });
+        });
+        // panel producto
+        const px = 520; c.fillStyle = K.panel; c.strokeStyle = K.gris; c.lineWidth = 2; rrect(c, px, 100, 260, 230, 12); c.fill(); c.stroke();
+        S.txt('pH = ' + fnum(pH, 1), px + 130, 130, { size: 20, weight: 800, color: K.m, align: 'center' });
+        S.txt('pOH = ' + fnum(14 - pH, 1), px + 130, 160, { size: 20, weight: 800, color: K.az, align: 'center' });
+        S.txt('pH + pOH = 14 siempre', px + 130, 192, { size: 14, color: K.tx2, align: 'center' });
+        S.txt('[H₃O⁺]·[HO⁻]', px + 130, 232, { size: 15, align: 'center' }); S.txt('= 10' + sup(Math.round(lh * 10) / 10) + ' × 10' + sup(Math.round(lo * 10) / 10), px + 130, 258, { size: 15, align: 'center', color: K.tx2 });
+        S.txt('= 1,0×10⁻¹⁴ = Ke', px + 130, 290, { size: 18, weight: 800, color: K.am, align: 'center' });
+        S.txt('(a 25 °C; pKe = 14)', px + 130, 314, { size: 12, color: K.tx2, align: 'center' });
+      },
+    });
+    return {
+      ir(n) { const v = [7, 7, 2, 12][n] || 7; pH = v; ctl.ph.set(v); S.pedir(); },
+      dispose() { S.dispose(); host.replaceChildren(); },
+    };
+  }
+  registrar({
+    id: 'ke-producto-ionico', capitulos: ['force-acides-bases'],
+    titulo: 'Ke: el producto que no cambia', fr: 'Autoprotolyse de l’eau, produit ionique Ke',
+    resumen: 'El agua es anfótera y reacciona consigo misma (2 H₂O ⇌ H₃O⁺ + HO⁻). Su constante Ke = [H₃O⁺]·[HO⁻] = 1,0×10⁻¹⁴ a 25 °C: si una concentración sube, la otra baja.',
+    pagina_pdf: 184,
+    pasos: [
+      { titulo: 'El agua reacciona con el agua', texto: 'El agua es una especie anfótera (pares H₃O⁺/H₂O y H₂O/HO⁻): una molécula hace de ácido y otra de base, y aparecen H₃O⁺ y HO⁻. Es un equilibrio químico, la autoprotólisis. (p. 178, 184)', fr: 'Autoprotolyse de l’eau : 2 H₂O ⇌ H₃O⁺ + HO⁻.' },
+      { titulo: 'Agua pura: las dos barras iguales', texto: 'En agua pura a 25 °C, [H₃O⁺] = [HO⁻] = 10⁻⁷ mol/L y pH = 7: la disolución es neutra. El producto de las dos es Ke = 1,0×10⁻¹⁴ (pKe = 14). (p. 184)', fr: 'Ke = [H₃O⁺]f·[HO⁻]f = 1,0×10⁻¹⁴ à 25 °C.' },
+      { titulo: 'Disolución ácida: sube H₃O⁺, baja HO⁻', texto: 'Si añades un ácido, [H₃O⁺] sube (barra rosa) y [HO⁻] baja en la misma proporción: el producto sigue valiendo 1,0×10⁻¹⁴. Observa que las dos barras son logarítmicas. (p. 184)', fr: 'Si [H₃O⁺] augmente, [HO⁻] diminue.' },
+      { titulo: 'Disolución básica: al revés', texto: 'Con una base pasa lo contrario: sube [HO⁻] y baja [H₃O⁺]. Mueve el deslizador: en cualquier pH, pH + pOH = 14 y Ke no se mueve. Ke solo depende de la temperatura. (p. 184)', fr: 'Ke ne dépend que de la température.' },
+    ],
+    montar: montarKe,
+    test: [
+      { pregunta: 'En una disolución con [H₃O⁺] = 10⁻³ mol/L, ¿cuánto vale [HO⁻] a 25 °C?', opciones: ['10⁻³ mol/L', '10⁻¹¹ mol/L', '10⁻⁷ mol/L'], correcta: 1, explicacion: 'Ke = [H₃O⁺]·[HO⁻] = 10⁻¹⁴ → [HO⁻] = 10⁻¹⁴/10⁻³ = 10⁻¹¹ mol/L.' },
+    ],
+  });
+
+  // =============================================================================================================
+  // 8 · forcer-sens
+  // =============================================================================================================
+  // ---------- 7 · Pila frente a electrólisis (cours p. 209–212)
+  function montarElectrolisis(host, api) {
+    let forzado = false, z = 0.5, hl = '', verI = false, verEq = false, verAcu = false;
+    const R = rng(21);
+    const ionesZ = [], ionesI = [];
+    for (let i = 0; i < 12; i++) { ionesZ.push({ u: R(), v: R(), ph: R() * 6.28 }); ionesI.push({ u: R(), v: R(), ph: R() * 6.28 }); }
+    const ctl = barra(host, [
+      { t: 'tog', id: 'gen', txt: 'Conectar generador (forzar)', val: false, on: (v) => { forzado = v; z = 0.5; S.pedir(); } },
+      { t: 'btn', id: 'rei', txt: '↺ Reiniciar', on: () => { z = 0.5; S.pedir(); } },
+    ]);
+    const S = lienzo(host, api, {
+      alt: 'Cuba con dos electrodos, Zn²⁺ y I⁻ en disolución. Sin generador (pila) y con generador (electrólisis) los electrones circulan en sentidos opuestos.',
+      continuo: !api.reducido,
+      paso(dt) { if (!api.reducido) z = clamp(z + (forzado ? -1 : 1) * 0.04 * dt, 0.04, 0.96); return !api.reducido; },
+      dibujar(S) {
+        const c = S.ctx, t = S.t, zz = z;
+        const XL = 270, XR = 530, YT = 70;
+        // vaso
+        c.fillStyle = '#35508a33'; c.fillRect(200, 210, 400, 150); c.strokeStyle = '#c9d3ff'; c.lineWidth = 3; c.beginPath(); c.moveTo(200, 180); c.lineTo(200, 360); c.lineTo(600, 360); c.lineTo(600, 180); c.stroke();
+        if (!forzado) { c.setLineDash([7, 6]); c.strokeStyle = K.am; c.lineWidth = 3; c.beginPath(); c.moveTo(400, 190); c.lineTo(400, 358); c.stroke(); c.setLineDash([]); S.txt('puente salino / separador', 400, 176, { size: 12, color: K.am, align: 'center' }); }
+        // electrodo izquierdo (I): grafito + I2 ; derecho: Zn
+        c.fillStyle = '#4a4f66'; c.fillRect(XL - 9, 110, 18, 250); S.txt('grafito (I⁻ / I₂)', XL, 380, { size: 12, color: K.tx2, align: 'center' });
+        const wz = 10 + 26 * (1 - zz); c.fillStyle = '#a7b0c9'; c.fillRect(XR - wz / 2, 110, wz, 250); S.txt('Zn(s)', XR, 380, { size: 13, color: K.tx2, align: 'center', weight: 700 });
+        // I2 (marrón) alrededor del grafito izquierdo
+        const nI2 = Math.round(10 * (1 - zz)); for (let k = 0; k < nI2; k++) { const a = k * 2.4, rr = 22 + (k % 3) * 9; bola(c, XL + Math.cos(a) * rr + (k % 2 ? 6 : -6), 250 + (k * 37) % 90, 6, '#8a5a2b'); }
+        // iones
+        const nZ = Math.round(2 + 9 * zz), nIo = Math.round(2 + 9 * zz);
+        const dirC = forzado ? 1 : -1; // cationes: electrólisis → cátodo (derecha); pila → cátodo (izquierda)
+        for (let k = 0; k < nZ; k++) { const q = ionesZ[k], dx = api.reducido ? 0 : Math.sin(t * 0.8 + q.ph) * 8 + dirC * ((t * 14 + q.u * 100) % 40 - 20) * 0.6; bola(c, 220 + q.u * 360 + dx, 225 + q.v * 120, 6.5, K.az); }
+        for (let k = 0; k < nIo; k++) { const q = ionesI[k], dx = api.reducido ? 0 : Math.cos(t * 0.8 + q.ph) * 8 - dirC * ((t * 14 + q.u * 100) % 40 - 20) * 0.6; bola(c, 220 + q.u * 360 + dx, 235 + q.v * 110, 5.5, '#b06bff'); }
+        bola(c, 30, 238, 6.5, K.az); S.txt('Zn²⁺', 44, 238, { size: 13, color: K.az, weight: 700 }); bola(c, 30, 262, 5.5, '#b06bff'); S.txt('I⁻', 44, 262, { size: 13, color: '#b06bff', weight: 700 }); bola(c, 30, 286, 6, '#8a5a2b'); S.txt('I₂', 44, 286, { size: 13, color: '#c99a63', weight: 700 });
+        // hilos
+        c.strokeStyle = '#e0e6ff'; c.lineWidth = 3; c.beginPath(); c.moveTo(XL, 110); c.lineTo(XL, YT); c.lineTo(350, YT); c.moveTo(450, YT); c.lineTo(XR, YT); c.lineTo(XR, 110); c.stroke();
+        if (forzado) { // generador
+          c.fillStyle = '#16204a'; c.strokeStyle = K.am; c.lineWidth = 3; rrect(c, 350, YT - 20, 100, 40, 8); c.fill(); c.stroke();
+          S.txt('G', 400, YT, { size: 18, weight: 800, color: K.am, align: 'center' }); S.txt('+', 366, YT, { size: 20, weight: 800, color: K.v, align: 'center' }); S.txt('−', 434, YT, { size: 22, weight: 800, color: K.m, align: 'center' });
+        } else {
+          c.fillStyle = '#fff3b0'; c.strokeStyle = K.am; c.lineWidth = 3; c.shadowColor = K.am; c.shadowBlur = 18; c.beginPath(); c.arc(400, YT, 18, 0, 6.3); c.fill(); c.stroke(); c.shadowBlur = 0;
+          c.beginPath(); c.moveTo(388, YT); c.lineTo(412, YT); c.stroke(); c.strokeStyle = '#e0e6ff'; c.beginPath(); c.moveTo(350, YT); c.lineTo(382, YT); c.moveTo(418, YT); c.lineTo(450, YT); c.stroke();
+        }
+        // electrones: electrólisis ánodo(izq) → +G ... G(−) → cátodo(der) ; pila: der → izq
+        const rec = [[XL, 110, XL, YT, 40], [XL, YT, 350, YT, 80], [450, YT, XR, YT, 80], [XR, YT, XR, 110, 40]], tot = 240, sentido = forzado ? 1 : -1;
+        for (let k = 0; k < 12; k++) {
+          let d = api.reducido ? k * (tot / 12) : ((sentido > 0 ? t * 55 : -t * 55) + k * (tot / 12)) % tot; if (d < 0) d += tot;
+          let j = 0; while (j < 3 && d > rec[j][4]) { d -= rec[j][4]; j++; } const r = rec[j], f = d / r[4];
+          c.fillStyle = K.am; c.beginPath(); c.arc(lerp(r[0], r[2], f), lerp(r[1], r[3], f), 4.5, 0, 6.3); c.fill();
+        }
+        flecha(c, sentido > 0 ? 290 : 330, 44, sentido > 0 ? 330 : 290, 44, K.am, 3, 10); S.txt('e⁻', 310, 30, { size: 14, weight: 700, color: K.am, align: 'center' });
+        if (verI) { flecha(c, sentido > 0 ? 510 : 470, 44, sentido > 0 ? 470 : 510, 44, K.m, 3, 10); S.txt('I', 490, 30, { size: 15, weight: 700, color: K.m, align: 'center' }); }
+        // etiquetas ánodo / cátodo (ánodo = oxidación, cátodo = reducción)
+        const izqAn = forzado; // electrólisis: izquierda = ánodo ; pila: izquierda = cátodo
+        const etq = (x, al, esAnodo, forz) => {
+          const col = esAnodo ? K.m : K.v, borne = forz ? (esAnodo ? '+' : '−') : (esAnodo ? '−' : '+');
+          S.txt((esAnodo ? 'ÁNODO · oxidación' : 'CÁTODO · reducción'), x, 128, { size: 13, weight: 800, color: col, align: al, halo: true });
+          S.txt('borne ' + borne + (forz ? ' del generador' : ' de la pila'), x, 148, { size: 12, color: col, align: al, halo: true });
+        };
+        if (verEq || verAcu) { etq(XL - 22, 'right', izqAn, forzado); etq(XR + 22, 'left', !izqAn, forzado); }
+        if (verEq) {
+          const eL = forzado ? '2 I⁻ = I₂ + 2 e⁻' : 'I₂ + 2 e⁻ = 2 I⁻', eR = forzado ? 'Zn²⁺ + 2 e⁻ = Zn' : 'Zn = Zn²⁺ + 2 e⁻';
+          S.txt(eL, XL - 70, 398, { size: 14, weight: 700, color: izqAn ? K.m : K.v, align: 'center' }); S.txt(eR, XR + 70, 398, { size: 14, weight: 700, color: izqAn ? K.v : K.m, align: 'center' });
+        }
+        // medidor Qr / K (horizontal, esquina superior derecha)
+        const mx0 = 640, mw = 140, my = 190; void mx0; void mw; void my;
+        const gx = 650, gw = 130, gy = 290;
+        S.txt(forzado ? 'EVOLUCIÓN FORZADA' : 'EVOLUCIÓN ESPONTÁNEA', 715, 224, { size: 12, weight: 800, color: forzado ? K.m : K.v, align: 'center' });
+        S.txt(forzado ? 'Zn²⁺ + 2 I⁻ → Zn + I₂' : 'Zn + I₂ → Zn²⁺ + 2 I⁻', 715, 246, { size: 13, align: 'center' });
+        c.fillStyle = '#16204a'; c.fillRect(gx, gy, gw, 12); c.fillStyle = (forzado ? K.m : K.v) + '88'; c.fillRect(gx, gy, gw * zz, 12); bola(c, gx + gw * zz, gy + 6, 9, forzado ? K.m : K.v);
+        c.strokeStyle = K.am; c.lineWidth = 3; c.beginPath(); c.moveTo(gx + gw, gy - 8); c.lineTo(gx + gw, gy + 20); c.stroke(); S.txt('K', gx + gw, gy - 18, { size: 13, weight: 800, color: K.am, align: 'center' }); S.txt('Qr', gx + gw * zz, gy + 28, { size: 13, color: forzado ? K.m : K.v, align: 'center', weight: 700 });
+        S.txt(forzado ? 'el generador aleja Qr de K' : 'Qr,i < K : Qr → K', 715, 336, { size: 12, color: K.tx2, align: 'center' });
+        if (verAcu) { S.txt(forzado ? 'CARGA del acumulador = electrólisis' : 'DESCARGA del acumulador = pila', 400, 24, { size: 16, weight: 800, color: forzado ? K.m : K.v, align: 'center' }); }
+        if (hl === 'ac') void 0;
+      },
+    });
+    return {
+      ir(n) {
+        hl = ''; verI = n >= 3; verEq = n >= 2; verAcu = n === 4;
+        const modo = (f) => { forzado = f; ctl.gen.setAttribute('aria-pressed', String(f)); z = 0.5; };
+        if (n === 0) modo(false); else if (n === 1) modo(true); else if (n === 2) modo(true); else if (n === 3) modo(true); else if (n === 4) modo(false);
+        S.pedir();
+      },
+      dispose() { S.dispose(); host.replaceChildren(); },
+    };
+  }
+  registrar({
+    id: 'electrolisis-forzada', capitulos: ['forcer-sens'],
+    titulo: 'Pila frente a electrólisis: forzar el sentido', fr: 'Évolution forcée, électrolyse',
+    resumen: 'Si Qr,i < K el sistema evoluciona solo en sentido directo (pila). Un generador de tensión continua puede forzarlo en sentido opuesto: electrólisis. Cambian el sentido de los electrones y los papeles de ánodo y cátodo.',
+    pagina_pdf: 209,
+    pasos: [
+      { titulo: 'Sentido espontáneo: la pila', texto: 'Para Zn + I₂ ⇌ Zn²⁺ + 2 I⁻ (K = 10⁴⁶, Qr,i ≈ 2,5×10⁻⁵ < K) el sistema evoluciona solo en el sentido directo: el zinc se disuelve y el diyodo desaparece. Es una pila (conversión de energía química en eléctrica). (p. 209, 212)', fr: 'Si Qr,i < K(T), évolution spontanée dans le sens direct.' },
+      { titulo: 'Un generador fuerza el sentido opuesto', texto: 'Conecta un generador de tensión continua: ahora Zn²⁺ + 2 I⁻ → Zn + I₂, el sentido opuesto al espontáneo. Mira cómo se invierte el recorrido de los electrones y la placa de zinc engorda en vez de gastarse. Es la electrólisis, transformación forzada (nunca espontánea). (p. 209–210)', fr: 'Un générateur peut forcer un système à évoluer dans le sens opposé.' },
+      { titulo: 'Ánodo y cátodo', texto: 'Ánodo = electrodo donde ocurre la oxidación (2 I⁻ = I₂ + 2 e⁻), unido al borne + del generador. Cátodo = reducción (Zn²⁺ + 2 e⁻ = Zn), unido al borne −. Pulsa el interruptor del generador y mira cómo cambian los papeles. (p. 210; error típico, p. 217)', fr: 'Anode : oxydation, borne +. Cathode : réduction, borne −.' },
+      { titulo: '¿Quién lleva la carga?', texto: 'En la disolución se mueven los iones (cationes hacia el cátodo, aniones hacia el ánodo); por el hilo exterior circulan los electrones, en sentido opuesto al de la corriente I. Los electrones nunca atraviesan la disolución. (p. 210; error típico, p. 214)', fr: 'Porteurs de charge : ions en solution, électrons dans le circuit extérieur.' },
+      { titulo: 'Acumulador: pila y electrolizador a la vez', texto: 'Un acumulador se comporta como pila al descargarse y como electrolizador al cargarse: las reacciones en los electrodos son las opuestas. Alterna el interruptor para recorrer carga y descarga. (p. 212)', fr: 'Accumulateur : décharge = pile ; charge = électrolyseur.' },
+    ],
+    montar: montarElectrolisis,
+    test: [
+      { pregunta: 'En una electrólisis, ¿qué ocurre en el cátodo?', opciones: ['Oxidación, unido al borne +', 'Reducción, unido al borne −', 'Reducción, unido al borne +'], correcta: 1, explicacion: 'Cátodo = reducción, conectado al borne − del generador (p. 210).' },
+      { pregunta: 'Al pasar de la pila a la electrólisis del mismo sistema, ¿qué se invierte?', opciones: ['El sentido de los electrones en el hilo y la transformación química', 'Nada: es la misma reacción', 'Solo el color de las disoluciones'], correcta: 0, explicacion: 'El generador fuerza la reacción en sentido opuesto al espontáneo, y los electrones circulan al revés.' },
+    ],
+  });
+
+  // ---------- 8 · Carga ↔ cantidad de materia (cours p. 211, 218): q = I·Δt = n(e⁻)·N_A·e
+  function montarCarga(host, api) {
+    let I = 0.5, dt = 300, prog = 1, hl = -1, anim = false, verDt = false;
+    const NAe = 9.64e4, Mzn = 65.4;
+    const ctl = barra(host, [
+      { t: 'slider', id: 'i', txt: 'I', min: 0.1, max: 2, step: 0.1, val: I, fmt: (v) => fnum(v, 1) + ' A', on: (v) => { I = v; prog = 1; S.pedir(); } },
+      { t: 'slider', id: 'dt', txt: 'Δt', min: 30, max: 1800, step: 30, val: dt, fmt: (v) => v + ' s', on: (v) => { dt = v; prog = 1; S.pedir(); } },
+      { t: 'btn', id: 'go', txt: '▶ Electrolizar', on: () => { prog = 0; anim = true; if (api.reducido) { prog = 1; anim = false; } S.pedir(); } },
+    ]);
+    const R = rng(4), gotas = []; for (let i = 0; i < 16; i++) gotas.push({ u: R(), v: R() });
+    const S = lienzo(host, api, {
+      alt: 'Cadena de cálculo: intensidad por tiempo da la carga, la carga da los moles de electrones, dos electrones por cada Zn depositado, y la masa.',
+      continuo: !api.reducido,
+      paso(dt2) { if (anim) { prog = Math.min(1, prog + dt2 / 5); if (prog >= 1) anim = false; } return !api.reducido || anim; },
+      dibujar(S) {
+        const c = S.ctx, t = S.t, te = dt * prog, q = I * te, ne = q / NAe, nZn = ne / 2, m = nZn * Mzn;
+        const cajas = [['intensidad × tiempo', fnum(I, 1) + ' A × ' + Math.round(te) + ' s'], ['q = I·Δt', fnum(q, q < 100 ? 1 : 0) + ' C'], ['n(e⁻) = q / (N_A·e)', fSci(ne) + ' mol'], ['n(Zn) = n(e⁻) / 2', fSci(nZn) + ' mol'], ['m = n·M', fnum(m, m < 0.1 ? 3 : 2) + ' g']];
+        cajas.forEach(([tt, v], i) => {
+          const x = 14 + i * 156, on = hl === i || hl === -1;
+          c.fillStyle = on ? '#143a2e' : K.panel; c.strokeStyle = hl === i ? K.v : K.gris; c.lineWidth = hl === i ? 3 : 2; rrect(c, x, 22, 136, 74, 10); c.fill(); c.stroke();
+          S.txt(tt, x + 68, 42, { size: 12, color: K.tx2, align: 'center' }); S.txt(v, x + 68, 72, { size: 16, weight: 800, color: hl === i ? K.v : K.txt, align: 'center' });
+          if (i < 4) flecha(c, x + 138, 59, x + 156, 59, hl === i + 1 ? K.v : K.gris, 2.5, 8);
+        });
+        S.txt('N_A·e = 9,64×10⁴ C·mol⁻¹  ·  M(Zn) = 65,4 g·mol⁻¹', 400, 396, { size: 12, color: K.tx2, align: 'center' });
+        if (verDt) S.txt('Despejando: Δt = n(e⁻)·N_A·e / I', 400, 200, { size: 15, weight: 700, color: K.am, align: 'center' });
+        // cuba
+        c.fillStyle = '#35508a33'; c.fillRect(170, 250, 460, 120); c.strokeStyle = '#c9d3ff'; c.lineWidth = 3; c.beginPath(); c.moveTo(170, 215); c.lineTo(170, 370); c.lineTo(630, 370); c.lineTo(630, 215); c.stroke();
+        c.fillStyle = '#4a4f66'; c.fillRect(250, 170, 18, 200); S.txt('ánodo (+)', 259, 116, { size: 13, color: K.m, align: 'center', weight: 700 });
+        const dep = clamp(m / 1.2, 0, 1) * 50; c.fillStyle = '#a7b0c9'; c.fillRect(530, 170, 18, 200); c.fillStyle = '#d4dbee'; c.fillRect(548, 170, dep, 200); c.fillRect(530 - dep, 170, dep, 200);
+        S.txt('cátodo (−)', 539, 116, { size: 13, color: K.v, align: 'center', weight: 700 }); S.txt('Zn depositado', 539, 388, { size: 12, color: K.tx2, align: 'center' });
+        // hilo + generador
+        c.strokeStyle = '#e0e6ff'; c.lineWidth = 3; c.beginPath(); c.moveTo(259, 170); c.lineTo(259, 146); c.lineTo(350, 146); c.moveTo(450, 146); c.lineTo(539, 146); c.lineTo(539, 170); c.stroke();
+        c.fillStyle = '#16204a'; c.strokeStyle = K.am; rrect(c, 350, 130, 100, 32, 8); c.fill(); c.stroke(); S.txt('G', 400, 146, { size: 16, weight: 800, color: K.am, align: 'center' });
+        // electrones (nº ∝ I)
+        const nd = Math.round(3 + I * 5), tot = 180; for (let k = 0; k < nd; k++) { let d = api.reducido ? k * (tot / nd) : (t * (25 + I * 40) + k * (tot / nd)) % tot; const seg = [[259, 146, 350, 146, 91], [450, 146, 539, 146, 89]]; const j = d < 91 ? 0 : 1; const f = j ? (d - 91) / 89 : d / 91; const r = seg[j]; c.fillStyle = K.am; c.beginPath(); c.arc(lerp(r[0], r[2], f), 146, 4, 0, 6.3); c.fill(); }
+        // pares e⁻ + Zn²⁺ → Zn
+        gotas.forEach((g, i) => { const ph = api.reducido ? (i / 16) : ((t * (0.1 + I * 0.2) + g.u) % 1); const x = lerp(300 + g.v * 150, 525, ph), y = 270 + g.v * 80 + Math.sin(i) * 4; bola(c, x, y, 6.5, K.az); if (ph > 0.55) { c.fillStyle = K.am; c.beginPath(); c.arc(x - 9, y - 7, 3.3, 0, 6.3); c.arc(x + 9, y - 7, 3.3, 0, 6.3); c.fill(); } });
+        S.txt('Zn²⁺ + 2 e⁻ = Zn   (2 e⁻ por cada átomo de Zn)', 400, 232, { size: 15, weight: 700, color: K.v, align: 'center' });
+      },
+    });
+    return {
+      ir(n) { hl = [-1, 1, 3, 4, 2][n]; if (n === 0) hl = 0; verDt = n === 4; prog = 1; anim = false; if (n === 4 && !api.reducido) { prog = 0; anim = true; } S.pedir(); },
+      dispose() { S.dispose(); host.replaceChildren(); },
+    };
+  }
+  registrar({
+    id: 'carga-materia', capitulos: ['forcer-sens'],
+    titulo: 'De la carga eléctrica a los gramos depositados', fr: 'q = I·Δt = n(e⁻)·N_A·e',
+    resumen: 'La carga que circula en una electrólisis permite calcular la cantidad de materia formada: q = I·Δt = n(e⁻)·N_A·e, y la semiecuación relaciona n(e⁻) con n(producto) (p. ej. n(Zn) = n(e⁻)/2).',
+    pagina_pdf: 211,
+    pasos: [
+      { titulo: 'Intensidad y tiempo dan la carga', texto: 'La intensidad es carga por segundo: I = q/Δt, así que q = I·Δt (con Δt en segundos). Más corriente o más tiempo, más carga. Mueve los dos deslizadores. (p. 204, 211)', fr: 'q = I·Δt' },
+      { titulo: 'De la carga a los moles de electrones', texto: 'La carga de un mol de electrones es N_A·e (≈ 9,64×10⁴ C): n(e⁻) = q / (N_A·e). Con 150 C (0,5 A durante 300 s) hay unos 1,6 milimoles de electrones. (p. 211)', fr: 'q = n(e⁻)·N_A·e' },
+      { titulo: 'La semiecuación: 2 e⁻ por cada Zn', texto: 'Zn²⁺ + 2 e⁻ = Zn: cada átomo de zinc depositado necesita dos electrones, así que n(Zn) = n(e⁻)/2. Olvidar la estequiometría de la semiecuación es un error típico (p. 218). Mira cómo cada ion Zn²⁺ llega al cátodo con su pareja de electrones.', fr: 'n(Zn) = n(e⁻)/2' },
+      { titulo: 'De los moles a la masa', texto: 'Con n(Zn) y la masa molar se obtiene la masa depositada: m = n·M. Pulsa «Electrolizar» y mira cómo crece el depósito mientras corre el tiempo. (p. 218)', fr: 'Masse déposée : m = n·M.' },
+      { titulo: 'Al revés: ¿cuánto tiempo?', texto: 'Si conoces la masa que quieres depositar: n = m/M, luego n(e⁻) con la semiecuación y Δt = n(e⁻)·N_A·e / I (o I = n(e⁻)·N_A·e / Δt). Con una intensidad mayor, el mismo depósito tarda menos. (p. 218)', fr: 'Δt = n(e⁻)·N_A·e / I' },
+    ],
+    montar: montarCarga,
+    test: [
+      { pregunta: 'En el cátodo Zn²⁺ + 2 e⁻ = Zn. Si han pasado 4,0×10⁻³ mol de electrones, ¿cuántos mol de Zn se depositan?', opciones: ['4,0×10⁻³ mol', '2,0×10⁻³ mol', '8,0×10⁻³ mol'], correcta: 1, explicacion: 'n(Zn) = n(e⁻)/2 = 2,0×10⁻³ mol (2 electrones por átomo de Zn).' },
+      { pregunta: 'Si duplicas la intensidad y mantienes Δt, ¿qué pasa con la masa depositada?', opciones: ['Se duplica', 'No cambia', 'Se reduce a la mitad'], correcta: 0, explicacion: 'q = I·Δt se duplica, también n(e⁻), n(Zn) y m.' },
     ],
   });
 

@@ -494,6 +494,13 @@
         ctx.F = fisica(fase === 'agua' ? { gravedad: 1, friccion: 0.9, salto: 12, viento: 0 } : fisicaBase);
         res[fase] = construirFase(fase, ctx);
       }
+      // la fase de agua se convierte en CUEVA SUBMARINA: techo rocoso, jorobas y fauna (pirañas, tiburón, langostas, submarinos…)
+      if (window.PCB.juego && window.PCB.juego.Cueva) {
+        for (const inten of [1, 0.7, 0.45]) {
+          const cand = window.PCB.juego.Cueva.aplicar(res.agua, { seed: capId + '|' + s + '|cueva', intensidad: inten });
+          if (QQ.validar(cand).ok && !QQ.revisarContrato(cand).length) { res.agua = cand; break; }
+        }
+      }
       // pocos checkpoints (no uno a cada rato): separación mínima de 40 tiles
       if (window.PCB.juego && window.PCB.juego.Relieve) for (const fase of ['tierra', 'castillo']) { const c = window.PCB.juego.Relieve.podarCheckpoints(res[fase]); if (QQ.validar(c).ok && !QQ.revisarContrato(c).length) res[fase] = c; }
       // relieve del terreno (44-relieve.js) en tierra y castillo; si no pasa el validador se queda el nivel llano original

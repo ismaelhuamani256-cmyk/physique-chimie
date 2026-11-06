@@ -501,6 +501,11 @@
             const cand = window.PCB.juego.Relieve.aplicar(res[fase], { seed: capId + '|' + s + '|' + fase, intensidad: inten, techo: false });
             if (QQ.validar(cand).ok && !QQ.revisarContrato(cand).length) { res[fase] = cand; break; }
           }
+          // más vida en el aire: plataformas móviles y enemigos voladores (con errores típicos del capítulo)
+          for (const inten of [0.7, 0.45, 0.25]) {
+            const cand = window.PCB.juego.Relieve.poblarAire(res[fase], { seed: capId + '|' + s + '|aire|' + fase, intensidad: inten, errores, ambiente: 'lab' });
+            if (QQ.validar(cand).ok && !QQ.revisarContrato(cand).length) { res[fase] = cand; break; }
+          }
         }
       }
       const errores_ = [];

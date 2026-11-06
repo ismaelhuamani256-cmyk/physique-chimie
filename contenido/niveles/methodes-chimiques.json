@@ -888,8 +888,110 @@
      10
     ]
    ]
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 35,
+   "y": 12,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 3.8
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 105,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 7,
+   "eje": "x",
+   "periodo": 4.2
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 116,
+   "y": 9,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 4.2
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 138,
+   "y": 9,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.2
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 149,
+   "y": 9,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 4.4
+  },
+  {
+   "tipo": "bicho",
+   "x": 43,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Creer que diluir cambia n",
+   "correccion": "n se conserva: c·V = c_diluée·V_diluée."
+  },
+  {
+   "tipo": "bicho",
+   "x": 54,
+   "y": 7,
+   "bicho": "neutrino",
+   "nombre": "Esperar siempre un cambio de color",
+   "correccion": "La equivalencia también se halla por pH-metría o conductimetría."
+  },
+  {
+   "tipo": "bicho",
+   "x": 67,
+   "y": 6,
+   "bicho": "neutrino",
+   "nombre": "Confundir titrante y titrado como limitante",
+   "correccion": "Hasta V_E el titrante es limitante; después lo es el titrado."
+  },
+  {
+   "tipo": "bicho",
+   "x": 85,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "No prolongar las dos rectas",
+   "correccion": "Prolongar ambas rectas: V_E es la abscisa de su intersección."
+  },
+  {
+   "tipo": "bicho",
+   "x": 100,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Olvidar la densidad de la solución",
+   "correccion": "Usar d para pasar de volumen a masa de solución."
+  },
+  {
+   "tipo": "bicho",
+   "x": 111,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Confundir masa volúmica y densidad",
+   "correccion": "ρ tiene unidad (g·L⁻¹, kg·m⁻³); d = ρ/ρ_eau no tiene unidad."
+  },
+  {
+   "tipo": "bicho",
+   "x": 124,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Usar la masa del disolvente en w",
+   "correccion": "w = m_soluté / m_solución (de la solución entera) × 100."
   }
  ],
  "ambiente": "lab",
- "relieve": true
+ "relieve": true,
+ "aire": true
 }

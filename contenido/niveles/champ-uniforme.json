@@ -668,8 +668,102 @@
      10
     ]
    ]
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 31,
+   "y": 11,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 4.5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 51,
+   "y": 9,
+   "largo": 3,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 4.4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 63,
+   "y": 10,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 4.5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 72,
+   "y": 10,
+   "largo": 3,
+   "recorrido": 7,
+   "eje": "x",
+   "periodo": 4.7
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 86,
+   "y": 9,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 5
+  },
+  {
+   "tipo": "bicho",
+   "x": 43,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Despreciar el peso sin justificarlo",
+   "correccion": "Comparar F_e/P: para partículas cargadas es enorme (≈10¹⁰ para un protón), por eso el peso se desprecia."
+  },
+  {
+   "tipo": "bicho",
+   "x": 58,
+   "y": 5,
+   "bicho": "neutrino",
+   "nombre": "Escribir ΔE_c = ΔE_p",
+   "correccion": "Si E_m se conserva, ΔE_m = 0 y ΔE_c = −ΔE_p; E_c se gana cuando E_p se pierde."
+  },
+  {
+   "tipo": "bicho",
+   "x": 78,
+   "y": 6,
+   "bicho": "neutrino",
+   "nombre": "Aplicar E_m = cte con rozamiento",
+   "correccion": "La conservación exige ausencia de fuerzas no conservativas; con rozamiento ΔE_m = ΣW(F no conservativas)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 92,
+   "y": 5,
+   "bicho": "murcielago",
+   "nombre": "Olvidar la condición inicial z(0) = z₀",
+   "correccion": "Al integrar, las constantes salen de v(0) y OG(0): si z(0) ≠ 0 hay que sumar z₀ en z(t)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 106,
+   "y": 6,
+   "bicho": "murcielago",
+   "nombre": "Razonar sin ecuaciones («el peso baja, luego frena»)",
+   "correccion": "Justificar con las ecuaciones horarias: v_z(t) = −g₀t + v₀ es afín decreciente, no con la dirección del peso."
+  },
+  {
+   "tipo": "bicho",
+   "x": 117,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Dar un valor numérico cuando piden «exprimer»",
+   "correccion": "Exprimer = dar la relación literal entre las magnitudes; el cálculo numérico viene después."
   }
  ],
  "ambiente": "campo",
- "relieve": true
+ "relieve": true,
+ "aire": true
 }

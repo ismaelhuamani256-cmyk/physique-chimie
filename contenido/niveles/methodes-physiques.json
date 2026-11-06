@@ -756,8 +756,110 @@
      10
     ]
    ]
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 24,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 5.5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 63,
+   "y": 9,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 80,
+   "y": 10,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 6.3
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 91,
+   "y": 11,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 6.4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 132,
+   "y": 9,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5.6
+  },
+  {
+   "tipo": "bicho",
+   "x": 26,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Usar Beer-Lambert o Kohlrausch con c ≥ 10⁻² mol·L⁻¹",
+   "correccion": "Diluye antes: solo son válidas para c < 10⁻² mol·L⁻¹."
+  },
+  {
+   "tipo": "bicho",
+   "x": 40,
+   "y": 6,
+   "bicho": "demonio",
+   "nombre": "Medir la absorbancia en una λ cualquiera",
+   "correccion": "Colócate en λ_max del espectro de la especie."
+  },
+  {
+   "tipo": "bicho",
+   "x": 54,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Olvidar el factor de dilución al leer la curva de calibrado",
+   "correccion": "c solución = factor de dilución × c leída (ej. 10 × 6,8 mmol·L⁻¹)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 78,
+   "y": 6,
+   "bicho": "demonio",
+   "nombre": "Ignorar la estequiometría de la disolución",
+   "correccion": "Usa la ecuación: para CaCl₂, [Cl⁻] = 2c y [Ca²⁺] = c."
+  },
+  {
+   "tipo": "bicho",
+   "x": 87,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Confundir ν̃ con λ y sus unidades",
+   "correccion": "ν̃ = 1/λ en cm⁻¹ si λ está en cm."
+  },
+  {
+   "tipo": "bicho",
+   "x": 99,
+   "y": 7,
+   "bicho": "neutrino",
+   "nombre": "Dar una sola fórmula con la fórmula bruta sin pensar en isómeros",
+   "correccion": "Una fórmula bruta admite varias desarrolladas: el espectro IR decide."
+  },
+  {
+   "tipo": "bicho",
+   "x": 114,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Olvidar pasar mol·L⁻¹ a mol·m⁻³ en Kohlrausch",
+   "correccion": "Multiplica c por 10³: σ en S·m⁻¹ exige [Xᵢ] en mol·m⁻³."
   }
  ],
  "ambiente": "lab",
- "relieve": true
+ "relieve": true,
+ "aire": true
 }

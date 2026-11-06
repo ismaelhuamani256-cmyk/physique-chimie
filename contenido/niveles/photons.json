@@ -856,8 +856,94 @@
      11
     ]
    ]
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 24,
+   "y": 12,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 5.1
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 37,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 5.2
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 57,
+   "y": 11,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 5.2
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 79,
+   "y": 10,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.7
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 97,
+   "y": 9,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 4.8
+  },
+  {
+   "tipo": "bicho",
+   "x": 32,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Trabajo de extracción negativo o velocidad nula",
+   "correccion": "W es una energía positiva (la ordenada en el origen es −W); y bajo el umbral no hay velocidad nula: no se emiten electrones."
+  },
+  {
+   "tipo": "bicho",
+   "x": 42,
+   "y": 6,
+   "bicho": "murcielago",
+   "nombre": "Confundir ν y λ",
+   "correccion": "Efecto si ν ≥ ν_s pero λ ≤ λ_s (desigualdad invertida); λ_s = c/ν_s."
+  },
+  {
+   "tipo": "bicho",
+   "x": 64,
+   "y": 7,
+   "bicho": "neutrino",
+   "nombre": "Intensidad ↔ energía cinética",
+   "correccion": "La intensidad fija el número de electrones emitidos; E_c solo depende de la frecuencia (E_c = h(ν − ν_s))."
+  },
+  {
+   "tipo": "bicho",
+   "x": 125,
+   "y": 7,
+   "bicho": "neutrino",
+   "nombre": "Rendimiento al revés",
+   "correccion": "η = P_eléctrica / P_luminosa × 100 (salida entre entrada), no P_luminosa / P_eléctrica."
+  },
+  {
+   "tipo": "bicho",
+   "x": 143,
+   "y": 7,
+   "bicho": "neutrino",
+   "nombre": "Montaje sin resistencia variable",
+   "correccion": "Para hallar la potencia máxima hay que variar R (resistencia variable) con el amperímetro en serie y el voltímetro en derivación."
   }
  ],
  "ambiente": "campo",
- "relieve": true
+ "relieve": true,
+ "aire": true
 }

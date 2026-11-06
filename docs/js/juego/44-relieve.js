@@ -209,6 +209,94 @@
     return N;
   };
 
+  /**
+   * poblarAire(nivel, {seed, intensidad, errores, ambiente}) -> nivel NUEVO con más vida en el aire:
+   *   · plataformas móviles: ascensores verticales (llevan a las islas altas) y lanzaderas horizontales;
+   *   · enemigos voladores (murciélago zigzagueante, diablillo que pica en picado y, en laboratorios/espacio, el neutrino fantasma)
+   *     con el nombre y la corrección de un error típico del capítulo (`errores`: [{nombre, correccion}]).
+   * Se coloca solo en huecos libres (ni foso, ni otra cosa en esas casillas y filas). Úsalo con validar().
+   */
+  Rel.poblarAire = function (nivel, opts) {
+    opts = opts || {};
+    const N = JSON.parse(JSON.stringify(nivel)), alto = N.alto_tiles || 18, ancho = N.ancho_tiles || 160, segs = N.segmentos;
+    const rnd = rng(hash(String(opts.seed != null ? opts.seed : N.capitulo_id) + '|aire')), inten = clamp(opts.intensidad == null ? 1 : opts.intensidad, 0, 1);
+    const SMIN = alto - 6;
+    const esSuelo = (s) => s.tipo === 'plataforma' && s.grosor == null && s.solido !== false && s.y >= SMIN;
+    const G = new Array(ancho).fill(null);                         // fila del suelo por columna (null = foso o sin suelo)
+    for (const s of segs.filter(esSuelo)) for (let i = 0; i < s.largo; i++) { const x = Math.round(s.x) + i; if (x >= 0 && x < ancho) G[x] = s.y; }
+    for (const s of segs) if (s.tipo === 'foso') for (let i = 0; i < s.largo; i++) if (s.x + i >= 0 && s.x + i < ancho) G[s.x + i] = null;
+    const jefe = segs.find((q) => q.tipo === 'jefe' || q.tipo === 'jefe_quiz'), meta = segs.find((q) => q.tipo === 'meta');
+    const finAntes = jefe ? jefe.x - 14 : (meta ? meta.x - 8 : ancho - 12);
+    const sprint = segs.filter((q) => q.tipo === 'sprint').map((q) => [q.x_ini - 2, q.x_fin + 2]);
+
+    // ocupación [x0, x1, yMin, yMax] de todo lo que ya hay (incluye plataformas, bloques, techos, monedas y recorridos de móviles)
+    const ocup = [];
+    const caja = (s) => {
+      if (s.tipo === 'plataforma' && s.grosor != null) return [s.x, s.x + s.largo, s.y - 1, s.y + s.grosor];
+      if (s.tipo === 'plataforma') return [s.x, s.x + s.largo, s.y - 1, s.y + 1];
+      if (s.tipo === 'plataforma_movil') { const r = s.recorrido || 0; return s.eje === 'y' ? [s.x, s.x + s.largo, Math.min(s.y, s.y + r) - 1, Math.max(s.y, s.y + r) + 1] : [Math.min(s.x, s.x + r), Math.max(s.x, s.x + r) + s.largo, s.y - 1, s.y + 1]; }
+      const y = s.y == null ? null : s.y, ext = s.tipo === 'prensa' ? 9 : s.tipo === 'pendulo' ? 5 : (s.tipo === 'tuberia' || s.tipo === 'puerta' || s.tipo === 'puerta_ecuacion') ? (s.alto || 3) : s.tipo === 'palanca' ? 2 : 1;
+      return [s.x, s.x + (s.largo || s.w || 1), ...(y == null ? [alto - 8, alto] : [y - 1, y + ext])];
+    };
+    // dur = true si es una estructura/enemigo que de verdad estorba; las monedas, gemas y carteles se pueden sobrevolar
+    const DURO = ['plataforma', 'plataforma_movil', 'plataforma_cae', 'plataforma_estado', 'ladrillo', 'bloque_pregunta', 'tuberia', 'puerta', 'puerta_ecuacion', 'prensa', 'pendulo', 'cinta', 'puente', 'bloque_rebote', 'picos', 'palanca', 'interruptor_estado', 'estacion_molecula', 'bicho', 'planta_carnivora', 'mina'];
+    for (const s of segs) {
+      if (s.tipo === 'rastro_monedas') { for (const [x, y] of s.puntos || []) ocup.push([x, x, y - 1, y + 1, false]); continue; }
+      if (typeof s.x !== 'number' || esSuelo(s) || ['foso', 'estalactita', 'lluvia_rocas', 'sprint', 'meta'].includes(s.tipo)) continue;
+      ocup.push([...caja(s), DURO.includes(s.tipo)]);
+    }
+    for (const q of sprint) ocup.push([q[0], q[1], 0, alto, true]);
+    // soloDur: ignora lo que se puede sobrevolar (monedas, gemas, carteles)
+    const libre = (a, b, y0, y1, soloDur) => { if (a < 22 || b > finAntes - 2) return false; for (const [p, q, u, v, d] of ocup) { if (soloDur && d === false) continue; if (!(b < p || a > q) && !(v < y0 || u > y1)) return false; } return true; };
+    const reservar = (a, b, y0, y1) => ocup.push([a, b, y0, y1, true]);
+    const suelo = (a, b) => { let g = null; for (let x = a; x <= b; x++) { if (G[x] == null) return null; g = g == null ? G[x] : Math.min(g, G[x]); } return g; };   // el suelo más alto de esas columnas
+
+    const extra = [], objMov = Math.max(2, Math.round(inten * 5)), objAire = Math.max(3, Math.round(inten * 7));
+    // ---- plataformas móviles ----
+    let nMov = 0, vertical = rnd() < 0.5;
+    for (let x = 24; x < finAntes - 8 && nMov < objMov; x += 3 + Math.floor(rnd() * 5)) {
+      const largo = 3, per = +(3.5 + rnd() * 3).toFixed(1);
+      // suelo de referencia: el de la columna más cercana que tenga (la trayectoria puede cruzar fosos)
+      let g = null; for (let d = 0; d <= 4 && g == null; d++) g = G[x - d] != null ? G[x - d] : (G[x + d] != null ? G[x + d] : null);
+      if (g == null) continue;
+      let puesto = false;
+      for (const subida of [3, 2]) {                                     // a 3 (o 2) tiles del suelo: alcanzable de un salto
+        const y = g - subida;
+        if (vertical) {                                                  // ascensor: sube y baja hacia las islas altas
+          const rec = -(3 + Math.floor(rnd() * 2));
+          if (y + rec < 4 || !libre(x, x + largo, y + rec - 1, y, true)) continue;
+          extra.push({ tipo: 'plataforma_movil', x, y, largo, recorrido: rec, eje: 'y', periodo: per }); reservar(x, x + largo, y + rec - 1, y); puesto = true;
+        } else {                                                         // lanzadera: cruza el aire (y los fosos) de lado a lado
+          const rec = 5 + Math.floor(rnd() * 4);
+          if (y < 4 || !libre(x, x + largo + rec, y - 1, y, true)) continue;
+          extra.push({ tipo: 'plataforma_movil', x, y, largo, recorrido: rec, eje: 'x', periodo: per }); reservar(x, x + largo + rec, y - 1, y); puesto = true;
+        }
+        if (puesto) break;
+      }
+      if (!puesto) continue;
+      vertical = !vertical;
+      nMov++; x += 6;
+    }
+    // ---- enemigos voladores ----
+    const errores = (opts.errores && opts.errores.length) ? opts.errores : [{ nombre: 'Error', correccion: '' }];
+    const fantasma = ['lab', 'espacio', 'campo'].includes(opts.ambiente);
+    let nAire = 0, ie = Math.floor(rnd() * errores.length);
+    const usados = [];
+    for (let x = 26; x < finAntes - 4 && nAire < objAire; x += 3 + Math.floor(rnd() * 4)) {
+      if (usados.some((u) => Math.abs(u - x) < 9)) continue;
+      const g = suelo(x - 1, x + 1) == null ? (G[x] != null ? G[x] : null) : suelo(x - 1, x + 1);
+      const gg = g == null ? alto - 4 : g;
+      const y = Math.max(4, gg - 5 - Math.floor(rnd() * 3));
+      if (!libre(x - 2, x + 2, y - 1, y + 1, true)) continue;
+      const r = rnd(), bicho = fantasma && r < 0.25 ? 'neutrino' : r < 0.65 ? 'murcielago' : 'demonio';
+      const e = errores[ie++ % errores.length];
+      extra.push({ tipo: 'bicho', x, y, bicho, nombre: e.nombre, correccion: e.correccion }); reservar(x - 2, x + 2, y - 1, y + 1); usados.push(x); nAire++;
+    }
+    N.segmentos = [...segs, ...extra];
+    N.aire = true;
+    return N;
+  };
+
   // ---------- exportación ----------
   if (typeof module !== 'undefined' && module.exports) module.exports = Rel;
   if (root.PCB && root.PCB.juego) root.PCB.juego.Relieve = Rel;

@@ -804,8 +804,93 @@
    "largo": 11,
    "grosor": 2,
    "techo": true
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 30,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 5.1
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 63,
+   "y": 10,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 5.7
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 81,
+   "y": 10,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5.7
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 118,
+   "y": 9,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 4.4
+  },
+  {
+   "tipo": "bicho",
+   "x": 26,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Creer que más velocidad implica más presión",
+   "correccion": "Efecto Venturi: en régimen permanente, si v aumenta, P disminuye (P + ½ρv² = cte a igual altitud)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 36,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Creer que Q cambia al estrecharse el tubo",
+   "correccion": "El caudal se conserva (Q(A) = Q(B)): lo que cambia es la velocidad, v_B/v_A = S_A/S_B."
+  },
+  {
+   "tipo": "bicho",
+   "x": 53,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Aplicar Bernoulli sin simplificar con los datos",
+   "correccion": "Identificar P = P_atm, z_A = z_B o v ≈ 0 (superficie libre) para simplificar la relación antes de calcular."
+  },
+  {
+   "tipo": "bicho",
+   "x": 71,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Dar demasiadas cifras significativas",
+   "correccion": "Respetar las cifras significativas de los datos (ej.: masa en toneladas con 1 cifra ⇒ resultado con 1 cifra)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 84,
+   "y": 6,
+   "bicho": "demonio",
+   "nombre": "No convertir a unidades SI",
+   "correccion": "Pasar caudales a m³·s⁻¹ y diámetros a m (S = πd²/4) antes de aplicar Q = v·S o Bernoulli."
+  },
+  {
+   "tipo": "bicho",
+   "x": 124,
+   "y": 6,
+   "bicho": "murcielago",
+   "nombre": "Pensar que el empuje depende de la masa del cuerpo",
+   "correccion": "π = ρ_f·V·g: depende del volumen sumergido y del fluido, no de la masa, forma o profundidad del cuerpo."
   }
  ],
  "ambiente": "cueva",
- "relieve": true
+ "relieve": true,
+ "aire": true
 }

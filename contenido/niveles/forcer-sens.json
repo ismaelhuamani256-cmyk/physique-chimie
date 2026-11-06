@@ -753,8 +753,110 @@
      12
     ]
    ]
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 29,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 6.1
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 44,
+   "y": 9,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 5.2
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 57,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 8,
+   "eje": "x",
+   "periodo": 6.5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 85,
+   "y": 12,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 3.5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 100,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 6.3
+  },
+  {
+   "tipo": "bicho",
+   "x": 26,
+   "y": 9,
+   "bicho": "neutrino",
+   "nombre": "Olvidar la estequiometría de la semiecuación",
+   "correccion": "n(Zn) = n(e⁻)/2; para Cr³⁺, n(e⁻) = 3·n(Cr)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 35,
+   "y": 7,
+   "bicho": "neutrino",
+   "nombre": "Invertir el sentido de I y de los e⁻",
+   "correccion": "Los electrones circulan en sentido contrario al de la corriente I."
+  },
+  {
+   "tipo": "bicho",
+   "x": 51,
+   "y": 6,
+   "bicho": "demonio",
+   "nombre": "Confundir ánodo y cátodo",
+   "correccion": "Cátodo = reducción (borne −); ánodo = oxidación (borne +)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 99,
+   "y": 6,
+   "bicho": "neutrino",
+   "nombre": "Unidades incoherentes",
+   "correccion": "Pasar Δt a segundos y µm/cm² a cm antes de calcular (q en C, I en A)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 111,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Usar el volumen de una solución en vez del total",
+   "correccion": "Tras mezclar, [X]i = ni / Vtotal de la mezcla."
+  },
+  {
+   "tipo": "bicho",
+   "x": 120,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Confundir iones y electrones como portadores",
+   "correccion": "Iones en la disolución; electrones solo en el circuito exterior."
+  },
+  {
+   "tipo": "bicho",
+   "x": 134,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Creer que la electrólisis es espontánea",
+   "correccion": "Es una transformación forzada por el generador, en sentido opuesto al espontáneo; la pila es la espontánea."
   }
  ],
  "ambiente": "lab",
- "relieve": true
+ "relieve": true,
+ "aire": true
 }

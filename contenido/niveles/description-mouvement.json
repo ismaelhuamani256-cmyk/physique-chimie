@@ -674,8 +674,102 @@
      11
     ]
    ]
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 24,
+   "y": 13,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 6.3
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 33,
+   "y": 12,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 4.5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 67,
+   "y": 9,
+   "largo": 3,
+   "recorrido": 8,
+   "eje": "x",
+   "periodo": 3.7
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 79,
+   "y": 10,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 3.9
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 90,
+   "y": 9,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 3.5
+  },
+  {
+   "tipo": "bicho",
+   "x": 42,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Ignorar el signo de a_τ o de la aceleración",
+   "correccion": "a_τ < 0 (o a opuesto a v) significa que el móvil se ralentiza, no que «vaya hacia atrás»."
+  },
+  {
+   "tipo": "bicho",
+   "x": 51,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Olvidar un vector del repère de Frenet o derivar la norma de OM sin comprobar la colinealidad",
+   "correccion": "Frenet tiene dos vectores (τ⃗ y n⃗); solo se deriva la norma si todos los vectores son colineales."
+  },
+  {
+   "tipo": "bicho",
+   "x": 68,
+   "y": 6,
+   "bicho": "demonio",
+   "nombre": "Dar más cifras significativas de las que permite el gráfico",
+   "correccion": "Lectura gráfica ⇒ máximo 2 cifras significativas (a ≈ 1,2×10² m·s⁻², no 125,0)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 85,
+   "y": 6,
+   "bicho": "murcielago",
+   "nombre": "Creer que aceleración = «solo aumenta la rapidez»",
+   "correccion": "a⃗ ≠ 0 también si v frena o solo cambia de dirección; a⃗ = dv⃗/dt (vector)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 96,
+   "y": 6,
+   "bicho": "murcielago",
+   "nombre": "Movimiento uniforme ⇒ aceleración nula",
+   "correccion": "En el circular uniforme a = v²/R ≠ 0 (a⃗ ⟂ v⃗, hacia el centro)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 109,
+   "y": 6,
+   "bicho": "murcielago",
+   "nombre": "No convertir unidades (cm, km, min decimales)",
+   "correccion": "Pasar todo a SI: D = 40 cm = 0,40 m; 2,9·10⁹ km = 2,9·10¹² m; 1,33 min = 79,8 s (no 1 min 33 s)."
   }
  ],
  "ambiente": "castillo",
- "relieve": true
+ "relieve": true,
+ "aire": true
 }

@@ -764,8 +764,76 @@
      13
     ]
    ]
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 24,
+   "y": 9,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 3.7
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 36,
+   "y": 10,
+   "largo": 3,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 4.4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 114,
+   "y": 10,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 4.8
+  },
+  {
+   "tipo": "bicho",
+   "x": 40,
+   "y": 7,
+   "bicho": "neutrino",
+   "nombre": "Confundir altitud h con radio de órbita r",
+   "correccion": "La altitud se mide desde la superficie: r = R_astro + h."
+  },
+  {
+   "tipo": "bicho",
+   "x": 64,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Escribir mal la 3.ª ley (T³ = k·a²)",
+   "correccion": "Es T² = k·a³: período al cuadrado y semieje al cubo."
+  },
+  {
+   "tipo": "bicho",
+   "x": 74,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Pensar que v constante implica aceleración nula",
+   "correccion": "En órbita circular uniforme a = v²/r ≠ 0: es radial y centrípeta."
+  },
+  {
+   "tipo": "bicho",
+   "x": 109,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Olvidar el vector unitario y el esquema de la fuerza",
+   "correccion": "F = G·m·M/r²·n con n unitario hacia el astro; dibujar siempre la flecha en un esquema."
+  },
+  {
+   "tipo": "bicho",
+   "x": 121,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "No juzgar si el resultado es razonable",
+   "correccion": "Comprobar el orden de magnitud: T = 178 s para la ISS es absurdo (≈ 93 min = 5,6×10³ s)."
   }
  ],
  "ambiente": "espacio",
- "relieve": true
+ "relieve": true,
+ "aire": true
 }

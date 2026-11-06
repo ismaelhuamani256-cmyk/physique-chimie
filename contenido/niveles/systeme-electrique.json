@@ -762,8 +762,74 @@
      11
     ]
    ]
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 105,
+   "y": 10,
+   "largo": 3,
+   "recorrido": 8,
+   "eje": "x",
+   "periodo": 5.7
+  },
+  {
+   "tipo": "bicho",
+   "x": 38,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Voltímetro en serie o amperímetro en derivación",
+   "correccion": "El voltímetro se conecta en derivación y el amperímetro en serie."
+  },
+  {
+   "tipo": "bicho",
+   "x": 58,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Creer que u e i están en fase en un condensador",
+   "correccion": "i = C·du/dt: es la intensidad i la que está en avance de fase sobre la tensión u."
+  },
+  {
+   "tipo": "bicho",
+   "x": 67,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Creer que el condensador está cargado en t = τ",
+   "correccion": "En t = τ solo se alcanza el 63 % de E; carga o descarga total al cabo de 5τ."
+  },
+  {
+   "tipo": "bicho",
+   "x": 77,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Pensar que τ depende solo de C (o solo de R)",
+   "correccion": "τ = R·C depende de R y de C; la duración de la carga no depende de E."
+  },
+  {
+   "tipo": "bicho",
+   "x": 92,
+   "y": 6,
+   "bicho": "murcielago",
+   "nombre": "Dejar q e i en la ecuación diferencial",
+   "correccion": "Se elimina q e i de la ley de mallas para obtener una ecuación solo en u_C."
+  },
+  {
+   "tipo": "bicho",
+   "x": 103,
+   "y": 6,
+   "bicho": "demonio",
+   "nombre": "Confundir la curva de carga con la de descarga",
+   "correccion": "Carga: u_C crece de 0 a E. Descarga: u_C decrece de E a 0."
+  },
+  {
+   "tipo": "bicho",
+   "x": 121,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Olvidar convertir µF y nF a faradios",
+   "correccion": "1 µF = 10⁻⁶ F y 1 nF = 10⁻⁹ F antes de calcular τ o q."
   }
  ],
  "ambiente": "castillo",
- "relieve": true
+ "relieve": true,
+ "aire": true
 }

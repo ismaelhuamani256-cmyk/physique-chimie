@@ -1086,8 +1086,86 @@
    "largo": 8,
    "grosor": 2,
    "techo": true
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 88,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5.2
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 99,
+   "y": 12,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 4.8
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 115,
+   "y": 9,
+   "largo": 3,
+   "recorrido": 7,
+   "eje": "x",
+   "periodo": 3.5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 132,
+   "y": 10,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 6.2
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 141,
+   "y": 9,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.7
+  },
+  {
+   "tipo": "bicho",
+   "x": 26,
+   "y": 6,
+   "bicho": "demonio",
+   "nombre": "Flecha curva al revés",
+   "correccion": "Parte del sitio donor y apunta al sitio aceptor."
+  },
+  {
+   "tipo": "bicho",
+   "x": 63,
+   "y": 6,
+   "bicho": "murcielago",
+   "nombre": "Poner intermediarios en el balance",
+   "correccion": "El balance global solo lleva reactivos y productos."
+  },
+  {
+   "tipo": "bicho",
+   "x": 95,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Reacción terminada en t1/2",
+   "correccion": "Termina tras unos 6 a 7 t1/2, no en t1/2."
+  },
+  {
+   "tipo": "bicho",
+   "x": 161,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Olvidar el signo menos",
+   "correccion": "En v de un reactivo se pone −d[R]/dt para que sea positiva."
   }
  ],
  "ambiente": "cueva",
- "relieve": true
+ "relieve": true,
+ "aire": true
 }

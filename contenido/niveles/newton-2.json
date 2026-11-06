@@ -734,8 +734,110 @@
      10
     ]
    ]
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 24,
+   "y": 12,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 5.8
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 36,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 7,
+   "eje": "x",
+   "periodo": 4.6
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 49,
+   "y": 9,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 3.9
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 77,
+   "y": 12,
+   "largo": 3,
+   "recorrido": 8,
+   "eje": "x",
+   "periodo": 4.7
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 91,
+   "y": 11,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 5.7
+  },
+  {
+   "tipo": "bicho",
+   "x": 30,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Balance de fuerzas incompleto",
+   "correccion": "Antes de aplicar la ley haz el balance completo (peso, reacción, rozamiento, empuje…) sobre el sistema."
+  },
+  {
+   "tipo": "bicho",
+   "x": 41,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Fuerzas compensadas = reposo",
+   "correccion": "Si las fuerzas se compensan, a_G = 0: el sistema puede estar en reposo o en movimiento rectilíneo uniforme."
+  },
+  {
+   "tipo": "bicho",
+   "x": 55,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Referencial no galileano",
+   "correccion": "La 2.ª ley (ΣF = m·a_G) solo vale en un referencial galileano; en un manège que gira o un referencial acelerado no se aplica."
+  },
+  {
+   "tipo": "bicho",
+   "x": 70,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Vectores sin escala ni sentido",
+   "correccion": "Da el valor de cada fuerza, define una escala y comprueba el sentido de los vectores antes de aplicar la ley."
+  },
+  {
+   "tipo": "bicho",
+   "x": 79,
+   "y": 9,
+   "bicho": "murcielago",
+   "nombre": "Ángulo, unidades y escala",
+   "correccion": "Calculadora en grados, unidades coherentes, escala de la cronofotografía y ángulo de la pendiente en el peso."
+  },
+  {
+   "tipo": "bicho",
+   "x": 105,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "ΣF en el sentido de la velocidad",
+   "correccion": "ΣF tiene el sentido de a_G, no necesariamente el de v: al frenar, ΣF apunta contra el movimiento."
+  },
+  {
+   "tipo": "bicho",
+   "x": 117,
+   "y": 6,
+   "bicho": "murcielago",
+   "nombre": "Balance de fuerzas incompleto",
+   "correccion": "Antes de aplicar la ley haz el balance completo (peso, reacción, rozamiento, empuje…) sobre el sistema."
   }
  ],
  "ambiente": "hielo",
- "relieve": true
+ "relieve": true,
+ "aire": true
 }

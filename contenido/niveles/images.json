@@ -722,8 +722,101 @@
      13
     ]
    ]
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 24,
+   "y": 11,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 4.1
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 47,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.2
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 65,
+   "y": 9,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 114,
+   "y": 9,
+   "largo": 3,
+   "recorrido": 8,
+   "eje": "x",
+   "periodo": 5.1
+  },
+  {
+   "tipo": "bicho",
+   "x": 32,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Confundir grossissement y grandissement",
+   "correccion": "Con objeto lejano e imagen virtual no se mide γ (tamaños) sino G = θ'/θ (ángulos)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 45,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "«El grossissement depende del diámetro del objetivo»",
+   "correccion": "G = −f'₁/f'₂ depende solo de las distancias focales; el diámetro del objetivo fija la luz recogida (luminosidad)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 73,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Imagen intermedia = un punto",
+   "correccion": "El haz de un punto en el infinito fuera del eje converge en el plano focal imagen del objetivo (no en el foco F'₁, salvo sobre el eje)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 85,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Ángulos sin la aproximación de ángulos pequeños",
+   "correccion": "tan θ ≈ θ solo vale en radianes y para ángulos pequeños; usa tan θ = A₁B₁/O₁A₁ y la calculadora en el modo correcto."
+  },
+  {
+   "tipo": "bicho",
+   "x": 94,
+   "y": 9,
+   "bicho": "murcielago",
+   "nombre": "Mirar el Sol con un instrumento óptico",
+   "correccion": "Nunca observes el Sol a través de una lunette: concentra la energía en el círculo ocular; para verlo, proyecta su imagen sobre una pantalla."
+  },
+  {
+   "tipo": "bicho",
+   "x": 114,
+   "y": 5,
+   "bicho": "murcielago",
+   "nombre": "Distancias focales sin pasar a la misma unidad",
+   "correccion": "Convierte f'₁ y f'₂ a la misma unidad antes de operar (p. ej. f'₁ = 60 cm y f'₂ = 20 mm → 62 cm, no 80)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 129,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Objetivo con focal menor que el ocular",
+   "correccion": "El objetivo tiene la mayor distancia focal (del orden del metro); el ocular, la menor (del orden del centímetro): f'₁ > f'₂."
   }
  ],
  "ambiente": "nube",
- "relieve": true
+ "relieve": true,
+ "aire": true
 }

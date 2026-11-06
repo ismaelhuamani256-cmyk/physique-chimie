@@ -893,8 +893,101 @@
      13
     ]
    ]
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 24,
+   "y": 9,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 3.9
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 51,
+   "y": 10,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 5.6
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 118,
+   "y": 13,
+   "largo": 3,
+   "recorrido": 7,
+   "eje": "x",
+   "periodo": 4.3
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 132,
+   "y": 11,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 5.2
+  },
+  {
+   "tipo": "bicho",
+   "x": 38,
+   "y": 5,
+   "bicho": "demonio",
+   "nombre": "Destilar el reactivo más volátil",
+   "correccion": "Destilar el reactivo (el de menor temperatura de ebullición) lo elimina y baja el rendimiento; hay que eliminar un producto."
+  },
+  {
+   "tipo": "bicho",
+   "x": 61,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Calentar sin reflujo",
+   "correccion": "El calentamiento a reflujo acelera la reacción evitando toda pérdida de materia; sin refrigerante se pierden vapores."
+  },
+  {
+   "tipo": "bicho",
+   "x": 89,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Olvidar proteger / desproteger",
+   "correccion": "Si el reactivo no es quimioselectivo hay que proteger el grupo; tras la reacción, una etapa de desprotección es necesaria."
+  },
+  {
+   "tipo": "bicho",
+   "x": 100,
+   "y": 7,
+   "bicho": "neutrino",
+   "nombre": "Confundir velocidad y rendimiento",
+   "correccion": "Calentar o añadir un catalizador acelera la reacción, pero no cambia la cantidad final de producto: el rendimiento queda inalterado."
+  },
+  {
+   "tipo": "bicho",
+   "x": 110,
+   "y": 8,
+   "bicho": "neutrino",
+   "nombre": "Llamar «adición» a la esterificación",
+   "correccion": "Se forma agua además del éster: la esterificación es más bien una sustitución, no una adición."
+  },
+  {
+   "tipo": "bicho",
+   "x": 121,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Olvidar el catalizador (H₂SO₄)",
+   "correccion": "El ácido sulfúrico es catalizador: aumenta la velocidad de formación; interrogarse siempre por el papel de cada especie introducida."
+  },
+  {
+   "tipo": "bicho",
+   "x": 141,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Calcular n_attendue con el reactivo en exceso",
+   "correccion": "n_attendue sale del avance máximo, fijado por el reactivo limitante (tabla de avance)."
   }
  ],
  "ambiente": "lab",
- "relieve": true
+ "relieve": true,
+ "aire": true
 }

@@ -694,8 +694,110 @@
      10
     ]
    ]
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 24,
+   "y": 11,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 6.4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 34,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 3.6
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 45,
+   "y": 9,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 3.7
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 54,
+   "y": 9,
+   "largo": 3,
+   "recorrido": 7,
+   "eje": "x",
+   "periodo": 4.3
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 65,
+   "y": 10,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 5.7
+  },
+  {
+   "tipo": "bicho",
+   "x": 31,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Confundir síntesis aditiva y sustractiva de colores",
+   "correccion": "Las luces de colores se combinan por síntesis aditiva: rojo+verde = amarillo, todas = blanco."
+  },
+  {
+   "tipo": "bicho",
+   "x": 40,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Condición destructiva mal escrita (múltiplo de λ/2)",
+   "correccion": "Destructivas: δ = (k+½)·λ (múltiplo impar de λ/2); constructivas: δ = k·λ."
+  },
+  {
+   "tipo": "bicho",
+   "x": 52,
+   "y": 5,
+   "bicho": "murcielago",
+   "nombre": "Signo equivocado en la fórmula Doppler",
+   "correccion": "Fuente que se acerca: c − v (f_R > f_e); que se aleja: c + v (f_R < f_e)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 61,
+   "y": 5,
+   "bicho": "murcielago",
+   "nombre": "Redondear los resultados intermedios",
+   "correccion": "Conservar el valor exacto de la calculadora y redondear solo al final con las cifras significativas de los datos."
+  },
+  {
+   "tipo": "bicho",
+   "x": 72,
+   "y": 9,
+   "bicho": "murcielago",
+   "nombre": "Sumar niveles sonoros en dB",
+   "correccion": "Se suman las intensidades (W·m⁻²), no los dB: log a + log b ≠ log(a+b)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 83,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "No convertir a metros",
+   "correccion": "nm, µm y cm deben pasarse a m antes de aplicar θ = λ/a o i = λD/e."
+  },
+  {
+   "tipo": "bicho",
+   "x": 92,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Calcular sin fórmula literal",
+   "correccion": "Razonar en fórmula literal y luego sustituir los valores."
   }
  ],
  "ambiente": "castillo",
- "relieve": true
+ "relieve": true,
+ "aire": true
 }

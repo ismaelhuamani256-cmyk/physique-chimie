@@ -773,8 +773,110 @@
      12
     ]
    ]
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 29,
+   "y": 11,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 4.7
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 39,
+   "y": 12,
+   "largo": 3,
+   "recorrido": 7,
+   "eje": "x",
+   "periodo": 3.6
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 49,
+   "y": 10,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 4.4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 78,
+   "y": 9,
+   "largo": 3,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 90,
+   "y": 10,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 4.7
+  },
+  {
+   "tipo": "bicho",
+   "x": 40,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Electrones no igualados en las semiecuaciones",
+   "correccion": "Multiplica cada semiecuación para que el número de electrones ganados y perdidos sea el mismo (p. ej. ×2)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 60,
+   "y": 5,
+   "bicho": "neutrino",
+   "nombre": "Escribir [solvente] o [sólido] en Qr",
+   "correccion": "Un solvente, un sólido o un gas no disuelto se reemplaza por 1 en Qr (p. ej. NaCl(s): Qr = [Na⁺]·[Cl⁻])."
+  },
+  {
+   "tipo": "bicho",
+   "x": 70,
+   "y": 5,
+   "bicho": "murcielago",
+   "nombre": "Creer que equilibrio = «todo se detiene»",
+   "correccion": "El equilibrio es dinámico: las reacciones directa y opuesta continúan a la misma velocidad (v1 = v2)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 99,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Invertir el criterio Qr,i frente a K",
+   "correccion": "Qr,i < K → sentido directo; Qr,i > K → sentido opuesto; la evolución para en Qr = K."
+  },
+  {
+   "tipo": "bicho",
+   "x": 110,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Tratar el agua como solvente cuando es reactivo puro",
+   "correccion": "Con reactivos puros (no en disolución) el agua es un producto, no el solvente: su cantidad entra en Qr."
+  },
+  {
+   "tipo": "bicho",
+   "x": 123,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Olvidar el puente salino en el esquema de la pila",
+   "correccion": "Sin puente salino el circuito no se cierra ni se mantiene la neutralidad: dibújalo siempre."
+  },
+  {
+   "tipo": "bicho",
+   "x": 134,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Semipilas sin pares oxidante-reductor",
+   "correccion": "Cada semipila debe contener un par Mⁿ⁺(aq)/M(s) (metal + su ion)."
   }
  ],
  "ambiente": "lab",
- "relieve": true
+ "relieve": true,
+ "aire": true
 }

@@ -832,8 +832,92 @@
    "largo": 9,
    "grosor": 2,
    "techo": true
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 24,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 6
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 50,
+   "y": 10,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 5.4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 115,
+   "y": 10,
+   "largo": 3,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 4.8
+  },
+  {
+   "tipo": "bicho",
+   "x": 26,
+   "y": 6,
+   "bicho": "demonio",
+   "nombre": "Creer que γ es una partícula o que se frena con papel",
+   "correccion": "γ es onda electromagnética, muy penetrante."
+  },
+  {
+   "tipo": "bicho",
+   "x": 42,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Pensar que la radiactividad siempre es natural",
+   "correccion": "También existe la radiactividad artificial."
+  },
+  {
+   "tipo": "bicho",
+   "x": 57,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Olvidar la conservación de Z y A",
+   "correccion": "Comprobar siempre Z = Z' + Z'' y A = A' + A''."
+  },
+  {
+   "tipo": "bicho",
+   "x": 67,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Confundir β⁻ y β⁺",
+   "correccion": "β⁻: electrón, Z sube 1. β⁺: positón, Z baja 1."
+  },
+  {
+   "tipo": "bicho",
+   "x": 93,
+   "y": 6,
+   "bicho": "demonio",
+   "nombre": "Confundir espontánea y provocada",
+   "correccion": "Radiactiva = espontánea; la artificial se provoca."
+  },
+  {
+   "tipo": "bicho",
+   "x": 122,
+   "y": 6,
+   "bicho": "murcielago",
+   "nombre": "No convertir λ a s⁻¹",
+   "correccion": "Pasar λ y t al SI antes de calcular."
+  },
+  {
+   "tipo": "bicho",
+   "x": 132,
+   "y": 6,
+   "bicho": "demonio",
+   "nombre": "Confundir actividad A y núcleos N",
+   "correccion": "A (Bq) = λ·N: desintegraciones por segundo."
   }
  ],
  "ambiente": "cueva",
- "relieve": true
+ "relieve": true,
+ "aire": true
 }

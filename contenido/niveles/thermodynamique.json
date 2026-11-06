@@ -806,8 +806,94 @@
    "largo": 7,
    "grosor": 2,
    "techo": true
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 24,
+   "y": 12,
+   "largo": 3,
+   "recorrido": 7,
+   "eje": "x",
+   "periodo": 6.1
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 35,
+   "y": 11,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 5.8
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 71,
+   "y": 10,
+   "largo": 3,
+   "recorrido": 7,
+   "eje": "x",
+   "periodo": 4.9
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 99,
+   "y": 10,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 4.9
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 117,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 7,
+   "eje": "x",
+   "periodo": 3.5
+  },
+  {
+   "tipo": "bicho",
+   "x": 26,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Creer que la energía se destruye al frenar o enfriar",
+   "correccion": "No se destruye: se transfiere del sistema al medio exterior (Exercice 17: «Faux. L'énergie est transférée»)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 44,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Pensar que solo el calor puede aumentar U",
+   "correccion": "El trabajo W también aumenta la energía interna: el agua agitada de la experiencia de Joule se calienta. W y Q pueden producir la misma ΔU."
+  },
+  {
+   "tipo": "bicho",
+   "x": 57,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Olvidar la convección al razonar sobre transferencias térmicas",
+   "correccion": "En la nevera el aire frío desciende y el caliente asciende (convección): el tubo metálico va arriba, no en el centro (Exercice 33)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 70,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Confundir transferencia térmica Q (J) y flujo Φ (W)",
+   "correccion": "Φ = Q/Δt: Q es una energía (J) y Φ una potencia (W). La energía perdida en un tiempo es Q = Φ·Δt (con unidades coherentes)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 136,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Ignorar el albedo en el balance radiativo de la Tierra",
+   "correccion": "La Tierra no es un cuerpo negro: refleja ≈ 30 % de la energía recibida. Sin albedo ni efecto invernadero se obtiene 279 K = 6 °C en vez de 15 °C."
   }
  ],
  "ambiente": "horno",
- "relieve": true
+ "relieve": true,
+ "aire": true
 }

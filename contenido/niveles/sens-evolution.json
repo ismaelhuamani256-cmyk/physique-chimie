@@ -245,7 +245,7 @@
   {
    "tipo": "jefe",
    "x": 165,
-   "jefe": "ejercicio_bac_1",
+   "jefe": "rey_bomba",
    "titulo": "Ejercicio bac: síntesis y pila (ej. 28 y 30)",
    "preguntas": [
     {
@@ -992,6 +992,12 @@
    "tipo": "item",
    "x": 112,
    "y": 13,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 157,
+   "y": 12,
    "item": "escopeta"
   }
  ],

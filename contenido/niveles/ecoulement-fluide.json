@@ -284,7 +284,7 @@
   {
    "tipo": "jefe",
    "x": 150,
-   "jefe": "ejercicio_bac_1",
+   "jefe": "rey_bomba",
    "titulo": "Ejercicio Bac: empuje, caudal y Bernoulli",
    "preguntas": [
     {
@@ -976,6 +976,12 @@
    "x": 60,
    "y": 12,
    "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 142,
+   "y": 12,
+   "item": "escopeta"
   }
  ],
  "ambiente": "cueva",

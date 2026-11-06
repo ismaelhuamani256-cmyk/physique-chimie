@@ -274,8 +274,8 @@
   {
    "tipo": "jefe",
    "x": 155,
-   "jefe": "ejercicio_bac_1",
-   "titulo": "Ejercicio BAC : premier principe et lois thermiques",
+   "jefe": "rey_bomba",
+   "titulo": "Rey Bomba : premier principe et lois thermiques",
    "preguntas": [
     {
      "pregunta": "Pour un système fermé au repos, le premier principe de la thermodynamique s'écrit :",
@@ -978,6 +978,12 @@
   {
    "tipo": "item",
    "x": 105,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 147,
    "y": 12,
    "item": "escopeta"
   }

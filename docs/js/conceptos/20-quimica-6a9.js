@@ -345,5 +345,326 @@
     ],
   });
 
+  // =============================================================================================================
+  // 6 · sens-evolution
+  // =============================================================================================================
+  const sup = (n) => String(n).replace(/-/g, '⁻').replace(/\d/g, (d) => '⁰¹²³⁴⁵⁶⁷⁸⁹'[+d]);
+  const fK = (K) => {
+    if (K >= 1000 || K < 0.01) { const e = Math.floor(Math.log10(K) + 1e-9), m = K / Math.pow(10, e); return (Math.abs(m - 1) < 0.05 ? '' : fnum(m, 1) + '×') + '10' + sup(e); }
+    return fnum(K, K < 10 ? 2 : 1).replace(/,00$/, '').replace(/(,\d)0$/, '$1');
+  };
+  const poisson = (lam) => { if (lam <= 0) return 0; if (lam > 30) return Math.round(lam); let L = Math.exp(-lam), p = 1, k = 0; do { k++; p *= Math.random(); } while (p > L); return k - 1; };
+
+  // ---------- 1 · Equilibrio dinámico (cours p. 160: transformation totale / non totale, état d'équilibre dynamique)
+  function montarEquilibrio(host, api) {
+    const N0 = 40, BX = { x0: 18, y0: 50, x1: 478, y1: 318 }, KF = 0.6;
+    let logK = 4, desdeProd = false, P = [], cnt = {}, hist = [], ev = [], tSim = 0, ultH = 0, mostrarQ = false;
+    const COL = { A: K.v, B: K.az, C: K.m, D: K.am };
+    const R = rng(11);
+    const contar = () => { cnt = { A: 0, B: 0, C: 0, D: 0 }; P.forEach((p) => cnt[p.tp]++); };
+    function reiniciar() {
+      P = []; tSim = 0; hist = []; ev = []; ultH = 0;
+      const mk = (tp) => P.push({ tp, x: lerp(BX.x0 + 10, BX.x1 - 10, R()), y: lerp(BX.y0 + 10, BX.y1 - 10, R()), vx: 0, vy: 0, fl: 0 });
+      for (let i = 0; i < N0; i++) { mk(desdeProd ? 'C' : 'A'); mk(desdeProd ? 'D' : 'B'); }
+      contar(); hist.push([0, cnt.C]); S.pedir();
+    }
+    function cambiar(de, a, n) { // convierte n partículas del tipo `de` en `a`
+      const l = P.filter((p) => p.tp === de); for (let i = 0; i < n && l.length; i++) { const j = Math.floor(Math.random() * l.length); const p = l.splice(j, 1)[0]; p.tp = a; p.fl = 0.45; }
+    }
+    function tick(dt) {
+      contar(); const Kv = Math.pow(10, logK), kr = KF / Kv;
+      let nf = poisson((KF * cnt.A * cnt.B / N0) * dt), nr = poisson((kr * cnt.C * cnt.D / N0) * dt);
+      nf = Math.min(nf, cnt.A, cnt.B); nr = Math.min(nr, cnt.C, cnt.D);
+      if (nf) { cambiar('A', 'C', nf); cambiar('B', 'D', nf); for (let i = 0; i < nf; i++) ev.push([tSim, 1]); }
+      if (nr) { cambiar('C', 'A', nr); cambiar('D', 'B', nr); for (let i = 0; i < nr; i++) ev.push([tSim, -1]); }
+      tSim += dt; contar();
+      while (ev.length && ev[0][0] < tSim - 3) ev.shift();
+      if (tSim - ultH >= 0.2) { hist.push([tSim, cnt.C]); ultH = tSim; }
+    }
+    function mover(dt) {
+      P.forEach((p) => {
+        p.vx = clamp(p.vx * 0.97 + (Math.random() - 0.5) * 900 * dt, -55, 55); p.vy = clamp(p.vy * 0.97 + (Math.random() - 0.5) * 900 * dt, -55, 55);
+        p.x += p.vx * dt; p.y += p.vy * dt;
+        if (p.x < BX.x0 + 8) { p.x = BX.x0 + 8; p.vx = Math.abs(p.vx); } if (p.x > BX.x1 - 8) { p.x = BX.x1 - 8; p.vx = -Math.abs(p.vx); }
+        if (p.y < BX.y0 + 8) { p.y = BX.y0 + 8; p.vy = Math.abs(p.vy); } if (p.y > BX.y1 - 8) { p.y = BX.y1 - 8; p.vy = -Math.abs(p.vy); }
+        if (p.fl > 0) p.fl -= dt;
+      });
+    }
+    function avanzar(seg) { for (let t = 0; t < seg; t += 0.05) tick(0.05); }
+    const ctl = barra(host, [
+      { t: 'slider', id: 'k', txt: 'K', min: -1, max: 4, step: 0.1, val: logK, fmt: (v) => fK(Math.pow(10, v)), on: (v) => { logK = v; reiniciar(); } },
+      { t: 'tog', id: 'prod', txt: 'Empezar con C y D', val: false, on: (v) => { desdeProd = v; reiniciar(); } },
+      { t: 'btn', id: 'rei', txt: '↺ Reiniciar', on: () => reiniciar() },
+      { t: 'btn', id: 'av', txt: 'Avanzar ▶▶', on: () => { avanzar(2); S.pedir(); } },
+    ]);
+    ctl.av.style.display = api.reducido ? '' : 'none';
+    const S = lienzo(host, api, {
+      alt: 'Reacción A + B ⇌ C + D: partículas que se convierten en los dos sentidos, curvas de cantidad y velocidades v1 y v2.',
+      paso(dt) { if (!api.reducido) { tick(dt); } if (!api.reducido) mover(dt); return !api.reducido; },
+      dibujar(S) {
+        const c = S.ctx, Kv = Math.pow(10, logK);
+        S.txt(Kv >= 300 ? 'A + B  →  C + D   (transformación total)' : 'A + B  ⇌  C + D   (no total)', 18, 26, { size: 18, weight: 700, color: Kv >= 300 ? K.v : K.m });
+        c.fillStyle = '#0d1530'; c.strokeStyle = K.gris; c.lineWidth = 2; rrect(c, BX.x0, BX.y0, BX.x1 - BX.x0, BX.y1 - BX.y0, 10); c.fill(); c.stroke();
+        P.forEach((p) => {
+          if (p.fl > 0 && !api.reducido) { c.fillStyle = 'rgba(255,255,255,' + p.fl * 1.4 + ')'; c.beginPath(); c.arc(p.x, p.y, 11, 0, 6.3); c.fill(); }
+          bola(c, p.x, p.y, 6.5, COL[p.tp]);
+        });
+        // leyenda
+        ['A', 'B', 'C', 'D'].forEach((t, i) => { const x = 40 + i * 78; bola(c, x, 342, 6, COL[t]); S.txt(t + ' · ' + cnt[t], x + 12, 342, { size: 14 }); });
+        const x = desdeProd ? N0 - cnt.C : cnt.C, tau = x / N0;
+        const Qr = cnt.A * cnt.B > 0 ? (cnt.C * cnt.D) / (cnt.A * cnt.B) : Infinity;
+        S.txt(desdeProd ? 'avance (sentido inverso) x = ' + x : 'x = ' + x + ' · xmax = ' + N0 + ' · τ = x/xmax = ' + fnum(tau, 2), 18, 368, { size: 14, color: K.txt });
+        S.txt('Qr = ' + (isFinite(Qr) ? fnum(Qr, Qr < 100 ? 1 : 0) : '∞') + '   ·   K = ' + fK(Kv), 18, 390, { size: mostrarQ ? 17 : 14, weight: 700, color: mostrarQ ? K.am : K.tx2 });
+        // gráfica n(t)
+        const gx = 512, gy = 56, gw = 262, gh = 160, T0 = Math.max(0, tSim - 40), Tn = 40;
+        S.txt('Cantidad de materia (nº de partículas)', gx, 40, { size: 13, color: K.tx2 });
+        c.strokeStyle = K.gris; c.lineWidth = 1.5; c.beginPath(); c.moveTo(gx, gy); c.lineTo(gx, gy + gh); c.lineTo(gx + gw, gy + gh); c.stroke();
+        S.txt('t →', gx + gw - 2, gy + gh + 13, { size: 12, color: K.tx2, align: 'right' });
+        const Y = (n) => gy + gh - (n / N0) * gh, X = (t) => gx + ((t - T0) / Tn) * gw;
+        c.setLineDash([5, 4]); c.strokeStyle = '#ffffff55'; c.beginPath(); c.moveTo(gx, Y(N0)); c.lineTo(gx + gw, Y(N0)); c.stroke();
+        const eq = N0 * Math.sqrt(Kv) / (1 + Math.sqrt(Kv)); c.strokeStyle = K.m + '99'; c.beginPath(); c.moveTo(gx, Y(eq)); c.lineTo(gx + gw, Y(eq)); c.stroke(); c.setLineDash([]);
+        S.txt('xmax', gx + gw, gy - 8, { size: 12, color: '#ffffffaa', align: 'right' });
+        const curva = (f, col) => { c.strokeStyle = col; c.lineWidth = 2.5; c.beginPath(); let ini = true; hist.forEach((h) => { if (h[0] < T0) return; const px = X(h[0]), py = Y(f(h)); if (ini) { c.moveTo(px, py); ini = false; } else c.lineTo(px, py); }); c.stroke(); };
+        curva((h) => N0 - h[1], K.v); curva((h) => h[1], K.m);
+        S.txt('reactivos', gx + gw - 4, gy + 14, { size: 13, color: K.v, align: 'right' }); S.txt('productos', gx + gw - 4, gy + 30, { size: 13, color: K.m, align: 'right' });
+        // velocidades
+        let v1 = 0, v2 = 0; ev.forEach((e) => { if (e[1] > 0) v1++; else v2++; }); const dtv = Math.max(0.5, Math.min(3, tSim)); v1 /= dtv; v2 /= dtv;
+        S.txt('Velocidades (reacciones por segundo)', gx, 252, { size: 13, color: K.tx2 });
+        [['v₁ directa →', v1, K.v, 274], ['v₂ inversa ←', v2, K.m, 308]].forEach(([n, v, col, y]) => {
+          S.txt(n, gx, y, { size: 13, color: col }); c.fillStyle = '#16204a'; c.fillRect(gx + 92, y - 8, 140, 16); c.fillStyle = col; c.fillRect(gx + 92, y - 8, clamp(v / 6, 0, 1) * 140, 16);
+          S.txt(fnum(v, 1), gx + 238, y, { size: 13 });
+        });
+        const igual = tSim > 6 && Kv < 300 && Math.abs(v1 - v2) < 1.6;
+        if (igual) S.txt('v₁ ≈ v₂ : equilibrio dinámico', gx, 336, { size: 14, weight: 700, color: K.am });
+      },
+    });
+    reiniciar();
+    return {
+      ir(n) {
+        mostrarQ = n === 3;
+        const fijar = (lk, prod) => { logK = lk; desdeProd = prod; ctl.k.set(lk); ctl.prod.setAttribute('aria-pressed', String(prod)); reiniciar(); };
+        if (n === 0) fijar(4, false);
+        else if (n === 1) fijar(Math.log10(4), false);
+        else if (n === 2 || n === 3) { if (Math.abs(logK - Math.log10(4)) > 0.05 || desdeProd || tSim < 12) { fijar(Math.log10(4), false); avanzar(14); } }
+        else if (n === 4) fijar(Math.log10(4), true);
+        S.pedir();
+      },
+      dispose() { S.dispose(); host.replaceChildren(); },
+    };
+  }
+  registrar({
+    id: 'equilibrio-dinamico', capitulos: ['sens-evolution'],
+    titulo: 'Equilibrio dinámico: la reacción nunca para', fr: 'État d’équilibre dynamique',
+    resumen: 'Una transformación puede ser total (se agota el reactivo limitante) o no total (reactivos y productos a la vez). En el equilibrio las reacciones directa e inversa siguen ocurriendo con v₁ = v₂.',
+    pagina_pdf: 160,
+    pasos: [
+      { titulo: 'Transformación total', texto: 'Con K muy grande, el reactivo limitante se consume por completo: el avance final es el máximo, xf = xmax y τ = 1. Las partículas verdes y azules se acaban. (Cours p. 160.)', fr: 'Transformation totale : xf = xmax.' },
+      { titulo: 'Transformación no total (K = 4,0)', texto: 'Con K = 4,0 (valor de la esterificación del ejercicio 28, p. 168) la reacción se detiene antes: quedan reactivos y productos a la vez, xf < xmax, τ < 1. Se escribe con doble flecha ⇌. (p. 160)', fr: 'Transformation non totale : xf < xmax, τ < 1.' },
+      { titulo: 'Equilibrio: v₁ = v₂, pero nada se detiene', texto: 'Las cantidades dejaron de cambiar, pero mira los destellos: siguen convirtiéndose partículas en los dos sentidos. Las barras de velocidad v₁ (directa) y v₂ (inversa) se igualan. Equilibrio ≠ «todo se detiene» (error típico, p. 170).', fr: 'Les réactions directe et opposée se compensent exactement (v₁ = v₂).' },
+      { titulo: 'En el equilibrio, Qr = K', texto: 'El cociente de reacción Qr = [C][D]/([A][B]) fluctúa alrededor de K(T) en el equilibrio: K es precisamente el valor de Qr en el estado de equilibrio dinámico. (p. 161)', fr: 'K(T) est la valeur de Qr à l’équilibre.' },
+      { titulo: 'El mismo equilibrio desde los productos', texto: 'Empezando solo con C y D, el sistema evoluciona en sentido inverso y acaba en el mismo reparto. K depende de la ecuación y de la temperatura, no de la composición inicial. Prueba a mover K.', fr: 'K ne dépend que de l’équation et de la température.' },
+    ],
+    montar: montarEquilibrio,
+    test: [
+      { pregunta: 'Cuando se alcanza el equilibrio, ¿qué ocurre con las reacciones directa e inversa?', opciones: ['Ambas se detienen', 'Siguen ocurriendo a la misma velocidad', 'Solo sigue la directa'], correcta: 1, explicacion: 'Equilibrio dinámico: v₁ = v₂; las cantidades no cambian pero las dos reacciones continúan.' },
+      { pregunta: 'Si empiezas solo con C y D (misma K), ¿a qué reparto llega el sistema?', opciones: ['A todo reactivos', 'Al mismo reparto de equilibrio', 'A todo productos'], correcta: 1, explicacion: 'K(T) solo depende de la ecuación y de T, no de la composición inicial.' },
+    ],
+  });
+
+  // ---------- 2 · Qr frente a K (cours p. 161: critère d'évolution spontanée)
+  function montarQK(host, api) {
+    let logK = 1, logQ = -2, b = 0, evol = false, showK = true, ultimo = 0, nombreQ = 'Qr,i';
+    const b0 = () => { const q = Math.pow(10, logQ), r = Math.sqrt(q); return r / (1 + r); };
+    const bEq = () => { const r = Math.sqrt(Math.pow(10, logK)); return r / (1 + r); };
+    const Qb = () => Math.pow(b / (1 - b), 2);
+    function reset() { b = b0(); evol = false; nombreQ = 'Qr,i'; S.pedir(); }
+    const ctl = barra(host, [
+      { t: 'slider', id: 'q', txt: 'Qr,i', min: -3, max: 3, step: 0.1, val: logQ, fmt: (v) => fK(Math.pow(10, v)), on: (v) => { logQ = v; reset(); } },
+      { t: 'slider', id: 'k', txt: 'K', min: -2, max: 3, step: 0.1, val: logK, fmt: (v) => fK(Math.pow(10, v)), on: (v) => { logK = v; if (evol) { reset(); } S.pedir(); } },
+      { t: 'btn', id: 'go', txt: '▶ Dejar evolucionar', on: () => { if (Math.abs(b - bEq()) < 0.002) reset(); evol = true; nombreQ = 'Qr'; if (api.reducido) { b = bEq(); evol = false; } S.pedir(); } },
+      { t: 'btn', id: 'rei', txt: '↺', on: () => reset() },
+    ]);
+    const AX = { x0: 60, x1: 740, y: 150 }, LO = -3.4, HI = 3.4;
+    const X = (lg) => lerp(AX.x0, AX.x1, (clamp(lg, LO, HI) - LO) / (HI - LO));
+    const S = lienzo(host, api, {
+      alt: 'Eje logarítmico con el valor de K y del cociente de reacción Qr; flecha del sentido de evolución.',
+      paso(dt) { if (!evol) return false; b += (bEq() - b) * Math.min(1, 1.4 * dt); if (Math.abs(b - bEq()) < 0.0015) { b = bEq(); evol = false; } return evol; },
+      dibujar(S) {
+        const c = S.ctx, dif = logQ - logK, igual = Math.abs(dif) < 0.05;
+        S.txt('A + B  ⇌  C + D        Qr = [C]·[D] / ([A]·[B])', 400, 28, { size: 18, weight: 700, align: 'center' });
+        // banner de decisión
+        let msg = 'Qr,i = K → ya está en equilibrio: no evoluciona', col = K.am, dir = 0;
+        if (!igual) { if (dif < 0) { msg = 'Qr,i < K  →  evoluciona en el sentido directo (→)'; col = K.v; dir = 1; } else { msg = 'Qr,i > K  →  evoluciona en el sentido opuesto (←)'; col = K.m; dir = -1; } }
+        if (!showK) { msg = 'Qr mide la composición del sistema en cada instante'; col = K.tx2; dir = 0; }
+        S.txt(msg, 400, 66, { size: 17, weight: 700, color: col, align: 'center' });
+        // eje log
+        c.strokeStyle = K.tx2; c.lineWidth = 2; c.beginPath(); c.moveTo(AX.x0, AX.y); c.lineTo(AX.x1, AX.y); c.stroke();
+        for (let e = -3; e <= 3; e++) { const x = X(e); c.beginPath(); c.moveTo(x, AX.y - 5); c.lineTo(x, AX.y + 5); c.stroke(); S.txt('10' + sup(e), x, AX.y + 22, { size: 13, color: K.tx2, align: 'center' }); }
+        if (showK) {
+          const xk = X(logK); c.strokeStyle = K.m; c.lineWidth = 3; c.beginPath(); c.moveTo(xk, AX.y - 46); c.lineTo(xk, AX.y + 8); c.stroke();
+          S.txt('K(T) = ' + fK(Math.pow(10, logK)), xk, AX.y - 56, { size: 15, weight: 700, color: K.m, align: 'center' });
+          if (dir && !evol && Math.abs(b - b0()) < 0.001) { const xq = X(logQ), xe = X(logK); flecha(c, xq + (dir > 0 ? 14 : -14), AX.y + 52, xe - (dir > 0 ? 8 : -8), AX.y + 52, col, 3, 11); }
+        }
+        const lq = Math.log10(Qb()), xq = X(lq);
+        c.fillStyle = K.v; c.beginPath(); c.arc(xq, AX.y, 10, 0, 6.3); c.fill(); c.strokeStyle = '#fff'; c.lineWidth = 2; c.stroke();
+        S.txt(nombreQ + ' = ' + fK(Qb()), xq, AX.y - 26, { size: 14, weight: 700, color: K.v, align: 'center', halo: true });
+        // recipientes: barras de reactivos y productos
+        const bx = [[200, 1 - b, K.v, '[A] = [B]'], [440, b, K.m, '[C] = [D]']];
+        bx.forEach(([x, v, col, n]) => {
+          c.fillStyle = '#0d1530'; c.strokeStyle = K.gris; c.lineWidth = 2; rrect(c, x, 240, 160, 150, 6); c.fill(); c.stroke();
+          c.fillStyle = col + 'cc'; const h = clamp(v, 0, 1) * 144; c.fillRect(x + 3, 387 - h, 154, h);
+          S.txt(n + ' = ' + fnum(v, 2), x + 80, 262, { size: 14, weight: 700, align: 'center', halo: true });
+        });
+        S.txt('reactivos', 280, 405, { size: 13, color: K.v, align: 'center' }); S.txt('productos', 520, 405, { size: 13, color: K.m, align: 'center' });
+        if (Math.abs(b - bEq()) < 0.002 && showK) S.txt('Qr = K: fin de la evolución', 400, 210, { size: 15, weight: 700, color: K.am, align: 'center' });
+        else if (showK) flecha(c, 365, 316, 435, 316, K.v, 2.5, 9), flecha(c, 435, 340, 365, 340, K.m, 2.5, 9);
+      },
+    });
+    reset();
+    return {
+      ir(n) {
+        showK = n >= 1;
+        const f = (lq, lk) => { logQ = lq; logK = lk; ctl.q.set(lq); ctl.k.set(lk); reset(); };
+        if (n === 0) f(-1.5, 1); else if (n === 1) f(-1.5, 1);
+        else if (n === 2) { f(-2.2, 1); if (!api.reducido) setTimeout(() => { if (!evol) ctl.go.click(); }, 900); else { ctl.go.click(); } }
+        else if (n === 3) { f(2.4, 1); if (!api.reducido) setTimeout(() => { if (!evol) ctl.go.click(); }, 900); else { ctl.go.click(); } }
+        else if (n === 4) f(1, 1);
+        S.pedir();
+      },
+      dispose() { S.dispose(); host.replaceChildren(); },
+    };
+  }
+  registrar({
+    id: 'q-vs-k', capitulos: ['sens-evolution'],
+    titulo: 'Qr frente a K: ¿hacia dónde evoluciona?', fr: 'Critère d’évolution spontanée',
+    resumen: 'Se compara el cociente de reacción inicial Qr,i con K(T): si Qr,i < K evoluciona en sentido directo, si Qr,i > K en el opuesto, y se detiene cuando Qr = K.',
+    pagina_pdf: 161,
+    pasos: [
+      { titulo: 'Qr: una fotografía de la composición', texto: 'El cociente de reacción Qr se calcula con las concentraciones de productos y reactivos (cada una elevada a su coeficiente; sólidos y disolvente se sustituyen por 1). Es la bolita verde sobre un eje logarítmico. (p. 160)', fr: 'Quotient de réaction Qr.' },
+      { titulo: 'K(T): el valor de Qr en el equilibrio', texto: 'La línea rosa es la constante de equilibrio K(T): el valor que toma Qr en el equilibrio. Solo depende de la ecuación y de la temperatura. (p. 161)', fr: 'Constante d’équilibre K(T).' },
+      { titulo: 'Qr,i < K → sentido directo', texto: 'Qr,i está a la izquierda de K: faltan productos, así que la reacción avanza en sentido directo (→), los productos aumentan y Qr sube hasta alcanzar K. Mira las barras. (p. 161)', fr: 'Qr,i < K : évolution dans le sens direct.' },
+      { titulo: 'Qr,i > K → sentido opuesto', texto: 'Ahora Qr,i está a la derecha de K: sobran productos, y el sistema evoluciona en el sentido opuesto (←) hasta que Qr baja a K. (p. 161; error típico: invertir el criterio, p. 170.)', fr: 'Qr,i > K : évolution dans le sens opposé.' },
+      { titulo: 'Qr,i = K → ya está en equilibrio', texto: 'Si Qr,i = K no hay evolución. Mueve tú los dos deslizadores (Qr,i y K) y pulsa «Dejar evolucionar»: la bolita siempre va hacia K y se para ahí.', fr: 'Qr,i = K : le système est déjà à l’équilibre.' },
+    ],
+    montar: montarQK,
+    test: [
+      { pregunta: 'Si Qr,i = 0,01 y K = 10, ¿en qué sentido evoluciona el sistema?', opciones: ['Directo (→)', 'Opuesto (←)', 'No evoluciona'], correcta: 0, explicacion: 'Qr,i < K → sentido directo; los productos aumentan hasta que Qr = K.' },
+      { pregunta: 'Cuando el sistema evoluciona, ¿qué valor toma Qr al final?', opciones: ['Cero', 'K(T)', 'El valor inicial'], correcta: 1, explicacion: 'La evolución se detiene cuando Qr = K(T).' },
+    ],
+  });
+
+  // ---------- 3 · Pila (cours p. 161–162: demi-piles, pont salin, mouvement des porteurs de charge, pile usée)
+  function montarPila(host, api) {
+    let cerrado = false, alfa = 0, alvo = 0, anim = false, hl = '', verEq = false, verI = false, aviso = 0;
+    const KP = 37.3; // log10 K de Cu²⁺ + Zn ⇌ Cu + Zn²⁺ = 2×10³⁷ (p. 158)
+    const R = rng(5);
+    const iones = []; for (let i = 0; i < 26; i++) iones.push({ u: R(), v: R(), ph: R() * 6.28 });
+    const ctl = barra(host, [
+      { t: 'tog', id: 'sw', txt: 'Interruptor cerrado', val: false, on: (v) => { cerrado = v; S.pedir(); } },
+      { t: 'slider', id: 'al', txt: 'Avance', min: 0, max: 100, step: 1, val: 0, fmt: (v) => v + ' %', on: (v) => { if (!cerrado) { ctl.al.set(Math.round(alfa * 100)); aviso = 2; } else { alfa = alvo = v / 100; } S.pedir(); } },
+      { t: 'btn', id: 'run', txt: '▶ Funcionar', on: () => { if (!cerrado) { ctl.sw.click(); } alvo = 1; anim = true; S.pedir(); } },
+      { t: 'btn', id: 'rei', txt: '↺', on: () => { alfa = alvo = 0; ctl.al.set(0); S.pedir(); } },
+    ]);
+    const Qlog = (a) => Math.log10((1 + a) / (1 - a + 1e-38));
+    const S = lienzo(host, api, {
+      alt: 'Pila cobre-zinc: dos semipilas, puente salino, hilo con lámpara, electrones del Zn al Cu y estado de la pila.',
+      continuo: !api.reducido,
+      paso(dt) {
+        if (aviso > 0) aviso -= dt;
+        if (anim || Math.abs(alvo - alfa) > 0.001) {
+          const v = api.reducido ? 1 : 0.1; if (alvo > alfa) alfa = Math.min(alvo, alfa + v * dt * (anim ? 1 : 3)); else alfa = Math.max(alvo, alfa - 0.4 * dt);
+          ctl.al.set(Math.round(alfa * 100)); if (alfa >= alvo) anim = false; if (api.reducido) { alfa = alvo; anim = false; }
+        }
+        return !api.reducido || anim;
+      },
+      dibujar(S) {
+        const c = S.ctx, t = S.t, a = clamp(alfa, 0, 1), fin = a >= 0.999;
+        const lq = a >= 0.999 ? KP : Math.min(KP, Qlog(a)), prog = lq / KP; // posición del marcador Qr en el medidor
+        const flujo = cerrado && !fin;
+        // vasos
+        const vasos = [[70, 'Zn²⁺', K.az], [400, 'Cu²⁺', '#35c8ff']];
+        vasos.forEach(([x, n, col], i) => {
+          const conc = i === 0 ? 0.25 + 0.75 * a : 1 - a; // [Zn²⁺] sube, [Cu²⁺] baja
+          c.fillStyle = col + Math.round(clamp(conc, 0.05, 1) * 70).toString(16).padStart(2, '0'); c.fillRect(x, 218, 220, 142);
+          c.strokeStyle = '#c9d3ff'; c.lineWidth = 3; c.beginPath(); c.moveTo(x, 190); c.lineTo(x, 360); c.lineTo(x + 220, 360); c.lineTo(x + 220, 190); c.stroke();
+          const nI = Math.round((i === 0 ? 6 + 14 * a : 20 * (1 - a) + 1)); const jit = api.reducido ? 0 : 1;
+          for (let k = 0; k < nI; k++) { const q = iones[(k + i * 9) % iones.length]; const px = x + 14 + q.u * 192 + Math.sin(t * 1.3 + q.ph) * 6 * jit, py = 232 + q.v * 118 + Math.cos(t * 1.1 + q.ph) * 6 * jit; if (Math.abs(px - (i === 0 ? 165 : 495)) < 22) continue; bola(c, px, py, 6, col); }
+          S.txt(n + '(aq)', x + 110, 376, { size: 14, weight: 700, color: col, align: 'center' });
+        });
+        // electrodos
+        const wz = 26 - 12 * a, wc = 20 + 18 * a;
+        c.fillStyle = '#8f9bb8'; c.fillRect(165 - wz / 2, 110, wz, 250); c.fillStyle = '#d9822b'; c.fillRect(495 - wc / 2, 110, wc, 250);
+        S.txt('Zn(s)', 165, 102, { size: 14, weight: 700, align: 'center', halo: true }); S.txt('Cu(s)', 495, 102, { size: 14, weight: 700, align: 'center', halo: true });
+        S.txt('− borne negativo', 135, 80, { size: 12, color: K.m, align: 'center' }); S.txt('+ borne positivo', 540, 80, { size: 12, color: K.v, align: 'center' });
+        // puente salino
+        const hb = hl === 'puente' ? 1 : 0;
+        c.strokeStyle = hb ? K.am : '#e0e6ff'; c.lineWidth = hb ? 5 : 3; c.fillStyle = '#3a4a85aa';
+        c.beginPath(); c.moveTo(250, 250); c.lineTo(250, 196); c.lineTo(450, 196); c.lineTo(450, 250); c.lineWidth = 16; c.strokeStyle = hb ? K.am + '66' : '#3a4a85'; c.stroke();
+        c.lineWidth = 3; c.strokeStyle = hb ? K.am : '#e0e6ff'; c.beginPath(); c.moveTo(242, 250); c.lineTo(242, 190); c.lineTo(458, 190); c.lineTo(458, 250); c.stroke(); c.beginPath(); c.moveTo(258, 250); c.lineTo(258, 202); c.lineTo(442, 202); c.lineTo(442, 250); c.stroke();
+        S.txt('puente salino', 350, 178, { size: 13, color: hb ? K.am : K.tx2, align: 'center', weight: hb ? 700 : 600 });
+        if (flujo) for (let k = 0; k < 6; k++) { // cationes → hacia Cu (+), aniones → hacia Zn (−)
+          const u = (t * 0.25 + k / 6) % 1, len = 200, px = 250 + u * len; const y = 196;
+          if (px > 250 && px < 450) { bola(c, px, y, 6, K.az); S.txt('+', px, y, { size: 12, color: '#001', align: 'center' }); const pa = 450 - u * len; bola(c, pa, y + 0.01, 0.1, '#000'); bola(c, pa, y, 6, K.am); S.txt('−', pa, y, { size: 12, color: '#001', align: 'center' }); }
+        }
+        // hilo y lámpara
+        c.strokeStyle = '#e0e6ff'; c.lineWidth = 3; c.beginPath(); c.moveTo(165, 110); c.lineTo(165, 56); c.lineTo(285, 56); c.moveTo(375, 56); c.lineTo(495, 56); c.lineTo(495, 110); c.stroke();
+        const on = flujo; c.fillStyle = on ? '#fff3b0' : '#1b2550'; c.strokeStyle = on ? K.am : '#e0e6ff'; c.lineWidth = 3; if (on) { c.shadowColor = K.am; c.shadowBlur = 22; } c.beginPath(); c.arc(330, 56, 17, 0, 6.3); c.fill(); c.stroke(); c.shadowBlur = 0;
+        c.beginPath(); c.moveTo(318, 56); c.lineTo(342, 56); c.stroke();
+        c.strokeStyle = '#e0e6ff'; c.lineWidth = 3; c.beginPath(); c.moveTo(285, 56); if (cerrado) c.lineTo(313, 56); else c.lineTo(305, 36); c.stroke(); c.beginPath(); c.moveTo(347, 56); c.lineTo(375, 56); c.stroke();
+        S.txt(cerrado ? 'interruptor cerrado' : 'interruptor abierto: no circula corriente', 330, 24, { size: 13, color: cerrado ? K.v : K.tx2, align: 'center' });
+        if (flujo) { // electrones: Zn → Cu
+          const rec = [[165, 110, 165, 56, 54], [165, 56, 285, 56, 120], [375, 56, 495, 56, 120], [495, 56, 495, 110, 54]], tot = 348;
+          for (let k = 0; k < 14; k++) {
+            let dd = api.reducido ? k * (tot / 14) : (t * 60 + k * (tot / 14)) % tot, j = 0;
+            while (j < 3 && dd > rec[j][4]) { dd -= rec[j][4]; j++; }
+            const r = rec[j], f = dd / r[4];
+            c.fillStyle = K.am; c.beginPath(); c.arc(lerp(r[0], r[2], f), lerp(r[1], r[3], f), 4.5, 0, 6.3); c.fill();
+          }
+          flecha(c, 190, 42, 262, 42, K.am, 3, 10); S.txt('e⁻', 226, 30, { size: 14, weight: 700, color: K.am, align: 'center' });
+          if (verI) { flecha(c, 470, 72, 398, 72, K.m, 3, 10); S.txt('I', 434, 86, { size: 15, weight: 700, color: K.m, align: 'center' }); }
+        } else if (!cerrado && verI) { S.txt('(sin circuito cerrado no hay I ni e⁻ circulando)', 330, 90, { size: 12, color: K.tx2, align: 'center' }); }
+        if (verEq) { S.txt('Zn = Zn²⁺ + 2 e⁻ (oxidación)', 180, 397, { size: 13, color: K.m, align: 'center' }); S.txt('Cu²⁺ + 2 e⁻ = Cu (reducción)', 510, 397, { size: 13, color: K.v, align: 'center' }); }
+        // medidor Qr → K
+        const mx = 700, my0 = 110, my1 = 350;
+        S.txt('Qr → K', mx, 82, { size: 14, weight: 700, align: 'center' });
+        c.fillStyle = '#16204a'; rrect(c, mx - 12, my0, 24, my1 - my0, 8); c.fill(); c.strokeStyle = K.gris; c.stroke();
+        const yq = my1 - prog * (my1 - my0); c.fillStyle = K.v + '88'; c.fillRect(mx - 10, yq, 20, my1 - yq); bola(c, mx, yq, 9, K.v);
+        c.strokeStyle = K.m; c.lineWidth = 3; c.beginPath(); c.moveTo(mx - 24, my0); c.lineTo(mx + 24, my0); c.stroke(); S.txt('K = 2×10³⁷', mx, my0 - 12, { size: 12, color: K.m, align: 'center' });
+        S.txt('Qr', mx + 18, yq - 2, { size: 13, color: K.v }); S.txt('inicio', mx + 22, my1 + 12, { size: 12, color: K.tx2 });
+        S.txt(fin ? 'pila gastada' : 'U = ' + (cerrado || a > 0 ? '↓' : '1,10 V'), mx, 372, { size: 14, weight: 700, color: fin ? K.m : K.am, align: 'center' });
+        if (fin) S.txt('Qr = K: pila gastada (U = 0)', 330, 150, { size: 17, weight: 700, color: K.m, align: 'center', halo: true });
+        if (aviso > 0) S.txt('Cierra el interruptor: sin circuito no hay transformación', 330, 130, { size: 15, weight: 700, color: K.am, align: 'center', halo: true });
+        if (hl === 'semi') { c.strokeStyle = K.am; c.setLineDash([6, 5]); c.lineWidth = 2; c.strokeRect(62, 182, 236, 196); c.strokeRect(392, 182, 236, 196); c.setLineDash([]); S.txt('2 semipilas: cada una = metal + su ion (Mⁿ⁺/M)', 345, 150, { size: 14, weight: 700, color: K.am, align: 'center', halo: true }); }
+      },
+    });
+    return {
+      ir(n) {
+        hl = n === 0 ? 'semi' : n === 1 ? 'puente' : ''; verEq = n >= 2; verI = n >= 3;
+        const cfg = (cer, al) => { cerrado = cer; ctl.sw.setAttribute('aria-pressed', String(cer)); alvo = al; if (n >= 2 && !api.reducido) { alfa = Math.min(alfa, al); } else alfa = al; ctl.al.set(Math.round(alfa * 100)); anim = false; };
+        if (n === 0) cfg(false, 0); else if (n === 1) cfg(false, 0); else if (n === 2) cfg(true, 0.3); else if (n === 3) cfg(true, 0.6); else if (n === 4) { cfg(true, 1); if (!api.reducido) { anim = true; } }
+        S.pedir();
+      },
+      dispose() { S.dispose(); host.replaceChildren(); },
+    };
+  }
+  registrar({
+    id: 'pila', capitulos: ['sens-evolution'],
+    titulo: 'La pila: electrones por el circuito', fr: 'Pile, demi-piles et pont salin',
+    resumen: 'Una pila es un sistema fuera de equilibrio: dos semipilas (metal + su ion) unidas por un puente salino. Mientras Qr < K los electrones circulan del reductor al oxidante por el circuito exterior; cuando Qr = K la pila está gastada.',
+    pagina_pdf: 161,
+    pasos: [
+      { titulo: 'Dos semipilas', texto: 'Cada semipila es un metal sumergido en una disolución de su ion: Zn/Zn²⁺ y Cu/Cu²⁺ (pares Mⁿ⁺/M). Con el interruptor abierto no pasa nada: el sistema está fuera de equilibrio (Qr < K = 2×10³⁷) pero no puede evolucionar. (p. 161)', fr: 'Une pile : deux demi-piles reliées par un pont salin.' },
+      { titulo: 'El puente salino cierra el circuito', texto: 'El puente salino (papel o membrana con una disolución iónica) cierra el circuito dentro de la pila y mantiene la neutralidad eléctrica de las disoluciones. Sin él (error típico, p. 167) no hay pila.', fr: 'Le pont salin ferme le circuit et assure la neutralité électrique.' },
+      { titulo: 'Interruptor cerrado: los electrones salen del reductor', texto: 'Al cerrar, el zinc (reductor) cede electrones: Zn = Zn²⁺ + 2 e⁻ y la placa se gasta; el Cu²⁺ los capta: Cu²⁺ + 2 e⁻ = Cu y la placa crece. Los electrones circulan por el hilo del Zn al Cu y la lámpara se enciende; por el puente se mueven iones. (p. 162)', fr: 'Le réducteur cède des électrons à la borne −, l’oxydant en capte à la borne +.' },
+      { titulo: 'Sentido de los electrones y de la corriente', texto: 'Fuera de la pila los electrones van del borne − al borne +; el sentido convencional de la corriente I es el opuesto, del + al −. No los confundas (error típico, p. 169). (p. 162)', fr: 'Le courant électrique va de la borne + à la borne −, les électrons circulent en sens opposé.' },
+      { titulo: 'Qr → K: pila gastada', texto: 'Con el funcionamiento Qr crece hasta alcanzar K(T): la pila está gastada. Lo que la limita es el reactivo limitante (aquí casi todo el Cu²⁺ se consume antes de que Qr llegue a K). Pulsa «Funcionar» para verlo. (p. 161)', fr: 'Lorsque Qr = K, la pile est usée.' },
+    ],
+    montar: montarPila,
+    test: [
+      { pregunta: 'En el hilo exterior de la pila, ¿hacia dónde circulan los electrones?', opciones: ['Del Cu (+) al Zn (−)', 'Del Zn (−) al Cu (+)', 'No circulan: solo se mueven iones'], correcta: 1, explicacion: 'El reductor (Zn) cede e⁻ al borne −; viajan por el circuito exterior hacia el borne +. La corriente I va en sentido opuesto.' },
+      { pregunta: '¿Para qué sirve el puente salino?', opciones: ['Para que circulen electrones', 'Para cerrar el circuito y mantener la neutralidad eléctrica con el movimiento de iones', 'Para calentar la pila'], correcta: 1, explicacion: 'Por el puente se mueven iones (no electrones); cierra el circuito y asegura la neutralidad de las disoluciones.' },
+    ],
+  });
+
   // @@MAS@@
 })();

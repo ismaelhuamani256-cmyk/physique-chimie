@@ -406,8 +406,8 @@
           const x0 = 60, y0 = 276, y1 = 366;
           txt(c, 'T (%)', 30, 268, { s: 12, c: T2 }); lin(c, x0, y0 - 2, x0, y1, T2, 1); lin(c, x0, y1, 760, y1, T2, 1);
           [4000, 3500, 3000, 2500, 2000, 1500, 1000, 500].forEach((v) => { lin(c, nuX(v), y1, nuX(v), y1 + 4, T2, 1); txt(c, String(v), nuX(v), y1 + 14, { s: 11, c: T2 }); });
-          txt(c, 'ν̃ (cm⁻¹)', 760, y1 + 14, { s: 11, c: T2, a: 'right' });
-          if (n >= 4) { c.fillStyle = '#ff3da622'; c.fillRect(nuX(1300), y0 - 2, 760 - nuX(1300), y1 - y0 + 2); txt(c, 'zone des empreintes digitales', (nuX(1300) + 760) / 2, y0 + 8, { s: 12, c: MG, b: 1 }); }
+          txt(c, 'ν̃ (cm⁻¹)', 760, y1 + 29, { s: 11, c: T2, a: 'right' });
+          if (n >= 4) { c.fillStyle = '#ff3da622'; c.fillRect(nuX(1300), y0 - 2, 760 - nuX(1300), y1 - y0 + 2); txt(c, 'zone des empreintes digitales', (nuX(1300) + 760) / 2, y1 + 29, { s: 12, c: MG, b: 1 }); }
           if (n >= 3) { lin(c, nuX(1300), y0 - 2, nuX(1300), y1, MG, 1, [4, 4]); txt(c, '1 300', nuX(1300), y0 - 10, { s: 11, c: MG }); }
           c.beginPath(); for (let v = 4000; v >= 500; v -= 10) { const T2v = 1 - absorb(S.mol, v), x = nuX(v), y = y1 - T2v * (y1 - y0 - 6); v === 4000 ? c.moveTo(x, y) : c.lineTo(x, y); } c.strokeStyle = VE; c.lineWidth = 2.2; c.stroke();
           if (n >= 3) m.ba.forEach((b) => { const x = nuX(b.c); txt(c, b.g, x, y1 - (1 - absorb(S.mol, b.c)) * (y1 - y0 - 6) + (b.c > 2500 ? 16 : 14), { s: 12, c: AM, b: 1 }); });
@@ -472,11 +472,11 @@
           const cc = S.c; let tot = 0; const parts = sal.i.map(([nm]) => { const v = L[nm] * 1e-3 * cc; tot += v; return [nm, v]; });
           const valido = cc < 10;
           if (n >= 3 || n === 2) {
-            const bx = 90, by = 300, bw = 520, mx = (35 + 7.6) * 1e-3 * 20;
+            const bx = 90, by = 300, bw = 520, mx = 0.3;
             txt(c, 'σ = Σ λᵢ·[Xᵢ]', 50, by - 14, { s: 13, c: T2, a: 'left', b: 1 });
-            let x = bx; parts.forEach(([nm, v]) => { const w = (v / mx) * bw; rr(c, x, by, Math.max(2, w), 30, 4); c.fillStyle = COL[nm]; c.fill(); if (w > 70) txt(c, nm + ' ' + v.toFixed(3).replace('.', ','), x + w / 2, by + 15, { s: 12, b: 1, c: '#0a0f20' }); x += w; });
+            let x = bx; parts.forEach(([nm, v]) => { const w = Math.min(bw, (v / mx) * bw); rr(c, x, by, Math.max(2, w), 30, 4); c.fillStyle = COL[nm]; c.fill(); if (w > 70) txt(c, nm + ' ' + v.toFixed(3).replace('.', ','), x + w / 2, by + 15, { s: 12, b: 1, c: '#0a0f20' }); x += w; });
             txt(c, 'σ = ' + tot.toFixed(3).replace('.', ',') + ' S·m⁻¹', 630, by + 15, { s: 16, b: 1, c: AM, a: 'left' });
-            const f = (nm, v) => String(L[nm]).replace('.', ',') + '·10⁻³ × ' + cc.toFixed(1).replace('.', ',') ; txt(c, parts.map(([nm]) => 'λ(' + nm + ')·[' + nm + ']').join(' + ') + '   ([X] = ' + cc.toFixed(1).replace('.', ',') + ' mol·m⁻³)', 90, by + 48, { s: 12, c: T2, a: 'left' });
+            const f = (nm, v) => String(L[nm]).replace('.', ',') + '·10⁻³ × ' + cc.toFixed(1).replace('.', ',') ; txt(c, parts.map(([nm]) => 'λ(' + nm + ')·[' + nm + ']').join(' + ') + ' = ' + parts.map(([nm]) => String(L[nm]).replace('.', ',') + '·10⁻³ × ' + cc.toFixed(1).replace('.', ',')).join(' + '), 90, by + 48, { s: 12, c: T2, a: 'left' });
           } else txt(c, n === 1 ? 'los iones migran: cationes → (−) · aniones → (+)' : 'sin tensión: movimiento al azar, sin corriente neta', W / 2, 330, { s: 14, c: T2 });
           if (n >= 4) { chip(c, valido ? 'c < 10 mmol/L : ley válida' : 'c ≥ 10 mmol/L : fuera del dominio', 590, 268, valido ? VE : MG, { s: 13 }); lin(c, X0, Y0 - 0.5, X1, Y0, 'rgba(0,0,0,0)', 0.1); }
         },
@@ -528,13 +528,13 @@
           // gráfica
           lin(c, gx(0), gy(0), gx(6), gy(0), T2, 1); lin(c, gx(0), gy(0), gx(0), gy(1.4), T2, 1); txt(c, 'A', gx(0) - 12, gy(1.4), { s: 13, c: T2 }); txt(c, 'c (10⁻⁴ mol·L⁻¹)', gx(6) - 10, gy(0) + 28, { s: 12, c: T2, a: 'right' });
           for (let i = 0; i <= 6; i++) { lin(c, gx(i), gy(0), gx(i), gy(0) + 4, T2, 1); txt(c, String(i), gx(i), gy(0) + 14, { s: 11, c: T2 }); } [0.5, 1.0].forEach((a) => { lin(c, gx(0) - 4, gy(a), gx(0), gy(a), T2, 1); txt(c, String(a).replace('.', ','), gx(0) - 16, gy(a), { s: 11, c: T2 }); });
-          if (n >= 2) { lin(c, gx(0), gy(0), gx(5.4), gy(K * 5.4e-4), VE, 2); txt(c, 'A = k·c', gx(5.4) - 4, gy(K * 5.4e-4) - 12, { s: 13, c: VE, b: 1, a: 'right' }); }
+          if (n >= 2) { lin(c, gx(0), gy(0), gx(5.4), gy(K * 5.4e-4), VE, 2); txt(c, 'A = k·c', gx(4.6), gy(K * 4.6e-4) + 24, { s: 13, c: VE, b: 1, a: 'left' }); }
           CS.forEach((cc, i) => { if (i < Math.floor(S.med + 0.001)) { circ(c, gx(cc), gy(K * cc * 1e-4), 5, MG, null); } });
           if (n >= 2) txt(c, 'dominio de validez: c < 10⁻² mol·L⁻¹', 600, 70, { s: 12, c: AM });
           if (n >= 3) {
             const fuera = A > 1.35, ya = gy(Math.min(A, 1.35)), xs = gx(cm);
             if (!fuera) { lin(c, gx(0), ya, xs, ya, MG, 1.5, [5, 4]); flecha(c, xs, ya, xs, gy(0) - 2, MG, 1.5); circ(c, xs, ya, 6, MG, '#fff', 1.5);
-              txt(c, 'c_déduite = ' + cm.toFixed(1).replace('.', ',') + '·10⁻⁴', xs, gy(0) - 14, { s: 12, c: MG, b: 1, a: xs > 700 ? 'right' : 'center' });
+              txt(c, 'c_déduite = ' + cm.toFixed(1).replace('.', ',') + '·10⁻⁴', xs + 8, gy(0) - 14, { s: 12, c: MG, b: 1, a: 'left' });
               if (f > 1) { chip(c, 'c muestra = ' + cm.toFixed(1).replace('.', ',') + ' × ' + f + ' = ' + (cm * f).toFixed(1).replace('.', ',') + '·10⁻⁴', 590, 100, AM, { s: 13 }); } else txt(c, 'muestra: c = ' + S.c0.toFixed(1).replace('.', ',') + '·10⁻⁴', 590, 100, { s: 13, c: T2 });
             } else { chip(c, 'A fuera de la gama patrón → diluir la muestra', 590, 100, MG, { s: 13 }); lin(c, gx(0), gy(1.35), gx(6), gy(1.35), MG, 1.2, [6, 4]); }
           }
@@ -545,6 +545,269 @@
       { pregunta: '¿Para qué se prepara una gama patrón?', opciones: ['Para trazar la curva A = f(c) con concentraciones conocidas', 'Para cambiar el pH de la muestra', 'Para eliminar la absorbancia'], correcta: 0, explicacion: 'Las soluciones hijas dan los puntos de la curva de etalonnage.' },
       { pregunta: 'La muestra desconocida se diluyó ×5 y la curva da c = 1,4·10⁻⁴ mol·L⁻¹. La muestra original tiene…', opciones: ['1,4·10⁻⁴ mol·L⁻¹', '7,0·10⁻⁴ mol·L⁻¹', '0,28·10⁻⁴ mol·L⁻¹'], correcta: 1, explicacion: 'Hay que multiplicar por el factor de dilución: 1,4 × 5 = 7,0.' },
       { pregunta: 'La ley A = k·c solo es válida para…', opciones: ['c < 10⁻² mol·L⁻¹', 'cualquier concentración', 'c > 1 mol·L⁻¹'], correcta: 0, explicacion: 'Beer-Lambert y Kohlrausch valen para c < 10⁻² mol·L⁻¹.' },
+    ],
+  });
+
+  // =====================================================================================
+  // CAP. 3 · methodes-chimiques
+  // =====================================================================================
+
+  // Nube de partículas que se agitan dentro de un recinto (b = {x0,y0,x1,y1}, mutable)
+  function nube(b, seed) {
+    const rng = PCB.util.rng ? PCB.util.rng(seed || 3) : Math.random, sp = {}, fl = [];
+    return {
+      b, sp,
+      sync(k, n, col, lab) { const a = (sp[k] = sp[k] || []); while (a.length < n) a.push({ x: b.x0 + rng() * (b.x1 - b.x0), y: b.y0 + rng() * (b.y1 - b.y0), vx: (rng() - 0.5) * 30, vy: (rng() - 0.5) * 30, col, lab }); while (a.length > n) { const q = a.pop(); fl.push({ x: q.x, y: q.y, t: 0, col: q.col }); } },
+      step(dt, ag) { Object.keys(sp).forEach((k) => sp[k].forEach((p) => { p.vx += (rng() - 0.5) * 260 * dt * ag; p.vy += (rng() - 0.5) * 260 * dt * ag; const v = Math.hypot(p.vx, p.vy), m = 38 * ag; if (v > m) { p.vx *= m / v; p.vy *= m / v; } p.x += p.vx * dt; p.y += p.vy * dt; if (p.x < b.x0) { p.x = b.x0; p.vx = Math.abs(p.vx); } if (p.x > b.x1) { p.x = b.x1; p.vx = -Math.abs(p.vx); } if (p.y < b.y0) { p.y = b.y0; p.vy = Math.abs(p.vy); } if (p.y > b.y1) { p.y = b.y1; p.vy = -Math.abs(p.vy); } })); fl.forEach((f) => (f.t += dt)); while (fl.length && fl[0].t > 0.5) fl.shift(); },
+      draw(c, r) { r = r || 6; Object.keys(sp).forEach((k) => sp[k].forEach((p) => { circ(c, p.x, p.y, r, p.col + 'aa', p.col, 1.5); if (p.lab) txt(c, p.lab, p.x, p.y, { s: 9, b: 1 }); })); fl.forEach((f) => { c.globalAlpha = 1 - f.t / 0.5; circ(c, f.x, f.y, 6 + f.t * 30, null, '#ffffff', 2); c.globalAlpha = 1; }); },
+    };
+  }
+  const matraz = (c, x, y, w, h, col) => { c.beginPath(); c.moveTo(x, y); c.lineTo(x, y + h - 14); c.quadraticCurveTo(x, y + h, x + 14, y + h); c.lineTo(x + w - 14, y + h); c.quadraticCurveTo(x + w, y + h, x + w, y + h - 14); c.lineTo(x + w, y); c.strokeStyle = col || '#7b86ad'; c.lineWidth = 3; c.stroke(); };
+
+  // ---- 3.1 Dilución: se conserva n (p. 88) ----
+  reg({
+    id: 'dilucion-moleculas', capitulos: ['methodes-chimiques'], titulo: 'Diluir: las mismas moléculas en más volumen', fr: 'Dilution : conservation de la quantité de matière', pagina_pdf: 88,
+    resumen: 'Al diluir se añade agua pero no soluto: la cantidad de materia n que se pipetea es la misma que acaba en la fiole. Lo que baja es la concentración, porque esas moléculas se reparten en más volumen.',
+    pasos: [
+      { titulo: 'La solución madre', texto: 'La solución-mère es la concentrada: muchas moléculas de soluto por mL. Es la que se quiere diluir para obtener una solution-fille de concentración menor.', fr: 'Solution-mère / solution-fille.' },
+      { titulo: 'Se pipetea un volumen V₀', texto: 'Con la pipette jaugée se toma un volumen V₀ de la madre. Ojo a los puntos del interior de la pipeta: esos son todos los que habrá en la solución hija. Cambia V₀ con el deslizador.', fr: 'On pipette un volume de solution-mère avec une pipette jaugée.' },
+      { titulo: 'Se vierte en la fiole y se completa con agua', texto: 'Pulsa «Diluir»: el volumen sube hasta la marca de la fiole jaugée (V_f) con agua destilada. El agua no trae soluto: el número de puntos no cambia.', fr: 'Compléter avec de l’eau distillée dans une fiole jaugée.' },
+      { titulo: 'n se conserva, c no', texto: 'Cuenta los puntos: son los mismos antes y después. Como c = n/V, al crecer V la concentración baja. Se cumple c₀·V₀ = c_f·V_f.', fr: 'Lors d’une dilution, la quantité de matière de soluto ne change pas : c₀·V₀ = c_f·V_f.' },
+      { titulo: 'Factor de dilución', texto: 'Prueba con distintos V₀ y V_f: la concentración se divide por F = V_f / V₀. Con V₀ = 10 mL y V_f = 100 mL, F = 10: la hija es 10 veces menos concentrada, aunque tenga los mismos puntos.', fr: 'c_mère / c_fille = V_fille / V_mère' },
+    ],
+    montar(host, api) {
+      const C0 = 0.5, DENS = 0.8; // c₀ ilustrativa (mol·L⁻¹); 0,8 puntos por mL de madre
+      const S = { fase: 0, V0: 10, Vf: 100, Va: 10, anim: false };
+      const rng = PCB.util.rng ? PCB.util.rng(5) : Math.random;
+      const madre = nube({ x0: 62, y0: 150, x1: 190, y1: 296 }, 11);
+      madre.sync('m', 40, MG);
+      const pts = []; for (let i = 0; i < 40; i++) pts.push({ u: rng(), w: rng(), ph: rng() * 6 });
+      const FY0 = 118, FH = 190, FX = 470, FW = 150, VMAX = 250; // fiole
+      const Hn = (V) => (V / VMAX) * FH;
+      return escena(host, api, {
+        estado: S,
+        controles: [
+          { tipo: 'rango', id: 'V0', txt: 'V₀ (pipeta)', min: 5, max: 50, paso: 5, val: 10, fmt: (v) => v + ' mL' },
+          { tipo: 'rango', id: 'Vf', txt: 'V_f (fiole)', min: 50, max: 250, paso: 50, val: 100, fmt: (v) => v + ' mL' },
+          { tipo: 'btn', txt: '▶ Diluir', al: (S) => { S.fase = 2; S.Va = S.V0; S.anim = true; if (S.red) { S.Va = S.Vf; S.anim = false; } } },
+        ],
+        alCambiar(id, v, S) { if (S.fase === 2) { S.Va = S.Vf; S.anim = false; } else S.Va = S.V0; if (S.Vf < S.V0) { /* V_f ≥ V₀ siempre en los pasos permitidos (50 ≥ 50) */ } },
+        paso(dt, S) { madre.step(dt, S.red ? 0.4 : 1); if (S.anim) { S.Va += dt * 45; if (S.Va >= S.Vf) { S.Va = S.Vf; S.anim = false; } } },
+        ir(n, S, E) { S.anim = false; S.fase = n === 0 ? 0 : n === 1 ? 1 : 2; if (n === 2) { S.Va = S.V0; S.anim = !S.red; if (S.red) S.Va = S.Vf; } else if (n >= 3) { S.Va = S.Vf; } else S.Va = S.V0; if (n === 4) { E.set('V0', 10); E.set('Vf', 100); S.Va = S.Vf; } },
+        dibujar(c, S) {
+          const nT = Math.round(DENS * S.V0), n = S.n;
+          // madre
+          txt(c, 'solution-mère', 126, 120, { s: 14, b: 1, c: MG }); txt(c, '50 mL', 126, 136, { s: 12, c: T2 });
+          matraz(c, 50, 150, 152, 150, '#c9628f'); madre.b.y0 = 150; madre.sync('m', 40 - (S.fase >= 1 ? nT : 0), MG); madre.draw(c, 6);
+          txt(c, 'C₀ = ' + String(C0).replace('.', ',') + ' mol·L⁻¹', 126, 322, { s: 13, c: T2 });
+          // pipeta
+          const px = 305;
+          rr(c, px - 14, 100, 28, 190, 8); c.fillStyle = '#12204a'; c.fill(); c.strokeStyle = '#7b86ad'; c.lineWidth = 2; c.stroke();
+          txt(c, 'pipette jaugée', px, 84, { s: 12, c: T2 }); txt(c, S.V0 + ' mL', px, 303, { s: 13, b: 1, c: AM });
+          if (S.fase === 1) { c.save(); rr(c, px - 12, 102, 24, 186, 6); c.clip(); c.fillStyle = '#ff3da633'; c.fillRect(px - 12, 100, 24, 190); c.restore(); for (let i = 0; i < nT; i++) { const q = pts[i]; circ(c, px - 6 + (i % 2) * 12 + Math.sin(S.t * 2 + q.ph) * 1.5, 280 - ((i + 0.5) / Math.max(nT, 1)) * 170, 4.5, MG + 'aa', MG, 1.2); } if (n >= 1) flecha(c, 196, 210, 280, 210, T2, 1.5); }
+          if (S.fase >= 2) flecha(c, 336, 150, 440, 150, T2, 1.5);
+          // fiole
+          const lv = S.fase >= 2 ? S.Va : 0, hh = Hn(lv), top = FY0 + FH - hh;
+          matraz(c, FX, FY0, FW, FH, '#7b86ad'); lin(c, FX + 40, FY0 - 22, FX + 40, FY0, '#7b86ad', 3); lin(c, FX + FW - 40, FY0 - 22, FX + FW - 40, FY0, '#7b86ad', 3);
+          txt(c, 'fiole jaugée', FX + FW / 2, FY0 - 34, { s: 13, b: 1, c: VE });
+          const mk = Hn(S.Vf); lin(c, FX - 4, FY0 + FH - mk, FX + 18, FY0 + FH - mk, AM, 2); txt(c, S.Vf + ' mL (trait de jauge)', FX - 8, FY0 + FH - mk, { s: 12, c: AM, a: 'right' });
+          if (S.fase >= 2 && hh > 1) {
+            c.save(); rr(c, FX + 2, top, FW - 4, hh - 1, 6); c.clip(); const a = clamp(S.V0 / S.Va, 0.06, 1); c.fillStyle = MG; c.globalAlpha = 0.1 + 0.4 * a; c.fillRect(FX, top, FW, hh); c.restore(); c.globalAlpha = 1;
+            for (let i = 0; i < nT; i++) { const q = pts[i], x = FX + 10 + q.u * (FW - 20) + Math.sin(S.t * 2 + q.ph) * 2, y = top + 8 + (1 - q.w) * Math.max(0, hh - 18) + Math.cos(S.t * 1.7 + q.ph) * 2; circ(c, x, y, 4.5, MG + 'aa', MG, 1.2); }
+            lin(c, FX + 2, top, FX + FW - 2, top, '#7fd0ff', 2);
+          }
+          const Vx = S.fase >= 2 ? S.Va : S.V0, cf = (C0 * S.V0) / Vx;
+          if (S.fase >= 2) { txt(c, 'V = ' + Math.round(Vx) + ' mL', FX + FW / 2, FY0 + FH + 16, { s: 13, c: TX }); txt(c, 'c = n/V = ' + cf.toFixed(3).replace('.', ',') + ' mol·L⁻¹', FX + FW + 6, FY0 + FH - 40, { s: 13, b: 1, c: VE, a: 'left' }); }
+          if (n >= 3) { chip(c, 'mismos puntos: ' + nT + ' en la pipeta = ' + nT + ' en la fiole', FX + FW / 2, 50, AM, { s: 13 }); }
+          if (n >= 3 && S.fase >= 2) txt(c, 'c₀·V₀ = ' + (C0 * S.V0).toFixed(1).replace('.', ',') + ' = c_f·V_f = ' + (cf * Vx).toFixed(1).replace('.', ',') + '  (mmol)', 400, 375, { s: 14, c: TX, b: 1 });
+          if (n >= 4) txt(c, 'F = V_f / V₀ = ' + Math.round((S.Vf / S.V0) * 10) / 10 + '   →   c_f = c₀ / F', 400, 398, { s: 14, c: AM, b: 1 });
+        },
+      });
+    },
+    test: [
+      { pregunta: 'Al diluir una solución con agua destilada, ¿qué se conserva?', opciones: ['La cantidad de materia de soluto n', 'La concentración c', 'El volumen'], correcta: 0, explicacion: 'El agua no aporta soluto: n no cambia, lo que baja es c.' },
+      { pregunta: 'Se pipetean 10 mL de madre y se completa a 100 mL. La concentración de la hija es…', opciones: ['10 veces menor', '10 veces mayor', 'igual'], correcta: 0, explicacion: 'F = 100/10 = 10: c_f = c₀/10.' },
+      { pregunta: '«Creer que diluir cambia n» es un error. ¿Por qué?', opciones: ['Porque los puntos de la pipeta son los mismos que quedan en la fiole', 'Porque el agua tiene soluto', 'Porque n = c'], correcta: 0, explicacion: 'Solo se reparten en más volumen: c₀V₀ = c_fV_f.' },
+    ],
+  });
+
+  // ---- 3.2 Valoración: el reactivo limitante que se agota (p. 88–90) ----
+  reg({
+    id: 'titrage-limitante', capitulos: ['methodes-chimiques'], titulo: 'Valoración: quién limita y qué es la equivalencia', fr: 'Titrage : réactif limitant et équivalence', pagina_pdf: 89,
+    resumen: 'Cada HO⁻ vertido reacciona con una molécula de ácido etanoico hasta que se acaba: en el volumen equivalente V_E las dos cantidades se anulan a la vez; después sobra titrante.',
+    pasos: [
+      { titulo: 'Montaje del titrage', texto: 'En el erlenmeyer, la solution titrée: 10 mL de ácido etanoico CH₃CO₂H (c_A desconocida); en la bureta, la solution titrante: soda (HO⁻) de c_B = 1,0·10⁻² mol·L⁻¹. Reacción soporte: CH₃CO₂H + HO⁻ → CH₃CO₂⁻ + H₂O (total, rápida y única).', fr: 'Solution titrante / solution titrée ; réaction support du titrage : totale, rapide et unique.' },
+      { titulo: 'Antes de la equivalencia: el titrante limita', texto: 'Vierte soda (deslizador V_B): cada HO⁻ que cae encuentra un ácido y desaparece. Mientras V_B < V_E, el HO⁻ (titrante) es el reactivo limitante: no queda nada de él y el ácido va disminuyendo.', fr: 'Avant l’équivalence, le réactif titrant est limitant.' },
+      { titulo: 'Equivalencia: se anulan los dos', texto: 'En V_E = 20 mL se han mezclado ácido y base en proporciones estequiométricas: ya no queda ni ácido ni HO⁻. El avance vale x_E y n_A = c_B·V_E.', fr: 'À l’équivalence, titrant et titré sont totalement consommés : n_A = n_B.' },
+      { titulo: 'Después de V_E: el titrante sobra', texto: 'Si sigues vertiendo, el ácido ya no está: el limitante pasa a ser el titrado y el HO⁻ queda en exceso. Mira cómo aparece de nuevo en la gráfica de cantidades (fig. 4 del cours).', fr: 'Après l’équivalence, le titrant n’est plus limitant : il est en excès.' },
+      { titulo: 'De V_E a la concentración', texto: 'Como en la equivalencia c_A·V_A = c_B·V_E: c_A = c_B·V_E / V_A = 1,0·10⁻² × 20 / 10 = 2,0·10⁻² mol·L⁻¹, es decir n_A = 2,0·10⁻⁴ mol (ejemplo del cours).', fr: 'c_A·V_A = c_B·V_E' },
+    ],
+    montar(host, api) {
+      const VE_ = 20, FX = 70, FW = 250, FY = 190, FH = 150;
+      const S = { V: 0, meta: null };
+      const nb = nube({ x0: FX + 12, y0: FY + 40, x1: FX + FW - 12, y1: FY + FH - 12 }, 21);
+      const gx = (v) => 450 + (v / 30) * 310, gy = (n) => 320 - (n / 20) * 220; // n en «unidades» (1 u = 1,0·10⁻⁵ mol)
+      return escena(host, api, {
+        estado: S,
+        controles: [
+          { tipo: 'rango', id: 'V', txt: 'V_B (soda)', min: 0, max: 30, paso: 0.5, val: 0, fmt: (v) => v.toFixed(1).replace('.', ',') + ' mL' },
+          { tipo: 'btn', txt: '▶ Verter', al: (S, E) => { if (S.V >= 29.9) E.set('V', 0); S.meta = 30; if (S.red) { E.set('V', 30); S.meta = null; } } },
+          { tipo: 'btn', txt: '↺', al: (S, E) => { S.meta = null; E.set('V', 0); } },
+        ],
+        alCambiar(id, v, S) { S.meta = null; },
+        paso(dt, S, E) { nb.step(dt, S.red ? 0.4 : 1); if (S.meta != null) { const v = S.V + dt * 3; if (v >= S.meta) { E.set('V', S.meta); S.meta = null; } else E.set('V', v); } },
+        ir(n, S, E) { S.meta = null; const t = [0, 8, 20, 28, 20][n]; E.set('V', t); if (n === 1 && !S.red) { E.set('V', 0); S.meta = 8; } if (n === 3 && !S.red) { E.set('V', 20); S.meta = 28; } },
+        dibujar(c, S) {
+          const V = S.V, n = S.n, nA = Math.max(0, VE_ - V), nHO = Math.max(0, V - VE_), nP = Math.min(V, VE_);
+          // bureta
+          rr(c, 160, 40, 24, 120, 6); c.fillStyle = '#12204a'; c.fill(); c.strokeStyle = '#7b86ad'; c.lineWidth = 2; c.stroke();
+          const lv = clamp(1 - V / 40, 0, 1); c.fillStyle = VE + '66'; c.fillRect(162, 42 + 116 * (1 - lv), 20, 116 * lv); txt(c, 'bureta : HO⁻ 1,0·10⁻² mol·L⁻¹', 172, 26, { s: 12, c: VE });
+          lin(c, 172, 160, 172, 176, '#7b86ad', 3); if (S.meta != null || (V > 0 && V < 30 && S.t % 0.5 < 0.25 && false)) circ(c, 172, 182 + (S.t * 120) % 20, 3, VE);
+          // erlenmeyer
+          c.beginPath(); c.moveTo(FX + 90, FY - 10); c.lineTo(FX + 90, FY + 30); c.lineTo(FX, FY + FH - 14); c.quadraticCurveTo(FX - 4, FY + FH, FX + 14, FY + FH); c.lineTo(FX + FW - 14, FY + FH); c.quadraticCurveTo(FX + FW + 4, FY + FH, FX + FW, FY + FH - 14); c.lineTo(FX + FW - 90, FY + 30); c.lineTo(FX + FW - 90, FY - 10); c.strokeStyle = '#7b86ad'; c.lineWidth = 3; c.stroke();
+          nb.sync('A', Math.round(nA), MG, 'AH'); nb.sync('B', Math.round(nHO), VE, 'HO⁻'); nb.sync('P', Math.round(nP), AZ, 'A⁻'); nb.draw(c, 9);
+          txt(c, 'CH₃CO₂H (titrado)', FX + FW, FY - 24, { s: 12, c: MG, a: 'right' });
+          // leyenda
+          [['CH₃CO₂H', MG], ['HO⁻', VE], ['CH₃CO₂⁻', AZ]].forEach((l, i) => { circ(c, 88 + i * 100, 396, 6, l[1] + 'aa', l[1], 1.5); txt(c, l[0], 98 + i * 100, 396, { s: 12, a: 'left' }); });
+          // gráfica de cantidades (fig. 4)
+          lin(c, gx(0), gy(0), gx(30), gy(0), T2, 1); lin(c, gx(0), gy(0), gx(0), gy(20), T2, 1);
+          txt(c, 'n (10⁻⁵ mol)', gx(0), gy(20) - 12, { s: 12, c: T2 }); txt(c, 'V_B (mL)', gx(30), gy(0) + 28, { s: 12, c: T2, a: 'right' });
+          [0, 10, 20, 30].forEach((v) => { lin(c, gx(v), gy(0), gx(v), gy(0) + 4, T2, 1); txt(c, String(v), gx(v), gy(0) + 14, { s: 11, c: T2 }); });
+          const curva2 = (f, col) => { c.beginPath(); for (let v = 0; v <= 30; v += 0.5) { const x = gx(v), y = gy(f(v)); v === 0 ? c.moveTo(x, y) : c.lineTo(x, y); } c.strokeStyle = col; c.lineWidth = 2.5; c.stroke(); };
+          curva2((v) => Math.max(0, VE_ - v), MG); curva2((v) => Math.max(0, v - VE_), VE); curva2((v) => Math.min(v, VE_), AZ);
+          lin(c, gx(V), gy(0), gx(V), gy(20), AM, 1.4, [3, 3]);
+          if (n >= 2) { lin(c, gx(VE_), gy(0), gx(VE_), gy(20), AM, 1.2, [6, 4]); txt(c, 'V_E = 20 mL', gx(VE_), gy(20) - 12, { s: 12, b: 1, c: AM }); }
+          const lim = Math.abs(V - VE_) < 0.3 ? 'équivalence : tout consommé' : V < VE_ ? 'HO⁻ (titrant) limitant' : 'HO⁻ en excès · limitant = CH₃CO₂H';
+          chip(c, V === 0 ? 'V_B = 0 : solo ácido' : lim, 195, 366, Math.abs(V - VE_) < 0.3 ? AM : V < VE_ ? VE : MG, { s: 13 });
+          if (n === 4) { panel(c, 440, 18, 330, 54, AM); txt(c, 'c_A = c_B·V_E / V_A = 1,0·10⁻² × 20 / 10', 605, 36, { s: 13, c: TX }); txt(c, '= 2,0·10⁻² mol·L⁻¹', 605, 58, { s: 14, c: AM, b: 1 }); }
+          txt(c, 'V_B = ' + V.toFixed(1).replace('.', ',') + ' mL', 605, 396, { s: 12, c: T2 });
+        },
+      });
+    },
+    test: [
+      { pregunta: 'Antes de la equivalencia, ¿qué reactivo es limitante?', opciones: ['El titrante (HO⁻ vertido)', 'El titrado (CH₃CO₂H)', 'Ninguno'], correcta: 0, explicacion: 'Cada HO⁻ vertido reacciona y desaparece: es el que se agota primero.' },
+      { pregunta: 'En el volumen equivalente…', opciones: ['Quedan 0 mol de titrante y 0 mol de titrado', 'Hay exceso de titrante', 'La reacción se detiene'], correcta: 0, explicacion: 'Se mezclaron en proporciones estequiométricas y se consumieron totalmente: n_A = n_B.' },
+      { pregunta: 'Con V_A = 10 mL, c_B = 1,0·10⁻² mol·L⁻¹ y V_E = 20 mL, c_A vale…', opciones: ['2,0·10⁻² mol·L⁻¹', '0,5·10⁻² mol·L⁻¹', '1,0·10⁻² mol·L⁻¹'], correcta: 0, explicacion: 'c_A = c_B·V_E/V_A = 1,0·10⁻²×20/10 = 2,0·10⁻² mol·L⁻¹.' },
+    ],
+  });
+
+  // ---- 3.3 Hallar V_E en la curva de pH: tangentes y derivada (p. 89) ----
+  reg({
+    id: 'equivalence-ph', capitulos: ['methodes-chimiques'], titulo: 'Localizar la equivalencia en la curva de pH', fr: 'Méthode des tangentes · méthode de la dérivée', pagina_pdf: 89,
+    resumen: 'La equivalencia es el punto del gran salto de pH. Se ve con dos métodos: las dos tangentes paralelas y su recta equidistante, o el máximo de la derivada dpH/dV.',
+    pasos: [
+      { titulo: 'La curva pH = f(V)', texto: 'Al titular un ácido con una base, el pH de la mezcla crece al verter la base. Es una curva ilustrativa calculada para el mismo montaje (10 mL de ácido etanoico 2,0·10⁻² mol·L⁻¹, soda 1,0·10⁻² mol·L⁻¹); el cours da el método.', fr: 'La courbe est croissante lors du titrage d’un acide par une base.' },
+      { titulo: 'El salto de pH', texto: 'Cerca de la equivalencia el pH sube de golpe con muy poca base: es el salto de pH. El volumen buscado V_E está en medio de ese salto.', fr: 'À l’équivalence, on observe un saut important de pH.' },
+      { titulo: 'Método de las tangentes', texto: 'Se trazan dos tangentes paralelas a cada lado del salto (mueve el deslizador para cambiar la primera; la segunda se ajusta para ser paralela). La recta paralela y equidistante a ambas corta la curva en el punto de abscisa V_E.', fr: 'On trace deux tangentes parallèles de part et d’autre du saut de pH, puis une droite parallèle et équidistante.' },
+      { titulo: 'La lectura', texto: 'La abscisa de ese punto de corte es el volumen equivalente. Comprueba que, aunque muevas las tangentes, la lectura casi no cambia: el método es robusto.', fr: 'Cette droite coupe la courbe de titrage au point d’abscisse V_E.' },
+      { titulo: 'Método de la derivada', texto: 'Pulsa «dpH/dV»: se dibuja la derivada de la curva (su pendiente en cada punto). El extremo de esa curva —un máximo al titular un ácido con una base— tiene por abscisa V_E.', fr: 'L’abscisse de l’extremum de dpH/dV est le volume équivalent.' },
+    ],
+    montar(host, api) {
+      const VA = 10, CA = 0.02, CB = 0.01, KA = Math.pow(10, -4.76);
+      const pHde = (V) => { const Ca = (CA * VA) / (VA + V), Cb = (CB * V) / (VA + V); let lo = -3, hi = 0; // bisección en log h
+        let a = 1e-13, b = 1; for (let i = 0; i < 80; i++) { const h = Math.sqrt(a * b), f = Cb + h - 1e-14 / h - Ca / (1 + h / KA); if (f > 0) b = h; else a = h; } return -Math.log10(Math.sqrt(a * b)); };
+      const N = 600, VV = [], PH = [], D = [];
+      for (let i = 0; i <= N; i++) { VV.push((i / N) * 30); PH.push(pHde(VV[i])); }
+      for (let i = 0; i <= N; i++) { const a = Math.max(0, i - 1), b = Math.min(N, i + 1); D.push((PH[b] - PH[a]) / (VV[b] - VV[a])); }
+      const iMax = D.indexOf(Math.max.apply(null, D)), VEreal = VV[iMax];
+      const gx = (v) => 90 + (v / 30) * 650, gy = (p) => 372 - ((p - 2) / 11) * 280, gd = (d) => 372 - (d / Math.max.apply(null, D)) * 260;
+      const S = { v1: 17, der: false };
+      const pend = (i) => D[i];
+      function tang(v1) { const i1 = Math.round((v1 / 30) * N), m = pend(i1); // buscar punto del otro lado con la misma pendiente
+        let i2 = iMax, best = 1e9; for (let i = iMax + 1; i < N - 5; i++) { const d = Math.abs(D[i] - m); if (d < best) { best = d; i2 = i; } } return { i1, i2, m, b1: PH[i1] - m * VV[i1], b2: PH[i2] - m * VV[i2] }; }
+      return escena(host, api, {
+        estado: S,
+        controles: [
+          { tipo: 'rango', id: 'v1', txt: 'tangente 1 en V =', min: 11, max: 19, paso: 0.5, val: 17, fmt: (v) => v.toFixed(1).replace('.', ',') + ' mL' },
+          { tipo: 'btn', id: 'bd', txt: 'dpH/dV', al: (S, E, b) => { S.der = !S.der; b.classList.toggle('on', S.der); } },
+        ],
+        ir(n, S, E) { S.der = n === 4; E.el.bd.classList.toggle('on', S.der); },
+        dibujar(c, S) {
+          const n = S.n;
+          lin(c, gx(0), gy(2), gx(30), gy(2), T2, 1); lin(c, gx(0), gy(2), gx(0), gy(13), T2, 1);
+          txt(c, 'pH', gx(0) - 14, gy(13), { s: 13, c: T2 }); txt(c, 'V_soude (mL)', gx(30), gy(2) + 28, { s: 12, c: T2, a: 'right' });
+          [0, 5, 10, 15, 20, 25, 30].forEach((v) => { lin(c, gx(v), gy(2), gx(v), gy(2) + 4, T2, 1); txt(c, String(v), gx(v), gy(2) + 14, { s: 11, c: T2 }); }); [4, 6, 8, 10, 12].forEach((p) => { txt(c, String(p), gx(0) - 12, gy(p), { s: 11, c: T2 }); });
+          if (n >= 1 && n < 4) { const a = Math.round((17 / 30) * N), b = Math.round((23 / 30) * N); c.fillStyle = '#ffd16618'; c.fillRect(gx(VV[a]), gy(13), gx(VV[b]) - gx(VV[a]), gy(2) - gy(13)); txt(c, 'saut de pH', gx(20), gy(12.4), { s: 13, c: AM, b: 1 }); }
+          c.beginPath(); VV.forEach((v, i) => { const x = gx(v), y = gy(PH[i]); i ? c.lineTo(x, y) : c.moveTo(x, y); }); c.strokeStyle = n >= 4 && S.der ? '#3b5a8a' : MG; c.lineWidth = 3; c.stroke();
+          if (n >= 2 && !S.der) {
+            const T = tang(S.v1), seg = (b, col) => lin(c, gx(0), gy(b), gx(30), gy(T.m * 30 + b), col, 1.6);
+            const clipRect = () => { c.save(); c.beginPath(); c.rect(gx(0), gy(13), gx(30) - gx(0), gy(2) - gy(13)); c.clip(); };
+            clipRect(); seg(T.b1, AZ); seg(T.b2, AZ); const bm = (T.b1 + T.b2) / 2; seg(bm, VE);
+            // punto de corte con la curva
+            let k = 0, bestd = 1e9; for (let i = 0; i < VV.length; i++) { const d = Math.abs(PH[i] - (T.m * VV[i] + bm)); if (VV[i] > 12 && VV[i] < 28 && d < bestd) { bestd = d; k = i; } }
+            c.restore();
+            circ(c, gx(T.i1 * 30 / N), gy(PH[T.i1]), 5, AZ); circ(c, gx(VV[T.i2]), gy(PH[T.i2]), 5, AZ);
+            txt(c, 'tangente 1', gx(VV[T.i1]) - 8, gy(PH[T.i1]) + 22, { s: 12, c: AZ, a: 'right' }); txt(c, 'tangente 2', gx(VV[T.i2]) + 8, gy(PH[T.i2]) - 20, { s: 12, c: AZ, a: 'left' });
+            if (n >= 3) { lin(c, gx(VV[k]), gy(PH[k]), gx(VV[k]), gy(2), AM, 1.6, [5, 4]); circ(c, gx(VV[k]), gy(PH[k]), 6, AM, '#fff', 1.5); txt(c, 'V_E ≈ ' + VV[k].toFixed(1).replace('.', ',') + ' mL', gx(VV[k]) + 10, gy(2) - 12, { s: 14, c: AM, b: 1, a: 'left' }); txt(c, 'recta equidistante', gx(2.5), gy(T.m * 2.5 + bm) - 18, { s: 12, c: VE, a: 'left' }); }
+          }
+          if (n >= 4 && S.der) {
+            lin(c, gx(0), gd(0), gx(30), gd(0), '#3b5a8a', 1);
+            c.beginPath(); VV.forEach((v, i) => { const x = gx(v), y = gd(D[i]); i ? c.lineTo(x, y) : c.moveTo(x, y); }); c.strokeStyle = VE; c.lineWidth = 3; c.stroke();
+            lin(c, gx(VEreal), gd(D[iMax]), gx(VEreal), gy(2), AM, 1.6, [5, 4]); circ(c, gx(VEreal), gd(D[iMax]), 6, AM, '#fff', 1.5);
+            txt(c, 'dpH/dV', gx(VEreal) + 14, gd(D[iMax]) + 6, { s: 13, b: 1, c: VE, a: 'left' }); txt(c, 'máximo → V_E ≈ ' + VEreal.toFixed(1).replace('.', ',') + ' mL', gx(VEreal) - 12, gy(2) - 28, { s: 14, c: AM, b: 1, a: 'right' });
+          }
+          if (n === 0) txt(c, 'titrage d’un acide par une base : pH croissant', 410, 60, { s: 14, c: T2 });
+        },
+      });
+    },
+    test: [
+      { pregunta: 'En el método de las tangentes, la recta que corta la curva en V_E es…', opciones: ['paralela a las dos tangentes y equidistante de ellas', 'perpendicular a la curva', 'horizontal en pH = 7'], correcta: 0, explicacion: 'Es la paralela equidistante (Point méthode, p. 89).' },
+      { pregunta: 'En el método de la derivada, V_E es…', opciones: ['la abscisa del extremo de dpH/dV', 'el valor máximo de pH', 'el punto donde dpH/dV = 0'], correcta: 0, explicacion: 'Un máximo si se titula un ácido con una base; un mínimo en el caso contrario.' },
+      { pregunta: 'El salto de pH ocurre…', opciones: ['alrededor de la equivalencia', 'al inicio del titrage', 'solo al final'], correcta: 0, explicacion: 'Con muy poca base añadida cambia mucho el pH justo en la equivalencia.' },
+    ],
+  });
+
+  // ---- 3.4 Conductimetría del titrage: por qué cambia la pendiente (p. 90) ----
+  reg({
+    id: 'titrage-conducti', capitulos: ['methodes-chimiques'], titulo: 'Titrage conductimétrico: iones que salen y entran', fr: 'Titrage conductimétrique', pagina_pdf: 90,
+    resumen: 'Titulando HCl con soda, los H₃O⁺ (muy conductores) se cambian por Na⁺ (poco conductores): σ baja. Tras la equivalencia sobran HO⁻ y σ sube. El cruce de las dos rectas da V_E.',
+    pasos: [
+      { titulo: 'Los iones del principio', texto: 'La solución de ácido clorhídrico contiene H₃O⁺ y Cl⁻. El H₃O⁺ tiene una conductividad molar iónica enorme (35,0·10⁻³ S·m²·mol⁻¹) frente a Cl⁻ (7,6·10⁻³): σ parte alta. Cada punto = 0,4 mol·m⁻³ (ilustrativo).', fr: 'Valeurs de λ (fig. 7) : H₃O⁺ 35,0 ; Na⁺ 5,0 ; HO⁻ 19,8 ; Cl⁻ 7,6 (×10⁻³ S·m²·mol⁻¹).' },
+      { titulo: 'Se añade soda: un ion por otro', texto: 'Cada HO⁻ vertido reacciona con un H₃O⁺ (desaparece) y llega un Na⁺ que no reacciona. Cambiamos un ion que conduce 35 por otro que conduce 5: σ disminuye. Cl⁻ se queda como espectador.', fr: 'Les ions H₃O⁺ sont remplacés par des ions Na⁺ : la conductivité de la solution diminue.' },
+      { titulo: 'Equivalencia: el mínimo', texto: 'En V_E ya no queda H₃O⁺ ni HO⁻ libres; solo Na⁺ y Cl⁻. σ es mínima: es el cambio de pendiente.', fr: 'L’équivalence est repérée par le changement de pente de la courbe.' },
+      { titulo: 'Después: HO⁻ de más', texto: 'Ahora el HO⁻ que se vierte ya no tiene con quién reaccionar y se acumula (λ = 19,8): además entra Na⁺. Los dos suman: σ sube más rápido.', fr: 'Après l’équivalence, on continue de verser des ions qui ne réagissent plus : la conductivité augmente.' },
+      { titulo: 'V_E = cruce de las dos rectas', texto: 'Con la dilución despreciable, los puntos caen en dos rectas. Su intersección da V_E. Mueve V_B para ver cómo se construye la curva σ = f(V).', fr: 'Le volume équivalent V_E correspond à l’abscisse du point d’intersection des deux droites.' },
+    ],
+    montar(host, api) {
+      const L = { H: 35.0, Na: 5.0, HO: 19.8, Cl: 7.6 }, VEq = 10, U = 0.4e-3; // 1 punto = 0,4 mol·m⁻³
+      const S = { V: 0, meta: null };
+      const FX = 40, FW = 250, FY = 120, FH = 190;
+      const nb = nube({ x0: FX + 12, y0: FY + 14, x1: FX + FW - 12, y1: FY + FH - 12 }, 31);
+      const gx = (v) => 400 + (v / 20) * 360, gy = (s) => 350 - (s / 0.18) * 250;
+      const sig = (V) => U * (L.H * Math.max(0, VEq - V) + L.Cl * VEq + L.Na * V + L.HO * Math.max(0, V - VEq));
+      return escena(host, api, {
+        estado: S,
+        controles: [
+          { tipo: 'rango', id: 'V', txt: 'V_B (soda)', min: 0, max: 20, paso: 0.5, val: 0, fmt: (v) => v.toFixed(1).replace('.', ',') + ' mL' },
+          { tipo: 'btn', txt: '▶ Verter', al: (S, E) => { if (S.V >= 19.9) E.set('V', 0); S.meta = 20; if (S.red) { E.set('V', 20); S.meta = null; } } },
+          { tipo: 'btn', txt: '↺', al: (S, E) => { S.meta = null; E.set('V', 0); } },
+        ],
+        alCambiar(id, v, S) { S.meta = null; },
+        paso(dt, S, E) { nb.step(dt, S.red ? 0.4 : 1); if (S.meta != null) { const v = S.V + dt * 2; if (v >= S.meta) { E.set('V', S.meta); S.meta = null; } else E.set('V', v); } },
+        ir(n, S, E) { S.meta = null; E.set('V', [0, 5, 10, 16, 20][n]); if (n === 1 && !S.red) { E.set('V', 0); S.meta = 5; } },
+        dibujar(c, S) {
+          const V = S.V, n = S.n;
+          matraz(c, FX, FY, FW, FH, '#7b86ad'); c.fillStyle = '#103a4a55'; c.fillRect(FX + 2, FY + 6, FW - 4, FH - 8);
+          nb.sync('H', Math.round(Math.max(0, VEq - V)), MG, 'H₃O⁺'); nb.sync('Cl', VEq, VE, 'Cl⁻'); nb.sync('Na', Math.round(V), AZ, 'Na⁺'); nb.sync('HO', Math.round(Math.max(0, V - VEq)), OR, 'HO⁻');
+          nb.draw(c, 9);
+          txt(c, 'solution titrée : HCl(aq) + soude ajoutée', FX + FW / 2, FY - 14, { s: 12, c: T2 });
+          [['H₃O⁺ 35,0', MG], ['Cl⁻ 7,6', VE], ['Na⁺ 5,0', AZ], ['HO⁻ 19,8', OR]].forEach((l, i) => { circ(c, FX + 8 + (i % 2) * 120, FY + FH + 28 + Math.floor(i / 2) * 22, 6, l[1] + 'aa', l[1], 1.5); txt(c, l[0] + ' ·10⁻³', FX + 20 + (i % 2) * 120, FY + FH + 28 + Math.floor(i / 2) * 22, { s: 12, a: 'left' }); });
+          // gráfica
+          lin(c, gx(0), gy(0), gx(20), gy(0), T2, 1); lin(c, gx(0), gy(0), gx(0), gy(0.18), T2, 1);
+          txt(c, 'σ (S·m⁻¹)', gx(0) + 6, gy(0.18) - 8, { s: 12, c: T2, a: 'left' }); txt(c, 'V_soude (mL)', gx(20), gy(0) + 28, { s: 12, c: T2, a: 'right' });
+          [0, 5, 10, 15, 20].forEach((v) => { lin(c, gx(v), gy(0), gx(v), gy(0) + 4, T2, 1); txt(c, String(v), gx(v), gy(0) + 14, { s: 11, c: T2 }); }); [0.05, 0.10, 0.15].forEach((s) => { txt(c, s.toFixed(2).replace('.', ','), gx(0) - 20, gy(s), { s: 11, c: T2 }); lin(c, gx(0) - 3, gy(s), gx(0), gy(s), T2, 1); });
+          if (n >= 4) { const f1 = (v) => sig(0) + (sig(VEq) - sig(0)) / VEq * v, f2 = (v) => sig(VEq) + (sig(20) - sig(VEq)) / (20 - VEq) * (v - VEq); c.save(); c.beginPath(); c.rect(gx(0), gy(0.18), gx(20) - gx(0), gy(0) - gy(0.18)); c.clip(); lin(c, gx(0), gy(f1(0)), gx(15), gy(f1(15)), '#7b86ad', 1.4, [6, 4]); lin(c, gx(0), gy(f2(0)), gx(20), gy(f2(20)), '#7b86ad', 1.4, [6, 4]); c.restore(); lin(c, gx(VEq), gy(sig(VEq)), gx(VEq), gy(0), AM, 1.5, [5, 4]); circ(c, gx(VEq), gy(sig(VEq)), 6, AM, '#fff', 1.5); txt(c, 'V_E = 10 mL', gx(VEq) + 8, gy(0) - 12, { s: 13, b: 1, c: AM, a: 'left' }); }
+          c.beginPath(); for (let v = 0; v <= V + 0.001; v += 0.25) { const x = gx(v), y = gy(sig(v)); v === 0 ? c.moveTo(x, y) : c.lineTo(x, y); } c.strokeStyle = VE; c.lineWidth = 3; c.stroke();
+          circ(c, gx(V), gy(sig(V)), 6, MG, '#fff', 1.5); txt(c, 'σ = ' + sig(V).toFixed(3).replace('.', ','), gx(V) + (V > 14 ? -10 : 10), gy(sig(V)) - 14, { s: 12, c: TX, a: V > 14 ? 'right' : 'left' });
+          const pend = V < VEq ? '(λ(Na⁺) − λ(H₃O⁺)) < 0 : σ baja' : V > VEq ? '(λ(Na⁺) + λ(HO⁻)) > 0 : σ sube' : 'cambio de pendiente';
+          txt(c, V === 0 ? 'σ inicial alta: H₃O⁺ conduce mucho' : V === VEq ? 'équivalence : mínimo de σ' : pend, 580, 70, { s: 13, c: AM, b: 1 });
+        },
+      });
+    },
+    test: [
+      { pregunta: 'Antes de la equivalencia, ¿por qué baja σ al añadir soda?', opciones: ['H₃O⁺ (λ = 35) se sustituye por Na⁺ (λ = 5)', 'Porque se añade agua pura', 'Porque desaparece el Cl⁻'], correcta: 0, explicacion: 'Cada HO⁻ consume un H₃O⁺ y entra un Na⁺, mucho menos conductor.' },
+      { pregunta: 'Después de la equivalencia, σ sube porque…', opciones: ['se acumulan HO⁻ y Na⁺ que ya no reaccionan', 'sube la temperatura', 'se forma más H₃O⁺'], correcta: 0, explicacion: 'Los iones vertidos ya no tienen con quién reaccionar.' },
+      { pregunta: 'En la curva σ = f(V), V_E se lee…', opciones: ['en la intersección de las dos rectas', 'en el máximo de σ', 'cuando σ = 0'], correcta: 0, explicacion: 'El cambio de pendiente marca la equivalencia.' },
     ],
   });
 

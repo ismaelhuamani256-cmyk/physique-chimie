@@ -70,7 +70,7 @@
   // 5 = bloque ? (bloque_pregunta), 6 = tubería, 7 = puerta, 8 = ladrillo, 9 = cinta, 10 = bloque_rebote: sólidos que dibuja el motor como entidades
   const SOLIDO = (t) => t === 1 || t === 3 || t === 4 || t === 5 || t === 6 || t === 7 || t === 8 || t === 9 || t === 10;
   const SUELO_T = (t) => t === 1 || t === 2 || t === 3 || t === 4 || t === 9 || t === 10;   // lo que cuenta como "suelo" para topAt
-  const JEFES_QUIZ = ['rey_entropia', 'golem_formulas', 'pulpo_acido', 'dragon_tormenta', 'isotopo_inestable', 'foton_veloz', 'bombardero_neutron'];
+  const JEFES_QUIZ = ['rey_entropia', 'golem_formulas', 'pulpo_acido', 'dragon_tormenta', 'isotopo_inestable', 'foton_veloz', 'bombardero_neutron', 'rey_bomba'];
   const ACUATICOS = ['medusa', 'pez', 'erizo', 'anguila'];
 
   // ---------- química: fórmulas con cargas, conservación de átomos y de carga ----------
@@ -504,7 +504,7 @@
         if (jefe.vidas != null && !(Number.isInteger(jefe.vidas) && jefe.vidas >= 1 && jefe.vidas <= 6)) E('jefe_quiz: "vidas" debe ser un entero entre 1 y 6.');
       } else if (jefe.jefe === 'pulpo_acido' || jefe.jefe === 'dragon_tormenta') W(`${jefe.jefe} como "jefe" normal se comporta como jefe_quiz.`);
       if (conFases) {
-        const PAT = { rey_entropia: ['bola', 'arco', 'onda', 'abanico', 'lluvia'], golem_formulas: ['carga', 'salto'], pulpo_acido: ['tinta', 'chorro', 'tentaculos'], dragon_tormenta: ['rayo', 'embestida', 'rafaga'], isotopo_inestable: ['rafaga', 'rayo', 'embestida'], foton_veloz: ['embestida', 'rafaga', 'rayo'], bombardero_neutron: ['bombardeo', 'rafaga', 'rayo'] }[jefe.jefe] || [];
+        const PAT = { rey_entropia: ['bola', 'arco', 'onda', 'abanico', 'lluvia'], golem_formulas: ['carga', 'salto'], pulpo_acido: ['tinta', 'chorro', 'tentaculos'], dragon_tormenta: ['rayo', 'embestida', 'rafaga'], isotopo_inestable: ['rafaga', 'rayo', 'embestida'], foton_veloz: ['embestida', 'rafaga', 'rayo'], bombardero_neutron: ['bombardeo', 'rafaga', 'rayo'], rey_bomba: ['lanzar', 'rodar', 'salto', 'mecha'] }[jefe.jefe] || [];
         if (jefe.fases.length < 2 || jefe.fases.length > 5) E(`jefe_quiz: "fases" debe tener entre 2 y 5 fases (tiene ${jefe.fases.length}).`);
         jefe.fases.forEach((f, k) => {
           const idf = `jefe, fase ${k + 1}`;

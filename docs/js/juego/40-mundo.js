@@ -468,6 +468,22 @@
         if (SOL(w.get(Math.floor(q.x), Math.floor(q.y + 0.2)))) { q.muerto = true; J.chispas(g, q.x * J.T, q.y * J.T, 8, '#ffb020', 3); }
         if (q.x < -2 || q.x > w.ancho + 2 || q.y > w.alto + 1) q.muerto = true;
         if (!q.muerto && !p.muriendo && Math.hypot(p.x + p.w / 2 - q.x, p.y + p.h / 2 - q.y) < 0.55) { q.muerto = true; J.herir(g, q.x); }
+      } else if (q.tipo === 'bomba') {   // bomba del Rey Bomba: rebota, mecha de 2 s, explota (o se detona de un disparo)
+        q.vy += q.grav * dt; q.x += q.vx * dt; q.y += q.vy * dt; q.fuse -= dt;
+        if (SOL(w.get(Math.floor(q.x), Math.floor(q.y + 0.3))) && q.vy > 0) { q.y = Math.floor(q.y + 0.3) - 0.3; q.vy *= -0.35; q.vx *= 0.55; if (Math.abs(q.vy) < 1) q.vy = 0; }
+        if (SOL(w.get(Math.floor(q.x + Math.sign(q.vx) * 0.35), Math.floor(q.y)))) q.vx = -q.vx * 0.5;
+        if (q.fuse <= 0 || q.y > w.alto + 1) {
+          q.muerto = true; g.shake = Math.max(g.shake, 5); J.Audio.sfx('onda'); J.chispas(g, q.x * J.T, q.y * J.T, 18, '#ffb020', 5);
+          g.proy.push({ tipo: 'nova', x: q.x, y: q.y, rad: q.rad, t: 0, dur: 0.35, hecho: false, deBomba: true, disparada: !!q.disparada });
+        }
+      } else if (q.tipo === 'nova') {    // explosión: daña una vez al jugador dentro del radio (y al Rey Bomba si la causó un disparo)
+        if (!q.hecho) {
+          q.hecho = true;
+          if (!p.muriendo && Math.hypot(p.x + p.w / 2 - q.x, p.y + p.h / 2 - q.y) < q.rad) J.herir(g, q.x);
+          const b = g.jefe;
+          if (q.deBomba && q.disparada && b && b.disp && Math.hypot(b.x + b.w / 2 - q.x, b.y + b.h / 2 - q.y) < q.rad + 1) { J.Jefe.danar(g, 3); }
+        }
+        if (q.t > q.dur) q.muerto = true;
       } else if (q.tipo === 'tinta') {   // nube de tinta de ácido (pulpo): lenta, grande, se disipa
         q.x += q.vx * dt; q.y += q.vy * dt; q.vx *= Math.pow(0.985, dt * 60); q.vy *= Math.pow(0.985, dt * 60); q.vida -= dt;
         if (q.vida <= 0 || SOL(w.get(Math.floor(q.x), Math.floor(q.y)))) q.muerto = true;

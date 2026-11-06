@@ -1,0 +1,526 @@
+{
+ "capitulo_id": "forcer-sens",
+ "tipo_nivel": "normal",
+ "tema_visual": "laboratorio-neon",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 212,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 20,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 27,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "foso",
+   "x": 35,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 38,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 45,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 52,
+   "y": 12,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 59,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 65,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "foso",
+   "x": 73,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 75,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 82,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 90,
+   "y": 11,
+   "largo": 8,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 98,
+   "y": 11,
+   "largo": 8,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 106,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 113,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 115,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 123,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 131,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 137,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 145,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "foso",
+   "x": 153,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 155,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 162,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 170,
+   "y": 14,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 174,
+   "y": 14,
+   "largo": 38
+  },
+  {
+   "tipo": "jefe",
+   "x": 191,
+   "jefe": "rey_bomba",
+   "titulo": "Rey Bomba: électrolyse (ex. 12, 19, 22 del cours)",
+   "preguntas": [
+    {
+     "pregunta": "Lors d'une électrolyse, la cathode est :",
+     "opciones": [
+      "le siège d'une oxydation, reliée à la borne + du générateur",
+      "le siège d'une réduction, reliée à la borne − du générateur",
+      "le siège d'une réduction, reliée à la borne + du générateur",
+      "l'électrode qui attire les anions"
+     ],
+     "correcta": 1,
+     "explicacion": "La cathode est le siège de la réduction et se relie à la borne − du générateur, qui fournit les électrons (cours p.210 ; conseil de l'exercice 18).",
+     "pagina_pdf": 210
+    },
+    {
+     "pregunta": "Ex. 12 : on branche à un générateur un électrolyseur contenant Cu²⁺(aq), SO₄²⁻(aq) et Ag⁺(aq), NO₃⁻(aq). Qu'observe-t-on à la cathode ?",
+     "opciones": [
+      "Un dépôt gris d'argent et une solution plus bleue",
+      "Un dégagement de dioxygène",
+      "Un dépôt métallique orangé de cuivre et la solution se décolore",
+      "Rien : la transformation est spontanée"
+     ],
+     "correcta": 2,
+     "explicacion": "Le générateur force le sens opposé : Cu²⁺(aq) + 2 Ag(s) ⇌ Cu(s) + 2 Ag⁺(aq). La solution se décolore et du cuivre orangé se dépose sur la cathode (corrigé de l'ex. 12).",
+     "pagina_pdf": 615
+    },
+    {
+     "pregunta": "Ex. 22 : Cu²⁺ + Zn ⇌ Cu + Zn²⁺, K = 2,0×10³⁷, [Cu²⁺]i = [Zn²⁺]i = 0,05 mol·L⁻¹. Que vaut Qr,i et quel métal se forme lors de l'électrolyse ?",
+     "opciones": [
+      "Qr,i = 1 < K : sens direct ; l'électrolyse forme du cuivre",
+      "Qr,i = 1 < K : sens direct ; l'électrolyse (sens opposé) forme du zinc",
+      "Qr,i = 1 > K : sens opposé ; l'électrolyse forme du zinc",
+      "Qr,i = 0,05 ; l'électrolyse forme du cuivre"
+     ],
+     "correcta": 1,
+     "explicacion": "Qr,i = [Zn²⁺]i/[Cu²⁺]i = 1 < K : sens direct (spontané). Le générateur force le sens opposé : Zn²⁺ + 2 e⁻ = Zn(s), il se forme du zinc (corrigé de l'ex. 22).",
+     "pagina_pdf": 616
+    },
+    {
+     "pregunta": "Ex. 19 : on forme 179 mg de titane (M = 47,9 g·mol⁻¹) avec I = 200 mA pendant 1,0 h. Quels sont l'électrode et les ions titane ?",
+     "opciones": [
+      "Anode ; Ti³⁺",
+      "Cathode ; Ti²⁺",
+      "Cathode ; Ti⁴⁺",
+      "Anode ; Ti²⁺"
+     ],
+     "correcta": 1,
+     "explicacion": "Le titane se réduit : cathode. n(e⁻) = 7,5×10⁻³ mol et n(Ti) = 3,7×10⁻³ mol, donc α = 2 : Ti²⁺ (corrigé de l'ex. 19).",
+     "pagina_pdf": 616
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 206
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 103,
+   "y": 9,
+   "ref": "f1",
+   "latex": "Q_{r,i} < K(T) \\;\\Rightarrow\\; \\text{évolution spontanée dans le sens direct}",
+   "nombre": "Critère d'évolution spontanée (Qr,i frente a K)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 42,
+   "y": 12,
+   "ref": "f2",
+   "latex": "Q_{r,i} = \\dfrac{[\\mathrm{Zn^{2+}(aq)}]_i\\,[\\mathrm{I^-(aq)}]_i^{2}}{[\\mathrm{I_2(aq)}]_i}",
+   "nombre": "Cociente de reacción inicial (ejemplo Zn / I2)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 32,
+   "y": 12,
+   "ref": "f3",
+   "latex": "[\\mathrm{X}]_i = \\dfrac{n_i}{V_{total}} = \\dfrac{c\\cdot V}{V_{total}}",
+   "nombre": "Concentración inicial tras mezclar"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 135,
+   "y": 12,
+   "ref": "f4",
+   "latex": "q = I\\cdot\\Delta t",
+   "nombre": "Carga eléctrica y corriente"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 56,
+   "y": 10,
+   "ref": "f5",
+   "latex": "q = n(e^-)\\cdot N_A\\cdot e",
+   "nombre": "Carga y cantidad de electrones"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 110,
+   "y": 11,
+   "ref": "f6",
+   "latex": "n(\\mathrm{I_2})_{\\text{formé}}=n(\\mathrm{Zn})_{\\text{formé}}=\\dfrac{1}{2}\\,n(e^-)=\\dfrac{I\\cdot\\Delta t}{2\\,N_A\\cdot e}",
+   "nombre": "Balance de materia de la electrólisis (Zn²⁺ / I⁻)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 159,
+   "y": 12,
+   "ref": "f7",
+   "latex": "\\Delta t = \\dfrac{n(e^-)\\cdot N_A\\cdot e}{I}",
+   "nombre": "Duración de la electrólisis"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 167,
+   "y": 12,
+   "ref": "f10",
+   "latex": "n = \\dfrac{m}{M}",
+   "nombre": "Cantidad de materia a partir de la masa"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 24,
+   "y": 11,
+   "ref": "f9",
+   "latex": "m = \\rho\\cdot V = \\rho\\cdot S\\cdot e",
+   "nombre": "Masa de un depósito metálico"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 150,
+   "y": 12,
+   "ref": "f8",
+   "latex": "E = U\\cdot I\\cdot\\Delta t",
+   "nombre": "Energía eléctrica"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 29,
+   "y": 13,
+   "enemigo": "error_anodo_catodo",
+   "nombre": "Confundir ánodo y cátodo",
+   "correccion": "Cátodo = reducción (borne −); ánodo = oxidación (borne +)."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 54,
+   "y": 11,
+   "enemigo": "error_volumen_total",
+   "nombre": "Usar el volumen de una solución en vez del total",
+   "correccion": "Tras mezclar, [X]i = ni / Vtotal de la mezcla."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 77,
+   "y": 13,
+   "enemigo": "error_unidades",
+   "nombre": "Unidades incoherentes",
+   "correccion": "Pasar Δt a segundos y µm/cm² a cm antes de calcular (q en C, I en A)."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 100,
+   "y": 10,
+   "enemigo": "error_sentido_corriente",
+   "nombre": "Invertir el sentido de I y de los e⁻",
+   "correccion": "Los electrones circulan en sentido contrario al de la corriente I."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 125,
+   "y": 12,
+   "enemigo": "error_portadores",
+   "nombre": "Confundir iones y electrones como portadores",
+   "correccion": "Iones en la disolución; electrones solo en el circuito exterior."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 147,
+   "y": 13,
+   "enemigo": "error_estequiometria",
+   "nombre": "Olvidar la estequiometría de la semiecuación",
+   "correccion": "n(Zn) = n(e⁻)/2; para Cr³⁺, n(e⁻) = 3·n(Cr)."
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 76
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 132
+  },
+  {
+   "tipo": "matraz",
+   "x": 25,
+   "y": 12
+  },
+  {
+   "tipo": "matraz",
+   "x": 24,
+   "y": 12
+  },
+  {
+   "tipo": "ventila",
+   "x": 40,
+   "y": 14,
+   "alto": 6,
+   "periodo": 3.9036421865224837,
+   "retardo": 1.7040777918882668
+  },
+  {
+   "tipo": "matraz",
+   "x": 50,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 49,
+   "y": 13
+  },
+  {
+   "tipo": "cinta",
+   "x": 53,
+   "y": 12,
+   "largo": 5,
+   "velocidad": -1.8
+  },
+  {
+   "tipo": "matraz",
+   "x": 71,
+   "y": 11
+  },
+  {
+   "tipo": "matraz",
+   "x": 70,
+   "y": 11
+  },
+  {
+   "tipo": "ventila",
+   "x": 67,
+   "y": 12,
+   "alto": 6,
+   "periodo": 3.5692221448756754,
+   "retardo": 0.7818771847523749
+  },
+  {
+   "tipo": "matraz",
+   "x": 96,
+   "y": 10
+  },
+  {
+   "tipo": "matraz",
+   "x": 95,
+   "y": 10
+  },
+  {
+   "tipo": "cinta",
+   "x": 91,
+   "y": 11,
+   "largo": 6,
+   "velocidad": 1.8
+  },
+  {
+   "tipo": "ventila",
+   "x": 100,
+   "y": 11,
+   "alto": 6,
+   "periodo": 4.24398447861895,
+   "retardo": 0.6842368142679334
+  },
+  {
+   "tipo": "matraz",
+   "x": 121,
+   "y": 11
+  },
+  {
+   "tipo": "matraz",
+   "x": 120,
+   "y": 11
+  },
+  {
+   "tipo": "ventila",
+   "x": 133,
+   "y": 14,
+   "alto": 6,
+   "periodo": 3.5099493335932492,
+   "retardo": 0.87985460460186
+  },
+  {
+   "tipo": "cinta",
+   "x": 132,
+   "y": 14,
+   "largo": 4,
+   "velocidad": -1.8
+  },
+  {
+   "tipo": "matraz",
+   "x": 143,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 142,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 168,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 167,
+   "y": 13
+  },
+  {
+   "tipo": "ventila",
+   "x": 164,
+   "y": 14,
+   "alto": 6,
+   "periodo": 4.085104266274721,
+   "retardo": 1.1683984254486859
+  },
+  {
+   "tipo": "item",
+   "x": 46,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 83,
+   "y": 11,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 107,
+   "y": 11,
+   "item": "doble"
+  }
+ ],
+ "ambiente": "lab",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "nombre_fase": "El laboratorio inestable",
+ "extra": "bioma-lab"
+}

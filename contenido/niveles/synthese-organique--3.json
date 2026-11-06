@@ -1,0 +1,535 @@
+{
+ "capitulo_id": "synthese-organique",
+ "tipo_nivel": "normal",
+ "tema_visual": "laboratorio-verde",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 209,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 18,
+   "y": 13,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 24,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "foso",
+   "x": 30,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 33,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 40,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 47,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 55,
+   "y": 12,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 62,
+   "y": 11,
+   "largo": 7,
+   "grosor": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 69,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 72,
+   "y": 11,
+   "largo": 7,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 79,
+   "y": 12,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 86,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 94,
+   "y": 11,
+   "largo": 8,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 102,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "foso",
+   "x": 108,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 111,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 119,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 127,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 135,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 142,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "foso",
+   "x": 150,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 152,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 159,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 167,
+   "y": 14,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 171,
+   "y": 14,
+   "largo": 38
+  },
+  {
+   "tipo": "jefe",
+   "x": 188,
+   "jefe": "rey_bomba",
+   "titulo": "Rey Bomba: el Rendimiento Escurridizo",
+   "preguntas": [
+    {
+     "pregunta": "Ex. 22: n_obtenue = 5,8 mmol de benzoato de etilo y n_attendue = x_max = 8,2 mmol. ¿Cuál es el rendimiento R?",
+     "opciones": [
+      "58 %",
+      "71 %",
+      "1,4 %",
+      "141 %"
+     ],
+     "correcta": 1,
+     "explicacion": "R = n_obtenue / n_attendue × 100 = 5,8 / 8,2 × 100 = 71 %.",
+     "pagina_pdf": 240
+    },
+    {
+     "pregunta": "Para aumentar el rendimiento de una síntesis con equilibrio (desplazar el equilibrio en el sentido directo), conviene…",
+     "opciones": [
+      "eliminar un producto a medida que se forma (destilación)",
+      "añadir un catalizador",
+      "subir solo la temperatura",
+      "disminuir la concentración de un reactivo"
+     ],
+     "correcta": 0,
+     "explicacion": "Introducir un exceso de reactivo o eliminar un producto aumenta el rendimiento; un catalizador solo acelera (ex. 26, ex. 19).",
+     "pagina_pdf": 233
+    },
+    {
+     "pregunta": "¿Cuál es el papel de un calentamiento a reflujo?",
+     "opciones": [
+      "Aumentar la velocidad de reacción evitando toda pérdida de materia",
+      "Eliminar el agua formada",
+      "Purificar el producto",
+      "Proteger un grupo característico"
+     ],
+     "correcta": 0,
+     "explicacion": "El refrigerante vertical condensa los vapores y los devuelve al matraz (corrigé del ex. 18).",
+     "pagina_pdf": 238
+    },
+    {
+     "pregunta": "Un reactivo que solo reacciona con un grupo característico (p. ej. NaBH₄: reduce cetonas pero no ésteres) se llama…",
+     "opciones": [
+      "quimioselectivo",
+      "catalizador",
+      "monómero",
+      "isómero de función"
+     ],
+     "correcta": 0,
+     "explicacion": "Es quimioselectivo; si no lo es, hay que proteger los grupos que no se quieren modificar.",
+     "pagina_pdf": 234
+    },
+    {
+     "pregunta": "Ex. 26: al calentar a 50 °C en lugar de 20 °C la esterificación del etanoato de butilo…",
+     "opciones": [
+      "va más rápido pero el rendimiento queda inalterado",
+      "da más cantidad de éster final",
+      "va más lento",
+      "se convierte en una adición"
+     ],
+     "correcta": 0,
+     "explicacion": "La temperatura aumenta la velocidad de formación, no el estado final: el rendimiento queda inalterado.",
+     "pagina_pdf": 242
+    },
+    {
+     "pregunta": "La esterificación (ácido carboxílico + alcohol → éster + agua) es una reacción de…",
+     "opciones": [
+      "sustitución",
+      "adición",
+      "eliminación",
+      "polimerización"
+     ],
+     "correcta": 0,
+     "explicacion": "Se forma agua además del éster: es más bien una sustitución (corrigé del ex. 26).",
+     "pagina_pdf": 242
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 203
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 37,
+   "y": 12,
+   "ref": "f1",
+   "latex": "n = \\dfrac{m}{M}",
+   "nombre": "Quantité de matière à partir de la masse"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 28,
+   "y": 12,
+   "ref": "f2",
+   "latex": "n = \\dfrac{\\rho\\cdot V}{M}",
+   "nombre": "Quantité de matière d'un liquide"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 66,
+   "y": 9,
+   "ref": "f3",
+   "latex": "R = \\dfrac{n_{\\text{obtenue}}}{n_{\\text{attendue}}}\\times 100",
+   "nombre": "Rendement d'une synthèse"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 22,
+   "y": 11,
+   "ref": "f4",
+   "latex": "Q_r = \\dfrac{[C]^c\\cdot[D]^d}{[A]^a\\cdot[B]^b}",
+   "nombre": "Quotient de réaction"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 91,
+   "y": 10,
+   "ref": "f5",
+   "latex": "K(T) = Q_{r,\\text{éq}}",
+   "nombre": "Constante d'équilibre"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 44,
+   "y": 12,
+   "ref": "f6",
+   "latex": "Q_{r,i} < K(T)\\ \\Rightarrow\\ \\text{sens direct}",
+   "nombre": "Critère d'évolution spontanée"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 52,
+   "y": 10,
+   "ref": "f7",
+   "latex": "\\tau = \\dfrac{x_f}{x_{max}}",
+   "nombre": "Taux d'avancement final"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 76,
+   "y": 9,
+   "ref": "f8",
+   "latex": "c = \\dfrac{m_{\\text{soluté}}}{M\\cdot V}\\quad\\text{con}\\quad m_{\\text{soluté}} = \\rho_{eau}\\cdot d\\cdot V\\cdot w",
+   "nombre": "Concentration d'une solution commerciale (titre massique)"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 26,
+   "y": 13,
+   "enemigo": "error_1",
+   "nombre": "Confundir velocidad y rendimiento",
+   "correccion": "Calentar o añadir un catalizador acelera la reacción, pero no cambia la cantidad final de producto: el rendimiento queda inalterado."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 49,
+   "y": 11,
+   "enemigo": "error_2",
+   "nombre": "Llamar «adición» a la esterificación",
+   "correccion": "Se forma agua además del éster: la esterificación es más bien una sustitución, no una adición."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 74,
+   "y": 10,
+   "enemigo": "error_3",
+   "nombre": "Olvidar el catalizador (H₂SO₄)",
+   "correccion": "El ácido sulfúrico es catalizador: aumenta la velocidad de formación; interrogarse siempre por el papel de cada especie introducida."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 96,
+   "y": 10,
+   "enemigo": "error_4",
+   "nombre": "Calcular n_attendue con el reactivo en exceso",
+   "correccion": "n_attendue sale del avance máximo, fijado por el reactivo limitante (tabla de avance)."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 121,
+   "y": 12,
+   "enemigo": "error_5",
+   "nombre": "Destilar el reactivo más volátil",
+   "correccion": "Destilar el reactivo (el de menor temperatura de ebullición) lo elimina y baja el rendimiento; hay que eliminar un producto."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 144,
+   "y": 13,
+   "enemigo": "error_6",
+   "nombre": "Calentar sin reflujo",
+   "correccion": "El calentamiento a reflujo acelera la reacción evitando toda pérdida de materia; sin refrigerante se pierden vapores."
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 73
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 128
+  },
+  {
+   "tipo": "matraz",
+   "x": 22,
+   "y": 12
+  },
+  {
+   "tipo": "matraz",
+   "x": 21,
+   "y": 12
+  },
+  {
+   "tipo": "ventila",
+   "x": 35,
+   "y": 14,
+   "alto": 6,
+   "periodo": 4.178176214313135,
+   "retardo": 1.3008340587839484
+  },
+  {
+   "tipo": "matraz",
+   "x": 45,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 44,
+   "y": 13
+  },
+  {
+   "tipo": "cinta",
+   "x": 48,
+   "y": 12,
+   "largo": 6,
+   "velocidad": -1.8
+  },
+  {
+   "tipo": "matraz",
+   "x": 67,
+   "y": 10
+  },
+  {
+   "tipo": "matraz",
+   "x": 66,
+   "y": 10
+  },
+  {
+   "tipo": "ventila",
+   "x": 64,
+   "y": 11,
+   "alto": 6,
+   "periodo": 3.9486210437957197,
+   "retardo": 0.38119051745161414
+  },
+  {
+   "tipo": "matraz",
+   "x": 92,
+   "y": 11
+  },
+  {
+   "tipo": "matraz",
+   "x": 91,
+   "y": 11
+  },
+  {
+   "tipo": "cinta",
+   "x": 87,
+   "y": 12,
+   "largo": 6,
+   "velocidad": 1.8
+  },
+  {
+   "tipo": "ventila",
+   "x": 96,
+   "y": 11,
+   "alto": 6,
+   "periodo": 4.147617478948087,
+   "retardo": 1.19345027115196
+  },
+  {
+   "tipo": "matraz",
+   "x": 117,
+   "y": 11
+  },
+  {
+   "tipo": "matraz",
+   "x": 116,
+   "y": 11
+  },
+  {
+   "tipo": "ventila",
+   "x": 129,
+   "y": 14,
+   "alto": 6,
+   "periodo": 4.271380548924208,
+   "retardo": 1.8325755265541375
+  },
+  {
+   "tipo": "cinta",
+   "x": 128,
+   "y": 14,
+   "largo": 6,
+   "velocidad": -1.8
+  },
+  {
+   "tipo": "matraz",
+   "x": 140,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 139,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 165,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 164,
+   "y": 13
+  },
+  {
+   "tipo": "ventila",
+   "x": 161,
+   "y": 14,
+   "alto": 6,
+   "periodo": 4.317827644385398,
+   "retardo": 0.3280378235504031
+  },
+  {
+   "tipo": "item",
+   "x": 41,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 80,
+   "y": 10,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 103,
+   "y": 10,
+   "item": "doble"
+  }
+ ],
+ "ambiente": "lab",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "nombre_fase": "El laboratorio inestable",
+ "extra": "bioma-lab"
+}

@@ -19,13 +19,15 @@
   const GOLEM = ['carga', 'salto', 'carga', 'salto'];
   const PULPO = ['tinta', 'chorro', 'tentaculos', 'tinta'];
   const DRAGON = ['rayo', 'embestida', 'rafaga', 'rayo'];
-  const TAM = { golem: { w: 2.2, h: 2.6, hAt: 2.2 }, rey: { w: 3, h: 3.6, hAt: 2.6 }, bomba: { w: 3, h: 3, hAt: 2.2 }, calavera: { w: 1.8, h: 2.4, hAt: 1.7 }, pulpo: { w: 3.2, h: 3, hAt: 3, flota: 1.0 }, dragon: { w: 3.6, h: 2, hAt: 2, flota: 0.7 } };
-  const NOMBRE = { golem: 'Gran Ejercicio', rey: 'Rey Entropía', bomba: 'Rey Bomba', calavera: 'Maestro Calavera', pulpo: 'Pulpo Ácido', dragon: 'Dragón de Tormenta' };
+  const TAM = { golem: { w: 2.2, h: 2.6, hAt: 2.2 }, rey: { w: 3, h: 3.6, hAt: 2.6 }, bomba: { w: 3, h: 3, hAt: 2.2 }, calavera: { w: 1.8, h: 2.4, hAt: 1.7 }, gravedad: { w: 2.2, h: 2.2, hAt: 1.6 }, yeti: { w: 2.6, h: 3.0, hAt: 2.2 }, pulpo: { w: 3.2, h: 3, hAt: 3, flota: 1.0 }, dragon: { w: 3.6, h: 2, hAt: 2, flota: 0.7 } };
+  const NOMBRE = { golem: 'Gran Ejercicio', rey: 'Rey Entropía', bomba: 'Rey Bomba', calavera: 'Maestro Calavera', gravedad: 'Pozo Gravitatorio', yeti: 'Yeti Criogénico', pulpo: 'Pulpo Ácido', dragon: 'Dragón de Tormenta' };
   // Jefes de física moderna: reutilizan la IA del dragón (flotante) con otra piel, otros ataques y otro nombre.
   const SKIN_ID = { isotopo_inestable: 'isotopo', foton_veloz: 'foton', bombardero_neutron: 'bombardero' };
   const SKIN_NOMBRE = { isotopo: 'Isótopo Inestable', foton: 'Fotón Veloz', bombardero: 'Bombardero Neutrón' };
   const SKIN_ATAQUES = { isotopo: ['rafaga', 'rayo', 'rafaga', 'embestida'], foton: ['embestida', 'embestida', 'rafaga', 'rayo', 'embestida'], bombardero: ['bombardeo', 'rafaga', 'bombardeo', 'rayo'] };
   const SKIN_TAM = { isotopo: { w: 3.2, h: 3.0 }, foton: { w: 2.4, h: 2.4 }, bombardero: { w: 4.6, h: 1.9 } };
+  const GRAV = ['pozo', 'rodar', 'lluvia', 'pozo', 'rodar'];
+  const YETI = ['rafaga', 'aliento', 'rodar', 'aliento', 'rafaga'];
   const CAL = ['huesos', 'blink', 'rayos', 'huesos', 'rayos', 'blink'];
   const BOMBA = ['lanzar', 'rodar', 'lanzar', 'salto', 'mecha'];
   const REY = [['bola', 'bola', 'arco'], ['onda', 'abanico', 'lluvia'], ['onda', 'abanico', 'lluvia', 'arco']];
@@ -33,7 +35,7 @@
   Jefe.crear = function (g) {
     const w = g.w, A = w.arena, seg = w.jefeSeg;
     const skin = SKIN_ID[seg.jefe] || null;
-    let kind = skin ? 'dragon' : seg.jefe === 'rey_entropia' ? 'rey' : seg.jefe === 'rey_bomba' ? 'bomba' : seg.jefe === 'maestro_calavera' ? 'calavera' : seg.jefe === 'pulpo_acido' ? 'pulpo' : seg.jefe === 'dragon_tormenta' ? 'dragon' : 'golem';
+    let kind = skin ? 'dragon' : seg.jefe === 'rey_entropia' ? 'rey' : seg.jefe === 'rey_bomba' ? 'bomba' : seg.jefe === 'maestro_calavera' ? 'calavera' : seg.jefe === 'pozo_gravitatorio' ? 'gravedad' : seg.jefe === 'yeti_criogenico' ? 'yeti' : seg.jefe === 'pulpo_acido' ? 'pulpo' : seg.jefe === 'dragon_tormenta' ? 'dragon' : 'golem';
     if (A.fort && kind === 'golem' && seg.tipo !== 'jefe_quiz') kind = 'rey';
     const rey = kind === 'rey', tam = skin ? Object.assign({}, TAM.dragon, SKIN_TAM[skin]) : TAM[kind], quiz = kind !== 'bomba' && (seg.tipo === 'jefe_quiz' || kind === 'pulpo' || kind === 'dragon');
     const floorY = w.topAt(A.izq + 1);
@@ -50,6 +52,7 @@
     b.x = J.clamp(seg.x, b.xmin + 2, b.xmax - b.w - 1);
     b.yBase = floorY - b.h - b.hover;
     b.y = b.flota ? floorY - b.h - 9 : floorY - b.h - 9;
+    if (kind === 'yeti') g.hieloGlobal = true;   // la arena es una pista de hielo
     if (b.disp) {   // jefe de disparo: asegura munición y avisa
       b.corazaMax = b.coraza = 8;
       if (g.it && !(g.it.fuego || g.it.escopeta > 0 || g.it.canon > 0) && J.Items) J.Items.dar(g, 'fuego');
@@ -77,7 +80,7 @@
   function ponerAltura(b, h) { b.y += b.h - h; b.h = h; }
 
   // ---------- proyectiles ----------
-  function bola(g, b, x, y, vx, vy, grav) { g.proy.push({ tipo: 'bola', x, y, vx, vy, grav: grav || 0, t: 0, col: b.kind === 'dragon' ? 'azul' : null }); J.Audio.sfx('fuego'); }
+  function bola(g, b, x, y, vx, vy, grav) { g.proy.push({ tipo: 'bola', x, y, vx, vy, grav: grav || 0, t: 0, col: (b.kind === 'dragon' || b.kind === 'yeti') ? 'azul' : null }); J.Audio.sfx('fuego'); }
   function ondas(g, b) {
     const y = b.floorY, cx = b.x + b.w / 2, v = (b.kind === 'pulpo' ? 5 : 6.5) + furia(b), tent = b.kind === 'pulpo';
     g.proy.push({ tipo: 'onda', x: cx - 1, y, vx: -v, vida: 4, t: 0, tent }, { tipo: 'onda', x: cx + 1, y, vx: v, vida: 4, t: 0, tent });
@@ -93,6 +96,10 @@
     const pat = patronFase(b);
     if (b.kind === 'pulpo') { const l = pat || PULPO; estado(b, 'aviso_' + l[b.ciclo++ % l.length]); return; }
     if (b.kind === 'dragon') { const l = pat || (b.skin ? SKIN_ATAQUES[b.skin] : DRAGON); estado(b, 'aviso_' + l[b.ciclo++ % l.length]); return; }
+    if (b.kind === 'gravedad' || b.kind === 'yeti') {   // 4 ataques y se cansa
+      if (b.ronda >= 4) { b.ronda = 0; ponerAltura(b, b.hAt); estado(b, 'aturdido'); J.Audio.sfx('fallo'); J.chispas(g, (b.x + b.w / 2) * J.T, (b.y + 1) * J.T, 16, '#e8f0ff', 2, -3); return; }
+      b.ronda++; const l = pat || (b.kind === 'yeti' ? YETI : GRAV); estado(b, 'aviso_' + l[b.ciclo++ % l.length]); return;
+    }
     if (b.kind === 'calavera') {   // 4 ataques y se cansa: aturdido -> pisotón -> pregunta
       if (b.ronda >= 4) { b.ronda = 0; ponerAltura(b, b.hAt); estado(b, 'aturdido'); J.Audio.sfx('fallo'); J.chispas(g, (b.x + b.w / 2) * J.T, (b.y + 1) * J.T, 16, '#e8f0ff', 2, -3); return; }
       b.ronda++; const l = pat || CAL; estado(b, 'aviso_' + l[b.ciclo++ % l.length]); return;
@@ -173,6 +180,16 @@
         }
         break;
       }
+      case 'aviso_pozo':   // invierte la gravedad 3,4 s: flotas hacia arriba mientras te disparan
+        b.vx = 0; if (b.t > 0.9 / f) {
+          g.gravMult = -0.75; g.gravT = 3.4; J.Audio.sfx('onda'); g.shake = Math.max(g.shake, 5); if (g.ui) g.ui.aviso('¡Gravedad invertida!');
+          [0, 0.7, 1.4, 2.1].forEach((dt2, i) => programar(b, dt2, () => { if (g.jefe !== b || b.estado === 'pregunta' || b.estado === 'aturdido') return; bola(g, b, b.x + b.w / 2 + b.dir * 1.4, g.jugador.y + g.jugador.h / 2, b.dir * (5.5 + f), 0); }));
+          estado(b, 'espera', 0.2 - 3.4 / f);
+        }
+        break;
+      case 'aviso_aliento':   // ventisca baja que CONGELA si la tocas (salta)
+        b.vx = 0; if (b.t > 0.7 / f) { g.proy.push({ tipo: 'haz', y: b.floorY - 0.45, x0: b.dir < 0 ? b.xmin : b.x + b.w, x1: b.dir < 0 ? b.x : b.xmax, aviso: 0.55, t: 0, dur: 1.0, h: 0.9, lado: b.dir < 0 ? 1 : -1, congela: true, hielo: true }); J.Audio.sfx('aviso'); estado(b, 'espera', 0.1 - 1.6 / f); }
+        break;
       case 'aviso_huesos': {   // oleada de huesos que recorren el suelo: salta los bajos y los altos
         b.vx = 0; if (b.t > 0.7 / f) {
           const dir = b.dir, x0 = dir < 0 ? b.xmax - 0.5 : b.xmin + 0.5, hs = [1.0, 1.0, 1.7, 1.0, 1.7];
@@ -426,7 +443,9 @@
     const blanco = b.flash > 0 && Math.floor(b.flash * 20) % 2 === 0;
     ctx.save();
     if (b.estado === 'vencido') ctx.globalAlpha = Math.max(0, 1 - b.t / 1.5);
-    if (b.kind === 'calavera') dibujarCalavera(ctx, b, px + tiembla, py, wpx, hpx, t, blanco);
+    if (b.kind === 'gravedad') dibujarGravedad(ctx, b, px + tiembla, py, wpx, hpx, t, blanco);
+    else if (b.kind === 'yeti') dibujarYeti(ctx, b, px + tiembla, py, wpx, hpx, t, blanco);
+    else if (b.kind === 'calavera') dibujarCalavera(ctx, b, px + tiembla, py, wpx, hpx, t, blanco);
     else if (b.kind === 'bomba') dibujarBomba(ctx, b, px + tiembla, py, wpx, hpx, t, blanco);
     else if (b.kind === 'rey') dibujarRey(ctx, b, px + tiembla, py, wpx, hpx, t, blanco);
     else if (b.kind === 'pulpo') dibujarPulpo(ctx, b, px + tiembla, py, wpx, hpx, t, blanco);
@@ -627,6 +646,28 @@
     ctx.fillStyle = OUT; ctx.fillRect(cx - R - 3, cy + 1, 5, 9); ctx.fillRect(cx + R - 2, cy + 1, 5, 9); ctx.fillStyle = cuerpo; ctx.fillRect(cx - R - 2, cy + 2, 3, 7); ctx.fillRect(cx + R - 1, cy + 2, 3, 7);
   }
 
+  /** Pozo Gravitatorio (diseño propio): esfera oscura con anillos orbitales y un ojo. */
+  function dibujarGravedad(ctx, b, x, y, w, h, t, bl) {
+    const D = J.Temas.disco, cx = Math.round(x + w / 2), cy = Math.round(y + h / 2 - 3 + Math.sin(t * 2.5) * 3), R = Math.round(w / 2 - 3), aturdido = b.estado === 'aturdido' || b.estado === 'pregunta', inv = b.estado === 'aviso_pozo';
+    ctx.globalAlpha = 0.25 + 0.1 * Math.sin(t * 5); D(ctx, cx, cy, R + 9, inv ? '#ff4d6d' : '#8d63d6'); ctx.globalAlpha = 1;
+    D(ctx, cx, cy, R + 1, OUT); D(ctx, cx, cy, R, bl ? '#fff' : '#1b1034'); D(ctx, cx - 6, cy - 7, 5, bl ? '#fff' : '#3a2670');
+    ctx.strokeStyle = bl ? '#fff' : '#c9a6ff'; ctx.lineWidth = 2; ctx.beginPath(); ctx.ellipse(cx, cy, R + 8, 6 + Math.sin(t * 2) * 2, t * 0.6, 0, 6.3); ctx.stroke(); ctx.strokeStyle = '#ffd166'; ctx.lineWidth = 1; ctx.beginPath(); ctx.ellipse(cx, cy, R + 12, 9, -t * 0.4, 0, 6.3); ctx.stroke();
+    ctx.fillStyle = '#fff'; ctx.fillRect(cx - 9, cy - 5, 18, 10); ctx.fillStyle = OUT; ctx.fillRect(cx - 9, cy - 5, 18, 1); ctx.fillRect(cx - 9, cy + 4, 18, 1);
+    if (aturdido) { ctx.fillRect(cx - 7, cy - 1, 14, 2); } else { D(ctx, cx + b.dir * 2, cy, 4, inv ? '#ff4d6d' : '#8d63d6'); D(ctx, cx + b.dir * 2, cy, 2, OUT); }
+    for (let i = 0; i < 5; i++) { const a = t * 1.8 + i * 1.26; D(ctx, cx + Math.cos(a) * (R + 10), cy + Math.sin(a) * 6, 2, '#fff'); }
+  }
+  /** Yeti Criogénico (diseño propio): gigante peludo blanco con cara azul y cristales de hielo en los hombros. */
+  function dibujarYeti(ctx, b, x, y, w, h, t, bl) {
+    const cx = Math.round(x + w / 2), by = Math.round(y + h), aturdido = b.estado === 'aturdido' || b.estado === 'pregunta', atq = String(b.estado).startsWith('aviso'), pelo = bl ? '#fff' : '#eef6ff', pelo2 = bl ? '#fff' : '#bcd4f0', pie = b.estado === 'carga' ? Math.floor(t * 16) % 2 * 3 : 0, ab = aturdido ? 10 : 0;
+    ctx.fillStyle = OUT; ctx.fillRect(cx - 15, by - 8 + pie, 12, 8); ctx.fillRect(cx + 3, by - 8 + (3 - pie) % 4, 12, 8); ctx.fillStyle = '#7fd0ff'; ctx.fillRect(cx - 14, by - 7 + pie, 10, 4); ctx.fillRect(cx + 4, by - 7 + (3 - pie) % 4, 10, 4);
+    ctx.fillStyle = OUT; ctx.fillRect(cx - 18, by - 38 + ab, 36, 32 - ab); ctx.fillStyle = pelo; ctx.fillRect(cx - 17, by - 37 + ab, 34, 30 - ab); ctx.fillStyle = pelo2; for (let i = 0; i < 5; i++) ctx.fillRect(cx - 14 + i * 7, by - 24 + ab + (i % 2) * 5, 4, 3);
+    const al = atq ? -10 : 0; ctx.fillStyle = OUT; ctx.fillRect(cx - 25, by - 34 + al + ab, 9, 22); ctx.fillRect(cx + 16, by - 34 + al + ab, 9, 22); ctx.fillStyle = pelo; ctx.fillRect(cx - 24, by - 33 + al + ab, 7, 20); ctx.fillRect(cx + 17, by - 33 + al + ab, 7, 20);
+    ctx.fillStyle = '#7fd0ff'; for (const sx of [-22, 17]) { ctx.fillRect(cx + sx, by - 46 + ab, 3, 12); ctx.fillRect(cx + sx + 3, by - 42 + ab, 2, 8); }
+    const hy = by - 52 + ab; ctx.fillStyle = OUT; ctx.fillRect(cx - 12, hy, 24, 20); ctx.fillStyle = pelo; ctx.fillRect(cx - 11, hy + 1, 22, 18); ctx.fillStyle = bl ? '#fff' : '#7fd0ff'; ctx.fillRect(cx - 8, hy + 6, 16, 11);
+    ctx.fillStyle = OUT; ctx.fillRect(cx - 7, hy + 8, 5, 3); ctx.fillRect(cx + 2, hy + 8, 5, 3); ctx.fillStyle = aturdido ? '#fff' : atq ? '#ff4d6d' : '#fff'; ctx.fillRect(cx - 6, hy + 9, 3, 2); ctx.fillRect(cx + 3, hy + 9, 3, 2);
+    ctx.fillStyle = OUT; ctx.fillRect(cx - 4, hy + 13, 8, 3); ctx.fillStyle = '#fff'; ctx.fillRect(cx - 3, hy + 13, 2, 2); ctx.fillRect(cx + 1, hy + 13, 2, 2); ctx.fillRect(cx - 9, hy - 2, 18, 3);
+  }
+
   /** Maestro Calavera (diseño propio): esqueleto con birrete, gafas redondas y capa verde. */
   function dibujarCalavera(ctx, b, x, y, w, h, t, bl) {
     const D = J.Temas.disco, cx = Math.round(x + w / 2), aturdido = b.estado === 'aturdido' || b.estado === 'pregunta', atq = String(b.estado).startsWith('aviso');
@@ -736,7 +777,7 @@
         const sx = q.lado > 0 ? xa : xb;
         ctx.fillStyle = OUT; ctx.fillRect(sx - 8, y - 8, 16, 14); ctx.fillStyle = '#f2efe4'; ctx.fillRect(sx - 7, y - 7, 14, 12); ctx.fillStyle = OUT; ctx.fillRect(sx - 5, y - 5, 4, 4); ctx.fillRect(sx + 1, y - 5, 4, 4); ctx.fillStyle = act ? '#ff4d6d' : '#ffd166'; ctx.fillRect(sx - 4, y - 4, 2, 2); ctx.fillRect(sx + 2, y - 4, 2, 2);
         if (!act) { if (Math.floor(q.t * 14) % 2) { ctx.fillStyle = 'rgba(255,209,102,.55)'; ctx.fillRect(xa, y - 1, xb - xa, 2); } }
-        else { ctx.fillStyle = 'rgba(255,77,109,.4)'; ctx.fillRect(xa, y - hh / 2 - 3, xb - xa, hh + 6); ctx.fillStyle = '#ff4d6d'; ctx.fillRect(xa, y - hh / 2, xb - xa, hh); ctx.fillStyle = '#fff'; ctx.fillRect(xa, y - 2, xb - xa, 4); }
+        else { ctx.fillStyle = q.hielo ? 'rgba(159,231,255,.4)' : 'rgba(255,77,109,.4)'; ctx.fillRect(xa, y - hh / 2 - 3, xb - xa, hh + 6); ctx.fillStyle = q.hielo ? '#9fe7ff' : '#ff4d6d'; ctx.fillRect(xa, y - hh / 2, xb - xa, hh); ctx.fillStyle = '#fff'; ctx.fillRect(xa, y - 2, xb - xa, 4); }
       } else if (q.tipo === 'bomba') {
         const sx = Math.round(q.x * T - camX), sy = Math.round(q.y * T - camY), parp = q.fuse < 0.7 && Math.floor(q.t * 18) % 2;
         J.Temas.disco(ctx, sx, sy, 6, OUT); J.Temas.disco(ctx, sx, sy, 5, parp ? '#ff4d6d' : '#232a48'); ctx.fillStyle = parp ? '#ffd0d0' : '#3a4470'; ctx.fillRect(sx - 3, sy - 3, 2, 2);

@@ -1,0 +1,563 @@
+{
+ "capitulo_id": "evolution-temporelle",
+ "tipo_nivel": "normal",
+ "tema_visual": "caverna",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 200,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 18,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 24,
+   "y": 11,
+   "largo": 7,
+   "grosor": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 31,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 34,
+   "y": 11,
+   "largo": 7,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 41,
+   "y": 11,
+   "largo": 6,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 47,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 54,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 62,
+   "y": 11,
+   "largo": 7,
+   "grosor": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 69,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 71,
+   "y": 12,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 78,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 85,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 92,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 98,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "foso",
+   "x": 104,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 106,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 114,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 122,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 129,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 137,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "foso",
+   "x": 143,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 145,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 152,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 158,
+   "y": 14,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 162,
+   "y": 14,
+   "largo": 38
+  },
+  {
+   "tipo": "jefe",
+   "x": 179,
+   "jefe": "maestro_calavera",
+   "titulo": "Maestro Calavera: cinética y catálisis",
+   "preguntas": [
+    {
+     "pregunta": "Un catalizador es una especie química que...",
+     "opciones": [
+      "aumenta la cantidad final de producto formado",
+      "acelera la transformación y no aparece en el balance reaccional",
+      "aparece en el balance reaccional",
+      "modifica el estado final del sistema"
+     ],
+     "correcta": 1,
+     "explicacion": "Acelera u orienta la transformación sin modificar el estado final; se consume y se regenera, así que no está en la ecuación.",
+     "pagina_pdf": 112
+    },
+    {
+     "pregunta": "La velocidad volúmica de desaparición de un reactivo se expresa:",
+     "opciones": [
+      "v = dn/dt",
+      "v = d[Réactif]/dt",
+      "v = −d[Réactif]/dt",
+      "v = [Réactif]·t"
+     ],
+     "correcta": 2,
+     "explicacion": "La concentración del reactivo disminuye; el signo menos hace positiva la velocidad.",
+     "pagina_pdf": 113
+    },
+    {
+     "pregunta": "El tiempo de semirreacción t1/2 es la duración al cabo de la cual...",
+     "opciones": [
+      "la reacción está terminada",
+      "el avance vale x_f/2",
+      "la velocidad vale cero",
+      "el catalizador se regenera"
+     ],
+     "correcta": 1,
+     "explicacion": "x(t1/2) = x_f/2.",
+     "pagina_pdf": 113
+    },
+    {
+     "pregunta": "Un intermediario reaccional es una especie...",
+     "opciones": [
+      "formada y luego consumida en el mecanismo",
+      "consumida y luego regenerada",
+      "presente en el balance global",
+      "que solo aparece en la última etapa"
+     ],
+     "correcta": 0,
+     "explicacion": "Intermediario: formado y luego consumido. Consumido y regenerado define al catalizador.",
+     "pagina_pdf": 114
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 194
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 45,
+   "y": 9,
+   "ref": "f1",
+   "latex": "v_{\\text{Produit}} = \\dfrac{\\mathrm{d}[\\text{Produit}]}{\\mathrm{d}t}",
+   "nombre": "Velocidad volúmica de aparición de un producto"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 126,
+   "y": 12,
+   "ref": "f2",
+   "latex": "v_{\\text{Réactif}} = -\\dfrac{\\mathrm{d}[\\text{Réactif}]}{\\mathrm{d}t}",
+   "nombre": "Velocidad volúmica de desaparición de un reactivo"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 149,
+   "y": 12,
+   "ref": "f3",
+   "latex": "x(t_{1/2}) = \\dfrac{x_\\mathrm{f}}{2}",
+   "nombre": "Tiempo de semirreacción"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 96,
+   "y": 12,
+   "ref": "f4",
+   "latex": "v_\\mathrm{A} = k \\cdot [\\mathrm{A}]",
+   "nombre": "Ley de velocidad de orden 1 (reactivo)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 141,
+   "y": 12,
+   "ref": "f5",
+   "latex": "v_\\mathrm{P} = k' \\cdot [\\mathrm{A}]",
+   "nombre": "Ley de velocidad de orden 1 (producto)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 38,
+   "y": 9,
+   "ref": "f10",
+   "latex": "\\sigma_{\\text{solution}} = \\sum_i \\lambda_i \\cdot [\\mathrm{X}_i]",
+   "nombre": "Ley de Kohlrausch"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 51,
+   "y": 11,
+   "ref": "n7",
+   "latex": "\\text{Temps de demi-réaction t1/2}",
+   "nombre": "Temps de demi-réaction t1/2"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 59,
+   "y": 11,
+   "ref": "f6",
+   "latex": "n_{\\text{réactif}}(t_{1/2}) = \\dfrac{n_0}{2}",
+   "nombre": "Cantidad de reactivo en t1/2"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 82,
+   "y": 11,
+   "ref": "n4",
+   "latex": "\\text{Catalyseur}",
+   "nombre": "Catalyseur"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 75,
+   "y": 10,
+   "ref": "f11",
+   "latex": "[\\mathrm{HO^-}](t) = c_0 \\cdot \\dfrac{\\sigma_t - \\sigma_\\infty}{\\sigma_0 - \\sigma_\\infty}",
+   "nombre": "Concentración de HO⁻ por conductimetría"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 26,
+   "y": 10,
+   "enemigo": "error_signo",
+   "nombre": "Olvidar el signo menos",
+   "correccion": "En v de un reactivo se pone −d[R]/dt para que sea positiva."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 49,
+   "y": 12,
+   "enemigo": "error_estequiometria",
+   "nombre": "Olvidar el nº estequiométrico",
+   "correccion": "[producto] = (coeficiente·x)/V, no x/V."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 73,
+   "y": 11,
+   "enemigo": "confusion_catalizador",
+   "nombre": "Confundir catalizador e intermediario",
+   "correccion": "Intermediario: formado y consumido; catalizador: consumido y regenerado."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 94,
+   "y": 13,
+   "enemigo": "catalizador_en_balance",
+   "nombre": "El catalizador cambia el balance",
+   "correccion": "No aparece en la ecuación y no cambia el estado final."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 116,
+   "y": 13,
+   "enemigo": "error_signo",
+   "nombre": "Olvidar el signo menos",
+   "correccion": "En v de un reactivo se pone −d[R]/dt para que sea positiva."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 139,
+   "y": 13,
+   "enemigo": "error_estequiometria",
+   "nombre": "Olvidar el nº estequiométrico",
+   "correccion": "[producto] = (coeficiente·x)/V, no x/V."
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 72
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 123
+  },
+  {
+   "tipo": "plataforma",
+   "x": 14,
+   "y": 0,
+   "largo": 146,
+   "grosor": 3,
+   "techo": true
+  },
+  {
+   "tipo": "murcielago",
+   "x": 21,
+   "y": 3
+  },
+  {
+   "tipo": "charco",
+   "x": 26,
+   "y": 10,
+   "largo": 3
+  },
+  {
+   "tipo": "murcielago",
+   "x": 37,
+   "y": 3
+  },
+  {
+   "tipo": "cristal",
+   "x": 35,
+   "y": 9
+  },
+  {
+   "tipo": "bloque_onoff",
+   "x": 37,
+   "y": 7,
+   "largo": 3,
+   "alto": 1,
+   "grupo": "cristal"
+  },
+  {
+   "tipo": "bloque_onoff",
+   "x": 39,
+   "y": 4,
+   "largo": 2,
+   "alto": 1,
+   "grupo": "cristal"
+  },
+  {
+   "tipo": "murcielago",
+   "x": 50,
+   "y": 3
+  },
+  {
+   "tipo": "charco",
+   "x": 56,
+   "y": 12,
+   "largo": 3
+  },
+  {
+   "tipo": "murcielago",
+   "x": 65,
+   "y": 3
+  },
+  {
+   "tipo": "cristal",
+   "x": 72,
+   "y": 10
+  },
+  {
+   "tipo": "bloque_onoff",
+   "x": 74,
+   "y": 8,
+   "largo": 3,
+   "alto": 1,
+   "grupo": "cristal"
+  },
+  {
+   "tipo": "bloque_onoff",
+   "x": 76,
+   "y": 5,
+   "largo": 2,
+   "alto": 1,
+   "grupo": "cristal"
+  },
+  {
+   "tipo": "murcielago",
+   "x": 81,
+   "y": 3
+  },
+  {
+   "tipo": "charco",
+   "x": 87,
+   "y": 12,
+   "largo": 3
+  },
+  {
+   "tipo": "murcielago",
+   "x": 95,
+   "y": 3
+  },
+  {
+   "tipo": "murcielago",
+   "x": 110,
+   "y": 3
+  },
+  {
+   "tipo": "cristal",
+   "x": 107,
+   "y": 12
+  },
+  {
+   "tipo": "bloque_onoff",
+   "x": 109,
+   "y": 10,
+   "largo": 3,
+   "alto": 1,
+   "grupo": "cristal"
+  },
+  {
+   "tipo": "bloque_onoff",
+   "x": 112,
+   "y": 7,
+   "largo": 2,
+   "alto": 1,
+   "grupo": "cristal"
+  },
+  {
+   "tipo": "charco",
+   "x": 116,
+   "y": 13,
+   "largo": 3
+  },
+  {
+   "tipo": "murcielago",
+   "x": 125,
+   "y": 3
+  },
+  {
+   "tipo": "murcielago",
+   "x": 140,
+   "y": 3
+  },
+  {
+   "tipo": "charco",
+   "x": 147,
+   "y": 13,
+   "largo": 3
+  },
+  {
+   "tipo": "cristal",
+   "x": 146,
+   "y": 12
+  },
+  {
+   "tipo": "bloque_onoff",
+   "x": 148,
+   "y": 10,
+   "largo": 3,
+   "alto": 1,
+   "grupo": "cristal"
+  },
+  {
+   "tipo": "bloque_onoff",
+   "x": 150,
+   "y": 7,
+   "largo": 2,
+   "alto": 1,
+   "grupo": "cristal"
+  },
+  {
+   "tipo": "murcielago",
+   "x": 155,
+   "y": 3
+  },
+  {
+   "tipo": "item",
+   "x": 48,
+   "y": 11,
+   "item": "hielo"
+  },
+  {
+   "tipo": "item",
+   "x": 86,
+   "y": 11,
+   "item": "fuego"
+  }
+ ],
+ "ambiente": "cueva",
+ "peligros": true,
+ "aire": true,
+ "relieve": true,
+ "nombre_fase": "La cueva de cristal",
+ "extra": "bioma-cueva"
+}

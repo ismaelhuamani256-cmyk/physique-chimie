@@ -1,0 +1,525 @@
+{
+ "capitulo_id": "force-acides-bases",
+ "tipo_nivel": "normal",
+ "tema_visual": "laboratorio-ambar",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 204,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 20,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 27,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 34,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 36,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 44,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 51,
+   "y": 13,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 57,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 65,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "foso",
+   "x": 71,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 73,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 81,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 88,
+   "y": 12,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 95,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 102,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "foso",
+   "x": 108,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 110,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 118,
+   "y": 12,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 125,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 133,
+   "y": 11,
+   "largo": 8,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 141,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "foso",
+   "x": 147,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 150,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 156,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 162,
+   "y": 14,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 166,
+   "y": 14,
+   "largo": 38
+  },
+  {
+   "tipo": "jefe",
+   "x": 183,
+   "jefe": "rey_bomba",
+   "titulo": "Ejercicio de bac: fuerza de ácidos y bases",
+   "preguntas": [
+    {
+     "pregunta": "Une solution aqueuse d'acide fort (réaction quasi-totale avec l'eau) a une concentration c en acide apporté. Quelle relation donne son pH ?",
+     "opciones": [
+      "pH = pKe + log c",
+      "pH = − log c",
+      "pH = pKA + log c",
+      "pH = 14 − c"
+     ],
+     "correcta": 1,
+     "explicacion": "Si la transformation est totale, [H₃O⁺]f = c, donc pH = −log c (ex. HCl 1,0×10⁻² mol·L⁻¹ → pH = 2,0).",
+     "pagina_pdf": 185
+    },
+    {
+     "pregunta": "Plus le pKA d'un couple acide-base est grand...",
+     "opciones": [
+      "plus l'acide réagit avec l'eau, donc plus il est fort",
+      "moins l'acide réagit avec l'eau, donc plus il est faible et plus sa base est forte",
+      "plus Ke est grand",
+      "plus la solution est tampon"
+     ],
+     "correcta": 1,
+     "explicacion": "Un pKA grand correspond à un acide qui réagit peu avec l'eau (acide faible) et à une base conjuguée plus forte.",
+     "pagina_pdf": 185
+    },
+    {
+     "pregunta": "Dans un diagramme de distribution, à quelle condition l'acide et sa base conjuguée sont-ils en proportions égales (50 % chacun) ?",
+     "opciones": [
+      "pH = 7",
+      "pH = pKe",
+      "pH = pKA",
+      "pH = 0"
+     ],
+     "correcta": 2,
+     "explicacion": "Quand [AH]f = [A⁻]f, KA = [H₃O⁺]f donc pH = pKA.",
+     "pagina_pdf": 188
+    },
+    {
+     "pregunta": "Le pH à l'équivalence du titrage de la soude par l'acide chlorhydrique vaut 7,0. Quel indicateur coloré choisir parmi ceux du tableau ?",
+     "opciones": [
+      "Hélianthine (3,1–4,4)",
+      "Rouge de méthyle (4,2–6,2)",
+      "Bleu de bromothymol (6,0–7,6)",
+      "Thymolphtaléine (9,3–10,5)"
+     ],
+     "correcta": 2,
+     "explicacion": "Le pH à l'équivalence doit se situer dans la zone de virage : 7,0 est dans 6,0–7,6, donc le BBT.",
+     "pagina_pdf": 188
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 198
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 160,
+   "y": 12,
+   "ref": "f2",
+   "latex": "K_e = [\\mathrm{H_3O^+}]_f \\cdot [\\mathrm{HO^-}]_f",
+   "nombre": "Producto iónico del agua"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 92,
+   "y": 10,
+   "ref": "f4",
+   "latex": "K_A = \\dfrac{[\\mathrm{A^-}]_f \\cdot [\\mathrm{H_3O^+}]_f}{[\\mathrm{AH}]_f}",
+   "nombre": "Constante de acidez de un par"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 130,
+   "y": 10,
+   "ref": "f6",
+   "latex": "\\mathrm{pH} = -\\log c",
+   "nombre": "pH de una solución de ácido fuerte"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 122,
+   "y": 10,
+   "ref": "f7",
+   "latex": "\\mathrm{pH} = \\mathrm{p}K_e + \\log c",
+   "nombre": "pH de una solución de base fuerte"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 154,
+   "y": 12,
+   "ref": "f11",
+   "latex": "c\\cdot\\tau^2 + K_A\\cdot\\tau - K_A = 0",
+   "nombre": "Ecuación de segundo grado del ácido débil"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 55,
+   "y": 11,
+   "ref": "n11",
+   "latex": "\\text{Solution tampon}",
+   "nombre": "Solution tampon"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 106,
+   "y": 12,
+   "ref": "f14",
+   "latex": "\\mathrm{pH} = \\mathrm{p}K_A + \\log\\dfrac{[\\mathrm{A^-}]_f}{[\\mathrm{AH}]_f}",
+   "nombre": "pH de una solución de un par ácido-base"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 48,
+   "y": 12,
+   "ref": "f12",
+   "latex": "\\tau = \\dfrac{-K_A+\\sqrt{\\Delta}}{2c} \\qquad \\Delta = K_A^2+4\\,c\\,K_A",
+   "nombre": "Solución de la ecuación (τ > 0)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 115,
+   "y": 12,
+   "ref": "f8",
+   "latex": "x_{max}=c\\cdot V \\qquad \\tau = \\dfrac{x_f}{x_{max}} \\;\\Rightarrow\\; x_f = x_{max}\\cdot\\tau",
+   "nombre": "Avance máximo y tasa de avance final"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 78,
+   "y": 12,
+   "ref": "n14",
+   "latex": "\\text{Indicateur coloré}",
+   "nombre": "Indicateur coloré et zone de virage"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 29,
+   "y": 13,
+   "enemigo": "error_ph_debil",
+   "nombre": "Aplicar pH = −log c a un ácido débil",
+   "correccion": "Esa relación solo vale si la transformación es total; para un ácido débil hay que usar KA, τ y [H₃O⁺]f = c·τ."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 53,
+   "y": 12,
+   "enemigo": "error_reaccion_total",
+   "nombre": "Escribir xf = c·V en la tabla de un ácido débil",
+   "correccion": "La transformación no es total: xf = xmax·τ < xmax y [AH]f = c(1−τ) ≠ 0."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 75,
+   "y": 13,
+   "enemigo": "error_concentracion",
+   "nombre": "Confundir concentración aportada con concentración efectiva",
+   "correccion": "c (la del frasco) no es la de las especies presentes: calcular [A⁻]f, [AH]f y [H₃O⁺]f con la tabla de avance."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 97,
+   "y": 13,
+   "enemigo": "error_raiz_negativa",
+   "nombre": "Conservar la raíz negativa de la ecuación de 2.º grado",
+   "correccion": "Δ > 0 da dos raíces; τ es positivo (y menor que 1): conservar solo τ = (−KA + √Δ)/(2c)."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 120,
+   "y": 11,
+   "enemigo": "error_indicador",
+   "nombre": "Elegir un indicador cuya zona de viraje no contiene el pH de equivalencia",
+   "correccion": "El indicador sirve si el pH en la equivalencia está dentro de su zona de viraje (FIG. 9–10)."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 143,
+   "y": 13,
+   "enemigo": "error_diagramas",
+   "nombre": "Confundir diagrama de predominancia con diagrama de distribución",
+   "correccion": "Predominancia = eje de pH con dominios; distribución = curvas de % de cada especie en función del pH."
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 74
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 126
+  },
+  {
+   "tipo": "matraz",
+   "x": 25,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 24,
+   "y": 13
+  },
+  {
+   "tipo": "ventila",
+   "x": 38,
+   "y": 14,
+   "alto": 6,
+   "periodo": 3.7992682588286697,
+   "retardo": 1.0640667900443077
+  },
+  {
+   "tipo": "matraz",
+   "x": 49,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 48,
+   "y": 13
+  },
+  {
+   "tipo": "cinta",
+   "x": 52,
+   "y": 13,
+   "largo": 4,
+   "velocidad": -1.8
+  },
+  {
+   "tipo": "matraz",
+   "x": 69,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 68,
+   "y": 13
+  },
+  {
+   "tipo": "ventila",
+   "x": 67,
+   "y": 14,
+   "alto": 6,
+   "periodo": 3.402487276913598,
+   "retardo": 1.803731571417302
+  },
+  {
+   "tipo": "matraz",
+   "x": 93,
+   "y": 11
+  },
+  {
+   "tipo": "matraz",
+   "x": 92,
+   "y": 11
+  },
+  {
+   "tipo": "cinta",
+   "x": 89,
+   "y": 12,
+   "largo": 5,
+   "velocidad": 1.8
+  },
+  {
+   "tipo": "ventila",
+   "x": 97,
+   "y": 14,
+   "alto": 6,
+   "periodo": 3.576777730230242,
+   "retardo": 0.1773447608575225
+  },
+  {
+   "tipo": "matraz",
+   "x": 116,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 115,
+   "y": 13
+  },
+  {
+   "tipo": "ventila",
+   "x": 127,
+   "y": 12,
+   "alto": 6,
+   "periodo": 3.4790964174084364,
+   "retardo": 0.6030289656482637
+  },
+  {
+   "tipo": "cinta",
+   "x": 126,
+   "y": 12,
+   "largo": 6,
+   "velocidad": -1.8
+  },
+  {
+   "tipo": "matraz",
+   "x": 139,
+   "y": 10
+  },
+  {
+   "tipo": "matraz",
+   "x": 138,
+   "y": 10
+  },
+  {
+   "tipo": "matraz",
+   "x": 160,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 159,
+   "y": 13
+  },
+  {
+   "tipo": "ventila",
+   "x": 158,
+   "y": 14,
+   "alto": 6,
+   "periodo": 3.5082463809289037,
+   "retardo": 0.6463042995892465
+  },
+  {
+   "tipo": "item",
+   "x": 45,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 82,
+   "y": 11,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 103,
+   "y": 12,
+   "item": "doble"
+  }
+ ],
+ "ambiente": "lab",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "nombre_fase": "El laboratorio inestable",
+ "extra": "bioma-lab"
+}

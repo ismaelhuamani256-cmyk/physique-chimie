@@ -1,0 +1,537 @@
+{
+ "capitulo_id": "photons",
+ "tipo_nivel": "normal",
+ "tema_visual": "camara-fotoelectrica",
+ "fisica_juego": {
+  "gravedad": 0.9,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 208,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 18,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 25,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "foso",
+   "x": 31,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 33,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 41,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 47,
+   "y": 11,
+   "largo": 8,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 55,
+   "y": 11,
+   "largo": 8,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 63,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "foso",
+   "x": 69,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 72,
+   "y": 11,
+   "largo": 8,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 80,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 87,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 95,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 103,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "foso",
+   "x": 111,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 114,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 121,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 128,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 135,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 141,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "foso",
+   "x": 149,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 151,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 158,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 166,
+   "y": 14,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 170,
+   "y": 14,
+   "largo": 38
+  },
+  {
+   "tipo": "jefe",
+   "x": 187,
+   "jefe": "pozo_gravitatorio",
+   "titulo": "Fotón Veloz · la luz hecha rayo",
+   "preguntas": [
+    {
+     "id": "b1",
+     "tipo": "opcion",
+     "enunciado": "L'effet photoélectrique se produit :",
+     "opciones": [
+      "en dessous d'une fréquence seuil",
+      "au-dessus d'une fréquence seuil, quelle que soit l'intensité du rayonnement",
+      "pour n'importe quelle fréquence",
+      "uniquement si l'intensité est très élevée"
+     ],
+     "correcta": 1,
+     "explicacion": "Il se produit à partir d'une fréquence seuil ν_s qui dépend du matériau, quelle que soit l'intensité du rayonnement.",
+     "pagina_pdf": 503
+    },
+    {
+     "id": "b2",
+     "tipo": "opcion",
+     "enunciado": "Le cobalt a une fréquence seuil de 1,2×10¹⁵ Hz. Son travail d'extraction W = h·ν_s vaut :",
+     "opciones": [
+      "1,7×10⁻⁴⁰ J",
+      "5,5×10⁻⁴⁹ J",
+      "8,0×10⁻¹⁹ J",
+      "8,0×10⁻¹⁹ eV"
+     ],
+     "correcta": 2,
+     "explicacion": "W = h·ν_s = 6,63×10⁻³⁴ × 1,2×10¹⁵ = 8,0×10⁻¹⁹ J.",
+     "pagina_pdf": 503
+    },
+    {
+     "id": "b3",
+     "tipo": "opcion",
+     "enunciado": "La conservation de l'énergie dans l'effet photoélectrique s'écrit :",
+     "opciones": [
+      "h·ν = E_c + W, soit E_c = h(ν − ν_s)",
+      "h·ν = E_c − W",
+      "E_c = W − h·ν",
+      "h·ν = W, quelle que soit la fréquence"
+     ],
+     "correcta": 0,
+     "explicacion": "E_photon = W + E_c avec W = hν_s : l'énergie cinétique de l'électron est E_c = hν − hν_s = h(ν − ν_s).",
+     "pagina_pdf": 500
+    },
+    {
+     "id": "b4",
+     "tipo": "opcion",
+     "enunciado": "Le rendement d'une cellule photovoltaïque se calcule :",
+     "opciones": [
+      "η = P_lumineuse / P_électrique × 100",
+      "η = E_lumineuse / E_électrique × 100",
+      "η = P_électrique / P_lumineuse × 100",
+      "η = P_électrique × P_lumineuse"
+     ],
+     "correcta": 2,
+     "explicacion": "η = P_électrique / P_lumineuse × 100 = E_utile / E_fournie × 100 (sans unité).",
+     "pagina_pdf": 503
+    },
+    {
+     "id": "b5",
+     "tipo": "opcion",
+     "enunciado": "Or (W = 5,10 eV, λ_s = 244 nm) : quel rayonnement provoque l'effet photoélectrique ?",
+     "opciones": [
+      "λ = 300 nm",
+      "ν = 1,00×10¹⁵ Hz",
+      "ν = 5,00×10¹⁵ Hz",
+      "aucun des trois"
+     ],
+     "correcta": 2,
+     "explicacion": "Il faut ν ≥ ν_s = 1,23×10¹⁵ Hz (ou λ ≤ 244 nm) : seul ν = 5,00×10¹⁵ Hz convient (exercice 26).",
+     "pagina_pdf": 507
+    },
+    {
+     "id": "q11",
+     "tipo": "opcion",
+     "enunciado": "L'effet photoélectrique s'explique avec :",
+     "opciones": [
+      "l'aspect ondulatoire de la lumière uniquement",
+      "l'aspect particulaire de la lumière (photons)",
+      "l'aspect ondulatoire, car plus l'intensité est grande plus l'énergie augmente",
+      "aucun modèle : on ne peut pas l'expliquer"
+     ],
+     "correcta": 1,
+     "explicacion": "Le modèle ondulatoire n'explique pas l'existence d'une fréquence seuil ; Einstein (1905) utilise le modèle particulaire : photons d'énergie E = hν.",
+     "pagina_pdf": 503
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 202
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 22,
+   "y": 12,
+   "ref": "f1",
+   "latex": "E = h\\nu = h\\,\\dfrac{c}{\\lambda}",
+   "nombre": "Energía de un fotón"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 52,
+   "y": 9,
+   "ref": "f2",
+   "latex": "\\lambda_s = \\dfrac{c}{\\nu_s}",
+   "nombre": "Longitud de onda umbral"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 108,
+   "y": 12,
+   "ref": "f3",
+   "latex": "W = h\\,\\nu_s",
+   "nombre": "Trabajo de extracción"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 100,
+   "y": 11,
+   "ref": "f4",
+   "latex": "E_{\\text{photon}} = W + E_c",
+   "nombre": "Conservación de la energía en el efecto fotoeléctrico"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 60,
+   "y": 9,
+   "ref": "f5",
+   "latex": "E_c = h\\nu - h\\nu_s = h\\,(\\nu - \\nu_s)",
+   "nombre": "Energía cinética del electrón extraído"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 155,
+   "y": 12,
+   "ref": "f6",
+   "latex": "E_c = \\dfrac{1}{2}\\,m_e v^2 \\;\\Rightarrow\\; v = \\sqrt{\\dfrac{2E_c}{m_e}}",
+   "nombre": "Velocidad del electrón extraído"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 92,
+   "y": 12,
+   "ref": "f7",
+   "latex": "\\eta = \\dfrac{P_{\\text{électrique}}}{P_{\\text{lumineuse}}}\\times 100 = \\dfrac{E_{\\text{utile}}}{E_{\\text{fournie}}}\\times 100",
+   "nombre": "Rendimiento de una célula fotovoltaica"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 118,
+   "y": 12,
+   "ref": "f8",
+   "latex": "P_{\\text{lumineuse}} = E \\times S",
+   "nombre": "Potencia luminosa recibida"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 139,
+   "y": 12,
+   "ref": "f9",
+   "latex": "P_{\\text{électrique}} = U \\times I",
+   "nombre": "Potencia eléctrica y punto de potencia máxima"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 163,
+   "y": 12,
+   "ref": "f10",
+   "latex": "E_{\\text{photon}} = \\dfrac{hc}{\\lambda} \\geq E_{\\text{gap}} \\;\\Rightarrow\\; \\lambda \\leq \\dfrac{hc}{E_{\\text{gap}}}",
+   "nombre": "Condición de absorción de un fotón por un semiconductor"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 27,
+   "y": 13,
+   "enemigo": "intensidad_basta",
+   "nombre": "Más intensidad = efecto fotoeléctrico",
+   "correccion": "No: por debajo de la frecuencia umbral no se extrae ningún electrón, sea cual sea la intensidad; un solo fotón con hν ≥ W basta."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 49,
+   "y": 10,
+   "enemigo": "ev_sin_convertir",
+   "nombre": "Olvidar convertir eV en J",
+   "correccion": "Antes de usar h o m_e convierte W y E_c a julios: 1 eV = 1,602×10⁻¹⁹ J."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 74,
+   "y": 10,
+   "enemigo": "nu_lambda",
+   "nombre": "Confundir ν y λ",
+   "correccion": "Efecto si ν ≥ ν_s pero λ ≤ λ_s (desigualdad invertida); λ_s = c/ν_s."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 97,
+   "y": 12,
+   "enemigo": "intensidad_ec",
+   "nombre": "Intensidad ↔ energía cinética",
+   "correccion": "La intensidad fija el número de electrones emitidos; E_c solo depende de la frecuencia (E_c = h(ν − ν_s))."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 123,
+   "y": 12,
+   "enemigo": "w_negativo",
+   "nombre": "Trabajo de extracción negativo o velocidad nula",
+   "correccion": "W es una energía positiva (la ordenada en el origen es −W); y bajo el umbral no hay velocidad nula: no se emiten electrones."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 143,
+   "y": 13,
+   "enemigo": "rendimiento_reves",
+   "nombre": "Rendimiento al revés",
+   "correccion": "η = P_eléctrica / P_luminosa × 100 (salida entre entrada), no P_luminosa / P_eléctrica."
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 73
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 129
+  },
+  {
+   "tipo": "tornado",
+   "x": 19,
+   "y": 14,
+   "recorrido": 3,
+   "periodo": 8,
+   "alto": 7
+  },
+  {
+   "tipo": "espantapajaros",
+   "x": 29,
+   "y": 13
+  },
+  {
+   "tipo": "trampolin",
+   "x": 35,
+   "y": 13
+  },
+  {
+   "tipo": "tornado",
+   "x": 42,
+   "y": 12,
+   "recorrido": 2,
+   "periodo": 8,
+   "alto": 7
+  },
+  {
+   "tipo": "espantapajaros",
+   "x": 53,
+   "y": 10
+  },
+  {
+   "tipo": "tornado",
+   "x": 64,
+   "y": 12,
+   "recorrido": 2,
+   "periodo": 8,
+   "alto": 7
+  },
+  {
+   "tipo": "trampolin",
+   "x": 65,
+   "y": 11
+  },
+  {
+   "tipo": "espantapajaros",
+   "x": 78,
+   "y": 10
+  },
+  {
+   "tipo": "tornado",
+   "x": 88,
+   "y": 14,
+   "recorrido": 4,
+   "periodo": 8,
+   "alto": 7
+  },
+  {
+   "tipo": "espantapajaros",
+   "x": 101,
+   "y": 12
+  },
+  {
+   "tipo": "trampolin",
+   "x": 97,
+   "y": 12
+  },
+  {
+   "tipo": "tornado",
+   "x": 115,
+   "y": 14,
+   "recorrido": 3,
+   "periodo": 8,
+   "alto": 7
+  },
+  {
+   "tipo": "espantapajaros",
+   "x": 126,
+   "y": 12
+  },
+  {
+   "tipo": "trampolin",
+   "x": 130,
+   "y": 13
+  },
+  {
+   "tipo": "tornado",
+   "x": 136,
+   "y": 14,
+   "recorrido": 2,
+   "periodo": 8,
+   "alto": 7
+  },
+  {
+   "tipo": "espantapajaros",
+   "x": 147,
+   "y": 13
+  },
+  {
+   "tipo": "tornado",
+   "x": 159,
+   "y": 14,
+   "recorrido": 4,
+   "periodo": 8,
+   "alto": 7
+  },
+  {
+   "tipo": "trampolin",
+   "x": 160,
+   "y": 13
+  },
+  {
+   "tipo": "item",
+   "x": 34,
+   "y": 12,
+   "item": "doble"
+  },
+  {
+   "tipo": "item",
+   "x": 73,
+   "y": 9,
+   "item": "fuego"
+  }
+ ],
+ "ambiente": "campo",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "nombre_fase": "El campo de tornados",
+ "extra": "bioma-campo"
+}

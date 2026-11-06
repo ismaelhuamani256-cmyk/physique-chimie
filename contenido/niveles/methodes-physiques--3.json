@@ -1,0 +1,513 @@
+{
+ "capitulo_id": "methodes-physiques",
+ "tipo_nivel": "normal",
+ "tema_visual": "laboratorio-violeta",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.9,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 207,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 20,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 27,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "foso",
+   "x": 33,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 35,
+   "y": 11,
+   "largo": 8,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 43,
+   "y": 13,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 49,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 57,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 65,
+   "y": 13,
+   "largo": 6
+  },
+  {
+   "tipo": "foso",
+   "x": 71,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 73,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 79,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 87,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 94,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 102,
+   "y": 11,
+   "largo": 6,
+   "grosor": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 108,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 111,
+   "y": 11,
+   "largo": 8,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 119,
+   "y": 11,
+   "largo": 8,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 127,
+   "y": 11,
+   "largo": 6,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 133,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 141,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 148,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 151,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 159,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 165,
+   "y": 14,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 169,
+   "y": 14,
+   "largo": 38
+  },
+  {
+   "tipo": "jefe",
+   "x": 186,
+   "jefe": "rey_bomba",
+   "titulo": "Examinador del pH, la luz y la corriente",
+   "preguntas": [
+    {
+     "pregunta": "Una banda fina y fuerte hacia 1 740 cm⁻¹ en un espectro IR corresponde a…",
+     "opciones": [
+      "un enlace O–H de alcohol",
+      "un enlace C=O",
+      "un enlace C–H de aldehído",
+      "la zona de las huellas dactilares únicamente"
+     ],
+     "correcta": 1,
+     "explicacion": "Según la tabla de datos espectroscópicos, C=O de cetonas, aldehídos y ácidos carboxílicos aparece como banda fina y fuerte entre 1 680 y 1 800 cm⁻¹ (1 740 cm⁻¹ en ácidos).",
+     "pagina_pdf": 62
+    },
+    {
+     "pregunta": "La ley de Beer-Lambert A = k·c solo es válida para concentraciones…",
+     "opciones": [
+      "superiores a 1 mol·L⁻¹",
+      "inferiores a 10⁻² mol·L⁻¹",
+      "iguales a la concentración estándar c°",
+      "cualquiera, siempre que A < 1"
+     ],
+     "correcta": 1,
+     "explicacion": "La absorbancia debe ser suficientemente pequeña, por lo que las concentraciones deben ser inferiores a 10⁻² mol·L⁻¹.",
+     "pagina_pdf": 65
+    },
+    {
+     "pregunta": "¿Cuál es el pH de una solución con [H₃O⁺] = 0,010 mol·L⁻¹?",
+     "opciones": [
+      "12",
+      "0,010",
+      "2",
+      "−2"
+     ],
+     "correcta": 2,
+     "explicacion": "pH = −log(0,010/1) = 2.",
+     "pagina_pdf": 63
+    },
+    {
+     "pregunta": "Se disuelve CaCl₂(s) con un aporte c′ = 0,068 mol·L⁻¹. ¿Cuál es [Cl⁻]?",
+     "opciones": [
+      "0,068 mol·L⁻¹",
+      "0,034 mol·L⁻¹",
+      "0,136 mol·L⁻¹",
+      "0,204 mol·L⁻¹"
+     ],
+     "correcta": 2,
+     "explicacion": "CaCl₂(s) → Ca²⁺(aq) + 2 Cl⁻(aq): [Cl⁻] = 2c′ = 0,136 mol·L⁻¹.",
+     "pagina_pdf": 73
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 201
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 62,
+   "y": 11,
+   "ref": "f1",
+   "latex": "\\mathrm{pH} = -\\log\\left(\\dfrac{[\\mathrm{H_3O^+}]}{c^{\\circ}}\\right)",
+   "nombre": "pH a partir de la concentración en ion oxonio"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 47,
+   "y": 11,
+   "ref": "f2",
+   "latex": "[\\mathrm{H_3O^+}] = c^{\\circ}\\times 10^{-\\mathrm{pH}}",
+   "nombre": "Concentración en ion oxonio a partir del pH"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 31,
+   "y": 10,
+   "ref": "f5",
+   "latex": "A = k\\cdot c",
+   "nombre": "Ley de Beer-Lambert"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 24,
+   "y": 11,
+   "ref": "f9",
+   "latex": "\\sigma = \\sum_{i=1}^{n}\\lambda_i\\cdot[X_i]",
+   "nombre": "Ley de Kohlrausch"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 163,
+   "y": 12,
+   "ref": "f8",
+   "latex": "\\sigma = \\dfrac{\\ell}{S}\\cdot G",
+   "nombre": "Conductividad a partir de la conductancia"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 77,
+   "y": 10,
+   "ref": "f7",
+   "latex": "G = \\dfrac{1}{R} = \\dfrac{I}{U}",
+   "nombre": "Conductancia de una solución"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 99,
+   "y": 11,
+   "ref": "f3",
+   "latex": "\\tilde{\\nu} = \\dfrac{1}{\\lambda}",
+   "nombre": "Número de onda"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 40,
+   "y": 9,
+   "ref": "f4",
+   "latex": "\\Delta E = E_f - E_i = h\\cdot\\nu",
+   "nombre": "Energía del fotón absorbido"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 29,
+   "y": 11,
+   "enemigo": "error_unidades",
+   "nombre": "Olvidar pasar mol·L⁻¹ a mol·m⁻³ en Kohlrausch",
+   "correccion": "Multiplica c por 10³: σ en S·m⁻¹ exige [Xᵢ] en mol·m⁻³."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 51,
+   "y": 13,
+   "enemigo": "error_dominio_ph",
+   "nombre": "Usar pH = −log(…) fuera de su dominio",
+   "correccion": "Solo vale entre 10⁻² y 10⁻⁶·⁵ mol·L⁻¹; si hay mucha dilución, pH = 7."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 75,
+   "y": 11,
+   "enemigo": "error_dilucion",
+   "nombre": "Usar Beer-Lambert o Kohlrausch con c ≥ 10⁻² mol·L⁻¹",
+   "correccion": "Diluye antes: solo son válidas para c < 10⁻² mol·L⁻¹."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 96,
+   "y": 12,
+   "enemigo": "error_lambda",
+   "nombre": "Medir la absorbancia en una λ cualquiera",
+   "correccion": "Colócate en λ_max del espectro de la especie."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 121,
+   "y": 10,
+   "enemigo": "error_factor_dilucion",
+   "nombre": "Olvidar el factor de dilución al leer la curva de calibrado",
+   "correccion": "c solución = factor de dilución × c leída (ej. 10 × 6,8 mmol·L⁻¹)."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 143,
+   "y": 13,
+   "enemigo": "error_unidades",
+   "nombre": "Olvidar pasar mol·L⁻¹ a mol·m⁻³ en Kohlrausch",
+   "correccion": "Multiplica c por 10³: σ en S·m⁻¹ exige [Xᵢ] en mol·m⁻³."
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 74
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 128
+  },
+  {
+   "tipo": "matraz",
+   "x": 25,
+   "y": 12
+  },
+  {
+   "tipo": "matraz",
+   "x": 24,
+   "y": 12
+  },
+  {
+   "tipo": "ventila",
+   "x": 37,
+   "y": 11,
+   "alto": 6,
+   "periodo": 4.23777022571303,
+   "retardo": 0.2526405770331621
+  },
+  {
+   "tipo": "matraz",
+   "x": 47,
+   "y": 12
+  },
+  {
+   "tipo": "matraz",
+   "x": 46,
+   "y": 12
+  },
+  {
+   "tipo": "cinta",
+   "x": 50,
+   "y": 14,
+   "largo": 6,
+   "velocidad": -1.8
+  },
+  {
+   "tipo": "matraz",
+   "x": 69,
+   "y": 12
+  },
+  {
+   "tipo": "matraz",
+   "x": 68,
+   "y": 12
+  },
+  {
+   "tipo": "ventila",
+   "x": 67,
+   "y": 13,
+   "alto": 6,
+   "periodo": 3.7629585630260407,
+   "retardo": 0.5528433225117624
+  },
+  {
+   "tipo": "matraz",
+   "x": 92,
+   "y": 12
+  },
+  {
+   "tipo": "matraz",
+   "x": 91,
+   "y": 12
+  },
+  {
+   "tipo": "cinta",
+   "x": 88,
+   "y": 13,
+   "largo": 5,
+   "velocidad": 1.8
+  },
+  {
+   "tipo": "ventila",
+   "x": 96,
+   "y": 13,
+   "alto": 6,
+   "periodo": 3.8762076053302734,
+   "retardo": 0.5189450206235051
+  },
+  {
+   "tipo": "matraz",
+   "x": 117,
+   "y": 10
+  },
+  {
+   "tipo": "matraz",
+   "x": 116,
+   "y": 10
+  },
+  {
+   "tipo": "ventila",
+   "x": 129,
+   "y": 11,
+   "alto": 6,
+   "periodo": 4.115743478387595,
+   "retardo": 1.7607070333324373
+  },
+  {
+   "tipo": "cinta",
+   "x": 128,
+   "y": 11,
+   "largo": 4,
+   "velocidad": -1.8
+  },
+  {
+   "tipo": "matraz",
+   "x": 139,
+   "y": 11
+  },
+  {
+   "tipo": "matraz",
+   "x": 138,
+   "y": 11
+  },
+  {
+   "tipo": "matraz",
+   "x": 163,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 162,
+   "y": 13
+  },
+  {
+   "tipo": "ventila",
+   "x": 161,
+   "y": 14,
+   "alto": 6,
+   "periodo": 4.216736471140758,
+   "retardo": 0.4558215825818479
+  },
+  {
+   "tipo": "item",
+   "x": 44,
+   "y": 11,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 80,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 103,
+   "y": 9,
+   "item": "doble"
+  }
+ ],
+ "ambiente": "lab",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "nombre_fase": "El laboratorio inestable",
+ "extra": "bioma-lab"
+}

@@ -1,0 +1,597 @@
+{
+ "capitulo_id": "newton-2",
+ "tipo_nivel": "normal",
+ "tema_visual": "pista-hielo-newton",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.6,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 207,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 20,
+   "y": 11,
+   "largo": 8,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 28,
+   "y": 11,
+   "largo": 8,
+   "grosor": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 36,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 38,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 46,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 53,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 60,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 67,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 74,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 76,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 84,
+   "y": 11,
+   "largo": 6,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 90,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 97,
+   "y": 11,
+   "largo": 6,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 103,
+   "y": 11,
+   "largo": 8,
+   "grosor": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 111,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 113,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 119,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 127,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 133,
+   "y": 11,
+   "largo": 7,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 140,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 147,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 149,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 157,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 165,
+   "y": 14,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 169,
+   "y": 14,
+   "largo": 38
+  },
+  {
+   "tipo": "jefe",
+   "x": 186,
+   "jefe": "yeti_criogenico",
+   "titulo": "Yeti Criogénico : ΣF = m·a_G",
+   "preguntas": [
+    {
+     "pregunta": "Un référentiel est galiléen si :",
+     "opciones": [
+      "la 1re loi de Newton (principe d'inertie) y est vérifiée",
+      "la 1re loi de Newton n'y est pas vérifiée",
+      "aucune loi de Newton n'y est vérifiée",
+      "il tourne sur lui-même par rapport au Soleil"
+     ],
+     "correcta": 0,
+     "explicacion": "Par définition, un référentiel est galiléen si le principe d'inertie (1re loi de Newton) y est vérifié.",
+     "pagina_pdf": 292
+    },
+    {
+     "pregunta": "La deuxième loi de Newton, pour un système de masse constante dans un référentiel galiléen, s'écrit :",
+     "opciones": [
+      "ΣF = 0",
+      "ΣF = m·v_G",
+      "ΣF = m·a_G",
+      "ΣF = a_G / m"
+     ],
+     "correcta": 2,
+     "explicacion": "La somme vectorielle des forces extérieures est égale au produit de la masse par le vecteur accélération du centre de masse : ΣF = m·a_G.",
+     "pagina_pdf": 293
+    },
+    {
+     "pregunta": "Ariane 5 (M = 7,3×10⁵ kg, F = 1,16×10⁷ N, g = 10 m·s⁻²) : quelle est l'accélération au décollage ?",
+     "opciones": [
+      "5,9 m·s⁻²",
+      "15,9 m·s⁻²",
+      "25,9 m·s⁻²",
+      "0 m·s⁻² (la fusée est à l'équilibre)"
+     ],
+     "correcta": 0,
+     "explicacion": "a = F/M − g = 1,16×10⁷/7,3×10⁵ − 10 = 15,9 − 10 = 5,9 m·s⁻².",
+     "pagina_pdf": 300
+    },
+    {
+     "pregunta": "Skieur sur une piste inclinée de α (poids P, réaction R, frottement f) : projeté sur l'axe x'x de la piste, f vaut :",
+     "opciones": [
+      "m·(g·sin α − a_G)",
+      "m·(g·cos α − a_G)",
+      "m·g·sin α + m·a_G",
+      "m·g·cos α"
+     ],
+     "correcta": 0,
+     "explicacion": "P·sin α − f = m·a_G donc f = m·g·sin α − m·a_G = m(g sin α − a_G).",
+     "pagina_pdf": 294
+    },
+    {
+     "pregunta": "Si un système est à l'équilibre dans un référentiel galiléen, alors :",
+     "opciones": [
+      "v⃗_G = 0⃗ et a⃗_G = 0⃗, donc ΣF⃗ = 0⃗",
+      "ΣF⃗ ≠ 0⃗ mais v⃗_G = 0⃗",
+      "a⃗_G est colinéaire à v⃗_G et non nul",
+      "ΣF⃗ = m·v⃗_G"
+     ],
+     "correcta": 0,
+     "explicacion": "À l'équilibre v_G = 0 et a_G = 0 ; d'après la 2e loi, la résultante des forces est nulle.",
+     "pagina_pdf": 293
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 201
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 25,
+   "y": 9,
+   "ref": "f1",
+   "latex": "\\sum \\vec F_{\\text{ext/syst}} = m\\,\\vec a_G",
+   "nombre": "Deuxième loi de Newton"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 81,
+   "y": 10,
+   "ref": "f3",
+   "latex": "\\vec a_G=\\dfrac{\\sum \\vec F_{\\text{ext/syst}}}{m}",
+   "nombre": "De las fuerzas a la aceleración"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 33,
+   "y": 9,
+   "ref": "f4",
+   "latex": "\\vec a_i=\\dfrac{\\Delta \\vec v_i}{\\Delta t}=\\dfrac{\\vec v_{i+1}-\\vec v_{i-1}}{2\\tau}",
+   "nombre": "Aceleración a partir de una cronofotografía"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 101,
+   "y": 9,
+   "ref": "f2",
+   "latex": "\\vec v_G=\\vec 0\\ \\text{et}\\ \\vec a_G=\\vec 0 \\;\\Rightarrow\\; \\sum \\vec F_{\\text{ext/syst}}=\\vec 0",
+   "nombre": "Équilibre d'un système"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 162,
+   "y": 12,
+   "ref": "f8",
+   "latex": "P = m\\times g",
+   "nombre": "Peso"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 154,
+   "y": 12,
+   "ref": "f5",
+   "latex": "R = P\\cos\\alpha = m\\,g\\cos\\alpha",
+   "nombre": "Proyección perpendicular a la pista (esquiador)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 43,
+   "y": 11,
+   "ref": "f6",
+   "latex": "f = m\\,(g\\sin\\alpha - a_G)",
+   "nombre": "Proyección a lo largo de la pista (rozamiento)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 124,
+   "y": 10,
+   "ref": "f7",
+   "latex": "F = k\\times h",
+   "nombre": "Fuerza de recuperación de un resorte"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 108,
+   "y": 9,
+   "ref": "f9",
+   "latex": "m_1\\,\\overrightarrow{GA}+m_2\\,\\overrightarrow{GB}=\\vec 0",
+   "nombre": "Baricentro de dos puntos materiales"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 50,
+   "y": 11,
+   "ref": "f11",
+   "latex": "F = m\\,(a_G + g\\sin\\alpha)",
+   "nombre": "Fuerza del resorte lanzador sobre un disco en plano inclinado"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 30,
+   "y": 10,
+   "enemigo": "fuerzas_compensadas",
+   "nombre": "Fuerzas compensadas = reposo",
+   "correccion": "Si las fuerzas se compensan, a_G = 0: el sistema puede estar en reposo o en movimiento rectilíneo uniforme."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 55,
+   "y": 12,
+   "enemigo": "referencial_no_galileano",
+   "nombre": "Referencial no galileano",
+   "correccion": "La 2.ª ley (ΣF = m·a_G) solo vale en un referencial galileano; en un manège que gira o un referencial acelerado no se aplica."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 78,
+   "y": 11,
+   "enemigo": "vectores_sin_escala",
+   "nombre": "Vectores sin escala ni sentido",
+   "correccion": "Da el valor de cada fuerza, define una escala y comprueba el sentido de los vectores antes de aplicar la ley."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 99,
+   "y": 10,
+   "enemigo": "angulo_unidades",
+   "nombre": "Ángulo, unidades y escala",
+   "correccion": "Calculadora en grados, unidades coherentes, escala de la cronofotografía y ángulo de la pendiente en el peso."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 121,
+   "y": 11,
+   "enemigo": "sigma_f_sentido_velocidad",
+   "nombre": "ΣF en el sentido de la velocidad",
+   "correccion": "ΣF tiene el sentido de a_G, no necesariamente el de v: al frenar, ΣF apunta contra el movimiento."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 142,
+   "y": 13,
+   "enemigo": "balance_incompleto",
+   "nombre": "Balance de fuerzas incompleto",
+   "correccion": "Antes de aplicar la ley haz el balance completo (peso, reacción, rozamiento, empuje…) sobre el sistema."
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 77
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 128
+  },
+  {
+   "tipo": "plataforma",
+   "x": 14,
+   "y": 0,
+   "largo": 153,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 20,
+   "y": 11,
+   "w": 8
+  },
+  {
+   "tipo": "estalactita",
+   "x": 23
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 28,
+   "y": 11,
+   "w": 8
+  },
+  {
+   "tipo": "bola_nieve",
+   "x": 32,
+   "y": 10
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 38,
+   "y": 13,
+   "w": 8
+  },
+  {
+   "tipo": "estalactita",
+   "x": 41
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 46,
+   "y": 13,
+   "w": 7
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 53,
+   "y": 13,
+   "w": 7
+  },
+  {
+   "tipo": "bola_nieve",
+   "x": 56,
+   "y": 12
+  },
+  {
+   "tipo": "estalactita",
+   "x": 56
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 60,
+   "y": 13,
+   "w": 7
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 67,
+   "y": 14,
+   "w": 7
+  },
+  {
+   "tipo": "estalactita",
+   "x": 70
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 76,
+   "y": 12,
+   "w": 8
+  },
+  {
+   "tipo": "bola_nieve",
+   "x": 80,
+   "y": 11
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 84,
+   "y": 11,
+   "w": 6
+  },
+  {
+   "tipo": "estalactita",
+   "x": 87
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 90,
+   "y": 13,
+   "w": 7
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 97,
+   "y": 11,
+   "w": 6
+  },
+  {
+   "tipo": "bola_nieve",
+   "x": 100,
+   "y": 10
+  },
+  {
+   "tipo": "estalactita",
+   "x": 100
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 103,
+   "y": 11,
+   "w": 8
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 113,
+   "y": 12,
+   "w": 6
+  },
+  {
+   "tipo": "estalactita",
+   "x": 116
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 119,
+   "y": 12,
+   "w": 8
+  },
+  {
+   "tipo": "bola_nieve",
+   "x": 123,
+   "y": 11
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 127,
+   "y": 12,
+   "w": 6
+  },
+  {
+   "tipo": "estalactita",
+   "x": 130
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 133,
+   "y": 11,
+   "w": 7
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 140,
+   "y": 14,
+   "w": 7
+  },
+  {
+   "tipo": "bola_nieve",
+   "x": 143,
+   "y": 13
+  },
+  {
+   "tipo": "estalactita",
+   "x": 143
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 149,
+   "y": 14,
+   "w": 8
+  },
+  {
+   "tipo": "zona_hielo",
+   "x": 157,
+   "y": 14,
+   "w": 8
+  },
+  {
+   "tipo": "estalactita",
+   "x": 160
+  },
+  {
+   "tipo": "item",
+   "x": 47,
+   "y": 11,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 85,
+   "y": 9,
+   "item": "grande"
+  }
+ ],
+ "ambiente": "hielo",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "nombre_fase": "La ventisca",
+ "extra": "bioma-hielo"
+}

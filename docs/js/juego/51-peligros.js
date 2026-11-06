@@ -32,7 +32,7 @@
     // sistema ON/OFF: interruptores y bloques que solo son sólidos en su estado (y cañones que solo disparan en el suyo)
     g.onoff = true;
     g.swOnoff = S.filter((s) => s.tipo === 'interruptor_onoff').map((s) => ({ x: s.x + 0.5, y: s.y + 0.5, cd: 0 }));
-    g.blOnoff = S.filter((s) => s.tipo === 'bloque_onoff').map((s) => ({ x: Math.round(s.x), y: Math.round(s.y), w: Math.max(1, s.largo || 1), h: Math.max(1, s.alto || 1), grupo: s.grupo === 'off' ? 'off' : 'on', sol: false }));
+    g.blOnoff = S.filter((s) => s.tipo === 'bloque_onoff').map((s) => ({ x: Math.round(s.x), y: Math.round(s.y), w: Math.max(1, s.largo || 1), h: Math.max(1, s.alto || 1), grupo: s.grupo === 'off' ? 'off' : s.grupo === 'cristal' ? 'cristal' : 'on', sol: false }));
     P.aplicarOnoff(g);
     g.llaves = S.filter((s) => s.tipo === 'llave').map((s) => ({ x: s.x + 0.5, y: s.y + 0.5, id: s.id || null, tomada: false, fase: (J.hash('k' + s.x + s.y) % 100) / 16 }));
   };
@@ -41,13 +41,14 @@
   P.aplicarOnoff = function (g) {
     const w = g.w, p = g.jugador;
     for (const b of g.blOnoff || []) {
-      const quiere = (b.grupo === 'on') === g.onoff;
+      const quiere = P.quiere(g, b);
       if (quiere === b.sol) continue;
       if (quiere && p && J.solapa(p, { x: b.x, y: b.y, w: b.w, h: b.h })) continue;   // reintenta cuando salga
       for (let yy = b.y; yy < b.y + b.h; yy++) for (let xx = b.x; xx < b.x + b.w; xx++) if (xx >= 0 && xx < w.ancho && yy >= 0 && yy < w.alto) w.tiles[yy * w.ancho + xx] = quiere ? 4 : 0;
       b.sol = quiere;
     }
   };
+  P.quiere = (g, b) => (b.grupo === 'cristal' ? g.cristalT > 0 : (b.grupo === 'on') === g.onoff);
   P.alternarOnoff = function (g) {
     g.onoff = !g.onoff; P.aplicarOnoff(g); J.Audio.sfx('aviso'); g.shake = Math.max(g.shake, 2);
     if (g.ui) g.ui.aviso(g.onoff ? 'ON: bloques naranja' : 'OFF: bloques azules');
@@ -68,7 +69,7 @@
       s.cd = Math.max(0, s.cd - dt);
       if (s.cd <= 0 && !p.muriendo && Math.hypot(pcx - s.x, pcy - s.y) < 0.85) { s.cd = 0.7; P.alternarOnoff(g); J.chispas(g, s.x * T, s.y * T, 14, g.onoff ? '#ff9f1c' : '#4dd0ff', 4); }
     }
-    if (g.blOnoff && g.blOnoff.some((b) => b.sol !== ((b.grupo === 'on') === g.onoff))) P.aplicarOnoff(g);
+    if (g.blOnoff && g.blOnoff.some((b) => b.sol !== P.quiere(g, b))) P.aplicarOnoff(g);
     for (const m of g.magmas || []) {   // bola de magma que salta desde la lava en parábola (con burbujas de aviso)
       m.k = (((g.tm + m.ret) % m.per) + m.per) % m.per / m.per;
       if (m.k < 0.55) { const u = m.k / 0.55; m.by = m.y - m.alto * 4 * u * (1 - u); m.act = true; } else { m.act = false; m.by = m.y + 1; }
@@ -196,9 +197,9 @@
   P.dibujar = function (ctx, g, camX, camY, vis) {
     for (const b of g.blOnoff || []) {   // bloques ON (naranja) / OFF (azul): sólidos o fantasma
       if (!vis(b.x - 1, b.x + b.w + 1)) continue;
-      const x = r(b.x * T - camX), y = r(b.y * T - camY), ww = b.w * T, hh = b.h * T, c1 = b.grupo === 'on' ? '#ff9f1c' : '#4dd0ff', c2 = b.grupo === 'on' ? '#b35a00' : '#1a7fa8';
+      const x = r(b.x * T - camX), y = r(b.y * T - camY), ww = b.w * T, hh = b.h * T, c1 = b.grupo === 'on' ? '#ff9f1c' : b.grupo === 'cristal' ? '#c9a6ff' : '#4dd0ff', c2 = b.grupo === 'on' ? '#b35a00' : b.grupo === 'cristal' ? '#6a3fb5' : '#1a7fa8';
       if (b.sol) { ctx.fillStyle = OUT; ctx.fillRect(x, y, ww, hh); ctx.fillStyle = c2; ctx.fillRect(x + 1, y + 1, ww - 2, hh - 2); ctx.fillStyle = c1; for (let i = 0; i < b.w; i++) for (let j = 0; j < b.h; j++) { ctx.fillRect(x + i * T + 2, y + j * T + 2, T - 4, T - 4); ctx.fillStyle = '#fff'; ctx.fillRect(x + i * T + 3, y + j * T + 3, 3, 1); ctx.fillStyle = c1; } }
-      else { ctx.globalAlpha = 0.45; ctx.strokeStyle = c1; ctx.lineWidth = 1; ctx.setLineDash([3, 3]); ctx.strokeRect(x + 0.5, y + 0.5, ww - 1, hh - 1); ctx.setLineDash([]); ctx.globalAlpha = 1; }
+      else { ctx.globalAlpha = b.grupo === 'cristal' ? 0.18 : 0.45; ctx.strokeStyle = c1; ctx.lineWidth = 1; ctx.setLineDash([3, 3]); ctx.strokeRect(x + 0.5, y + 0.5, ww - 1, hh - 1); ctx.setLineDash([]); ctx.globalAlpha = 1; }
     }
     for (const s of g.swOnoff || []) {
       if (!vis(s.x - 1, s.x + 1)) continue;

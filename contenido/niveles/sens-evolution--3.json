@@ -1,0 +1,509 @@
+{
+ "capitulo_id": "sens-evolution",
+ "tipo_nivel": "normal",
+ "tema_visual": "laboratorio-neon",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 202,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 13,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 18,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 26,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "foso",
+   "x": 34,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 36,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 42,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 49,
+   "y": 11,
+   "largo": 7,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 56,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 64,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 71,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 73,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 79,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 86,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 93,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 101,
+   "y": 13,
+   "largo": 6
+  },
+  {
+   "tipo": "foso",
+   "x": 107,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 109,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 116,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 123,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 129,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 136,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 143,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 145,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 153,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 160,
+   "y": 14,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 164,
+   "y": 14,
+   "largo": 38
+  },
+  {
+   "tipo": "jefe",
+   "x": 181,
+   "jefe": "rey_bomba",
+   "titulo": "Rey Bomba: síntesis y pila (ej. 28 y 30)",
+   "preguntas": [
+    {
+     "pregunta": "Síntesis del etanoato de bencilo (K = 4,0): a t₁ se calcula Qr = 0,18. ¿Qué se concluye?",
+     "opciones": [
+      "Qr < K: el sistema evoluciona en el sentido directo",
+      "Qr < K: el sistema evoluciona en el sentido opuesto",
+      "Qr < K: el sistema ya está en equilibrio",
+      "No se puede concluir sin conocer el volumen"
+     ],
+     "correcta": 0,
+     "explicacion": "Si Qr < K(T), [C] y [D] aumentan: el sistema evoluciona en el sentido directo. El volumen se simplifica en Qr.",
+     "pagina_pdf": 168
+    },
+    {
+     "pregunta": "En el mismo ejercicio xf = 0,067 mol y xmax = 0,10 mol. ¿Cuánto vale τ y qué significa?",
+     "opciones": [
+      "τ = 0,067: transformación no total",
+      "τ = 0,67: transformación no total",
+      "τ = 0,67: transformación total",
+      "τ = 1,5: transformación total"
+     ],
+     "correcta": 1,
+     "explicacion": "τ = xf/xmax = 0,067/0,10 = 0,67 = 67 % < 100 %: la transformación no es total.",
+     "pagina_pdf": 168
+    },
+    {
+     "pregunta": "Pila Ag⁺/Ag – Ni²⁺/Ni: la masa del electrodo de Ag aumenta y la de Ni disminuye. ¿Sentido de los electrones y de la corriente en el circuito exterior?",
+     "opciones": [
+      "Electrones de Ag a Ni; corriente de Ni a Ag",
+      "Electrones de Ni a Ag; corriente de Ag (borne +) a Ni (borne −)",
+      "Electrones y corriente van de Ni a Ag",
+      "Los electrones atraviesan el puente salino"
+     ],
+     "correcta": 1,
+     "explicacion": "Ni se oxida (cede e⁻) y Ag⁺ se reduce: los electrones van de Ni a Ag; la corriente va en sentido opuesto, de Ag (+) a Ni (−).",
+     "pagina_pdf": 169
+    },
+    {
+     "pregunta": "Con 10,0 g de níquel como reactivo limitante (M = 58,7 g·mol⁻¹), ¿cuál es la capacidad qmax de la pila?",
+     "opciones": [
+      "1,6×10⁴ C",
+      "3,3×10⁴ C",
+      "3,3×10⁷ C",
+      "0,17 C"
+     ],
+     "correcta": 1,
+     "explicacion": "n(Ni) = 0,170 mol; n(e⁻) = 2 n(Ni); qmax = 2×0,170×6,02×10²³×1,6×10⁻¹⁹ = 3,3×10⁴ C.",
+     "pagina_pdf": 169
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 196
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 127,
+   "y": 12,
+   "ref": "f1",
+   "latex": "\\tau = \\dfrac{x_f}{x_{max}}",
+   "nombre": "Taux d'avancement final"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 133,
+   "y": 12,
+   "ref": "f2",
+   "latex": "Q_r = \\dfrac{[\\mathrm{C}]^c\\cdot[\\mathrm{D}]^d}{[\\mathrm{A}]^a\\cdot[\\mathrm{B}]^b}",
+   "nombre": "Quotient de réaction"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 140,
+   "y": 12,
+   "ref": "f3",
+   "latex": "K(T) = Q_{r,\\acute{e}q} = \\dfrac{[\\mathrm{C}]_f^c\\cdot[\\mathrm{D}]_f^d}{[\\mathrm{A}]_f^a\\cdot[\\mathrm{B}]_f^b}",
+   "nombre": "Constante de equilibrio K(T)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 46,
+   "y": 11,
+   "ref": "f4",
+   "latex": "Q_{r,i} < K(T) \\Rightarrow \\text{sens direct}\\ ;\\quad Q_{r,i} > K(T) \\Rightarrow \\text{sens opposé}\\ ;\\quad Q_{r,i} = K(T) \\Rightarrow \\text{équilibre}",
+   "nombre": "Critère d'évolution spontanée"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 61,
+   "y": 11,
+   "ref": "f5",
+   "latex": "q_{max} = n(\\mathrm{e}^-)\\cdot N_A\\cdot e",
+   "nombre": "Capacité électrique d'une pile"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 77,
+   "y": 12,
+   "ref": "f6",
+   "latex": "n(\\mathrm{e}^-) = z\\cdot n(\\text{réactif limitant})\\qquad (\\mathrm{Zn}:\\ z = 2)",
+   "nombre": "Cantidad de electrones intercambiados"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 83,
+   "y": 11,
+   "ref": "f7",
+   "latex": "\\sigma = \\sum_{i=1}^{n}\\lambda_i\\cdot[X_i]",
+   "nombre": "Loi de Kohlrausch"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 40,
+   "y": 12,
+   "ref": "f8",
+   "latex": "I = \\dfrac{q}{\\Delta t}",
+   "nombre": "Intensité du courant électrique"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 28,
+   "y": 12,
+   "enemigo": "solido_en_qr",
+   "nombre": "Escribir [solvente] o [sólido] en Qr",
+   "correccion": "Un solvente, un sólido o un gas no disuelto se reemplaza por 1 en Qr (p. ej. NaCl(s): Qr = [Na⁺]·[Cl⁻])."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 51,
+   "y": 10,
+   "enemigo": "equilibrio_estatico",
+   "nombre": "Creer que equilibrio = «todo se detiene»",
+   "correccion": "El equilibrio es dinámico: las reacciones directa y opuesta continúan a la misma velocidad (v1 = v2)."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 75,
+   "y": 13,
+   "enemigo": "criterio_invertido",
+   "nombre": "Invertir el criterio Qr,i frente a K",
+   "correccion": "Qr,i < K → sentido directo; Qr,i > K → sentido opuesto; la evolución para en Qr = K."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 95,
+   "y": 13,
+   "enemigo": "agua_solvente",
+   "nombre": "Tratar el agua como solvente cuando es reactivo puro",
+   "correccion": "Con reactivos puros (no en disolución) el agua es un producto, no el solvente: su cantidad entra en Qr."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 118,
+   "y": 13,
+   "enemigo": "sin_puente_salino",
+   "nombre": "Olvidar el puente salino en el esquema de la pila",
+   "correccion": "Sin puente salino el circuito no se cierra ni se mantiene la neutralidad: dibújalo siempre."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 138,
+   "y": 13,
+   "enemigo": "corriente_vs_electrones",
+   "nombre": "Confundir sentido de la corriente y de los electrones",
+   "correccion": "Fuera de la pila, los electrones van del borne − al borne +; la corriente va en sentido opuesto, del + al −."
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 74
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 124
+  },
+  {
+   "tipo": "matraz",
+   "x": 24,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 23,
+   "y": 13
+  },
+  {
+   "tipo": "ventila",
+   "x": 38,
+   "y": 14,
+   "alto": 6,
+   "periodo": 3.7098023801576345,
+   "retardo": 1.657460774295032
+  },
+  {
+   "tipo": "matraz",
+   "x": 47,
+   "y": 12
+  },
+  {
+   "tipo": "matraz",
+   "x": 46,
+   "y": 12
+  },
+  {
+   "tipo": "cinta",
+   "x": 50,
+   "y": 11,
+   "largo": 5,
+   "velocidad": -1.8
+  },
+  {
+   "tipo": "matraz",
+   "x": 69,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 68,
+   "y": 13
+  },
+  {
+   "tipo": "ventila",
+   "x": 66,
+   "y": 14,
+   "alto": 6,
+   "periodo": 3.6581850942224263,
+   "retardo": 0.2403285657055676
+  },
+  {
+   "tipo": "matraz",
+   "x": 91,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 90,
+   "y": 13
+  },
+  {
+   "tipo": "cinta",
+   "x": 87,
+   "y": 14,
+   "largo": 5,
+   "velocidad": 1.8
+  },
+  {
+   "tipo": "ventila",
+   "x": 95,
+   "y": 14,
+   "alto": 6,
+   "periodo": 4.379381816228852,
+   "retardo": 0.09334541531279683
+  },
+  {
+   "tipo": "matraz",
+   "x": 114,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 113,
+   "y": 13
+  },
+  {
+   "tipo": "ventila",
+   "x": 125,
+   "y": 14,
+   "alto": 6,
+   "periodo": 3.408116014767438,
+   "retardo": 1.901411929167807
+  },
+  {
+   "tipo": "cinta",
+   "x": 124,
+   "y": 14,
+   "largo": 4,
+   "velocidad": -1.8
+  },
+  {
+   "tipo": "matraz",
+   "x": 134,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 133,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 158,
+   "y": 13
+  },
+  {
+   "tipo": "matraz",
+   "x": 157,
+   "y": 13
+  },
+  {
+   "tipo": "ventila",
+   "x": 155,
+   "y": 14,
+   "alto": 6,
+   "periodo": 3.4029277843423187,
+   "retardo": 0.11218075500801206
+  },
+  {
+   "tipo": "item",
+   "x": 43,
+   "y": 11,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 80,
+   "y": 11,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 102,
+   "y": 11,
+   "item": "doble"
+  }
+ ],
+ "ambiente": "lab",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "nombre_fase": "El laboratorio inestable",
+ "extra": "bioma-lab"
+}

@@ -86,6 +86,7 @@
     for (const e of g.bichos || []) { if (!e.vivo || e.muertoT > 0) continue; if (Math.hypot(x - (e.x + e.w / 2), y - (e.y + e.h / 2)) < rad + 0.6) { J.Ambiente.matar(g, e, 'foton'); return true; } }
     if (J.Peligros && J.Peligros.golpe(g, x, y, rad)) return true;
     if (J.Fauna && J.Fauna.golpe(g, x, y, rad, por)) return true;
+    if (J.Bioma && J.Bioma.golpe(g, x, y, rad, por)) return true;
     for (const m of w.minas || []) if (m.estado === 'lista' && Math.hypot(x - m.x, y - m.y) < 0.8) { m.estado = 'armada'; m.t = 0.9; return true; }
     if (J.Jefe && J.Jefe.recibirDisparo && g.jefe && J.Jefe.recibirDisparo(g, x, y, por)) return true;
     return false;
@@ -171,6 +172,7 @@
       }
       if (!f.muerto && g.jefe && J.Jefe.recibirDisparo && J.Jefe.recibirDisparo(g, f.x, f.y, 'foton')) f.muerto = true;
       if (J.Fauna && J.Fauna.golpe(g, f.x, f.y, 0.3, 'foton')) f.muerto = true;
+      if (!f.muerto && J.Bioma && J.Bioma.golpe(g, f.x, f.y, 0.3, 'foton')) f.muerto = true;
       if (J.Peligros && J.Peligros.golpe(g, f.x, f.y, 0.3)) f.muerto = true;   // torretas y balas gigantes (51-peligros.js)
       for (const e of g.bichos || []) {   // bichos del entorno (49-ambiente.js)
         if (!e.vivo || e.muertoT > 0) continue;

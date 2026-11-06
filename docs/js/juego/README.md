@@ -234,3 +234,16 @@ Además se reparten `sierra` (en raíl) y `laser` horizontales de 51-peligros.js
 - **Niveles extra** (`tools/niveles-extra.js`): `contenido/niveles/<cap>--2.json`, uno por capítulo (145–185 tiles de ancho). Tras **ganar** el nivel principal, `PCB.flow.finNivel` encadena `<cap>--2`, `--3`… (si existen) antes de la intro; dan +30 XP y guardan `nivelesExtra`. Arquetipos según bioma: `montana` (colinas de 9 tiles, cabras, flores, doble salto/gravedad lunar), `granja` (vacas+OVNI), `martilleros` (mecánicos en plataformas altas; Rey Bomba), `laberinto` (salas con techo, llaves/puertas con id y alcobas; Maestro Calavera) y `onoff` (muros y cañones por estado; Rey Bomba).
 - **ON/OFF** (`51-peligros.js`): `interruptor_onoff {x,y}` (se acciona al tocarlo o de un disparo), `bloque_onoff {x,y,largo,alto,grupo:"on"|"off"}` (naranja/azul; sólido solo en su estado, espera si el jugador está dentro) y `canon_bala` con `"onoff":"on"|"off"` (solo dispara en ese estado). El validador ignora estos bloques: se usan como obstáculos, nunca como camino obligatorio sin interruptor.
 - **Fauna nueva** (`52-fauna.js`): `mecanico` (lanza llaves inglesas en arco), `cabra` (avisa, embiste y queda mareada), `vaca` (al pisarla aparece un **OVNI** que te abduce y te suelta ~22 tiles atrás), `flor` (aroma gélido que te **congela** 2 s; `p.helado`).
+
+## Mecánicas por bioma (`53-bioma.js`) y niveles `--3`
+
+`tools/niveles-bioma.js` genera `<cap>--3.json` (se encadena tras `--2`) con los peligros del bioma del capítulo:
+- **Laboratorio:** `matraz` (explota al dispararle, onda de 2,3 tiles que encadena), `ventila` (gas que te empuja hacia arriba), `cinta`.
+- **Cueva:** `murcielago` (cuelga del techo, pica al pasar debajo), `charco` (ácido), `cristal` + `bloque_onoff{grupo:"cristal"}` (ilumina 12 s y revela plataformas ocultas).
+- **Nubes:** `nube` (se deshace 0,9 s tras pisarla, vuelve a los 3,2 s), `tormenta` (rayos con aviso), viento con `zona_campo{fx}`.
+- **Espacio:** gravedad invertida con `zona_campo{fy:-2.2}`, `asteroide` (órbita), `meteoros` (lluvia diagonal).
+- **Hielo:** `zona_hielo` (resbaladizo), `bola_nieve` (rueda; se derrite a fuego), `estalactita`.
+- **Horno:** `yunque` (avisa y cae al pasar debajo), `vapor` (pistón u/l/r), `cadena` (se trepa: SALTO sube, ABAJO/S baja).
+- **Campo:** `tornado` (eleva y lanza), `espantapajaros` (despierta al acercarte), `trampolin` (rebote ×1,6).
+- **Castillo:** `fantasma` (peligroso si no lo miras; mirado se vuelve piedra y se pisa), `tablon` (se rompe 0,45 s tras pisarlo), `espejo` (refleja disparos).
+- **Jefes nuevos:** `pozo_gravitatorio` (invierte la gravedad 3,4 s mientras dispara; `g.gravMult`) y `yeti_criogenico` (la arena es pista de hielo; bolas y ventisca que congelan). Ambos se cansan tras 4 ataques → pisotón → pregunta.

@@ -242,7 +242,8 @@
     p.agua = zona;
     const NAD = J.NAT;
     // --- horizontal ---
-    const grip = J.clamp(Math.sqrt((1 - F.friccion) / 0.15), 0.3, 1.3);
+    const hielo = !!p.enHielo;   // suelo resbaladizo (53-bioma.js)
+    const grip = hielo ? 0.2 : J.clamp(Math.sqrt((1 - F.friccion) / 0.15), 0.3, 1.3);
     const corre = !!inp.correr && !zona;                      // botón de correr (Shift): +50 % de velocidad máxima
     const acc = (zona ? NAD.ACC : suelo ? FIS.ACC_SUELO * grip : FIS.ACC_AIRE) * (corre ? 1.3 : 1);
     const vmaxH = zona ? NAD.VMAX : F.vmax * (corre ? 1.5 : 1);
@@ -254,7 +255,7 @@
       if (p.vx < obj) p.vx = Math.min(obj, p.vx + aa); else p.vx = Math.max(obj, p.vx - aa);
     } else if (zona) p.vx = vcx + (p.vx - vcx) * Math.pow(NAD.ARRASTRE_X, dt * 60);
     else if (suelo) {
-      p.vx *= Math.pow(F.friccion, dt * 60);
+      p.vx *= Math.pow(hielo ? 0.993 : F.friccion, dt * 60);
       if (Math.abs(p.vx) < 0.05) p.vx = 0;
     } else p.vx *= Math.pow(0.996, dt * 60);
     if (!zona) p.vx += F.viento * dt;
@@ -285,7 +286,7 @@
       p.buffer -= dt;
       p.coyote = suelo ? FIS.COYOTE : p.coyote - dt;
       if (g.congelado) p.buffer = 0;
-      if (p.buffer > 0 && p.coyote > 0) {
+      if (p.buffer > 0 && p.coyote > 0 && !(g.gravMult < 0)) {
         p.vy = -F.v0 * (J.Items ? J.Items.saltoMult(g) : 1); p.buffer = 0; p.coyote = 0; p.suelo = false; p.saltando = true;
         J.Audio.sfx('salto'); polvo(g, cx * J.T, (p.y + p.h) * J.T, 4);
       }
@@ -296,7 +297,7 @@
       if (p.saltando && !inp.salto && p.vy < 0) { p.vy *= FIS.CORTE_SALTO; p.saltando = false; }
       if (p.vy >= 0) p.saltando = false;
       vyPrev = p.vy;
-      p.vy = Math.min(FIS.CAIDA_MAX, p.vy + (F.g * (g.it && g.it.luna > 0 ? 0.5 : 1) + fyZona * FIS.G0) * dt);
+      p.vy = Math.min(FIS.CAIDA_MAX, p.vy + (F.g * (g.it && g.it.luna > 0 ? 0.5 : 1) * (g.gravMult != null ? g.gravMult : 1) + fyZona * FIS.G0) * dt);
     }
     // --- movimiento (integración con velocidad media: la altura del salto sale exacta, v²/2g) ---
     const vyAntes = p.vy;
@@ -402,6 +403,7 @@
     if (J.Ambiente) J.Ambiente.paso(g, dt);
     if (J.Peligros) J.Peligros.paso(g, dt);
     if (J.Fauna) J.Fauna.paso(g, dt);
+    if (J.Bioma) J.Bioma.paso(g, dt);
     inp.accionEdge = inp.arribaEdge = false;
     // partículas
     for (const q of g.part) { q.vida -= dt; q.vy += q.grav * dt; q.x += q.vx * dt * 16; q.y += q.vy * dt * 16; }
@@ -473,14 +475,14 @@
         q.vy += (q.grav || 0) * dt; q.x += q.vx * dt; q.y += q.vy * dt;
         if (SOL(w.get(Math.floor(q.x), Math.floor(q.y + 0.2)))) { q.muerto = true; J.chispas(g, q.x * J.T, q.y * J.T, 8, '#ffb020', 3); }
         if (q.x < -2 || q.x > w.ancho + 2 || q.y > w.alto + 1) q.muerto = true;
-        if (!q.muerto && !p.muriendo && Math.hypot(p.x + p.w / 2 - q.x, p.y + p.h / 2 - q.y) < 0.55) { q.muerto = true; J.herir(g, q.x); }
+        if (!q.muerto && !p.muriendo && Math.hypot(p.x + p.w / 2 - q.x, p.y + p.h / 2 - q.y) < 0.55) { q.muerto = true; if (q.col === 'azul' && g.jefe && g.jefe.kind === 'yeti') { p.helado = 1.4; J.herir(g, q.x); } else J.herir(g, q.x); }
       } else if (q.tipo === 'hueso') {   // hueso del Maestro Calavera: recorre el suelo
         q.x += q.vx * dt; const A = w.arena;
         if (q.x < (A ? A.izq + 0.5 : -1) || q.x > (A ? A.der : w.ancho)) q.muerto = true;
         if (!q.muerto && !p.muriendo && Math.abs(p.x + p.w / 2 - q.x) < 0.5 && p.y + p.h > q.y - q.h + 0.1 && p.y < q.y) J.herir(g, q.x);
       } else if (q.tipo === 'haz') {   // láser de calavera: aviso y luego haz horizontal
         if (q.t > q.aviso && !q.sono) { q.sono = true; J.Audio.sfx('onda'); g.shake = Math.max(g.shake, 4); }
-        if (q.t > q.aviso && q.t < q.aviso + q.dur && !p.muriendo && p.y + p.h > q.y - q.h / 2 && p.y < q.y + q.h / 2) J.herir(g, p.x + p.w / 2);
+        if (q.t > q.aviso && q.t < q.aviso + q.dur && !p.muriendo && p.y + p.h > q.y - q.h / 2 && p.y < q.y + q.h / 2) { if (q.congela) { if (!(p.helado > 0) && !(p.inv_hielo > 0)) { p.helado = 1.8; p.inv_hielo = 3.6; J.Audio.sfx('aviso'); } } else J.herir(g, p.x + p.w / 2); }
         if (q.t > q.aviso + q.dur) q.muerto = true;
       } else if (q.tipo === 'bomba') {   // bomba del Rey Bomba: rebota, mecha de 2 s, explota (o se detona de un disparo)
         q.vy += q.grav * dt; q.x += q.vx * dt; q.y += q.vy * dt; q.fuse -= dt;

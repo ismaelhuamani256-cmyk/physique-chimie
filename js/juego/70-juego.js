@@ -24,7 +24,7 @@
     S.ui.cerrarModal(); S.ui.ocultarJefe(); S.ui.vidas(-1); S.ui.vidas(3);
     g.terminar = (gano) => terminar(g, gano);
     g.preguntar = (b) => preguntar(g, b);
-    J.Quim.iniciar(g); if (J.Items) J.Items.iniciar(g); if (J.Ambiente) J.Ambiente.iniciar(g); if (J.Peligros) J.Peligros.iniciar(g); if (J.Fauna) J.Fauna.iniciar(g); g.ui.cartel(null);
+    J.Quim.iniciar(g); if (J.Items) J.Items.iniciar(g); if (J.Ambiente) J.Ambiente.iniciar(g); if (J.Peligros) J.Peligros.iniciar(g); if (J.Fauna) J.Fauna.iniciar(g); if (J.Bioma) J.Bioma.iniciar(g); g.ui.cartel(null);
     g.ui.estados(g, true);
     J.pasoCamara(g, 0);
     J.Audio.musica(tema.musica);
@@ -125,6 +125,7 @@
     if (J.Ambiente) J.Ambiente.dibujar(ctx, g, camX, camY, vis);
     if (J.Peligros) J.Peligros.dibujar(ctx, g, camX, camY, vis);
     if (J.Fauna) J.Fauna.dibujar(ctx, g, camX, camY, vis);
+    if (J.Bioma) J.Bioma.dibujar(ctx, g, camX, camY, vis);
     J.Jefe.dibujar(ctx, g, camX, camY);
     const pj = g.jugador;
     if (pj.hundido > 0 && g.anim && g.anim.pipe) {   // entrando en la tubería: Ato se hunde tras la boca

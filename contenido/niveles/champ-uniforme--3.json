@@ -1,0 +1,510 @@
+{
+ "capitulo_id": "champ-uniforme",
+ "tipo_nivel": "normal",
+ "tema_visual": "pista-campo-uniforme",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 199,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 19,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 26,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "foso",
+   "x": 32,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 34,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 42,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 50,
+   "y": 11,
+   "largo": 7,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 57,
+   "y": 11,
+   "largo": 6,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 63,
+   "y": 11,
+   "largo": 6,
+   "grosor": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 69,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 72,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 78,
+   "y": 11,
+   "largo": 8,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 86,
+   "y": 11,
+   "largo": 7,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 93,
+   "y": 11,
+   "largo": 7,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 100,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "foso",
+   "x": 108,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 111,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 117,
+   "y": 11,
+   "largo": 6,
+   "grosor": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 123,
+   "y": 13,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 129,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 135,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "foso",
+   "x": 141,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 143,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 149,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 157,
+   "y": 14,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 161,
+   "y": 14,
+   "largo": 38
+  },
+  {
+   "tipo": "jefe",
+   "x": 178,
+   "y": 11,
+   "jefe": "ejercicio_bac_1",
+   "titulo": "Ejercicio BAC: el lanzamiento y el condensador",
+   "preguntas": [
+    {
+     "pregunta": "Un objeto lanzado en un campo de gravedad uniforme, solo sometido a su peso. Su vector aceleración es :",
+     "opciones": [
+      "constante e igual al campo g₀",
+      "nulo, porque la velocidad horizontal es constante",
+      "a = −g₀·t, creciente con el tiempo",
+      "dependiente de la velocidad inicial v₀"
+     ],
+     "correcta": 0,
+     "explicacion": "m·a = m·g₀ ⇒ a = g₀: constante, vertical, hacia abajo, independiente de la masa y de v₀ (Cours §1).",
+     "pagina_pdf": 316
+    },
+    {
+     "pregunta": "La trayectoria del centro de masa en un campo uniforme (peso o fuerza eléctrica constante) es :",
+     "opciones": [
+      "una recta",
+      "una porción de parábola",
+      "una porción de hipérbola",
+      "una circunferencia"
+     ],
+     "correcta": 1,
+     "explicacion": "Al eliminar t entre x(t) e y(t) queda y = A·x² + B·x: una porción de parábola (Cours p. 317).",
+     "pagina_pdf": 317
+    },
+    {
+     "pregunta": "Una partícula de carga q entra en un condensador plano (E uniforme). Su aceleración vale :",
+     "opciones": [
+      "a = (m/q)·E",
+      "a = (q/m)·E",
+      "a = q·m·E",
+      "a = (q/m)·E² "
+     ],
+     "correcta": 1,
+     "explicacion": "Peso despreciable: m·a = q·E ⇒ a = (q/m)E, paralela a E (Cours p. 317).",
+     "pagina_pdf": 317
+    },
+    {
+     "pregunta": "Un electrón, sin velocidad inicial, es acelerado entre A y B con U_AB = −5,0 kV. Su velocidad en B es del orden de :",
+     "opciones": [
+      "4,2×10⁷ m·s⁻¹",
+      "2,1×10⁵ m·s⁻¹",
+      "8,4×10¹⁰ m·s⁻¹",
+      "4,2×10³ m·s⁻¹"
+     ],
+     "correcta": 0,
+     "explicacion": "ΔE_c = qU_AB ⇒ ½mv² = eU ⇒ v = √(2·1,6×10⁻¹⁹·5000/9,11×10⁻³¹) = 4,2×10⁷ m·s⁻¹ (ejemplo del Cours p. 318).",
+     "pagina_pdf": 318
+    },
+    {
+     "pregunta": "En un campo uniforme y sin fuerzas no conservativas, ¿qué es cierto?",
+     "opciones": [
+      "E_c se conserva",
+      "E_m = E_c + E_p se conserva",
+      "ΔE_c = ΔE_p",
+      "E_p siempre es nula"
+     ],
+     "correcta": 1,
+     "explicacion": "Sin fuerzas no conservativas ΔE_m = 0, luego ΔE_c = −ΔE_p (Cours p. 318; QCM 7).",
+     "pagina_pdf": 318
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 193
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 147,
+   "y": 12,
+   "ref": "f1",
+   "latex": "\\vec{a}_G = \\vec{g}_0",
+   "nombre": "Aceleración en un campo de gravedad uniforme"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 30,
+   "y": 12,
+   "ref": "f2",
+   "latex": "\\vec{v}(t)\\begin{cases} v_x(t)=v_0\\cos\\alpha \\\\ v_y(t)=-g_0\\,t+v_0\\sin\\alpha \\\\ v_z(t)=0 \\end{cases}",
+   "nombre": "Ecuaciones horarias de la velocidad (lanzamiento oblicuo)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 23,
+   "y": 12,
+   "ref": "f3",
+   "latex": "\\overrightarrow{OG}(t)\\begin{cases} x(t)=v_0\\cos\\alpha\\times t \\\\ y(t)=-\\tfrac12 g_0 t^2+v_0\\sin\\alpha\\times t \\\\ z(t)=0 \\end{cases}",
+   "nombre": "Ecuaciones horarias de la posición (lanzamiento oblicuo)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 61,
+   "y": 9,
+   "ref": "f4",
+   "latex": "y(x)=\\dfrac{-g_0}{2\\,v_0^2\\cos^2\\alpha}\\,x^2+x\\tan\\alpha",
+   "nombre": "Ecuación de la trayectoria en un campo de gravedad uniforme"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 67,
+   "y": 9,
+   "ref": "f7",
+   "latex": "E=\\dfrac{U_{AB}}{d}",
+   "nombre": "Campo eléctrico en un condensador plano"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 83,
+   "y": 9,
+   "ref": "f8",
+   "latex": "\\vec{a}=\\dfrac{q}{m}\\,\\vec{E}",
+   "nombre": "Aceleración de una partícula cargada en un campo eléctrico uniforme"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 54,
+   "y": 9,
+   "ref": "f10",
+   "latex": "y(x)=\\dfrac{-q\\,E}{2\\,m\\,v_0^2\\cos^2\\alpha}\\,x^2+x\\tan\\alpha",
+   "nombre": "Ecuación de la trayectoria en un campo eléctrico uniforme"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 105,
+   "y": 10,
+   "ref": "f13",
+   "latex": "E_m=E_c+E_p=\\text{cte}\\quad(\\Delta E_m=0)",
+   "nombre": "Conservación de la energía mecánica"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 47,
+   "y": 10,
+   "ref": "f15",
+   "latex": "\\Delta E_c=W_{AB}(\\vec F_e)=\\vec F_e\\cdot\\overrightarrow{AB}=q\\,\\vec E\\cdot\\overrightarrow{AB}=q\\,U_{AB}",
+   "nombre": "Trabajo de la fuerza eléctrica en un condensador plano (acelerador lineal)"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 28,
+   "y": 13,
+   "enemigo": "sin_condicion_inicial",
+   "nombre": "Olvidar la condición inicial z(0) = z₀",
+   "correccion": "Al integrar, usa v(0) y OG(0): si z(0) ≠ 0 suma z₀."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 52,
+   "y": 10,
+   "enemigo": "razonar_sin_ecuaciones",
+   "nombre": "Razonar sin ecuaciones («el peso baja, luego frena»)",
+   "correccion": "Justifica con v_z(t) = −g₀t + v₀, no con la dirección del peso."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 74,
+   "y": 11,
+   "enemigo": "signo_de_q",
+   "nombre": "Olvidar el signo de q al orientar a",
+   "correccion": "a = (q/m)E: para un electrón q = −e, a es opuesta a E."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 95,
+   "y": 10,
+   "enemigo": "peso_sin_justificar",
+   "nombre": "Despreciar el peso sin justificarlo",
+   "correccion": "Compara F_e/P (≈ 10¹⁰ para un protón) antes de despreciar el peso."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 119,
+   "y": 10,
+   "enemigo": "cociente_invertido",
+   "nombre": "Escribir a = (m/e)·E (cociente invertido)",
+   "correccion": "La aceleración es a = (q/m)E, no (m/q)E."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 137,
+   "y": 13,
+   "enemigo": "dEc_igual_dEp",
+   "nombre": "Escribir ΔE_c = ΔE_p",
+   "correccion": "Si E_m se conserva: ΔE_c = −ΔE_p (no ΔE_c = ΔE_p)."
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 73
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 124
+  },
+  {
+   "tipo": "tornado",
+   "x": 20,
+   "y": 14,
+   "recorrido": 3,
+   "periodo": 8,
+   "alto": 7
+  },
+  {
+   "tipo": "espantapajaros",
+   "x": 30,
+   "y": 13
+  },
+  {
+   "tipo": "trampolin",
+   "x": 36,
+   "y": 13
+  },
+  {
+   "tipo": "tornado",
+   "x": 43,
+   "y": 12,
+   "recorrido": 4,
+   "periodo": 8,
+   "alto": 7
+  },
+  {
+   "tipo": "espantapajaros",
+   "x": 55,
+   "y": 10
+  },
+  {
+   "tipo": "tornado",
+   "x": 64,
+   "y": 11,
+   "recorrido": 2,
+   "periodo": 8,
+   "alto": 7
+  },
+  {
+   "tipo": "trampolin",
+   "x": 65,
+   "y": 10
+  },
+  {
+   "tipo": "espantapajaros",
+   "x": 76,
+   "y": 11
+  },
+  {
+   "tipo": "tornado",
+   "x": 87,
+   "y": 11,
+   "recorrido": 3,
+   "periodo": 8,
+   "alto": 7
+  },
+  {
+   "tipo": "espantapajaros",
+   "x": 98,
+   "y": 10
+  },
+  {
+   "tipo": "trampolin",
+   "x": 95,
+   "y": 10
+  },
+  {
+   "tipo": "tornado",
+   "x": 112,
+   "y": 12,
+   "recorrido": 2,
+   "periodo": 8,
+   "alto": 7
+  },
+  {
+   "tipo": "espantapajaros",
+   "x": 121,
+   "y": 10
+  },
+  {
+   "tipo": "trampolin",
+   "x": 125,
+   "y": 12
+  },
+  {
+   "tipo": "tornado",
+   "x": 130,
+   "y": 14,
+   "recorrido": 2,
+   "periodo": 8,
+   "alto": 7
+  },
+  {
+   "tipo": "espantapajaros",
+   "x": 139,
+   "y": 13
+  },
+  {
+   "tipo": "tornado",
+   "x": 150,
+   "y": 14,
+   "recorrido": 4,
+   "periodo": 8,
+   "alto": 7
+  },
+  {
+   "tipo": "trampolin",
+   "x": 151,
+   "y": 13
+  },
+  {
+   "tipo": "item",
+   "x": 35,
+   "y": 12,
+   "item": "doble"
+  },
+  {
+   "tipo": "item",
+   "x": 73,
+   "y": 10,
+   "item": "fuego"
+  }
+ ],
+ "ambiente": "campo",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "nombre_fase": "El campo de tornados",
+ "extra": "bioma-campo"
+}

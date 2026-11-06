@@ -33,8 +33,9 @@
       kind, rey, quiz, flota: tam.flota != null, hover: tam.flota || 0, w: tam.w, h: tam.h, hNormal: tam.h, hAt: tam.hAt,
       floorY, xmin: A.izq + 1, xmax: A.der, vx: 0, vy: 0, dir: -1, estado: 'entra', t: 0, anim: 0, flash: 0, reloj: 0, cdPreg: 0, escudoFlash: 0,
       aire: tam.flota == null, aciertos: A.progreso.aciertos, furia: A.progreso.furia, pIdx: A.progreso.pIdx, ciclo: 0, ronda: 0, prog: [],
-      vidasMax: quiz ? Math.max(1, seg.vidas || 3) : 3, yObj: 0,
-      preguntas: seg.preguntas || [], titulo: seg.titulo || NOMBRE[kind],
+      vidasMax: Array.isArray(seg.fases) && seg.fases.length ? seg.fases.length : quiz ? Math.max(1, seg.vidas || 3) : 3, yObj: 0,
+      fases: Array.isArray(seg.fases) && seg.fases.length ? seg.fases : null,
+      preguntas: seg.preguntas || (Array.isArray(seg.fases) ? seg.fases.flatMap((f) => f.preguntas || []) : []), titulo: seg.titulo || NOMBRE[kind],
       nombre: seg.jefe === 'golem_formulas' ? 'Golem de Fórmulas' : NOMBRE[kind],
     };
     b.x = J.clamp(seg.x, b.xmin + 2, b.xmax - b.w - 1);
@@ -45,7 +46,16 @@
   };
 
   const guardar = (g, b) => { g.w.arena.progreso = { aciertos: b.aciertos, furia: b.furia, pIdx: b.pIdx }; };
-  const furia = (b) => 1 + 0.2 * b.furia;
+  /** Fase actual (objeto de seg.fases) o null. Cada acierto rompe una fase. */
+  const faseObj = (b) => (b.fases ? b.fases[Math.min(b.aciertos, b.fases.length - 1)] : null);
+  const furia = (b) => { const f = faseObj(b); return 1 + 0.2 * b.furia + (f && f.dificultad ? 0.18 * (f.dificultad - 1) : 0); };
+  /** Pregunta para la fase actual: las de fases[i].preguntas (más difíciles en fases avanzadas). */
+  Jefe.siguientePregunta = function (b) {
+    const f = faseObj(b), lista = f && f.preguntas && f.preguntas.length ? f.preguntas : b.preguntas, q = lista[b.pIdx % lista.length];
+    b.pIdx++; return q;
+  };
+  /** Lista de ataques de la fase (campo patron: "bola+onda+lluvia") o null para usar la de por defecto. */
+  const patronFase = (b) => { const f = faseObj(b); return f && typeof f.patron === 'string' ? f.patron.split(/[+,]/).map((q) => q.trim()).filter(Boolean) : null; };
   const mirar = (b, p) => { b.dir = p.x + p.w / 2 < b.x + b.w / 2 ? -1 : 1; };
   const fase = (b) => Math.min(2, Math.floor((b.aciertos * 3) / b.vidasMax));
 
@@ -66,13 +76,14 @@
   function elegirAtaque(g, b) {
     const p = g.jugador;
     mirar(b, p);
-    if (b.kind === 'pulpo') { estado(b, 'aviso_' + PULPO[b.ciclo++ % PULPO.length]); return; }
-    if (b.kind === 'dragon') { estado(b, 'aviso_' + DRAGON[b.ciclo++ % DRAGON.length]); return; }
-    if (!b.rey) { const a = GOLEM[b.ciclo++ % GOLEM.length]; estado(b, a === 'carga' ? 'aviso_carga' : 'aviso_salto'); return; }
+    const pat = patronFase(b);
+    if (b.kind === 'pulpo') { const l = pat || PULPO; estado(b, 'aviso_' + l[b.ciclo++ % l.length]); return; }
+    if (b.kind === 'dragon') { const l = pat || DRAGON; estado(b, 'aviso_' + l[b.ciclo++ % l.length]); return; }
+    if (!b.rey) { const l = pat || GOLEM, a = l[b.ciclo++ % l.length]; estado(b, a === 'carga' ? 'aviso_carga' : 'aviso_salto'); return; }
     const lim = 3 + (fase(b) > 0 ? 1 : 0);
     if (b.ronda >= lim && b.quiz) { b.ronda = 0; estado(b, 'espera', -1.2); return; }   // en modo quiz no hay aturdimiento: descansa un poco
     if (b.ronda >= lim) { b.ronda = 0; ponerAltura(b, b.hAt); estado(b, 'aturdido'); J.Audio.sfx('fallo'); J.chispas(g, (b.x + b.w / 2) * J.T, (b.y + 1) * J.T, 16, '#cfd8f0', 2, -3); return; }
-    const lista = REY[fase(b)], a = lista[b.ciclo++ % lista.length];
+    const lista = pat || REY[fase(b)], a = lista[b.ciclo++ % lista.length];
     b.ronda++;
     estado(b, 'aviso_' + a);
   }
@@ -260,7 +271,7 @@
         J.chispas(g, (b.x + b.w / 2) * J.T, (b.y + b.h / 2) * J.T, 24, '#2ee59d', 5);
         p.vy = -F.v0 * 0.95; p.vx = (p.x + p.w / 2 < b.x + b.w / 2 ? -1 : 1) * 3.5; p.suelo = false; p.saltando = false;
         if (b.aciertos >= b.vidasMax) derrotar(g, b);
-        else { estado(b, 'golpeado'); b.vx = 0; b.ronda = 0; if (g.ui) g.ui.aviso(`¡Pisotón! ${b.vidasMax - b.aciertos} restantes`); }
+        else { estado(b, 'golpeado'); b.vx = 0; b.ronda = 0; if (g.ui) g.ui.aviso(b.fases ? `¡Fase ${b.aciertos} rota! Fase ${b.aciertos + 1}/${b.vidasMax}` : `¡Pisotón! ${b.vidasMax - b.aciertos} restantes`); }
       } else {    // el escudo destella, contraataque y pierdes 1 corazón
         b.furia++; b.escudoFlash = 0.9; J.Audio.sfx('fallo'); guardar(g, b);
         g.shake = 6; if (g.ui) g.ui.aviso('¡El escudo resiste!');

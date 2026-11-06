@@ -9,7 +9,7 @@
 (function () {
   const J = window.PCB.juego;
   const EPS = 1e-4;
-  const SOL = (t) => t === 1 || t === 3 || t === 4 || t === 5 || t === 6 || t === 7 || t === 8;   // 5 bloque ?, 6 tubería, 7 puerta, 8 ladrillo
+  const SOL = (t) => t === 1 || t === 3 || t === 4 || t === 5 || t === 6 || t === 7 || t === 8 || t === 9 || t === 10;   // 5 bloque ?, 6 tubería, 7 puerta, 8 ladrillo, 9 cinta, 10 bloque de onda
 
   // ---------- creación del mundo ----------
   J.crearMundo = function (nivel) {
@@ -27,7 +27,7 @@
     w.items = [];
     w.enemigos = [];
     w.checks = [];
-    w.puentes = G.puentes.map((b) => ({ id: b.id, caeCon: b.caeCon, x: b.x, y: b.y, largo: b.largo, estado: 'firme', cola: [], t: 0, k: 0 }));
+    w.puentes = G.puentes.map((b) => ({ id: b.id, caeCon: b.caeCon, x: b.x, y: b.y, largo: b.largo, estado: 'firme', cola: [], t: 0, k: 0, oculto: b.oculto }));
     w.palancas = G.palancas.map((l) => ({ id: l.id, x: Math.floor(l.x), y: Math.floor(l.y), objetivo: l.objetivo, estado: 0, usada: false, nombre: l.seg.nombre }));
     w.escombros = [];
     w.quiz = String(nivel.tipo_nivel || '').indexOf('quiz_') === 0;
@@ -35,7 +35,7 @@
     w.bloques = G.bloques.map((b) => ({ x: b.x, y: b.y, q: b.seg.pregunta, premio: b.seg.premio || 'moneda', fallo: b.seg.fallo || 'cierra', estado: 'listo', bump: 0, reserva: (b.seg.preguntas_reserva || []).slice() }));
     w.tuberias = G.tuberias.filter((t) => t.base >= 0).map((t) => ({ x: t.x, top: t.top, base: t.base, alto: t.alto, q: t.seg.pregunta, reserva: (t.seg.preguntas_reserva || []).slice(), destino: t.seg.destino || 'atajo',
       sx: t.seg.salida_x, sy: t.seg.salida_y, abierta: false, usada: false, cooldown: 0, agotada: false }));
-    w.puertas = G.puertas.filter((d) => d.base >= 0).map((d) => ({ x: d.x, top: d.top, base: d.base, alto: d.alto, q: d.seg.pregunta, reserva: (d.seg.preguntas_reserva || []).slice(), abierta: false, cooldown: 0, disolver: 0, intentos: 0 }));
+    w.puertas = G.puertas.filter((d) => d.base >= 0).map((d) => ({ id: d.seg.id || null, eq: d.seg.ecuacion || null, ayuda: d.seg.ayuda || '', x: d.x, top: d.top, base: d.base, alto: d.alto, q: d.seg.pregunta, reserva: (d.seg.preguntas_reserva || []).slice(), abierta: false, cooldown: 0, disolver: 0, intentos: 0 }));
     // ladrillos rompibles, plataformas que caen (viven en w.movers con cae:true) y plantas carnívoras
     w.ladrillos = G.ladrillos.map((b) => ({ x: b.x, y: b.y, contenido: b.contenido, monedas: b.contenido === 'moneda_multi' ? 6 : b.contenido === 'moneda' ? 1 : 0, bump: 0, roto: false }));
     for (const c of G.caes) w.movers.push({ x: c.x, y: c.y, bx: c.x, by: c.y, largo: c.largo, rec: 0, eje: 'x', per: 1, dx: 0, dy: 0, cae: true, retardo: c.retardo, reaparece: c.reaparece, estado: 'firme', t: 0, vy: 0, ausente: false });
@@ -44,6 +44,21 @@
       const base = tubo ? tubo.top : G.baseDesde(pl.x, pl.y);
       return { cx: tubo ? tubo.x + 1 : pl.x + 0.5, baseY: base, tubo: tubo || null, ciclo: pl.ciclo, visible: pl.visible, fase: ((J.hash('pl' + pl.x) % 100) / 100) * pl.ciclo, alt: 0, forzar: 0, mordio: false };
     });
+    // Etapa 1: parkour y química
+    const celda = (v) => Math.floor(v);
+    w.minas = G.minas.map((m) => ({ x: celda(m.x) + 0.5, y: celda(m.y) + 0.5, modo: m.modo, radio: m.radio, estado: 'lista', t: 0, k: (J.hash('mina' + m.x + m.y) % 100) / 10 }));
+    w.prensas = G.prensas.map((pr) => ({ x: pr.x, y: pr.y, largo: pr.largo, base: G.baseDesde(pr.x, pr.y + 1), periodo: pr.periodo, retardo: pr.retardo, cab: pr.y, fase: 'sube', sono: false }));
+    w.pendulos = G.pendulos.map((pe) => { const T0 = pe.periodo > 0 ? pe.periodo : 2 * Math.PI * Math.sqrt(pe.cuerda / 9.81); return { px: pe.x + 0.5, py: pe.y + 0.5, L: pe.cuerda, T: T0, A: (pe.amplitud * Math.PI) / 180, mx: pe.x + 0.5, my: pe.y + 0.5 + pe.cuerda }; });
+    w.cintas = G.cintas.map((c) => ({ x: c.x, y: c.y, largo: c.largo, v: c.velocidad }));
+    w.picos = G.picos.map((c) => ({ x: c.x, y: c.y, largo: c.largo }));
+    w.rebotes = G.rebotes.map((r) => ({ x: r.x, y: r.y, largo: r.largo, comp: 0 }));
+    w.sprints = G.sprints.map((sp) => ({ ini: sp.ini, fin: sp.fin, v: sp.velocidad, activo: false, hecho: false, cam: 0 }));
+    w.carteles = G.carteles.map((c) => ({ x: celda(c.x), y: celda(c.y), texto: c.texto, cerca: false }));
+    for (const rs of G.rastros) rs.puntos.forEach((q, i) => w.items.push({ x: celda(q[0]), y: celda(q[1]), moneda: true, tomado: false, fase: i * 0.4, ref: null }));
+    w.atomos = G.atomos.map((a) => ({ x: a.x, y: a.y, el: a.elemento, tomado: false, fase: (J.hash('at' + a.x + a.y) % 60) / 10 }));
+    w.estaciones = G.estaciones.map((e) => ({ x: e.x, y: e.y, molecula: e.seg.molecula, requiere: e.seg.requiere || {}, recompensa: e.seg.recompensa, objetivo: e.seg.objetivo || null, hecha: false, nombre: e.seg.nombre || null }));
+    w.interruptores = G.interruptores.map((it) => ({ x: it.x, y: it.y, variable: it.variable, valores: it.valores, idx: 0, cd: 0 }));
+    for (const pe of G.platEstado) { const k = Object.keys(pe.requiere)[0]; w.movers.push({ x: pe.x, y: pe.y, bx: pe.x, by: pe.y, largo: pe.largo, rec: 0, eje: 'x', per: 1, dx: 0, dy: 0, est: true, variable: k, valor: pe.requiere[k], ausente: true }); }
     w.aguas = G.aguas.map((a) => ({ x: a.x, y: a.y, w: a.w, h: a.h, cx: a.cx, cy: a.cy }));
     for (const s of nivel.segmentos) {
       if (s.tipo === 'coleccionable') w.items.push({ x: Math.floor(s.x), y: Math.floor(s.y), ref: s.ref, latex: s.latex, nombre: s.nombre, tomado: false, fase: (J.hash(s.ref || '') % 100) / 16 });
@@ -194,6 +209,7 @@
     const p = g.jugador, w = g.w;
     Object.assign(p, { x: g.respawn.x, y: g.respawn.y, vx: 0, vy: 0, muriendo: false, inv: 2, suelo: false, sobre: null, saltando: false, coyote: 0, buffer: 0 });
     g.proy.length = 0;
+    if (J.Parkour) J.Parkour.alMorir(g);
     const A = w.arena;
     if (A && !A.derrotado && p.x < A.izq + 3) {   // morir en la arena: el jefe se reinicia (conserva el progreso)
       A.activa = false; w.bloqueos[0].activo = false; g.jefe = null;
@@ -303,6 +319,7 @@
     // plataformas móviles
     for (const m of w.movers) {
       if (m.cae) { J.Quiz.pasoCae(g, m, dtM); continue; }
+      if (m.est) { m.ausente = g.vars[m.variable] !== m.valor; m.dx = m.dy = 0; continue; }
       const s = 0.5 - 0.5 * Math.cos((2 * Math.PI * g.tm) / m.per);
       const nx = m.eje === 'x' ? m.bx + m.rec * s : m.bx, ny = m.eje === 'y' ? m.by + m.rec * s : m.by;
       m.dx = nx - m.x; m.dy = ny - m.y; m.x = nx; m.y = ny;
@@ -369,6 +386,8 @@
     if (g.jefe) J.Jefe.update(g, dtM);
     pasoProyectiles(g, dtM);
     if (J.Quiz) J.Quiz.paso(g, dt);
+    if (J.Parkour) J.Parkour.paso(g, dt);
+    if (J.Quim) J.Quim.paso(g, dt);
     inp.accionEdge = inp.arribaEdge = false;
     // partículas
     for (const q of g.part) { q.vida -= dt; q.vy += q.grav * dt; q.x += q.vx * dt * 16; q.y += q.vy * dt * 16; }
@@ -470,6 +489,11 @@
     objX = J.clamp(objX, 0, Math.max(0, w.ancho * T - J.VW));
     let objY = w.alto * T - J.VH;
     if (w.alto * T > J.VH) objY = J.clamp((p.y + p.h / 2) * T - J.VH / 2 + 10, 0, w.alto * T - J.VH);
+    const sp = g.sprintActivo;
+    if (sp) {   // sprint: la cámara avanza sola y empuja al jugador
+      objX = J.clamp(sp.cam * T, 0, Math.max(0, w.ancho * T - J.VW)); cam.x = objX;
+      cam.y += (objY - cam.y) * (1 - Math.pow(1 - 0.1, dt * 60)); return;
+    }
     if (g.snapCamara) { cam.x = objX; cam.y = objY; g.snapCamara = false; return; }
     const k = 1 - Math.pow(1 - 0.1, dt * 60);
     cam.x += (objX - cam.x) * k; cam.y += (objY - cam.y) * k;

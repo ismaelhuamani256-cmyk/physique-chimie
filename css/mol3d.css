@@ -99,7 +99,7 @@
 /* host estrecho (p. ej. dentro de la ventana de una estación del juego): se decide por JS según el ancho del propio host */
 .m3d-con.estrecho{min-height:440px}
 .m3d-con.estrecho .m3d-con-cuerpo{flex-direction:column}
-.m3d-con.estrecho .m3d-con-esc{min-height:250px;flex:1 1 250px}
+.m3d-con.estrecho .m3d-con-esc{min-height:280px;flex:1 1 280px}
 .m3d-con.estrecho .m3d-con-lado{width:auto;border-left:0;border-top:1px solid var(--borde);flex-direction:row;flex-wrap:wrap;align-items:flex-start;padding:8px 10px;gap:6px 14px;flex:none}
 .m3d-con.estrecho .m3d-con-lado h3{width:100%;margin:0}
 .m3d-con.estrecho .m3d-con-hint{display:none}

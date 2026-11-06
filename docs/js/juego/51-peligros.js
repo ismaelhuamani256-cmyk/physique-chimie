@@ -22,18 +22,39 @@
     const S = g.nivel.segmentos || [];
     g.sierras = S.filter((s) => s.tipo === 'sierra').map((s) => ({ bx: s.x + 0.5, by: s.y + 0.5, eje: s.eje || null, rec: s.recorrido || 0, per: s.periodo || 4, cx: s.x + 0.5, cy: s.y + 0.5, ang: (J.hash('s' + s.x + s.y) % 628) / 100 }));
     g.torretas = S.filter((s) => s.tipo === 'torreta').map((s) => ({ x: s.x, y: s.y, w: 1, h: 1, per: s.periodo || 2.6, cd: 1 + (J.hash('t' + s.x) % 100) / 60, estado: 'espera', t: 0, ang: -0.6, vivo: true, muertoT: 0, nombre: s.nombre || 'Error', correccion: s.correccion || '' }));
-    g.canones = S.filter((s) => s.tipo === 'canon_bala').map((s) => ({ x: s.x, y: s.y, dir: s.dir === 1 ? 1 : -1, per: s.periodo || 3.6, t: (s.retardo || 0) % (s.periodo || 3.6), cargando: false }));
+    g.canones = S.filter((s) => s.tipo === 'canon_bala').map((s) => ({ x: s.x, y: s.y, dir: s.dir === 1 ? 1 : -1, per: s.periodo || 3.6, t: (s.retardo || 0) % (s.periodo || 3.6), cargando: false, onoff: s.onoff || null }));
     g.balas = [];
     g.geiseres = S.filter((s) => s.tipo === 'geiser').map((s) => ({ x: s.x, y: s.y, alto: s.alto || 5, per: s.periodo || 4, ret: s.retardo || 0, k: 0, fase: 'quieto' }));
     g.lasers = S.filter((s) => s.tipo === 'laser').map((s) => ({ x: s.x, y: s.y, eje: s.eje === 'v' ? 'v' : 'h', largo: s.largo || 5, per: s.periodo || 3.6, ret: s.retardo || 0, on: false, aviso: false }));
     g.plantasT = S.filter((s) => s.tipo === 'planta_techo').map((s) => ({ x: s.x, largo: s.largo || 3, ciclo: s.ciclo || 3.4, vis: s.visible || 1.3, fase: (J.hash('pt' + s.x) % 100) / 100, alt: 0 }));
     g.bolasT = [];
     g.magmas = S.filter((s) => s.tipo === 'magma').map((s) => ({ x: s.x + 0.5, y: s.y, alto: s.altura || 8, per: s.periodo || 3.4, ret: s.retardo || 0, bx: s.x + 0.5, by: s.y, k: 0 }));
+    // sistema ON/OFF: interruptores y bloques que solo son sólidos en su estado (y cañones que solo disparan en el suyo)
+    g.onoff = true;
+    g.swOnoff = S.filter((s) => s.tipo === 'interruptor_onoff').map((s) => ({ x: s.x + 0.5, y: s.y + 0.5, cd: 0 }));
+    g.blOnoff = S.filter((s) => s.tipo === 'bloque_onoff').map((s) => ({ x: Math.round(s.x), y: Math.round(s.y), w: Math.max(1, s.largo || 1), h: Math.max(1, s.alto || 1), grupo: s.grupo === 'off' ? 'off' : 'on', sol: false }));
+    P.aplicarOnoff(g);
     g.llaves = S.filter((s) => s.tipo === 'llave').map((s) => ({ x: s.x + 0.5, y: s.y + 0.5, id: s.id || null, tomada: false, fase: (J.hash('k' + s.x + s.y) % 100) / 16 }));
   };
 
+  /** Pone o quita los bloques según el estado; si el jugador está dentro, el bloque espera. */
+  P.aplicarOnoff = function (g) {
+    const w = g.w, p = g.jugador;
+    for (const b of g.blOnoff || []) {
+      const quiere = (b.grupo === 'on') === g.onoff;
+      if (quiere === b.sol) continue;
+      if (quiere && p && J.solapa(p, { x: b.x, y: b.y, w: b.w, h: b.h })) continue;   // reintenta cuando salga
+      for (let yy = b.y; yy < b.y + b.h; yy++) for (let xx = b.x; xx < b.x + b.w; xx++) if (xx >= 0 && xx < w.ancho && yy >= 0 && yy < w.alto) w.tiles[yy * w.ancho + xx] = quiere ? 4 : 0;
+      b.sol = quiere;
+    }
+  };
+  P.alternarOnoff = function (g) {
+    g.onoff = !g.onoff; P.aplicarOnoff(g); J.Audio.sfx('aviso'); g.shake = Math.max(g.shake, 2);
+    if (g.ui) g.ui.aviso(g.onoff ? 'ON: bloques naranja' : 'OFF: bloques azules');
+  };
   /** Disparos del jugador (fotones, fuego, balas): ¿matan algo de aquí? Devuelve true si el disparo se gasta. */
   P.golpe = function (g, px, py, rad) {
+    for (const s of g.swOnoff || []) if (s.cd <= 0 && Math.hypot(px - s.x, py - s.y) < rad + 0.7) { s.cd = 0.7; P.alternarOnoff(g); return true; }   // un disparo también acciona el interruptor
     for (const e of g.torretas || []) if (e.vivo && e.muertoT === 0 && Math.hypot(px - (e.x + 0.5), py - (e.y + 0.5)) < rad + 0.5) { P.matarTorreta(g, e); return true; }
     for (const b of g.balas || []) if (!b.muerta && Math.abs(px - b.x) < 0.9 + rad && Math.abs(py - b.y) < 0.6 + rad) { b.muerta = true; J.Audio.sfx('pisoton'); J.chispas(g, b.x * T, b.y * T, 14, '#ffb020', 4); return true; }
     return false;
@@ -43,6 +64,11 @@
   P.paso = function (g, dt) {
     if (!g.sierras) return;
     const w = g.w, p = g.jugador, F = g.F, t = g.t, pcx = p.x + p.w / 2, pcy = p.y + p.h / 2;
+    for (const s of g.swOnoff || []) {
+      s.cd = Math.max(0, s.cd - dt);
+      if (s.cd <= 0 && !p.muriendo && Math.hypot(pcx - s.x, pcy - s.y) < 0.85) { s.cd = 0.7; P.alternarOnoff(g); J.chispas(g, s.x * T, s.y * T, 14, g.onoff ? '#ff9f1c' : '#4dd0ff', 4); }
+    }
+    if (g.blOnoff && g.blOnoff.some((b) => b.sol !== ((b.grupo === 'on') === g.onoff))) P.aplicarOnoff(g);
     for (const m of g.magmas || []) {   // bola de magma que salta desde la lava en parábola (con burbujas de aviso)
       m.k = (((g.tm + m.ret) % m.per) + m.per) % m.per / m.per;
       if (m.k < 0.55) { const u = m.k / 0.55; m.by = m.y - m.alto * 4 * u * (1 - u); m.act = true; } else { m.act = false; m.by = m.y + 1; }
@@ -84,6 +110,7 @@
     // ---- cañones de bala gigante ----
     for (const c of g.canones) {
       if (Math.abs(c.x - pcx) > 22) continue;
+      if (c.onoff && (c.onoff === 'on') !== g.onoff) { c.t = 0; c.cargando = false; continue; }
       c.t += dt;
       c.cargando = c.t > c.per - 0.7;
       if (c.t >= c.per) { c.t = 0; g.balas.push({ x: c.x + 0.5 + c.dir * 1.1, y: c.y + 0.5, dir: c.dir, t: 0, muerta: false }); J.Audio.sfx('fuego'); J.chispas(g, (c.x + 0.5 + c.dir) * T, (c.y + 0.5) * T, 8, '#ffd166', 3); }
@@ -167,6 +194,17 @@
     else if (l.aviso) { ctx.fillStyle = 'rgba(255,209,102,.6)'; if (l.eje === 'h') ctx.fillRect(a[0], y, a[2] - a[0], 1); else ctx.fillRect(x, a[1], 1, a[3] - a[1]); }
   }
   P.dibujar = function (ctx, g, camX, camY, vis) {
+    for (const b of g.blOnoff || []) {   // bloques ON (naranja) / OFF (azul): sólidos o fantasma
+      if (!vis(b.x - 1, b.x + b.w + 1)) continue;
+      const x = r(b.x * T - camX), y = r(b.y * T - camY), ww = b.w * T, hh = b.h * T, c1 = b.grupo === 'on' ? '#ff9f1c' : '#4dd0ff', c2 = b.grupo === 'on' ? '#b35a00' : '#1a7fa8';
+      if (b.sol) { ctx.fillStyle = OUT; ctx.fillRect(x, y, ww, hh); ctx.fillStyle = c2; ctx.fillRect(x + 1, y + 1, ww - 2, hh - 2); ctx.fillStyle = c1; for (let i = 0; i < b.w; i++) for (let j = 0; j < b.h; j++) { ctx.fillRect(x + i * T + 2, y + j * T + 2, T - 4, T - 4); ctx.fillStyle = '#fff'; ctx.fillRect(x + i * T + 3, y + j * T + 3, 3, 1); ctx.fillStyle = c1; } }
+      else { ctx.globalAlpha = 0.45; ctx.strokeStyle = c1; ctx.lineWidth = 1; ctx.setLineDash([3, 3]); ctx.strokeRect(x + 0.5, y + 0.5, ww - 1, hh - 1); ctx.setLineDash([]); ctx.globalAlpha = 1; }
+    }
+    for (const s of g.swOnoff || []) {
+      if (!vis(s.x - 1, s.x + 1)) continue;
+      const x = r(s.x * T - camX), y = r(s.y * T - camY), on = g.onoff;
+      ctx.fillStyle = OUT; ctx.fillRect(x - 9, y - 4, 18, 12); ctx.fillStyle = '#5a6aa0'; ctx.fillRect(x - 8, y - 3, 16, 10); D(ctx, x, y - 1 + (s.cd > 0 ? 2 : 0), 6, OUT); D(ctx, x, y - 1 + (s.cd > 0 ? 2 : 0), 5, on ? '#ff9f1c' : '#4dd0ff'); ctx.fillStyle = '#fff'; ctx.fillRect(x - 2, y - 4 + (s.cd > 0 ? 2 : 0), 3, 2);
+    }
     for (const m of g.magmas || []) {
       if (!vis(m.x - 1, m.x + 1)) continue;
       const x = r(m.bx * T - camX), sy = r(m.y * T - camY);
@@ -190,7 +228,7 @@
       dibSierra(ctx, r(s.cx * T - camX), r(s.cy * T - camY), s.ang);
     }
     for (const e of g.torretas) if (e.vivo && vis(e.x - 1, e.x + 2)) dibTorreta(ctx, e, r((e.x + 0.5) * T - camX), r(e.y * T - camY), t);
-    for (const c of g.canones) if (vis(c.x - 1, c.x + 2)) dibCanon(ctx, c, r((c.x + 0.5) * T - camX), r((c.y + 0.5) * T - camY), t);
+    for (const c of g.canones) if (vis(c.x - 1, c.x + 2)) { dibCanon(ctx, c, r((c.x + 0.5) * T - camX), r((c.y + 0.5) * T - camY), t); if (c.onoff && (c.onoff === 'on') !== g.onoff) { ctx.globalAlpha = 0.55; ctx.fillStyle = '#0b1230'; ctx.fillRect(r(c.x * T - camX), r(c.y * T - camY), T, T); ctx.globalAlpha = 1; } else if (c.onoff) { ctx.fillStyle = c.onoff === 'on' ? '#ff9f1c' : '#4dd0ff'; ctx.fillRect(r(c.x * T - camX) + 6, r(c.y * T - camY) - 3, 4, 2); } }
     for (const b of g.balas) dibBala(ctx, b, r(b.x * T - camX), r(b.y * T - camY), t);
     for (const b of g.bolasT) { const x = r(b.x * T - camX), y = r(b.y * T - camY); ctx.fillStyle = 'rgba(255,122,42,.4)'; D(ctx, x, y, 6, 'rgba(255,122,42,.4)'); D(ctx, x, y, 4, '#ff7a2a'); D(ctx, x, y, 2, '#ffe27a'); }
     for (const q of g.geiseres) if (vis(q.x - 1, q.x + 2)) dibGeiser(ctx, q, g.tema.pal, r((q.x + 0.5) * T - camX), r(q.y * T - camY), t);

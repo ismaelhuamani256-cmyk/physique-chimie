@@ -227,7 +227,8 @@
       return;
     }
     p.inv = Math.max(0, p.inv - dt);
-    const dir = g.congelado ? 0 : inp.dir;
+    if (p.helado > 0) { p.helado -= dt; inp.saltoEdge = false; }   // congelada por el aroma de una flor de hielo
+    const dir = (g.congelado || p.helado > 0) ? 0 : inp.dir;
     if (dir) p.dir = dir;
     // arrastre de la plataforma móvil sobre la que estaba
     const m = p.sobre; p.sobre = null;

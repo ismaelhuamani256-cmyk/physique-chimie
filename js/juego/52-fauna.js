@@ -18,16 +18,16 @@
   const D = (...a) => J.Temas.disco(...a);
   const ESP = {
     pirana: { w: 0.95, h: 0.6, hp: 1 }, tiburon: { w: 4, h: 1.5, hp: 6 }, langosta: { w: 1.5, h: 1.0, hp: 2 },
-    submarino: { w: 2.6, h: 1.3, hp: 4 }, gigante: { w: 2.4, h: 2.0, hp: 3 }, alado: { w: 2.4, h: 2.0, hp: 3 }, espectro: { w: 1.0, h: 1.1, hp: 1 }, globo: { w: 0.9, h: 0.9, hp: 1 }, mago: { w: 0.9, h: 1.3, hp: 1 }, mina: { w: 1, h: 1, hp: 1 },
+    submarino: { w: 2.6, h: 1.3, hp: 4 }, mecanico: { w: 0.9, h: 1.4, hp: 1 }, cabra: { w: 1.5, h: 1.0, hp: 1 }, vaca: { w: 1.7, h: 1.1, hp: 2 }, flor: { w: 0.9, h: 1.0, hp: 1 }, gigante: { w: 2.4, h: 2.0, hp: 3 }, alado: { w: 2.4, h: 2.0, hp: 3 }, espectro: { w: 1.0, h: 1.1, hp: 1 }, globo: { w: 0.9, h: 0.9, hp: 1 }, mago: { w: 0.9, h: 1.3, hp: 1 }, mina: { w: 1, h: 1, hp: 1 },
   };
   F.ESPECIES = Object.keys(ESP);
   const DANO = { fuego: 1, perdigon: 0.6, foton: 1 };
-  const nom = { pirana: 'Piraña', gigante: 'Error gigante', alado: 'Error alado', espectro: 'Espectro tímido', tiburon: 'Tiburón gigante', langosta: 'Langosta', submarino: 'Submarino', globo: 'Pez globo', mago: 'Mago de coral', mina: 'Mina' };
+  const nom = { pirana: 'Piraña', mecanico: 'Mecánico lanzallaves', cabra: 'Cabra loca', vaca: 'Vaca', flor: 'Flor de hielo', gigante: 'Error gigante', alado: 'Error alado', espectro: 'Espectro tímido', tiburon: 'Tiburón gigante', langosta: 'Langosta', submarino: 'Submarino', globo: 'Pez globo', mago: 'Mago de coral', mina: 'Mina' };
 
   F.iniciar = function (g) {
     const S = g.nivel.segmentos || [];
     g.fauna = S.filter((s) => s.tipo === 'fauna' && ESP[s.especie]).map((s) => {
-      const d = ESP[s.especie], cx = s.x + 0.5, cy = (s.especie === 'langosta' || s.especie === 'gigante') ? s.y + 1 - d.h / 2 : s.y + 0.5;
+      const d = ESP[s.especie], cx = s.x + 0.5, cy = (['langosta', 'gigante', 'mecanico', 'cabra', 'vaca', 'flor'].includes(s.especie)) ? s.y + 1 - d.h / 2 : s.y + 0.5;
       return { esp: s.especie, w: d.w, h: d.h, x: cx - d.w / 2, y: cy - d.h / 2, x0: cx, y0: cy, dir: -1, vx: 0, vy: 0, estado: 'nada', t: 0, cd: 1 + (J.hash('f' + s.x + s.y) % 100) / 50, hp: d.hp, vivo: true, muertoT: 0, flash: 0, infl: 0, oculto: 0, ph: (J.hash('p' + s.x + s.y) % 628) / 100 };
     });
     g.faunaProy = []; g.faunaFx = [];
@@ -44,6 +44,12 @@
   const toca = (p, e) => J.solapa(p, { x: e.x + 0.06, y: e.y + 0.06, w: e.w - 0.12, h: e.h - 0.12 });
   const circuloContra = (p, cx, cy, rad) => { const nx = Math.max(p.x, Math.min(cx, p.x + p.w)), ny = Math.max(p.y, Math.min(cy, p.y + p.h)); return Math.hypot(cx - nx, cy - ny) < rad; };
 
+  function suelo_delante(g, e) { const ax = e.x + (e.dir > 0 ? e.w + 0.2 : -0.2); return SOL(g.w.get(Math.floor(ax), Math.floor(e.y + e.h + 0.4))); }
+  /** Gravedad + movimiento horizontal con colisión; fija e.suelo y e.bloq. */
+  function fisica(g, e, dt, vx, gr) {
+    e.vy = Math.min(14, (e.vy || 0) + gr * dt); e.bloq = false; const x0 = e.x; mover(g, e, vx * dt, 0); const bx = e.bloq; e.bloq = false;
+    mover(g, e, 0, e.vy * dt); if (e.bloq) { if (e.vy > 0) e.suelo = true; e.vy = 0; } else e.suelo = false; e.bloq = bx || Math.abs(e.x - x0) < 1e-5 && !!vx;
+  }
   function matar(g, e, por) {
     if (!e.vivo || e.muertoT > 0) return;
     e.muertoT = 0.001; J.Audio.sfx('pisoton'); const [cx, cy] = centro(e);
@@ -95,6 +101,7 @@
   F.paso = function (g, dt) {
     if (!g.fauna) return;
     const p = g.jugador, pcx = p.x + p.w / 2, pcy = p.y + p.h / 2;
+    p.inv_hielo = Math.max(0, (p.inv_hielo || 0) - dt);
     for (const e of g.fauna) {
       if (!e.vivo) continue;
       if (e.muertoT > 0) { e.muertoT += dt; if (e.muertoT > 0.45) e.vivo = false; continue; }
@@ -161,6 +168,35 @@
           if (e.oculto <= 0) contacto(g, e, p, false);
           break;
         }
+        case 'mecanico': {   // lanza llaves inglesas en arco; no se cae de su plataforma
+          e.dir = d < 16 ? (dx >= 0 ? 1 : -1) : e.dir; e.cd -= dt; fisica(g, e, dt, 0, 26);
+          if (e.cd <= 0 && d < 14 && vivoP) { e.cd = 1.7 + (J.hash('m' + e.x0) % 50) / 100; const T2 = 1.0, vx = J.clamp(dx / T2, -7, 7); g.faunaProy.push({ tipo: 'llave_inglesa', x: cx, y: e.y, vx, vy: -9.5, t: 0 }); J.Audio.sfx('aviso'); e.salto = 0.3; }
+          if (e.salto > 0) e.salto -= dt;
+          if (e.suelo && d < 9 && Math.random() < dt * 0.35) { e.vy = -9; e.suelo = false; }
+          contacto(g, e, p, false); break;
+        }
+        case 'cabra': {
+          if (e.estado === 'nada') { e.vx = e.dir * 1.0; if (e.suelo && !suelo_delante(g, e)) e.dir = -e.dir; fisica(g, e, dt, e.vx, 26); if (Math.abs(dy) < 2.6 && Math.abs(dx) < 13 && vivoP && Math.sign(dx) === e.dir) { e.estado = 'aviso'; e.t = 0; J.Audio.sfx('aviso'); } else if (e.bloq && e.vx) e.dir = -e.dir; }
+          else if (e.estado === 'aviso') { fisica(g, e, dt, 0, 26); if (e.t > 0.6) { e.estado = 'embiste'; e.t = 0; e.vx = e.dir * 8.5; J.Audio.sfx('fuego'); } }
+          else if (e.estado === 'embiste') { const x0 = e.x; fisica(g, e, dt, e.vx, 26); if (Math.abs(e.x - x0) < 1e-4 || e.t > 2.2) { e.estado = 'mareada'; e.t = 0; g.shake = Math.max(g.shake, 4); J.Audio.sfx('onda'); } }
+          else if (e.estado === 'mareada') { fisica(g, e, dt, 0, 26); if (e.t > 1.6) { e.estado = 'nada'; e.dir = dx >= 0 ? 1 : -1; } }
+          if (e.estado === 'mareada') { if (!p.muriendo && toca(p, e) && p.vy > 0.3) contacto(g, e, p, false, false); } else contacto(g, e, p, false); break;
+        }
+        case 'vaca': {
+          e.vx = e.dir * 0.8; if (e.suelo && !suelo_delante(g, e)) e.dir = -e.dir; fisica(g, e, dt, e.vx, 26); if (e.bloq && e.vx) e.dir = -e.dir;
+          if (!p.muriendo && !g.abduccion && toca(p, e)) {
+            const encima = p.vy > 0.3 && p.y + p.h - e.y < e.h * 0.6;
+            if (p.estrella > 0) matar(g, e);
+            else if (encima) { p.vy = -g.F.v0 * 0.9; p.suelo = false; p.coyote = 0; p.saltando = !!g.inp.salto; J.Audio.sfx('pisoton'); g.faunaProy.push({ tipo: 'ovni', x: pcx - 8, y: Math.max(1.5, p.y - 6), t: 0, obj: pcx }); if (g.ui) g.ui.aviso('¡Muuu... un OVNI!'); e.dir = -e.dir; }
+          }
+          break;
+        }
+        case 'flor': {   // flor de hielo: cada 4,2 s libera un aroma gélido que te congela 2 s
+          const ciclo = (e.t + e.ph) % 4.2; e.fase = ciclo < 2.2 ? 'cerrada' : ciclo < 2.7 ? 'abre' : 'aroma';
+          if (e.fase === 'aroma') { e.aroma = Math.min(1, (ciclo - 2.7) / 0.6); const R = 0.6 + 1.7 * e.aroma; if (!p.muriendo && !(p.helado > 0) && !(p.estrella > 0) && !p.inv_hielo && Math.hypot(pcx - cx, pcy - (cy - 0.6)) < R + 0.3) { p.helado = 2.0; p.inv_hielo = 3.6; J.Audio.sfx('aviso'); J.chispas(g, pcx * T, pcy * T, 12, '#d8f6ff', 3); if (g.ui) g.ui.aviso('¡Aroma helado!'); } }
+          else e.aroma = 0;
+          contacto(g, e, p, false, false); break;
+        }
         case 'gigante': case 'alado': {
           // gravedad propia; 2 pisotones para vencerlo (el primero lo aplasta y lo enfurece); el alado salta en arcos y pierde las alas al primer pisotón
           const alado = e.esp === 'alado';
@@ -200,7 +236,22 @@
     // proyectiles de la fauna
     for (const q of g.faunaProy) {
       q.t += dt;
-      if (q.tipo === 'cavit') { q.x += q.vx * dt; q.rad = 0.3 + q.t * 0.7; if (q.t > 1.35 || SOL(g.w.get(Math.floor(q.x), Math.floor(q.y)))) q.muerto = true; else if (!p.muriendo && circuloContra(p, q.x, q.y, q.rad * 0.9)) { q.muerto = true; J.herir(g, q.x); } }
+      if (q.tipo === 'llave_inglesa') {
+        q.vy += 22 * dt; q.x += q.vx * dt; q.y += q.vy * dt; q.rot = (q.rot || 0) + dt * 14;
+        if (q.t > 4 || q.y > g.w.alto + 1 || SOL(g.w.get(Math.floor(q.x), Math.floor(q.y)))) q.muerto = true;
+        else if (!p.muriendo && Math.hypot(pcx - q.x, pcy - q.y) < 0.6) { q.muerto = true; J.herir(g, q.x); }
+      } else if (q.tipo === 'ovni') {
+        if (p.muriendo && g.abduccion) { g.abduccion = false; p.helado = 0; }
+        if (!g.abduccion) { q.x += J.clamp(q.obj - q.x, -7 * dt, 7 * dt); if (q.t > 1.0 && q.t < 3.2 && !q.rayo) q.obj = pcx; }
+        if (q.t > 1.0 && !q.sale) {
+          if (!g.abduccion && !p.muriendo && !(p.estrella > 0) && Math.abs(pcx - q.x) < 1.2 && q.t < 3.4) { g.abduccion = true; q.rayo = true; J.Audio.sfx('aviso'); }
+          if (g.abduccion && q.rayo) { q.x += (pcx - q.x) * Math.min(1, dt * 8); p.helado = 0.3; p.vy = 0; p.vx = 0; p.y -= 3.2 * dt; if (p.y < q.y + 1.2 || q.t > 4.6) {
+            let nx = Math.max(3, Math.floor(pcx - 22)); while (nx < g.w.ancho - 3 && g.w.topAt(nx) < 0) nx++;
+            const top = g.w.topAt(nx); J.chispas(g, pcx * T, p.y * T, 18, '#9dff3a', 4);
+            p.x = nx + 0.5 - p.w / 2; p.y = top - p.h - 0.05; p.vx = p.vy = 0; p.inv = Math.max(p.inv, 1.5); p.helado = 0; g.abduccion = false; q.sale = true; q.rayo = false; g.snapCamara = true; J.Audio.sfx('premio'); if (g.ui) g.ui.aviso('¡Te han soltado lejos!'); } }
+        }
+        if (q.sale) { q.y -= 6 * dt; if (q.t > 6.5) q.muerto = true; } else if (q.t > 4 && !q.rayo) q.sale = true;
+      } else if (q.tipo === 'cavit') { q.x += q.vx * dt; q.rad = 0.3 + q.t * 0.7; if (q.t > 1.35 || SOL(g.w.get(Math.floor(q.x), Math.floor(q.y)))) q.muerto = true; else if (!p.muriendo && circuloContra(p, q.x, q.y, q.rad * 0.9)) { q.muerto = true; J.herir(g, q.x); } }
       else {
         const vel = q.tipo === 'torpedo' ? 5.4 : 4.2, hom = q.tipo === 'torpedo' ? 1.6 : 2.4;
         if (!p.muriendo && q.t < 3.2) { const tx = pcx - q.x, ty = pcy - q.y, d = Math.hypot(tx, ty) || 1; q.vx += (tx / d) * vel * hom * dt; q.vy += (ty / d) * vel * hom * dt; const v = Math.hypot(q.vx, q.vy) || 1; q.vx = (q.vx / v) * vel; q.vy = (q.vy / v) * vel; }
@@ -304,6 +355,42 @@
     else { ctx.fillStyle = OUT; ctx.fillRect(cx - 5, cy - 5 + o, 3, 4); ctx.fillRect(cx + 2, cy - 5 + o, 3, 4); ctx.fillRect(cx - 3, cy + 1 + o, 6, 4); ctx.fillStyle = '#ff4d6d'; ctx.fillRect(cx - 4, cy - 4 + o, 1, 2); ctx.fillRect(cx + 3, cy - 4 + o, 1, 2); }
     ctx.globalAlpha = 1;
   }
+  function dMecanico(ctx, e, x, y, t, bl) {
+    const cx = r(x + e.w * T / 2), by = r(y + e.h * T), dir = e.dir, an = e.salto > 0 ? -7 : 0, pie = e.suelo && Math.floor(t * 6) % 2 ? 1 : 0;
+    ctx.fillStyle = OUT; ctx.fillRect(cx - 6, by - 10, 12, 10); ctx.fillStyle = bl ? '#fff' : '#3d6fd1'; ctx.fillRect(cx - 5, by - 9, 10, 8); ctx.fillStyle = '#ffd166'; ctx.fillRect(cx - 1, by - 7, 2, 2);
+    ctx.fillStyle = OUT; ctx.fillRect(cx - 5, by - 2 + pie, 4, 2); ctx.fillRect(cx + 1, by - 2 + (1 - pie), 4, 2);
+    ctx.fillStyle = OUT; ctx.fillRect(cx - 7, by - 20, 14, 11); ctx.fillStyle = '#f2c9a0'; ctx.fillRect(cx - 6, by - 19, 12, 9);
+    ctx.fillStyle = OUT; ctx.fillRect(cx - 5, by - 16, 4, 3); ctx.fillRect(cx + 1, by - 16, 4, 3); ctx.fillStyle = '#9fe7ff'; ctx.fillRect(cx - 4, by - 15, 2, 1); ctx.fillRect(cx + 2, by - 15, 2, 1);
+    ctx.fillStyle = OUT; ctx.fillRect(cx - 8, by - 25, 16, 7); ctx.fillStyle = bl ? '#fff' : '#ff9f1c'; ctx.fillRect(cx - 7, by - 24, 14, 5); ctx.fillStyle = '#fff3c0'; ctx.fillRect(cx - 3, by - 28, 6, 4);
+    ctx.fillStyle = OUT; ctx.fillRect(cx + dir * 7 - 2, by - 14 + an, 4, 8); ctx.fillRect(cx + dir * 5 - 4, by - 20 + an, 8, 7); ctx.fillStyle = '#b8c4dc'; ctx.fillRect(cx + dir * 5 - 3, by - 19 + an, 6, 5); ctx.fillStyle = OUT; ctx.fillRect(cx + dir * 5 - 1, by - 18 + an, 2, 3);
+  }
+  function dCabra(ctx, e, x, y, t, bl) {
+    const cx = r(x + e.w * T / 2), by = r(y + e.h * T), dir = e.dir, emb = e.estado === 'embiste', mar = e.estado === 'mareada', av = e.estado === 'aviso', pie = emb ? Math.floor(t * 18) % 2 * 3 : 0, cu = bl ? '#fff' : '#e8e0d0', cu2 = bl ? '#fff' : '#b8a888';
+    const s = (px, py, ww, hh, c) => { ctx.fillStyle = c; ctx.fillRect(cx + dir * px - (dir < 0 ? ww : 0), by + py, ww, hh); };
+    s(-12, -14, 22, 10, OUT); s(-11, -13, 20, 8, cu); s(-11, -7, 20, 3, cu2);
+    for (const px of [-9, 5]) { s(px, -5, 5, 5 + 0, OUT); s(px + 1, -4, 3, 4 - (pie && px > 0 ? 1 : 0), '#5a4a3a'); }
+    s(7, -21 + (av ? 3 : 0), 10, 10, OUT); s(8, -20 + (av ? 3 : 0), 8, 8, cu); s(15, -16 + (av ? 3 : 0), 3, 5, cu2);
+    s(8, -26 + (av ? 3 : 0), 3, 7, OUT); s(9, -25 + (av ? 3 : 0), 1, 5, '#fff3c0'); s(13, -26 + (av ? 3 : 0), 3, 7, OUT); s(14, -25 + (av ? 3 : 0), 1, 5, '#fff3c0');
+    s(12, -17 + (av ? 3 : 0), 2, 2, mar ? '#fff' : (av || emb) ? '#ff4d6d' : OUT); if (mar) { s(11, -18, 4, 1, OUT); }
+    s(16, -12 + (av ? 3 : 0), 2, 4, '#8a7a5a'); s(-12, -14, 3, 3, OUT);
+    if (av) { ctx.fillStyle = '#ffd166'; ctx.fillRect(cx + dir * 14, by - 3, 2, 2 + (Math.floor(t * 20) % 2)); }
+  }
+  function dVaca(ctx, e, x, y, t, bl) {
+    const cx = r(x + e.w * T / 2), by = r(y + e.h * T), dir = e.dir, pie = Math.floor(t * 4) % 2;
+    const s = (px, py, ww, hh, c) => { ctx.fillStyle = c; ctx.fillRect(cx + dir * px - (dir < 0 ? ww : 0), by + py, ww, hh); };
+    s(-13, -16, 26, 13, OUT); s(-12, -15, 24, 11, bl ? '#fff' : '#f5f5f0'); s(-8, -14, 7, 6, bl ? '#fff' : '#2a2a35'); s(2, -9, 8, 5, bl ? '#fff' : '#2a2a35');
+    for (const px of [-11, -5, 3, 8]) { s(px, -4, 4, 4 + (pie && px % 2 ? 0 : 0), OUT); s(px + 1, -4, 2, 3, '#e8e0d0'); }
+    s(10, -20, 10, 11, OUT); s(11, -19, 8, 9, bl ? '#fff' : '#f5f5f0'); s(15, -13, 5, 5, '#f2a0b0'); s(17, -12, 1, 1, OUT); s(19, -12, 1, 1, OUT); s(13, -17, 2, 2, OUT);
+    s(10, -23, 3, 4, '#c9a06a'); s(17, -23, 3, 4, '#c9a06a'); s(-14, -14, 3, 8, OUT); s(-13, -13, 1, 6, '#2a2a35');
+  }
+  function dFlor(ctx, e, x, y, t, bl) {
+    const cx = r(x + e.w * T / 2), by = r(y + e.h * T), ab = e.fase === 'abre' || e.fase === 'aroma', cab = by - 15 - (ab ? 2 : 0);
+    ctx.fillStyle = OUT; ctx.fillRect(cx - 2, cab + 4, 4, by - cab - 4); ctx.fillStyle = '#3fae6a'; ctx.fillRect(cx - 1, cab + 4, 2, by - cab - 4); ctx.fillRect(cx + 1, by - 6, 5, 2); ctx.fillRect(cx - 6, by - 9, 5, 2);
+    const col = bl ? '#fff' : '#bfefff', col2 = bl ? '#fff' : '#7fd0ff';
+    for (let i = 0; i < 6; i++) { const a = (i / 6) * 6.283 + t * 0.4, rr = ab ? 8 : 5; D(ctx, cx + Math.cos(a) * rr, cab + Math.sin(a) * rr, 3.5, OUT); }
+    for (let i = 0; i < 6; i++) { const a = (i / 6) * 6.283 + t * 0.4, rr = ab ? 8 : 5; D(ctx, cx + Math.cos(a) * rr, cab + Math.sin(a) * rr, 2.5, i % 2 ? col : col2); }
+    D(ctx, cx, cab, 5, OUT); D(ctx, cx, cab, 4, '#fff3c0'); ctx.fillStyle = OUT; ctx.fillRect(cx - 2, cab - 1, 1, 2); ctx.fillRect(cx + 1, cab - 1, 1, 2); if (ab) ctx.fillRect(cx - 1, cab + 2, 2, 1);
+  }
   function dMina(ctx, e, x, y, t, bl, g, camY) {
     const cx = r(x + e.w * T / 2), cy = r(y + e.h * T / 2), mecha = e.estado === 'mecha';
     let fila = Math.floor(e.y0); while (fila < g.w.alto && !SOL(g.w.get(Math.floor(e.x0), fila))) fila++;
@@ -315,20 +402,32 @@
   }
   F.dibujar = function (ctx, g, camX, camY, vis) {
     if (!g.fauna) return;
+    const p0 = g.jugador;
     for (const e of g.fauna) {
+      if (e.esp === 'flor' && e.vivo && e.aroma > 0 && vis(e.x - 3, e.x + 3)) { const fx = r((e.x + e.w / 2) * T - camX), fy = r((e.y + 0.1) * T - camY), R = r((0.6 + 1.7 * e.aroma) * T); ctx.globalAlpha = 0.28 * (1 - e.aroma * 0.4); D(ctx, fx, fy, R, '#bfefff'); ctx.globalAlpha = 0.5; for (let i = 0; i < 5; i++) { const a = i * 1.3 + g.t * 2; D(ctx, fx + Math.cos(a) * R * 0.6, fy + Math.sin(a) * R * 0.6, 3, '#ffffff'); } ctx.globalAlpha = 1; }
       if (!e.vivo || !vis(e.x - 2, e.x + e.w + 2) || e.oculto > 0) continue;
       const x = r(e.x * T - camX), y = r(e.y * T - camY), bl = e.flash > 0 && Math.floor(e.flash * 30) % 2 === 0, t = g.t + e.ph;
       ctx.save();
       if (e.muertoT > 0) { ctx.globalAlpha = Math.max(0, 1 - e.muertoT / 0.45); }
-      ({ pirana: dPirana, tiburon: dTiburon, langosta: dLangosta, submarino: dSubmarino, globo: dGlobo, mago: dMago, mina: dMina, gigante: dGigante, alado: dGigante, espectro: dEspectro })[e.esp](ctx, e, x, y, t, bl, g, camY);
+      ({ pirana: dPirana, tiburon: dTiburon, langosta: dLangosta, submarino: dSubmarino, globo: dGlobo, mago: dMago, mina: dMina, mecanico: dMecanico, cabra: dCabra, vaca: dVaca, flor: dFlor, gigante: dGigante, alado: dGigante, espectro: dEspectro })[e.esp](ctx, e, x, y, t, bl, g, camY);
       ctx.restore();
       if (e.helado > 0) { ctx.globalAlpha = 0.5; ctx.fillStyle = '#bfefff'; ctx.fillRect(x - 1, y - 1, r(e.w * T) + 2, r(e.h * T) + 2); ctx.globalAlpha = 1; ctx.fillStyle = '#fff'; ctx.fillRect(x + 2, y + 1, 3, 1); ctx.fillRect(x + r(e.w * T) - 6, y + r(e.h * T) - 3, 4, 1); }
     }
     for (const q of g.faunaProy) {
       const x = r(q.x * T - camX), y = r(q.y * T - camY);
+      if (q.tipo === 'llave_inglesa') { ctx.save(); ctx.translate(x, y); ctx.rotate(q.rot || 0); ctx.fillStyle = OUT; ctx.fillRect(-7, -2, 14, 5); ctx.fillRect(-9, -5, 6, 11); ctx.fillStyle = '#b8c4dc'; ctx.fillRect(-6, -1, 12, 3); ctx.fillRect(-8, -4, 4, 9); ctx.fillStyle = OUT; ctx.fillRect(-8, -1, 2, 3); ctx.restore(); continue; }
+      if (q.tipo === 'ovni') {
+        const ox = x, oy = y; if (q.rayo || (q.t > 1.0 && !q.sale)) { ctx.globalAlpha = 0.28 + 0.1 * Math.sin(q.t * 20); ctx.fillStyle = '#9dff3a'; ctx.beginPath(); ctx.moveTo(ox - 8, oy + 6); ctx.lineTo(ox + 8, oy + 6); ctx.lineTo(ox + 20, oy + 120); ctx.lineTo(ox - 20, oy + 120); ctx.fill(); ctx.globalAlpha = 1; }
+        ctx.fillStyle = OUT; ctx.fillRect(ox - 16, oy - 2, 32, 9); ctx.fillRect(ox - 9, oy - 9, 18, 9); ctx.fillStyle = '#b8c4dc'; ctx.fillRect(ox - 15, oy - 1, 30, 7); ctx.fillStyle = '#9fe7ff'; ctx.fillRect(ox - 8, oy - 8, 16, 7); ctx.fillStyle = '#fff'; ctx.fillRect(ox - 5, oy - 7, 3, 2);
+        for (let i = 0; i < 4; i++) { ctx.fillStyle = Math.floor(q.t * 8 + i) % 2 ? '#ffd166' : '#ff4d6d'; ctx.fillRect(ox - 11 + i * 7, oy + 2, 3, 2); }
+        continue;
+      }
       if (q.tipo === 'cavit') { const R = r(q.rad * T), a = Math.max(0.15, 1 - q.t / 1.4); ctx.globalAlpha = a; ctx.strokeStyle = '#e8fbff'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, R, 0, 6.3); ctx.stroke(); ctx.strokeStyle = '#6fd0ff'; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(x, y, Math.max(1, R - 3), 0, 6.3); ctx.stroke(); ctx.globalAlpha = a * 0.35; D(ctx, x, y, R, '#9fe7ff'); ctx.globalAlpha = 1; }
       else if (q.tipo === 'torpedo') { const a = Math.atan2(q.vy, q.vx); ctx.save(); ctx.translate(x, y); ctx.rotate(a); ctx.fillStyle = OUT; ctx.fillRect(-7, -3, 14, 6); ctx.fillStyle = '#c9d4e8'; ctx.fillRect(-6, -2, 11, 4); ctx.fillStyle = '#ff4d6d'; ctx.fillRect(4, -2, 3, 4); ctx.fillStyle = '#ffb020'; ctx.fillRect(-9 - (Math.floor(q.t * 20) % 2) * 2, -1, 3, 2); ctx.restore(); }
       else { D(ctx, x, y, 6, 'rgba(201,166,255,.35)'); D(ctx, x, y, 4, '#8d63d6'); D(ctx, x, y, 2, '#ffffff'); }
+    }
+    if (p0.helado > 0) {   // jugador congelado: bloque de hielo
+      const px = r(p0.x * T - camX), py = r(p0.y * T - camY), pw = r(p0.w * T), ph = r(p0.h * T); ctx.globalAlpha = 0.55; ctx.fillStyle = '#bfefff'; ctx.fillRect(px - 2, py - 2, pw + 4, ph + 4); ctx.globalAlpha = 1; ctx.fillStyle = '#fff'; ctx.fillRect(px, py, 3, 1); ctx.fillRect(px + pw - 3, py + ph - 2, 3, 1); ctx.fillStyle = '#7fd0ff'; ctx.fillRect(px - 2, py + ph, 3, 3); ctx.fillRect(px + pw - 1, py + ph, 3, 4);
     }
     for (const f of g.faunaFx) { const a = f.t / f.dur, x = r(f.x * T - camX), y = r(f.y * T - camY), R = r(f.rad * T * (0.3 + 0.7 * a)); ctx.globalAlpha = 1 - a * 0.75; D(ctx, x, y, R, '#ff7a1a'); D(ctx, x, y, r(R * 0.65), '#ffd166'); D(ctx, x, y, r(R * 0.3), '#fff3c0'); ctx.globalAlpha = 1; }
   };

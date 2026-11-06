@@ -1,0 +1,505 @@
+{
+ "capitulo_id": "ecoulement-fluide",
+ "tipo_nivel": "normal",
+ "tema_visual": "caverna",
+ "fisica_juego": {
+  "gravedad": 0.8,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 152,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "plataforma",
+   "x": 15,
+   "y": 11,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 19,
+   "y": 8,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 23,
+   "y": 5,
+   "largo": 4
+  },
+  {
+   "tipo": "llave",
+   "x": 25,
+   "y": 3,
+   "id": "k0"
+  },
+  {
+   "tipo": "puerta",
+   "x": 34,
+   "y": 8,
+   "alto": 6,
+   "llave": "k0"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 0,
+   "largo": 24,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 36,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "plataforma",
+   "x": 39,
+   "y": 11,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 43,
+   "y": 8,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 47,
+   "y": 5,
+   "largo": 4
+  },
+  {
+   "tipo": "llave",
+   "x": 49,
+   "y": 3,
+   "id": "k1"
+  },
+  {
+   "tipo": "puerta",
+   "x": 58,
+   "y": 8,
+   "alto": 6,
+   "llave": "k1"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 36,
+   "y": 0,
+   "largo": 24,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 60,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "plataforma",
+   "x": 63,
+   "y": 11,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 67,
+   "y": 8,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 71,
+   "y": 5,
+   "largo": 4
+  },
+  {
+   "tipo": "llave",
+   "x": 73,
+   "y": 3,
+   "id": "k2"
+  },
+  {
+   "tipo": "puerta",
+   "x": 82,
+   "y": 8,
+   "alto": 6,
+   "llave": "k2"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 60,
+   "y": 0,
+   "largo": 24,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 84,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "plataforma",
+   "x": 87,
+   "y": 11,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 91,
+   "y": 8,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 95,
+   "y": 5,
+   "largo": 4
+  },
+  {
+   "tipo": "llave",
+   "x": 97,
+   "y": 3,
+   "id": "k3"
+  },
+  {
+   "tipo": "puerta",
+   "x": 106,
+   "y": 8,
+   "alto": 6,
+   "llave": "k3"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 84,
+   "y": 0,
+   "largo": 24,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 0,
+   "largo": 1,
+   "grosor": 1,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 108,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 114,
+   "y": 14,
+   "largo": 38
+  },
+  {
+   "tipo": "jefe",
+   "x": 131,
+   "jefe": "maestro_calavera",
+   "titulo": "Maestro Calavera: empuje, caudal y Bernoulli",
+   "preguntas": [
+    {
+     "pregunta": "¿Cuál es el origen de la poussée d'Archimède?",
+     "opciones": [
+      "La atracción ejercida por la Tierra",
+      "Las variaciones de la presión en el seno de un fluido (las fuerzas presionantes son más intensas abajo)",
+      "Los rozamientos ejercidos por el fluido",
+      "La masa del cuerpo sumergido"
+     ],
+     "correcta": 1,
+     "explicacion": "La presión aumenta con la profundidad (ΔP = ρ·g·Δz): las fuerzas presionantes son más intensas en la parte baja del cuerpo y su resultante es una fuerza vertical hacia arriba, el empuje de Arquímedes.",
+     "pagina_pdf": 364
+    },
+    {
+     "pregunta": "Un fluido incompresible en régimen permanente atraviesa un conducto que se estrecha (S_B < S_A). ¿Qué ocurre?",
+     "opciones": [
+      "Q(A) > Q(B) y v_A < v_B",
+      "Q(A) = Q(B) y v_A < v_B",
+      "Q(A) = Q(B) y v_A = v_B",
+      "Q(A) < Q(B) y v_A < v_B"
+     ],
+     "correcta": 1,
+     "explicacion": "El caudal se conserva (v_A·S_A = v_B·S_B) y por eso la velocidad aumenta cuando la sección disminuye.",
+     "pagina_pdf": 368
+    },
+    {
+     "pregunta": "A altitud constante, según la relación de Bernoulli, cuando la velocidad del fluido aumenta su presión...",
+     "opciones": [
+      "aumenta",
+      "disminuye (efecto Venturi)",
+      "no cambia nunca",
+      "se anula"
+     ],
+     "correcta": 1,
+     "explicacion": "P + ½ρv² = cte: si v aumenta, P disminuye. Es el efecto Venturi.",
+     "pagina_pdf": 366
+    },
+    {
+     "pregunta": "Una bola de acero de 5,0 cm³ está totalmente sumergida en agua (ρ = 1,0×10³ kg·m⁻³). El valor del empuje es:",
+     "opciones": [
+      "4,9×10⁻² N",
+      "4,9×10² N",
+      "0,38 N",
+      "5,0×10⁻³ N"
+     ],
+     "correcta": 0,
+     "explicacion": "π = ρ_f·V·g = 1,0×10³ × 5,0×10⁻⁶ × 9,8 = 4,9×10⁻² N (ejemplo del cours; no depende de la masa de la bola).",
+     "pagina_pdf": 364
+    }
+   ]
+  },
+  {
+   "tipo": "meta",
+   "x": 146
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 20,
+   "y": 6,
+   "ref": "f1",
+   "latex": "F = P \\cdot S",
+   "nombre": "Fuerza presionante"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 73,
+   "y": 3,
+   "ref": "f2",
+   "latex": "\\Delta P = \\rho \\cdot g \\cdot \\Delta z",
+   "nombre": "Ley fundamental de la estática de fluidos"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 40,
+   "y": 9,
+   "ref": "f3",
+   "latex": "\\vec{\\pi} = -m_f \\cdot \\vec{g} = -\\rho_f \\cdot V \\cdot \\vec{g}",
+   "nombre": "Empuje de Arquímedes (expresión vectorial)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 88,
+   "y": 9,
+   "ref": "f4",
+   "latex": "\\pi = \\rho_f \\cdot V \\cdot g",
+   "nombre": "Valor del empuje de Arquímedes"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 49,
+   "y": 3,
+   "ref": "f5",
+   "latex": "\\pi = P_1 - P_2 \\quad (\\text{peso aparente } P_2 = P_1 - \\pi)",
+   "nombre": "Empuje y peso aparente (dinamómetro)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 44,
+   "y": 6,
+   "ref": "f6",
+   "latex": "Q = \\dfrac{V}{\\Delta t}",
+   "nombre": "Caudal volumétrico"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 64,
+   "y": 9,
+   "ref": "f7",
+   "latex": "Q = v \\cdot S",
+   "nombre": "Caudal, velocidad y sección"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 49,
+   "y": 12,
+   "ref": "f8",
+   "latex": "Q_{(A)} = Q_{(B)} \\;\\Leftrightarrow\\; v_A \\cdot S_A = v_B \\cdot S_B \\;\\Rightarrow\\; \\dfrac{v_B}{v_A} = \\dfrac{S_A}{S_B}",
+   "nombre": "Conservación del caudal volumétrico"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 25,
+   "y": 3,
+   "ref": "f9",
+   "latex": "P + \\dfrac{1}{2}\\,\\rho\\, v^2 + \\rho\\, g\\, z = \\text{constante}",
+   "nombre": "Relación de Bernoulli"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 97,
+   "y": 3,
+   "ref": "f10",
+   "latex": "P_A + \\dfrac{1}{2}\\rho v_A^2 + \\rho g z_A = P_B + \\dfrac{1}{2}\\rho v_B^2 + \\rho g z_B",
+   "nombre": "Bernoulli entre dos puntos de una línea de corriente"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 20,
+   "y": 7,
+   "enemigo": "error_unidades",
+   "nombre": "No convertir a unidades SI",
+   "correccion": "Pasar caudales a m³·s⁻¹ y diámetros a m (S = πd²/4) antes de aplicar Q = v·S o Bernoulli."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 40,
+   "y": 10,
+   "enemigo": "empuje_depende_masa",
+   "nombre": "Pensar que el empuje depende de la masa del cuerpo",
+   "correccion": "π = ρ_f·V·g: depende del volumen sumergido y del fluido, no de la masa, forma o profundidad del cuerpo."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 72,
+   "y": 13,
+   "enemigo": "confusion_peso_empuje",
+   "nombre": "Confundir P (peso) y π (empuje)",
+   "correccion": "Para flotar en equilibrio π = P; si π > P el cuerpo asciende, si π < P se hunde (ej. 26 y 30)."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 92,
+   "y": 7,
+   "enemigo": "mas_velocidad_mas_presion",
+   "nombre": "Creer que más velocidad implica más presión",
+   "correccion": "Efecto Venturi: en régimen permanente, si v aumenta, P disminuye (P + ½ρv² = cte a igual altitud)."
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 44
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 72
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 29,
+   "y": 10
+  },
+  {
+   "tipo": "sierra",
+   "x": 32,
+   "y": 12,
+   "eje": "y",
+   "recorrido": 2,
+   "periodo": 3.2
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 53,
+   "y": 10
+  },
+  {
+   "tipo": "sierra",
+   "x": 56,
+   "y": 12,
+   "eje": "y",
+   "recorrido": 2,
+   "periodo": 3.2
+  },
+  {
+   "tipo": "torreta",
+   "x": 45,
+   "y": 7,
+   "periodo": 2.8,
+   "nombre": "No convertir a unidades SI",
+   "correccion": "Pasar caudales a m³·s⁻¹ y diámetros a m (S = πd²/4) antes de aplicar Q = v·S o Bernoulli."
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 77,
+   "y": 10
+  },
+  {
+   "tipo": "sierra",
+   "x": 80,
+   "y": 12,
+   "eje": "y",
+   "recorrido": 2,
+   "periodo": 3.2
+  },
+  {
+   "tipo": "torreta",
+   "x": 69,
+   "y": 7,
+   "periodo": 2.8,
+   "nombre": "No convertir a unidades SI",
+   "correccion": "Pasar caudales a m³·s⁻¹ y diámetros a m (S = πd²/4) antes de aplicar Q = v·S o Bernoulli."
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 101,
+   "y": 10
+  },
+  {
+   "tipo": "sierra",
+   "x": 104,
+   "y": 12,
+   "eje": "y",
+   "recorrido": 2,
+   "periodo": 3.2
+  },
+  {
+   "tipo": "torreta",
+   "x": 93,
+   "y": 7,
+   "periodo": 2.8,
+   "nombre": "No convertir a unidades SI",
+   "correccion": "Pasar caudales a m³·s⁻¹ y diámetros a m (S = πd²/4) antes de aplicar Q = v·S o Bernoulli."
+  },
+  {
+   "tipo": "item",
+   "x": 37,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 48,
+   "y": 3,
+   "item": "hielo"
+  },
+  {
+   "tipo": "item",
+   "x": 68,
+   "y": 6,
+   "item": "fuego"
+  }
+ ],
+ "ambiente": "cueva",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "nombre_fase": "El laberinto de llaves",
+ "extra": "laberinto"
+}

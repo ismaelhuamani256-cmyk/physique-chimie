@@ -62,3 +62,11 @@ Comprobar un nivel: `node js/juego/validador.js contenido/niveles/<capitulo>.jso
 ## Originalidad
 
 El protagonista (**Ato**, robot-científico con un átomo orbitando), los sprites, la música (chiptune generado con WebAudio), los niveles y el jefe son originales; no se copia ningún personaje ni sonido de otras franquicias.
+
+## 🛡 Modo Invasión (repaso espaciado como tower defense)
+
+Botón **🛡 Invasión** en la barra superior. Flujo: **preparación** (40 problemas del cours: 16 fáciles · 16 medios · 8 difíciles; pagan ⚛ 10/20/35, +10 % por cada 3 aciertos seguidos, bonus por tiempo hasta 100 ⚛, máx. 760) → **defensa** (5 oleadas con torres láser, escudo ácido/base, bobina, campo magnético, radar y cañón de gas; ×2 de velocidad; con ≥ 3 capítulos hay 2 caminos, enemigos ×1,4 y pago +15 %) → **resultado** con cajas de Leitner (1·3·7·14·30 días; 60 % aciertos + 40 % salud de la base: ≥ 85 % y base ≥ 70 % sube caja, < 60 % baja 2).
+Las torres no persisten; las **tecnologías** sí (1 crédito por capítulo con ≥ 85 % y +1 si la base acaba con ≥ 70 %: 3 torres, +5 vidas, +20 % daño). Un capítulo estudiado (≥ 2★) abarata su torre un 25 % y le da +20 % de daño. Hay también **invasión de práctica** (sin tocar las cajas) y la preparación es ajustable (15/30/45 min). El balance se calibró con bots: 330 ⚛ cae en la oleada 5, 530 ⚛ termina con 8–9 vidas, 700 ⚛ con ~17 y sin ⚛ cae en la oleada 2. Código: `js/invasion/00-invasion.js`.
+
+## 🎮 Niveles extra
+En el panel de cada capítulo del mapa (y en la vista lista) hay botones **Nivel 2** y **Nivel 3** (`<cap>--2`, `<cap>--3`) siempre disponibles; si ganas el principal, se encadenan solos.

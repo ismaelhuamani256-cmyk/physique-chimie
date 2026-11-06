@@ -933,6 +933,12 @@
       const acc = h('div', { class: 'mt-acciones' },
         h('button', { class: 'btn primario', type: 'button', on: { click: () => clicNodo(n, 'mouse', true) } }, n.fort ? '⚔ Entrar a la fortaleza' : '▶ Entrar al nivel'),
         h('button', { class: 'btn', type: 'button', on: { click: () => irDirecto(n) } }, 'Ir directo al capítulo →'));
+      // niveles extra (<cap>--2, --3…): siempre disponibles desde aquí
+      const NOM = { 2: 'Nivel 2 · aventura', 3: 'Nivel 3 · bioma' };
+      [2, 3].forEach((k) => {
+        const hay = window.PCB_CONTENIDO ? !!(window.PCB_CONTENIDO.niveles || {})[n.id + '--' + k] : true;
+        if (hay) acc.append(h('button', { class: 'btn', type: 'button', title: 'Nivel extra con nuevos enemigos, trampas y jefes', on: { click: () => PCB.flow.entrarNivelExtra(n.id, k) } }, '🎮 ' + NOM[k]));
+      });
       return [cab, estado, filas, acc];
     }
     function mostrarTooltip(n, fijo) {
@@ -978,7 +984,8 @@
             h('span', { class: 't' }, h('b', {}, n.titulo), h('small', {}, `${n.materia === 'chimie' ? 'Química' : 'Física'}${n.fort ? ' · Fortaleza' : ''}`)),
             h('span', { class: 'st ' + n.estado }, bloq ? '🔒 En preparación' : TXT_ESTADO[n.estado] + (est ? ' ' + '★'.repeat(est) : '')));
           return h('li', { class: 'ml-fila' }, principal,
-            bloq ? null : h('button', { type: 'button', class: 'directo', 'aria-label': `Ir directo al capítulo ${n.num}`, title: 'Saltar el nivel y la intro', on: { click: () => irDirecto(n) } }, 'Directo →'));
+            bloq ? null : h('button', { type: 'button', class: 'directo', 'aria-label': `Ir directo al capítulo ${n.num}`, title: 'Saltar el nivel y la intro', on: { click: () => irDirecto(n) } }, 'Directo →'),
+            ...(bloq ? [] : [2, 3].filter((k) => !window.PCB_CONTENIDO || (window.PCB_CONTENIDO.niveles || {})[n.id + '--' + k]).map((k) => h('button', { type: 'button', class: 'directo', title: 'Nivel extra ' + k + ': nuevos enemigos, trampas y jefes', on: { click: () => PCB.flow.entrarNivelExtra(n.id, k) } }, '🎮 Nivel ' + k))));
         });
         return colorear(h('div', { class: 'ml-mundo' },
           h('h3', {}, nombre, h('small', {}, `${hechos}/${del.length} completados`)), h('ul', {}, filas)), PAL[id]);

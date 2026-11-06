@@ -132,6 +132,13 @@
       if (nivel && PCB.screens.juego) return PCB.router.go('juego', { capId, nivel, capitulo });
       return PCB.flow.saltarJuego(capId);
     },
+    /** Entra directamente a un nivel extra (<cap>--2, --3…); al ganarlo sigue el siguiente */
+    async entrarNivelExtra(capId, n) {
+      const [nivel, capitulo] = await Promise.all([PCB.data.nivel(capId + '--' + n), PCB.data.capitulo(capId)]);
+      if (!nivel) return PCB.util.toast('Ese nivel extra no existe');
+      PCB.flow._extraN = n;
+      return PCB.router.go('juego', { capId, nivel, capitulo });
+    },
     /** El juego avisa al terminar (morir o ganar) */
     async finNivel(res) {
       const { capId, gano, coleccionados = 0, jefeDerrotado = false } = res;
@@ -178,6 +185,7 @@
     tb.replaceChildren(...[
       util.el('span', { class: 'marca' }, 'SUPER CLAUDE BROS'),
       n && n !== 'mapa' ? util.el('button', { class: 'btn mini', on: { click: () => PCB.flow.volverMapa() } }, '← Mapa') : null,
+      n !== 'invasion' && n !== 'juego' && PCB.screens.invasion ? util.el('button', { class: 'btn mini', title: 'Modo Invasión: repaso espaciado como tower defense', on: { click: () => PCB.invasion.abrir() } }, '🛡 Invasión') : null,
       // En Quiz Quest "saltar" va directo al capítulo (sin intro); en el juego normal, a la intro y luego al capítulo
       n === 'juego' ? util.el('button', { class: 'btn mini', title: 'Ir directo al capítulo', on: { click: () => (c.modoQuiz ? PCB.flow.irCapituloDirecto(c.capId) : PCB.flow.saltarJuego(c.capId)) } }, c.modoQuiz ? 'Salir de Quiz Quest → capítulo' : 'Saltar juego → capítulo') : null,
       n === 'intro' ? util.el('button', { class: 'btn mini', on: { click: () => PCB.flow.finIntro(c.capId) } }, 'Saltar intro ⏭') : null,

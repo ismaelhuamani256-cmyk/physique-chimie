@@ -32,6 +32,7 @@
       '.cptb-cap small{display:block;font:italic 400 12px system-ui,sans-serif;color:' + K.tx2 + '}',
       '.cptb-cap .f{font:700 15px system-ui,sans-serif;color:' + K.v + '}',
       '.cptb-lect{position:absolute;left:8px;right:8px;z-index:2;pointer-events:none;text-align:center;font:600 13px/1.35 system-ui,sans-serif;color:' + K.txt + ';text-shadow:0 1px 3px #000}',
+      '@media(max-width:560px){.cptb-cap small{display:none}.cptb-cap{font-size:12px;bottom:40px!important}.cptb-top .cptb-btn{padding:3px 6px;min-height:24px}.cptb-lect{top:62px!important;font-size:12px}.cptb-bar{gap:2px 8px}}',
       '.cptb-fallo{padding:24px;color:' + K.tx2 + ';font:14px system-ui,sans-serif}',
     ].join('\n');
     document.head.appendChild(s);
@@ -473,7 +474,7 @@
 
   // ---------- 2 · Qr frente a K (cours p. 161: critère d'évolution spontanée)
   function montarQK(host, api) {
-    let logK = 1, logQ = -2, b = 0, evol = false, showK = true, ultimo = 0, nombreQ = 'Qr,i';
+    let tmr = 0, logK = 1, logQ = -2, b = 0, evol = false, showK = true, ultimo = 0, nombreQ = 'Qr,i';
     const b0 = () => { const q = Math.pow(10, logQ), r = Math.sqrt(q); return r / (1 + r); };
     const bEq = () => { const r = Math.sqrt(Math.pow(10, logK)); return r / (1 + r); };
     const Qb = () => Math.pow(b / (1 - b), 2);
@@ -525,13 +526,13 @@
       ir(n) {
         showK = n >= 1;
         const f = (lq, lk) => { logQ = lq; logK = lk; ctl.q.set(lq); ctl.k.set(lk); reset(); };
-        if (n === 0) f(-1.5, 1); else if (n === 1) f(-1.5, 1);
-        else if (n === 2) { f(-2.2, 1); if (!api.reducido) setTimeout(() => { if (!evol) ctl.go.click(); }, 900); else { ctl.go.click(); } }
-        else if (n === 3) { f(2.4, 1); if (!api.reducido) setTimeout(() => { if (!evol) ctl.go.click(); }, 900); else { ctl.go.click(); } }
-        else if (n === 4) f(1, 1);
+        clearTimeout(tmr); if (n === 0) f(-1.5, 1); else if (n === 1) f(-1.5, 1);
+        else if (n === 2) { f(-2.2, 1); clearTimeout(tmr); if (!api.reducido) tmr = setTimeout(() => { if (!evol) ctl.go.click(); }, 900); else { ctl.go.click(); } }
+        else if (n === 3) { f(2.4, 1); clearTimeout(tmr); if (!api.reducido) tmr = setTimeout(() => { if (!evol) ctl.go.click(); }, 900); else { ctl.go.click(); } }
+        else if (n === 4) { clearTimeout(tmr); f(1, 1); }
         S.pedir();
       },
-      dispose() { S.dispose(); host.replaceChildren(); },
+      dispose() { clearTimeout(tmr); S.dispose(); host.replaceChildren(); },
     };
   }
   registrar({
@@ -630,7 +631,7 @@
         c.fillStyle = '#16204a'; rrect(c, mx - 12, my0, 24, my1 - my0, 8); c.fill(); c.strokeStyle = K.gris; c.stroke();
         const yq = my1 - prog * (my1 - my0); c.fillStyle = K.v + '88'; c.fillRect(mx - 10, yq, 20, my1 - yq); bola(c, mx, yq, 9, K.v);
         c.strokeStyle = K.m; c.lineWidth = 3; c.beginPath(); c.moveTo(mx - 24, my0); c.lineTo(mx + 24, my0); c.stroke(); S.txt('K = 2×10³⁷', mx, my0 - 14, { size: 12, color: K.m, align: 'center' });
-        S.txt('Qr', mx + 18, yq - 2, { size: 13, color: K.v }); S.txt('inicio', mx - 18, my1 + 14, { size: 12, color: K.tx2, align: 'right' });
+        S.txt('Qr', mx + 18, yq - 2, { size: 13, color: K.v }); S.txt('inicio', mx - 18, my1 - 2, { size: 12, color: K.tx2, align: 'right' });
         S.txt(fin ? 'pila gastada' : 'U = ' + (cerrado || a > 0 ? '↓' : '1,10 V'), mx, 372, { size: 14, weight: 700, color: fin ? K.m : K.am, align: 'center' });
         if (fin) S.txt('Qr = K: pila gastada (U = 0)', 330, 150, { size: 17, weight: 700, color: K.m, align: 'center', halo: true });
         if (aviso > 0) S.txt('Cierra el interruptor: sin circuito no hay transformación', 330, 130, { size: 15, weight: 700, color: K.am, align: 'center', halo: true });

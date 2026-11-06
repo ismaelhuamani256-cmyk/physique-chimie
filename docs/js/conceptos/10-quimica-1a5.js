@@ -31,7 +31,8 @@
       '.cpt-a-ctl output{min-width:3.4em;color:#ffd166;font-weight:600}' +
       '.cpt-a-ctl select{font:12px UI,system-ui,sans-serif;background:#1d2850;color:#eaf0ff;border:1px solid #2a376b;border-radius:6px;padding:2px 4px;max-width:46vw}' +
       '.cpt-a-ctl button{font:600 12px UI,system-ui,sans-serif;background:#1d2850;border:1px solid #2a376b;color:#eaf0ff;border-radius:8px;padding:4px 9px;cursor:pointer}' +
-      '.cpt-a-ctl button:hover{border-color:#2ee59d}.cpt-a-ctl button.on{border-color:#2ee59d;background:#143a2e}';
+      '.cpt-a-ctl button:hover{border-color:#2ee59d}.cpt-a-ctl button.on{border-color:#2ee59d;background:#143a2e}' +
+      '.cpt-a-ctl.cpt-a-estrecho{flex-wrap:nowrap;overflow-x:auto;gap:8px;padding:3px 6px;scrollbar-width:none}.cpt-a-estrecho input[type=range]{width:64px}.cpt-a-estrecho label,.cpt-a-estrecho button{flex:0 0 auto;font-size:11px}.cpt-a-estrecho output{min-width:2.6em}.cpt-a-estrecho select{max-width:120px}';
     document.head.appendChild(s);
   })();
 
@@ -69,7 +70,7 @@
     const cv = document.createElement('canvas'); host.appendChild(cv);
     const c = cv.getContext('2d'); let sc = 1, vivo = true, raf = 0, last = performance.now();
     const E = { S, el: {}, canvas: cv, ctl: null };
-    function fit() { const r = host.getBoundingClientRect(); const dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = Math.max(2, (r.width * dpr) | 0); cv.height = Math.max(2, (r.height * dpr) | 0); sc = cv.width / W; }
+    function fit() { const r = host.getBoundingClientRect(); if (E.ctl) E.ctl.classList.toggle('cpt-a-estrecho', r.width < 560); const dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = Math.max(2, (r.width * dpr) | 0); cv.height = Math.max(2, (r.height * dpr) | 0); sc = cv.width / W; }
     api.onResize(fit); fit();
     if (o.controles && o.controles.length) {
       const bar = document.createElement('div'); bar.className = 'cpt-a-ctl'; E.ctl = bar; host.appendChild(bar);
@@ -155,7 +156,7 @@
           const hx = lerp(HX0, HX1, p), hy = Y - Math.sin(Math.PI * p) * 95;
           c.setLineDash([5, 6]); curva(c, HX0 + 14, Y - 30, W / 2, Y - 150, HX1 - 14, Y - 30, GR, 1.5); c.setLineDash([]);
           c.globalAlpha = clamp(1 - p * 1.1, 0, 1); lin(c, LX + 56, Y, hx, hy, MG, 3); c.globalAlpha = clamp(p * 1.1, 0, 1); lin(c, RX - 56, Y, hx, hy, MG, 3); c.globalAlpha = 1;
-          circ(c, hx, hy, 17, '#ffffff22', AM, 2.5); txt(c, 'H' + (p > 0.02 && p < 0.98 ? '⁺' : ''), hx, hy, { s: 15, b: 1, c: AM });
+          circ(c, hx, hy, 17, '#2a2a1a', AM, 2.5); txt(c, 'H' + (p > 0.02 && p < 0.98 ? '⁺' : ''), hx, hy, { s: 15, b: 1, c: AM });
           if (n === 1) { // resaltar sitios
             const k = 0.5 + 0.5 * Math.sin(S.t * 4);
             circ(c, HX0, Y, 24 + k * 4, null, AM, 2); txt(c, 'H que se cede', HX0 - 10, Y - 62, { c: AM, s: 13 });
@@ -407,7 +408,7 @@
           txt(c, 'T (%)', 30, 268, { s: 12, c: T2 }); lin(c, x0, y0 - 2, x0, y1, T2, 1); lin(c, x0, y1, 760, y1, T2, 1);
           [4000, 3500, 3000, 2500, 2000, 1500, 1000, 500].forEach((v) => { lin(c, nuX(v), y1, nuX(v), y1 + 4, T2, 1); txt(c, String(v), nuX(v), y1 + 14, { s: 11, c: T2 }); });
           txt(c, 'ν̃ (cm⁻¹)', 760, y1 + 29, { s: 11, c: T2, a: 'right' });
-          if (n >= 4) { c.fillStyle = '#ff3da622'; c.fillRect(nuX(1300), y0 - 2, 760 - nuX(1300), y1 - y0 + 2); txt(c, 'zone des empreintes digitales', (nuX(1300) + 760) / 2, y1 + 29, { s: 12, c: MG, b: 1 }); }
+          if (n >= 4) { c.fillStyle = '#ff3da622'; c.fillRect(nuX(1300), y0 - 2, 760 - nuX(1300), y1 - y0 + 2); txt(c, 'zone des empreintes digitales', nuX(1300) - 90, y1 + 29, { s: 12, c: MG, b: 1, a: 'left' }); }
           if (n >= 3) { lin(c, nuX(1300), y0 - 2, nuX(1300), y1, MG, 1, [4, 4]); txt(c, '1 300', nuX(1300), y0 - 10, { s: 11, c: MG }); }
           c.beginPath(); for (let v = 4000; v >= 500; v -= 10) { const T2v = 1 - absorb(S.mol, v), x = nuX(v), y = y1 - T2v * (y1 - y0 - 6); v === 4000 ? c.moveTo(x, y) : c.lineTo(x, y); } c.strokeStyle = VE; c.lineWidth = 2.2; c.stroke();
           if (n >= 3) m.ba.forEach((b) => { const x = nuX(b.c); txt(c, b.g, x, y1 - (1 - absorb(S.mol, b.c)) * (y1 - y0 - 6) + (b.c > 2500 ? 16 : 14), { s: 12, c: AM, b: 1 }); });

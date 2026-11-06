@@ -1258,6 +1258,24 @@
    "largo": 5,
    "periodo": 3.9,
    "retardo": 0.1
+  },
+  {
+   "tipo": "item",
+   "x": 27,
+   "y": 12,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 74,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 124,
+   "y": 11,
+   "item": "escopeta"
   }
  ],
  "ambiente": "cueva",

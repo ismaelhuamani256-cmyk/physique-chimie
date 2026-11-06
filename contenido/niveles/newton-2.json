@@ -239,14 +239,6 @@
    "x": 80
   },
   {
-   "tipo": "checkpoint",
-   "x": 118
-  },
-  {
-   "tipo": "checkpoint",
-   "x": 158
-  },
-  {
    "tipo": "jefe",
    "x": 168,
    "jefe": "ejercicio_bac_1",
@@ -873,6 +865,24 @@
    "dir": 1,
    "periodo": 3.5,
    "retardo": 0.2
+  },
+  {
+   "tipo": "item",
+   "x": 86,
+   "y": 11,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 121,
+   "y": 11,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 28,
+   "y": 14,
+   "item": "grande"
   }
  ],
  "ambiente": "hielo",

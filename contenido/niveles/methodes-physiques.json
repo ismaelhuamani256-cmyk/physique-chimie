@@ -193,10 +193,6 @@
    "periodo": 3
   },
   {
-   "tipo": "checkpoint",
-   "x": 140
-  },
-  {
    "tipo": "coleccionable",
    "x": 143,
    "y": 10,
@@ -952,6 +948,24 @@
    "largo": 7,
    "ciclo": 4,
    "visible": 1.3
+  },
+  {
+   "tipo": "item",
+   "x": 20,
+   "y": 13,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 105,
+   "y": 11,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 65,
+   "y": 11,
+   "item": "fuego"
   }
  ],
  "ambiente": "lab",

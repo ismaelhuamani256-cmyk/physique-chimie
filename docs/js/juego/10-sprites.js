@@ -107,8 +107,11 @@
     // parpadeo de invulnerabilidad
     if (p.inv > 0 && !p.muriendo && !(p.estrella > 0) && Math.floor(t * 14) % 2 === 0) return;
     const px = (p.x + p.w / 2) * T - 8 - cx, py = (p.y + p.h) * T - 16 - cy + 1;
+    ctx.save();
+    if (p.grande) { ctx.translate(px + 8, py + 16); ctx.scale(1.4, 1.4); ctx.translate(-(px + 8), -(py + 16)); }
     J.dibujarVolteado(ctx, img, px, py, p.dir < 0);
     if (!p.muriendo) S.dibujarAtomo(ctx, px + 8, py - 3, t);
+    ctx.restore();
   };
 
   /** El átomo que orbita sobre la cabeza de Ato: núcleo + 2 electrones en órbitas inclinadas. */

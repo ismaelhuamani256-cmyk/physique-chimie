@@ -123,9 +123,9 @@
     L.ri = ri;
     // premios variados por fase, en orden barajado
     const PREMIOS = {
-      tierra: ['moneda', 'vida', 'pista', 'estrella', 'moneda', 'escudo', 'reloj'],
-      agua: ['moneda', 'escudo', 'reloj', 'pista', 'estrella', 'vida', 'moneda'],
-      castillo: ['escudo', 'vida', 'pista', 'estrella', 'reloj', 'moneda', 'escudo'],
+      tierra: ['moneda', 'vida', 'pista', 'estrella', 'moneda', 'escudo', 'reloj', 'fuego', 'grande'],
+      agua: ['moneda', 'escudo', 'reloj', 'pista', 'estrella', 'vida', 'moneda', 'grande'],
+      castillo: ['escudo', 'vida', 'pista', 'estrella', 'reloj', 'moneda', 'escudo', 'escopeta', 'fuego'],
     }[fase];
     const colaPremios = U.shuffle(PREMIOS.slice(0, 5), rnd).concat(U.shuffle(PREMIOS.slice(5), rnd));
     let ip = 0;
@@ -437,7 +437,7 @@
       else if (q.tipo === 'numerico') { if (typeof q.valor !== 'number') e.push(donde + ': numérica sin valor (' + q.id + ')'); }
       else e.push(donde + ': tipo de pregunta desconocido');
     };
-    por('bloque_pregunta').forEach((s) => { qOk(s.pregunta, 'bloque'); if (!['moneda', 'vida', 'pista', 'escudo', 'estrella', 'reloj'].includes(s.premio)) e.push('premio inválido ' + s.premio); });
+    por('bloque_pregunta').forEach((s) => { qOk(s.pregunta, 'bloque'); if (!['moneda', 'vida', 'pista', 'escudo', 'estrella', 'reloj', 'fuego', 'escopeta', 'grande'].includes(s.premio)) e.push('premio inválido ' + s.premio); });
     por('tuberia').forEach((s) => qOk(s.pregunta, 'tuberia'));
     por('ladrillo').forEach((s) => { if (s.contenido === 'pregunta') qOk(s.pregunta, 'ladrillo'); });
     if (nivel.tipo_nivel !== 'quiz_agua' && !por('plataforma_cae').length) e.push('fase sin plataforma_cae');
@@ -494,6 +494,8 @@
         ctx.F = fisica(fase === 'agua' ? { gravedad: 1, friccion: 0.9, salto: 12, viento: 0 } : fisicaBase);
         res[fase] = construirFase(fase, ctx);
       }
+      // pocos checkpoints (no uno a cada rato): separación mínima de 40 tiles
+      if (window.PCB.juego && window.PCB.juego.Relieve) for (const fase of ['tierra', 'castillo']) { const c = window.PCB.juego.Relieve.podarCheckpoints(res[fase]); if (QQ.validar(c).ok && !QQ.revisarContrato(c).length) res[fase] = c; }
       // relieve del terreno (44-relieve.js) en tierra y castillo; si no pasa el validador se queda el nivel llano original
       if (window.PCB.juego && window.PCB.juego.Relieve) {
         for (const fase of ['tierra', 'castillo']) {

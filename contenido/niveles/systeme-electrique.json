@@ -236,10 +236,6 @@
    "correccion": "Carga: u_C crece de 0 a E. Descarga: u_C decrece de E a 0."
   },
   {
-   "tipo": "checkpoint",
-   "x": 126
-  },
-  {
    "tipo": "palanca",
    "x": 130,
    "y": 12,
@@ -284,10 +280,6 @@
    "enemigo": "tau_solo_c",
    "nombre": "τ depende solo de C",
    "correccion": "τ = R·C depende de R y de C, no de E."
-  },
-  {
-   "tipo": "checkpoint",
-   "x": 154
   },
   {
    "tipo": "jefe",
@@ -892,6 +884,24 @@
    "largo": 7,
    "ciclo": 3.6,
    "visible": 1.3
+  },
+  {
+   "tipo": "item",
+   "x": 21,
+   "y": 14,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 62,
+   "y": 11,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 108,
+   "y": 12,
+   "item": "escopeta"
   }
  ],
  "ambiente": "castillo",

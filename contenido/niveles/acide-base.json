@@ -113,10 +113,6 @@
    "elemento": "N"
   },
   {
-   "tipo": "checkpoint",
-   "x": 38
-  },
-  {
    "tipo": "tuberia",
    "x": 42,
    "y": 13,
@@ -394,10 +390,6 @@
    "x": 100,
    "y": 9,
    "elemento": "H"
-  },
-  {
-   "tipo": "checkpoint",
-   "x": 105
   },
   {
    "tipo": "coleccionable",
@@ -713,10 +705,6 @@
    "ref": "f9",
    "latex": "V(\\mathrm{CO_2}) = n(\\mathrm{CO_2})\\times V_m",
    "nombre": "Volumen de gas formado (ejercicio «lámpara de lava»)"
-  },
-  {
-   "tipo": "checkpoint",
-   "x": 194
   },
   {
    "tipo": "jefe_quiz",
@@ -1374,6 +1362,24 @@
    "largo": 8,
    "ciclo": 3.8,
    "visible": 1.3
+  },
+  {
+   "tipo": "item",
+   "x": 137,
+   "y": 13,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 34,
+   "y": 12,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 82,
+   "y": 13,
+   "item": "fuego"
   }
  ],
  "ambiente": "castillo",

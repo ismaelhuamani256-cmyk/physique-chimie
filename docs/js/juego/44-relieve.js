@@ -402,6 +402,30 @@
     return N;
   };
 
+  /**
+   * podarCheckpoints(nivel, {separacion}) -> nivel NUEVO con pocos checkpoints bien repartidos: máximo 1 por cada ~60 tiles
+   * (2 en niveles normales, 3 en los largos), separados al menos `separacion` (40) tiles y NUNCA pegados a la arena del jefe.
+   * Se conservan los que ya existen (están sobre suelo firme); se eligen los más cercanos a las posiciones ideales (35 %, 62 %, 85 % del recorrido).
+   */
+  Rel.podarCheckpoints = function (nivel, opts) {
+    opts = opts || {};
+    const N = JSON.parse(JSON.stringify(nivel)), ancho = N.ancho_tiles || 160, sep = opts.separacion || 40;
+    const cps = N.segmentos.filter((q) => q.tipo === 'checkpoint').sort((a, b) => a.x - b.x);
+    if (cps.length <= 1) return N;
+    const jefe = N.segmentos.find((q) => q.tipo === 'jefe' || q.tipo === 'jefe_quiz'), meta = N.segmentos.find((q) => q.tipo === 'meta');
+    const fin = jefe ? jefe.x - 12 : (meta ? meta.x - 6 : ancho - 12);
+    const max = ancho >= 190 ? 3 : 2, ideales = max === 3 ? [0.3, 0.55, 0.8] : [0.4, 0.75];
+    const elegidos = [];
+    for (const f of ideales) {
+      const objetivo = fin * f;
+      const cand = cps.filter((c) => !elegidos.includes(c) && elegidos.every((e) => Math.abs(e.x - c.x) >= sep) && c.x <= fin - 8 && c.x >= 20).sort((a, b) => Math.abs(a.x - objetivo) - Math.abs(b.x - objetivo))[0];
+      if (cand) elegidos.push(cand);
+    }
+    if (!elegidos.length) elegidos.push(cps[Math.floor(cps.length / 2)]);
+    N.segmentos = N.segmentos.filter((q) => q.tipo !== 'checkpoint' || elegidos.includes(q));
+    return N;
+  };
+
   // ---------- exportación ----------
   if (typeof module !== 'undefined' && module.exports) module.exports = Rel;
   if (root.PCB && root.PCB.juego) root.PCB.juego.Relieve = Rel;

@@ -836,6 +836,24 @@
    "largo": 6,
    "ciclo": 3.9,
    "visible": 1.3
+  },
+  {
+   "tipo": "item",
+   "x": 28,
+   "y": 13,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 53,
+   "y": 11,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 83,
+   "y": 11,
+   "item": "escopeta"
   }
  ],
  "ambiente": "castillo",

@@ -253,10 +253,6 @@
    "x": 119
   },
   {
-   "tipo": "checkpoint",
-   "x": 172
-  },
-  {
    "tipo": "jefe",
    "x": 180,
    "jefe": "ejercicio_bac_1",
@@ -1098,6 +1094,24 @@
    "largo": 9,
    "ciclo": 3.3,
    "visible": 1.3
+  },
+  {
+   "tipo": "item",
+   "x": 21,
+   "y": 12,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 88,
+   "y": 11,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 128,
+   "y": 13,
+   "item": "escopeta"
   }
  ],
  "ambiente": "lab",

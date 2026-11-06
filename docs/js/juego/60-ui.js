@@ -41,6 +41,7 @@
       inp.dir = (inp.der || inp.t.der || gp.der ? 1 : 0) - (inp.izq || inp.t.izq || gp.izq ? 1 : 0);
       inp.salto = !!(teclas.salto || inp.t.salto || gp.salto);
       inp.accion = teclas.acc || inp.t.acc;
+      inp.correr = !!(teclas.correr || inp.t.correr);   // mantener Shift (o el botón ⚡) para correr
     };
     const kd = (e) => {
       if (e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
@@ -50,6 +51,7 @@
       else if (K.der.includes(e.key)) inp.der = true;
       else if (K.salto.includes(e.key)) { if (!teclas.salto) inp.saltoEdge = true; if (!e.repeat && ['ArrowUp', 'w', 'W'].includes(e.key)) inp.arribaEdge = true; teclas.salto = true; }
       else if (K.acc.includes(e.key)) { if (!e.repeat) inp.accionEdge = true; teclas.acc = true; }
+      else if (e.key === 'Shift') { teclas.correr = true; }
       else if (K.disp.includes(e.key)) { if (!e.repeat) inp.dispEdge = true; }
       else if (K.usar.includes(e.key)) { if (!e.repeat) inp.usarEdge = true; }
       else if (K.pausa.includes(e.key)) { if (!e.repeat) onPausa(); }
@@ -63,14 +65,15 @@
       else if (K.der.includes(e.key)) inp.der = false;
       else if (K.salto.includes(e.key)) teclas.salto = false;
       else if (K.acc.includes(e.key)) teclas.acc = false;
+      else if (e.key === 'Shift') teclas.correr = false;
       recalcular();
     };
-    const blur = () => { inp.izq = inp.der = false; teclas.salto = teclas.acc = false; Object.keys(inp.t).forEach((k) => (inp.t[k] = false)); recalcular(); };
+    const blur = () => { inp.izq = inp.der = false; teclas.salto = teclas.acc = teclas.correr = false; Object.keys(inp.t).forEach((k) => (inp.t[k] = false)); recalcular(); };
     const gesto = () => { if (J.Audio) J.Audio.activar(); };
     window.addEventListener('keydown', kd); window.addEventListener('keyup', ku); window.addEventListener('blur', blur);
     window.addEventListener('pointerdown', gesto);
     inp.recalcular = recalcular;
-    inp.setToque = (k, v) => { if (k === 'salto' && v && !inp.t.salto) { inp.saltoEdge = true; inp.arribaEdge = true; } if (k === 'acc' && v && !inp.t.acc) inp.accionEdge = true; inp.t[k] = v; recalcular(); };
+    inp.setToque = (k, v) => { if (k === 'salto' && v && !inp.t.salto) { inp.saltoEdge = true; inp.arribaEdge = true; } if (k === 'acc' && v && !inp.t.acc) inp.accionEdge = true; if (k === 'disp' && v) inp.dispEdge = true; if (k === 'usar' && v) inp.usarEdge = true; inp.t[k] = v; recalcular(); };
     /** Gamepad opcional: se consulta una vez por fotograma. */
     inp.sondear = function () {
       const pads = navigator.getGamepads ? navigator.getGamepads() : [];
@@ -420,7 +423,7 @@
         return b;
       };
       const pausaB = el('button', { class: 'jg-tb jg-tb-p', on: { click: () => cb.pausar() } }, 'II');
-      tactil.append(el('div', { class: 'jg-tg izq' }, boton('◀', 'a', 'izq'), boton('▶', 'a', 'der')), el('div', { class: 'jg-tg der' }, boton('⬇', 'c', 'acc'), boton('▲', 'b', 'salto')), pausaB);
+      tactil.append(el('div', { class: 'jg-tg izq' }, boton('◀', 'a', 'izq'), boton('▶', 'a', 'der')), el('div', { class: 'jg-tg der' }, boton('⬇', 'c', 'acc'), boton('▲', 'b', 'salto')), el('div', { class: 'jg-tg der2' }, boton('🔥', 'c', 'disp'), boton('⚡', 'c', 'correr'), boton('Q', 'c', 'usar')), pausaB);
     }
 
     ui.destroy = function () { ro.disconnect(); clearTimeout(tAviso); root.remove(); };

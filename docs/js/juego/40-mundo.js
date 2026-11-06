@@ -187,6 +187,7 @@
       if (g.ui) { g.ui.estados(g); g.ui.aviso('¡Escudo roto!'); }
       return;
     }
+    if (motivo !== 'foso' && J.Items && J.Items.alGolpear && J.Items.alGolpear(g)) return;   // «grande»: aguanta un golpe y se encoge
     g.vidas--;
     g.shake = 4;
     if (motivo === 'foso' || g.vidas <= 0) {
@@ -208,6 +209,7 @@
     if (g.vidas <= 0) { g.terminar(false); return; }
     const p = g.jugador, w = g.w;
     Object.assign(p, { x: g.respawn.x, y: g.respawn.y, vx: 0, vy: 0, muriendo: false, inv: 2, suelo: false, sobre: null, saltando: false, coyote: 0, buffer: 0 });
+    if (J.Items && J.Items.alReaparecer) J.Items.alReaparecer(g);   // al morir se pierde el tamaño grande y la flor de plasma
     g.proy.length = 0;
     if (J.Parkour) J.Parkour.alMorir(g);
     const A = w.arena;
@@ -240,8 +242,11 @@
     const NAD = J.NAT;
     // --- horizontal ---
     const grip = J.clamp(Math.sqrt((1 - F.friccion) / 0.15), 0.3, 1.3);
-    const acc = zona ? NAD.ACC : suelo ? FIS.ACC_SUELO * grip : FIS.ACC_AIRE;
-    const vmaxH = zona ? NAD.VMAX : F.vmax;
+    const corre = !!inp.correr && !zona;                      // botón de correr (Shift): +50 % de velocidad máxima
+    const acc = (zona ? NAD.ACC : suelo ? FIS.ACC_SUELO * grip : FIS.ACC_AIRE) * (corre ? 1.3 : 1);
+    const vmaxH = zona ? NAD.VMAX : F.vmax * (corre ? 1.5 : 1);
+    p.corriendo = corre && Math.abs(p.vx) > 3;
+    if (p.corriendo && suelo && Math.random() < 0.25) polvo(g, (p.x + p.w / 2) * J.T - p.dir * 5, (p.y + p.h) * J.T, 1);
     const vcx = zona ? corX * NAD.CORRIENTE : 0;   // la corriente arrastra el agua: velocidad de deriva ≈ corriente_x·0.8 tiles/s
     if (dir) {
       const aa = acc * (p.vx * dir < 0 ? FIS.GIRO : 1) * dt, obj = dir * vmaxH + vcx;

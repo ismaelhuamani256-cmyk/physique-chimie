@@ -112,7 +112,7 @@
       camera.position.set(0, 0, dist * e.zoom); camera.near = Math.max(0.05, dist * e.zoom - e.radio * 4); camera.far = dist * e.zoom + e.radio * 6;
       camera.aspect = asp; camera.updateProjectionMatrix();
     }
-    e.ajustarA = (radio) => { e.radio = Math.max(0.8, radio); ajustarCamara(); e.pedirRender(); };
+    e.ajustarA = (radio) => { e.radio = Math.max(1.7, radio); ajustarCamara(); e.pedirRender(); };
     e.orientacion = null; // cuaternión de la vista inicial (PCA de la molécula); si es null, una inclinación genérica
     e.resetVista = () => {
       e.zoom = 1; e.vel.x = e.vel.y = 0;
@@ -348,13 +348,18 @@
     const sim = centros.length > 1;
     const filas = [];
     if (!centros.length) filas.push(el('p', { class: 'm3d-geo' }, 'Molécula o ion diatómico/monoatómico: ', el('b', {}, mol.geometria)));
-    else if (!sim) filas.push(el('p', { class: 'm3d-geo' }, 'VSEPR ', el('b', {}, mol.axe), ' · ', el('b', {}, mol.geometria), ' ', el('span', { class: 'm3d-fr', lang: 'fr' }, '(' + mol.geometriaFr + ')')));
-    else {
-      filas.push(el('p', { class: 'm3d-geo' }, 'Geometría alrededor de cada átomo central (VSEPR):'));
+    else if (!sim) {
+      filas.push(el('p', { class: 'm3d-geo' }, 'VSEPR ', el('b', {}, mol.axe), ' · ', el('b', {}, mol.geometria), ' ', el('span', { class: 'm3d-fr', lang: 'fr' }, '(' + mol.geometriaFr + ')')));
+      if (ang.length) filas.push(el('p', { class: 'm3d-ang' }, el('span', {}, 'Ángulos: '), ang.join(' · ')));
+    } else {
+      // varios átomos centrales (moléculas orgánicas): el detalle va plegado para no tapar la molécula
       const grupos = {}; centros.forEach((c) => { const k = c.el + '|' + c.axe + '|' + c.geometria; (grupos[k] = grupos[k] || { c, n: 0 }).n++; });
-      filas.push(el('ul', { class: 'm3d-centros' }, Object.values(grupos).slice(0, 6).map((g) => el('li', {}, el('b', {}, g.c.el + (g.n > 1 ? ' ×' + g.n : '') + ' '), g.c.axe + ' · ' + g.c.geometria.replace(/ \(.*\)/, '')))));
+      const resumen = Object.values(grupos).slice(0, 6).map((g) => g.c.el + (g.n > 1 ? '×' + g.n : '') + ' ' + g.c.axe).join(' · ');
+      filas.push(el('p', { class: 'm3d-geo' }, 'VSEPR por átomo central: ', el('b', {}, resumen)));
+      filas.push(el('details', { class: 'm3d-det' }, el('summary', {}, 'Ver geometrías y ángulos'),
+        el('ul', { class: 'm3d-centros' }, Object.values(grupos).slice(0, 6).map((g) => el('li', {}, el('b', {}, g.c.el + (g.n > 1 ? ' ×' + g.n : '') + ' '), g.c.axe + ' · ' + g.c.geometria.replace(/ \(.*\)/, '')))),
+        ang.length ? el('p', { class: 'm3d-ang' }, ang.join(' · ')) : null));
     }
-    if (ang.length) filas.push(el('p', { class: 'm3d-ang' }, el('span', {}, 'Ángulos: '), ang.join(' · ')));
     return el('div', { class: 'm3d-info' },
       el('div', { class: 'm3d-formula', 'aria-label': 'Fórmula ' + mol.formulaAscii }, mol.formula),
       el('div', { class: 'm3d-nombre' }, mol.nombre ? mol.nombre.charAt(0).toUpperCase() + mol.nombre.slice(1) : '', mol.nombre_fr ? el('small', { lang: 'fr' }, ' · ' + mol.nombre_fr) : null),

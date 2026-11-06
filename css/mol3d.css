@@ -31,6 +31,8 @@
 .m3d-fr{color:var(--txt2)}
 .m3d-ang{color:var(--txt2);font-size:12px}
 .m3d-ang span{color:var(--txt)}
+.m3d-det summary{cursor:pointer;color:var(--c-fisica2);font-size:12px}
+.m3d-det[open]{max-height:180px;overflow:auto}
 .m3d-centros{margin:2px 0 3px;padding-left:18px;font-size:12px;color:var(--txt2)}
 .m3d-centros b{color:var(--aviso)}
 @media (max-width:640px){
@@ -49,7 +51,7 @@
 .m3d-rx-slider{flex:1;accent-color:var(--c-quimica);min-width:60px}
 .m3d-rx-fase{font-size:12px;color:var(--txt2);min-width:118px;text-align:right}
 .m3d-rx-nota{position:absolute;left:10px;right:10px;bottom:62px;z-index:3;font-size:12px;color:var(--txt);background:#0b1020b3;border-radius:10px;padding:6px 10px;pointer-events:none;max-width:560px}
-.m3d-rx-leyenda{position:absolute;right:10px;top:54px;z-index:3;font-size:11px;color:var(--txt2);display:flex;gap:10px;pointer-events:none}
+.m3d-rx-leyenda{margin-top:6px;font-size:11px;color:var(--txt2);display:flex;flex-wrap:wrap;gap:4px 12px;pointer-events:none}
 .m3d-rx-leyenda i{display:inline-block;width:18px;height:0;border-top:3px solid;vertical-align:middle;margin-right:4px}
 .m3d-rx-leyenda .rota i{border-color:#ff7a90;border-top-style:dashed}
 .m3d-rx-leyenda .forma i{border-color:#6bffc0}
@@ -127,4 +129,4 @@
 .m3d-tab-visor .m3d{height:min(62vh,540px);min-height:380px}
 .m3d-tab-nota{margin:8px 2px 0;font-size:13px;color:var(--txt2)}
 .m3d-tab-intro{margin:0 0 12px;font-size:14px;color:var(--txt2);max-width:70ch}
-@media (max-width:820px){.m3d-tab{grid-template-columns:1fr}.m3d-tab-lista{max-height:none;flex-direction:row;flex-wrap:wrap}.m3d-it{width:auto}}
+@media (max-width:820px){.m3d-tab{grid-template-columns:1fr}.m3d-tab>.m3d-tab-der{order:1}.m3d-tab>.m3d-tab-lista{order:2;max-height:300px;flex-direction:row;flex-wrap:wrap}.m3d-it{width:auto}.m3d-tab-visor .m3d{height:min(70vh,460px);min-height:340px}}

@@ -56,7 +56,11 @@
         pie.textContent = 'Reacción del capítulo' + (r && r.fuente ? ' (fuente: ' + r.fuente + ')' : '') + '. ▶ reproduce; el deslizador recorre la reacción; los enlaces rojos se rompen y los verdes se forman.';
       }
     }
-    function elegir(t, id) { sel = { t, id }; marcar(); pintar(); }
+    function elegir(t, id) {
+      sel = { t, id }; marcar(); pintar();
+      // en pantallas estrechas el visor queda sobre la lista: lo traemos a la vista
+      if (window.innerWidth <= 820) { try { visorHost.scrollIntoView({ block: 'nearest', behavior: PCB.util.reducedMotion() ? 'auto' : 'smooth' }); } catch (e) {} }
+    }
 
     const lista = el('div', { class: 'm3d-tab-lista', role: 'group', 'aria-label': 'Moléculas y reacciones de este capítulo' });
     if (mols.length) {
@@ -76,7 +80,7 @@
       });
     }
     const intro = el('p', { class: 'm3d-tab-intro' }, 'Las moléculas e iones de este capítulo en 3D, con colores CPK (H blanco, C gris, N azul, O rojo, Cl verde, S amarillo) y la geometría que predice la teoría VSEPR. Las reacciones muestran cómo se rompen y se forman los enlaces.');
-    const raiz = el('div', { class: 'est-moleculas' }, intro, el('div', { class: 'm3d-tab' }, lista, el('div', {}, visorHost, pie)));
+    const raiz = el('div', { class: 'est-moleculas' }, intro, el('div', { class: 'm3d-tab' }, lista, el('div', { class: 'm3d-tab-der' }, visorHost, pie)));
     marcar();
     return {
       el: raiz,

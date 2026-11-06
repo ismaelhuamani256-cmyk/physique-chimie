@@ -189,7 +189,7 @@
     const ctrl = el('div', { class: 'm3d-rx-ctrl' }, bPlay, bReset, slider, fase);
 
     let esc = N && T ? N.crearEscena(host, { rotar: false }) : null;
-    host.append(alt, cab, ley);
+    cab.append(ley); host.append(alt, cab);
     if (nota) host.append(nota);
     host.append(ctrl);
     if (!esc) host.classList.add('m3d-sin-webgl');

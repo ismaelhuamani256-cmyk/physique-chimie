@@ -145,10 +145,6 @@
    "periodo": 3
   },
   {
-   "tipo": "checkpoint",
-   "x": 89
-  },
-  {
    "tipo": "resorte",
    "x": 91,
    "y": 13
@@ -249,7 +245,7 @@
   {
    "tipo": "jefe",
    "x": 165,
-   "jefe": "ejercicio_bac_1",
+   "jefe": "rey_bomba",
    "titulo": "Ejercicio bac: síntesis y pila (ej. 28 y 30)",
    "preguntas": [
     {
@@ -874,9 +870,169 @@
    "bicho": "demonio",
    "nombre": "Semipilas sin pares oxidante-reductor",
    "correccion": "Cada semipila debe contener un par Mⁿ⁺(aq)/M(s) (metal + su ion)."
+  },
+  {
+   "tipo": "mina",
+   "x": 74,
+   "y": 11,
+   "modo": "temporizador",
+   "radio": 1.4
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 140,
+   "largo": 8,
+   "ciclo": 3.8,
+   "visible": 1.3
+  },
+  {
+   "tipo": "mina",
+   "x": 131,
+   "y": 12,
+   "modo": "contacto",
+   "radio": 1.4
+  },
+  {
+   "tipo": "torreta",
+   "x": 31,
+   "y": 13,
+   "periodo": 3.1,
+   "nombre": "Invertir el criterio Qr,i frente a K",
+   "correccion": "Qr,i < K → sentido directo; Qr,i > K → sentido opuesto; la evolución para en Qr = K."
+  },
+  {
+   "tipo": "geiser",
+   "x": 53,
+   "y": 13,
+   "alto": 5,
+   "periodo": 4.4,
+   "retardo": 2
+  },
+  {
+   "tipo": "geiser",
+   "x": 114,
+   "y": 14,
+   "alto": 4,
+   "periodo": 4.9,
+   "retardo": 1.5
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 99,
+   "largo": 8,
+   "ciclo": 3.3,
+   "visible": 1.3
+  },
+  {
+   "tipo": "torreta",
+   "x": 68,
+   "y": 11,
+   "periodo": 2.6,
+   "nombre": "Tratar el agua como solvente cuando es reactivo puro",
+   "correccion": "Con reactivos puros (no en disolución) el agua es un producto, no el solvente: su cantidad entra en Qr."
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 61,
+   "largo": 6,
+   "ciclo": 3.6,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 37,
+   "largo": 9,
+   "ciclo": 3.7,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 27,
+   "largo": 8,
+   "ciclo": 3.6,
+   "visible": 1.3
+  },
+  {
+   "tipo": "laser",
+   "x": 80,
+   "y": 12,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 4.4,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 121,
+   "y": 8,
+   "eje": "y",
+   "recorrido": 4,
+   "periodo": 4.9
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 135,
+   "largo": 7,
+   "ciclo": 3.4,
+   "visible": 1.3
+  },
+  {
+   "tipo": "item",
+   "x": 28,
+   "y": 13,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 71,
+   "y": 11,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 112,
+   "y": 13,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 157,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 31,
+   "y": 10
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 72,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 116,
+   "y": 10
+  },
+  {
+   "tipo": "fauna",
+   "especie": "gigante",
+   "x": 100,
+   "y": 13
+  },
+  {
+   "tipo": "fauna",
+   "especie": "alado",
+   "x": 141,
+   "y": 13
   }
  ],
  "ambiente": "lab",
  "relieve": true,
- "aire": true
+ "aire": true,
+ "peligros": true
 }

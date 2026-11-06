@@ -252,7 +252,7 @@
   {
    "tipo": "jefe",
    "x": 156,
-   "jefe": "ejercicio_bac_1",
+   "jefe": "maestro_calavera",
    "titulo": "Ejercicio de bac: fuerza de ácidos y bases",
    "preguntas": [
     {
@@ -851,9 +851,149 @@
    "bicho": "demonio",
    "nombre": "Aplicar pH = −log c a un ácido débil",
    "correccion": "Esa relación solo vale si la transformación es total; para un ácido débil hay que usar KA, τ y [H₃O⁺]f = c·τ."
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 129,
+   "largo": 8,
+   "ciclo": 3.6,
+   "visible": 1.3
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 32,
+   "y": 14,
+   "dir": -1,
+   "periodo": 4.1,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "picos",
+   "x": 24,
+   "y": 13,
+   "largo": 3
+  },
+  {
+   "tipo": "torreta",
+   "x": 38,
+   "y": 11,
+   "periodo": 2.7,
+   "nombre": "Aplicar pH = −log c a un ácido débil",
+   "correccion": "Esa relación solo vale si la transformación es total; para un ácido débil hay que usar KA, τ y [H₃O⁺]f = c·τ."
+  },
+  {
+   "tipo": "sierra",
+   "x": 107,
+   "y": 6,
+   "eje": "y",
+   "recorrido": 4,
+   "periodo": 3.6
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 79,
+   "largo": 7,
+   "ciclo": 3.4,
+   "visible": 1.3
+  },
+  {
+   "tipo": "laser",
+   "x": 119,
+   "y": 14,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 3.8,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "laser",
+   "x": 54,
+   "y": 11,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 4.1,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "laser",
+   "x": 43,
+   "y": 11,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 3.6,
+   "retardo": 1.9
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 68,
+   "largo": 7,
+   "ciclo": 3.8,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 102,
+   "largo": 7,
+   "ciclo": 3.6,
+   "visible": 1.3
+  },
+  {
+   "tipo": "item",
+   "x": 22,
+   "y": 13,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 61,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 104,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 99,
+   "y": 7
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 132,
+   "y": 10
+  },
+  {
+   "tipo": "llave",
+   "x": 27,
+   "y": 12
+  },
+  {
+   "tipo": "puerta",
+   "x": 128,
+   "y": 8,
+   "alto": 6,
+   "llave": true
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 116,
+   "y": 11
+  },
+  {
+   "tipo": "item",
+   "x": 145,
+   "y": 12,
+   "item": "escopeta"
   }
  ],
  "ambiente": "lab",
  "relieve": true,
- "aire": true
+ "aire": true,
+ "peligros": true
 }

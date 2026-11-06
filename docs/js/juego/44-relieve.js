@@ -297,6 +297,135 @@
     return N;
   };
 
+  /**
+   * poblarPeligros(nivel, {seed, intensidad, errores, ambiente, objetivo}) -> nivel NUEVO con muchos más peligros del entorno:
+   *   suelo: picos, minas, sierras (fijas o en raíl), torretas, cañones de bala gigante, géiseres, prensas, plantas carnívoras;
+   *   aire: láseres, sierras en raíl, plantas que cuelgan del techo.
+   * Reparte según el ambiente, con huecos de seguridad (nada junto a fosos, checkpoints, carteles, estaciones ni la arena del jefe)
+   * y llega a `objetivo` peligros en total (por defecto 14). Úsalo con validar().
+   */
+  Rel.poblarPeligros = function (nivel, opts) {
+    opts = opts || {};
+    const N = JSON.parse(JSON.stringify(nivel)), alto = N.alto_tiles || 18, ancho = N.ancho_tiles || 160, segs = N.segmentos;
+    const rnd = rng(hash(String(opts.seed != null ? opts.seed : N.capitulo_id) + '|peligros')), inten = clamp(opts.intensidad == null ? 1 : opts.intensidad, 0.2, 1);
+    const SMIN = alto - 6, HAZ = ['mina', 'prensa', 'pendulo', 'picos', 'planta_carnivora', 'estalactita', 'lluvia_rocas', 'sierra', 'torreta', 'canon_bala', 'geiser', 'laser', 'planta_techo'];
+    const esSuelo = (q) => q.tipo === 'plataforma' && q.grosor == null && q.solido !== false && q.y >= SMIN;
+    const G = new Array(ancho).fill(null);
+    for (const q of segs.filter(esSuelo)) for (let i = 0; i < q.largo; i++) { const x = Math.round(q.x) + i; if (x >= 0 && x < ancho) G[x] = q.y; }
+    for (const q of segs) if (q.tipo === 'foso') for (let i = 0; i < q.largo; i++) if (q.x + i >= 0 && q.x + i < ancho) G[q.x + i] = null;
+    const jefe = segs.find((q) => q.tipo === 'jefe' || q.tipo === 'jefe_quiz'), meta = segs.find((q) => q.tipo === 'meta');
+    const finAntes = jefe ? jefe.x - 14 : (meta ? meta.x - 8 : ancho - 12);
+    const existentes = segs.filter((q) => HAZ.includes(q.tipo)).length;
+    const total = Math.round((opts.objetivo || 14) * inten), objetivo = Math.max(6, total - existentes);
+    const amb = opts.ambiente || N.ambiente || 'lab';
+    const PESOS = {
+      lab: { laser: 3, torreta: 3, sierra: 2, mina: 2, canon: 2, picos: 2, prensa: 1, planta_techo: 2, geiser: 1, planta: 1 },
+      castillo: { geiser: 4, sierra: 3, picos: 2, torreta: 2, prensa: 2, canon: 2, mina: 1, laser: 1, planta_techo: 1 },
+      cueva: { picos: 3, sierra: 2, mina: 2, torreta: 2, geiser: 3, canon: 1, planta_techo: 2, laser: 1 },
+      hielo: { picos: 3, torreta: 2, canon: 3, geiser: 2, sierra: 1, mina: 1 },
+      espacio: { laser: 4, torreta: 3, canon: 3, mina: 3, sierra: 2, geiser: 1 },
+      nube: { laser: 3, torreta: 3, canon: 3, sierra: 2, planta_techo: 2, mina: 1 },
+    };
+    PESOS.horno = PESOS.castillo; PESOS.campo = PESOS.lab;
+    const pesos = PESOS[amb] || PESOS.lab, bolsa = []; Object.keys(pesos).forEach((k) => { for (let i = 0; i < pesos[k]; i++) bolsa.push(k); });
+    const errores = (opts.errores && opts.errores.length) ? opts.errores : [{ nombre: 'Error', correccion: '' }];
+    let ie = Math.floor(rnd() * errores.length);
+
+    // zonas vetadas: inicio, arena, sprint y todo lo que necesita suelo estable o que se interactúa
+    const veto = [[0, 23], [finAntes - 2, ancho]];
+    for (const q of segs) {
+      if (typeof q.x !== 'number' && q.tipo !== 'sprint') continue;
+      if (q.tipo === 'sprint') veto.push([q.x_ini - 2, q.x_fin + 2]);
+      else if (['checkpoint', 'cartel', 'estacion_molecula', 'puerta_ecuacion', 'tuberia', 'puerta', 'palanca', 'puente', 'resorte', 'interruptor_estado', 'meta', 'plataforma_cae', 'bloque_rebote', 'cinta'].includes(q.tipo)) veto.push([q.x - 3, q.x + (q.largo || 1) + 3]);
+      else if (HAZ.includes(q.tipo)) veto.push([q.x - 2, q.x + (q.largo || q.w || 1) + 2]);
+      else if (q.tipo === 'enemigo') veto.push([q.x - 1, q.x + 1]);
+    }
+    const vetado = (a, b) => veto.some(([p, q]) => !(b < p || a > q));
+    // tramos de suelo llano ≥ 9 columnas
+    const tramos = []; { let i = 0; while (i < ancho) { if (G[i] == null) { i++; continue; } let j = i; while (j + 1 < ancho && G[j + 1] === G[i]) j++; if (j - i + 1 >= 4) tramos.push([i, j, G[i]]); i = j + 1; } }
+    // estructuras del aire (para no chocar con láseres/sierras/plantas del techo)
+    const DURO = ['plataforma', 'plataforma_movil', 'plataforma_cae', 'plataforma_estado', 'ladrillo', 'bloque_pregunta', 'tuberia', 'puerta', 'prensa', 'pendulo', 'puente'];
+    const aire = [];
+    for (const q of segs) {
+      if (q.tipo === 'plataforma' && !esSuelo(q)) aire.push([q.x, q.x + q.largo, q.y - 1, q.y + (q.grosor || 1)]);
+      else if (q.tipo === 'plataforma_movil') { const rr = q.recorrido || 0; aire.push(q.eje === 'y' ? [q.x, q.x + q.largo, Math.min(q.y, q.y + rr) - 1, Math.max(q.y, q.y + rr) + 1] : [Math.min(q.x, q.x + rr), Math.max(q.x, q.x + rr) + q.largo, q.y - 1, q.y + 1]); }
+      else if (q.tipo === 'ladrillo' || q.tipo === 'bloque_pregunta') aire.push([q.x, q.x + 1, q.y, q.y]);
+    }
+    const aireLibre = (a, b, y0, y1) => !aire.some(([p, q, u, v]) => !(b < p || a > q) && !(v < y0 || u > y1));
+    const usados = []; const lejos = (x, sep) => usados.every((u) => Math.abs(u - x) >= (sep || 5));
+    const extra = [];
+    const sitio = (min, margen) => {            // posición en un tramo llano con `margen` columnas libres a cada lado
+      for (let intento = 0; intento < 80; intento++) {
+        const t = tramos[Math.floor(rnd() * tramos.length)]; if (!t) return null;
+        const a = t[0] + Math.min(margen, 2), b = t[1] - Math.min(margen, 2) - (min - 1); if (b < a) continue;
+        const x = a + Math.floor(rnd() * (b - a + 1));
+        if (vetado(x, x + min) || !lejos(x, 4)) continue;
+        return { x, g: t[2] };
+      }
+      return null;
+    };
+    const sitioAire = (min) => {
+      for (let intento = 0; intento < 80; intento++) {
+        const x = 24 + Math.floor(rnd() * Math.max(1, finAntes - 28));
+        let g = null; for (let d = 0; d <= 3 && g == null; d++) g = G[x - d] != null ? G[x - d] : G[x + d];
+        if (g == null || vetado(x, x + min) || !lejos(x, 4)) continue;
+        return { x, g };
+      }
+      return null;
+    };
+    const poner = (seg, a, b) => { extra.push(seg); veto.push([a - 1, b + 1]); usados.push(a); };
+    const hacer = {
+      picos() { const l = 2 + Math.floor(rnd() * 2), q = sitio(l, 3); if (!q) return false; poner({ tipo: 'picos', x: q.x, y: q.g - 1, largo: l }, q.x, q.x + l); return true; },
+      mina() { const q = sitio(1, 3); if (!q) return false; poner({ tipo: 'mina', x: q.x, y: q.g - 1, modo: rnd() < 0.5 ? 'contacto' : 'temporizador', radio: 1.4 }, q.x, q.x + 1); return true; },
+      sierra() {
+        if (rnd() < 0.5) { const q = sitio(5, 3); if (!q) return false; poner({ tipo: 'sierra', x: q.x, y: q.g - 1, eje: 'x', recorrido: 3, periodo: +(3 + rnd() * 2).toFixed(1) }, q.x, q.x + 4); return true; }   // sierra que recorre el suelo
+        const q = sitioAire(5); if (!q) return false;                                                                                                                                              // sierra aérea en raíl vertical
+        const y = q.g - 6; if (y < 4 || !aireLibre(q.x, q.x + 1, y - 1, y + 5)) return false; poner({ tipo: 'sierra', x: q.x + 2, y, eje: 'y', recorrido: 4, periodo: +(3 + rnd() * 2).toFixed(1) }, q.x, q.x + 4); return true;
+      },
+      torreta() { const q = sitio(1, 3); if (!q) return false; const e = errores[ie++ % errores.length]; poner({ tipo: 'torreta', x: q.x, y: q.g - 1, periodo: +(2.4 + rnd() * 0.8).toFixed(1), nombre: e.nombre, correccion: e.correccion }, q.x, q.x + 1); return true; },
+      canon() { const q = sitio(1, 2); if (!q) return false; const t = tramos.find((u) => q.x >= u[0] && q.x <= u[1]); const dir = (q.x - t[0]) < (t[1] - q.x) ? 1 : -1; poner({ tipo: 'canon_bala', x: q.x, y: q.g - 1, dir, periodo: +(3.4 + rnd() * 1.2).toFixed(1), retardo: +(rnd() * 3).toFixed(1) }, q.x, q.x + 1); return true; },
+      geiser() { const q = sitio(1, 3); if (!q) return false; poner({ tipo: 'geiser', x: q.x, y: q.g, alto: 4 + Math.floor(rnd() * 2), periodo: +(3.6 + rnd() * 1.4).toFixed(1), retardo: +(rnd() * 3).toFixed(1) }, q.x, q.x + 1); return true; },
+      prensa() { const q = sitio(2, 3); if (!q) return false; if (!aireLibre(q.x, q.x + 2, q.g - 6, q.g - 1)) return false; poner({ tipo: 'prensa', x: q.x, y: q.g - 5, largo: 2, periodo: +(3 + rnd() * 1).toFixed(1), retardo: +(rnd() * 2).toFixed(1) }, q.x, q.x + 2); return true; },
+      planta() { const q = sitio(2, 3); if (!q) return false; poner({ tipo: 'planta_carnivora', x: q.x, y: q.g - 1, ciclo: +(3.2 + rnd() * 0.8).toFixed(1), visible: 1.2 }, q.x, q.x + 2); return true; },
+      laser() {
+        const q = rnd() < 0.5 ? sitio(5, 2) : sitioAire(5); if (!q) return false;
+        if (rnd() < 0.5) { poner({ tipo: 'laser', x: q.x, y: q.g - 1, eje: 'h', largo: 5, periodo: +(3.2 + rnd() * 1.2).toFixed(1), retardo: +(rnd() * 3).toFixed(1) }, q.x, q.x + 5); return true; }
+        const y = q.g - 5; if (y < 3 || !aireLibre(q.x + 2, q.x + 3, y, q.g)) return false;
+        poner({ tipo: 'laser', x: q.x + 2, y, eje: 'v', largo: 5, periodo: +(3.2 + rnd() * 1.2).toFixed(1), retardo: +(rnd() * 3).toFixed(1) }, q.x, q.x + 5); return true;
+      },
+      planta_techo() { const q = sitioAire(1); if (!q) return false; const largo = q.g - 6; if (largo < 3 || !aireLibre(q.x - 1, q.x + 1, 0, largo + 2)) return false; poner({ tipo: 'planta_techo', x: q.x, largo, ciclo: +(3.2 + rnd() * 0.8).toFixed(1), visible: 1.3 }, q.x, q.x + 1); return true; },
+    };
+    let n = 0, fallos = 0;
+    while (n < objetivo && fallos < 400) { const k = bolsa[Math.floor(rnd() * bolsa.length)]; if (hacer[k] && hacer[k]()) n++; else fallos++; }
+    N.segmentos = [...segs, ...extra];
+    N.peligros = true;
+    return N;
+  };
+
+  /**
+   * podarCheckpoints(nivel, {separacion}) -> nivel NUEVO con pocos checkpoints bien repartidos: máximo 1 por cada ~60 tiles
+   * (2 en niveles normales, 3 en los largos), separados al menos `separacion` (40) tiles y NUNCA pegados a la arena del jefe.
+   * Se conservan los que ya existen (están sobre suelo firme); se eligen los más cercanos a las posiciones ideales (35 %, 62 %, 85 % del recorrido).
+   */
+  Rel.podarCheckpoints = function (nivel, opts) {
+    opts = opts || {};
+    const N = JSON.parse(JSON.stringify(nivel)), ancho = N.ancho_tiles || 160, sep = opts.separacion || 40;
+    const cps = N.segmentos.filter((q) => q.tipo === 'checkpoint').sort((a, b) => a.x - b.x);
+    if (cps.length <= 1) return N;
+    const jefe = N.segmentos.find((q) => q.tipo === 'jefe' || q.tipo === 'jefe_quiz'), meta = N.segmentos.find((q) => q.tipo === 'meta');
+    const fin = jefe ? jefe.x - 12 : (meta ? meta.x - 6 : ancho - 12);
+    const max = ancho >= 190 ? 3 : 2, ideales = max === 3 ? [0.3, 0.55, 0.8] : [0.4, 0.75];
+    const elegidos = [];
+    for (const f of ideales) {
+      const objetivo = fin * f;
+      const cand = cps.filter((c) => !elegidos.includes(c) && elegidos.every((e) => Math.abs(e.x - c.x) >= sep) && c.x <= fin - 8 && c.x >= 20).sort((a, b) => Math.abs(a.x - objetivo) - Math.abs(b.x - objetivo))[0];
+      if (cand) elegidos.push(cand);
+    }
+    if (!elegidos.length) elegidos.push(cps[Math.floor(cps.length / 2)]);
+    N.segmentos = N.segmentos.filter((q) => q.tipo !== 'checkpoint' || elegidos.includes(q));
+    return N;
+  };
+
   // ---------- exportación ----------
   if (typeof module !== 'undefined' && module.exports) module.exports = Rel;
   if (root.PCB && root.PCB.juego) root.PCB.juego.Relieve = Rel;

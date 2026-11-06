@@ -8,260 +8,346 @@
   "salto": 12,
   "viento": 0
  },
- "ancho_tiles": 190,
- "alto_tiles": 18,
+ "ancho_tiles": 48,
+ "alto_tiles": 54,
  "segmentos": [
   {
-   "tipo": "foso",
-   "x": 22,
-   "largo": 3
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 50,
+   "largo": 48
   },
   {
-   "tipo": "foso",
-   "x": 49,
-   "largo": 3
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 8,
+   "largo": 36
   },
   {
-   "tipo": "foso",
-   "x": 69,
-   "largo": 3
+   "tipo": "plataforma",
+   "x": 4,
+   "y": 47,
+   "largo": 6
   },
   {
-   "tipo": "foso",
-   "x": 86,
-   "largo": 4
-  },
-  {
-   "tipo": "foso",
-   "x": 102,
-   "largo": 3
-  },
-  {
-   "tipo": "foso",
-   "x": 115,
-   "largo": 4
-  },
-  {
-   "tipo": "foso",
-   "x": 133,
-   "largo": 3
-  },
-  {
-   "tipo": "foso",
-   "x": 146,
-   "largo": 4
-  },
-  {
-   "tipo": "foso",
-   "x": 160,
-   "largo": 3
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 44,
+   "largo": 6
   },
   {
    "tipo": "plataforma_movil",
-   "x": 28,
-   "y": 11,
+   "x": 22,
+   "y": 41,
    "largo": 4,
-   "recorrido": 6,
+   "recorrido": 5,
    "eje": "x",
    "periodo": 5
   },
   {
-   "tipo": "plataforma_movil",
-   "x": 69,
-   "y": 9,
-   "largo": 3,
-   "recorrido": 2,
-   "eje": "y",
-   "periodo": 3
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 38,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 4,
+   "y": 35,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 32,
+   "largo": 6
   },
   {
    "tipo": "plataforma_movil",
-   "x": 116,
-   "y": 11,
-   "largo": 3,
-   "recorrido": 2,
+   "x": 22,
+   "y": 29,
+   "largo": 4,
+   "recorrido": 5,
    "eje": "x",
-   "periodo": 3
+   "periodo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 26,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 4,
+   "y": 23,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 20,
+   "largo": 6
   },
   {
    "tipo": "plataforma_movil",
-   "x": 147,
-   "y": 11,
-   "largo": 3,
-   "recorrido": 1,
+   "x": 22,
+   "y": 17,
+   "largo": 4,
+   "recorrido": 5,
    "eje": "x",
-   "periodo": 3
+   "periodo": 5
   },
   {
-   "tipo": "resorte",
-   "x": 84,
-   "y": 14
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 14,
+   "largo": 6
   },
   {
-   "tipo": "zona_campo",
-   "x": 92,
-   "y": 8,
-   "w": 10,
-   "h": 6,
-   "fx": 0.6,
-   "fy": 0
-  },
-  {
-   "tipo": "zona_campo",
-   "x": 152,
-   "y": 8,
-   "w": 8,
-   "h": 6,
-   "fx": 0.6,
-   "fy": 0
-  },
-  {
-   "tipo": "checkpoint",
-   "x": 55
-  },
-  {
-   "tipo": "checkpoint",
-   "x": 121
+   "tipo": "plataforma",
+   "x": 4,
+   "y": 11,
+   "largo": 6
   },
   {
    "tipo": "coleccionable",
-   "x": 10,
-   "y": 11,
+   "x": 15,
+   "y": 42,
    "ref": "f1",
    "latex": "v_{\\text{Produit}} = \\dfrac{\\mathrm{d}[\\text{Produit}]}{\\mathrm{d}t}",
    "nombre": "Velocidad volúmica de aparición de un producto"
   },
   {
    "tipo": "coleccionable",
-   "x": 43,
-   "y": 10,
+   "x": 24,
+   "y": 39,
    "ref": "f2",
    "latex": "v_{\\text{Réactif}} = -\\dfrac{\\mathrm{d}[\\text{Réactif}]}{\\mathrm{d}t}",
    "nombre": "Velocidad volúmica de desaparición de un reactivo"
   },
   {
    "tipo": "coleccionable",
-   "x": 56,
-   "y": 10,
+   "x": 15,
+   "y": 36,
    "ref": "f3",
    "latex": "x(t_{1/2}) = \\dfrac{x_\\mathrm{f}}{2}",
    "nombre": "Tiempo de semirreacción"
   },
   {
    "tipo": "coleccionable",
-   "x": 64,
-   "y": 11,
+   "x": 6,
+   "y": 33,
    "ref": "f4",
    "latex": "v_\\mathrm{A} = k \\cdot [\\mathrm{A}]",
    "nombre": "Ley de velocidad de orden 1 (reactivo)"
   },
   {
    "tipo": "coleccionable",
-   "x": 76,
-   "y": 11,
+   "x": 15,
+   "y": 30,
    "ref": "f5",
    "latex": "v_\\mathrm{P} = k' \\cdot [\\mathrm{A}]",
    "nombre": "Ley de velocidad de orden 1 (producto)"
   },
   {
    "tipo": "coleccionable",
-   "x": 96,
-   "y": 11,
+   "x": 24,
+   "y": 27,
    "ref": "f10",
    "latex": "\\sigma_{\\text{solution}} = \\sum_i \\lambda_i \\cdot [\\mathrm{X}_i]",
    "nombre": "Ley de Kohlrausch"
   },
   {
    "tipo": "coleccionable",
-   "x": 110,
-   "y": 12,
+   "x": 15,
+   "y": 24,
    "ref": "n7",
    "latex": "\\text{Temps de demi-réaction t1/2}",
    "nombre": "Temps de demi-réaction t1/2"
   },
   {
    "tipo": "coleccionable",
-   "x": 126,
-   "y": 10,
+   "x": 6,
+   "y": 21,
    "ref": "f6",
    "latex": "n_{\\text{réactif}}(t_{1/2}) = \\dfrac{n_0}{2}",
    "nombre": "Cantidad de reactivo en t1/2"
   },
   {
    "tipo": "coleccionable",
-   "x": 141,
-   "y": 10,
+   "x": 15,
+   "y": 18,
    "ref": "n4",
    "latex": "\\text{Catalyseur}",
    "nombre": "Catalyseur"
   },
   {
    "tipo": "coleccionable",
-   "x": 155,
-   "y": 11,
+   "x": 24,
+   "y": 15,
    "ref": "f11",
    "latex": "[\\mathrm{HO^-}](t) = c_0 \\cdot \\dfrac{\\sigma_t - \\sigma_\\infty}{\\sigma_0 - \\sigma_\\infty}",
    "nombre": "Concentración de HO⁻ por conductimetría"
   },
   {
    "tipo": "enemigo",
-   "x": 17,
-   "y": 12,
+   "x": 6,
+   "y": 46,
    "enemigo": "error_signo",
    "nombre": "Olvidar el signo menos",
    "correccion": "En v de un reactivo se pone −d[R]/dt para que sea positiva."
   },
   {
    "tipo": "enemigo",
-   "x": 46,
-   "y": 11,
+   "x": 6,
+   "y": 34,
    "enemigo": "error_estequiometria",
    "nombre": "Olvidar el nº estequiométrico",
    "correccion": "[producto] = (coeficiente·x)/V, no x/V."
   },
   {
    "tipo": "enemigo",
-   "x": 59,
-   "y": 11,
+   "x": 6,
+   "y": 22,
    "enemigo": "confusion_catalizador",
    "nombre": "Confundir catalizador e intermediario",
    "correccion": "Intermediario: formado y consumido; catalizador: consumido y regenerado."
   },
   {
    "tipo": "enemigo",
-   "x": 99,
-   "y": 14,
+   "x": 15,
+   "y": 13,
    "enemigo": "catalizador_en_balance",
    "nombre": "El catalizador cambia el balance",
    "correccion": "No aparece en la ecuación y no cambia el estado final."
   },
   {
-   "tipo": "enemigo",
-   "x": 129,
-   "y": 12,
-   "enemigo": "error_homogeneidad",
-   "nombre": "Escribir t1/2 = x_f/2",
-   "correccion": "Es x(t1/2) = x_f/2: t1/2 es un tiempo, x_f/2 un avance."
+   "tipo": "bicho",
+   "x": 21,
+   "y": 22,
+   "bicho": "murcielago",
+   "nombre": "Olvidar el signo menos",
+   "correccion": "En v de un reactivo se pone −d[R]/dt para que sea positiva."
   },
   {
-   "tipo": "enemigo",
-   "x": 158,
-   "y": 12,
-   "enemigo": "flecha_al_reves",
-   "nombre": "Flecha curva al revés",
-   "correccion": "Parte del sitio donor y apunta al sitio aceptor."
+   "tipo": "bicho",
+   "x": 21,
+   "y": 34,
+   "bicho": "murcielago",
+   "nombre": "Olvidar el nº estequiométrico",
+   "correccion": "[producto] = (coeficiente·x)/V, no x/V."
   },
   {
-   "tipo": "enemigo",
-   "x": 112,
-   "y": 11,
-   "enemigo": "fin_en_t12",
-   "nombre": "Reacción terminada en t1/2",
-   "correccion": "Termina tras unos 6 a 7 t1/2, no en t1/2."
+   "tipo": "bicho",
+   "x": 12,
+   "y": 31,
+   "bicho": "murcielago",
+   "nombre": "Confundir catalizador e intermediario",
+   "correccion": "Intermediario: formado y consumido; catalizador: consumido y regenerado."
+  },
+  {
+   "tipo": "torreta",
+   "x": 18,
+   "y": 37,
+   "periodo": 2.8,
+   "nombre": "Olvidar el signo menos",
+   "correccion": "En v de un reactivo se pone −d[R]/dt para que sea positiva."
+  },
+  {
+   "tipo": "torreta",
+   "x": 18,
+   "y": 31,
+   "periodo": 2.8,
+   "nombre": "Olvidar el signo menos",
+   "correccion": "En v de un reactivo se pone −d[R]/dt para que sea positiva."
+  },
+  {
+   "tipo": "torreta",
+   "x": 18,
+   "y": 19,
+   "periodo": 2.8,
+   "nombre": "Olvidar el signo menos",
+   "correccion": "En v de un reactivo se pone −d[R]/dt para que sea positiva."
+  },
+  {
+   "tipo": "sierra",
+   "x": 16,
+   "y": 47,
+   "eje": "x",
+   "recorrido": 4,
+   "periodo": 3.2722936354577543
+  },
+  {
+   "tipo": "sierra",
+   "x": 16,
+   "y": 35,
+   "eje": "x",
+   "recorrido": 4,
+   "periodo": 3.288312777457759
+  },
+  {
+   "tipo": "sierra",
+   "x": 16,
+   "y": 29,
+   "eje": "x",
+   "recorrido": 4,
+   "periodo": 3.3438159493263813
+  },
+  {
+   "tipo": "sierra",
+   "x": 16,
+   "y": 17,
+   "eje": "x",
+   "recorrido": 4,
+   "periodo": 3.2702854783739896
+  },
+  {
+   "tipo": "mina",
+   "x": 17,
+   "y": 25,
+   "modo": "temporizador",
+   "radio": 1.4
+  },
+  {
+   "tipo": "laser",
+   "x": 29,
+   "y": 26,
+   "eje": "h",
+   "largo": 3,
+   "periodo": 3.6,
+   "retardo": 1.4882421512156725
+  },
+  {
+   "tipo": "laser",
+   "x": 20,
+   "y": 17,
+   "eje": "h",
+   "largo": 3,
+   "periodo": 3.6,
+   "retardo": 1.2492345916107297
+  },
+  {
+   "tipo": "lluvia_rocas",
+   "x": 14,
+   "w": 20,
+   "periodo": 2.4
+  },
+  {
+   "tipo": "item",
+   "x": 14,
+   "y": 30,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 5,
+   "y": 21,
+   "item": "fuego"
   },
   {
    "tipo": "jefe",
-   "x": 181,
+   "x": 32,
    "jefe": "ejercicio_bac_1",
    "titulo": "Ejercicio Bac: cinética y catálisis",
    "preguntas": [
@@ -317,855 +403,16 @@
   },
   {
    "tipo": "meta",
-   "x": 186
+   "x": 44
   },
   {
-   "tipo": "bicho",
-   "x": 157,
-   "y": 7,
-   "bicho": "murcielago",
-   "nombre": "Olvidar el signo menos",
-   "correccion": "En v de un reactivo se pone −d[R]/dt para que sea positiva."
-  },
-  {
-   "tipo": "bicho",
-   "x": 66,
-   "y": 6,
-   "bicho": "murcielago",
-   "nombre": "Olvidar el nº estequiométrico",
-   "correccion": "[producto] = (coeficiente·x)/V, no x/V."
-  },
-  {
-   "tipo": "bicho",
-   "x": 30,
-   "y": 8,
-   "bicho": "murcielago",
-   "nombre": "Confundir catalizador e intermediario",
-   "correccion": "Intermediario: formado y consumido; catalizador: consumido y regenerado."
-  },
-  {
-   "tipo": "bicho",
-   "x": 111,
-   "y": 7,
-   "bicho": "demonio",
-   "nombre": "El catalizador cambia el balance",
-   "correccion": "No aparece en la ecuación y no cambia el estado final."
-  },
-  {
-   "tipo": "bicho",
-   "x": 78,
-   "y": 12,
-   "bicho": "embestidor",
-   "nombre": "Escribir t1/2 = x_f/2",
-   "correccion": "Es x(t1/2) = x_f/2: t1/2 es un tiempo, x_f/2 un avance."
-  },
-  {
-   "tipo": "bicho",
-   "x": 39,
-   "y": 13,
-   "bicho": "embestidor",
-   "nombre": "Flecha curva al revés",
-   "correccion": "Parte del sitio donor y apunta al sitio aceptor."
-  },
-  {
-   "tipo": "estalactita",
-   "x": 143,
-   "y": 4
-  },
-  {
-   "tipo": "estalactita",
-   "x": 95,
-   "y": 4
-  },
-  {
-   "tipo": "estalactita",
-   "x": 46,
-   "y": 5
-  },
-  {
-   "tipo": "estalactita",
-   "x": 129,
-   "y": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 0,
-   "y": 14,
-   "largo": 10
-  },
-  {
-   "tipo": "plataforma",
-   "x": 10,
-   "y": 13,
-   "largo": 12
-  },
-  {
-   "tipo": "plataforma",
-   "x": 25,
-   "y": 13,
-   "largo": 14
-  },
-  {
-   "tipo": "plataforma",
-   "x": 39,
-   "y": 12,
-   "largo": 10
-  },
-  {
-   "tipo": "plataforma",
-   "x": 52,
-   "y": 12,
-   "largo": 9
-  },
-  {
-   "tipo": "plataforma",
-   "x": 61,
-   "y": 13,
-   "largo": 5
-  },
-  {
-   "tipo": "plataforma",
-   "x": 66,
-   "y": 12,
-   "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 72,
-   "y": 12,
-   "largo": 2
-  },
-  {
-   "tipo": "plataforma",
-   "x": 74,
-   "y": 13,
-   "largo": 8
-  },
-  {
-   "tipo": "plataforma",
-   "x": 82,
-   "y": 14,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 90,
-   "y": 14,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 94,
-   "y": 13,
-   "largo": 5
-  },
-  {
-   "tipo": "plataforma",
-   "x": 99,
-   "y": 15,
-   "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 105,
-   "y": 14,
-   "largo": 6
-  },
-  {
-   "tipo": "plataforma",
-   "x": 111,
-   "y": 12,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 119,
-   "y": 13,
-   "largo": 5
-  },
-  {
-   "tipo": "plataforma",
-   "x": 124,
-   "y": 12,
-   "largo": 5
-  },
-  {
-   "tipo": "plataforma",
-   "x": 129,
-   "y": 13,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 136,
-   "y": 12,
-   "largo": 10
-  },
-  {
-   "tipo": "plataforma",
-   "x": 150,
-   "y": 14,
-   "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 153,
-   "y": 13,
-   "largo": 7
-  },
-  {
-   "tipo": "plataforma",
-   "x": 163,
-   "y": 13,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 167,
-   "y": 14,
-   "largo": 8
-  },
-  {
-   "tipo": "plataforma",
-   "x": 175,
-   "y": 14,
-   "largo": 15
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 14,
-   "y": 9,
-   "largo": 1,
-   "contenido": "nada"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 15,
-   "y": 9,
-   "largo": 1,
-   "contenido": "moneda"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 16,
-   "y": 9,
-   "largo": 1,
-   "contenido": "nada"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 17,
-   "y": 9,
-   "largo": 1,
-   "contenido": "moneda"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 18,
-   "y": 9,
-   "largo": 1,
-   "contenido": "moneda"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 19,
-   "y": 9,
-   "largo": 1,
-   "contenido": "nada"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 41,
-   "y": 8,
-   "largo": 1,
-   "contenido": "nada"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 42,
-   "y": 8,
-   "largo": 1,
-   "contenido": "moneda"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 43,
-   "y": 8,
-   "largo": 1,
-   "contenido": "nada"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 44,
-   "y": 8,
-   "largo": 1,
-   "contenido": "moneda"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 45,
-   "y": 8,
-   "largo": 1,
-   "contenido": "moneda"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 46,
-   "y": 8,
-   "largo": 1,
-   "contenido": "nada"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 52,
-   "y": 8,
-   "largo": 1,
-   "contenido": "nada"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 53,
-   "y": 8,
-   "largo": 1,
-   "contenido": "moneda"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 54,
-   "y": 8,
-   "largo": 1,
-   "contenido": "nada"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 55,
-   "y": 8,
-   "largo": 1,
-   "contenido": "moneda"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 56,
-   "y": 8,
-   "largo": 1,
-   "contenido": "nada"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 57,
-   "y": 8,
-   "largo": 1,
-   "contenido": "moneda"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 58,
-   "y": 8,
-   "largo": 1,
-   "contenido": "nada"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 105,
-   "y": 10,
-   "largo": 1,
-   "contenido": "nada"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 106,
-   "y": 10,
-   "largo": 1,
-   "contenido": "moneda"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 107,
-   "y": 10,
-   "largo": 1,
-   "contenido": "moneda"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 108,
-   "y": 10,
-   "largo": 1,
-   "contenido": "nada"
-  },
-  {
-   "tipo": "plataforma",
-   "x": 35,
-   "y": 11,
-   "largo": 4
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     35,
-     9
-    ],
-    [
-     36,
-     9
-    ],
-    [
-     37,
-     9
-    ],
-    [
-     38,
-     9
-    ]
-   ]
-  },
-  {
-   "tipo": "plataforma",
-   "x": 79,
-   "y": 10,
-   "largo": 5
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     79,
-     8
-    ],
-    [
-     80,
-     8
-    ],
-    [
-     81,
-     8
-    ],
-    [
-     82,
-     8
-    ],
-    [
-     83,
-     8
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     21,
-     11
-    ],
-    [
-     22,
-     9
-    ],
-    [
-     23,
-     9
-    ],
-    [
-     24,
-     9
-    ],
-    [
-     25,
-     9
-    ],
-    [
-     26,
-     11
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     48,
-     10
-    ],
-    [
-     49,
-     8
-    ],
-    [
-     50,
-     8
-    ],
-    [
-     51,
-     8
-    ],
-    [
-     53,
-     10
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     68,
-     10
-    ],
-    [
-     69,
-     8
-    ],
-    [
-     70,
-     8
-    ],
-    [
-     71,
-     8
-    ],
-    [
-     72,
-     8
-    ],
-    [
-     73,
-     10
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     85,
-     12
-    ],
-    [
-     86,
-     11
-    ],
-    [
-     87,
-     10
-    ],
-    [
-     88,
-     10
-    ],
-    [
-     89,
-     10
-    ],
-    [
-     90,
-     11
-    ],
-    [
-     91,
-     12
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     101,
-     12
-    ],
-    [
-     102,
-     10
-    ],
-    [
-     103,
-     10
-    ],
-    [
-     104,
-     10
-    ],
-    [
-     106,
-     12
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     114,
-     10
-    ],
-    [
-     115,
-     9
-    ],
-    [
-     116,
-     8
-    ],
-    [
-     117,
-     8
-    ],
-    [
-     118,
-     8
-    ],
-    [
-     119,
-     9
-    ],
-    [
-     120,
-     10
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     132,
-     10
-    ],
-    [
-     133,
-     8
-    ],
-    [
-     134,
-     8
-    ],
-    [
-     135,
-     8
-    ],
-    [
-     136,
-     8
-    ],
-    [
-     137,
-     10
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     145,
-     10
-    ],
-    [
-     146,
-     9
-    ],
-    [
-     147,
-     8
-    ],
-    [
-     148,
-     8
-    ],
-    [
-     149,
-     8
-    ],
-    [
-     150,
-     9
-    ],
-    [
-     151,
-     10
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     159,
-     11
-    ],
-    [
-     160,
-     9
-    ],
-    [
-     161,
-     9
-    ],
-    [
-     162,
-     9
-    ],
-    [
-     163,
-     9
-    ],
-    [
-     164,
-     11
-    ]
-   ]
-  },
-  {
-   "tipo": "plataforma",
-   "x": 11,
-   "y": 2,
-   "largo": 11,
-   "grosor": 2,
-   "techo": true
-  },
-  {
-   "tipo": "plataforma",
-   "x": 37,
-   "y": 2,
-   "largo": 12,
-   "grosor": 3,
-   "techo": true
-  },
-  {
-   "tipo": "plataforma",
-   "x": 51,
-   "y": 2,
-   "largo": 6,
-   "grosor": 3,
-   "techo": true
-  },
-  {
-   "tipo": "plataforma",
-   "x": 70,
-   "y": 2,
-   "largo": 10,
-   "grosor": 3,
-   "techo": true
-  },
-  {
-   "tipo": "plataforma",
-   "x": 82,
-   "y": 2,
-   "largo": 10,
-   "grosor": 2,
-   "techo": true
-  },
-  {
-   "tipo": "plataforma",
-   "x": 93,
-   "y": 2,
-   "largo": 11,
-   "grosor": 2,
-   "techo": true
-  },
-  {
-   "tipo": "plataforma",
-   "x": 114,
-   "y": 2,
-   "largo": 6,
-   "grosor": 3,
-   "techo": true
-  },
-  {
-   "tipo": "plataforma",
-   "x": 121,
-   "y": 2,
-   "largo": 12,
-   "grosor": 2,
-   "techo": true
-  },
-  {
-   "tipo": "plataforma",
-   "x": 136,
-   "y": 2,
-   "largo": 8,
-   "grosor": 2,
-   "techo": true
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 88,
-   "y": 11,
-   "largo": 3,
-   "recorrido": 5,
-   "eje": "x",
-   "periodo": 5.2
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 99,
-   "y": 12,
-   "largo": 3,
-   "recorrido": -3,
-   "eje": "y",
-   "periodo": 4.8
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 115,
-   "y": 9,
-   "largo": 3,
-   "recorrido": 7,
-   "eje": "x",
-   "periodo": 3.5
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 132,
-   "y": 10,
-   "largo": 3,
-   "recorrido": -4,
-   "eje": "y",
-   "periodo": 6.2
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 141,
-   "y": 9,
-   "largo": 3,
-   "recorrido": 5,
-   "eje": "x",
-   "periodo": 4.7
-  },
-  {
-   "tipo": "bicho",
-   "x": 26,
-   "y": 6,
-   "bicho": "demonio",
-   "nombre": "Flecha curva al revés",
-   "correccion": "Parte del sitio donor y apunta al sitio aceptor."
-  },
-  {
-   "tipo": "bicho",
-   "x": 63,
-   "y": 6,
-   "bicho": "murcielago",
-   "nombre": "Poner intermediarios en el balance",
-   "correccion": "El balance global solo lleva reactivos y productos."
-  },
-  {
-   "tipo": "bicho",
-   "x": 95,
-   "y": 8,
-   "bicho": "murcielago",
-   "nombre": "Reacción terminada en t1/2",
-   "correccion": "Termina tras unos 6 a 7 t1/2, no en t1/2."
-  },
-  {
-   "tipo": "bicho",
-   "x": 161,
-   "y": 8,
-   "bicho": "demonio",
-   "nombre": "Olvidar el signo menos",
-   "correccion": "En v de un reactivo se pone −d[R]/dt para que sea positiva."
+   "tipo": "checkpoint",
+   "x": 14
   }
  ],
  "ambiente": "cueva",
- "relieve": true,
- "aire": true
+ "vertical": true,
+ "peligros": true,
+ "aire": true,
+ "relieve": true
 }

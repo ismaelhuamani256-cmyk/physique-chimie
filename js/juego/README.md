@@ -185,3 +185,52 @@ Los niveles ya no son una tira plana. `PCB.juego.Relieve.aplicar(nivel, {seed, i
 - **Islas flotantes** escalonadas (hasta 3 pisos) con rastro de monedas, **hileras de ladrillos** sobre la cabeza (algunos dan monedas), **arcos de monedas sobre cada foso** que dibujan el salto, escalinatas de bloques cuando caben y, en cuevas y hornos, **techo irregular** (`techo:true`, el validador no exige alcanzarlo) con las estalactitas colgando de él.
 - Herramienta: `node tools/relieve-niveles.js` aplica el relieve a `contenido/niveles/*.json` (una vez; `--forzar` repite), reintenta con menos intensidad y semillas distintas hasta que el nivel pasa el validador. El generador del Quiz Quest también lo aplica a las fases de tierra y castillo.
 - **Aire** (`Rel.poblarAire`, `tools/aire-niveles.js`): añade **plataformas móviles** (ascensores verticales hacia las islas altas y lanzaderas horizontales que cruzan fosos, siempre a 2–3 tiles del suelo para que se alcancen de un salto) y **enemigos voladores** (murciélago, diablillo que pica y, en laboratorios/espacio, el neutrino) con el error típico del capítulo. Solo se colocan en huecos libres: evitan estructuras sólidas y otros voladores, pero sobrevuelan monedas y gemas. El Quiz Quest lo aplica también a sus fases de tierra y castillo.
+
+## Peligros nuevos (`51-peligros.js`) y reparto automático (`Rel.poblarPeligros`)
+- **Segmentos**: `sierra` (fija, o en raíl con `eje:"x|y"` y `recorrido`, o en círculo `eje:"o"`), `torreta` (te apunta y dispara bolas de energía; se pisa o se dispara, muestra la corrección de un error típico), `canon_bala` (lanza una «bala cometa» gigante; se pisa o se dispara), `geiser` (columna de lava/ácido/agua según el tema; burbujea antes de brotar), `laser` (barrera horizontal o vertical que parpadea antes de encenderse) y `planta_techo` (tubería del techo con una planta carnívora que baja a morder).
+- Los disparos del jugador llaman a `J.Peligros.golpe(g, x, y, radio)`.
+- `tools/peligros-niveles.js` reparte peligros por los 20 niveles según su `ambiente` (laboratorio: láseres y torretas; castillo/horno: géiseres y sierras; cueva: picos y géiseres; hielo: cañones; espacio: láseres y minas…) con huecos de seguridad (nada junto a fosos, checkpoints, carteles, estaciones, sprint ni la arena del jefe) y valida cada resultado. De **27 peligros en total** (14 niveles sin ninguno) se pasó a **~230** (mínimo 9, media 11 por nivel). El generador del Quiz Quest hace lo mismo en sus fases de tierra y castillo.
+
+## Rey Bomba y jefes de disparo (`50-jefes.js`)
+
+`jefe: "rey_bomba"` (segmento `jefe`, 3+ preguntas): jefe **que se derrota disparando**. Tiene una *coraza* (8 puntos, +2 por fase): `fuego` = 1, perdigón de escopeta = 0,35, fotón = 1. Al romperla se apaga la mecha, queda **aturdido** y se le pisa para la pregunta del cours (acierto = nueva fase con coraza renovada; fallo = se enfurece). Ataques: `lanzar` (2–4 bombas en arco con mecha de 2 s; **si las disparas explotan lejos, y si explotan junto al rey le hacen 3 de daño**), `rodar` (embestida), `salto` (onda de choque), `mecha` (nova de explosión, hay que alejarse). Si no llevas munición al entrar en la arena, te da la flor de plasma. `tools/jefe-bomba.js nivel…` lo asigna a un nivel y deja una cápsula de escopeta antes de la arena (ya puesto en thermodynamique, ecoulement-fluide, sens-evolution y champ-uniforme). Hook genérico: `J.Jefe.recibirDisparo(g,x,y,por)` / `J.Jefe.danar(g,d)`.
+
+## Cuevas submarinas y fauna (`44-cueva.js`, `52-fauna.js`)
+
+`Cueva.aplicar(nivel,{seed,intensidad})` convierte un nivel `quiz_agua` en una **cueva**: techo rocoso (0–5 tiles, `plataforma{techo:true}`), jorobas de 0–3 tiles en el fondo y un pasillo siempre ≥ 6 tiles; no toca el inicio, puertas, tuberías, bloques, checkpoints ni la arena. El generador del Quiz Quest lo aplica a la fase de agua (con respaldo 1 → 0,7 → 0,45 si no valida) y `tools/cueva-niveles.js` mejora los niveles de agua ya guardados (`_demo-quiz-agua.json`). El validador acepta techos desde la fila 0 y `topAt` ignora los bloques de techo.
+
+Segmento `{"tipo":"fauna","especie":…,"x","y"}`:
+| especie | comportamiento |
+|---|---|
+| `pirana` | banco de 3; si te huele a < 9 tiles te **persigue** y se lanza en picado; se pisa o se dispara |
+| `tiburon` | gigante: ronda, avisa (ojos rojos + «!») y **embiste** en línea recta; queda cansado; solo a tiros (6) |
+| `langosta` | en el fondo; alza la pinza y suelta una **cavitación** (onda de choque que crece); se pisa o se dispara |
+| `submarino` | te **persigue** y lanza torpedos teledirigidos; solo a tiros (4) |
+| `globo` | se **hincha** si te acercas (hinchado = púas, no se pisa) |
+| `mago` | se teletransporta junto a ti y lanza orbes que te buscan |
+| `mina` | mina flotante con cadena; explota al tocarla o dispararla y arrastra a la fauna cercana |
+Además se reparten `sierra` (en raíl) y `laser` horizontales de 51-peligros.js. Los disparos del jugador (`Items.impacto` y fotones) llaman a `Fauna.golpe`.
+
+## Niveles verticales (torres)
+
+`alto_tiles` admite hasta 64 y la cámara sigue al jugador en vertical. `tools/torre-niveles.js nivel…` convierte un nivel en una **torre** (48×54 tiles): se sube en zigzag por 13 plataformas (con 3 móviles si valida) hasta una arena de jefe en lo alto; reutiliza las fórmulas, errores, bichos y el jefe del nivel original y reparte torretas, sierras bajo las plataformas, minas, láseres, lluvia de rocas, 3 cápsulas (escopeta, grande, fuego) y 3 checkpoints. Aplicado a `champ-gravitation` (espacio), `images` (nubes) y `evolution-temporelle` (cueva). Nota: `topAt` devuelve la plataforma más alta de la columna, por eso los checkpoints van en columnas exclusivas de su plataforma.
+
+## Llaves, puertas con llave y magos en tierra
+
+`{"tipo":"llave","x","y","id"?}` es una llave dorada flotante (51-peligros.js); `{"tipo":"puerta","x","y","alto":6,"llave":true|"id"}` es una puerta cerrada con cerradura dorada que **se abre sola al coger la llave** (no pide pregunta). El validador exige que exista alguna llave. `tools/llaves-niveles.js nivel…` coloca la llave junto a una fórmula y la puerta más adelante (methodes-physiques, newton-2 y force-acides-bases). `tools/magos-niveles.js` reparte 1–2 magos (`fauna`/`mago`, ver arriba) por nivel de capítulo.
+
+## Cristal de hielo y power-ups del mar
+`hielo` (letra H, persistente): X/F/J dispara un rayo recto que **congela** 5 s a la fauna (inmóvil, inofensiva, se puede pisar incluso a submarinos y langostas; el tiburón recibe 2 de daño). `Cueva.aplicar` deja cápsulas de hielo y fuego en las cuevas y el Quiz Quest los da como premio en la fase de agua.
+
+## Lagos de lava, gigantes, espectros y Maestro Calavera
+
+- **Lago de lava** (`tools/lava-niveles.js`, en las 5 fortalezas): tramo de 24–48 tiles de islotes de 2–3 tiles sobre fosos de lava de 3–5, un checkpoint a mitad, lluvia de brasas y `{"tipo":"magma","x","y","altura","periodo","retardo"}` (bolas de magma que saltan en parábola, con burbujas de aviso).
+- **Fauna de tierra** (`52-fauna.js`, `tools/gigantes-niveles.js`): `gigante` (Error Gigante: 2 pisotones, el primero lo enfurece), `alado` (salta en arcos; el primer pisotón le quita las alas y pasa a gigante) y `espectro` (solo avanza si le das la espalda; mirándolo se congela). Presentes en ~8 niveles.
+- **Maestro Calavera** (`jefe:"maestro_calavera"`, force-acides-bases y forcer-sens; `JEFE=maestro_calavera node tools/jefe-bomba.js nivel`): oleadas de huesos bajos/altos, calaveras láser (bajo: salta; alto: quédate en el suelo) y teletransporte. Tras 4 ataques se cansa → pisotón → pregunta del cours.
+- **Power-ups nuevos**: `doble` (doble salto, 25 s) y `luna` (gravedad a la mitad, 20 s).
+
+## Niveles extra, ON/OFF y fauna de granja
+
+- **Niveles extra** (`tools/niveles-extra.js`): `contenido/niveles/<cap>--2.json`, uno por capítulo (145–185 tiles de ancho). Tras **ganar** el nivel principal, `PCB.flow.finNivel` encadena `<cap>--2`, `--3`… (si existen) antes de la intro; dan +30 XP y guardan `nivelesExtra`. Arquetipos según bioma: `montana` (colinas de 9 tiles, cabras, flores, doble salto/gravedad lunar), `granja` (vacas+OVNI), `martilleros` (mecánicos en plataformas altas; Rey Bomba), `laberinto` (salas con techo, llaves/puertas con id y alcobas; Maestro Calavera) y `onoff` (muros y cañones por estado; Rey Bomba).
+- **ON/OFF** (`51-peligros.js`): `interruptor_onoff {x,y}` (se acciona al tocarlo o de un disparo), `bloque_onoff {x,y,largo,alto,grupo:"on"|"off"}` (naranja/azul; sólido solo en su estado, espera si el jugador está dentro) y `canon_bala` con `"onoff":"on"|"off"` (solo dispara en ese estado). El validador ignora estos bloques: se usan como obstáculos, nunca como camino obligatorio sin interruptor.
+- **Fauna nueva** (`52-fauna.js`): `mecanico` (lanza llaves inglesas en arco), `cabra` (avisa, embiste y queda mareada), `vaca` (al pisarla aparece un **OVNI** que te abduce y te suelta ~22 tiles atrás), `flor` (aroma gélido que te **congela** 2 s; `p.helado`).

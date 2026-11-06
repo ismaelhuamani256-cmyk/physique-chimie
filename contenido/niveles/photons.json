@@ -292,14 +292,6 @@
    "x": 80
   },
   {
-   "tipo": "checkpoint",
-   "x": 118
-  },
-  {
-   "tipo": "checkpoint",
-   "x": 150
-  },
-  {
    "tipo": "jefe_quiz",
    "x": 164,
    "jefe": "foton_veloz",
@@ -941,9 +933,154 @@
    "bicho": "neutrino",
    "nombre": "Montaje sin resistencia variable",
    "correccion": "Para hallar la potencia máxima hay que variar R (resistencia variable) con el amperímetro en serie y el voltímetro en derivación."
+  },
+  {
+   "tipo": "torreta",
+   "x": 48,
+   "y": 11,
+   "periodo": 2.4,
+   "nombre": "Confundir absorción y emisión de fotones",
+   "correccion": "La célula fotovoltaica y el fotodiodo absorben fotones; la DEL los emite (recombinación electrón-hueco)."
+  },
+  {
+   "tipo": "torreta",
+   "x": 108,
+   "y": 12,
+   "periodo": 2.7,
+   "nombre": "Más intensidad = efecto fotoeléctrico",
+   "correccion": "No: por debajo de la frecuencia umbral no se extrae ningún electrón, sea cual sea la intensidad; un solo fotón con hν ≥ W basta."
+  },
+  {
+   "tipo": "mina",
+   "x": 112,
+   "y": 12,
+   "modo": "temporizador",
+   "radio": 1.4
+  },
+  {
+   "tipo": "mina",
+   "x": 126,
+   "y": 11,
+   "modo": "contacto",
+   "radio": 1.4
+  },
+  {
+   "tipo": "torreta",
+   "x": 29,
+   "y": 13,
+   "periodo": 2.9,
+   "nombre": "Confundir absorción y emisión de fotones",
+   "correccion": "La célula fotovoltaica y el fotodiodo absorben fotones; la DEL los emite (recombinación electrón-hueco)."
+  },
+  {
+   "tipo": "mina",
+   "x": 132,
+   "y": 12,
+   "modo": "temporizador",
+   "radio": 1.4
+  },
+  {
+   "tipo": "torreta",
+   "x": 101,
+   "y": 12,
+   "periodo": 3.2,
+   "nombre": "Más intensidad = efecto fotoeléctrico",
+   "correccion": "No: por debajo de la frecuencia umbral no se extrae ningún electrón, sea cual sea la intensidad; un solo fotón con hν ≥ W basta."
+  },
+  {
+   "tipo": "torreta",
+   "x": 138,
+   "y": 12,
+   "periodo": 2.9,
+   "nombre": "Olvidar convertir eV en J",
+   "correccion": "Antes de usar h o m_e convierte W y E_c a julios: 1 eV = 1,602×10⁻¹⁹ J."
+  },
+  {
+   "tipo": "torreta",
+   "x": 59,
+   "y": 13,
+   "periodo": 3.2,
+   "nombre": "Confundir absorción y emisión de fotones",
+   "correccion": "La célula fotovoltaica y el fotodiodo absorben fotones; la DEL los emite (recombinación electrón-hueco)."
+  },
+  {
+   "tipo": "torreta",
+   "x": 87,
+   "y": 11,
+   "periodo": 2.8,
+   "nombre": "Más intensidad = efecto fotoeléctrico",
+   "correccion": "No: por debajo de la frecuencia umbral no se extrae ningún electrón, sea cual sea la intensidad; un solo fotón con hν ≥ W basta."
+  },
+  {
+   "tipo": "laser",
+   "x": 92,
+   "y": 11,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 3.9,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "laser",
+   "x": 63,
+   "y": 13,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 3.5,
+   "retardo": 0.1
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 41,
+   "largo": 6,
+   "ciclo": 3.7,
+   "visible": 1.3
+  },
+  {
+   "tipo": "item",
+   "x": 27,
+   "y": 13,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 68,
+   "y": 13,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 106,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 33,
+   "y": 10
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 128,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 107,
+   "y": 9
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 126,
+   "y": 8
   }
  ],
  "ambiente": "campo",
  "relieve": true,
- "aire": true
+ "aire": true,
+ "peligros": true
 }

@@ -25,6 +25,13 @@ Mapa 3D ─▶ eliges capítulo ─▶ NIVEL de plataformas ─▶ (ganar o mori
 - **🎮 Quiz Quest** (botón en la pestaña Quiz de cada capítulo): aventura de 3 fases (tierra, agua, castillo) donde bloques ?, tuberías, puertas y jefes solo se abren si respondes bien; hay ladrillos, plataformas que caen y plantas carnívoras.
 - **🧬 Moléculas 3D**: pestaña en los capítulos de química (bolas y varillas CPK, geometría VSEPR, reacciones animadas) y constructor 3D dentro del juego (estaciones de moléculas).
 - **Ítems**: botas de Hooke, imán, mochila propulsora, cañón de fotones y reserva de 3 casillas (Q). Jefes de física moderna: Isótopo Inestable, Fotón Veloz y Bombardero Neutrón.
+- **Power-ups**: flor de plasma 🔥 (bolas rebotantes), escopeta de iones (10 balas), núcleo expansivo (grande, aguanta un golpe) y **Shift = correr**.
+- **Jefes de disparo**: el **Rey Bomba** (bombas con mecha, coraza que se rompe a tiros y luego pisotón + pregunta) en 4 capítulos.
+- **Cuevas submarinas** (Quiz Quest, fase de agua): techo rocoso, pirañas que persiguen, tiburón gigante, langostas con cavitación, submarinos, peces globo, magos y minas.
+- **🧠 Conceptos (química 1–9)**: visualizaciones de ideas (transferencia de H⁺, isomería, equilibrio, pila, catálisis, datación C-14…) con mini-test; lo que no es del cours está marcado.
+- **Lagos de lava** (parkour + magma), **gigantes y alados**, **espectros tímidos**, **Maestro Calavera**, doble salto y gravedad lunar.
+- **20 niveles extra** (uno por capítulo, se encadenan al ganar): montañas, granja con OVNI, fundición con mecánicos, laberintos de llaves y circuitos ON/OFF.
+- **Torres verticales**: champ-gravitation, images y evolution-temporelle se suben en zigzag hasta el jefe.
 - **Fortalezas** (castillo de lava + jefe «Rey Entropía», que se derrota respondiendo preguntas del cours): capítulos 1, 10, 15, 17 y 20.
 
 ## Fórmulas animadas

@@ -3,7 +3,7 @@
  "tipo_nivel": "quiz_agua",
  "tema_visual": "submarino",
  "fisica_juego": {
-  "gravedad": 1.0,
+  "gravedad": 1,
   "friccion": 0.85,
   "salto": 12,
   "viento": 0
@@ -81,7 +81,7 @@
     "id": "t1",
     "tipo": "numerico",
     "enunciado": "Quelle est la pression d'une mole de gaz parfait à $T=300\\ \\mathrm{K}$ dans un volume $V=24{,}9\\ \\mathrm{L}$ ? ($R=8{,}314\\ \\mathrm{J\\cdot K^{-1}\\cdot mol^{-1}}$)",
-    "valor": 100000.0,
+    "valor": 100000,
     "unidad": "Pa",
     "tolerancia_rel": 0.03,
     "cifras_sig": 2,
@@ -267,7 +267,7 @@
     "id": "m1",
     "tipo": "numerico",
     "enunciado": "Calculer l'énergie cinétique d'une voiture de $1000\\ \\mathrm{kg}$ roulant à $20\\ \\mathrm{m\\cdot s^{-1}}$.",
-    "valor": 200000.0,
+    "valor": 200000,
     "unidad": "J",
     "tolerancia_rel": 0.02,
     "cifras_sig": 2,
@@ -397,6 +397,358 @@
   {
    "tipo": "meta",
    "x": 136
+  },
+  {
+   "tipo": "plataforma",
+   "x": 18,
+   "y": 0,
+   "largo": 3,
+   "grosor": 4,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 21,
+   "y": 0,
+   "largo": 2,
+   "grosor": 5,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 23,
+   "y": 0,
+   "largo": 3,
+   "grosor": 4,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 26,
+   "y": 0,
+   "largo": 6,
+   "grosor": 5,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 32,
+   "y": 0,
+   "largo": 3,
+   "grosor": 4,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 35,
+   "y": 0,
+   "largo": 4,
+   "grosor": 3,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 39,
+   "y": 0,
+   "largo": 7,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 46,
+   "y": 0,
+   "largo": 6,
+   "grosor": 3,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 52,
+   "y": 0,
+   "largo": 5,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 57,
+   "y": 0,
+   "largo": 10,
+   "grosor": 1,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 67,
+   "y": 0,
+   "largo": 3,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 70,
+   "y": 0,
+   "largo": 3,
+   "grosor": 3,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 73,
+   "y": 0,
+   "largo": 4,
+   "grosor": 4,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 77,
+   "y": 0,
+   "largo": 3,
+   "grosor": 5,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 80,
+   "y": 0,
+   "largo": 14,
+   "grosor": 4,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 94,
+   "y": 0,
+   "largo": 8,
+   "grosor": 5,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 102,
+   "y": 0,
+   "largo": 3,
+   "grosor": 4,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 105,
+   "y": 0,
+   "largo": 2,
+   "grosor": 3,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 107,
+   "y": 0,
+   "largo": 3,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 110,
+   "y": 0,
+   "largo": 2,
+   "grosor": 1,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 18,
+   "y": 13,
+   "largo": 1,
+   "grosor": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 19,
+   "y": 12,
+   "largo": 1,
+   "grosor": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 20,
+   "y": 13,
+   "largo": 1,
+   "grosor": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 32,
+   "y": 13,
+   "largo": 1,
+   "grosor": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 33,
+   "y": 14,
+   "largo": 2,
+   "grosor": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 65,
+   "y": 14,
+   "largo": 3,
+   "grosor": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 79,
+   "y": 13,
+   "largo": 1,
+   "grosor": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 80,
+   "y": 12,
+   "largo": 2,
+   "grosor": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 82,
+   "y": 13,
+   "largo": 1,
+   "grosor": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 91,
+   "y": 13,
+   "largo": 3,
+   "grosor": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 99,
+   "y": 13,
+   "largo": 2,
+   "grosor": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 101,
+   "y": 14,
+   "largo": 2,
+   "grosor": 1
+  },
+  {
+   "tipo": "fauna",
+   "especie": "globo",
+   "x": 67,
+   "y": 10
+  },
+  {
+   "tipo": "fauna",
+   "especie": "globo",
+   "x": 42,
+   "y": 6
+  },
+  {
+   "tipo": "sierra",
+   "x": 99,
+   "y": 10,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.884279471822083
+  },
+  {
+   "tipo": "fauna",
+   "especie": "tiburon",
+   "x": 20,
+   "y": 7
+  },
+  {
+   "tipo": "fauna",
+   "especie": "pirana",
+   "x": 21,
+   "y": 11
+  },
+  {
+   "tipo": "fauna",
+   "especie": "pirana",
+   "x": 23,
+   "y": 10
+  },
+  {
+   "tipo": "fauna",
+   "especie": "pirana",
+   "x": 23,
+   "y": 12
+  },
+  {
+   "tipo": "fauna",
+   "especie": "pirana",
+   "x": 58,
+   "y": 4
+  },
+  {
+   "tipo": "fauna",
+   "especie": "pirana",
+   "x": 60,
+   "y": 3
+  },
+  {
+   "tipo": "fauna",
+   "especie": "pirana",
+   "x": 60,
+   "y": 5
+  },
+  {
+   "tipo": "fauna",
+   "especie": "globo",
+   "x": 85,
+   "y": 9
+  },
+  {
+   "tipo": "sierra",
+   "x": 57,
+   "y": 9,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 4.442323559336364
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 49,
+   "y": 12
+  },
+  {
+   "tipo": "laser",
+   "x": 30,
+   "y": 12,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 3.9415709456428885,
+   "retardo": 0.9832426803186536
+  },
+  {
+   "tipo": "item",
+   "x": 39,
+   "y": 12,
+   "item": "hielo"
+  },
+  {
+   "tipo": "item",
+   "x": 106,
+   "y": 12,
+   "item": "hielo"
   }
- ]
+ ],
+ "cueva": {
+  "techoMax": 5,
+  "jorobas": 3,
+  "fauna": 14
+ }
 }

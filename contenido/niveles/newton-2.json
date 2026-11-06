@@ -239,14 +239,6 @@
    "x": 80
   },
   {
-   "tipo": "checkpoint",
-   "x": 118
-  },
-  {
-   "tipo": "checkpoint",
-   "x": 158
-  },
-  {
    "tipo": "jefe",
    "x": 168,
    "jefe": "ejercicio_bac_1",
@@ -835,9 +827,96 @@
    "bicho": "murcielago",
    "nombre": "Balance de fuerzas incompleto",
    "correccion": "Antes de aplicar la ley haz el balance completo (peso, reacción, rozamiento, empuje…) sobre el sistema."
+  },
+  {
+   "tipo": "mina",
+   "x": 124,
+   "y": 11,
+   "modo": "contacto",
+   "radio": 1.4
+  },
+  {
+   "tipo": "mina",
+   "x": 113,
+   "y": 12,
+   "modo": "contacto",
+   "radio": 1.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 144,
+   "y": 14,
+   "dir": 1,
+   "periodo": 3.7,
+   "retardo": 2.1
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 48,
+   "y": 11,
+   "dir": 1,
+   "periodo": 4.3,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 55,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.5,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "item",
+   "x": 86,
+   "y": 11,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 121,
+   "y": 11,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 28,
+   "y": 14,
+   "item": "grande"
+  },
+  {
+   "tipo": "llave",
+   "x": 32,
+   "y": 12
+  },
+  {
+   "tipo": "puerta",
+   "x": 148,
+   "y": 9,
+   "alto": 6,
+   "llave": true
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 115,
+   "y": 9
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 126,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "gigante",
+   "x": 76,
+   "y": 14
   }
  ],
  "ambiente": "hielo",
  "relieve": true,
- "aire": true
+ "aire": true,
+ "peligros": true
 }

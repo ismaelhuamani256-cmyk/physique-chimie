@@ -124,3 +124,5 @@
 .jg-slot.llena{border-color:#ffd166;cursor:pointer;box-shadow:0 0 10px #ffd16688}
 .jg-slot.llena:hover{transform:translateY(-2px)}
 .jg-slot b{min-width:22px;height:22px;line-height:22px}
+/* botones táctiles extra: disparo, correr, usar reserva */
+.jg-tg.der2{position:absolute;right:14px;bottom:96px;display:flex;gap:8px}

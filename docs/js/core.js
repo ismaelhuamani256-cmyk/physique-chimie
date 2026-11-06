@@ -128,12 +128,26 @@
     /** Clic en un nodo del mapa */
     async entrarCapitulo(capId) {
       const [nivel, capitulo] = await Promise.all([PCB.data.nivel(capId), PCB.data.capitulo(capId)]);
+      PCB.flow._extraN = 1;   // nivel principal; los extras se llaman «<cap>--2», «<cap>--3»…
       if (nivel && PCB.screens.juego) return PCB.router.go('juego', { capId, nivel, capitulo });
       return PCB.flow.saltarJuego(capId);
     },
     /** El juego avisa al terminar (morir o ganar) */
-    finNivel(res) {
+    async finNivel(res) {
       const { capId, gano, coleccionados = 0, jefeDerrotado = false } = res;
+      // ¿hay un nivel extra a continuación? (solo si se ha ganado el actual): se encadena antes de la intro
+      if (gano && PCB.screens.juego) {
+        const sig = (PCB.flow._extraN || 1) + 1;
+        let nx = null; try { nx = await PCB.data.nivel(capId + '--' + sig); } catch (e) { nx = null; }
+        if (nx) {
+          PCB.store.update(() => { const c = PCB.store.cap(capId); c.nivelJugado = true; c.nivelGanado = true; if (jefeDerrotado) c.jefeDerrotado = true; c.nivelesExtra = Math.max(c.nivelesExtra || 0, sig - 1); });
+          PCB.store.addXP(30 + coleccionados * 5 + (jefeDerrotado ? 30 : 0), 'nivel');
+          PCB.flow._extraN = sig;
+          const capitulo = await PCB.data.capitulo(capId);
+          return PCB.router.go('juego', { capId, nivel: nx, capitulo });
+        }
+      }
+      PCB.flow._extraN = 1;
       const bonus = { xp: 0, pista: false };
       if (gano) { bonus.xp = 50 + coleccionados * 5 + (jefeDerrotado ? 50 : 0); bonus.pista = true; }
       PCB.store.update((p) => { const c = PCB.store.cap(capId); c.nivelJugado = true; if (gano) c.nivelGanado = true; if (jefeDerrotado) c.jefeDerrotado = true; });

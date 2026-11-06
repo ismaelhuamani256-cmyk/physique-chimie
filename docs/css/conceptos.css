@@ -1,0 +1,16 @@
+/* Pestaña «🧠 Conceptos» (js/conceptos/) */
+.est-conceptos .cpt-intro{color:var(--txt2);margin:0 0 12px}
+.cpt{display:grid;grid-template-columns:minmax(200px,280px) 1fr;gap:16px;align-items:start}
+@media(max-width:760px){.cpt{grid-template-columns:1fr}}
+.cpt-lista h3,.cpt-der h3{margin:0 0 8px;font:700 14px var(--f-ui)}
+.cpt-it{display:grid;grid-template-columns:22px 1fr;gap:2px 8px;width:100%;text-align:left;background:var(--panel);border:1px solid var(--borde);border-radius:10px;padding:9px 10px;margin-bottom:8px;color:var(--txt);cursor:pointer}
+.cpt-it:hover{border-color:var(--c-quimica)}.cpt-it.sel{border-color:var(--c-quimica);background:#143a2e}
+.cpt-it .k{color:var(--c-quimica);grid-row:span 2;font-size:16px}.cpt-it .t{font:600 13px var(--f-ui)}.cpt-it .fr{font:italic 12px var(--f-estudio);color:var(--txt2)}
+.cpt-escena{position:relative;width:100%;aspect-ratio:16/9;background:#0a0f20;border:1px solid var(--borde);border-radius:12px;overflow:hidden}
+.cpt-escena canvas{display:block;width:100%;height:100%}
+.cpt-res{color:var(--txt2);margin:0 0 10px}.cpt-res .pg{color:var(--aviso)}
+.cpt-ctrl{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0}
+.cpt-puntos{display:flex;gap:6px;margin-left:auto}.cpt-puntos i{width:10px;height:10px;border-radius:50%;background:#2a376b;cursor:pointer}.cpt-puntos i.hecho{background:#2ee59d88}.cpt-puntos i.on{background:var(--c-quimica);box-shadow:0 0 8px var(--c-quimica)}
+.cpt-der h4{margin:6px 0;font:700 15px var(--f-ui)}.cpt-texto{font:400 16px/1.55 var(--f-estudio);margin:4px 0}.cpt-fr{font:italic 14px/1.4 var(--f-estudio);color:var(--txt2);margin:2px 0}
+.cpt-test{margin-top:14px;padding:12px;border:1px dashed var(--borde);border-radius:12px}.cpt-test:empty{display:none}
+.cpt-q p{margin:8px 0 6px}.cpt-q .btn{margin:0 6px 6px 0}.cpt-q .btn.ok{background:#144a34;border-color:var(--ok)}.cpt-q .btn.mal{background:#4a1a2a;border-color:var(--mal)}.cpt-q .fb{font-size:13px;color:var(--txt2)}

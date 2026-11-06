@@ -29,7 +29,7 @@
   // ---------- premios ----------
   Q.premio = function (g, tipo, wx, wy) {
     const p = g.jugador;
-    if (['zapatos', 'iman', 'mochila', 'canon'].includes(tipo) && J.Items) { J.Items.dar(g, tipo); return; }   // ítems con temporizador (48-items.js)
+    if (['zapatos', 'iman', 'mochila', 'canon', 'fuego', 'hielo', 'escopeta', 'grande', 'doble', 'luna'].includes(tipo) && J.Items) { J.Items.dar(g, tipo); return; }   // ítems con temporizador (48-items.js)
     g.premios[tipo] = (g.premios[tipo] || 0) + 1;
     g.flot.push({ tipo, x: wx, y: wy, t: 0 });
     J.Audio.sfx(tipo === 'moneda' ? 'moneda' : 'premio');
@@ -150,6 +150,7 @@
     for (const d of w.puertas) {
       if (d.abierta || !puertaCerca(g, d)) continue;
       inp.saltoEdge = false;   // ↑ aquí no es un salto: es llamar a la puerta
+      if (d.llave) { g.ui.aviso('Necesitas la llave'); J.Audio.sfx('aviso'); inp.arribaEdge = inp.accionEdge = false; return; }
       if (d.cooldown > 0) { g.ui.aviso('Espera ' + Math.ceil(d.cooldown) + ' s'); J.Audio.sfx('aviso'); }
       else if (d.eq) J.Quim.pedirEcuacion(g, d);
       else pedirPuerta(g, d);
@@ -301,6 +302,10 @@
       if (!vis(d.x, d.x + 1)) continue;
       if (d.abierta && d.disolver >= 1) continue;
       S.dibujarPuerta(ctx, d.x * T - camX, d.top * T - camY, d.alto, t, d.abierta ? d.disolver : 0, tema.pal.marco, !!d.eq);
+      if (d.llave && !d.abierta) {   // cerradura dorada
+        const kx = Math.round(d.x * T - camX + 8), ky = Math.round(((d.top + d.base) / 2) * T - camY);
+        J.Temas.disco(ctx, kx, ky - 2, 6, '#0b1230'); J.Temas.disco(ctx, kx, ky - 2, 5, '#ffd166'); ctx.fillStyle = '#0b1230'; ctx.fillRect(kx - 1, ky - 3, 3, 3); ctx.fillRect(kx - 1, ky - 1, 2, 6);
+      }
     }
     for (const tu of w.tuberias) {
       if (!vis(tu.x, tu.x + 2)) continue;
@@ -315,7 +320,7 @@
     }
     for (const b of w.bloques) if (vis(b.x, b.x + 1)) S.dibujarBloque(ctx, b.x * T - camX, b.y * T - camY, b.estado, t, b.bump);
     // aviso ↑/E sobre una puerta cercana
-    for (const d of w.puertas) if (!d.abierta && vis(d.x, d.x + 1) && !g.anim && puertaCerca(g, d) && d.cooldown <= 0) {
+    for (const d of w.puertas) if (!d.abierta && !d.llave && vis(d.x, d.x + 1) && !g.anim && puertaCerca(g, d) && d.cooldown <= 0) {
       const ax = Math.round(d.x * T - camX + 8), ay = Math.round(d.top * T - camY - 10 + Math.sin(t * 8) * 2);
       ctx.fillStyle = '#0b1230'; ctx.fillRect(ax - 4, ay + 5, 9, 3); ctx.fillRect(ax - 3, ay + 3, 7, 2); ctx.fillRect(ax - 2, ay + 1, 5, 2); ctx.fillRect(ax - 1, ay - 1, 3, 2);
       ctx.fillStyle = '#ffe27a'; ctx.fillRect(ax - 3, ay + 5, 7, 2); ctx.fillRect(ax - 2, ay + 3, 5, 2); ctx.fillRect(ax - 1, ay + 1, 3, 2);

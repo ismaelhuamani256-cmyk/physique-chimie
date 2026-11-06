@@ -113,83 +113,12 @@
    "elemento": "N"
   },
   {
-   "tipo": "checkpoint",
-   "x": 38
-  },
-  {
-   "tipo": "tuberia",
-   "x": 42,
-   "y": 13,
-   "alto": 2,
-   "destino": "bonus",
-   "pregunta": {
-    "id": "tb1",
-    "tipo": "opcion",
-    "enunciado": "Quel est le couple acide-base de l'ion oxonium ?",
-    "opciones": [
-     "H₃O⁺ / H₂O",
-     "H₂O / HO⁻",
-     "HO⁻ / O²⁻",
-     "H⁺ / H₂"
-    ],
-    "correcta": 0,
-    "explicacion": "H₃O⁺ cède un H⁺ y da H₂O: H₃O⁺ = H₂O + H⁺ (couple H₃O⁺/H₂O).",
-    "pagina_pdf": 40
-   }
-  },
-  {
-   "tipo": "planta_carnivora",
-   "x": 42,
-   "y": 13,
-   "ciclo": 3.4,
-   "visible": 1.2
-  },
-  {
-   "tipo": "enemigo",
-   "x": 46,
-   "y": 11,
-   "enemigo": "h_libre",
-   "nombre": "H⁺ libre en la ecuación",
-   "correccion": "El H⁺ no existe libre en agua y se simplifica al sumar las semiecuaciones."
-  },
-  {
-   "tipo": "cartel",
-   "x": 48,
-   "y": 11,
-   "texto": "ESTACIÓN DE MOLÉCULAS: con los átomos recogidos (H, H y O) monta una molécula de agua. Acércate y pulsa ↓ / E. ¡El agua te construirá un puente!"
-  },
-  {
-   "tipo": "estacion_molecula",
-   "x": 51,
-   "y": 11,
-   "molecula": "H2O",
-   "requiere": {
-    "H": 2,
-    "O": 1
-   },
-   "recompensa": "puente",
-   "objetivo": "puente_h2o"
-  },
-  {
    "tipo": "coleccionable",
    "x": 53,
    "y": 10,
    "ref": "f2",
    "latex": "\\mathrm{BH}^{+} = \\mathrm{B} + \\mathrm{H}^{+}",
    "nombre": "Par BH⁺/B (forma alternativa de la semiecuación)"
-  },
-  {
-   "tipo": "foso",
-   "x": 56,
-   "largo": 7
-  },
-  {
-   "tipo": "puente",
-   "x": 56,
-   "y": 12,
-   "largo": 7,
-   "id": "puente_h2o",
-   "oculto": true
   },
   {
    "tipo": "rastro_monedas",
@@ -231,16 +160,6 @@
    "ref": "f3",
    "latex": "\\mathrm{RCO_2H} = \\mathrm{RCO_2^{-}} + \\mathrm{H}^{+}",
    "nombre": "Par ácido carboxílico / ion carboxilato"
-  },
-  {
-   "tipo": "checkpoint",
-   "x": 66
-  },
-  {
-   "tipo": "bloque_rebote",
-   "x": 71,
-   "y": 12,
-   "largo": 2
   },
   {
    "tipo": "rastro_monedas",
@@ -394,10 +313,6 @@
    "x": 100,
    "y": 9,
    "elemento": "H"
-  },
-  {
-   "tipo": "checkpoint",
-   "x": 105
   },
   {
    "tipo": "coleccionable",
@@ -715,10 +630,6 @@
    "nombre": "Volumen de gas formado (ejercicio «lámpara de lava»)"
   },
   {
-   "tipo": "checkpoint",
-   "x": 194
-  },
-  {
    "tipo": "jefe_quiz",
    "x": 204,
    "jefe": "rey_entropia",
@@ -923,12 +834,6 @@
    "item": "escudo"
   },
   {
-   "tipo": "item",
-   "x": 69,
-   "y": 10,
-   "item": "estrella"
-  },
-  {
    "tipo": "bicho",
    "x": 32,
    "y": 7,
@@ -958,19 +863,13 @@
    "tipo": "plataforma",
    "x": 26,
    "y": 13,
-   "largo": 20
+   "largo": 14
   },
   {
    "tipo": "plataforma",
-   "x": 46,
+   "x": 72,
    "y": 12,
    "largo": 10
-  },
-  {
-   "tipo": "plataforma",
-   "x": 63,
-   "y": 12,
-   "largo": 19
   },
   {
    "tipo": "plataforma",
@@ -1306,30 +1205,6 @@
   },
   {
    "tipo": "bicho",
-   "x": 40,
-   "y": 7,
-   "bicho": "demonio",
-   "nombre": "Confundir ácido con disolución ácida",
-   "correccion": "Un ácido es una especie química; una disolución es ácida según [H₃O⁺] y [HO⁻]."
-  },
-  {
-   "tipo": "bicho",
-   "x": 56,
-   "y": 9,
-   "bicho": "demonio",
-   "nombre": "H⁺ libre en la ecuación",
-   "correccion": "El H⁺ no existe libre en agua y se simplifica al sumar las semiecuaciones."
-  },
-  {
-   "tipo": "bicho",
-   "x": 66,
-   "y": 5,
-   "bicho": "murcielago",
-   "nombre": "Dos ácidos que reaccionan",
-   "correccion": "Reacciona el ácido de un par con la base de otro par distinto."
-  },
-  {
-   "tipo": "bicho",
    "x": 87,
    "y": 7,
    "bicho": "murcielago",
@@ -1359,9 +1234,179 @@
    "bicho": "murcielago",
    "nombre": "Usar H₂CO₃ en lugar de CO₂,H₂O",
    "correccion": "Escribir el par CO₂(aq),H₂O(ℓ)/HCO₃⁻(aq)."
+  },
+  {
+   "tipo": "torreta",
+   "x": 31,
+   "y": 12,
+   "periodo": 3.1,
+   "nombre": "Usar H₂CO₃ en lugar de CO₂,H₂O",
+   "correccion": "Escribir el par CO₂(aq),H₂O(ℓ)/HCO₃⁻(aq)."
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 91,
+   "largo": 8,
+   "ciclo": 3.8,
+   "visible": 1.3
+  },
+  {
+   "tipo": "item",
+   "x": 137,
+   "y": 13,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 34,
+   "y": 12,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 82,
+   "y": 13,
+   "item": "fuego"
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 36,
+   "y": 9
+  },
+  {
+   "tipo": "foso",
+   "x": 40,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 42,
+   "y": 17,
+   "altura": 8,
+   "periodo": 4,
+   "retardo": 2.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 44,
+   "y": 13,
+   "largo": 3
+  },
+  {
+   "tipo": "foso",
+   "x": 47,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 49,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.7,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 51,
+   "y": 12,
+   "largo": 3
+  },
+  {
+   "tipo": "foso",
+   "x": 54,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 56,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.7,
+   "retardo": 2.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 58,
+   "y": 12,
+   "largo": 3
+  },
+  {
+   "tipo": "foso",
+   "x": 61,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 62,
+   "y": 17,
+   "altura": 9,
+   "periodo": 3.4,
+   "retardo": 2.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 64,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 66,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 68,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.6,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 70,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 59
+  },
+  {
+   "tipo": "lluvia_rocas",
+   "x": 44,
+   "w": 24,
+   "periodo": 2.1
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 171,
+   "y": 10
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 143,
+   "y": 10
+  },
+  {
+   "tipo": "fauna",
+   "especie": "gigante",
+   "x": 74,
+   "y": 11
+  },
+  {
+   "tipo": "fauna",
+   "especie": "alado",
+   "x": 106,
+   "y": 13
   }
  ],
  "ambiente": "castillo",
  "relieve": true,
- "aire": true
+ "aire": true,
+ "peligros": true,
+ "lava_parkour": true
 }

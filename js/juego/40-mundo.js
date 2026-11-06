@@ -35,7 +35,7 @@
     w.bloques = G.bloques.map((b) => ({ x: b.x, y: b.y, q: b.seg.pregunta, premio: b.seg.premio || 'moneda', fallo: b.seg.fallo || 'cierra', estado: 'listo', bump: 0, reserva: (b.seg.preguntas_reserva || []).slice() }));
     w.tuberias = G.tuberias.filter((t) => t.base >= 0).map((t) => ({ x: t.x, top: t.top, base: t.base, alto: t.alto, q: t.seg.pregunta, reserva: (t.seg.preguntas_reserva || []).slice(), destino: t.seg.destino || 'atajo',
       sx: t.seg.salida_x, sy: t.seg.salida_y, abierta: false, usada: false, cooldown: 0, agotada: false }));
-    w.puertas = G.puertas.filter((d) => d.base >= 0).map((d) => ({ id: d.seg.id || null, eq: d.seg.ecuacion || null, ayuda: d.seg.ayuda || '', x: d.x, top: d.top, base: d.base, alto: d.alto, q: d.seg.pregunta, reserva: (d.seg.preguntas_reserva || []).slice(), abierta: false, cooldown: 0, disolver: 0, intentos: 0 }));
+    w.puertas = G.puertas.filter((d) => d.base >= 0).map((d) => ({ id: d.seg.id || null, eq: d.seg.ecuacion || null, ayuda: d.seg.ayuda || '', x: d.x, top: d.top, base: d.base, alto: d.alto, q: d.seg.pregunta, reserva: (d.seg.preguntas_reserva || []).slice(), abierta: false, cooldown: 0, disolver: 0, intentos: 0, llave: d.seg.llave || null }));
     // ladrillos rompibles, plataformas que caen (viven en w.movers con cae:true) y plantas carnívoras
     w.ladrillos = G.ladrillos.map((b) => ({ x: b.x, y: b.y, contenido: b.contenido, monedas: b.contenido === 'moneda_multi' ? 6 : b.contenido === 'moneda' ? 1 : 0, bump: 0, roto: false }));
     for (const c of G.caes) w.movers.push({ x: c.x, y: c.y, bx: c.x, by: c.y, largo: c.largo, rec: 0, eje: 'x', per: 1, dx: 0, dy: 0, cae: true, retardo: c.retardo, reaparece: c.reaparece, estado: 'firme', t: 0, vy: 0, ausente: false });
@@ -187,6 +187,7 @@
       if (g.ui) { g.ui.estados(g); g.ui.aviso('¡Escudo roto!'); }
       return;
     }
+    if (motivo !== 'foso' && J.Items && J.Items.alGolpear && J.Items.alGolpear(g)) return;   // «grande»: aguanta un golpe y se encoge
     g.vidas--;
     g.shake = 4;
     if (motivo === 'foso' || g.vidas <= 0) {
@@ -208,6 +209,7 @@
     if (g.vidas <= 0) { g.terminar(false); return; }
     const p = g.jugador, w = g.w;
     Object.assign(p, { x: g.respawn.x, y: g.respawn.y, vx: 0, vy: 0, muriendo: false, inv: 2, suelo: false, sobre: null, saltando: false, coyote: 0, buffer: 0 });
+    if (J.Items && J.Items.alReaparecer) J.Items.alReaparecer(g);   // al morir se pierde el tamaño grande y la flor de plasma
     g.proy.length = 0;
     if (J.Parkour) J.Parkour.alMorir(g);
     const A = w.arena;
@@ -225,7 +227,8 @@
       return;
     }
     p.inv = Math.max(0, p.inv - dt);
-    const dir = g.congelado ? 0 : inp.dir;
+    if (p.helado > 0) { p.helado -= dt; inp.saltoEdge = false; }   // congelada por el aroma de una flor de hielo
+    const dir = (g.congelado || p.helado > 0) ? 0 : inp.dir;
     if (dir) p.dir = dir;
     // arrastre de la plataforma móvil sobre la que estaba
     const m = p.sobre; p.sobre = null;
@@ -240,8 +243,11 @@
     const NAD = J.NAT;
     // --- horizontal ---
     const grip = J.clamp(Math.sqrt((1 - F.friccion) / 0.15), 0.3, 1.3);
-    const acc = zona ? NAD.ACC : suelo ? FIS.ACC_SUELO * grip : FIS.ACC_AIRE;
-    const vmaxH = zona ? NAD.VMAX : F.vmax;
+    const corre = !!inp.correr && !zona;                      // botón de correr (Shift): +50 % de velocidad máxima
+    const acc = (zona ? NAD.ACC : suelo ? FIS.ACC_SUELO * grip : FIS.ACC_AIRE) * (corre ? 1.3 : 1);
+    const vmaxH = zona ? NAD.VMAX : F.vmax * (corre ? 1.5 : 1);
+    p.corriendo = corre && Math.abs(p.vx) > 3;
+    if (p.corriendo && suelo && Math.random() < 0.25) polvo(g, (p.x + p.w / 2) * J.T - p.dir * 5, (p.y + p.h) * J.T, 1);
     const vcx = zona ? corX * NAD.CORRIENTE : 0;   // la corriente arrastra el agua: velocidad de deriva ≈ corriente_x·0.8 tiles/s
     if (dir) {
       const aa = acc * (p.vx * dir < 0 ? FIS.GIRO : 1) * dt, obj = dir * vmaxH + vcx;
@@ -283,10 +289,14 @@
         p.vy = -F.v0 * (J.Items ? J.Items.saltoMult(g) : 1); p.buffer = 0; p.coyote = 0; p.suelo = false; p.saltando = true;
         J.Audio.sfx('salto'); polvo(g, cx * J.T, (p.y + p.h) * J.T, 4);
       }
+      if (suelo) p.dobleUsado = false;
+      if (p.buffer > 0 && p.coyote <= 0 && !p.dobleUsado && g.it && g.it.doble > 0 && !g.congelado) {   // botas de doble salto
+        p.vy = -F.v0 * 0.92; p.buffer = 0; p.dobleUsado = true; p.suelo = false; p.saltando = true; J.Audio.sfx('salto'); polvo(g, cx * J.T, (p.y + p.h) * J.T, 6); J.chispas(g, cx * J.T, (p.y + p.h) * J.T, 8, '#c9a6ff', 2, 1);
+      }
       if (p.saltando && !inp.salto && p.vy < 0) { p.vy *= FIS.CORTE_SALTO; p.saltando = false; }
       if (p.vy >= 0) p.saltando = false;
       vyPrev = p.vy;
-      p.vy = Math.min(FIS.CAIDA_MAX, p.vy + (F.g + fyZona * FIS.G0) * dt);
+      p.vy = Math.min(FIS.CAIDA_MAX, p.vy + (F.g * (g.it && g.it.luna > 0 ? 0.5 : 1) + fyZona * FIS.G0) * dt);
     }
     // --- movimiento (integración con velocidad media: la altura del salto sale exacta, v²/2g) ---
     const vyAntes = p.vy;
@@ -390,6 +400,8 @@
     if (J.Quim) J.Quim.paso(g, dt);
     if (J.Items) J.Items.paso(g, dt);
     if (J.Ambiente) J.Ambiente.paso(g, dt);
+    if (J.Peligros) J.Peligros.paso(g, dt);
+    if (J.Fauna) J.Fauna.paso(g, dt);
     inp.accionEdge = inp.arribaEdge = false;
     // partículas
     for (const q of g.part) { q.vida -= dt; q.vy += q.grav * dt; q.x += q.vx * dt * 16; q.y += q.vy * dt * 16; }
@@ -462,6 +474,30 @@
         if (SOL(w.get(Math.floor(q.x), Math.floor(q.y + 0.2)))) { q.muerto = true; J.chispas(g, q.x * J.T, q.y * J.T, 8, '#ffb020', 3); }
         if (q.x < -2 || q.x > w.ancho + 2 || q.y > w.alto + 1) q.muerto = true;
         if (!q.muerto && !p.muriendo && Math.hypot(p.x + p.w / 2 - q.x, p.y + p.h / 2 - q.y) < 0.55) { q.muerto = true; J.herir(g, q.x); }
+      } else if (q.tipo === 'hueso') {   // hueso del Maestro Calavera: recorre el suelo
+        q.x += q.vx * dt; const A = w.arena;
+        if (q.x < (A ? A.izq + 0.5 : -1) || q.x > (A ? A.der : w.ancho)) q.muerto = true;
+        if (!q.muerto && !p.muriendo && Math.abs(p.x + p.w / 2 - q.x) < 0.5 && p.y + p.h > q.y - q.h + 0.1 && p.y < q.y) J.herir(g, q.x);
+      } else if (q.tipo === 'haz') {   // láser de calavera: aviso y luego haz horizontal
+        if (q.t > q.aviso && !q.sono) { q.sono = true; J.Audio.sfx('onda'); g.shake = Math.max(g.shake, 4); }
+        if (q.t > q.aviso && q.t < q.aviso + q.dur && !p.muriendo && p.y + p.h > q.y - q.h / 2 && p.y < q.y + q.h / 2) J.herir(g, p.x + p.w / 2);
+        if (q.t > q.aviso + q.dur) q.muerto = true;
+      } else if (q.tipo === 'bomba') {   // bomba del Rey Bomba: rebota, mecha de 2 s, explota (o se detona de un disparo)
+        q.vy += q.grav * dt; q.x += q.vx * dt; q.y += q.vy * dt; q.fuse -= dt;
+        if (SOL(w.get(Math.floor(q.x), Math.floor(q.y + 0.3))) && q.vy > 0) { q.y = Math.floor(q.y + 0.3) - 0.3; q.vy *= -0.35; q.vx *= 0.55; if (Math.abs(q.vy) < 1) q.vy = 0; }
+        if (SOL(w.get(Math.floor(q.x + Math.sign(q.vx) * 0.35), Math.floor(q.y)))) q.vx = -q.vx * 0.5;
+        if (q.fuse <= 0 || q.y > w.alto + 1) {
+          q.muerto = true; g.shake = Math.max(g.shake, 5); J.Audio.sfx('onda'); J.chispas(g, q.x * J.T, q.y * J.T, 18, '#ffb020', 5);
+          g.proy.push({ tipo: 'nova', x: q.x, y: q.y, rad: q.rad, t: 0, dur: 0.35, hecho: false, deBomba: true, disparada: !!q.disparada });
+        }
+      } else if (q.tipo === 'nova') {    // explosión: daña una vez al jugador dentro del radio (y al Rey Bomba si la causó un disparo)
+        if (!q.hecho) {
+          q.hecho = true;
+          if (!p.muriendo && Math.hypot(p.x + p.w / 2 - q.x, p.y + p.h / 2 - q.y) < q.rad) J.herir(g, q.x);
+          const b = g.jefe;
+          if (q.deBomba && q.disparada && b && b.disp && Math.hypot(b.x + b.w / 2 - q.x, b.y + b.h / 2 - q.y) < q.rad + 1) { J.Jefe.danar(g, 3); }
+        }
+        if (q.t > q.dur) q.muerto = true;
       } else if (q.tipo === 'tinta') {   // nube de tinta de ácido (pulpo): lenta, grande, se disipa
         q.x += q.vx * dt; q.y += q.vy * dt; q.vx *= Math.pow(0.985, dt * 60); q.vy *= Math.pow(0.985, dt * 60); q.vida -= dt;
         if (q.vida <= 0 || SOL(w.get(Math.floor(q.x), Math.floor(q.y)))) q.muerto = true;

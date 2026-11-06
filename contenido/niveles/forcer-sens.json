@@ -269,13 +269,9 @@
    "x": 114
   },
   {
-   "tipo": "checkpoint",
-   "x": 157
-  },
-  {
    "tipo": "jefe",
    "x": 168,
-   "jefe": "ejercicio_bac_1",
+   "jefe": "maestro_calavera",
    "titulo": "Ejercicio bac: électrolyse (ex. 12, 19, 22 del cours)",
    "preguntas": [
     {
@@ -854,9 +850,145 @@
    "bicho": "murcielago",
    "nombre": "Creer que la electrólisis es espontánea",
    "correccion": "Es una transformación forzada por el generador, en sentido opuesto al espontáneo; la pila es la espontánea."
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 82,
+   "y": 14,
+   "dir": -1,
+   "periodo": 4.2,
+   "retardo": 1.3
+  },
+  {
+   "tipo": "geiser",
+   "x": 125,
+   "y": 14,
+   "alto": 4,
+   "periodo": 4.6,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "torreta",
+   "x": 92,
+   "y": 14,
+   "periodo": 2.7,
+   "nombre": "Confundir iones y electrones como portadores",
+   "correccion": "Iones en la disolución; electrones solo en el circuito exterior."
+  },
+  {
+   "tipo": "mina",
+   "x": 75,
+   "y": 14,
+   "modo": "contacto",
+   "radio": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 139,
+   "y": 7,
+   "eje": "y",
+   "recorrido": 4,
+   "periodo": 3.5
+  },
+  {
+   "tipo": "sierra",
+   "x": 42,
+   "y": 6,
+   "eje": "y",
+   "recorrido": 4,
+   "periodo": 3.8
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 33,
+   "largo": 6,
+   "ciclo": 3.3,
+   "visible": 1.3
+  },
+  {
+   "tipo": "sierra",
+   "x": 51,
+   "y": 7,
+   "eje": "y",
+   "recorrido": 4,
+   "periodo": 5
+  },
+  {
+   "tipo": "sierra",
+   "x": 132,
+   "y": 8,
+   "eje": "y",
+   "recorrido": 4,
+   "periodo": 3.6
+  },
+  {
+   "tipo": "laser",
+   "x": 60,
+   "y": 14,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 3.5,
+   "retardo": 0.8
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 98,
+   "largo": 6,
+   "ciclo": 3.5,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 27,
+   "largo": 9,
+   "ciclo": 3.5,
+   "visible": 1.3
+  },
+  {
+   "tipo": "item",
+   "x": 28,
+   "y": 14,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 68,
+   "y": 14,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 117,
+   "y": 13,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 104,
+   "y": 10
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 121,
+   "y": 10
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 121,
+   "y": 10
+  },
+  {
+   "tipo": "item",
+   "x": 160,
+   "y": 12,
+   "item": "escopeta"
   }
  ],
  "ambiente": "lab",
  "relieve": true,
- "aire": true
+ "aire": true,
+ "peligros": true
 }

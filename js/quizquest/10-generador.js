@@ -123,9 +123,9 @@
     L.ri = ri;
     // premios variados por fase, en orden barajado
     const PREMIOS = {
-      tierra: ['moneda', 'vida', 'pista', 'estrella', 'moneda', 'escudo', 'reloj'],
-      agua: ['moneda', 'escudo', 'reloj', 'pista', 'estrella', 'vida', 'moneda'],
-      castillo: ['escudo', 'vida', 'pista', 'estrella', 'reloj', 'moneda', 'escudo'],
+      tierra: ['moneda', 'vida', 'pista', 'estrella', 'moneda', 'escudo', 'reloj', 'fuego', 'grande'],
+      agua: ['moneda', 'escudo', 'reloj', 'pista', 'estrella', 'vida', 'moneda', 'grande', 'fuego', 'hielo'],
+      castillo: ['escudo', 'vida', 'pista', 'estrella', 'reloj', 'moneda', 'escudo', 'escopeta', 'fuego'],
     }[fase];
     const colaPremios = U.shuffle(PREMIOS.slice(0, 5), rnd).concat(U.shuffle(PREMIOS.slice(5), rnd));
     let ip = 0;
@@ -437,7 +437,7 @@
       else if (q.tipo === 'numerico') { if (typeof q.valor !== 'number') e.push(donde + ': numérica sin valor (' + q.id + ')'); }
       else e.push(donde + ': tipo de pregunta desconocido');
     };
-    por('bloque_pregunta').forEach((s) => { qOk(s.pregunta, 'bloque'); if (!['moneda', 'vida', 'pista', 'escudo', 'estrella', 'reloj'].includes(s.premio)) e.push('premio inválido ' + s.premio); });
+    por('bloque_pregunta').forEach((s) => { qOk(s.pregunta, 'bloque'); if (!['moneda', 'vida', 'pista', 'escudo', 'estrella', 'reloj', 'fuego', 'hielo', 'escopeta', 'grande'].includes(s.premio)) e.push('premio inválido ' + s.premio); });
     por('tuberia').forEach((s) => qOk(s.pregunta, 'tuberia'));
     por('ladrillo').forEach((s) => { if (s.contenido === 'pregunta') qOk(s.pregunta, 'ladrillo'); });
     if (nivel.tipo_nivel !== 'quiz_agua' && !por('plataforma_cae').length) e.push('fase sin plataforma_cae');
@@ -494,6 +494,15 @@
         ctx.F = fisica(fase === 'agua' ? { gravedad: 1, friccion: 0.9, salto: 12, viento: 0 } : fisicaBase);
         res[fase] = construirFase(fase, ctx);
       }
+      // la fase de agua se convierte en CUEVA SUBMARINA: techo rocoso, jorobas y fauna (pirañas, tiburón, langostas, submarinos…)
+      if (window.PCB.juego && window.PCB.juego.Cueva) {
+        for (const inten of [1, 0.7, 0.45]) {
+          const cand = window.PCB.juego.Cueva.aplicar(res.agua, { seed: capId + '|' + s + '|cueva', intensidad: inten });
+          if (QQ.validar(cand).ok && !QQ.revisarContrato(cand).length) { res.agua = cand; break; }
+        }
+      }
+      // pocos checkpoints (no uno a cada rato): separación mínima de 40 tiles
+      if (window.PCB.juego && window.PCB.juego.Relieve) for (const fase of ['tierra', 'castillo']) { const c = window.PCB.juego.Relieve.podarCheckpoints(res[fase]); if (QQ.validar(c).ok && !QQ.revisarContrato(c).length) res[fase] = c; }
       // relieve del terreno (44-relieve.js) en tierra y castillo; si no pasa el validador se queda el nivel llano original
       if (window.PCB.juego && window.PCB.juego.Relieve) {
         for (const fase of ['tierra', 'castillo']) {
@@ -504,6 +513,11 @@
           // más vida en el aire: plataformas móviles y enemigos voladores (con errores típicos del capítulo)
           for (const inten of [0.7, 0.45, 0.25]) {
             const cand = window.PCB.juego.Relieve.poblarAire(res[fase], { seed: capId + '|' + s + '|aire|' + fase, intensidad: inten, errores, ambiente: 'lab' });
+            if (QQ.validar(cand).ok && !QQ.revisarContrato(cand).length) { res[fase] = cand; break; }
+          }
+          // peligros del entorno: sierras, torretas, cañones, géiseres, láseres, plantas del techo, picos y minas (≥ 12 por fase)
+          for (const inten of [1, 0.7, 0.45]) {
+            const cand = window.PCB.juego.Relieve.poblarPeligros(res[fase], { seed: capId + '|' + s + '|pel|' + fase, intensidad: inten, errores, ambiente: fase === 'castillo' ? 'castillo' : 'lab', objetivo: 12 });
             if (QQ.validar(cand).ok && !QQ.revisarContrato(cand).length) { res[fase] = cand; break; }
           }
         }

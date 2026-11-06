@@ -24,7 +24,7 @@
     S.ui.cerrarModal(); S.ui.ocultarJefe(); S.ui.vidas(-1); S.ui.vidas(3);
     g.terminar = (gano) => terminar(g, gano);
     g.preguntar = (b) => preguntar(g, b);
-    J.Quim.iniciar(g); if (J.Items) J.Items.iniciar(g); if (J.Ambiente) J.Ambiente.iniciar(g); g.ui.cartel(null);
+    J.Quim.iniciar(g); if (J.Items) J.Items.iniciar(g); if (J.Ambiente) J.Ambiente.iniciar(g); if (J.Peligros) J.Peligros.iniciar(g); if (J.Fauna) J.Fauna.iniciar(g); g.ui.cartel(null);
     g.ui.estados(g, true);
     J.pasoCamara(g, 0);
     J.Audio.musica(tema.musica);
@@ -123,6 +123,8 @@
     for (const k of w.bloqueos) if (k.activo && vis(k.x, k.x + 1)) dibujarMuro(ctx, k, camX, camY, t, w);
     for (const e of w.enemigos) if (e.vivo && vis(e.x, e.x + 1)) { if (e.acuatico) S2.dibujarAcuatico(ctx, e, t, camX, camY); else S2.dibujarEnemigo(ctx, e, t, camX, camY); }
     if (J.Ambiente) J.Ambiente.dibujar(ctx, g, camX, camY, vis);
+    if (J.Peligros) J.Peligros.dibujar(ctx, g, camX, camY, vis);
+    if (J.Fauna) J.Fauna.dibujar(ctx, g, camX, camY, vis);
     J.Jefe.dibujar(ctx, g, camX, camY);
     const pj = g.jugador;
     if (pj.hundido > 0 && g.anim && g.anim.pipe) {   // entrando en la tubería: Ato se hunde tras la boca

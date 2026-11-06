@@ -1143,19 +1143,19 @@
           c.globalAlpha = al; bola(c, x + jx, y + jy, p.tp === 'P' ? 6.5 : 5.5, col); c.globalAlpha = 1;
         });
         // panel derecho
-        S.txt(NM[est], 470, 34, { size: 19, weight: 800, color: K.v });
-        TXT[est].forEach((l, i) => S.txt(l, 470, 70 + i * 22, { size: 14, color: K.txt }));
+        S.txt(NM[est], 440, 34, { size: 18, weight: 800, color: K.v });
+        TXT[est].forEach((l, i) => S.txt(l, 440, 66 + i * 21, { size: 13, color: K.txt }));
         // leyenda
-        [['P', 'producto (éster)'], ['R', u >= 1.5 ? 'ácido → su sal (acuosa)' : 'reactivo ácido'], ['W', 'agua'], ['C', 'catalizador H⁺']].forEach(([k, n], i) => { bola(c, 482, 160 + i * 24, 7, k === 'R' && u >= 1.5 ? '#6aa7ff' : COL[k]); S.txt(n, 496, 160 + i * 24, { size: 13, color: K.tx2 }); });
+        [['P', 'producto (éster)', 0], ['R', u >= 1.5 ? 'ácido → su sal (acuosa)' : 'reactivo ácido', 1], ['W', 'agua', 2], ['C', 'catalizador H⁺', 1]].filter((q) => (est < 3 ? true : est < 5 ? q[2] !== 1 : q[2] === 0)).forEach(([k, n], i) => { bola(c, 452, 150 + i * 24, 7, k === 'R' && u >= 1.5 ? '#6aa7ff' : COL[k]); S.txt(n, 466, 150 + i * 24, { size: 13, color: K.tx2 }); });
         if (est === 5) {
           const nObt = mObt / 88, nAtt = 0.1, Rr = (nObt / nAtt) * 100;
-          c.fillStyle = K.panel; c.strokeStyle = K.gris; c.lineWidth = 2; rrect(c, 462, 262, 322, 128, 12); c.fill(); c.stroke();
-          S.txt('M(éster) = 88 g/mol · n_attendue = 0,10 mol', 474, 282, { size: 12, color: K.tx2 });
-          S.txt('n_obtenue = m/M = ' + fnum(nObt, 4) + ' mol', 474, 306, { size: 14 });
-          S.txt('R = ' + fnum(nObt, 4) + ' / 0,10 × 100', 474, 332, { size: 14 });
-          S.txt('R = ' + fnum(Rr, 1) + ' %', 474, 364, { size: 24, weight: 800, color: Rr > 100 ? K.m : K.v });
-          if (Rr > 100.01) S.txt('¡imposible: R ≤ 100 %!', 640, 364, { size: 13, color: K.m });
-          S.txt('(Situación 1, p. 208: 5,5 g → R = 62,5 %)', 474, 384, { size: 11, color: K.tx2 });
+          c.fillStyle = K.panel; c.strokeStyle = K.gris; c.lineWidth = 2; rrect(c, 436, 262, 350, 128, 12); c.fill(); c.stroke();
+          S.txt('M(éster) = 88 g/mol · n_attendue = 0,10 mol', 450, 282, { size: 12, color: K.tx2 });
+          S.txt('n_obtenue = m/M = ' + fnum(nObt, 4) + ' mol', 450, 306, { size: 14 });
+          S.txt('R = ' + fnum(nObt, 4) + ' / 0,10 × 100', 450, 332, { size: 14 });
+          S.txt('R = ' + fnum(Rr, 1) + ' %', 450, 364, { size: 24, weight: 800, color: Rr > 100 ? K.m : K.v });
+          if (Rr > 100.01) S.txt('¡imposible: R ≤ 100 %!', 620, 364, { size: 13, color: K.m });
+          S.txt('(Situación 1, p. 208: 5,5 g → R = 62,5 %)', 450, 384, { size: 11, color: K.tx2 });
         }
         c.restore();
         ctl.m.inp.parentElement.style.display = est === 5 ? '' : 'none';
@@ -1175,13 +1175,13 @@
       c.beginPath(); c.moveTo(300, 100); c.bezierCurveTo(232, 118, 236, 250, 270, 300); c.lineTo(292, 340); c.lineTo(308, 340); c.lineTo(330, 300); c.bezierCurveTo(364, 250, 368, 118, 300, 100); c.closePath(); c.fill(); c.stroke();
       c.fillStyle = '#c9d3ff'; c.fillRect(290, 80, 20, 20); c.strokeRect(290, 80, 20, 20); c.fillStyle = K.am; c.fillRect(286, 336, 28, 8); S.txt('llave', 322, 340, { size: 12, color: K.tx2 });
       c.setLineDash([5, 4]); c.strokeStyle = '#ffffff88'; c.lineWidth = 2; c.beginPath(); c.moveTo(262, 216); c.lineTo(338, 216); c.stroke(); c.setLineDash([]);
-      S.txt('fase orgánica', 372, 175, { size: 13, color: K.v }); S.txt('fase acuosa', 372, 258, { size: 13, color: '#7fd3ff' }); S.txt('(el líquido menos denso queda arriba)', 372, 196, { size: 11, color: K.tx2 }); void tapon;
+      S.txt('fase orgánica', 226, 175, { size: 13, color: K.v, align: 'right' }); S.txt('fase acuosa', 226, 258, { size: 13, color: '#7fd3ff', align: 'right' }); S.txt('(arriba, el líquido menos denso)', 300, 366, { size: 11, color: K.tx2, align: 'center' }); void tapon;
     }
     function aDecantacion(c, S) { funnel(c, S); S.txt('ampolla de decantación', 300, 66, { size: 13, color: K.tx2, align: 'center' }); }
     function aLavado(c, S, t) {
-      funnel(c, S); S.txt('+ NaHCO₃(aq)', 170, 130, { size: 14, weight: 700, color: K.am }); flecha(c, 220, 130, 280, 110, K.am, 2.5, 9);
+      funnel(c, S); S.txt('+ NaHCO₃(aq)', 90, 96, { size: 14, weight: 700, color: K.am }); flecha(c, 196, 96, 286, 92, K.am, 2.5, 9);
       if (!S.reducido) for (let k = 0; k < 6; k++) { const y = 200 - ((t * 30 + k * 22) % 90); c.strokeStyle = '#ffffffaa'; c.lineWidth = 1.5; c.beginPath(); c.arc(270 + (k * 23) % 60, y + 10, 3 + (k % 3), 0, 6.3); c.stroke(); }
-      S.txt('CO₂ (efervescencia)', 160, 190, { size: 12, color: '#ffffffcc' });
+      S.txt('burbujas de CO₂', 226, 130, { size: 12, color: '#ffffffcc', align: 'right' });
     }
     function aSecado(c, S) {
       c.strokeStyle = '#c9d3ff'; c.lineWidth = 3; c.fillStyle = '#1a3f6a40'; c.beginPath(); c.moveTo(300, 250); c.lineTo(300, 290); c.lineTo(236, 366); c.lineTo(364, 366); c.lineTo(300, 290); c.closePath(); c.fill(); c.stroke();
@@ -1226,12 +1226,12 @@
     const N = 60, NP = 15;
     let modo = 'abierto', pot = 0.6, P = [], perdido = 0, recogido = 0;
     const R = rng(31);
-    const RUTA = { abierto: [[250, 262], [250, 195], [250, 50]], reflujo: [[250, 262], [250, 195], [250, 100]], destila: [[250, 262], [250, 195], [250, 112], [418, 172], [440, 196]] };
+    const RUTA = { abierto: [[250, 292], [250, 195], [250, 50]], reflujo: [[250, 292], [250, 195], [250, 100]], destila: [[250, 292], [250, 195], [250, 112], [418, 172], [440, 196]] };
     const lonRuta = (m) => { let L = 0; const r = RUTA[m]; for (let i = 1; i < r.length; i++) L += Math.hypot(r[i][0] - r[i - 1][0], r[i][1] - r[i - 1][1]); return L; };
     const posRuta = (m, d) => { const r = RUTA[m]; for (let i = 1; i < r.length; i++) { const l = Math.hypot(r[i][0] - r[i - 1][0], r[i][1] - r[i - 1][1]); if (d <= l) return [lerp(r[i - 1][0], r[i][0], d / l), lerp(r[i - 1][1], r[i][1], d / l)]; d -= l; } return r[r.length - 1].slice(); };
     function reiniciar() {
       P = []; perdido = recogido = 0;
-      for (let i = 0; i < N; i++) { const a = R() * 6.28, rr = Math.sqrt(R()) * 52; P.push({ pr: i < NP, st: 'liq', x: 250 + Math.cos(a) * rr, y: 318 + Math.sin(a) * rr * 0.7 + 4, d: 0, ph: R() * 6.28, w: R() }); }
+      for (let i = 0; i < N; i++) { const a = R() * 6.28, rr = Math.sqrt(R()) * 52; P.push({ pr: i < NP, st: 'liq', x: 250 + Math.cos(a) * rr, y: 336 + Math.sin(a) * rr * 0.7, d: 0, ph: R() * 6.28, w: R() }); }
       S && S.pedir();
     }
     function tick(dt) {
@@ -1240,13 +1240,13 @@
         if (p.st === 'liq') {
           const pv = pot * pot * 0.45 * (modo === 'destila' ? (p.pr ? 2.2 : 0.12) : 1);
           if (Math.random() < pv * dt) { p.st = 'vap'; p.d = 0; }
-          else { p.x += (Math.random() - 0.5) * 120 * dt; p.y += (Math.random() - 0.5) * 120 * dt; const dx = p.x - 250, dy = (p.y - 318) / 0.75; const rr = Math.hypot(dx, dy); if (rr > 54) { p.x = 250 + dx / rr * 54; p.y = 318 + dy / rr * 54 * 0.75; } }
+          else { p.x += (Math.random() - 0.5) * 120 * dt; p.y += (Math.random() - 0.5) * 120 * dt; const dx = p.x - 250, dy = (p.y - 336) / 0.7; const rr = Math.hypot(dx, dy); if (rr > 52) { p.x = 250 + dx / rr * 52; p.y = 336 + dy / rr * 52 * 0.7; } }
         } else if (p.st === 'vap') {
           p.d += (45 + pot * 70) * dt; const q = posRuta(modo, Math.min(p.d, L)); p.x = q[0] + Math.sin(p.ph + p.d * 0.1) * 5; p.y = q[1];
           if (modo === 'abierto' && p.d >= L) { p.st = 'gone'; perdido++; }
           else if (modo === 'reflujo' && p.d >= L * fc) { p.st = 'cond'; p.cd = 0; p.side = p.w < 0.5 ? -1 : 1; }
           else if (modo === 'destila' && p.d >= L * fc) { p.st = 'dest'; p.cd = 0; }
-        } else if (p.st === 'cond') { p.cd += 60 * dt; p.y = 112 + p.cd; p.x = 250 + p.side * 17; if (p.y >= 268) { p.st = 'liq'; p.x = 250 + (R() - 0.5) * 60; p.y = 300 + R() * 20; } }
+        } else if (p.st === 'cond') { p.cd += 60 * dt; p.y = 112 + p.cd; p.x = 250 + p.side * 17; if (p.y >= 292) { p.st = 'liq'; p.x = 250 + (R() - 0.5) * 60; p.y = 306 + R() * 24; } }
         else if (p.st === 'dest') { p.cd += 70 * dt; const f = clamp(p.cd / 120, 0, 1); p.x = lerp(418 + (p.w - 0.5) * 8, 470, f); p.y = lerp(172, 330, f * f); if (f >= 1) { p.st = 'recv'; recogido++; p.x = 440 + R() * 60; p.y = 335 + R() * 18; } }
       });
     }
@@ -1268,8 +1268,10 @@
         const glow = pot; c.fillStyle = '#3a2418'; rrect(c, 170, 384, 160, 14, 4); c.fill(); c.fillStyle = 'rgba(255,140,40,' + (0.15 + glow * 0.6) + ')'; c.beginPath(); c.ellipse(250, 384, 60, 10 + 14 * glow, 0, 3.14, 6.28); c.fill();
         S.txt('calefactor', 250, 408, { size: 12, color: K.am, align: 'center' });
         // matraz
-        c.strokeStyle = '#c9d3ff'; c.lineWidth = 3; c.fillStyle = '#1a3f6a55'; c.beginPath(); c.arc(250, 318, 72, 0.0 - 1.18, Math.PI + 1.18, true); c.lineTo(236, 190); c.lineTo(264, 190); c.closePath(); c.fill(); c.stroke();
-        c.fillStyle = '#2a6fb055'; c.beginPath(); c.arc(250, 318, 66, 0.2, Math.PI - 0.2); c.closePath(); c.fill();
+        c.strokeStyle = '#c9d3ff'; c.lineWidth = 3; c.fillStyle = '#1a3f6a55';
+        c.beginPath(); c.arc(250, 322, 70, 0, 6.283); c.fill(); c.fillRect(236, 190, 28, 70); c.stroke();
+        c.save(); c.beginPath(); c.arc(250, 322, 68, 0, 6.283); c.clip(); c.fillStyle = '#2a6fb066'; c.fillRect(170, 292, 160, 120); c.restore();
+        c.fillStyle = '#0a0f20'; c.fillRect(238, 246, 24, 8); c.strokeStyle = '#c9d3ff'; c.beginPath(); c.moveTo(236, 190); c.lineTo(236, 254); c.moveTo(264, 190); c.lineTo(264, 254); c.stroke();
         if (modo === 'reflujo') { c.fillStyle = '#2b78c966'; c.fillRect(226, 100, 48, 92); c.strokeStyle = '#8fd0ff'; c.lineWidth = 2; c.strokeRect(226, 100, 48, 92); c.strokeStyle = '#c9d3ff'; c.strokeRect(238, 100, 24, 92); S.txt('refrigerante', 216, 120, { size: 13, color: '#8fd0ff', align: 'right' }); S.txt('agua ↑', 216, 170, { size: 12, color: '#8fd0ff', align: 'right' }); flecha(c, 296, 182, 276, 182, '#8fd0ff', 2, 7); flecha(c, 276, 110, 296, 110, '#8fd0ff', 2, 7); }
         if (modo === 'destila') {
           c.strokeStyle = '#c9d3ff'; c.lineWidth = 3; c.beginPath(); c.moveTo(238, 190); c.lineTo(238, 108); c.lineTo(250, 104); c.lineTo(262, 108); c.lineTo(262, 190); c.stroke();
@@ -1283,17 +1285,17 @@
         // vapores huidos (abierto): nube de partículas que se desvanecen
         if (modo === 'abierto' && perdido > 0) { S.txt('↑ ' + perdido + ' partículas perdidas al aire', 250, 52, { size: 14, weight: 700, color: K.rojo, align: 'center', halo: true }); }
         // panel derecho
-        const px = 560;
+        const px = 530;
         const enMatraz = P.filter((p) => p.st !== 'gone' && p.st !== 'recv' && p.st !== 'dest').length;
         S.txt('Balance de materia', px, 36, { size: 15, weight: 700 });
         const filas = [['en el montaje', enMatraz, N, K.v]]; if (modo === 'abierto') filas.push(['perdido al aire', perdido, N, K.rojo]); if (modo === 'destila') filas.push(['producto recogido', recogido, NP, K.am]);
-        filas.forEach(([n, v, mx, col], i) => { const y = 72 + i * 44; S.txt(n + ': ' + v, px, y, { size: 13, color: col }); c.fillStyle = '#16204a'; c.fillRect(px, y + 12, 200, 12); c.fillStyle = col; c.fillRect(px, y + 12, 200 * (v / mx), 12); });
-        S.txt('Velocidad de la reacción (relativa)', px, 190, { size: 13, color: K.tx2 }); c.fillStyle = '#16204a'; c.fillRect(px, 202, 200, 12); c.fillStyle = K.m; c.fillRect(px, 202, 200 * pot, 12);
+        filas.forEach(([n, v, mx, col], i) => { const y = 72 + i * 44; S.txt(n + ': ' + v, px, y, { size: 13, color: col }); c.fillStyle = '#16204a'; c.fillRect(px, y + 12, 240, 12); c.fillStyle = col; c.fillRect(px, y + 12, 240 * (v / mx), 12); });
+        S.txt('Velocidad de la reacción (relativa)', px, 190, { size: 13, color: K.tx2 }); c.fillStyle = '#16204a'; c.fillRect(px, 202, 240, 12); c.fillStyle = K.m; c.fillRect(px, 202, 240 * pot, 12);
         S.txt('↑ T → más choques eficaces', px, 232, { size: 12, color: K.tx2 });
-        const msg = modo === 'abierto' ? 'Sin refrigerante la materia escapa' : modo === 'reflujo' ? 'Reflujo: todo vuelve al matraz' : 'Destilación: se elimina el producto';
-        S.txt(msg, px, 280, { size: 15, weight: 700, color: modo === 'abierto' ? K.rojo : modo === 'reflujo' ? K.v : K.am });
-        if (modo === 'reflujo') S.txt('T alta, sin pérdidas: v ↑ y rendimiento intacto', px, 302, { size: 12, color: K.tx2 });
-        if (modo === 'destila') S.txt('Desplaza el equilibrio → R ↑ (fig. 7, p. 233)', px, 302, { size: 12, color: K.tx2 });
+        const msg = modo === 'abierto' ? 'Sin refrigerante: escapa materia' : modo === 'reflujo' ? 'Reflujo: todo vuelve al matraz' : 'Destilación: se retira el producto';
+        S.txt(msg, px, 280, { size: 14, weight: 700, color: modo === 'abierto' ? K.rojo : modo === 'reflujo' ? K.v : K.am });
+        if (modo === 'reflujo') { S.txt('T alta y sin pérdidas:', px, 302, { size: 12, color: K.tx2 }); S.txt('v ↑ y rendimiento intacto', px, 320, { size: 12, color: K.tx2 }); }
+        if (modo === 'destila') { S.txt('Desplaza el equilibrio:', px, 302, { size: 12, color: K.tx2 }); S.txt('R ↑ (fig. 7, p. 233)', px, 320, { size: 12, color: K.tx2 }); }
         void t;
       },
     });
@@ -1364,8 +1366,8 @@
         S.txt('', tx, 0); S.txt('referencia', tx + 150, 78, { size: 12, color: '#8d97c4', align: 'right' }); S.txt('elegida', tx + 242, 78, { size: 12, color: K.v, align: 'right', weight: 700 });
         const t1 = t90(ref, pRef), t2 = t90(cur, pCur);
         const fila = (y, nom, a, b, col) => { S.txt(nom, tx + 10, y, { size: 12, color: K.txt }); S.txt(a, tx + 150, y + 22, { size: 14, color: '#8d97c4', align: 'right' }); S.txt(b, tx + 242, y + 22, { size: 16, weight: 800, color: col, align: 'right' }); };
-        fila(104, 'VELOCIDAD · tiempo al 90 % de la meseta', t1 == null ? '> 100 min' : t1 + ' min', t2 == null ? '> 100 min' : t2 + ' min', K.m);
-        fila(172, 'RENDIMIENTO · meseta  R = n/n_att', fnum(pRef / 0.1 * 100, 0) + ' %', fnum(pCur / 0.1 * 100, 0) + ' %', K.am);
+        fila(104, 'VELOCIDAD: t al 90 % de la meseta', t1 == null ? '> 100 min' : t1 + ' min', t2 == null ? '> 100 min' : t2 + ' min', K.m);
+        fila(172, 'RENDIMIENTO: R en la meseta', fnum(pRef / 0.1 * 100, 0) + ' %', fnum(pCur / 0.1 * 100, 0) + ' %', K.am);
         fila(240, 'R tras 100 min', fnum(ref[100] / 0.1 * 100, 0) + ' %', fnum(cur[100] / 0.1 * 100, 0) + ' %', K.v);
         const mensaje = rem ? 'Eliminar un producto: R → 100 %' : B > 0.1 ? 'Exceso de un reactivo: meseta ↑ (R ↑)' : (T > 20 || cat) ? 'Más rápido, misma meseta: R no cambia' : 'Prueba a subir T o añadir catalizador';
         S.txt(mensaje, 400, 372, { size: 16, weight: 700, color: K.am, align: 'center' });

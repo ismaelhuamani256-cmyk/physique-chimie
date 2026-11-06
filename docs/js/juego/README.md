@@ -214,3 +214,7 @@ Además se reparten `sierra` (en raíl) y `laser` horizontales de 51-peligros.js
 ## Niveles verticales (torres)
 
 `alto_tiles` admite hasta 64 y la cámara sigue al jugador en vertical. `tools/torre-niveles.js nivel…` convierte un nivel en una **torre** (48×54 tiles): se sube en zigzag por 13 plataformas (con 3 móviles si valida) hasta una arena de jefe en lo alto; reutiliza las fórmulas, errores, bichos y el jefe del nivel original y reparte torretas, sierras bajo las plataformas, minas, láseres, lluvia de rocas, 3 cápsulas (escopeta, grande, fuego) y 3 checkpoints. Aplicado a `champ-gravitation` (espacio), `images` (nubes) y `evolution-temporelle` (cueva). Nota: `topAt` devuelve la plataforma más alta de la columna, por eso los checkpoints van en columnas exclusivas de su plataforma.
+
+## Llaves, puertas con llave y magos en tierra
+
+`{"tipo":"llave","x","y","id"?}` es una llave dorada flotante (51-peligros.js); `{"tipo":"puerta","x","y","alto":6,"llave":true|"id"}` es una puerta cerrada con cerradura dorada que **se abre sola al coger la llave** (no pide pregunta). El validador exige que exista alguna llave. `tools/llaves-niveles.js nivel…` coloca la llave junto a una fórmula y la puerta más adelante (methodes-physiques, newton-2 y force-acides-bases). `tools/magos-niveles.js` reparte 1–2 magos (`fauna`/`mago`, ver arriba) por nivel de capítulo.

@@ -761,9 +761,92 @@
    "bicho": "demonio",
    "nombre": "Dar un valor numérico cuando piden «exprimer»",
    "correccion": "Exprimer = dar la relación literal entre las magnitudes; el cálculo numérico viene después."
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 26,
+   "y": 13,
+   "dir": 1,
+   "periodo": 4,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "mina",
+   "x": 47,
+   "y": 12,
+   "modo": "temporizador",
+   "radio": 1.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 122,
+   "y": 11,
+   "dir": -1,
+   "periodo": 4.2,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 65,
+   "y": 12,
+   "dir": -1,
+   "periodo": 4.4,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 84,
+   "largo": 6,
+   "ciclo": 3.4,
+   "visible": 1.3
+  },
+  {
+   "tipo": "mina",
+   "x": 74,
+   "y": 12,
+   "modo": "contacto",
+   "radio": 1.4
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 117,
+   "largo": 6,
+   "ciclo": 3.7,
+   "visible": 1.3
+  },
+  {
+   "tipo": "laser",
+   "x": 97,
+   "y": 12,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 3.4,
+   "retardo": 2.4
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 91,
+   "largo": 6,
+   "ciclo": 3.5,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 69,
+   "largo": 7,
+   "ciclo": 3.3,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 43,
+   "largo": 9,
+   "ciclo": 3.8,
+   "visible": 1.3
   }
  ],
  "ambiente": "campo",
  "relieve": true,
- "aire": true
+ "aire": true,
+ "peligros": true
 }

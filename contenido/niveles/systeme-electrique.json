@@ -827,9 +827,75 @@
    "bicho": "murcielago",
    "nombre": "Olvidar convertir µF y nF a faradios",
    "correccion": "1 µF = 10⁻⁶ F y 1 nF = 10⁻⁹ F antes de calcular τ o q."
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 44,
+   "y": 12,
+   "dir": 1,
+   "periodo": 4.3,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 146,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.8,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 53,
+   "largo": 7,
+   "ciclo": 3.8,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 66,
+   "largo": 6,
+   "ciclo": 3.8,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 93,
+   "largo": 7,
+   "ciclo": 3.2,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 24,
+   "largo": 8,
+   "ciclo": 3.2,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 137,
+   "largo": 7,
+   "ciclo": 3.9,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 99,
+   "largo": 7,
+   "ciclo": 3.4,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 142,
+   "largo": 7,
+   "ciclo": 3.6,
+   "visible": 1.3
   }
  ],
  "ambiente": "castillo",
  "relieve": true,
- "aire": true
+ "aire": true,
+ "peligros": true
 }

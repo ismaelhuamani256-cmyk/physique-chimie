@@ -835,9 +835,48 @@
    "bicho": "murcielago",
    "nombre": "Balance de fuerzas incompleto",
    "correccion": "Antes de aplicar la ley haz el balance completo (peso, reacción, rozamiento, empuje…) sobre el sistema."
+  },
+  {
+   "tipo": "mina",
+   "x": 124,
+   "y": 11,
+   "modo": "contacto",
+   "radio": 1.4
+  },
+  {
+   "tipo": "mina",
+   "x": 113,
+   "y": 12,
+   "modo": "contacto",
+   "radio": 1.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 144,
+   "y": 14,
+   "dir": 1,
+   "periodo": 3.7,
+   "retardo": 2.1
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 48,
+   "y": 11,
+   "dir": 1,
+   "periodo": 4.3,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 55,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.5,
+   "retardo": 0.2
   }
  ],
  "ambiente": "hielo",
  "relieve": true,
- "aire": true
+ "aire": true,
+ "peligros": true
 }

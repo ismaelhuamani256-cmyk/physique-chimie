@@ -113,6 +113,7 @@
           break;
         }
       }
+      if (J.Peligros && J.Peligros.golpe(g, f.x, f.y, 0.3)) f.muerto = true;   // torretas y balas gigantes (51-peligros.js)
       for (const e of g.bichos || []) {   // bichos del entorno (49-ambiente.js)
         if (!e.vivo || e.muertoT > 0) continue;
         if (Math.abs(f.x - (e.x + e.w / 2)) < 0.8 && Math.abs(f.y - (e.y + e.h / 2)) < 0.8) { J.Ambiente.matar(g, e, 'foton'); f.muerto = true; break; }

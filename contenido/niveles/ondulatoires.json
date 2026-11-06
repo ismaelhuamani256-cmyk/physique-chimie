@@ -795,9 +795,82 @@
    "bicho": "murcielago",
    "nombre": "Calcular sin fórmula literal",
    "correccion": "Razonar en fórmula literal y luego sustituir los valores."
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 26,
+   "y": 13,
+   "dir": 1,
+   "periodo": 4,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 48,
+   "y": 12,
+   "dir": 1,
+   "periodo": 4.3,
+   "retardo": 1.9
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 93,
+   "y": 12,
+   "dir": 1,
+   "periodo": 4.2,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "geiser",
+   "x": 138,
+   "y": 13,
+   "alto": 4,
+   "periodo": 4,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 79,
+   "y": 11,
+   "dir": 1,
+   "periodo": 4.5,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 67,
+   "y": 12,
+   "dir": -1,
+   "periodo": 4.4,
+   "retardo": 2.7
+  },
+  {
+   "tipo": "sierra",
+   "x": 73,
+   "y": 7,
+   "eje": "y",
+   "recorrido": 4,
+   "periodo": 3.5
+  },
+  {
+   "tipo": "sierra",
+   "x": 86,
+   "y": 7,
+   "eje": "y",
+   "recorrido": 4,
+   "periodo": 4.8
+  },
+  {
+   "tipo": "sierra",
+   "x": 34,
+   "y": 8,
+   "eje": "y",
+   "recorrido": 4,
+   "periodo": 4.1
   }
  ],
  "ambiente": "castillo",
  "relieve": true,
- "aire": true
+ "aire": true,
+ "peligros": true
 }

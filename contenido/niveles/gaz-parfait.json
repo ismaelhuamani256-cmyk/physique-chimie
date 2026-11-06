@@ -798,9 +798,79 @@
    "bicho": "demonio",
    "nombre": "Usar la temperatura en °C en P·V = nRT",
    "correccion": "La temperatura debe ir en kelvin: T = θ + 273,15, nunca θ en °C."
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 138,
+   "y": 11,
+   "dir": 1,
+   "periodo": 4.1,
+   "retardo": 1.3
+  },
+  {
+   "tipo": "picos",
+   "x": 76,
+   "y": 11,
+   "largo": 2
+  },
+  {
+   "tipo": "geiser",
+   "x": 48,
+   "y": 12,
+   "alto": 5,
+   "periodo": 3.7,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "laser",
+   "x": 32,
+   "y": 14,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 4.3,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 54,
+   "largo": 7,
+   "ciclo": 3.4,
+   "visible": 1.3
+  },
+  {
+   "tipo": "sierra",
+   "x": 86,
+   "y": 7,
+   "eje": "y",
+   "recorrido": 4,
+   "periodo": 3.6
+  },
+  {
+   "tipo": "laser",
+   "x": 68,
+   "y": 11,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 3.7,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 92,
+   "largo": 7,
+   "ciclo": 3.4,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 27,
+   "largo": 8,
+   "ciclo": 3.8,
+   "visible": 1.3
   }
  ],
  "ambiente": "castillo",
  "relieve": true,
- "aire": true
+ "aire": true,
+ "peligros": true
 }

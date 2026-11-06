@@ -985,9 +985,123 @@
    "bicho": "murcielago",
    "nombre": "Calcular n_attendue con el reactivo en exceso",
    "correccion": "n_attendue sale del avance máximo, fijado por el reactivo limitante (tabla de avance)."
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 130,
+   "y": 13,
+   "dir": -1,
+   "periodo": 3.9,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "torreta",
+   "x": 153,
+   "y": 11,
+   "periodo": 3.2,
+   "nombre": "Olvidar el catalizador (H₂SO₄)",
+   "correccion": "El ácido sulfúrico es catalizador: aumenta la velocidad de formación; interrogarse siempre por el papel de cada especie introducida."
+  },
+  {
+   "tipo": "picos",
+   "x": 83,
+   "y": 11,
+   "largo": 3
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 94,
+   "y": 11,
+   "dir": -1,
+   "periodo": 4.4,
+   "retardo": 2.6
+  },
+  {
+   "tipo": "mina",
+   "x": 60,
+   "y": 11,
+   "modo": "temporizador",
+   "radio": 1.4
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 105,
+   "largo": 8,
+   "ciclo": 3.3,
+   "visible": 1.3
+  },
+  {
+   "tipo": "laser",
+   "x": 134,
+   "y": 13,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 3.6,
+   "retardo": 2
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 146,
+   "largo": 9,
+   "ciclo": 3.7,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 100,
+   "largo": 6,
+   "ciclo": 3.5,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 34,
+   "largo": 6,
+   "ciclo": 3.9,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 90,
+   "largo": 7,
+   "ciclo": 3.4,
+   "visible": 1.3
+  },
+  {
+   "tipo": "laser",
+   "x": 158,
+   "y": 11,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 4.3,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "laser",
+   "x": 66,
+   "y": 11,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 4.2,
+   "retardo": 2.1
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 49,
+   "largo": 7,
+   "ciclo": 3.7,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 142,
+   "largo": 9,
+   "ciclo": 3.3,
+   "visible": 1.3
   }
  ],
  "ambiente": "lab",
  "relieve": true,
- "aire": true
+ "aire": true,
+ "peligros": true
 }

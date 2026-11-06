@@ -1163,9 +1163,105 @@
    "bicho": "demonio",
    "nombre": "Olvidar el signo menos",
    "correccion": "En v de un reactivo se pone −d[R]/dt para que sea positiva."
+  },
+  {
+   "tipo": "geiser",
+   "x": 139,
+   "y": 12,
+   "alto": 4,
+   "periodo": 4.3,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "geiser",
+   "x": 34,
+   "y": 13,
+   "alto": 4,
+   "periodo": 4.7,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "geiser",
+   "x": 29,
+   "y": 13,
+   "alto": 5,
+   "periodo": 4.2,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "torreta",
+   "x": 107,
+   "y": 13,
+   "periodo": 3.1,
+   "nombre": "Olvidar el nº estequiométrico",
+   "correccion": "[producto] = (coeficiente·x)/V, no x/V."
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 76,
+   "y": 12,
+   "dir": 1,
+   "periodo": 3.7,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 42,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.7,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "geiser",
+   "x": 155,
+   "y": 13,
+   "alto": 5,
+   "periodo": 3.7,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "geiser",
+   "x": 63,
+   "y": 13,
+   "alto": 5,
+   "periodo": 4.2,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 69,
+   "y": 6,
+   "eje": "y",
+   "recorrido": 4,
+   "periodo": 4.7
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 161,
+   "largo": 7,
+   "ciclo": 3.9,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 24,
+   "largo": 7,
+   "ciclo": 3.6,
+   "visible": 1.3
+  },
+  {
+   "tipo": "laser",
+   "x": 147,
+   "y": 11,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 3.9,
+   "retardo": 0.1
   }
  ],
  "ambiente": "cueva",
  "relieve": true,
- "aire": true
+ "aire": true,
+ "peligros": true
 }

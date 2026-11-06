@@ -989,9 +989,94 @@
    "bicho": "murcielago",
    "nombre": "Usar la masa del disolvente en w",
    "correccion": "w = m_soluté / m_solución (de la solución entera) × 100."
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 106,
+   "y": 12,
+   "dir": 1,
+   "periodo": 3.4,
+   "retardo": 2.1
+  },
+  {
+   "tipo": "picos",
+   "x": 26,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 68,
+   "largo": 6,
+   "ciclo": 3.8,
+   "visible": 1.3
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 146,
+   "y": 12,
+   "dir": -1,
+   "periodo": 3.7,
+   "retardo": 2
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 102,
+   "largo": 6,
+   "ciclo": 4,
+   "visible": 1.3
+  },
+  {
+   "tipo": "laser",
+   "x": 50,
+   "y": 13,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 3.3,
+   "retardo": 2.7
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 156,
+   "largo": 6,
+   "ciclo": 3.7,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 114,
+   "largo": 6,
+   "ciclo": 3.6,
+   "visible": 1.3
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 61,
+   "largo": 7,
+   "ciclo": 3.9,
+   "visible": 1.3
+  },
+  {
+   "tipo": "laser",
+   "x": 34,
+   "y": 14,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 4.3,
+   "retardo": 1.5
+  },
+  {
+   "tipo": "laser",
+   "x": 139,
+   "y": 11,
+   "eje": "h",
+   "largo": 5,
+   "periodo": 3.8,
+   "retardo": 1.3
   }
  ],
  "ambiente": "lab",
  "relieve": true,
- "aire": true
+ "aire": true,
+ "peligros": true
 }

@@ -506,6 +506,11 @@
             const cand = window.PCB.juego.Relieve.poblarAire(res[fase], { seed: capId + '|' + s + '|aire|' + fase, intensidad: inten, errores, ambiente: 'lab' });
             if (QQ.validar(cand).ok && !QQ.revisarContrato(cand).length) { res[fase] = cand; break; }
           }
+          // peligros del entorno: sierras, torretas, cañones, géiseres, láseres, plantas del techo, picos y minas (≥ 12 por fase)
+          for (const inten of [1, 0.7, 0.45]) {
+            const cand = window.PCB.juego.Relieve.poblarPeligros(res[fase], { seed: capId + '|' + s + '|pel|' + fase, intensidad: inten, errores, ambiente: fase === 'castillo' ? 'castillo' : 'lab', objetivo: 12 });
+            if (QQ.validar(cand).ok && !QQ.revisarContrato(cand).length) { res[fase] = cand; break; }
+          }
         }
       }
       const errores_ = [];

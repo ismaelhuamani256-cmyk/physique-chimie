@@ -1359,9 +1359,25 @@
    "bicho": "murcielago",
    "nombre": "Usar H₂CO₃ en lugar de CO₂,H₂O",
    "correccion": "Escribir el par CO₂(aq),H₂O(ℓ)/HCO₃⁻(aq)."
+  },
+  {
+   "tipo": "torreta",
+   "x": 31,
+   "y": 12,
+   "periodo": 3.1,
+   "nombre": "Usar H₂CO₃ en lugar de CO₂,H₂O",
+   "correccion": "Escribir el par CO₂(aq),H₂O(ℓ)/HCO₃⁻(aq)."
+  },
+  {
+   "tipo": "planta_techo",
+   "x": 91,
+   "largo": 8,
+   "ciclo": 3.8,
+   "visible": 1.3
   }
  ],
  "ambiente": "castillo",
  "relieve": true,
- "aire": true
+ "aire": true,
+ "peligros": true
 }

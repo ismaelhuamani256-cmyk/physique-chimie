@@ -389,6 +389,7 @@
     if (J.Parkour) J.Parkour.paso(g, dt);
     if (J.Quim) J.Quim.paso(g, dt);
     if (J.Items) J.Items.paso(g, dt);
+    if (J.Ambiente) J.Ambiente.paso(g, dt);
     inp.accionEdge = inp.arribaEdge = false;
     // partículas
     for (const q of g.part) { q.vida -= dt; q.vy += q.grav * dt; q.x += q.vx * dt * 16; q.y += q.vy * dt * 16; }

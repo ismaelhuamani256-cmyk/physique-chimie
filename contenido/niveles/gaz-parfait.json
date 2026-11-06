@@ -367,6 +367,39 @@
    "tipo": "meta",
    "x": 172,
    "y": 12
+  },
+  {
+   "tipo": "bicho",
+   "x": 49,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Usar la temperatura en °C en P·V = nRT",
+   "correccion": "La temperatura debe ir en kelvin: T = θ + 273,15, nunca θ en °C."
+  },
+  {
+   "tipo": "bicho",
+   "x": 27,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "No convertir el volumen a m³ (ni P a Pa)",
+   "correccion": "Convertir antes de calcular: V en m³ y P en Pa (1 L = 10⁻³ m³ ; 1 bar = 10⁵ Pa)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 81,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Escribir «°K» o dar T en °C",
+   "correccion": "Escribir K y no °K (la temperatura termodinámica se da en kelvin)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 97,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Duplicar θ (°C) creyendo que se duplica T",
+   "correccion": "A V y n constantes, P se duplica cuando T (en K) se duplica: 290,15 K × 2 = 580,3 K = 307,15 °C."
   }
- ]
+ ],
+ "ambiente": "castillo"
 }

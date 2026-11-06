@@ -1,7 +1,7 @@
 {
  "capitulo_id": "methodes-chimiques",
  "tipo_nivel": "normal",
- "tema_visual": "laboratorio-neon",
+ "tema_visual": "laboratorio-verde",
  "fisica_juego": {
   "gravedad": 1.0,
   "friccion": 0.85,
@@ -399,6 +399,39 @@
   {
    "tipo": "meta",
    "x": 193
+  },
+  {
+   "tipo": "bicho",
+   "x": 111,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Confundir masa volúmica y densidad",
+   "correccion": "ρ tiene unidad (g·L⁻¹, kg·m⁻³); d = ρ/ρ_eau no tiene unidad."
+  },
+  {
+   "tipo": "bicho",
+   "x": 31,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Usar la masa del disolvente en w",
+   "correccion": "w = m_soluté / m_solución (de la solución entera) × 100."
+  },
+  {
+   "tipo": "bicho",
+   "x": 70,
+   "y": 10,
+   "bicho": "demonio",
+   "nombre": "Creer que diluir cambia n",
+   "correccion": "n se conserva: c·V = c_diluée·V_diluée."
+  },
+  {
+   "tipo": "bicho",
+   "x": 145,
+   "y": 10,
+   "bicho": "neutrino",
+   "nombre": "Esperar siempre un cambio de color",
+   "correccion": "La equivalencia también se halla por pH-metría o conductimetría."
   }
- ]
+ ],
+ "ambiente": "lab"
 }

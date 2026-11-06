@@ -1,7 +1,7 @@
 {
  "capitulo_id": "evolution-temporelle",
  "tipo_nivel": "normal",
- "tema_visual": "laboratorio-neon",
+ "tema_visual": "caverna",
  "fisica_juego": {
   "gravedad": 1.0,
   "friccion": 0.85,
@@ -396,6 +396,71 @@
   {
    "tipo": "meta",
    "x": 186
+  },
+  {
+   "tipo": "bicho",
+   "x": 157,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Olvidar el signo menos",
+   "correccion": "En v de un reactivo se pone −d[R]/dt para que sea positiva."
+  },
+  {
+   "tipo": "bicho",
+   "x": 66,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Olvidar el nº estequiométrico",
+   "correccion": "[producto] = (coeficiente·x)/V, no x/V."
+  },
+  {
+   "tipo": "bicho",
+   "x": 30,
+   "y": 9,
+   "bicho": "murcielago",
+   "nombre": "Confundir catalizador e intermediario",
+   "correccion": "Intermediario: formado y consumido; catalizador: consumido y regenerado."
+  },
+  {
+   "tipo": "bicho",
+   "x": 111,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "El catalizador cambia el balance",
+   "correccion": "No aparece en la ecuación y no cambia el estado final."
+  },
+  {
+   "tipo": "bicho",
+   "x": 78,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Escribir t1/2 = x_f/2",
+   "correccion": "Es x(t1/2) = x_f/2: t1/2 es un tiempo, x_f/2 un avance."
+  },
+  {
+   "tipo": "bicho",
+   "x": 39,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Flecha curva al revés",
+   "correccion": "Parte del sitio donor y apunta al sitio aceptor."
+  },
+  {
+   "tipo": "estalactita",
+   "x": 143
+  },
+  {
+   "tipo": "estalactita",
+   "x": 95
+  },
+  {
+   "tipo": "estalactita",
+   "x": 46
+  },
+  {
+   "tipo": "estalactita",
+   "x": 129
   }
- ]
+ ],
+ "ambiente": "cueva"
 }

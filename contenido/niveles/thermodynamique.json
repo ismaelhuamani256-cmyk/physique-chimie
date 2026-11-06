@@ -410,6 +410,31 @@
   {
    "tipo": "meta",
    "x": 171
+  },
+  {
+   "tipo": "bicho",
+   "x": 92,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Usar T en °C en la ley de Stefan-Boltzmann",
+   "correccion": "La ley F = σ·T⁴ exige T en kelvin: T(K) = θ(°C) + 273. En cambio, para una variación ΔT (Q = C·ΔT) se puede razonar directamente en °C."
+  },
+  {
+   "tipo": "bicho",
+   "x": 52,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Olvidar convertir unidades y cifras significativas",
+   "correccion": "Pasar el espesor a m (3,6 cm = 3,6×10⁻² m), MJ a J y kWh a J (1 kWh = 3,6×10⁶ J), y dar el resultado con las cifras significativas de los datos."
+  },
+  {
+   "tipo": "bicho",
+   "x": 41,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Creer que la energía se destruye al frenar o enfriar",
+   "correccion": "No se destruye: se transfiere del sistema al medio exterior (Exercice 17: «Faux. L'énergie est transférée»)."
   }
- ]
+ ],
+ "ambiente": "horno"
 }

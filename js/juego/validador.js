@@ -336,7 +336,7 @@
     if (F.hSeguro < 2.2) E(`Con esta física el salto solo alcanza ${F.hMax.toFixed(2)} tiles: demasiado bajo para jugar.`);
     const segs = nivel.segmentos;
     const TIPOS = ['plataforma', 'puente', 'palanca', 'foso', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'checkpoint', 'jefe', 'meta', 'bloque_pregunta', 'tuberia', 'puerta', 'zona_agua', 'jefe_quiz', 'ladrillo', 'plataforma_cae', 'planta_carnivora',
-      'mina', 'prensa', 'pendulo', 'cinta', 'picos', 'bloque_rebote', 'sprint', 'rastro_monedas', 'cartel', 'atomo', 'estacion_molecula', 'puerta_ecuacion', 'interruptor_estado', 'plataforma_estado', 'item'];
+      'mina', 'prensa', 'pendulo', 'cinta', 'picos', 'bloque_rebote', 'sprint', 'rastro_monedas', 'cartel', 'atomo', 'estacion_molecula', 'puerta_ecuacion', 'interruptor_estado', 'plataforma_estado', 'item', 'bicho', 'estalactita', 'lluvia_rocas'];
     const G = geometria(nivel, { revelar: true });   // los puentes ocultos (que aparecen con una estación) cuentan como presentes
     const dentroX = (x) => x >= 0 && x < ancho, dentroY = (y) => y >= 0 && y < alto;
     const desc = (s, i) => `segmento #${i} (${s.tipo}${s.x != null ? ' x=' + s.x : ''}${s.y != null ? ' y=' + s.y : ''})`;
@@ -347,7 +347,7 @@
       if (!s || typeof s !== 'object' || !TIPOS.includes(s.tipo)) { E(`segmento #${i}: tipo desconocido ${JSON.stringify(s && s.tipo)}.`); return; }
       if (s.tipo === 'sprint' || s.tipo === 'rastro_monedas') return;   // se validan aparte (x_ini/x_fin, puntos)
       if (!esNum(s.x)) { E(`${desc(s, i)}: falta x numérica.`); return; }
-      if (['plataforma', 'puente', 'palanca', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'bloque_pregunta', 'tuberia', 'puerta', 'zona_agua', 'ladrillo', 'plataforma_cae', 'planta_carnivora', 'mina', 'prensa', 'pendulo', 'cinta', 'picos', 'bloque_rebote', 'cartel', 'atomo', 'estacion_molecula', 'puerta_ecuacion', 'interruptor_estado', 'plataforma_estado', 'item'].includes(s.tipo) && !esNum(s.y)) E(`${desc(s, i)}: falta y numérica.`);
+      if (['plataforma', 'puente', 'palanca', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'bloque_pregunta', 'tuberia', 'puerta', 'zona_agua', 'ladrillo', 'plataforma_cae', 'planta_carnivora', 'mina', 'prensa', 'pendulo', 'cinta', 'picos', 'bloque_rebote', 'cartel', 'atomo', 'estacion_molecula', 'puerta_ecuacion', 'interruptor_estado', 'plataforma_estado', 'item', 'bicho'].includes(s.tipo) && !esNum(s.y)) E(`${desc(s, i)}: falta y numérica.`);
       if (['plataforma', 'puente', 'foso', 'plataforma_movil', 'plataforma_cae', 'cinta', 'picos', 'bloque_rebote', 'plataforma_estado'].includes(s.tipo) && s.largo != null && !(esNum(s.largo) && s.largo >= 1)) E(`${desc(s, i)}: "largo" debe ser un número >= 1.`);
       if (s.x < 0 || s.x >= ancho) E(`${desc(s, i)}: x fuera de rango [0, ${ancho}).`);
       if (s.y != null && (s.y < 0 || s.y >= alto)) E(`${desc(s, i)}: y fuera de rango [0, ${alto}).`);

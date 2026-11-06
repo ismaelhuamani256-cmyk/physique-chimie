@@ -384,6 +384,39 @@
   {
    "tipo": "meta",
    "x": 164
+  },
+  {
+   "tipo": "bicho",
+   "x": 82,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Distancias focales sin pasar a la misma unidad",
+   "correccion": "Convierte f'₁ y f'₂ a la misma unidad antes de operar (p. ej. f'₁ = 60 cm y f'₂ = 20 mm → 62 cm, no 80)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 56,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Objetivo con focal menor que el ocular",
+   "correccion": "El objetivo tiene la mayor distancia focal (del orden del metro); el ocular, la menor (del orden del centímetro): f'₁ > f'₂."
+  },
+  {
+   "tipo": "bicho",
+   "x": 121,
+   "y": 10,
+   "bicho": "murcielago",
+   "nombre": "Afocale ≠ «distancia > f'₁»",
+   "correccion": "Una lunette afocale tiene F'₁ = F₂: la distancia entre lentes es exactamente f'₁ + f'₂."
+  },
+  {
+   "tipo": "bicho",
+   "x": 102,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Conversiones y cifras significativas olvidadas",
+   "correccion": "Convierte las unidades y da G con las cifras significativas de los datos (no 1,6666…); recuerda también que G es negativo."
   }
- ]
+ ],
+ "ambiente": "nube"
 }

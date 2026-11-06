@@ -344,6 +344,39 @@
    "tipo": "meta",
    "x": 172,
    "y": 12
+  },
+  {
+   "tipo": "bicho",
+   "x": 52,
+   "y": 10,
+   "bicho": "demonio",
+   "nombre": "Sumar niveles sonoros en dB",
+   "correccion": "Se suman las intensidades (W·m⁻²), no los dB: log a + log b ≠ log(a+b)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 96,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "No convertir a metros",
+   "correccion": "nm, µm y cm deben pasarse a m antes de aplicar θ = λ/a o i = λD/e."
+  },
+  {
+   "tipo": "bicho",
+   "x": 78,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Calcular sin fórmula literal",
+   "correccion": "Razonar en fórmula literal y luego sustituir los valores."
+  },
+  {
+   "tipo": "bicho",
+   "x": 31,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Afirmar en vez de justificar",
+   "correccion": "Evitar «sé que...»: citar la relación del cours y explicar el razonamiento."
   }
- ]
+ ],
+ "ambiente": "castillo"
 }

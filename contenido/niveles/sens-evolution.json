@@ -353,6 +353,39 @@
   {
    "tipo": "meta",
    "x": 177
+  },
+  {
+   "tipo": "bicho",
+   "x": 36,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Escribir [solvente] o [sólido] en Qr",
+   "correccion": "Un solvente, un sólido o un gas no disuelto se reemplaza por 1 en Qr (p. ej. NaCl(s): Qr = [Na⁺]·[Cl⁻])."
+  },
+  {
+   "tipo": "bicho",
+   "x": 128,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Creer que equilibrio = «todo se detiene»",
+   "correccion": "El equilibrio es dinámico: las reacciones directa y opuesta continúan a la misma velocidad (v1 = v2)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 55,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Invertir el criterio Qr,i frente a K",
+   "correccion": "Qr,i < K → sentido directo; Qr,i > K → sentido opuesto; la evolución para en Qr = K."
+  },
+  {
+   "tipo": "bicho",
+   "x": 68,
+   "y": 11,
+   "bicho": "neutrino",
+   "nombre": "Tratar el agua como solvente cuando es reactivo puro",
+   "correccion": "Con reactivos puros (no en disolución) el agua es un producto, no el solvente: su cantidad entra en Qr."
   }
- ]
+ ],
+ "ambiente": "lab"
 }

@@ -416,6 +416,39 @@
    "tipo": "meta",
    "x": 184,
    "y": 12
+  },
+  {
+   "tipo": "bicho",
+   "x": 147,
+   "y": 10,
+   "bicho": "demonio",
+   "nombre": "Confundir dimensión y unidad",
+   "correccion": "La dimensión (p. ej. T) no es la unidad (el segundo): el análisis dimensional se hace con dimensiones."
+  },
+  {
+   "tipo": "bicho",
+   "x": 26,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Dejar i = dq/dt en corriente continua",
+   "correccion": "Con I constante la derivada se traduce en una diferencia: I = q/Δt."
+  },
+  {
+   "tipo": "bicho",
+   "x": 48,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Voltímetro en serie o amperímetro en derivación",
+   "correccion": "El voltímetro se conecta en derivación y el amperímetro en serie."
+  },
+  {
+   "tipo": "bicho",
+   "x": 94,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Creer que u e i están en fase en un condensador",
+   "correccion": "i = C·du/dt: es la intensidad i la que está en avance de fase sobre la tensión u."
   }
- ]
+ ],
+ "ambiente": "castillo"
 }

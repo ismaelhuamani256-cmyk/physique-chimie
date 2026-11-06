@@ -1,7 +1,7 @@
 {
  "capitulo_id": "synthese-organique",
  "tipo_nivel": "normal",
- "tema_visual": "laboratorio-neon",
+ "tema_visual": "laboratorio-verde",
  "fisica_juego": {
   "gravedad": 1.0,
   "friccion": 0.85,
@@ -429,6 +429,39 @@
   {
    "tipo": "meta",
    "x": 189
+  },
+  {
+   "tipo": "bicho",
+   "x": 53,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Confundir velocidad y rendimiento",
+   "correccion": "Calentar o añadir un catalizador acelera la reacción, pero no cambia la cantidad final de producto: el rendimiento queda inalterado."
+  },
+  {
+   "tipo": "bicho",
+   "x": 29,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Llamar «adición» a la esterificación",
+   "correccion": "Se forma agua además del éster: la esterificación es más bien una sustitución, no una adición."
+  },
+  {
+   "tipo": "bicho",
+   "x": 88,
+   "y": 10,
+   "bicho": "demonio",
+   "nombre": "Olvidar el catalizador (H₂SO₄)",
+   "correccion": "El ácido sulfúrico es catalizador: aumenta la velocidad de formación; interrogarse siempre por el papel de cada especie introducida."
+  },
+  {
+   "tipo": "bicho",
+   "x": 148,
+   "y": 11,
+   "bicho": "neutrino",
+   "nombre": "Calcular n_attendue con el reactivo en exceso",
+   "correccion": "n_attendue sale del avance máximo, fijado por el reactivo limitante (tabla de avance)."
   }
- ]
+ ],
+ "ambiente": "lab"
 }

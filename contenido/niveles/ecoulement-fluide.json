@@ -1,7 +1,7 @@
 {
  "capitulo_id": "ecoulement-fluide",
  "tipo_nivel": "normal",
- "tema_visual": "laboratorio-neon",
+ "tema_visual": "caverna",
  "fisica_juego": {
   "gravedad": 0.8,
   "friccion": 0.85,
@@ -394,6 +394,59 @@
   {
    "tipo": "meta",
    "x": 163
+  },
+  {
+   "tipo": "bicho",
+   "x": 29,
+   "y": 9,
+   "bicho": "murcielago",
+   "nombre": "No convertir a unidades SI",
+   "correccion": "Pasar caudales a m³·s⁻¹ y diámetros a m (S = πd²/4) antes de aplicar Q = v·S o Bernoulli."
+  },
+  {
+   "tipo": "bicho",
+   "x": 46,
+   "y": 10,
+   "bicho": "murcielago",
+   "nombre": "Pensar que el empuje depende de la masa del cuerpo",
+   "correccion": "π = ρ_f·V·g: depende del volumen sumergido y del fluido, no de la masa, forma o profundidad del cuerpo."
+  },
+  {
+   "tipo": "bicho",
+   "x": 126,
+   "y": 10,
+   "bicho": "murcielago",
+   "nombre": "Confundir P (peso) y π (empuje)",
+   "correccion": "Para flotar en equilibrio π = P; si π > P el cuerpo asciende, si π < P se hunde (ej. 26 y 30)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 76,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Creer que más velocidad implica más presión",
+   "correccion": "Efecto Venturi: en régimen permanente, si v aumenta, P disminuye (P + ½ρv² = cte a igual altitud)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 64,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Creer que Q cambia al estrecharse el tubo",
+   "correccion": "El caudal se conserva (Q(A) = Q(B)): lo que cambia es la velocidad, v_B/v_A = S_A/S_B."
+  },
+  {
+   "tipo": "estalactita",
+   "x": 120
+  },
+  {
+   "tipo": "estalactita",
+   "x": 36
+  },
+  {
+   "tipo": "estalactita",
+   "x": 82
   }
- ]
+ ],
+ "ambiente": "cueva"
 }

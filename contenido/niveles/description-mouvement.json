@@ -381,6 +381,47 @@
   {
    "tipo": "meta",
    "x": 168
+  },
+  {
+   "tipo": "bicho",
+   "x": 28,
+   "y": 10,
+   "bicho": "demonio",
+   "nombre": "Creer que aceleración = «solo aumenta la rapidez»",
+   "correccion": "a⃗ ≠ 0 también si v frena o solo cambia de dirección; a⃗ = dv⃗/dt (vector)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 59,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Movimiento uniforme ⇒ aceleración nula",
+   "correccion": "En el circular uniforme a = v²/R ≠ 0 (a⃗ ⟂ v⃗, hacia el centro)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 44,
+   "y": 10,
+   "bicho": "demonio",
+   "nombre": "No convertir unidades (cm, km, min decimales)",
+   "correccion": "Pasar todo a SI: D = 40 cm = 0,40 m; 2,9·10⁹ km = 2,9·10¹² m; 1,33 min = 79,8 s (no 1 min 33 s)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 95,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "v = 0 ⇒ a = 0",
+   "correccion": "En la cima de un lanzamiento vertical v = 0 pero a⃗ = g⃗ (constante, hacia abajo)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 81,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Aceleración media tomada por la instantánea",
+   "correccion": "Δv/Δt sobre todo el intervalo es una media; para una fase hay que usar los valores de esa fase."
   }
- ]
+ ],
+ "ambiente": "castillo"
 }

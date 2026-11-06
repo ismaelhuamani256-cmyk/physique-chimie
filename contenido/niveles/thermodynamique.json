@@ -3,7 +3,7 @@
  "tipo_nivel": "normal",
  "tema_visual": "horno-termico",
  "fisica_juego": {
-  "gravedad": 1.0,
+  "gravedad": 1,
   "friccion": 0.85,
   "salto": 12,
   "viento": 0
@@ -12,39 +12,9 @@
  "alto_tiles": 18,
  "segmentos": [
   {
-   "tipo": "plataforma",
-   "x": 0,
-   "y": 14,
-   "largo": 22
-  },
-  {
    "tipo": "foso",
    "x": 22,
    "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 25,
-   "y": 14,
-   "largo": 10
-  },
-  {
-   "tipo": "plataforma",
-   "x": 35,
-   "y": 13,
-   "largo": 6
-  },
-  {
-   "tipo": "plataforma",
-   "x": 41,
-   "y": 12,
-   "largo": 5
-  },
-  {
-   "tipo": "plataforma",
-   "x": 46,
-   "y": 14,
-   "largo": 13
   },
   {
    "tipo": "foso",
@@ -54,17 +24,11 @@
   {
    "tipo": "plataforma_movil",
    "x": 59,
-   "y": 13,
+   "y": 11,
    "largo": 3,
    "recorrido": 2,
    "eje": "x",
    "periodo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 64,
-   "y": 14,
-   "largo": 16
   },
   {
    "tipo": "foso",
@@ -72,21 +36,9 @@
    "largo": 4
   },
   {
-   "tipo": "plataforma",
-   "x": 84,
-   "y": 14,
-   "largo": 16
-  },
-  {
    "tipo": "foso",
    "x": 100,
    "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 104,
-   "y": 14,
-   "largo": 12
   },
   {
    "tipo": "foso",
@@ -94,21 +46,9 @@
    "largo": 4
   },
   {
-   "tipo": "plataforma",
-   "x": 120,
-   "y": 14,
-   "largo": 14
-  },
-  {
    "tipo": "foso",
    "x": 134,
    "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 138,
-   "y": 14,
-   "largo": 37
   },
   {
    "tipo": "plataforma",
@@ -119,19 +59,19 @@
   {
    "tipo": "plataforma",
    "x": 66,
-   "y": 11,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 86,
    "y": 10,
    "largo": 4
   },
   {
    "tipo": "plataforma",
+   "x": 86,
+   "y": 8,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
    "x": 91,
-   "y": 6,
+   "y": 4,
    "largo": 4
   },
   {
@@ -143,7 +83,7 @@
   {
    "tipo": "plataforma_movil",
    "x": 106,
-   "y": 10,
+   "y": 9,
    "largo": 3,
    "recorrido": 5,
    "eje": "x",
@@ -157,7 +97,7 @@
   {
    "tipo": "zona_campo",
    "x": 85,
-   "y": 2,
+   "y": 1,
    "w": 10,
    "h": 12,
    "fx": 0,
@@ -174,7 +114,7 @@
   {
    "tipo": "coleccionable",
    "x": 18,
-   "y": 12,
+   "y": 13,
    "ref": "f2",
    "latex": "E_{tot} = E_c + E_{pp} + U",
    "nombre": "Énergie totale"
@@ -190,7 +130,7 @@
   {
    "tipo": "coleccionable",
    "x": 37,
-   "y": 11,
+   "y": 12,
    "ref": "f5",
    "latex": "\\Delta U = Q = C\\cdot\\Delta T",
    "nombre": "ΔU = Q = C·ΔT"
@@ -214,7 +154,7 @@
   {
    "tipo": "coleccionable",
    "x": 70,
-   "y": 12,
+   "y": 11,
    "ref": "f8",
    "latex": "\\Phi = \\dfrac{T_c - T_f}{R_{th}}",
    "nombre": "Flux et résistance thermique"
@@ -222,7 +162,7 @@
   {
    "tipo": "coleccionable",
    "x": 68,
-   "y": 9,
+   "y": 8,
    "ref": "f9",
    "latex": "R_{th} = \\dfrac{e}{\\lambda\\cdot S}",
    "nombre": "R_th = e/(λ·S)"
@@ -230,7 +170,7 @@
   {
    "tipo": "coleccionable",
    "x": 93,
-   "y": 4,
+   "y": 2,
    "ref": "f10",
    "latex": "F = \\sigma\\cdot T^{4}",
    "nombre": "Loi de Stefan-Boltzmann"
@@ -238,7 +178,7 @@
   {
    "tipo": "coleccionable",
    "x": 96,
-   "y": 12,
+   "y": 10,
    "ref": "f11",
    "latex": "F\\cdot \\pi R_{atm}^{2} = F'\\cdot 4\\pi R_{atm}^{2}\\ \\Rightarrow\\ F' = \\dfrac{F}{4}",
    "nombre": "F' = F/4"
@@ -246,7 +186,7 @@
   {
    "tipo": "coleccionable",
    "x": 108,
-   "y": 8,
+   "y": 7,
    "ref": "f12",
    "latex": "\\dfrac{dT}{dt} = -\\gamma\\,(T - T_{th})",
    "nombre": "Loi thermique de Newton"
@@ -262,7 +202,7 @@
   {
    "tipo": "enemigo",
    "x": 14,
-   "y": 13,
+   "y": 14,
    "enemigo": "temperatura_en_celsius",
    "nombre": "Usar T en °C en la ley de Stefan-Boltzmann",
    "correccion": "La ley F = σ·T⁴ exige T en kelvin: T(K) = θ(°C) + 273. En cambio, para una variación ΔT (Q = C·ΔT) se puede razonar directamente en °C."
@@ -278,7 +218,7 @@
   {
    "tipo": "enemigo",
    "x": 38,
-   "y": 12,
+   "y": 13,
    "enemigo": "unidades_sin_convertir",
    "nombre": "Olvidar convertir unidades y cifras significativas",
    "correccion": "Pasar el espesor a m (3,6 cm = 3,6×10⁻² m), MJ a J y kWh a J (1 kWh = 3,6×10⁶ J), y dar el resultado con las cifras significativas de los datos."
@@ -286,7 +226,7 @@
   {
    "tipo": "enemigo",
    "x": 55,
-   "y": 13,
+   "y": 12,
    "enemigo": "solo_calor_cambia_U",
    "nombre": "Pensar que solo el calor puede aumentar U",
    "correccion": "El trabajo W también aumenta la energía interna: el agua agitada de la experiencia de Joule se calienta. W y Q pueden producir la misma ΔU."
@@ -294,7 +234,7 @@
   {
    "tipo": "enemigo",
    "x": 72,
-   "y": 13,
+   "y": 12,
    "enemigo": "phi_vs_Q",
    "nombre": "Confundir transferencia térmica Q (J) y flujo Φ (W)",
    "correccion": "Φ = Q/Δt: Q es una energía (J) y Φ una potencia (W). La energía perdida en un tiempo es Q = Φ·Δt (con unidades coherentes)."
@@ -302,7 +242,7 @@
   {
    "tipo": "enemigo",
    "x": 88,
-   "y": 13,
+   "y": 11,
    "enemigo": "sin_albedo",
    "nombre": "Ignorar el albedo en el balance radiativo de la Tierra",
    "correccion": "La Tierra no es un cuerpo negro: refleja ≈ 30 % de la energía recibida. Sin albedo ni efecto invernadero se obtiene 279 K = 6 °C en vez de 15 °C."
@@ -310,7 +250,7 @@
   {
    "tipo": "enemigo",
    "x": 110,
-   "y": 13,
+   "y": 12,
    "enemigo": "tth_vs_t0",
    "nombre": "Confundir T_th con la temperatura inicial T_0 en la ley de Newton",
    "correccion": "T_th es la temperatura del termostato (lo que alcanza T cuando t → ∞, p. ej. T_cuis o T_amb), no la de partida: T(t) = (T_0 − T_th)·e^{−γt} + T_th."
@@ -414,7 +354,7 @@
   {
    "tipo": "bicho",
    "x": 92,
-   "y": 9,
+   "y": 7,
    "bicho": "demonio",
    "nombre": "Usar T en °C en la ley de Stefan-Boltzmann",
    "correccion": "La ley F = σ·T⁴ exige T en kelvin: T(K) = θ(°C) + 273. En cambio, para una variación ΔT (Q = C·ΔT) se puede razonar directamente en °C."
@@ -430,11 +370,530 @@
   {
    "tipo": "bicho",
    "x": 41,
-   "y": 13,
+   "y": 14,
    "bicho": "embestidor",
    "nombre": "Creer que la energía se destruye al frenar o enfriar",
    "correccion": "No se destruye: se transfiere del sistema al medio exterior (Exercice 17: «Faux. L'énergie est transférée»)."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 10,
+   "y": 15,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 25,
+   "y": 15,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 27,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 35,
+   "y": 13,
+   "largo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 36,
+   "y": 14,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 41,
+   "y": 13,
+   "largo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 42,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 46,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 54,
+   "y": 13,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 64,
+   "y": 13,
+   "largo": 9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 73,
+   "y": 12,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 84,
+   "y": 12,
+   "largo": 13
+  },
+  {
+   "tipo": "plataforma",
+   "x": 97,
+   "y": 13,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 104,
+   "y": 13,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 120,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 122,
+   "y": 14,
+   "largo": 9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 131,
+   "y": 15,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 138,
+   "y": 15,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 141,
+   "y": 14,
+   "largo": 34
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 14,
+   "y": 11,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 15,
+   "y": 11,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 16,
+   "y": 11,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 17,
+   "y": 11,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 18,
+   "y": 11,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 19,
+   "y": 11,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     21,
+     13
+    ],
+    [
+     22,
+     11
+    ],
+    [
+     23,
+     11
+    ],
+    [
+     24,
+     11
+    ],
+    [
+     25,
+     11
+    ],
+    [
+     26,
+     13
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     58,
+     11
+    ],
+    [
+     59,
+     10
+    ],
+    [
+     60,
+     9
+    ],
+    [
+     61,
+     9
+    ],
+    [
+     62,
+     9
+    ],
+    [
+     63,
+     9
+    ],
+    [
+     64,
+     10
+    ],
+    [
+     65,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     79,
+     10
+    ],
+    [
+     80,
+     9
+    ],
+    [
+     81,
+     8
+    ],
+    [
+     82,
+     8
+    ],
+    [
+     83,
+     8
+    ],
+    [
+     84,
+     9
+    ],
+    [
+     85,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     99,
+     11
+    ],
+    [
+     100,
+     10
+    ],
+    [
+     101,
+     9
+    ],
+    [
+     102,
+     9
+    ],
+    [
+     103,
+     9
+    ],
+    [
+     104,
+     10
+    ],
+    [
+     105,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     115,
+     11
+    ],
+    [
+     116,
+     10
+    ],
+    [
+     117,
+     9
+    ],
+    [
+     118,
+     9
+    ],
+    [
+     119,
+     9
+    ],
+    [
+     120,
+     10
+    ],
+    [
+     121,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     133,
+     13
+    ],
+    [
+     134,
+     12
+    ],
+    [
+     135,
+     11
+    ],
+    [
+     136,
+     11
+    ],
+    [
+     137,
+     11
+    ],
+    [
+     138,
+     12
+    ],
+    [
+     139,
+     13
+    ]
+   ]
+  },
+  {
+   "tipo": "plataforma",
+   "x": 11,
+   "y": 2,
+   "largo": 5,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 17,
+   "y": 2,
+   "largo": 9,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 28,
+   "y": 2,
+   "largo": 8,
+   "grosor": 3,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 39,
+   "y": 2,
+   "largo": 7,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 47,
+   "y": 2,
+   "largo": 11,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 61,
+   "y": 2,
+   "largo": 11,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 97,
+   "y": 2,
+   "largo": 10,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 110,
+   "y": 2,
+   "largo": 6,
+   "grosor": 3,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 117,
+   "y": 2,
+   "largo": 7,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 24,
+   "y": 12,
+   "largo": 3,
+   "recorrido": 7,
+   "eje": "x",
+   "periodo": 6.1
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 35,
+   "y": 11,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 5.8
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 71,
+   "y": 10,
+   "largo": 3,
+   "recorrido": 7,
+   "eje": "x",
+   "periodo": 4.9
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 99,
+   "y": 10,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 4.9
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 117,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 7,
+   "eje": "x",
+   "periodo": 3.5
+  },
+  {
+   "tipo": "bicho",
+   "x": 26,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Creer que la energía se destruye al frenar o enfriar",
+   "correccion": "No se destruye: se transfiere del sistema al medio exterior (Exercice 17: «Faux. L'énergie est transférée»)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 44,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Pensar que solo el calor puede aumentar U",
+   "correccion": "El trabajo W también aumenta la energía interna: el agua agitada de la experiencia de Joule se calienta. W y Q pueden producir la misma ΔU."
+  },
+  {
+   "tipo": "bicho",
+   "x": 57,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Olvidar la convección al razonar sobre transferencias térmicas",
+   "correccion": "En la nevera el aire frío desciende y el caliente asciende (convección): el tubo metálico va arriba, no en el centro (Exercice 33)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 70,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Confundir transferencia térmica Q (J) y flujo Φ (W)",
+   "correccion": "Φ = Q/Δt: Q es una energía (J) y Φ una potencia (W). La energía perdida en un tiempo es Q = Φ·Δt (con unidades coherentes)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 136,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Ignorar el albedo en el balance radiativo de la Tierra",
+   "correccion": "La Tierra no es un cuerpo negro: refleja ≈ 30 % de la energía recibida. Sin albedo ni efecto invernadero se obtiene 279 K = 6 °C en vez de 15 °C."
   }
  ],
- "ambiente": "horno"
+ "ambiente": "horno",
+ "relieve": true,
+ "aire": true
 }

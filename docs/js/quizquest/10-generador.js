@@ -494,6 +494,20 @@
         ctx.F = fisica(fase === 'agua' ? { gravedad: 1, friccion: 0.9, salto: 12, viento: 0 } : fisicaBase);
         res[fase] = construirFase(fase, ctx);
       }
+      // relieve del terreno (44-relieve.js) en tierra y castillo; si no pasa el validador se queda el nivel llano original
+      if (window.PCB.juego && window.PCB.juego.Relieve) {
+        for (const fase of ['tierra', 'castillo']) {
+          for (const inten of [0.8, 0.5, 0.3]) {
+            const cand = window.PCB.juego.Relieve.aplicar(res[fase], { seed: capId + '|' + s + '|' + fase, intensidad: inten, techo: false });
+            if (QQ.validar(cand).ok && !QQ.revisarContrato(cand).length) { res[fase] = cand; break; }
+          }
+          // más vida en el aire: plataformas móviles y enemigos voladores (con errores típicos del capítulo)
+          for (const inten of [0.7, 0.45, 0.25]) {
+            const cand = window.PCB.juego.Relieve.poblarAire(res[fase], { seed: capId + '|' + s + '|aire|' + fase, intensidad: inten, errores, ambiente: 'lab' });
+            if (QQ.validar(cand).ok && !QQ.revisarContrato(cand).length) { res[fase] = cand; break; }
+          }
+        }
+      }
       const errores_ = [];
       for (const fase of ['tierra', 'agua', 'castillo']) {
         const v = QQ.validar(res[fase]);

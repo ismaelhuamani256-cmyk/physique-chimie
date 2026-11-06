@@ -3,7 +3,7 @@
  "tipo_nivel": "normal",
  "tema_visual": "laboratorio-ambar",
  "fisica_juego": {
-  "gravedad": 1.0,
+  "gravedad": 1,
   "friccion": 0.85,
   "salto": 12,
   "viento": 0
@@ -11,12 +11,6 @@
  "ancho_tiles": 170,
  "alto_tiles": 18,
  "segmentos": [
-  {
-   "tipo": "plataforma",
-   "x": 0,
-   "y": 14,
-   "largo": 18
-  },
   {
    "tipo": "coleccionable",
    "x": 6,
@@ -28,7 +22,7 @@
   {
    "tipo": "enemigo",
    "x": 13,
-   "y": 13,
+   "y": 12,
    "enemigo": "error_ph_debil",
    "nombre": "Aplicar pH = −log c a un ácido débil",
    "correccion": "Esa relación solo vale si la transformación es total; para un ácido débil hay que usar KA, τ y [H₃O⁺]f = c·τ."
@@ -37,12 +31,6 @@
    "tipo": "foso",
    "x": 18,
    "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 21,
-   "y": 14,
-   "largo": 14
   },
   {
    "tipo": "coleccionable",
@@ -55,16 +43,10 @@
   {
    "tipo": "enemigo",
    "x": 30,
-   "y": 13,
+   "y": 14,
    "enemigo": "error_reaccion_total",
    "nombre": "Escribir xf = c·V en la tabla de un ácido débil",
    "correccion": "La transformación no es total: xf = xmax·τ < xmax y [AH]f = c(1−τ) ≠ 0."
-  },
-  {
-   "tipo": "plataforma",
-   "x": 35,
-   "y": 12,
-   "largo": 8
   },
   {
    "tipo": "coleccionable",
@@ -90,22 +72,16 @@
   {
    "tipo": "plataforma_movil",
    "x": 47,
-   "y": 12,
+   "y": 11,
    "largo": 4,
    "recorrido": 5,
    "eje": "x",
    "periodo": 4
   },
   {
-   "tipo": "plataforma",
-   "x": 57,
-   "y": 12,
-   "largo": 10
-  },
-  {
    "tipo": "coleccionable",
    "x": 60,
-   "y": 10,
+   "y": 11,
    "ref": "f7",
    "latex": "\\mathrm{pH} = \\mathrm{p}K_e + \\log c",
    "nombre": "pH de una solución de base fuerte"
@@ -113,7 +89,7 @@
   {
    "tipo": "enemigo",
    "x": 63,
-   "y": 11,
+   "y": 12,
    "enemigo": "error_raiz_negativa",
    "nombre": "Conservar la raíz negativa de la ecuación de 2.º grado",
    "correccion": "Δ > 0 da dos raíces; τ es positivo (y menor que 1): conservar solo τ = (−KA + √Δ)/(2c)."
@@ -121,7 +97,7 @@
   {
    "tipo": "zona_campo",
    "x": 66,
-   "y": 8,
+   "y": 9,
    "w": 9,
    "h": 6,
    "fx": 0,
@@ -133,32 +109,26 @@
    "largo": 4
   },
   {
-   "tipo": "plataforma",
-   "x": 71,
-   "y": 12,
-   "largo": 6
-  },
-  {
    "tipo": "resorte",
    "x": 73,
-   "y": 12
+   "y": 13
   },
   {
    "tipo": "plataforma",
    "x": 77,
-   "y": 10,
+   "y": 11,
    "largo": 5
   },
   {
    "tipo": "plataforma",
    "x": 82,
-   "y": 8,
+   "y": 9,
    "largo": 5
   },
   {
    "tipo": "coleccionable",
    "x": 84,
-   "y": 6,
+   "y": 7,
    "ref": "f11",
    "latex": "c\\cdot\\tau^2 + K_A\\cdot\\tau - K_A = 0",
    "nombre": "Ecuación de segundo grado del ácido débil"
@@ -171,7 +141,7 @@
   {
    "tipo": "plataforma_movil",
    "x": 89,
-   "y": 9,
+   "y": 10,
    "largo": 4,
    "recorrido": 2,
    "eje": "y",
@@ -180,7 +150,7 @@
   {
    "tipo": "plataforma",
    "x": 95,
-   "y": 10,
+   "y": 11,
    "largo": 8
   },
   {
@@ -190,7 +160,7 @@
   {
    "tipo": "coleccionable",
    "x": 98,
-   "y": 8,
+   "y": 9,
    "ref": "n11",
    "latex": "\\text{Solution tampon}",
    "nombre": "Solution tampon"
@@ -198,27 +168,15 @@
   {
    "tipo": "enemigo",
    "x": 100,
-   "y": 9,
+   "y": 10,
    "enemigo": "error_indicador",
    "nombre": "Elegir un indicador cuya zona de viraje no contiene el pH de equivalencia",
    "correccion": "El indicador sirve si el pH en la equivalencia está dentro de su zona de viraje (FIG. 9–10)."
   },
   {
-   "tipo": "plataforma",
-   "x": 103,
-   "y": 12,
-   "largo": 5
-  },
-  {
-   "tipo": "plataforma",
-   "x": 108,
-   "y": 14,
-   "largo": 12
-  },
-  {
    "tipo": "zona_campo",
    "x": 108,
-   "y": 8,
+   "y": 7,
    "w": 12,
    "h": 6,
    "fx": -0.3,
@@ -227,7 +185,7 @@
   {
    "tipo": "coleccionable",
    "x": 112,
-   "y": 12,
+   "y": 13,
    "ref": "f14",
    "latex": "\\mathrm{pH} = \\mathrm{p}K_A + \\log\\dfrac{[\\mathrm{A^-}]_f}{[\\mathrm{AH}]_f}",
    "nombre": "pH de una solución de un par ácido-base"
@@ -235,7 +193,7 @@
   {
    "tipo": "enemigo",
    "x": 116,
-   "y": 13,
+   "y": 14,
    "enemigo": "error_diagramas",
    "nombre": "Confundir diagrama de predominancia con diagrama de distribución",
    "correccion": "Predominancia = eje de pH con dominios; distribución = curvas de % de cada especie en función del pH."
@@ -246,15 +204,9 @@
    "largo": 4
   },
   {
-   "tipo": "plataforma",
-   "x": 124,
-   "y": 14,
-   "largo": 10
-  },
-  {
    "tipo": "zona_campo",
    "x": 124,
-   "y": 8,
+   "y": 9,
    "w": 10,
    "h": 6,
    "fx": 0.3,
@@ -280,12 +232,6 @@
    "tipo": "foso",
    "x": 134,
    "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 137,
-   "y": 14,
-   "largo": 33
   },
   {
    "tipo": "coleccionable",
@@ -366,7 +312,7 @@
   {
    "tipo": "bicho",
    "x": 60,
-   "y": 13,
+   "y": 14,
    "bicho": "embestidor",
    "nombre": "Aplicar pH = −log c a un ácido débil",
    "correccion": "Esa relación solo vale si la transformación es total; para un ácido débil hay que usar KA, τ y [H₃O⁺]f = c·τ."
@@ -390,11 +336,524 @@
   {
    "tipo": "bicho",
    "x": 113,
-   "y": 11,
+   "y": 12,
    "bicho": "neutrino",
    "nombre": "Confundir diagrama de predominancia con diagrama de distribución",
    "correccion": "Predominancia = eje de pH con dominios; distribución = curvas de % de cada especie en función del pH."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 10,
+   "y": 13,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 15,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 21,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 29,
+   "y": 15,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 35,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 57,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 59,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 71,
+   "y": 13,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 103,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 105,
+   "y": 12,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 108,
+   "y": 13,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 112,
+   "y": 15,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 124,
+   "y": 15,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 126,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 137,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 140,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 142,
+   "y": 14,
+   "largo": 28
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 22,
+   "y": 10,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 23,
+   "y": 10,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 24,
+   "y": 10,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 25,
+   "y": 10,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 29,
+   "y": 11,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 30,
+   "y": 11,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 31,
+   "y": 11,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 32,
+   "y": 11,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     17,
+     12
+    ],
+    [
+     18,
+     10
+    ],
+    [
+     19,
+     10
+    ],
+    [
+     20,
+     10
+    ],
+    [
+     21,
+     10
+    ],
+    [
+     22,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     42,
+     10
+    ],
+    [
+     43,
+     9
+    ],
+    [
+     44,
+     9
+    ],
+    [
+     45,
+     9
+    ],
+    [
+     46,
+     8
+    ],
+    [
+     47,
+     8
+    ],
+    [
+     48,
+     8
+    ],
+    [
+     49,
+     8
+    ],
+    [
+     50,
+     8
+    ],
+    [
+     51,
+     8
+    ],
+    [
+     52,
+     8
+    ],
+    [
+     53,
+     8
+    ],
+    [
+     54,
+     8
+    ],
+    [
+     55,
+     9
+    ],
+    [
+     56,
+     9
+    ],
+    [
+     57,
+     9
+    ],
+    [
+     58,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     66,
+     11
+    ],
+    [
+     67,
+     10
+    ],
+    [
+     68,
+     9
+    ],
+    [
+     69,
+     9
+    ],
+    [
+     70,
+     9
+    ],
+    [
+     71,
+     10
+    ],
+    [
+     72,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     86,
+     13
+    ],
+    [
+     87,
+     12
+    ],
+    [
+     88,
+     11
+    ],
+    [
+     89,
+     11
+    ],
+    [
+     90,
+     11
+    ],
+    [
+     91,
+     11
+    ],
+    [
+     92,
+     11
+    ],
+    [
+     93,
+     11
+    ],
+    [
+     94,
+     11
+    ],
+    [
+     95,
+     12
+    ],
+    [
+     96,
+     13
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     119,
+     13
+    ],
+    [
+     120,
+     12
+    ],
+    [
+     121,
+     11
+    ],
+    [
+     122,
+     11
+    ],
+    [
+     123,
+     11
+    ],
+    [
+     124,
+     12
+    ],
+    [
+     125,
+     13
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     133,
+     12
+    ],
+    [
+     134,
+     10
+    ],
+    [
+     135,
+     10
+    ],
+    [
+     136,
+     10
+    ],
+    [
+     137,
+     10
+    ],
+    [
+     138,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 43,
+   "y": 9,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 5.3
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 54,
+   "y": 9,
+   "largo": 3,
+   "recorrido": 8,
+   "eje": "x",
+   "periodo": 5.2
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 70,
+   "y": 10,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 107,
+   "y": 9,
+   "largo": 3,
+   "recorrido": 8,
+   "eje": "x",
+   "periodo": 4.2
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 120,
+   "y": 12,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 6.1
+  },
+  {
+   "tipo": "bicho",
+   "x": 26,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Confundir concentración aportada con concentración efectiva",
+   "correccion": "c (la del frasco) no es la de las especies presentes: calcular [A⁻]f, [AH]f y [H₃O⁺]f con la tabla de avance."
+  },
+  {
+   "tipo": "bicho",
+   "x": 35,
+   "y": 6,
+   "bicho": "murcielago",
+   "nombre": "Confundir diagrama de predominancia con diagrama de distribución",
+   "correccion": "Predominancia = eje de pH con dominios; distribución = curvas de % de cada especie en función del pH."
+  },
+  {
+   "tipo": "bicho",
+   "x": 58,
+   "y": 5,
+   "bicho": "murcielago",
+   "nombre": "Conservar la raíz negativa de la ecuación de 2.º grado",
+   "correccion": "Δ > 0 da dos raíces; τ es positivo (y menor que 1): conservar solo τ = (−KA + √Δ)/(2c)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 76,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Elegir un indicador cuya zona de viraje no contiene el pH de equivalencia",
+   "correccion": "El indicador sirve si el pH en la equivalencia está dentro de su zona de viraje (FIG. 9–10)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 97,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Escribir Ke o KA como la reacción inversa",
+   "correccion": "Ke corresponde a 2 H₂O ⇌ H₃O⁺ + HO⁻ y KA a AH + H₂O ⇌ A⁻ + H₃O⁺ (productos en el numerador)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 108,
+   "y": 6,
+   "bicho": "murcielago",
+   "nombre": "Creer que la base conjugada de un ácido fuerte capta protones",
+   "correccion": "Es una base indiferente (Cl⁻, NO₃⁻): no reacciona con el agua; en la solución no queda ninguna molécula del ácido fuerte."
+  },
+  {
+   "tipo": "bicho",
+   "x": 134,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Aplicar pH = −log c a un ácido débil",
+   "correccion": "Esa relación solo vale si la transformación es total; para un ácido débil hay que usar KA, τ y [H₃O⁺]f = c·τ."
   }
  ],
- "ambiente": "lab"
+ "ambiente": "lab",
+ "relieve": true,
+ "aire": true
 }

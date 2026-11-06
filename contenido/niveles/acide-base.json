@@ -5,7 +5,7 @@
  "tipo_nivel": "fortaleza",
  "tema_visual": "lava-fortaleza",
  "fisica_juego": {
-  "gravedad": 1.0,
+  "gravedad": 1,
   "friccion": 0.85,
   "salto": 12,
   "viento": 0
@@ -13,12 +13,6 @@
  "ancho_tiles": 224,
  "alto_tiles": 18,
  "segmentos": [
-  {
-   "tipo": "plataforma",
-   "x": 0,
-   "y": 14,
-   "largo": 56
-  },
   {
    "tipo": "cartel",
    "x": 3,
@@ -42,27 +36,27 @@
     ],
     [
      10.5,
-     11
+     10
     ],
     [
      12,
-     12
+     11
     ],
     [
      13.5,
-     11
+     10
     ],
     [
      15,
-     10.5
+     9.5
     ],
     [
      16.5,
-     11
+     10
     ],
     [
      18,
-     12
+     13
     ]
    ]
   },
@@ -75,19 +69,19 @@
   {
    "tipo": "atomo",
    "x": 12,
-   "y": 12,
+   "y": 11,
    "elemento": "H"
   },
   {
    "tipo": "atomo",
    "x": 15,
-   "y": 12,
+   "y": 11,
    "elemento": "O"
   },
   {
    "tipo": "coleccionable",
    "x": 21,
-   "y": 12,
+   "y": 13,
    "ref": "f1",
    "latex": "\\mathrm{AH} = \\mathrm{A}^{-} + \\mathrm{H}^{+}",
    "nombre": "Semiecuación ácido-base (par AH/A⁻)"
@@ -95,13 +89,13 @@
   {
    "tipo": "cartel",
    "x": 23,
-   "y": 13,
+   "y": 14,
    "texto": "Esas bolas de colores son ÁTOMOS (H, O, N…). Se guardan en tu inventario (arriba a la izquierda). ¡Y cuidado con los errores típicos: pisa al bicho y te dirá la corrección!"
   },
   {
    "tipo": "enemigo",
    "x": 27,
-   "y": 13,
+   "y": 12,
    "enemigo": "acido_vs_solucion",
    "nombre": "Confundir ácido con disolución ácida",
    "correccion": "Un ácido es una especie química; una disolución es ácida según [H₃O⁺] y [HO⁻]."
@@ -109,13 +103,13 @@
   {
    "tipo": "plataforma",
    "x": 32,
-   "y": 11,
+   "y": 10,
    "largo": 4
   },
   {
    "tipo": "atomo",
    "x": 34,
-   "y": 9,
+   "y": 8,
    "elemento": "N"
   },
   {
@@ -125,7 +119,7 @@
   {
    "tipo": "tuberia",
    "x": 42,
-   "y": 14,
+   "y": 13,
    "alto": 2,
    "destino": "bonus",
    "pregunta": {
@@ -146,14 +140,14 @@
   {
    "tipo": "planta_carnivora",
    "x": 42,
-   "y": 14,
+   "y": 13,
    "ciclo": 3.4,
    "visible": 1.2
   },
   {
    "tipo": "enemigo",
    "x": 46,
-   "y": 13,
+   "y": 11,
    "enemigo": "h_libre",
    "nombre": "H⁺ libre en la ecuación",
    "correccion": "El H⁺ no existe libre en agua y se simplifica al sumar las semiecuaciones."
@@ -161,13 +155,13 @@
   {
    "tipo": "cartel",
    "x": 48,
-   "y": 13,
+   "y": 11,
    "texto": "ESTACIÓN DE MOLÉCULAS: con los átomos recogidos (H, H y O) monta una molécula de agua. Acércate y pulsa ↓ / E. ¡El agua te construirá un puente!"
   },
   {
    "tipo": "estacion_molecula",
    "x": 51,
-   "y": 13,
+   "y": 11,
    "molecula": "H2O",
    "requiere": {
     "H": 2,
@@ -179,7 +173,7 @@
   {
    "tipo": "coleccionable",
    "x": 53,
-   "y": 12,
+   "y": 10,
    "ref": "f2",
    "latex": "\\mathrm{BH}^{+} = \\mathrm{B} + \\mathrm{H}^{+}",
    "nombre": "Par BH⁺/B (forma alternativa de la semiecuación)"
@@ -192,7 +186,7 @@
   {
    "tipo": "puente",
    "x": 56,
-   "y": 14,
+   "y": 12,
    "largo": 7,
    "id": "puente_h2o",
    "oculto": true
@@ -201,48 +195,42 @@
    "tipo": "rastro_monedas",
    "puntos": [
     [
-     55.0,
-     12.0
+     55,
+     10
     ],
     [
      56.5,
-     11.7
+     9.7
     ],
     [
-     58.0,
-     11.5
+     58,
+     9.5
     ],
     [
      59.5,
-     11.4
+     9.4
     ],
     [
-     61.0,
-     11.5
+     61,
+     9.5
     ],
     [
      62.5,
-     11.7
+     9.7
     ],
     [
-     64.0,
-     12.0
+     64,
+     10
     ]
    ]
   },
   {
    "tipo": "coleccionable",
    "x": 60,
-   "y": 11,
+   "y": 9,
    "ref": "f3",
    "latex": "\\mathrm{RCO_2H} = \\mathrm{RCO_2^{-}} + \\mathrm{H}^{+}",
    "nombre": "Par ácido carboxílico / ion carboxilato"
-  },
-  {
-   "tipo": "plataforma",
-   "x": 63,
-   "y": 14,
-   "largo": 20
   },
   {
    "tipo": "checkpoint",
@@ -251,7 +239,7 @@
   {
    "tipo": "bloque_rebote",
    "x": 71,
-   "y": 14,
+   "y": 12,
    "largo": 2
   },
   {
@@ -259,48 +247,48 @@
    "puntos": [
     [
      69,
-     11
+     9
     ],
     [
      70,
-     9.4
+     7.4
     ],
     [
      71.5,
-     7.6
+     5.6
     ],
     [
      73,
-     6.8
+     4.8
     ],
     [
      74.5,
-     6.2
+     4.2
     ],
     [
      76,
-     6.8
+     4.8
     ],
     [
      77.5,
-     7.3
+     5.3
     ],
     [
      79,
-     7.3
+     5.3
     ]
    ]
   },
   {
    "tipo": "plataforma",
    "x": 70,
-   "y": 8,
+   "y": 6,
    "largo": 10
   },
   {
    "tipo": "bloque_pregunta",
    "x": 77,
-   "y": 5,
+   "y": 3,
    "premio": "vida",
    "fallo": "cierra",
    "pregunta": {
@@ -321,16 +309,10 @@
   {
    "tipo": "enemigo",
    "x": 79,
-   "y": 13,
+   "y": 11,
    "enemigo": "dos_acidos",
    "nombre": "Dos ácidos que reaccionan",
    "correccion": "Reacciona el ácido de un par con la base de otro par distinto."
-  },
-  {
-   "tipo": "plataforma",
-   "x": 83,
-   "y": 14,
-   "largo": 6
   },
   {
    "tipo": "cartel",
@@ -371,7 +353,7 @@
   {
    "tipo": "plataforma_estado",
    "x": 91,
-   "y": 12,
+   "y": 11,
    "largo": 3,
    "requiere": {
     "temperatura": "frio"
@@ -380,14 +362,8 @@
   {
    "tipo": "atomo",
    "x": 92,
-   "y": 10,
+   "y": 9,
    "elemento": "H"
-  },
-  {
-   "tipo": "plataforma",
-   "x": 95,
-   "y": 14,
-   "largo": 3
   },
   {
    "tipo": "interruptor_estado",
@@ -407,7 +383,7 @@
   {
    "tipo": "plataforma_estado",
    "x": 99,
-   "y": 12,
+   "y": 11,
    "largo": 3,
    "requiere": {
     "temperatura": "caliente"
@@ -416,14 +392,8 @@
   {
    "tipo": "atomo",
    "x": 100,
-   "y": 10,
+   "y": 9,
    "elemento": "H"
-  },
-  {
-   "tipo": "plataforma",
-   "x": 104,
-   "y": 14,
-   "largo": 79
   },
   {
    "tipo": "checkpoint",
@@ -565,7 +535,7 @@
   {
    "tipo": "plataforma_cae",
    "x": 155,
-   "y": 12,
+   "y": 11,
    "largo": 4,
    "retardo": 0.6,
    "reaparece": 3
@@ -582,8 +552,8 @@
    "x": 167,
    "y": 9,
    "largo": 3,
-   "periodo": 3.0,
-   "retardo": 1.0
+   "periodo": 3,
+   "retardo": 1
   },
   {
    "tipo": "picos",
@@ -595,7 +565,7 @@
    "tipo": "rastro_monedas",
    "puntos": [
     [
-     138.0,
+     138,
      12.3
     ],
     [
@@ -604,18 +574,18 @@
     ],
     [
      140.8,
-     10.0
+     10
     ],
     [
      142.2,
-     10.0
+     10
     ],
     [
      143.6,
      10.9
     ],
     [
-     145.0,
+     145,
      12.3
     ],
     [
@@ -627,7 +597,7 @@
      12
     ],
     [
-     149.0,
+     149,
      12.2
     ],
     [
@@ -639,7 +609,7 @@
      9.8
     ],
     [
-     154.0,
+     154,
      12.2
     ],
     [
@@ -648,18 +618,18 @@
     ],
     [
      156.3,
-     10.0
+     9
     ],
     [
      158.2,
-     10.0
+     9
     ],
     [
-     160.0,
+     160,
      11.6
     ],
     [
-     161.0,
+     161,
      12.3
     ],
     [
@@ -671,7 +641,7 @@
      10.2
     ],
     [
-     166.0,
+     166,
      12.3
     ],
     [
@@ -683,7 +653,7 @@
      12.5
     ],
     [
-     171.0,
+     171,
      12.2
     ],
     [
@@ -695,7 +665,7 @@
      9.6
     ],
     [
-     176.0,
+     176,
      12.2
     ]
    ]
@@ -717,12 +687,6 @@
    "nombre": "Reacción total del cloruro de hidrógeno con el agua"
   },
   {
-   "tipo": "plataforma",
-   "x": 159,
-   "y": 14,
-   "largo": 24
-  },
-  {
    "tipo": "checkpoint",
    "x": 179
   },
@@ -732,12 +696,6 @@
    "y": 14,
    "largo": 9,
    "id": "puente1"
-  },
-  {
-   "tipo": "plataforma",
-   "x": 192,
-   "y": 14,
-   "largo": 32
   },
   {
    "tipo": "palanca",
@@ -921,7 +879,7 @@
   {
    "tipo": "enemigo",
    "x": 36,
-   "y": 13,
+   "y": 12,
    "enemigo": "sin_estado",
    "nombre": "Olvidar el estado físico",
    "correccion": "Indicar siempre (aq), (ℓ), (g) o (s) en cada especie."
@@ -937,13 +895,13 @@
   {
    "tipo": "item",
    "x": 14,
-   "y": 12,
+   "y": 11,
    "item": "iman"
   },
   {
    "tipo": "item",
    "x": 78,
-   "y": 12,
+   "y": 10,
    "item": "zapatos"
   },
   {
@@ -967,17 +925,443 @@
   {
    "tipo": "item",
    "x": 69,
-   "y": 12,
+   "y": 10,
    "item": "estrella"
   },
   {
    "tipo": "bicho",
    "x": 32,
-   "y": 8,
+   "y": 7,
    "bicho": "demonio",
    "nombre": "Confundir ácido con disolución ácida",
    "correccion": "Un ácido es una especie química; una disolución es ácida según [H₃O⁺] y [HO⁻]."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 10,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 17,
+   "y": 15,
+   "largo": 9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 26,
+   "y": 13,
+   "largo": 20
+  },
+  {
+   "tipo": "plataforma",
+   "x": 46,
+   "y": 12,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 63,
+   "y": 12,
+   "largo": 19
+  },
+  {
+   "tipo": "plataforma",
+   "x": 82,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 83,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 95,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 104,
+   "y": 14,
+   "largo": 79
+  },
+  {
+   "tipo": "plataforma",
+   "x": 159,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "plataforma",
+   "x": 192,
+   "y": 14,
+   "largo": 32
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 72,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 73,
+   "y": 8,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 74,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 75,
+   "y": 8,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 76,
+   "y": 8,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 77,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 109,
+   "y": 10,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 110,
+   "y": 10,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 111,
+   "y": 10,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 112,
+   "y": 10,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 113,
+   "y": 10,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 114,
+   "y": 10,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 115,
+   "y": 10,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     55,
+     10
+    ],
+    [
+     56,
+     9
+    ],
+    [
+     57,
+     8
+    ],
+    [
+     58,
+     8
+    ],
+    [
+     59,
+     8
+    ],
+    [
+     60,
+     8
+    ],
+    [
+     61,
+     8
+    ],
+    [
+     62,
+     8
+    ],
+    [
+     63,
+     9
+    ],
+    [
+     64,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     88,
+     12
+    ],
+    [
+     89,
+     11
+    ],
+    [
+     90,
+     10
+    ],
+    [
+     91,
+     10
+    ],
+    [
+     92,
+     10
+    ],
+    [
+     93,
+     10
+    ],
+    [
+     94,
+     10
+    ],
+    [
+     95,
+     11
+    ],
+    [
+     96,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     97,
+     12
+    ],
+    [
+     98,
+     11
+    ],
+    [
+     99,
+     10
+    ],
+    [
+     100,
+     10
+    ],
+    [
+     101,
+     10
+    ],
+    [
+     102,
+     10
+    ],
+    [
+     103,
+     10
+    ],
+    [
+     104,
+     11
+    ],
+    [
+     105,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     154,
+     12
+    ],
+    [
+     155,
+     11
+    ],
+    [
+     156,
+     10
+    ],
+    [
+     157,
+     10
+    ],
+    [
+     158,
+     10
+    ],
+    [
+     159,
+     11
+    ],
+    [
+     160,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 24,
+   "y": 12,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 6.1
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 41,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 3.6
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 50,
+   "y": 9,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 5.1
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 60,
+   "y": 9,
+   "largo": 3,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 6.4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 81,
+   "y": 9,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 3.9
+  },
+  {
+   "tipo": "bicho",
+   "x": 40,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Confundir ácido con disolución ácida",
+   "correccion": "Un ácido es una especie química; una disolución es ácida según [H₃O⁺] y [HO⁻]."
+  },
+  {
+   "tipo": "bicho",
+   "x": 56,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "H⁺ libre en la ecuación",
+   "correccion": "El H⁺ no existe libre en agua y se simplifica al sumar las semiecuaciones."
+  },
+  {
+   "tipo": "bicho",
+   "x": 66,
+   "y": 5,
+   "bicho": "murcielago",
+   "nombre": "Dos ácidos que reaccionan",
+   "correccion": "Reacciona el ácido de un par con la base de otro par distinto."
+  },
+  {
+   "tipo": "bicho",
+   "x": 87,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Flecha en vez de signo =",
+   "correccion": "La semiecuación se escribe con = (puede leerse en ambos sentidos)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 101,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Olvidar el estado físico",
+   "correccion": "Indicar siempre (aq), (ℓ), (g) o (s) en cada especie."
+  },
+  {
+   "tipo": "bicho",
+   "x": 121,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Agua en la disolución de un sólido iónico",
+   "correccion": "Disolución: NaHCO₃(s) → Na⁺(aq) + HCO₃⁻(aq), sin H₂O en la ecuación."
+  },
+  {
+   "tipo": "bicho",
+   "x": 131,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Usar H₂CO₃ en lugar de CO₂,H₂O",
+   "correccion": "Escribir el par CO₂(aq),H₂O(ℓ)/HCO₃⁻(aq)."
   }
  ],
- "ambiente": "castillo"
+ "ambiente": "castillo",
+ "relieve": true,
+ "aire": true
 }

@@ -12,21 +12,9 @@
  "alto_tiles": 18,
  "segmentos": [
   {
-   "tipo": "plataforma",
-   "x": 0,
-   "y": 14,
-   "largo": 22
-  },
-  {
    "tipo": "foso",
    "x": 22,
    "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 25,
-   "y": 14,
-   "largo": 14
   },
   {
    "tipo": "foso",
@@ -34,27 +22,9 @@
    "largo": 4
   },
   {
-   "tipo": "plataforma",
-   "x": 43,
-   "y": 14,
-   "largo": 14
-  },
-  {
-   "tipo": "plataforma",
-   "x": 57,
-   "y": 12,
-   "largo": 10
-  },
-  {
    "tipo": "foso",
    "x": 67,
    "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 71,
-   "y": 14,
-   "largo": 14
   },
   {
    "tipo": "foso",
@@ -62,27 +32,9 @@
    "largo": 4
   },
   {
-   "tipo": "plataforma",
-   "x": 89,
-   "y": 14,
-   "largo": 16
-  },
-  {
    "tipo": "foso",
    "x": 105,
    "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 109,
-   "y": 14,
-   "largo": 14
-  },
-  {
-   "tipo": "plataforma",
-   "x": 123,
-   "y": 12,
-   "largo": 8
   },
   {
    "tipo": "foso",
@@ -91,14 +43,8 @@
   },
   {
    "tipo": "plataforma",
-   "x": 135,
-   "y": 14,
-   "largo": 33
-  },
-  {
-   "tipo": "plataforma",
    "x": 96,
-   "y": 7,
+   "y": 6,
    "largo": 6
   },
   {
@@ -128,7 +74,7 @@
   {
    "tipo": "plataforma_movil",
    "x": 103,
-   "y": 11,
+   "y": 10,
    "largo": 4,
    "recorrido": 4,
    "eje": "x",
@@ -137,7 +83,7 @@
   {
    "tipo": "resorte",
    "x": 95,
-   "y": 14
+   "y": 13
   },
   {
    "tipo": "zona_campo",
@@ -151,7 +97,7 @@
   {
    "tipo": "zona_campo",
    "x": 66,
-   "y": 5,
+   "y": 6,
    "w": 7,
    "h": 9,
    "fx": 0,
@@ -160,7 +106,7 @@
   {
    "tipo": "zona_campo",
    "x": 84,
-   "y": 8,
+   "y": 7,
    "w": 6,
    "h": 6,
    "fx": 0.9,
@@ -169,7 +115,7 @@
   {
    "tipo": "zona_campo",
    "x": 111,
-   "y": 8,
+   "y": 7,
    "w": 10,
    "h": 6,
    "fx": -0.35,
@@ -194,7 +140,7 @@
   {
    "tipo": "coleccionable",
    "x": 18,
-   "y": 12,
+   "y": 10,
    "ref": "f2",
    "latex": "\\Delta P = \\rho \\cdot g \\cdot \\Delta z",
    "nombre": "Ley fundamental de la estática de fluidos"
@@ -202,7 +148,7 @@
   {
    "tipo": "coleccionable",
    "x": 30,
-   "y": 12,
+   "y": 11,
    "ref": "f3",
    "latex": "\\vec{\\pi} = -m_f \\cdot \\vec{g} = -\\rho_f \\cdot V \\cdot \\vec{g}",
    "nombre": "Empuje de Arquímedes (expresión vectorial)"
@@ -226,7 +172,7 @@
   {
    "tipo": "coleccionable",
    "x": 61,
-   "y": 10,
+   "y": 11,
    "ref": "f6",
    "latex": "Q = \\dfrac{V}{\\Delta t}",
    "nombre": "Caudal volumétrico"
@@ -242,7 +188,7 @@
   {
    "tipo": "coleccionable",
    "x": 92,
-   "y": 12,
+   "y": 11,
    "ref": "f8",
    "latex": "Q_{(A)} = Q_{(B)} \\;\\Leftrightarrow\\; v_A \\cdot S_A = v_B \\cdot S_B \\;\\Rightarrow\\; \\dfrac{v_B}{v_A} = \\dfrac{S_A}{S_B}",
    "nombre": "Conservación del caudal volumétrico"
@@ -250,7 +196,7 @@
   {
    "tipo": "coleccionable",
    "x": 98,
-   "y": 5,
+   "y": 4,
    "ref": "f9",
    "latex": "P + \\dfrac{1}{2}\\,\\rho\\, v^2 + \\rho\\, g\\, z = \\text{constante}",
    "nombre": "Relación de Bernoulli"
@@ -258,7 +204,7 @@
   {
    "tipo": "coleccionable",
    "x": 113,
-   "y": 12,
+   "y": 11,
    "ref": "f10",
    "latex": "P_A + \\dfrac{1}{2}\\rho v_A^2 + \\rho g z_A = P_B + \\dfrac{1}{2}\\rho v_B^2 + \\rho g z_B",
    "nombre": "Bernoulli entre dos puntos de una línea de corriente"
@@ -282,7 +228,7 @@
   {
    "tipo": "enemigo",
    "x": 15,
-   "y": 13,
+   "y": 11,
    "enemigo": "error_unidades",
    "nombre": "No convertir a unidades SI",
    "correccion": "Pasar caudales a m³·s⁻¹ y diámetros a m (S = πd²/4) antes de aplicar Q = v·S o Bernoulli."
@@ -306,7 +252,7 @@
   {
    "tipo": "enemigo",
    "x": 62,
-   "y": 11,
+   "y": 12,
    "enemigo": "mas_velocidad_mas_presion",
    "nombre": "Creer que más velocidad implica más presión",
    "correccion": "Efecto Venturi: en régimen permanente, si v aumenta, P disminuye (P + ½ρv² = cte a igual altitud)."
@@ -314,7 +260,7 @@
   {
    "tipo": "enemigo",
    "x": 80,
-   "y": 13,
+   "y": 12,
    "enemigo": "caudal_cambia",
    "nombre": "Creer que Q cambia al estrecharse el tubo",
    "correccion": "El caudal se conserva (Q(A) = Q(B)): lo que cambia es la velocidad, v_B/v_A = S_A/S_B."
@@ -322,7 +268,7 @@
   {
    "tipo": "enemigo",
    "x": 118,
-   "y": 13,
+   "y": 11,
    "enemigo": "bernoulli_sin_simplificar",
    "nombre": "Aplicar Bernoulli sin simplificar con los datos",
    "correccion": "Identificar P = P_atm, z_A = z_B o v ≈ 0 (superficie libre) para simplificar la relación antes de calcular."
@@ -398,7 +344,7 @@
   {
    "tipo": "bicho",
    "x": 29,
-   "y": 9,
+   "y": 8,
    "bicho": "murcielago",
    "nombre": "No convertir a unidades SI",
    "correccion": "Pasar caudales a m³·s⁻¹ y diámetros a m (S = πd²/4) antes de aplicar Q = v·S o Bernoulli."
@@ -430,7 +376,7 @@
   {
    "tipo": "bicho",
    "x": 64,
-   "y": 13,
+   "y": 14,
    "bicho": "embestidor",
    "nombre": "Creer que Q cambia al estrecharse el tubo",
    "correccion": "El caudal se conserva (Q(A) = Q(B)): lo que cambia es la velocidad, v_B/v_A = S_A/S_B."
@@ -446,7 +392,505 @@
   {
    "tipo": "estalactita",
    "x": 82
+  },
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 10,
+   "y": 12,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 25,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 27,
+   "y": 13,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 33,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 43,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 57,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 59,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 71,
+   "y": 15,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 73,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 80,
+   "y": 13,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 89,
+   "y": 13,
+   "largo": 16
+  },
+  {
+   "tipo": "plataforma",
+   "x": 109,
+   "y": 13,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 115,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 123,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 135,
+   "y": 12,
+   "largo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 136,
+   "y": 14,
+   "largo": 32
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 14,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 15,
+   "y": 8,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 16,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 17,
+   "y": 8,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 18,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 19,
+   "y": 8,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 20,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 94,
+   "y": 9,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 95,
+   "y": 9,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 96,
+   "y": 9,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 97,
+   "y": 9,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 98,
+   "y": 9,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     21,
+     10
+    ],
+    [
+     22,
+     8
+    ],
+    [
+     23,
+     8
+    ],
+    [
+     24,
+     8
+    ],
+    [
+     25,
+     8
+    ],
+    [
+     26,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     38,
+     12
+    ],
+    [
+     39,
+     11
+    ],
+    [
+     40,
+     10
+    ],
+    [
+     41,
+     10
+    ],
+    [
+     42,
+     10
+    ],
+    [
+     43,
+     11
+    ],
+    [
+     44,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     66,
+     11
+    ],
+    [
+     67,
+     10
+    ],
+    [
+     68,
+     9
+    ],
+    [
+     69,
+     9
+    ],
+    [
+     70,
+     9
+    ],
+    [
+     71,
+     10
+    ],
+    [
+     72,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     84,
+     11
+    ],
+    [
+     85,
+     10
+    ],
+    [
+     86,
+     9
+    ],
+    [
+     87,
+     9
+    ],
+    [
+     88,
+     9
+    ],
+    [
+     89,
+     10
+    ],
+    [
+     90,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     104,
+     11
+    ],
+    [
+     105,
+     10
+    ],
+    [
+     106,
+     9
+    ],
+    [
+     107,
+     9
+    ],
+    [
+     108,
+     9
+    ],
+    [
+     109,
+     10
+    ],
+    [
+     110,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     130,
+     10
+    ],
+    [
+     131,
+     9
+    ],
+    [
+     132,
+     8
+    ],
+    [
+     133,
+     8
+    ],
+    [
+     134,
+     8
+    ],
+    [
+     135,
+     9
+    ],
+    [
+     136,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "plataforma",
+   "x": 11,
+   "y": 2,
+   "largo": 6,
+   "grosor": 3,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 19,
+   "y": 2,
+   "largo": 5,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 42,
+   "y": 2,
+   "largo": 6,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 49,
+   "y": 2,
+   "largo": 11,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 30,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 5.1
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 63,
+   "y": 10,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 5.7
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 81,
+   "y": 10,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5.7
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 118,
+   "y": 9,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 4.4
+  },
+  {
+   "tipo": "bicho",
+   "x": 26,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Creer que más velocidad implica más presión",
+   "correccion": "Efecto Venturi: en régimen permanente, si v aumenta, P disminuye (P + ½ρv² = cte a igual altitud)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 36,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Creer que Q cambia al estrecharse el tubo",
+   "correccion": "El caudal se conserva (Q(A) = Q(B)): lo que cambia es la velocidad, v_B/v_A = S_A/S_B."
+  },
+  {
+   "tipo": "bicho",
+   "x": 53,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Aplicar Bernoulli sin simplificar con los datos",
+   "correccion": "Identificar P = P_atm, z_A = z_B o v ≈ 0 (superficie libre) para simplificar la relación antes de calcular."
+  },
+  {
+   "tipo": "bicho",
+   "x": 71,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Dar demasiadas cifras significativas",
+   "correccion": "Respetar las cifras significativas de los datos (ej.: masa en toneladas con 1 cifra ⇒ resultado con 1 cifra)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 84,
+   "y": 6,
+   "bicho": "demonio",
+   "nombre": "No convertir a unidades SI",
+   "correccion": "Pasar caudales a m³·s⁻¹ y diámetros a m (S = πd²/4) antes de aplicar Q = v·S o Bernoulli."
+  },
+  {
+   "tipo": "bicho",
+   "x": 124,
+   "y": 6,
+   "bicho": "murcielago",
+   "nombre": "Pensar que el empuje depende de la masa del cuerpo",
+   "correccion": "π = ρ_f·V·g: depende del volumen sumergido y del fluido, no de la masa, forma o profundidad del cuerpo."
   }
  ],
- "ambiente": "cueva"
+ "ambiente": "cueva",
+ "relieve": true,
+ "aire": true
 }

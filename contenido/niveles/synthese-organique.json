@@ -3,7 +3,7 @@
  "tipo_nivel": "normal",
  "tema_visual": "laboratorio-verde",
  "fisica_juego": {
-  "gravedad": 1.0,
+  "gravedad": 1,
   "friccion": 0.85,
   "salto": 12,
   "viento": 0
@@ -12,21 +12,9 @@
  "alto_tiles": 18,
  "segmentos": [
   {
-   "tipo": "plataforma",
-   "x": 0,
-   "y": 14,
-   "largo": 16
-  },
-  {
    "tipo": "foso",
    "x": 16,
    "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 19,
-   "y": 14,
-   "largo": 13
   },
   {
    "tipo": "foso",
@@ -36,17 +24,11 @@
   {
    "tipo": "plataforma_movil",
    "x": 32.5,
-   "y": 12,
+   "y": 10,
    "largo": 3,
    "recorrido": 2,
    "eje": "y",
    "periodo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 36,
-   "y": 14,
-   "largo": 10
   },
   {
    "tipo": "foso",
@@ -56,7 +38,7 @@
   {
    "tipo": "zona_campo",
    "x": 45,
-   "y": 6,
+   "y": 5,
    "w": 6,
    "h": 9,
    "fx": 0,
@@ -64,20 +46,8 @@
   },
   {
    "tipo": "plataforma",
-   "x": 50,
-   "y": 14,
-   "largo": 8
-  },
-  {
-   "tipo": "plataforma",
-   "x": 58,
-   "y": 12,
-   "largo": 6
-  },
-  {
-   "tipo": "plataforma",
    "x": 64,
-   "y": 10,
+   "y": 8,
    "largo": 6
   },
   {
@@ -88,19 +58,7 @@
   {
    "tipo": "plataforma",
    "x": 73,
-   "y": 10,
-   "largo": 8
-  },
-  {
-   "tipo": "plataforma",
-   "x": 81,
-   "y": 12,
-   "largo": 8
-  },
-  {
-   "tipo": "plataforma",
-   "x": 89,
-   "y": 14,
+   "y": 8,
    "largo": 8
   },
   {
@@ -111,17 +69,11 @@
   {
    "tipo": "plataforma_movil",
    "x": 97,
-   "y": 12,
+   "y": 10,
    "largo": 3,
    "recorrido": 1,
    "eje": "x",
    "periodo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 101,
-   "y": 14,
-   "largo": 12
   },
   {
    "tipo": "foso",
@@ -131,34 +83,16 @@
   {
    "tipo": "plataforma_movil",
    "x": 113.5,
-   "y": 12,
+   "y": 11,
    "largo": 3,
    "recorrido": 2,
    "eje": "y",
    "periodo": 5
   },
   {
-   "tipo": "plataforma",
-   "x": 117,
-   "y": 14,
-   "largo": 10
-  },
-  {
-   "tipo": "plataforma",
-   "x": 127,
-   "y": 14,
-   "largo": 6
-  },
-  {
    "tipo": "foso",
    "x": 133,
    "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 136,
-   "y": 14,
-   "largo": 5
   },
   {
    "tipo": "foso",
@@ -167,27 +101,9 @@
   },
   {
    "tipo": "plataforma",
-   "x": 145,
-   "y": 14,
-   "largo": 6
-  },
-  {
-   "tipo": "plataforma",
-   "x": 151,
-   "y": 12,
-   "largo": 6
-  },
-  {
-   "tipo": "plataforma",
    "x": 157,
    "y": 10,
    "largo": 6
-  },
-  {
-   "tipo": "plataforma",
-   "x": 163,
-   "y": 12,
-   "largo": 5
   },
   {
    "tipo": "zona_campo",
@@ -199,15 +115,9 @@
    "fy": -0.5
   },
   {
-   "tipo": "plataforma",
-   "x": 168,
-   "y": 14,
-   "largo": 24
-  },
-  {
    "tipo": "resorte",
    "x": 44,
-   "y": 13
+   "y": 12
   },
   {
    "tipo": "resorte",
@@ -225,7 +135,7 @@
   {
    "tipo": "coleccionable",
    "x": 26,
-   "y": 12,
+   "y": 10,
    "ref": "f2",
    "latex": "n = \\dfrac{\\rho\\cdot V}{M}",
    "nombre": "Quantité de matière d'un liquide"
@@ -233,7 +143,7 @@
   {
    "tipo": "coleccionable",
    "x": 42,
-   "y": 12,
+   "y": 11,
    "ref": "f3",
    "latex": "R = \\dfrac{n_{\\text{obtenue}}}{n_{\\text{attendue}}}\\times 100",
    "nombre": "Rendement d'une synthèse"
@@ -257,7 +167,7 @@
   {
    "tipo": "coleccionable",
    "x": 67,
-   "y": 8,
+   "y": 6,
    "ref": "f6",
    "latex": "Q_{r,i} < K(T)\\ \\Rightarrow\\ \\text{sens direct}",
    "nombre": "Critère d'évolution spontanée"
@@ -281,7 +191,7 @@
   {
    "tipo": "enemigo",
    "x": 12,
-   "y": 13,
+   "y": 12,
    "enemigo": "error_1",
    "nombre": "Confundir velocidad y rendimiento",
    "correccion": "Calentar o añadir un catalizador acelera la reacción, pero no cambia la cantidad final de producto: el rendimiento queda inalterado."
@@ -289,7 +199,7 @@
   {
    "tipo": "enemigo",
    "x": 28,
-   "y": 13,
+   "y": 11,
    "enemigo": "error_2",
    "nombre": "Llamar «adición» a la esterificación",
    "correccion": "Se forma agua además del éster: la esterificación es más bien una sustitución, no una adición."
@@ -297,7 +207,7 @@
   {
    "tipo": "enemigo",
    "x": 43,
-   "y": 13,
+   "y": 12,
    "enemigo": "error_3",
    "nombre": "Olvidar el catalizador (H₂SO₄)",
    "correccion": "El ácido sulfúrico es catalizador: aumenta la velocidad de formación; interrogarse siempre por el papel de cada especie introducida."
@@ -313,7 +223,7 @@
   {
    "tipo": "enemigo",
    "x": 77,
-   "y": 9,
+   "y": 7,
    "enemigo": "error_5",
    "nombre": "Destilar el reactivo más volátil",
    "correccion": "Destilar el reactivo (el de menor temperatura de ebullición) lo elimina y baja el rendimiento; hay que eliminar un producto."
@@ -441,7 +351,7 @@
   {
    "tipo": "bicho",
    "x": 29,
-   "y": 8,
+   "y": 6,
    "bicho": "demonio",
    "nombre": "Llamar «adición» a la esterificación",
    "correccion": "Se forma agua además del éster: la esterificación es más bien una sustitución, no una adición."
@@ -461,7 +371,623 @@
    "bicho": "neutrino",
    "nombre": "Calcular n_attendue con el reactivo en exceso",
    "correccion": "n_attendue sale del avance máximo, fijado por el reactivo limitante (tabla de avance)."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 10,
+   "y": 13,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 19,
+   "y": 13,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 24,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 36,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 38,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 50,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 52,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 58,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 81,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 89,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 91,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 101,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 103,
+   "y": 14,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 110,
+   "y": 15,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 117,
+   "y": 15,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 122,
+   "y": 14,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 127,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 136,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 138,
+   "y": 15,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 145,
+   "y": 15,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 147,
+   "y": 14,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 151,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 163,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 165,
+   "y": 13,
+   "largo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 166,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 168,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 40,
+   "y": 9,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 41,
+   "y": 9,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 42,
+   "y": 9,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 43,
+   "y": 9,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 44,
+   "y": 9,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 92,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 93,
+   "y": 8,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 94,
+   "y": 8,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 95,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 124,
+   "y": 10,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 125,
+   "y": 10,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 126,
+   "y": 10,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 127,
+   "y": 10,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 128,
+   "y": 10,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 129,
+   "y": 10,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 130,
+   "y": 10,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     15,
+     11
+    ],
+    [
+     16,
+     9
+    ],
+    [
+     17,
+     9
+    ],
+    [
+     18,
+     9
+    ],
+    [
+     19,
+     9
+    ],
+    [
+     20,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     31,
+     10
+    ],
+    [
+     32,
+     9
+    ],
+    [
+     33,
+     8
+    ],
+    [
+     34,
+     8
+    ],
+    [
+     35,
+     8
+    ],
+    [
+     36,
+     9
+    ],
+    [
+     37,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     45,
+     11
+    ],
+    [
+     46,
+     10
+    ],
+    [
+     47,
+     9
+    ],
+    [
+     48,
+     9
+    ],
+    [
+     49,
+     9
+    ],
+    [
+     50,
+     10
+    ],
+    [
+     51,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     69,
+     10
+    ],
+    [
+     70,
+     8
+    ],
+    [
+     71,
+     8
+    ],
+    [
+     72,
+     8
+    ],
+    [
+     74,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     96,
+     10
+    ],
+    [
+     97,
+     9
+    ],
+    [
+     98,
+     8
+    ],
+    [
+     99,
+     8
+    ],
+    [
+     100,
+     8
+    ],
+    [
+     101,
+     9
+    ],
+    [
+     102,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     112,
+     13
+    ],
+    [
+     113,
+     12
+    ],
+    [
+     114,
+     11
+    ],
+    [
+     115,
+     11
+    ],
+    [
+     116,
+     11
+    ],
+    [
+     117,
+     12
+    ],
+    [
+     118,
+     13
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     132,
+     12
+    ],
+    [
+     133,
+     10
+    ],
+    [
+     134,
+     10
+    ],
+    [
+     135,
+     10
+    ],
+    [
+     136,
+     10
+    ],
+    [
+     137,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     140,
+     13
+    ],
+    [
+     141,
+     12
+    ],
+    [
+     142,
+     11
+    ],
+    [
+     143,
+     11
+    ],
+    [
+     144,
+     11
+    ],
+    [
+     145,
+     12
+    ],
+    [
+     146,
+     13
+    ]
+   ]
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 24,
+   "y": 9,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 3.9
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 51,
+   "y": 10,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 5.6
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 118,
+   "y": 13,
+   "largo": 3,
+   "recorrido": 7,
+   "eje": "x",
+   "periodo": 4.3
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 132,
+   "y": 11,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 5.2
+  },
+  {
+   "tipo": "bicho",
+   "x": 38,
+   "y": 5,
+   "bicho": "demonio",
+   "nombre": "Destilar el reactivo más volátil",
+   "correccion": "Destilar el reactivo (el de menor temperatura de ebullición) lo elimina y baja el rendimiento; hay que eliminar un producto."
+  },
+  {
+   "tipo": "bicho",
+   "x": 61,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Calentar sin reflujo",
+   "correccion": "El calentamiento a reflujo acelera la reacción evitando toda pérdida de materia; sin refrigerante se pierden vapores."
+  },
+  {
+   "tipo": "bicho",
+   "x": 89,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Olvidar proteger / desproteger",
+   "correccion": "Si el reactivo no es quimioselectivo hay que proteger el grupo; tras la reacción, una etapa de desprotección es necesaria."
+  },
+  {
+   "tipo": "bicho",
+   "x": 100,
+   "y": 7,
+   "bicho": "neutrino",
+   "nombre": "Confundir velocidad y rendimiento",
+   "correccion": "Calentar o añadir un catalizador acelera la reacción, pero no cambia la cantidad final de producto: el rendimiento queda inalterado."
+  },
+  {
+   "tipo": "bicho",
+   "x": 110,
+   "y": 8,
+   "bicho": "neutrino",
+   "nombre": "Llamar «adición» a la esterificación",
+   "correccion": "Se forma agua además del éster: la esterificación es más bien una sustitución, no una adición."
+  },
+  {
+   "tipo": "bicho",
+   "x": 121,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Olvidar el catalizador (H₂SO₄)",
+   "correccion": "El ácido sulfúrico es catalizador: aumenta la velocidad de formación; interrogarse siempre por el papel de cada especie introducida."
+  },
+  {
+   "tipo": "bicho",
+   "x": 141,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Calcular n_attendue con el reactivo en exceso",
+   "correccion": "n_attendue sale del avance máximo, fijado por el reactivo limitante (tabla de avance)."
   }
  ],
- "ambiente": "lab"
+ "ambiente": "lab",
+ "relieve": true,
+ "aire": true
 }

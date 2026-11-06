@@ -12,32 +12,14 @@
  "alto_tiles": 18,
  "segmentos": [
   {
-   "tipo": "plataforma",
-   "x": 0,
-   "y": 14,
-   "largo": 22
-  },
-  {
    "tipo": "foso",
    "x": 22,
    "largo": 3
   },
   {
-   "tipo": "plataforma",
-   "x": 25,
-   "y": 14,
-   "largo": 14
-  },
-  {
    "tipo": "foso",
    "x": 39,
    "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 43,
-   "y": 14,
-   "largo": 10
   },
   {
    "tipo": "foso",
@@ -46,38 +28,14 @@
   },
   {
    "tipo": "plataforma",
-   "x": 57,
-   "y": 14,
-   "largo": 12
-  },
-  {
-   "tipo": "plataforma",
-   "x": 69,
-   "y": 12,
-   "largo": 8
-  },
-  {
-   "tipo": "plataforma",
    "x": 77,
-   "y": 10,
+   "y": 8,
    "largo": 8
-  },
-  {
-   "tipo": "plataforma",
-   "x": 85,
-   "y": 14,
-   "largo": 12
   },
   {
    "tipo": "foso",
    "x": 97,
    "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 101,
-   "y": 14,
-   "largo": 14
   },
   {
    "tipo": "foso",
@@ -86,14 +44,8 @@
   },
   {
    "tipo": "plataforma",
-   "x": 119,
-   "y": 14,
-   "largo": 16
-  },
-  {
-   "tipo": "plataforma",
    "x": 128,
-   "y": 11,
+   "y": 9,
    "largo": 5
   },
   {
@@ -102,15 +54,9 @@
    "largo": 4
   },
   {
-   "tipo": "plataforma",
-   "x": 139,
-   "y": 14,
-   "largo": 31
-  },
-  {
    "tipo": "plataforma_movil",
    "x": 58,
-   "y": 11,
+   "y": 10,
    "largo": 4,
    "recorrido": 6,
    "eje": "x",
@@ -119,7 +65,7 @@
   {
    "tipo": "plataforma_movil",
    "x": 103,
-   "y": 11,
+   "y": 10,
    "largo": 4,
    "recorrido": 6,
    "eje": "x",
@@ -128,7 +74,7 @@
   {
    "tipo": "plataforma_movil",
    "x": 136,
-   "y": 12,
+   "y": 10,
    "largo": 3,
    "recorrido": 2,
    "eje": "y",
@@ -137,7 +83,7 @@
   {
    "tipo": "plataforma_movil",
    "x": 97,
-   "y": 13,
+   "y": 11,
    "largo": 3,
    "recorrido": 1,
    "eje": "x",
@@ -154,7 +100,7 @@
   {
    "tipo": "coleccionable",
    "x": 18,
-   "y": 12,
+   "y": 11,
    "ref": "f2",
    "latex": "{}^{A}_{Z}\\mathrm{X} \\to {}^{A-4}_{Z-2}\\mathrm{X}' + {}^{4}_{2}\\mathrm{He}",
    "nombre": "Désintégration α"
@@ -162,7 +108,7 @@
   {
    "tipo": "coleccionable",
    "x": 30,
-   "y": 12,
+   "y": 10,
    "ref": "f3",
    "latex": "{}^{A}_{Z}\\mathrm{X} \\to {}^{A}_{Z+1}\\mathrm{X}' + {}^{\\,0}_{-1}\\mathrm{e}",
    "nombre": "Désintégration β⁻"
@@ -170,7 +116,7 @@
   {
    "tipo": "coleccionable",
    "x": 36,
-   "y": 12,
+   "y": 10,
    "ref": "f4",
    "latex": "{}^{A}_{Z}\\mathrm{X} \\to {}^{A}_{Z-1}\\mathrm{X}' + {}^{\\,0}_{1}\\mathrm{e}",
    "nombre": "Désintégration β⁺"
@@ -178,7 +124,7 @@
   {
    "tipo": "coleccionable",
    "x": 47,
-   "y": 12,
+   "y": 11,
    "ref": "f5",
    "latex": "{}^{A}_{Z}\\mathrm{X}^{*} \\to {}^{A}_{Z}\\mathrm{X} + \\gamma",
    "nombre": "Radioactivité γ (désexcitation)"
@@ -186,7 +132,7 @@
   {
    "tipo": "coleccionable",
    "x": 62,
-   "y": 12,
+   "y": 11,
    "ref": "f6",
    "latex": "\\Delta N = -\\lambda \\cdot N(t) \\cdot \\Delta t",
    "nombre": "Variation du nombre de noyaux"
@@ -202,7 +148,7 @@
   {
    "tipo": "coleccionable",
    "x": 81,
-   "y": 8,
+   "y": 6,
    "ref": "f8",
    "latex": "N(t) = N_0 \\cdot e^{-\\lambda \\cdot t}",
    "nombre": "Loi de décroissance radioactive"
@@ -210,7 +156,7 @@
   {
    "tipo": "coleccionable",
    "x": 92,
-   "y": 12,
+   "y": 11,
    "ref": "f9",
    "latex": "t_{1/2} = \\dfrac{\\ln 2}{\\lambda}",
    "nombre": "Temps de demi-vie"
@@ -218,7 +164,7 @@
   {
    "tipo": "coleccionable",
    "x": 108,
-   "y": 12,
+   "y": 11,
    "ref": "f10",
    "latex": "A(t) = -\\dfrac{\\mathrm{d}N(t)}{\\mathrm{d}t} = \\lambda \\cdot N(t)",
    "nombre": "Activité d'un échantillon"
@@ -226,7 +172,7 @@
   {
    "tipo": "coleccionable",
    "x": 130,
-   "y": 9,
+   "y": 7,
    "ref": "f11",
    "latex": "A(t) = A_0 \\cdot e^{-\\lambda \\cdot t}",
    "nombre": "Loi de décroissance de l'activité"
@@ -242,7 +188,7 @@
   {
    "tipo": "enemigo",
    "x": 14,
-   "y": 13,
+   "y": 14,
    "enemigo": "error_conservacion",
    "nombre": "Olvidar la conservación de Z y A",
    "correccion": "Comprobar siempre Z = Z' + Z'' y A = A' + A''."
@@ -250,7 +196,7 @@
   {
    "tipo": "enemigo",
    "x": 33,
-   "y": 13,
+   "y": 11,
    "enemigo": "error_beta_signo",
    "nombre": "Confundir β⁻ y β⁺",
    "correccion": "β⁻: electrón, Z sube 1. β⁺: positón, Z baja 1."
@@ -258,7 +204,7 @@
   {
    "tipo": "enemigo",
    "x": 50,
-   "y": 13,
+   "y": 12,
    "enemigo": "error_espontanea",
    "nombre": "Confundir espontánea y provocada",
    "correccion": "Radiactiva = espontánea; la artificial se provoca."
@@ -266,7 +212,7 @@
   {
    "tipo": "enemigo",
    "x": 65,
-   "y": 13,
+   "y": 12,
    "enemigo": "error_unidades_lambda",
    "nombre": "No convertir λ a s⁻¹",
    "correccion": "Pasar λ y t al SI antes de calcular."
@@ -274,7 +220,7 @@
   {
    "tipo": "enemigo",
    "x": 110,
-   "y": 13,
+   "y": 12,
    "enemigo": "error_actividad_n",
    "nombre": "Confundir actividad A y núcleos N",
    "correccion": "A (Bq) = λ·N: desintegraciones por segundo."
@@ -282,7 +228,7 @@
   {
    "tipo": "enemigo",
    "x": 143,
-   "y": 13,
+   "y": 12,
    "enemigo": "error_dos_semividas",
    "nombre": "Creer que a 2 t½ no queda nada",
    "correccion": "A 2 t½ queda N₀/4 (la mitad de la mitad)."
@@ -299,7 +245,7 @@
   {
    "tipo": "zona_campo",
    "x": 126,
-   "y": 6,
+   "y": 4,
    "w": 8,
    "h": 6,
    "fx": 0,
@@ -421,7 +367,7 @@
   {
    "tipo": "bicho",
    "x": 142,
-   "y": 9,
+   "y": 8,
    "bicho": "murcielago",
    "nombre": "Confundir β⁻ y β⁺",
    "correccion": "β⁻: electrón, Z sube 1. β⁺: positón, Z baja 1."
@@ -429,7 +375,7 @@
   {
    "tipo": "bicho",
    "x": 110,
-   "y": 8,
+   "y": 7,
    "bicho": "murcielago",
    "nombre": "Confundir espontánea y provocada",
    "correccion": "Radiactiva = espontánea; la artificial se provoca."
@@ -437,7 +383,7 @@
   {
    "tipo": "bicho",
    "x": 34,
-   "y": 8,
+   "y": 6,
    "bicho": "demonio",
    "nombre": "No convertir λ a s⁻¹",
    "correccion": "Pasar λ y t al SI antes de calcular."
@@ -445,7 +391,7 @@
   {
    "tipo": "bicho",
    "x": 131,
-   "y": 13,
+   "y": 11,
    "bicho": "embestidor",
    "nombre": "Confundir actividad A y núcleos N",
    "correccion": "A (Bq) = λ·N: desintegraciones por segundo."
@@ -453,7 +399,7 @@
   {
    "tipo": "bicho",
    "x": 93,
-   "y": 13,
+   "y": 12,
    "bicho": "embestidor",
    "nombre": "Creer que a 2 t½ no queda nada",
    "correccion": "A 2 t½ queda N₀/4 (la mitad de la mitad)."
@@ -464,7 +410,8 @@
   },
   {
    "tipo": "estalactita",
-   "x": 47
+   "x": 47,
+   "y": 5
   },
   {
    "tipo": "estalactita",
@@ -473,7 +420,504 @@
   {
    "tipo": "estalactita",
    "x": 103
+  },
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 10,
+   "y": 15,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 17,
+   "y": 13,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 25,
+   "y": 13,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 28,
+   "y": 12,
+   "largo": 11
+  },
+  {
+   "tipo": "plataforma",
+   "x": 43,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 45,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 57,
+   "y": 13,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 69,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 85,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 87,
+   "y": 13,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 101,
+   "y": 13,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 119,
+   "y": 13,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 123,
+   "y": 12,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 139,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 141,
+   "y": 13,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 145,
+   "y": 12,
+   "largo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 146,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 33,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 34,
+   "y": 8,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 35,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 36,
+   "y": 8,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 37,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 89,
+   "y": 9,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 90,
+   "y": 9,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 91,
+   "y": 9,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 92,
+   "y": 9,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 93,
+   "y": 9,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     21,
+     11
+    ],
+    [
+     22,
+     9
+    ],
+    [
+     23,
+     9
+    ],
+    [
+     24,
+     9
+    ],
+    [
+     25,
+     9
+    ],
+    [
+     26,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     38,
+     10
+    ],
+    [
+     39,
+     9
+    ],
+    [
+     40,
+     8
+    ],
+    [
+     41,
+     8
+    ],
+    [
+     42,
+     8
+    ],
+    [
+     43,
+     9
+    ],
+    [
+     44,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     52,
+     11
+    ],
+    [
+     53,
+     10
+    ],
+    [
+     54,
+     9
+    ],
+    [
+     55,
+     9
+    ],
+    [
+     56,
+     9
+    ],
+    [
+     57,
+     10
+    ],
+    [
+     58,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     96,
+     11
+    ],
+    [
+     97,
+     10
+    ],
+    [
+     98,
+     9
+    ],
+    [
+     99,
+     9
+    ],
+    [
+     100,
+     9
+    ],
+    [
+     101,
+     10
+    ],
+    [
+     102,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     114,
+     11
+    ],
+    [
+     115,
+     10
+    ],
+    [
+     116,
+     9
+    ],
+    [
+     117,
+     9
+    ],
+    [
+     118,
+     9
+    ],
+    [
+     119,
+     10
+    ],
+    [
+     120,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     134,
+     10
+    ],
+    [
+     135,
+     9
+    ],
+    [
+     136,
+     8
+    ],
+    [
+     137,
+     8
+    ],
+    [
+     138,
+     8
+    ],
+    [
+     139,
+     9
+    ],
+    [
+     140,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "plataforma",
+   "x": 11,
+   "y": 2,
+   "largo": 11,
+   "grosor": 3,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 37,
+   "y": 2,
+   "largo": 12,
+   "grosor": 3,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 52,
+   "y": 2,
+   "largo": 12,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 94,
+   "y": 2,
+   "largo": 6,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma",
+   "x": 116,
+   "y": 2,
+   "largo": 9,
+   "grosor": 2,
+   "techo": true
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 24,
+   "y": 11,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 6
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 50,
+   "y": 10,
+   "largo": 3,
+   "recorrido": -3,
+   "eje": "y",
+   "periodo": 5.4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 115,
+   "y": 10,
+   "largo": 3,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 4.8
+  },
+  {
+   "tipo": "bicho",
+   "x": 26,
+   "y": 6,
+   "bicho": "demonio",
+   "nombre": "Creer que γ es una partícula o que se frena con papel",
+   "correccion": "γ es onda electromagnética, muy penetrante."
+  },
+  {
+   "tipo": "bicho",
+   "x": 42,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Pensar que la radiactividad siempre es natural",
+   "correccion": "También existe la radiactividad artificial."
+  },
+  {
+   "tipo": "bicho",
+   "x": 57,
+   "y": 7,
+   "bicho": "demonio",
+   "nombre": "Olvidar la conservación de Z y A",
+   "correccion": "Comprobar siempre Z = Z' + Z'' y A = A' + A''."
+  },
+  {
+   "tipo": "bicho",
+   "x": 67,
+   "y": 7,
+   "bicho": "murcielago",
+   "nombre": "Confundir β⁻ y β⁺",
+   "correccion": "β⁻: electrón, Z sube 1. β⁺: positón, Z baja 1."
+  },
+  {
+   "tipo": "bicho",
+   "x": 93,
+   "y": 6,
+   "bicho": "demonio",
+   "nombre": "Confundir espontánea y provocada",
+   "correccion": "Radiactiva = espontánea; la artificial se provoca."
+  },
+  {
+   "tipo": "bicho",
+   "x": 122,
+   "y": 6,
+   "bicho": "murcielago",
+   "nombre": "No convertir λ a s⁻¹",
+   "correccion": "Pasar λ y t al SI antes de calcular."
+  },
+  {
+   "tipo": "bicho",
+   "x": 132,
+   "y": 6,
+   "bicho": "demonio",
+   "nombre": "Confundir actividad A y núcleos N",
+   "correccion": "A (Bq) = λ·N: desintegraciones por segundo."
   }
  ],
- "ambiente": "cueva"
+ "ambiente": "cueva",
+ "relieve": true,
+ "aire": true
 }

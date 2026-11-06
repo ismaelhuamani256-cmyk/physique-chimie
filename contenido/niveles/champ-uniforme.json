@@ -3,7 +3,7 @@
  "tipo_nivel": "normal",
  "tema_visual": "pista-campo-uniforme",
  "fisica_juego": {
-  "gravedad": 1.0,
+  "gravedad": 1,
   "friccion": 0.85,
   "salto": 12,
   "viento": 0
@@ -11,12 +11,6 @@
  "ancho_tiles": 164,
  "alto_tiles": 18,
  "segmentos": [
-  {
-   "tipo": "plataforma",
-   "x": 0,
-   "y": 14,
-   "largo": 16
-  },
   {
    "tipo": "coleccionable",
    "x": 6,
@@ -28,7 +22,7 @@
   {
    "tipo": "enemigo",
    "x": 12,
-   "y": 13,
+   "y": 14,
    "enemigo": "sin_condicion_inicial",
    "nombre": "Olvidar la condición inicial z(0) = z₀",
    "correccion": "Al integrar, usa v(0) y OG(0): si z(0) ≠ 0 suma z₀."
@@ -37,12 +31,6 @@
    "tipo": "foso",
    "x": 16,
    "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 20,
-   "y": 14,
-   "largo": 12
   },
   {
    "tipo": "coleccionable",
@@ -66,26 +54,14 @@
    "largo": 4
   },
   {
-   "tipo": "plataforma",
-   "x": 36,
-   "y": 14,
-   "largo": 8
-  },
-  {
    "tipo": "resorte",
    "x": 38,
    "y": 14
   },
   {
-   "tipo": "plataforma",
-   "x": 44,
-   "y": 12,
-   "largo": 10
-  },
-  {
    "tipo": "coleccionable",
    "x": 48,
-   "y": 10,
+   "y": 11,
    "ref": "f3",
    "latex": "\\overrightarrow{OG}(t)\\begin{cases} x(t)=v_0\\cos\\alpha\\times t \\\\ y(t)=-\\tfrac12 g_0 t^2+v_0\\sin\\alpha\\times t \\\\ z(t)=0 \\end{cases}",
    "nombre": "Ecuaciones horarias de la posición (lanzamiento oblicuo)"
@@ -106,17 +82,11 @@
   {
    "tipo": "plataforma_movil",
    "x": 54,
-   "y": 12,
+   "y": 11,
    "largo": 4,
    "recorrido": 2,
    "eje": "x",
    "periodo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 58,
-   "y": 12,
-   "largo": 10
   },
   {
    "tipo": "checkpoint",
@@ -125,7 +95,7 @@
   {
    "tipo": "coleccionable",
    "x": 63,
-   "y": 10,
+   "y": 11,
    "ref": "f4",
    "latex": "y(x)=\\dfrac{-g_0}{2\\,v_0^2\\cos^2\\alpha}\\,x^2+x\\tan\\alpha",
    "nombre": "Ecuación de la trayectoria en un campo de gravedad uniforme"
@@ -138,17 +108,11 @@
   {
    "tipo": "zona_campo",
    "x": 68,
-   "y": 5,
+   "y": 6,
    "w": 4,
    "h": 9,
    "fx": 0.4,
    "fy": -0.5
-  },
-  {
-   "tipo": "plataforma",
-   "x": 72,
-   "y": 12,
-   "largo": 12
   },
   {
    "tipo": "coleccionable",
@@ -174,22 +138,16 @@
   {
    "tipo": "plataforma_movil",
    "x": 84,
-   "y": 12,
+   "y": 11,
    "largo": 4,
    "recorrido": 2,
    "eje": "x",
    "periodo": 3
   },
   {
-   "tipo": "plataforma",
-   "x": 88,
-   "y": 12,
-   "largo": 10
-  },
-  {
    "tipo": "coleccionable",
    "x": 92,
-   "y": 10,
+   "y": 11,
    "ref": "f8",
    "latex": "\\vec{a}=\\dfrac{q}{m}\\,\\vec{E}",
    "nombre": "Aceleración de una partícula cargada en un campo eléctrico uniforme"
@@ -197,7 +155,7 @@
   {
    "tipo": "enemigo",
    "x": 95,
-   "y": 11,
+   "y": 12,
    "enemigo": "cociente_invertido",
    "nombre": "Escribir a = (m/e)·E (cociente invertido)",
    "correccion": "La aceleración es a = (q/m)E, no (m/q)E."
@@ -205,22 +163,16 @@
   {
    "tipo": "plataforma",
    "x": 98,
-   "y": 10,
+   "y": 11,
    "largo": 8
   },
   {
    "tipo": "coleccionable",
    "x": 102,
-   "y": 8,
+   "y": 9,
    "ref": "f10",
    "latex": "y(x)=\\dfrac{-q\\,E}{2\\,m\\,v_0^2\\cos^2\\alpha}\\,x^2+x\\tan\\alpha",
    "nombre": "Ecuación de la trayectoria en un campo eléctrico uniforme"
-  },
-  {
-   "tipo": "plataforma",
-   "x": 106,
-   "y": 12,
-   "largo": 10
   },
   {
    "tipo": "checkpoint",
@@ -250,17 +202,11 @@
   {
    "tipo": "plataforma_movil",
    "x": 116,
-   "y": 12,
+   "y": 11,
    "largo": 4,
    "recorrido": 2,
    "eje": "x",
    "periodo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 120,
-   "y": 12,
-   "largo": 42
   },
   {
    "tipo": "coleccionable",
@@ -273,7 +219,7 @@
   {
    "tipo": "enemigo",
    "x": 128,
-   "y": 11,
+   "y": 12,
    "enemigo": "em_con_rozamiento",
    "nombre": "Aplicar E_m = cte con rozamiento",
    "correccion": "E_m = cte solo sin fuerzas no conservativas; con rozamiento ΔE_m = ΣW."
@@ -375,7 +321,7 @@
   {
    "tipo": "bicho",
    "x": 48,
-   "y": 9,
+   "y": 10,
    "bicho": "demonio",
    "nombre": "Dar un valor numérico cuando piden «exprimer»",
    "correccion": "Exprimer = dar la relación literal entre las magnitudes; el cálculo numérico viene después."
@@ -383,11 +329,441 @@
   {
    "tipo": "bicho",
    "x": 93,
-   "y": 10,
+   "y": 11,
    "bicho": "neutrino",
    "nombre": "Calcular h_max sin sumar la altura inicial",
    "correccion": "h_max = z(t_a) con z(t) = −½g₀t² + v₀t + z₀: incluir z₀ y usar el t_a correcto."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 10,
+   "y": 15,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 20,
+   "y": 15,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 23,
+   "y": 14,
+   "largo": 9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 36,
+   "y": 14,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 41,
+   "y": 15,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 44,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 51,
+   "y": 12,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 58,
+   "y": 12,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 63,
+   "y": 13,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 72,
+   "y": 13,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 77,
+   "y": 12,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 88,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 92,
+   "y": 13,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 106,
+   "y": 13,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 111,
+   "y": 12,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 120,
+   "y": 12,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 125,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 132,
+   "y": 12,
+   "largo": 30
+  },
+  {
+   "tipo": "plataforma",
+   "x": 38,
+   "y": 11,
+   "largo": 3
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     38,
+     9
+    ],
+    [
+     39,
+     9
+    ],
+    [
+     40,
+     9
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     15,
+     13
+    ],
+    [
+     16,
+     12
+    ],
+    [
+     17,
+     11
+    ],
+    [
+     18,
+     11
+    ],
+    [
+     19,
+     11
+    ],
+    [
+     20,
+     12
+    ],
+    [
+     21,
+     13
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     31,
+     12
+    ],
+    [
+     32,
+     11
+    ],
+    [
+     33,
+     10
+    ],
+    [
+     34,
+     10
+    ],
+    [
+     35,
+     10
+    ],
+    [
+     36,
+     11
+    ],
+    [
+     37,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     53,
+     10
+    ],
+    [
+     54,
+     9
+    ],
+    [
+     55,
+     8
+    ],
+    [
+     56,
+     8
+    ],
+    [
+     57,
+     8
+    ],
+    [
+     58,
+     9
+    ],
+    [
+     59,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     67,
+     11
+    ],
+    [
+     68,
+     10
+    ],
+    [
+     69,
+     9
+    ],
+    [
+     70,
+     9
+    ],
+    [
+     71,
+     9
+    ],
+    [
+     72,
+     10
+    ],
+    [
+     73,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     83,
+     10
+    ],
+    [
+     84,
+     9
+    ],
+    [
+     85,
+     8
+    ],
+    [
+     86,
+     8
+    ],
+    [
+     87,
+     8
+    ],
+    [
+     88,
+     9
+    ],
+    [
+     89,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     115,
+     10
+    ],
+    [
+     116,
+     9
+    ],
+    [
+     117,
+     8
+    ],
+    [
+     118,
+     8
+    ],
+    [
+     119,
+     8
+    ],
+    [
+     120,
+     9
+    ],
+    [
+     121,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 31,
+   "y": 11,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 4.5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 51,
+   "y": 9,
+   "largo": 3,
+   "recorrido": 6,
+   "eje": "x",
+   "periodo": 4.4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 63,
+   "y": 10,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 4.5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 72,
+   "y": 10,
+   "largo": 3,
+   "recorrido": 7,
+   "eje": "x",
+   "periodo": 4.7
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 86,
+   "y": 9,
+   "largo": 3,
+   "recorrido": -4,
+   "eje": "y",
+   "periodo": 5
+  },
+  {
+   "tipo": "bicho",
+   "x": 43,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Despreciar el peso sin justificarlo",
+   "correccion": "Comparar F_e/P: para partículas cargadas es enorme (≈10¹⁰ para un protón), por eso el peso se desprecia."
+  },
+  {
+   "tipo": "bicho",
+   "x": 58,
+   "y": 5,
+   "bicho": "neutrino",
+   "nombre": "Escribir ΔE_c = ΔE_p",
+   "correccion": "Si E_m se conserva, ΔE_m = 0 y ΔE_c = −ΔE_p; E_c se gana cuando E_p se pierde."
+  },
+  {
+   "tipo": "bicho",
+   "x": 78,
+   "y": 6,
+   "bicho": "neutrino",
+   "nombre": "Aplicar E_m = cte con rozamiento",
+   "correccion": "La conservación exige ausencia de fuerzas no conservativas; con rozamiento ΔE_m = ΣW(F no conservativas)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 92,
+   "y": 5,
+   "bicho": "murcielago",
+   "nombre": "Olvidar la condición inicial z(0) = z₀",
+   "correccion": "Al integrar, las constantes salen de v(0) y OG(0): si z(0) ≠ 0 hay que sumar z₀ en z(t)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 106,
+   "y": 6,
+   "bicho": "murcielago",
+   "nombre": "Razonar sin ecuaciones («el peso baja, luego frena»)",
+   "correccion": "Justificar con las ecuaciones horarias: v_z(t) = −g₀t + v₀ es afín decreciente, no con la dirección del peso."
+  },
+  {
+   "tipo": "bicho",
+   "x": 117,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Dar un valor numérico cuando piden «exprimer»",
+   "correccion": "Exprimer = dar la relación literal entre las magnitudes; el cálculo numérico viene después."
   }
  ],
- "ambiente": "campo"
+ "ambiente": "campo",
+ "relieve": true,
+ "aire": true
 }

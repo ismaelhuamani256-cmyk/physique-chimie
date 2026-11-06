@@ -87,3 +87,40 @@
 @media (prefers-reduced-motion:reduce){.jg-aviso.on,.jg-pop{animation:none;opacity:1}.jg-aviso.on{opacity:1}}
 .jg-tb.c{width:60px;height:60px;background:#ffd16633;border-color:#ffd166aa;font-size:20px}
 .jg-tg.der{align-items:flex-end}
+
+/* ---- Etapa 1: cartel, inventario de átomos, puerta de ecuación, estación de moléculas ---- */
+.jg-cartel{position:absolute;left:50%;top:calc(var(--s)*34px);transform:translateX(-50%);max-width:86%;display:flex;gap:calc(var(--s)*5px);align-items:flex-start;background:#f4e3b0f2;color:#2a1a08;border:calc(var(--s)*1px) solid #7a4a1a;box-shadow:0 calc(var(--s)*2px) 0 #0008;padding:calc(var(--s)*4px) calc(var(--s)*7px);font-family:UI,system-ui,sans-serif;font-size:calc(var(--s)*6.6px);line-height:1.3;pointer-events:none;z-index:3;border-radius:calc(var(--s)*2px)}
+.jg-cartel-i{flex:none;background:#1b5e70;color:#fff;font-family:PixelHUD,monospace;font-size:calc(var(--s)*6px);padding:calc(var(--s)*1px) calc(var(--s)*3px)}
+.jg-esfera{display:inline-flex;align-items:center;justify-content:center;width:calc(var(--s)*8px);height:calc(var(--s)*8px);border-radius:50%;color:#0b1230;font-size:calc(var(--s)*4.5px);font-weight:700;box-shadow:inset calc(var(--s)*-1px) calc(var(--s)*-1px) 0 #0003;margin-right:calc(var(--s)*1px)}
+.jg-punto{display:inline-block;width:calc(var(--s)*5px);height:calc(var(--s)*5px);border-radius:50%;margin-right:calc(var(--s)*2px);box-shadow:0 0 calc(var(--s)*3px) currentColor}
+.jg-var{font-size:calc(var(--s)*5.6px)}
+.jg-eq{display:flex;flex-wrap:wrap;align-items:center;gap:.5em;margin:.4em 0 .8em;font-size:1.1em}
+.jg-esp{display:inline-flex;align-items:center;gap:.4em;background:#161f48;border:.07em solid #2a376b;border-radius:.4em;padding:.25em .5em}
+.jg-step{display:inline-flex;align-items:center;gap:.2em}
+.jg-coef{display:inline-block;min-width:1.2em;text-align:center;font-family:PixelHUD,monospace;font-size:.9em;color:#ffd166}
+.jg-mini{width:1.7em;height:1.7em;font:700 1em UI,system-ui,sans-serif;color:#eaf0ff;background:#26356b;border:.07em solid #3a4a8a;border-radius:.3em;cursor:pointer;padding:0}
+.jg-mini:hover{background:#2f6bff}
+.jg-op{font-weight:700;color:#7f8fb8}.jg-flecha{font-size:1.3em;color:#19e3ff}
+.jg-formula{font-size:1.1em;white-space:nowrap}
+.jg-balance{display:grid;gap:.15em;margin:.3em 0 .6em;font-size:.9em;max-width:20em}
+.jg-bal-fila{display:grid;grid-template-columns:4.5em 1fr 1fr 2em;text-align:center;padding:.12em .3em;border-radius:.25em;background:#101838}
+.jg-bal-fila.ok{color:#2ee59d}.jg-bal-fila.mal{color:#ff8da1;background:#2a1020}.jg-bal-h{color:#7f8fb8;background:none}
+.jg-ayudaeq{font-size:.88em;color:#cfe3ff;background:#162452;border-left:.2em solid #ffd166;padding:.35em .6em;margin:.4em 0}
+.jg-botones{display:flex;flex-wrap:wrap;gap:.5em;margin-top:.6em}.jg-botones .jg-btn{flex:1 1 7em}
+.jg-card-mol{width:min(100%,32em)}
+.jg-mol3d{min-height:9em;margin:.4em 0;display:flex;flex-direction:column;align-items:center;gap:.5em}
+.jg-mol3d canvas{max-width:100%;border-radius:.4em;border:.07em solid #2a376b}
+.jg-mol-op{display:flex;flex-wrap:wrap;gap:.4em;justify-content:center}
+.jg-esferab{border-radius:50%;width:2.6em;height:2.6em;padding:0;font-weight:700}
+.jg-mal{color:#ff6b86}
+
+/* ---- Ítems y reserva (48-items.js) ---- */
+.jg-itemhud{position:absolute;left:10px;bottom:10px;display:flex;flex-direction:column;gap:4px;z-index:6;pointer-events:none}
+.jg-itemchip{display:inline-flex;align-items:center;gap:6px;background:#0b1230cc;border:2px solid;border-radius:8px;padding:2px 8px 2px 2px;font:11px/1.2 UI,system-ui,sans-serif;color:#eaf0ff}
+.jg-itemchip b,.jg-slot b{display:inline-block;min-width:18px;height:18px;line-height:18px;text-align:center;border-radius:5px;color:#0b1230;font:10px PixelHUD,monospace}
+.jg-itemchip i{font-style:normal;color:#ffd166;font-weight:700}
+.jg-reserva{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);display:flex;gap:6px;z-index:6}
+.jg-slot{width:34px;height:34px;border-radius:8px;border:2px solid #3c4a7e;background:#0b1230b0;display:flex;align-items:center;justify-content:center;padding:0;cursor:default}
+.jg-slot.llena{border-color:#ffd166;cursor:pointer;box-shadow:0 0 10px #ffd16688}
+.jg-slot.llena:hover{transform:translateY(-2px)}
+.jg-slot b{min-width:22px;height:22px;line-height:22px}

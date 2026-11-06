@@ -55,12 +55,17 @@
     golem_formulas: 'Gólem de Fórmulas, guardián de las ecuaciones',
     pulpo_acido: 'Pulpo Ácido, el calamar de las profundidades',
     dragon_tormenta: 'Dragón de la Tormenta, jinete de rayos',
+    isotopo_inestable: 'Isótopo Inestable, núcleo que se desintegra',
+    foton_veloz: 'Fotón Veloz, la luz hecha rayo',
+    bombardero_neutron: 'Bombardero Neutrón, reactor volador',
   };
+  /** Jefes de física moderna por capítulo (sustituyen al del mundo). */
+  const JEFE_CAP = { nucleaires: 'bombardero_neutron', photons: 'foton_veloz' };
   /** Capítulos con jefe de agua extra por afinidad temática (criterio documentado arriba). */
   const AGUA_EXTRA = { 'acide-base': 'pulpo_acido', 'force-acides-bases': 'pulpo_acido' };
   const jefesDe = (capId, mundo) => {
     const b = JEFES[mundo] || JEFES.constitucion;
-    return { agua: AGUA_EXTRA[capId] || b.agua, castillo: b.castillo };
+    return { agua: AGUA_EXTRA[capId] || b.agua, castillo: JEFE_CAP[capId] || b.castillo };
   };
 
   const ACUATICOS = ['medusa', 'pez', 'erizo', 'anguila'];

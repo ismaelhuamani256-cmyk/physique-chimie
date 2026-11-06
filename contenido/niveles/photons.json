@@ -360,13 +360,16 @@
    "x": 150
   },
   {
-   "tipo": "jefe",
+   "tipo": "jefe_quiz",
    "x": 164,
-   "jefe": "ejercicio_bac_1",
-   "titulo": "Ejercicio BAC : E_c = h(ν − ν_s)",
+   "jefe": "foton_veloz",
+   "titulo": "Fotón Veloz · la luz hecha rayo",
+   "vidas": 3,
    "preguntas": [
     {
-     "pregunta": "L'effet photoélectrique se produit :",
+     "id": "b1",
+     "tipo": "opcion",
+     "enunciado": "L'effet photoélectrique se produit :",
      "opciones": [
       "en dessous d'une fréquence seuil",
       "au-dessus d'une fréquence seuil, quelle que soit l'intensité du rayonnement",
@@ -378,7 +381,9 @@
      "pagina_pdf": 503
     },
     {
-     "pregunta": "Le cobalt a une fréquence seuil de 1,2×10¹⁵ Hz. Son travail d'extraction W = h·ν_s vaut :",
+     "id": "b2",
+     "tipo": "opcion",
+     "enunciado": "Le cobalt a une fréquence seuil de 1,2×10¹⁵ Hz. Son travail d'extraction W = h·ν_s vaut :",
      "opciones": [
       "1,7×10⁻⁴⁰ J",
       "5,5×10⁻⁴⁹ J",
@@ -390,7 +395,9 @@
      "pagina_pdf": 503
     },
     {
-     "pregunta": "La conservation de l'énergie dans l'effet photoélectrique s'écrit :",
+     "id": "b3",
+     "tipo": "opcion",
+     "enunciado": "La conservation de l'énergie dans l'effet photoélectrique s'écrit :",
      "opciones": [
       "h·ν = E_c + W, soit E_c = h(ν − ν_s)",
       "h·ν = E_c − W",
@@ -402,7 +409,9 @@
      "pagina_pdf": 500
     },
     {
-     "pregunta": "Le rendement d'une cellule photovoltaïque se calcule :",
+     "id": "b4",
+     "tipo": "opcion",
+     "enunciado": "Le rendement d'une cellule photovoltaïque se calcule :",
      "opciones": [
       "η = P_lumineuse / P_électrique × 100",
       "η = E_lumineuse / E_électrique × 100",
@@ -414,7 +423,9 @@
      "pagina_pdf": 503
     },
     {
-     "pregunta": "Or (W = 5,10 eV, λ_s = 244 nm) : quel rayonnement provoque l'effet photoélectrique ?",
+     "id": "b5",
+     "tipo": "opcion",
+     "enunciado": "Or (W = 5,10 eV, λ_s = 244 nm) : quel rayonnement provoque l'effet photoélectrique ?",
      "opciones": [
       "λ = 300 nm",
       "ν = 1,00×10¹⁵ Hz",
@@ -424,6 +435,20 @@
      "correcta": 2,
      "explicacion": "Il faut ν ≥ ν_s = 1,23×10¹⁵ Hz (ou λ ≤ 244 nm) : seul ν = 5,00×10¹⁵ Hz convient (exercice 26).",
      "pagina_pdf": 507
+    },
+    {
+     "id": "q11",
+     "tipo": "opcion",
+     "enunciado": "L'effet photoélectrique s'explique avec :",
+     "opciones": [
+      "l'aspect ondulatoire de la lumière uniquement",
+      "l'aspect particulaire de la lumière (photons)",
+      "l'aspect ondulatoire, car plus l'intensité est grande plus l'énergie augmente",
+      "aucun modèle : on ne peut pas l'expliquer"
+     ],
+     "correcta": 1,
+     "explicacion": "Le modèle ondulatoire n'explique pas l'existence d'une fréquence seuil ; Einstein (1905) utilise le modèle particulaire : photons d'énergie E = hν.",
+     "pagina_pdf": 503
     }
    ]
   },

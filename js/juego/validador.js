@@ -67,17 +67,118 @@
   // ---------- geometría: del JSON a una rejilla de tiles ----------
   // Tipos de tile: 0 aire, 1 suelo (se extiende hasta abajo, lo cortan los fosos), 2 plataforma flotante
   // (de un solo sentido: se atraviesa desde abajo), 3 puente, 4 bloque sólido.
-  // 5 = bloque ? (bloque_pregunta), 6 = tubería, 7 = puerta, 8 = ladrillo: sólidos que dibuja el motor como entidades
-  const SOLIDO = (t) => t === 1 || t === 3 || t === 4 || t === 5 || t === 6 || t === 7 || t === 8;
-  const SUELO_T = (t) => t === 1 || t === 2 || t === 3 || t === 4;   // lo que cuenta como "suelo" para topAt
-  const JEFES_QUIZ = ['rey_entropia', 'golem_formulas', 'pulpo_acido', 'dragon_tormenta'];
+  // 5 = bloque ? (bloque_pregunta), 6 = tubería, 7 = puerta, 8 = ladrillo, 9 = cinta, 10 = bloque_rebote: sólidos que dibuja el motor como entidades
+  const SOLIDO = (t) => t === 1 || t === 3 || t === 4 || t === 5 || t === 6 || t === 7 || t === 8 || t === 9 || t === 10;
+  const SUELO_T = (t) => t === 1 || t === 2 || t === 3 || t === 4 || t === 9 || t === 10;   // lo que cuenta como "suelo" para topAt
+  const JEFES_QUIZ = ['rey_entropia', 'golem_formulas', 'pulpo_acido', 'dragon_tormenta', 'isotopo_inestable', 'foton_veloz', 'bombardero_neutron'];
   const ACUATICOS = ['medusa', 'pez', 'erizo', 'anguila'];
 
-  function geometria(nivel) {
+  // ---------- química: fórmulas con cargas, conservación de átomos y de carga ----------
+  const SUB = { '₀': '0', '₁': '1', '₂': '2', '₃': '3', '₄': '4', '₅': '5', '₆': '6', '₇': '7', '₈': '8', '₉': '9' };
+  const SUP = { '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4', '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9', '⁺': '+', '⁻': '-', '−': '-', '–': '-' };
+  const Quimica = {
+    /** "H3O+", "HO⁻", "CO3^2-", "SO4 2-", "NH₄⁺(aq)", "(NH4)3PO4" -> {atomos:{H:3,O:1}, carga:1}. null si no se entiende. */
+    parsear(f) {
+      if (String(f).indexOf(',') >= 0) {   // "CO2(aq),H2O(ℓ)": especie compuesta del cours = suma de sus partes
+        const ps = String(f).split(',').map((q) => Quimica.parsear(q));
+        if (ps.some((q) => !q)) return null;
+        const a = {}; let c = 0; ps.forEach((q) => { for (const e in q.atomos) a[e] = (a[e] || 0) + q.atomos[e]; c += q.carga; });
+        return { atomos: a, carga: c };
+      }
+      let t = String(f == null ? '' : f).trim();
+      t = t.replace(/\((aq|ℓ|l|g|s)\)/g, '').replace(/[₀-₉⁰-⁹⁺⁻−–]/g, (c) => (SUB[c] != null ? SUB[c] : SUP[c])).replace(/\s+/g, '');
+      if (!t) return null;
+      let carga = 0;
+      // carga: explícita con ^ ("CO3^2-", "O^2-") o implícita al final ("NH4+", "HO-", "SO42-", "Fe2+")
+      let m = /^(.+?)\^(\d*)([+-])$/.exec(t);
+      if (m) { carga = (m[3] === '+' ? 1 : -1) * (m[2] ? parseInt(m[2], 10) : 1); t = m[1]; }
+      else if ((m = /^(.+)([+-])$/.exec(t))) {
+        let body = m[1], mag = 1;
+        const d = /(\d+)$/.exec(body);
+        if (d) {
+          if (d[1].length >= 2) { mag = parseInt(d[1].slice(-1), 10); body = body.slice(0, -1); }          // SO42- -> SO4 2-
+          else if (/[a-z]$/.test(body.slice(0, -1))) { mag = parseInt(d[1], 10); body = body.slice(0, -1); } // Fe2+, Ca2+, Al3+
+        }
+        carga = (m[2] === '+' ? 1 : -1) * mag; t = body;
+      }
+      let i = 0;
+      const num = () => { let n = ''; while (i < t.length && /\d/.test(t[i])) n += t[i++]; return n ? parseInt(n, 10) : 1; };
+      const grupo = () => {
+        const cnt = {};
+        while (i < t.length && t[i] !== ')') {
+          if (t[i] === '(') { i++; const g = grupo(); if (t[i] !== ')') throw new Error('paréntesis'); i++; const k = num(); for (const e in g) cnt[e] = (cnt[e] || 0) + g[e] * k; }
+          else if (/[A-Z]/.test(t[i])) { let e = t[i++]; if (i < t.length && /[a-z]/.test(t[i])) e += t[i++]; const k = num(); cnt[e] = (cnt[e] || 0) + k; }
+          else throw new Error('carácter ' + t[i]);
+        }
+        return cnt;
+      };
+      try { const a = grupo(); if (i < t.length) return null; return { atomos: a, carga }; } catch (e) { return null; }
+    },
+    /** Quita especies repetidas de un lado (H2O + H2O -> una sola especie con coeficiente 2). */
+    normalizar(eq) {
+      const u = (l) => (l || []).filter((f, i, a) => a.indexOf(f) === i);
+      return { reactivos: u(eq.reactivos), productos: u(eq.productos) };
+    },
+    /** Cuenta átomos y carga a cada lado con los coeficientes dados. */
+    verificar(eq0, coef) {
+      const eq = Quimica.normalizar(eq0);
+      const lado = (lista, off) => {
+        const a = {}; let q = 0;
+        lista.forEach((f, k) => { const p = Quimica.parsear(f), c = coef[off + k] | 0; if (!p) return; for (const e in p.atomos) a[e] = (a[e] || 0) + p.atomos[e] * c; q += p.carga * c; });
+        return { a, q };
+      };
+      const L = lado(eq.reactivos, 0), R = lado(eq.productos, eq.reactivos.length);
+      const els = [...new Set([...Object.keys(L.a), ...Object.keys(R.a)])].sort();
+      const atomos = {}; let ok = coef.every((c) => c >= 1);
+      els.forEach((e) => { atomos[e] = [L.a[e] || 0, R.a[e] || 0]; if (atomos[e][0] !== atomos[e][1]) ok = false; });
+      if (L.q !== R.q) ok = false;
+      const gcd = (a, b) => (b ? gcd(b, a % b) : a), g = coef.reduce((a, b) => gcd(a, b), 0);
+      return { ok, atomos, carga: [L.q, R.q], simplificada: g === 1 };
+    },
+    /** Coeficientes enteros mínimos que equilibran la ecuación (átomos y carga), o null si no existen. */
+    resolver(eq0) {
+      const eq = Quimica.normalizar(eq0);
+      const esp = [...eq.reactivos, ...eq.productos].map((f) => Quimica.parsear(f));
+      if (esp.some((x) => !x)) return null;
+      const els = [...new Set(esp.flatMap((x) => Object.keys(x.atomos)))];
+      const n = esp.length, filas = els.map((e) => esp.map((x, j) => (x.atomos[e] || 0) * (j < eq.reactivos.length ? 1 : -1)));
+      filas.push(esp.map((x, j) => x.carga * (j < eq.reactivos.length ? 1 : -1)));
+      // eliminación gaussiana con fracciones (numerador/denominador enteros pequeños)
+      const M = filas.map((r) => r.map((v) => [v, 1]));
+      const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) { [a, b] = [b, a % b]; } return a || 1; };
+      const red = (f) => { const g = gcd(f[0], f[1]); const s = f[1] < 0 ? -1 : 1; return [(s * f[0]) / g, (s * f[1]) / g]; };
+      const mul = (a, b) => red([a[0] * b[0], a[1] * b[1]]), sub = (a, b) => red([a[0] * b[1] - b[0] * a[1], a[1] * b[1]]), div = (a, b) => red([a[0] * b[1], a[1] * b[0]]);
+      let fila = 0; const pivotes = [];
+      for (let c = 0; c < n && fila < M.length; c++) {
+        let p = -1; for (let r = fila; r < M.length; r++) if (M[r][c][0] !== 0) { p = r; break; }
+        if (p < 0) continue;
+        [M[fila], M[p]] = [M[p], M[fila]];
+        const pv = M[fila][c]; M[fila] = M[fila].map((v) => div(v, pv));
+        for (let r = 0; r < M.length; r++) if (r !== fila && M[r][c][0] !== 0) { const f = M[r][c]; M[r] = M[r].map((v, k) => sub(v, mul(f, M[fila][k]))); }
+        pivotes.push(c); fila++;
+      }
+      const libres = []; for (let c = 0; c < n; c++) if (!pivotes.includes(c)) libres.push(c);
+      if (libres.length !== 1) return null;
+      const x = Array(n).fill(null).map(() => [0, 1]); x[libres[0]] = [1, 1];
+      pivotes.forEach((c, r) => { x[c] = red([-M[r][libres[0]][0], M[r][libres[0]][1]]); });
+      let mcm = 1; x.forEach((f) => { mcm = (mcm * f[1]) / gcd(mcm, f[1]); });
+      let ent = x.map((f) => (f[0] * mcm) / f[1]);
+      if (ent.every((v) => v <= 0)) ent = ent.map((v) => -v);
+      if (!ent.every((v) => v > 0 && Number.isInteger(v))) return null;
+      const g = ent.reduce((a, b) => gcd(a, b), 0); return ent.map((v) => v / g);
+    },
+    /** Fórmula → cuenta de átomos por elemento (sin carga): {H:2,O:1} */
+    atomosDe(f) { const p = Quimica.parsear(f); return p ? p.atomos : null; },
+    /** Geometría VSEPR del cours (nombre) para las moléculas/iones más comunes. */
+    GEOMETRIA: { H2O: 'angular', NH3: 'pirámide trigonal', 'H3O+': 'pirámide trigonal', 'NH4+': 'tetraédrica', CH4: 'tetraédrica', CO2: 'lineal', HCl: 'lineal', 'HO-': 'lineal (diatómico)', H2: 'lineal (diatómico)' },
+  };
+  const ELEMENTOS = ['H', 'C', 'N', 'O', 'F', 'Cl', 'Na', 'S', 'P', 'Li', 'K', 'Ca', 'Mg', 'Br', 'I', 'Al', 'Fe', 'Cu'];
+
+  function geometria(nivel, opts) {
     const ancho = Math.round(num(nivel.ancho_tiles, 0)), alto = Math.round(num(nivel.alto_tiles, 0));
     const segs = Array.isArray(nivel.segmentos) ? nivel.segmentos : [];
     const tiles = new Uint8Array(Math.max(0, ancho * alto));
-    const G = { ancho, alto, tiles, movers: [], resortes: [], campos: [], fosos: [], puentes: [], palancas: [], bloques: [], tuberias: [], puertas: [], aguas: [], ladrillos: [], caes: [], plantas: [], arena: null, meta: null, jefe: null };
+    const G = { ancho, alto, tiles, movers: [], resortes: [], campos: [], fosos: [], puentes: [], palancas: [], bloques: [], tuberias: [], puertas: [], aguas: [], ladrillos: [], caes: [], plantas: [], minas: [], prensas: [], pendulos: [], cintas: [], picos: [], rebotes: [], sprints: [], rastros: [], carteles: [], atomos: [], estaciones: [], interruptores: [], platEstado: [], arena: null, meta: null, jefe: null };
     const get = (x, y) => (x < 0 || x >= ancho || y < 0 || y >= alto ? 0 : tiles[y * ancho + x]);
     const set = (x, y, v) => { if (x >= 0 && x < ancho && y >= 0 && y < alto) tiles[y * ancho + x] = v; };
     G.get = get;
@@ -107,8 +208,8 @@
     for (const s of segs) {
       if (s.tipo !== 'puente') continue;
       const x = Math.round(num(s.x, 0)), y = Math.round(num(s.y, 0)), l = Math.max(0, Math.round(num(s.largo, 0)));
-      for (let i = 0; i < l; i++) { for (let yy = y; yy < alto; yy++) set(x + i, yy, 0); set(x + i, y, 3); }
-      G.puentes.push({ id: s.id || null, x, y, largo: l, caeCon: s.cae_con || null, seg: s });
+      if (!s.oculto || (opts && opts.revelar)) for (let i = 0; i < l; i++) { for (let yy = y; yy < alto; yy++) set(x + i, yy, 0); set(x + i, y, 3); }   // oculto:true -> aparece con una estacion_molecula
+      G.puentes.push({ id: s.id || null, x, y, largo: l, caeCon: s.cae_con || null, oculto: !!s.oculto, seg: s });
     }
     for (const s of segs) {
       if (s.tipo === 'plataforma_movil') {
@@ -129,6 +230,19 @@
         }
       } else if (s.tipo === 'plataforma_cae') G.caes.push({ x: num(s.x, 0), y: num(s.y, 0), largo: Math.max(1, Math.round(num(s.largo, 3))), retardo: num(s.retardo, 0.6), reaparece: num(s.reaparece, 4), seg: s });
       else if (s.tipo === 'planta_carnivora') G.plantas.push({ x: Math.round(num(s.x, 0)), y: Math.round(num(s.y, 0)), ciclo: num(s.ciclo, 3), visible: num(s.visible, 1.2), seg: s });
+      else if (s.tipo === 'mina') G.minas.push({ x: num(s.x, 0), y: num(s.y, 0), modo: s.modo === 'temporizador' ? 'temporizador' : 'contacto', radio: num(s.radio, s.modo === 'temporizador' ? 2 : 1.2), seg: s });
+      else if (s.tipo === 'prensa') G.prensas.push({ x: Math.round(num(s.x, 0)), y: Math.round(num(s.y, 0)), largo: Math.max(1, Math.round(num(s.largo, 2))), periodo: num(s.periodo, 3), retardo: num(s.retardo, 0), seg: s });
+      else if (s.tipo === 'pendulo') G.pendulos.push({ x: num(s.x, 0), y: num(s.y, 0), cuerda: num(s.cuerda, 4), periodo: num(s.periodo, 0), amplitud: num(s.amplitud, 50), seg: s });
+      else if (s.tipo === 'cinta') { const x = Math.round(num(s.x, 0)), y = Math.round(num(s.y, 0)), l = Math.max(1, Math.round(num(s.largo, 4))); G.cintas.push({ x, y, largo: l, velocidad: num(s.velocidad, 2), seg: s }); for (let i = 0; i < l; i++) set(x + i, y, 9); }
+      else if (s.tipo === 'picos') G.picos.push({ x: Math.round(num(s.x, 0)), y: Math.round(num(s.y, 0)), largo: Math.max(1, Math.round(num(s.largo, 2))), seg: s });
+      else if (s.tipo === 'bloque_rebote') { const x = Math.round(num(s.x, 0)), y = Math.round(num(s.y, 0)), l = Math.max(1, Math.round(num(s.largo, 2))); G.rebotes.push({ x, y, largo: l, seg: s }); for (let i = 0; i < l; i++) set(x + i, y, 10); }
+      else if (s.tipo === 'sprint') G.sprints.push({ ini: num(s.x_ini, 0), fin: num(s.x_fin, 0), velocidad: num(s.velocidad, 4), seg: s });
+      else if (s.tipo === 'rastro_monedas') G.rastros.push({ puntos: Array.isArray(s.puntos) ? s.puntos : [], seg: s });
+      else if (s.tipo === 'cartel') G.carteles.push({ x: num(s.x, 0), y: num(s.y, 0), texto: String(s.texto || ''), seg: s });
+      else if (s.tipo === 'atomo') G.atomos.push({ x: Math.floor(num(s.x, 0)), y: Math.floor(num(s.y, 0)), elemento: s.elemento, seg: s });
+      else if (s.tipo === 'estacion_molecula') G.estaciones.push({ x: Math.round(num(s.x, 0)), y: Math.round(num(s.y, 0)), seg: s });
+      else if (s.tipo === 'interruptor_estado') G.interruptores.push({ x: Math.round(num(s.x, 0)), y: Math.round(num(s.y, 0)), variable: s.variable, valores: Array.isArray(s.valores) ? s.valores : [], seg: s });
+      else if (s.tipo === 'plataforma_estado') G.platEstado.push({ x: num(s.x, 0), y: num(s.y, 0), largo: Math.max(1, Math.round(num(s.largo, 3))), requiere: s.requiere || {}, seg: s });
       else if (s.tipo === 'zona_agua') G.aguas.push({ x: num(s.x, 0), y: num(s.y, 0), w: num(s.w, 1), h: num(s.h, 1), cx: num(s.corriente_x, 0), cy: num(s.corriente_y, 0), seg: s });
       else if (s.tipo === 'bloque_pregunta') {
         const x = Math.round(num(s.x, 0)), y = Math.round(num(s.y, 0));
@@ -137,7 +251,7 @@
         const x = Math.round(num(s.x, 0)), alto2 = Math.max(1, Math.round(num(s.alto, 2))), base = G.baseDesde(x, Math.round(num(s.y, 0)));
         G.tuberias.push({ x, alto: alto2, base, top: base - alto2, seg: s });
         if (base >= 0) for (let k = 1; k <= alto2; k++) { set(x, base - k, 6); set(x + 1, base - k, 6); }
-      } else if (s.tipo === 'puerta') {
+      } else if (s.tipo === 'puerta' || s.tipo === 'puerta_ecuacion') {
         const x = Math.round(num(s.x, 0)), alto2 = Math.max(1, Math.round(num(s.alto, 3))), base = G.baseDesde(x, Math.round(num(s.y, 0)));
         G.puertas.push({ x, alto: alto2, base, top: base - alto2, seg: s });
         if (base >= 0) for (let k = 1; k <= alto2; k++) set(x, base - k, 7);
@@ -178,6 +292,8 @@
       const s = out.find((o) => o.x0 <= r.x && r.x < o.x1 && o.y > ry && o.y <= ry + 3);
       if (s) s.resorte = true;
     }
+    for (const r of G.rebotes) { const o = out.find((q) => q.tipo === 'estatica' && q.y === r.y && q.x0 <= r.x && r.x < q.x1); if (o) o.resorte = true; }
+    for (const c of G.platEstado) out.push({ tipo: 'estatica', estado: true, y: Math.round(c.y), x0: c.x, x1: c.x + c.largo, muestras: [{ x0: c.x, x1: c.x + c.largo, y: Math.round(c.y) }] });
     for (const c of G.caes) out.push({ tipo: 'estatica', cae: true, y: Math.round(c.y), x0: c.x, x1: c.x + c.largo, muestras: [{ x0: c.x, x1: c.x + c.largo, y: Math.round(c.y) }] });
     for (const m of G.movers) {
       const muestras = [];
@@ -219,8 +335,9 @@
     const F = fisica(nivel);
     if (F.hSeguro < 2.2) E(`Con esta física el salto solo alcanza ${F.hMax.toFixed(2)} tiles: demasiado bajo para jugar.`);
     const segs = nivel.segmentos;
-    const TIPOS = ['plataforma', 'puente', 'palanca', 'foso', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'checkpoint', 'jefe', 'meta', 'bloque_pregunta', 'tuberia', 'puerta', 'zona_agua', 'jefe_quiz', 'ladrillo', 'plataforma_cae', 'planta_carnivora'];
-    const G = geometria(nivel);
+    const TIPOS = ['plataforma', 'puente', 'palanca', 'foso', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'checkpoint', 'jefe', 'meta', 'bloque_pregunta', 'tuberia', 'puerta', 'zona_agua', 'jefe_quiz', 'ladrillo', 'plataforma_cae', 'planta_carnivora',
+      'mina', 'prensa', 'pendulo', 'cinta', 'picos', 'bloque_rebote', 'sprint', 'rastro_monedas', 'cartel', 'atomo', 'estacion_molecula', 'puerta_ecuacion', 'interruptor_estado', 'plataforma_estado', 'item'];
+    const G = geometria(nivel, { revelar: true });   // los puentes ocultos (que aparecen con una estación) cuentan como presentes
     const dentroX = (x) => x >= 0 && x < ancho, dentroY = (y) => y >= 0 && y < alto;
     const desc = (s, i) => `segmento #${i} (${s.tipo}${s.x != null ? ' x=' + s.x : ''}${s.y != null ? ' y=' + s.y : ''})`;
     const esNum = (v) => typeof v === 'number' && isFinite(v);
@@ -228,9 +345,10 @@
     // --- tipos y campos numéricos de cada segmento ---
     segs.forEach((s, i) => {
       if (!s || typeof s !== 'object' || !TIPOS.includes(s.tipo)) { E(`segmento #${i}: tipo desconocido ${JSON.stringify(s && s.tipo)}.`); return; }
+      if (s.tipo === 'sprint' || s.tipo === 'rastro_monedas') return;   // se validan aparte (x_ini/x_fin, puntos)
       if (!esNum(s.x)) { E(`${desc(s, i)}: falta x numérica.`); return; }
-      if (['plataforma', 'puente', 'palanca', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'bloque_pregunta', 'tuberia', 'puerta', 'zona_agua', 'ladrillo', 'plataforma_cae', 'planta_carnivora'].includes(s.tipo) && !esNum(s.y)) E(`${desc(s, i)}: falta y numérica.`);
-      if (['plataforma', 'puente', 'foso', 'plataforma_movil', 'plataforma_cae'].includes(s.tipo) && !(esNum(s.largo) && s.largo >= 1)) E(`${desc(s, i)}: "largo" debe ser un número >= 1.`);
+      if (['plataforma', 'puente', 'palanca', 'plataforma_movil', 'resorte', 'coleccionable', 'enemigo', 'zona_campo', 'bloque_pregunta', 'tuberia', 'puerta', 'zona_agua', 'ladrillo', 'plataforma_cae', 'planta_carnivora', 'mina', 'prensa', 'pendulo', 'cinta', 'picos', 'bloque_rebote', 'cartel', 'atomo', 'estacion_molecula', 'puerta_ecuacion', 'interruptor_estado', 'plataforma_estado', 'item'].includes(s.tipo) && !esNum(s.y)) E(`${desc(s, i)}: falta y numérica.`);
+      if (['plataforma', 'puente', 'foso', 'plataforma_movil', 'plataforma_cae', 'cinta', 'picos', 'bloque_rebote', 'plataforma_estado'].includes(s.tipo) && s.largo != null && !(esNum(s.largo) && s.largo >= 1)) E(`${desc(s, i)}: "largo" debe ser un número >= 1.`);
       if (s.x < 0 || s.x >= ancho) E(`${desc(s, i)}: x fuera de rango [0, ${ancho}).`);
       if (s.y != null && (s.y < 0 || s.y >= alto)) E(`${desc(s, i)}: y fuera de rango [0, ${alto}).`);
       if (esNum(s.largo) && s.x + s.largo > ancho) E(`${desc(s, i)}: se sale del nivel (x+largo=${s.x + s.largo} > ancho_tiles=${ancho}).`);
@@ -258,7 +376,7 @@
       if (t0 < 0) E(`La meta (x=${meta.x}) no tiene suelo debajo.`);
       else if (t1 !== t0) E(`La meta (x=${meta.x}) necesita 2 columnas de suelo a la misma altura (suelo en x=${meta.x}: y=${t0}; en x=${meta.x + 1}: y=${t1}).`);
     }
-    const maxExt = segs.reduce((m, s) => Math.max(m, s.x + (s.largo || 0) + (s.tipo === 'plataforma_movil' && s.eje !== 'y' ? Math.max(0, s.recorrido || 0) : 0)), 0);
+    const maxExt = segs.reduce((m, s) => Math.max(m, (s.x || 0) + (s.largo || 0) + (s.tipo === 'plataforma_movil' && s.eje !== 'y' ? Math.max(0, s.recorrido || 0) : 0)), 0);
     if (maxExt > ancho) E(`Hay segmentos que llegan hasta x=${maxExt} > ancho_tiles=${ancho}.`);
 
     // --- punto de inicio ---
@@ -267,7 +385,7 @@
 
     // --- física: fosos, plataformas móviles, resortes, zonas ---
     if (!esAgua) for (const f of G.fosos) if (f.largo > F.gapSeguro) {
-      const puenteado = G.movers.some((m) => m.x + m.largo + Math.abs(m.rec) > f.x && m.x < f.x + f.largo) ||
+      const puenteado = G.puentes.some((b) => b.x < f.x + f.largo && b.x + b.largo > f.x) || G.movers.some((m) => m.x + m.largo + Math.abs(m.rec) > f.x && m.x < f.x + f.largo) ||
         platsSuelo.some((p) => p.y < alto - FIS.SUELO_PROF && p.x < f.x + f.largo && p.x + p.largo > f.x);
       if (!puenteado) E(`El foso en x=${f.x} mide ${f.largo} tiles y el salto máximo seguro es ${F.gapSeguro.toFixed(1)} tiles (teórico ${F.distMax.toFixed(1)}).`);
     }
@@ -362,18 +480,43 @@
       if (s.preguntas_reserva != null) { if (!Array.isArray(s.preguntas_reserva)) E(`${etq}: preguntas_reserva debe ser un array.`); else s.preguntas_reserva.forEach((q, i) => valQ(q, `${etq}, reserva #${i + 1}`)); }
     };
 
+    // ecuaciones de las puertas (química jugable): se parsean las fórmulas y se exige que se puedan equilibrar
+    const validarEcuacion = (sg, id) => {
+      const eq = sg.ecuacion;
+      if (!eq || !Array.isArray(eq.reactivos) || !Array.isArray(eq.productos) || !eq.reactivos.length || !eq.productos.length) { E(`${id}: falta ecuacion {reactivos:[…],productos:[…]}.`); return; }
+      const todas = [...eq.reactivos, ...eq.productos];
+      const mal = todas.find((f) => typeof f !== 'string' || !Quimica.parsear(f));
+      if (mal !== undefined) { E(`${id}: no se entiende la fórmula ${JSON.stringify(mal)} (usa H3O+, HO-, CO3^2-, NH4+…).`); return; }
+      const c = Quimica.resolver(eq);
+      if (!c) E(`${id}: la ecuación no se puede equilibrar con coeficientes enteros positivos (átomos y carga).`);
+      else if (Math.max(...c) > 6) E(`${id}: los coeficientes mínimos (${c.join(',')}) son demasiado grandes (máx. 6).`);
+      if (typeof sg.ayuda !== 'string' || !sg.ayuda.trim()) W(`${id}: sin "ayuda" para el jugador.`);
+    };
     // --- jefe ---
     const jefe = jefes[0];
     if (nivel.tipo_nivel === 'fortaleza' && (!jefe || jefe.jefe !== 'rey_entropia')) E('Un nivel "fortaleza" necesita un segmento jefe con jefe:"rey_entropia".');
     if (nivel.tipo_nivel === 'normal' && jefe && jefe.jefe === 'rey_entropia') W('rey_entropia en un nivel "normal": se tratará como fortaleza.');
     if (nivel.tipo_nivel === 'quiz_castillo' && !(jefe && jefe.tipo === 'jefe_quiz')) E('Un nivel "quiz_castillo" necesita un segmento jefe_quiz.');
     if (jefe) {
-      const quizJ = jefe.tipo === 'jefe_quiz', ps = jefe.preguntas, minQ = quizJ ? 5 : 3;
+      const quizJ = jefe.tipo === 'jefe_quiz', ps = jefe.preguntas, minQ = quizJ ? 5 : 3, conFases = quizJ && Array.isArray(jefe.fases);
       if (quizJ) {
         if (!JEFES_QUIZ.includes(jefe.jefe)) E(`jefe_quiz: jefe "${jefe.jefe}" desconocido (${JEFES_QUIZ.join(' | ')}).`);
         if (jefe.vidas != null && !(Number.isInteger(jefe.vidas) && jefe.vidas >= 1 && jefe.vidas <= 6)) E('jefe_quiz: "vidas" debe ser un entero entre 1 y 6.');
       } else if (jefe.jefe === 'pulpo_acido' || jefe.jefe === 'dragon_tormenta') W(`${jefe.jefe} como "jefe" normal se comporta como jefe_quiz.`);
-      if (!Array.isArray(ps) || ps.length < minQ) E(`El jefe necesita >= ${minQ} preguntas (tiene ${Array.isArray(ps) ? ps.length : 0}).`);
+      if (conFases) {
+        const PAT = { rey_entropia: ['bola', 'arco', 'onda', 'abanico', 'lluvia'], golem_formulas: ['carga', 'salto'], pulpo_acido: ['tinta', 'chorro', 'tentaculos'], dragon_tormenta: ['rayo', 'embestida', 'rafaga'], isotopo_inestable: ['rafaga', 'rayo', 'embestida'], foton_veloz: ['embestida', 'rafaga', 'rayo'], bombardero_neutron: ['bombardeo', 'rafaga', 'rayo'] }[jefe.jefe] || [];
+        if (jefe.fases.length < 2 || jefe.fases.length > 5) E(`jefe_quiz: "fases" debe tener entre 2 y 5 fases (tiene ${jefe.fases.length}).`);
+        jefe.fases.forEach((f, k) => {
+          const idf = `jefe, fase ${k + 1}`;
+          if (!f || !Array.isArray(f.preguntas) || f.preguntas.length < 2) { E(`${idf}: necesita >= 2 preguntas.`); return; }
+          f.preguntas.forEach((q, i) => valQ(q, `${idf}, pregunta #${i + 1}`));
+          if (f.dificultad != null && !(Number.isInteger(f.dificultad) && f.dificultad >= 1 && f.dificultad <= 3)) E(`${idf}: dificultad debe ser 1, 2 o 3.`);
+          if (f.patron != null) {
+            if (typeof f.patron !== 'string') E(`${idf}: patron debe ser texto (ataques separados por + o coma).`);
+            else { const mal = f.patron.split(/[+,]/).map((q) => q.trim()).filter(Boolean).filter((q) => !PAT.includes(q)); if (mal.length) E(`${idf}: patron con ataques desconocidos para ${jefe.jefe}: ${mal.join(', ')} (válidos: ${PAT.join(', ')}).`); }
+          }
+        });
+      } else if (!Array.isArray(ps) || ps.length < minQ) E(`El jefe necesita >= ${minQ} preguntas (tiene ${Array.isArray(ps) ? ps.length : 0}).`);
       else ps.forEach((q, i) => valQ(q, `jefe, pregunta #${i + 1}`));
       const A = G.arena;
       if (A) {
@@ -431,7 +574,7 @@
       }
       // coleccionables alcanzables desde alguna superficie visitada
       const alcanzables = sup.filter((s) => vis.has(s));
-      for (const c of cols) {
+      for (const c of cols.concat(G.atomos.map((a) => ({ x: a.x, y: a.y, ref: 'átomo ' + a.elemento })))) {
         const cx = Math.floor(c.x) + 0.5, cy = Math.floor(c.y) + 0.5;
         let ok = false;
         for (const s of alcanzables) {
@@ -447,7 +590,7 @@
             }
           }
         }
-        if (!ok) E(`coleccionable "${c.ref}" (x=${c.x}, y=${c.y}) no se puede alcanzar con el salto (altura máx. ≈ ${(F.hSeguro + FIS.H).toFixed(1)} tiles sobre el suelo).`);
+        if (!ok) E(`${String(c.ref).indexOf('átomo') === 0 ? '' : 'coleccionable '}"${c.ref}" (x=${c.x}, y=${c.y}) no se puede alcanzar con el salto (altura máx. ≈ ${(F.hSeguro + FIS.H).toFixed(1)} tiles sobre el suelo).`);
       }
     }
 
@@ -543,7 +686,7 @@
       const sg = d.seg, id = `puerta (x=${sg.x}, y=${sg.y})`;
       if (d.base < 0) { E(`${id}: no hay suelo debajo.`); continue; }
       if (!(d.alto >= 2 && d.alto <= 6)) E(`${id}: "alto" debe estar entre 2 y 6 (vale ${sg.alto}).`);
-      valQs(sg, id);
+      if (sg.tipo === 'puerta_ecuacion') validarEcuacion(sg, id); else valQs(sg, id);
     }
     // natación: alcanzabilidad por flood-fill en celdas (4 vecinos; se sube solo dentro del agua)
     if (esAgua && G.aguas.length && spawnY > 0) {
@@ -564,19 +707,158 @@
       for (const b of G.ladrillos) if (!alcanza(b.x, b.y + 1)) E(`ladrillo (x=${b.x}, y=${b.y}): no se llega nadando a la casilla de debajo.`);
       if (meta) { const my = G.topAt(meta.x) - 1; if (!alcanza(meta.x, my)) E(`La meta (x=${meta.x}) no es accesible nadando desde el inicio.`); }
       for (const c of cols) if (!alcanza(Math.floor(c.x), Math.floor(c.y))) E(`coleccionable "${c.ref}" no es accesible nadando.`);
+      for (const a of G.atomos) if (!alcanza(a.x, a.y)) E(`átomo ${a.elemento} (x=${a.x}, y=${a.y}) no es accesible nadando.`);
       for (const b of G.bloques) if (!alcanza(b.x, b.y + 1)) E(`bloque_pregunta (x=${b.x}, y=${b.y}): no se llega nadando a la casilla de debajo (hay que golpearlo desde abajo).`);
       for (const t of G.tuberias) if (t.base >= 0 && !alcanza(t.x, t.top - 1)) E(`tuberia (x=${t.x}): no se llega nadando a su boca.`);
       for (const d of G.puertas) if (d.base >= 0 && !alcanza(d.x - 1, d.base - 1)) E(`puerta (x=${d.x}): no se llega nadando hasta ella.`);
+    }
+
+    // ===== Etapa 1: peligros / parkour y química jugable =====
+    const suelo1 = (x, y) => SUELO_T(G.get(Math.floor(x), Math.floor(y) + 1));
+    const libre = (x, y) => G.get(Math.floor(x), Math.floor(y)) === 0;
+    // minas, picos: apoyados, fuera de la zona de inicio, y el grupo contiguo se puede saltar
+    const peligros = [];
+    for (const m of G.minas) {
+      const id = `mina (x=${m.seg.x}, y=${m.seg.y})`;
+      if (m.seg.modo != null && m.seg.modo !== 'contacto' && m.seg.modo !== 'temporizador') E(`${id}: modo debe ser "contacto" o "temporizador".`);
+      if (!(m.radio >= 0.8 && m.radio <= 4)) E(`${id}: radio debe estar entre 0.8 y 4 tiles.`);
+      if (!libre(m.x, m.y)) E(`${id}: está dentro de un sólido.`); else if (!suelo1(m.x, m.y)) E(`${id}: no hay suelo justo debajo.`);
+      if (m.x < 6) E(`${id}: demasiado cerca del inicio (x>=6).`);
+      peligros.push({ x: Math.floor(m.x), y: Math.floor(m.y), a: 1, id });
+    }
+    for (const pc of G.picos) {
+      const id = `picos (x=${pc.seg.x}, y=${pc.seg.y})`;
+      if (pc.largo > 4) E(`${id}: largo ${pc.largo} > 4 (un salto seguro cubre ~4 tiles de pinchos).`);
+      for (let i = 0; i < pc.largo; i++) { if (!libre(pc.x + i, pc.y)) { E(`${id}: está dentro de un sólido.`); break; } if (!suelo1(pc.x + i, pc.y)) { E(`${id}: no hay suelo bajo todos los pinchos.`); break; } }
+      if (pc.x < 6) E(`${id}: demasiado cerca del inicio (x>=6).`);
+      for (let i = 0; i < pc.largo; i++) peligros.push({ x: pc.x + i, y: pc.y, a: 1, id });
+    }
+    for (const pl of G.plantas) peligros.push({ x: pl.x, y: pl.y, a: 2, id: `planta (x=${pl.x})` });
+    // agrupar peligros de suelo contiguos (misma fila, separados < 2.5 tiles): el bloque no puede superar 4 tiles
+    peligros.sort((a, b) => a.y - b.y || a.x - b.x);
+    for (let i = 0; i < peligros.length;) {
+      let j = i; while (j + 1 < peligros.length && peligros[j + 1].y === peligros[i].y && peligros[j + 1].x - peligros[j].x - 1 < 2) j++;
+      const span = peligros[j].x - peligros[i].x + 1;
+      if (span > 4) E(`Peligros de suelo en x=${peligros[i].x}..${peligros[j].x} (y=${peligros[i].y}): bloque infranqueable de ${span} tiles; sepáralos al menos 2 tiles o deja un camino alternativo (máx. 4).`);
+      i = j + 1;
+    }
+    // minas en superficies demasiado estrechas (el jugador no puede esquivarlas)
+    for (const m of G.minas) {
+      const s0 = sup.find((q) => q.tipo === 'estatica' && q.x0 <= Math.floor(m.x) && Math.floor(m.x) < q.x1 && q.y === Math.floor(m.y) + 1);
+      if (s0 && s0.x1 - s0.x0 < 3) E(`mina (x=${m.seg.x}) sobre una plataforma de ${s0.x1 - s0.x0} tiles: no se puede esquivar.`);
+    }
+    for (const pr of G.prensas) {
+      const id = `prensa (x=${pr.seg.x}, y=${pr.seg.y})`;
+      if (!(pr.largo >= 1 && pr.largo <= 6)) E(`${id}: largo entre 1 y 6.`);
+      if (!(pr.periodo >= 2.2 && pr.periodo <= 8)) E(`${id}: periodo entre 2.2 y 8 s (vale ${pr.seg.periodo}).`);
+      if (pr.seg.retardo != null && !esNum(pr.seg.retardo)) E(`${id}: retardo numérico.`);
+      const bases = []; for (let i = 0; i < pr.largo; i++) bases.push(G.baseDesde(pr.x + i, pr.y + 1));
+      if (bases.some((b) => b < 0)) { E(`${id}: no hay suelo debajo.`); continue; }
+      if (new Set(bases).size > 1) E(`${id}: el suelo bajo la prensa no es plano.`);
+      else if (bases[0] - (pr.y + 1) < 2) E(`${id}: poco hueco (${bases[0] - (pr.y + 1)} tiles) bajo la prensa levantada: hacen falta >= 2 para pasar.`);
+      else if (bases[0] - pr.y > 7) W(`${id}: la prensa está muy alta sobre el suelo.`);
+      if (pr.x < 6) E(`${id}: demasiado cerca del inicio (x>=6).`);
+    }
+    for (const pe of G.pendulos) {
+      const id = `pendulo (x=${pe.seg.x}, y=${pe.seg.y})`;
+      if (!(pe.cuerda >= 2 && pe.cuerda <= 9)) E(`${id}: cuerda entre 2 y 9 tiles.`);
+      if (!(pe.amplitud >= 20 && pe.amplitud <= 80)) E(`${id}: amplitud entre 20° y 80°.`);
+      if (!(pe.periodo === 0 || (pe.periodo >= 1.6 && pe.periodo <= 7))) E(`${id}: periodo entre 1.6 y 7 s (o 0 para T=2π√(L/g)).`);
+      const base = G.baseDesde(Math.floor(pe.x), Math.floor(pe.y) + 1);
+      if (base < 0) E(`${id}: no hay suelo bajo el péndulo.`);
+      else if (pe.y + 0.5 + pe.cuerda > base + 0.2) E(`${id}: la maza llegaría por debajo del suelo (y+cuerda <= suelo).`);
+      if (pe.x < 6) E(`${id}: demasiado cerca del inicio (x>=6).`);
+    }
+    for (const c of G.cintas) {
+      const id = `cinta (x=${c.seg.x}, y=${c.seg.y})`;
+      if (!esNum(c.seg.velocidad) || Math.abs(c.velocidad) < 0.5 || Math.abs(c.velocidad) > 4.5) E(`${id}: |velocidad| debe estar entre 0.5 y 4.5 tiles/s (el jugador corre a 5.5).`);
+      if (c.largo < 2 || c.largo > 20) E(`${id}: largo entre 2 y 20.`);
+      if (c.y < 2 || c.y >= alto - 1) E(`${id}: y fuera de rango.`);
+    }
+    for (const r of G.rebotes) { const id = `bloque_rebote (x=${r.seg.x}, y=${r.seg.y})`; if (r.largo > 8) E(`${id}: largo máximo 8.`); if (r.y < 3 || r.y >= alto - 1) E(`${id}: y fuera de rango.`); }
+    for (const rs of G.rastros) {
+      const id = 'rastro_monedas';
+      if (!rs.puntos.length || rs.puntos.length > 60) { E(`${id}: "puntos" debe tener entre 1 y 60 puntos [x,y].`); continue; }
+      rs.puntos.forEach((q, i) => {
+        if (!Array.isArray(q) || !esNum(q[0]) || !esNum(q[1])) E(`${id}, punto #${i + 1}: debe ser [x,y] numérico.`);
+        else if (q[0] < 0 || q[0] >= ancho || q[1] < 0 || q[1] >= alto) E(`${id}, punto #${i + 1}: fuera de los límites.`);
+        else if (G.get(Math.floor(q[0]), Math.floor(q[1])) !== 0) E(`${id}, punto #${i + 1} (${q[0]},${q[1]}): dentro de un sólido.`);
+      });
+    }
+    for (const c of G.carteles) {
+      const id = `cartel (x=${c.seg.x}, y=${c.seg.y})`;
+      if (!c.texto.trim() || c.texto.length > 220) E(`${id}: texto entre 1 y 220 caracteres.`);
+      if (!libre(c.x, c.y)) E(`${id}: está dentro de un sólido.`);
+    }
+    // sprint: tramo de carrera con cámara empujando
+    G.sprints.forEach((sp, k) => {
+      const id = `sprint #${k + 1} (x ${sp.seg.x_ini}..${sp.seg.x_fin})`;
+      if (!esNum(sp.seg.x_ini) || !esNum(sp.seg.x_fin) || !esNum(sp.seg.velocidad)) { E(`${id}: x_ini, x_fin y velocidad numéricos.`); return; }
+      if (sp.ini < 8 || sp.fin > ancho - 6 || sp.fin - sp.ini < 16) { E(`${id}: x_ini>=8, x_fin<=ancho-6 y longitud >= 16 tiles.`); return; }
+      if (sp.velocidad < 2.5 || sp.velocidad > 4.8) E(`${id}: velocidad entre 2.5 y 4.8 tiles/s (el jugador corre a ${F.vmax}).`);
+      if (G.sprints.some((o, j) => j !== k && o.ini < sp.fin && o.fin > sp.ini)) E(`${id}: se solapa con otro sprint.`);
+      if (G.arena && sp.fin > G.arena.izq - 2 && sp.ini < G.arena.der) E(`${id}: no puede invadir la arena del jefe.`);
+      // el terreno debe poder correrse sin parar: huecos <= 4.5, sin mover/cae/estado en el camino, densidad de trampas
+      for (const f of G.fosos) if (f.x < sp.fin && f.x + f.largo > sp.ini && f.largo > 4.5) E(`${id}: el foso en x=${f.x} (${f.largo} tiles) es demasiado ancho para correr con la cámara empujando (máx. 4.5).`);
+      for (const m of G.movers) if (m.x < sp.fin && m.x + m.largo > sp.ini) E(`${id}: plataformas móviles en el tramo (x=${m.x}): mejor terreno fijo.`);
+      for (const c of G.caes) if (c.x < sp.fin && c.x + c.largo > sp.ini) W(`${id}: plataforma que cae en x=${c.x} dentro del sprint.`);
+      const trampas = G.minas.filter((m) => m.x >= sp.ini && m.x < sp.fin).length + G.prensas.filter((q) => q.x >= sp.ini && q.x < sp.fin).length + G.picos.filter((q) => q.x >= sp.ini && q.x < sp.fin).length + G.pendulos.filter((q) => q.x >= sp.ini && q.x < sp.fin).length;
+      if (trampas > (sp.fin - sp.ini) / 3.5) E(`${id}: demasiadas trampas (${trampas}) para ${sp.fin - sp.ini} tiles (máx. 1 cada 3.5).`);
+      // el suelo debe ser continuo salvo fosos: sin escalones > 2
+      let prev = -1;
+      for (let x = Math.ceil(sp.ini); x < sp.fin; x++) { const t = G.topAt(x); if (t < 0) continue; if (prev >= 0 && prev - t > 2) { E(`${id}: escalón de ${prev - t} tiles en x=${x}: no se puede subir corriendo.`); break; } prev = t; }
+      if (!por('checkpoint').some((c) => c.x >= sp.fin - 10 && c.x <= sp.fin + 6)) W(`${id}: sin checkpoint cerca del final del tramo.`);
+      if (G.aguas.some((a) => a.x < sp.fin && a.x + a.w > sp.ini)) E(`${id}: no puede cruzar una zona de agua.`);
+    });
+    // química: átomos, estaciones, ecuaciones, estados
+    for (const a of G.atomos) {
+      const id = `atomo ${a.elemento} (x=${a.seg.x}, y=${a.seg.y})`;
+      if (!ELEMENTOS.includes(a.elemento)) E(`${id}: elemento desconocido (${ELEMENTOS.join(' ')}).`);
+      if (a.x < 0 || a.x >= ancho || a.y < 0 || a.y >= alto) E(`${id}: fuera de los límites.`);
+      else if (G.get(a.x, a.y) !== 0) E(`${id}: está dentro de un sólido.`);
+    }
+    const oferta = {}; G.atomos.forEach((a) => { oferta[a.elemento] = (oferta[a.elemento] || 0) + 1; });
+    const demanda = {};
+    const idsPuertas = new Set(G.puertas.map((d) => d.seg.id).filter(Boolean)), idsPuentes = new Set(G.puentes.map((b) => b.id).filter(Boolean));
+    for (const e of G.estaciones) {
+      const sg = e.seg, id = `estacion_molecula (x=${sg.x}, y=${sg.y})`;
+      const pf = typeof sg.molecula === 'string' ? Quimica.parsear(sg.molecula) : null;
+      if (!pf) { E(`${id}: molecula "${sg.molecula}" no es una fórmula válida.`); continue; }
+      const req = sg.requiere;
+      if (!req || typeof req !== 'object') { E(`${id}: falta "requiere" {H:2,O:1}.`); continue; }
+      const igual = Object.keys(pf.atomos).length === Object.keys(req).length && Object.keys(pf.atomos).every((k) => req[k] === pf.atomos[k]);
+      if (!igual) E(`${id}: "requiere" ${JSON.stringify(req)} no coincide con la fórmula ${sg.molecula} (${JSON.stringify(pf.atomos)}).`);
+      for (const k in req) demanda[k] = (demanda[k] || 0) + req[k];
+      if (!['abre', 'checkpoint', 'vida', 'puente'].includes(sg.recompensa)) E(`${id}: recompensa debe ser abre|checkpoint|vida|puente.`);
+      if (sg.recompensa === 'abre' && !idsPuertas.has(sg.objetivo)) E(`${id}: objetivo "${sg.objetivo}" no es el id de ninguna puerta.`);
+      if (sg.recompensa === 'puente' && !G.puentes.some((b) => b.id === sg.objetivo && b.oculto)) E(`${id}: objetivo "${sg.objetivo}" no es el id de un puente con oculto:true.`);
+      if (!libre(e.x, e.y)) E(`${id}: está dentro de un sólido.`); else if (!suelo1(e.x, e.y)) E(`${id}: no hay suelo debajo.`);
+    }
+    for (const k in demanda) if ((oferta[k] || 0) < demanda[k]) E(`Las estaciones necesitan ${demanda[k]} átomos de ${k} y el nivel solo reparte ${oferta[k] || 0}.`);
+    G.interruptores.forEach((it) => {
+      const sg = it.seg, id = `interruptor_estado (x=${sg.x}, y=${sg.y})`;
+      if (!['temperatura', 'ph', 'carga'].includes(it.variable)) E(`${id}: variable debe ser temperatura|ph|carga.`);
+      if (it.valores.length < 2 || it.valores.length > 4 || it.valores.some((v) => typeof v !== 'string' || !v)) E(`${id}: valores = 2 a 4 textos.`);
+      if (!libre(it.x, it.y)) E(`${id}: está dentro de un sólido.`); else if (!suelo1(it.x, it.y)) E(`${id}: no hay suelo debajo.`);
+    });
+    for (const pe of G.platEstado) {
+      const sg = pe.seg, id = `plataforma_estado (x=${sg.x}, y=${sg.y})`, ks = Object.keys(pe.requiere || {});
+      if (ks.length !== 1) { E(`${id}: "requiere" debe ser {variable:valor}.`); continue; }
+      const it = G.interruptores.find((q) => q.variable === ks[0]);
+      if (!it) E(`${id}: no hay ningún interruptor_estado de la variable "${ks[0]}".`);
+      else if (!it.valores.includes(pe.requiere[ks[0]])) E(`${id}: el valor "${pe.requiere[ks[0]]}" no lo da el interruptor (${it.valores.join('|')}).`);
+      if (pe.y < 2 || pe.y >= alto - 2) E(`${id}: y fuera de rango.`);
+      for (let i = 0; i < pe.largo; i++) if (G.get(Math.floor(pe.x) + i, Math.round(pe.y)) !== 0) { E(`${id}: está dentro de un sólido.`); break; }
     }
 
     return fin();
   }
 
   // ---------- exportación ----------
-  J.FIS = FIS; J.fisica = fisica; J.geometria = geometria; J.posMovil = posMovil; J.validar = validar; J.gapMax = gapMax;
+  J.Quimica = Quimica; J.FIS = FIS; J.fisica = fisica; J.geometria = geometria; J.posMovil = posMovil; J.validar = validar; J.gapMax = gapMax;
 
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { validar, geometria, fisica, FIS, posMovil, superficies, gapMax, alturaSegura };
+    module.exports = { Quimica, validar, geometria, fisica, FIS, posMovil, superficies, gapMax, alturaSegura };
     // CLI: node js/juego/validador.js nivel.json [...]
     if (typeof require !== 'undefined' && require.main === module) {
       const fs = require('fs');

@@ -311,7 +311,7 @@
   };
 
   /** Puerta-portal: marco de piedra con barrera de energía y runa «?». disolver 0..1 al abrirse. */
-  S.dibujarPuerta = function (ctx, px, py, alto, t, disolver, marco) {
+  S.dibujarPuerta = function (ctx, px, py, alto, t, disolver, marco, eq) {
     px = Math.round(px); py = Math.round(py);
     const h = alto * 16;
     ctx.globalAlpha = 1 - (disolver || 0);
@@ -328,7 +328,8 @@
     ctx.fillStyle = OUT; ctx.fillRect(px + 3, cy - 6, 10, 12);
     ctx.fillStyle = '#35d6ff'; ctx.fillRect(px + 4, cy - 5, 8, 10);
     ctx.fillStyle = '#0a0f2a'; ctx.fillRect(px + 5, cy - 4, 6, 8);
-    for (let j = 0; j < 7; j++) for (let i = 0; i < 5; i++) if (GLIFO_Q[j][i] === 'X') { ctx.fillStyle = '#fff'; ctx.fillRect(px + 5 + i * 0.99, cy - 4 + j * 0.99 + (j > 4 ? 0 : 0), 1, 1); }
+    if (eq) { ctx.fillStyle = '#fff'; ctx.fillRect(px + 5, cy - 3, 6, 1); ctx.fillRect(px + 5, cy, 6, 1); ctx.fillRect(px + 9, cy - 4, 1, 1); ctx.fillRect(px + 10, cy - 3, 1, 1); ctx.fillRect(px + 6, cy + 1, 1, 1); ctx.fillRect(px + 5, cy + 2, 1, 1); ctx.fillRect(px + 5, cy + 3, 1, 1); }
+    else for (let j = 0; j < 7; j++) for (let i = 0; i < 5; i++) if (GLIFO_Q[j][i] === 'X') { ctx.fillStyle = '#fff'; ctx.fillRect(px + 5 + i * 0.99, cy - 4 + j * 0.99, 1, 1); }
     ctx.fillStyle = marco || '#5b6b92'; ctx.fillRect(px, py, 16, 2);
     ctx.globalAlpha = 1;
   };
@@ -437,5 +438,146 @@
     // gotas de ácido que caen de la boca
     for (let i = 0; i < 3; i++) { const f = (t * 1.5 + i * 0.37) % 1; ctx.fillStyle = '#b6ff3a'; ctx.fillRect(cx - 6 + i * 6, Math.round(hy + gap + 5 + f * 9), 1, 2); }
     ctx.restore();
+  };
+
+  // =====================================================================================
+  // Etapa 1: parkour (mina, prensa, péndulo, cinta, pinchos, bloque de onda, cartel) y química (átomos, estación, interruptor)
+  // =====================================================================================
+  /** Mina «radical libre»: esfera oscura con un electrón desapareado que orbita. estado: lista | armada. (cx,cy) = centro. */
+  S.dibujarMina = function (ctx, cx, cy, estado, t, k) {
+    cx = Math.round(cx); cy = Math.round(cy);
+    const rapido = estado === 'armada', pul = 0.5 + 0.5 * Math.sin(t * (rapido ? 22 : 4) + k);
+    ctx.fillStyle = rapido ? 'rgba(255,60,60,' + (0.25 + 0.3 * pul) + ')' : 'rgba(255,61,166,' + (0.12 + 0.15 * pul) + ')';
+    J.Temas.disco(ctx, cx, cy, 9 + Math.round(pul * 2), ctx.fillStyle);
+    for (let i = 0; i < 8; i++) { const a = (i / 8) * Math.PI * 2; ctx.fillStyle = OUT; ctx.fillRect(Math.round(cx + Math.cos(a) * 6) - 1, Math.round(cy + Math.sin(a) * 6) - 1, 3, 3); }
+    J.Temas.disco(ctx, cx, cy, 6, OUT); J.Temas.disco(ctx, cx, cy, 5, rapido && pul > 0.5 ? '#ff4d4d' : '#2a1648');
+    ctx.fillStyle = rapido ? '#fff' : '#ff3da6'; ctx.fillRect(cx - 1, cy - 1, 3, 3);
+    const a = t * (rapido ? 9 : 3) + k;   // el electrón desapareado
+    ctx.fillStyle = '#ffe27a'; ctx.fillRect(Math.round(cx + Math.cos(a) * 8) - 1, Math.round(cy + Math.sin(a) * 3.5) - 1, 3, 3);
+    ctx.fillStyle = '#fff'; ctx.fillRect(Math.round(cx + Math.cos(a) * 8), Math.round(cy + Math.sin(a) * 3.5), 1, 1);
+  };
+
+  /** Prensa hidráulica: vástago desde el techo, cabeza con franjas de aviso. x,y,w en píxeles de pantalla; yCabeza = borde superior de la cabeza. */
+  S.dibujarPrensa = function (ctx, x, yMontaje, yCabeza, w, aviso, t) {
+    x = Math.round(x); yMontaje = Math.round(yMontaje); yCabeza = Math.round(yCabeza);
+    ctx.fillStyle = OUT; ctx.fillRect(x, yMontaje - 4, w, 6); ctx.fillStyle = '#5a6a8c'; ctx.fillRect(x + 1, yMontaje - 3, w - 2, 4);
+    for (let i = 0; i < Math.max(1, Math.floor(w / 24)); i++) {   // vástagos
+      const rx = x + Math.round(((i + 0.5) * w) / Math.max(1, Math.floor(w / 24))) - 3;
+      ctx.fillStyle = OUT; ctx.fillRect(rx - 1, yMontaje, 8, Math.max(0, yCabeza - yMontaje)); ctx.fillStyle = '#9fb0d9'; ctx.fillRect(rx, yMontaje, 6, Math.max(0, yCabeza - yMontaje)); ctx.fillStyle = '#e8f0ff'; ctx.fillRect(rx + 1, yMontaje, 1, Math.max(0, yCabeza - yMontaje));
+    }
+    const h = 16;
+    ctx.fillStyle = OUT; ctx.fillRect(x - 1, yCabeza, w + 2, h); ctx.fillStyle = '#6b7aa0'; ctx.fillRect(x, yCabeza + 1, w, h - 2);
+    ctx.fillStyle = '#8fa0c8'; ctx.fillRect(x, yCabeza + 1, w, 3);
+    for (let i = 0; i < w; i += 8) { ctx.fillStyle = (i / 8) % 2 ? '#ffd166' : '#1a1f3a'; ctx.fillRect(x + i, yCabeza + h - 5, 8, 3); }   // franjas de peligro
+    ctx.fillStyle = aviso && Math.floor(t * 14) % 2 ? '#ff4d6d' : '#2a3560'; ctx.fillRect(x + 3, yCabeza + 6, 3, 3); ctx.fillRect(x + w - 6, yCabeza + 6, 3, 3);   // remaches/luces
+  };
+
+  /** Péndulo-maza: cuerda desde el pivote (px,py) hasta la maza (mx,my). */
+  S.dibujarPendulo = function (ctx, px, py, mx, my, t) {
+    px = Math.round(px); py = Math.round(py); mx = Math.round(mx); my = Math.round(my);
+    const n = Math.max(2, Math.round(Math.hypot(mx - px, my - py) / 3));
+    for (let i = 0; i <= n; i++) { const q = i / n; ctx.fillStyle = i % 2 ? '#6b7aa0' : '#aab6d6'; ctx.fillRect(Math.round(px + (mx - px) * q) - 1, Math.round(py + (my - py) * q) - 1, 2, 2); }
+    ctx.fillStyle = OUT; ctx.fillRect(px - 3, py - 3, 7, 7); ctx.fillStyle = '#ffd166'; ctx.fillRect(px - 2, py - 2, 5, 5);
+    for (let i = 0; i < 8; i++) { const a = (i / 8) * Math.PI * 2 + t * 1.5; ctx.fillStyle = OUT; ctx.fillRect(Math.round(mx + Math.cos(a) * 8) - 1, Math.round(my + Math.sin(a) * 8) - 1, 3, 3); ctx.fillStyle = '#e8f0ff'; ctx.fillRect(Math.round(mx + Math.cos(a) * 8), Math.round(my + Math.sin(a) * 8), 1, 1); }
+    J.Temas.disco(ctx, mx, my, 7, OUT); J.Temas.disco(ctx, mx, my, 6, '#7d8bb3'); J.Temas.disco(ctx, mx - 1, my - 1, 3, '#cfd8f0');
+    ctx.fillStyle = 'rgba(255,77,109,' + (0.5 + 0.4 * Math.sin(t * 6)) + ')'; ctx.fillRect(mx - 1, my + 1, 3, 3);
+  };
+
+  /** Cinta transportadora (un tile 16x16 en (x,y)); v = velocidad con signo. */
+  S.dibujarCinta = function (ctx, x, y, v, t, primera, ultima) {
+    x = Math.round(x); y = Math.round(y);
+    ctx.fillStyle = OUT; ctx.fillRect(x, y, 16, 16); ctx.fillStyle = '#2a3560'; ctx.fillRect(x, y + 1, 16, 8);
+    ctx.fillStyle = '#4a5a8c'; ctx.fillRect(x, y + 1, 16, 2);
+    const off = Math.floor(((t * Math.abs(v) * 8) % 8) * (v < 0 ? -1 : 1) + 8) % 8;
+    for (let i = -8; i < 16; i += 8) {   // chevrones que avanzan
+      const cx = x + i + off; ctx.fillStyle = '#ffd166';
+      for (let k = 0; k < 4; k++) { const px = cx + (v > 0 ? k : 3 - k); if (px >= x && px < x + 16) ctx.fillRect(px, y + 3 + k, 1, 1), ctx.fillRect(px, y + 7 - k, 1, 1); }
+    }
+    ctx.fillStyle = '#10163a'; ctx.fillRect(x, y + 9, 16, 7);
+    for (const rx of [x + 4, x + 12]) { J.Temas.disco(ctx, rx, y + 12, 3, '#6b7aa0'); ctx.fillStyle = '#e8f0ff'; ctx.fillRect(rx - 1 + Math.round(Math.cos(t * v * 4)), y + 11 + Math.round(Math.sin(t * v * 4)), 1, 1); }
+  };
+
+  /** Pinchos metálicos en una casilla (x,y esquina). */
+  S.dibujarPicos = function (ctx, x, y) {
+    x = Math.round(x); y = Math.round(y);
+    for (let i = 0; i < 3; i++) {
+      const bx = x + 1 + i * 5;
+      ctx.fillStyle = OUT; ctx.fillRect(bx, y + 10, 5, 6); ctx.fillRect(bx + 1, y + 7, 3, 3); ctx.fillRect(bx + 2, y + 5, 1, 2);
+      ctx.fillStyle = '#b8c4de'; ctx.fillRect(bx + 1, y + 11, 3, 5); ctx.fillRect(bx + 2, y + 8, 1, 3); ctx.fillStyle = '#ffffff'; ctx.fillRect(bx + 1, y + 11, 1, 5);
+      ctx.fillStyle = '#ff4d6d'; ctx.fillRect(bx + 2, y + 6, 1, 2);
+    }
+    ctx.fillStyle = OUT; ctx.fillRect(x, y + 15, 16, 1);
+  };
+
+  /** Bloque de onda (rebote): cristal con ondas concéntricas; comp = compresión 0..1. */
+  S.dibujarRebote = function (ctx, x, y, t, comp) {
+    x = Math.round(x); y = Math.round(y + Math.round(comp * 3));
+    const alto = 16 - Math.round(comp * 3);
+    ctx.fillStyle = OUT; ctx.fillRect(x, y, 16, alto); ctx.fillStyle = '#3a9aff'; ctx.fillRect(x + 1, y + 1, 14, alto - 2);
+    ctx.fillStyle = '#7ff3ff'; ctx.fillRect(x + 1, y + 1, 14, 2); ctx.fillStyle = '#1f5fc0'; ctx.fillRect(x + 1, y + alto - 3, 14, 2);
+    for (let k = 0; k < 3; k++) {   // ondas que salen hacia arriba
+      const f = (t * 1.2 + k / 3) % 1, w = 3 + Math.round(f * 9);
+      ctx.fillStyle = 'rgba(255,255,255,' + (0.8 * (1 - f)) + ')'; ctx.fillRect(x + 8 - w, y + 4 + Math.round((1 - f) * 3), w * 2, 1);
+    }
+    ctx.fillStyle = '#fff'; ctx.fillRect(x + 7, y + 7 - Math.round(comp * 2), 2, 4); ctx.fillRect(x + 5, y + 9, 6, 1);   // flecha ↑
+    ctx.fillStyle = '#ffffff'; ctx.fillRect(x + 6, y + 6, 4, 1);
+  };
+
+  /** Cartel tutorial: poste con tablón e «i». (x,y) = esquina de la casilla. */
+  S.dibujarCartel = function (ctx, x, y, cerca, t) {
+    x = Math.round(x); y = Math.round(y);
+    ctx.fillStyle = OUT; ctx.fillRect(x + 7, y + 8, 3, 8); ctx.fillRect(x + 1, y + 1, 14, 10);
+    ctx.fillStyle = '#7a4a1a'; ctx.fillRect(x + 8, y + 9, 1, 7); ctx.fillStyle = cerca ? '#ffe9b0' : '#d9b36a'; ctx.fillRect(x + 2, y + 2, 12, 8);
+    ctx.fillStyle = '#8a5a2a'; ctx.fillRect(x + 2, y + 9, 12, 1);
+    ctx.fillStyle = '#1b5e70'; ctx.fillRect(x + 7, y + 3, 2, 2); ctx.fillRect(x + 7, y + 6, 2, 3);
+    if (!cerca && Math.floor(t * 2) % 2) { ctx.fillStyle = '#fff'; ctx.fillRect(x + 13, y, 1, 3); ctx.fillRect(x + 12, y + 1, 3, 1); }
+  };
+
+  const CPK = { H: ['#f5f7ff', '#b8c0d8'], C: ['#4a4a55', '#22222a'], N: ['#4a6bff', '#2236a8'], O: ['#ff4d4d', '#b01c1c'], F: ['#9dff7a', '#4a9a2a'], Cl: ['#3ee05a', '#1a8a30'], Na: ['#a56bff', '#5a2bb0'], S: ['#ffe14a', '#b09a10'], P: ['#ff9f1c', '#b0600a'], Li: ['#c9a0ff', '#7a50b0'], K: ['#b080ff', '#5a2ba0'], Ca: ['#6adf8a', '#2a8a4a'], Mg: ['#7adf3a', '#3a8a10'], Br: ['#b03a2a', '#601410'], I: ['#9a2ad6', '#4a1080'], Al: ['#b8c4de', '#6a768f'], Fe: ['#d9853a', '#8a4a10'], Cu: ['#e0883a', '#8a4a18'] };
+  S.colorCPK = (el) => (CPK[el] || ['#cfd8f0', '#7d8bb3'])[0];
+  /** Átomo recogible: esfera CPK con brillo y la letra del elemento. (cx,cy) = centro en pantalla. */
+  S.dibujarAtomo3 = function (ctx, cx, cy, el, t, fase) {
+    const [c1, c2] = CPK[el] || ['#cfd8f0', '#7d8bb3'];
+    cx = Math.round(cx); cy = Math.round(cy + Math.sin(t * 3 + fase) * 2);
+    ctx.fillStyle = 'rgba(255,255,255,' + (0.1 + 0.08 * Math.sin(t * 4 + fase)) + ')'; J.Temas.disco(ctx, cx, cy, 9, ctx.fillStyle);
+    J.Temas.disco(ctx, cx, cy, 7, OUT); J.Temas.disco(ctx, cx, cy, 6, c2); J.Temas.disco(ctx, cx - 1, cy - 1, 5, c1);
+    ctx.fillStyle = 'rgba(255,255,255,.75)'; ctx.fillRect(cx - 3, cy - 4, 2, 2);
+    ctx.font = '6px PixelHUD, monospace'; ctx.fillStyle = OUT; ctx.fillText(el.length > 1 ? el[0] : el, cx - 2, cy + 3);
+  };
+
+  /** Estación de moléculas: mesa de laboratorio con holograma. lista = el jugador tiene los átomos. */
+  S.dibujarEstacion = function (ctx, x, y, lista, hecha, t, formula) {
+    x = Math.round(x); y = Math.round(y);
+    ctx.fillStyle = OUT; ctx.fillRect(x, y + 7, 16, 9); ctx.fillStyle = '#4a5a8c'; ctx.fillRect(x + 1, y + 8, 14, 7); ctx.fillStyle = '#8fa0c8'; ctx.fillRect(x + 1, y + 8, 14, 2);
+    ctx.fillStyle = hecha ? '#2ee59d' : lista ? '#ffd166' : '#ff4d6d'; ctx.fillRect(x + 6, y + 11, 4, 2);
+    ctx.fillStyle = OUT; ctx.fillRect(x + 4, y + 5, 8, 3); ctx.fillStyle = '#35d6ff'; ctx.fillRect(x + 5, y + 6, 6, 1);
+    const a = t * 2.4, col = hecha ? '#2ee59d' : '#35d6ff';   // holograma: 3 esferas orbitando
+    for (let i = 0; i < 3; i++) { const q = a + (i * Math.PI * 2) / 3; ctx.fillStyle = col; ctx.globalAlpha = 0.5 + 0.4 * Math.sin(q); ctx.fillRect(x + 7 + Math.round(Math.cos(q) * 5), y + 1 + Math.round(Math.sin(q) * 2), 2, 2); }
+    ctx.globalAlpha = 1;
+  };
+
+  /** Interruptor de estado: panel con lámpara del color del valor actual. */
+  S.dibujarInterruptor = function (ctx, x, y, color, t) {
+    x = Math.round(x); y = Math.round(y);
+    ctx.fillStyle = OUT; ctx.fillRect(x + 3, y + 2, 10, 14); ctx.fillStyle = '#4a5a8c'; ctx.fillRect(x + 4, y + 3, 8, 12); ctx.fillStyle = '#8fa0c8'; ctx.fillRect(x + 4, y + 3, 8, 2);
+    ctx.fillStyle = OUT; ctx.fillRect(x + 5, y + 6, 6, 6); ctx.fillStyle = color; ctx.fillRect(x + 6, y + 7, 4, 4);
+    ctx.globalAlpha = 0.25 + 0.2 * Math.sin(t * 5); J.Temas.disco(ctx, x + 8, y + 9, 7, color); ctx.globalAlpha = 1;
+    ctx.fillStyle = '#ffd166'; ctx.fillRect(x + 7, y + 13, 2, 1);
+  };
+
+  /** Losa de plataforma de estado (16x8 por tile). activa=false -> fantasma discontinuo. */
+  S.dibujarPlatEstado = function (ctx, x, y, largo, color, activa, t, etiqueta) {
+    x = Math.round(x); y = Math.round(y);
+    if (!activa) {
+      ctx.fillStyle = color; ctx.globalAlpha = 0.28;
+      for (let i = 0; i < largo * 16; i += 4) ctx.fillRect(x + i, y + 1, 2, 1), ctx.fillRect(x + i, y + 6, 2, 1);
+      ctx.fillRect(x, y + 1, 1, 6); ctx.fillRect(x + largo * 16 - 1, y + 1, 1, 6); ctx.globalAlpha = 1; return;
+    }
+    for (let i = 0; i < largo; i++) {
+      const px = x + i * 16;
+      ctx.fillStyle = OUT; ctx.fillRect(px, y, 16, 8); ctx.fillStyle = color; ctx.fillRect(px, y + 1, 16, 5); ctx.fillStyle = 'rgba(255,255,255,.55)'; ctx.fillRect(px, y + 1, 16, 1);
+      ctx.fillStyle = 'rgba(0,0,0,.25)'; ctx.fillRect(px, y + 5, 16, 1);
+      if (Math.floor(t * 3 + i) % 4 === 0) { ctx.fillStyle = '#fff'; ctx.fillRect(px + 4 + ((i * 5) % 8), y + 2, 1, 1); }
+    }
   };
 })();

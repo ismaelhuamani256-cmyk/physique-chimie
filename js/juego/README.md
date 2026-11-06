@@ -157,3 +157,16 @@ Nota: `index.html` es estático (lo genera `node tools/generar-estatico.js`): ha
 - Un solo `jefe`/`jefe_quiz` y una sola `meta` por nivel; el validador exige que la arena sea plana.
 - La sala de monedas (bonus) se genera siempre igual (44×18 tiles) y no tiene enemigos; el modo agua no admite fosos/lava mortales en el fondo.
 - El HUD usa PixelHUD, que no pinta bien mayúsculas con tilde: en el HUD se quitan las tildes (el texto de preguntas usa `UI`).
+
+## Ítems y jefes de física moderna (etapa 1, hechos por el orquestador)
+**`48-items.js`** — cápsulas `{"tipo":"item","x","y","item":"zapatos|iman|mochila|canon|escudo|estrella|reloj|vida"}`:
+- `zapatos` *Botas de Hooke*: salto ×1,35 durante 15 s · `iman` *Imán*: atrae átomos, gemas y monedas (15 s) ·
+  `mochila` *Mochila propulsora*: mantén SALTO en el aire para propulsarte (2,8 s de combustible, se recarga en suelo) ·
+  `canon` *Cañón de fotones*: **X / F / J** disparan (10 fotones): matan enemigos (muestran la corrección), rompen ladrillos, abren bloques `?` y **detonan minas a distancia**.
+- `escudo`, `estrella` (*Supernova*) y `reloj` van a la **reserva** (3 casillas abajo en el centro); **Q** (o clic en la casilla) usa la primera. `vida` suma al instante.
+- Los bloques `?` y ladrillos del Quiz Quest también pueden dar `zapatos|iman|mochila|canon` (`premio`).
+**Jefes nuevos** (`jefe_quiz`, `jefe` = `isotopo_inestable | foton_veloz | bombardero_neutron`; reutilizan la IA flotante del dragón con otra piel y ataques):
+- *Isótopo Inestable*: núcleo radiactivo con cara; cada acierto pierde la mitad de sus nucleones (12 → 6 → 3, la semivida). Ataques: ráfaga (α), rayo (γ), embestida.
+- *Fotón Veloz*: orbe de luz muy rápido que deja estelas al embestir (velocidad de la luz = lo más rápido que existe).
+- *Bombardero Neutrón*: reactor volador; hace dos pasadas soltando cargas que caen por gravedad y solo se le pisa cuando baja. Ataque nuevo `bombardeo`.
+Asignación actual: ch.5 `nucleaires` → Isótopo (nivel normal) y Bombardero (Quiz Quest); ch.19 `photons` → Fotón Veloz.

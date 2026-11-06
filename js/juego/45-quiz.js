@@ -29,6 +29,7 @@
   // ---------- premios ----------
   Q.premio = function (g, tipo, wx, wy) {
     const p = g.jugador;
+    if (['zapatos', 'iman', 'mochila', 'canon'].includes(tipo) && J.Items) { J.Items.dar(g, tipo); return; }   // ítems con temporizador (48-items.js)
     g.premios[tipo] = (g.premios[tipo] || 0) + 1;
     g.flot.push({ tipo, x: wx, y: wy, t: 0 });
     J.Audio.sfx(tipo === 'moneda' ? 'moneda' : 'premio');
@@ -141,6 +142,7 @@
     J.Audio.sfx('puerta'); g.shake = 4;
     J.chispas(g, (d.x + 0.5) * T, ((d.top + d.base) / 2) * T, 26, '#6ff0ff', 4, 0);
   }
+  Q.abrirPuerta = abrirPuerta;
   Q.preJugador = function (g) {
     const inp = g.inp, w = g.w, p = g.jugador;
     if (!w.puertas.length || p.muriendo || g.congelado) return;
@@ -149,6 +151,7 @@
       if (d.abierta || !puertaCerca(g, d)) continue;
       inp.saltoEdge = false;   // ↑ aquí no es un salto: es llamar a la puerta
       if (d.cooldown > 0) { g.ui.aviso('Espera ' + Math.ceil(d.cooldown) + ' s'); J.Audio.sfx('aviso'); }
+      else if (d.eq) J.Quim.pedirEcuacion(g, d);
       else pedirPuerta(g, d);
       inp.arribaEdge = inp.accionEdge = false;
       return;
@@ -297,7 +300,7 @@
     for (const d of w.puertas) {
       if (!vis(d.x, d.x + 1)) continue;
       if (d.abierta && d.disolver >= 1) continue;
-      S.dibujarPuerta(ctx, d.x * T - camX, d.top * T - camY, d.alto, t, d.abierta ? d.disolver : 0, tema.pal.marco);
+      S.dibujarPuerta(ctx, d.x * T - camX, d.top * T - camY, d.alto, t, d.abierta ? d.disolver : 0, tema.pal.marco, !!d.eq);
     }
     for (const tu of w.tuberias) {
       if (!vis(tu.x, tu.x + 2)) continue;

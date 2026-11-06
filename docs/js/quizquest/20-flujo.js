@@ -32,7 +32,7 @@
     { id: 'castillo', n: 3, ico: '🏰', nombre: 'Castillo', largo: 'Fase 3 · Castillo', sub: 'El jefe solo cae si aciertas' },
   ];
   const PREMIO = { moneda: ['🪙', 'Monedas'], vida: ['❤️', 'Vidas'], pista: ['💡', 'Pistas'], escudo: ['🛡️', 'Escudos'], estrella: ['⭐', 'Estrellas'], reloj: ['⏱️', 'Relojes'] };
-  const JEFE_NOMBRE = { rey_entropia: 'Rey Entropía', golem_formulas: 'Gólem de Fórmulas', pulpo_acido: 'Pulpo Ácido', dragon_tormenta: 'Dragón de la Tormenta' };
+  const JEFE_NOMBRE = { rey_entropia: 'Rey Entropía', golem_formulas: 'Gólem de Fórmulas', pulpo_acido: 'Pulpo Ácido', dragon_tormenta: 'Dragón de la Tormenta', isotopo_inestable: 'Isótopo Inestable', foton_veloz: 'Fotón Veloz', bombardero_neutron: 'Bombardero Neutrón' };
   const XP = { acierto: 10, fase: 40, jefe: 100, completa: 60 };
 
   // ---------------------------------------------------------------------------------

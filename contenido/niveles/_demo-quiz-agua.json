@@ -732,6 +732,18 @@
    "largo": 5,
    "periodo": 3.9415709456428885,
    "retardo": 0.9832426803186536
+  },
+  {
+   "tipo": "item",
+   "x": 39,
+   "y": 12,
+   "item": "hielo"
+  },
+  {
+   "tipo": "item",
+   "x": 106,
+   "y": 12,
+   "item": "hielo"
   }
  ],
  "cueva": {

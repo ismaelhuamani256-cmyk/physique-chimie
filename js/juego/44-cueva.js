@@ -101,7 +101,16 @@
       else lista.push({ tipo: 'fauna', especie: esp, x, y });
       puestos.push({ x, y }); cuentas[esp] = (cuentas[esp] || 0) + 1;
     }
-    N.segmentos = segs.concat(nuevos, lista);
+    // cápsulas de fuego y de hielo para la cueva (en el agua el hielo congela a la fauna)
+    const items = [];
+    for (const [item, frac] of [['hielo', 0.22], ['fuego', 0.45], ['hielo', 0.7]]) {
+      for (let k = 0; k < 90; k++) {
+        const x = Math.floor(20 + (fin - 22) * frac) + ((k % 2 ? k : -k) % 24), y = SUELO - 3;
+        if (x < 20 || x >= fin || prot[x] || !libreCol(x, y) || !libreCol(x, y + 1) || !apto(x, y, 4) || items.some((q) => Math.abs(q.x - x) < 6)) continue;
+        items.push({ tipo: 'item', x, y, item }); puestos.push({ x, y }); break;
+      }
+    }
+    N.segmentos = segs.concat(nuevos, lista, items);
     N.cueva = { techoMax: Math.max(...d), jorobas: Math.max(...hh), fauna: lista.length };
     return N;
   };

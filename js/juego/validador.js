@@ -609,7 +609,7 @@
       const sg = b.seg, id = `bloque_pregunta (x=${sg.x}, y=${sg.y})`;
       if (b.x < 0 || b.x >= ancho || b.y < 1 || b.y >= alto - 1) { E(`${id}: fuera de los límites del nivel.`); continue; }
       const k = b.x + ',' + b.y; if (bloquesVistos.has(k)) E(`${id}: dos bloques en la misma casilla.`); bloquesVistos.add(k);
-      if (!['moneda', 'vida', 'pista', 'escudo', 'estrella', 'reloj', 'fuego', 'escopeta', 'grande', 'zapatos', 'iman', 'mochila', 'canon'].includes(sg.premio)) E(`${id}: premio debe ser moneda|vida|pista|escudo|estrella|reloj|fuego|escopeta|grande|zapatos|iman|mochila|canon (vale ${JSON.stringify(sg.premio)}).`);
+      if (!['moneda', 'vida', 'pista', 'escudo', 'estrella', 'reloj', 'fuego', 'hielo', 'escopeta', 'grande', 'zapatos', 'iman', 'mochila', 'canon'].includes(sg.premio)) E(`${id}: premio debe ser moneda|vida|pista|escudo|estrella|reloj|fuego|hielo|escopeta|grande|zapatos|iman|mochila|canon (vale ${JSON.stringify(sg.premio)}).`);
       if (sg.fallo != null && !['cierra', 'enemigo'].includes(sg.fallo)) E(`${id}: fallo debe ser cierra|enemigo.`);
       valQs(sg, id);
       for (const o of [...G.tuberias, ...G.puertas]) if (b.x >= o.x && b.x < o.x + (o.seg.tipo === 'tuberia' ? 2 : 1) && b.y >= o.top && b.y < o.base) E(`${id}: solapa con ${o.seg.tipo} en x=${o.x}.`);

@@ -218,3 +218,6 @@ Además se reparten `sierra` (en raíl) y `laser` horizontales de 51-peligros.js
 ## Llaves, puertas con llave y magos en tierra
 
 `{"tipo":"llave","x","y","id"?}` es una llave dorada flotante (51-peligros.js); `{"tipo":"puerta","x","y","alto":6,"llave":true|"id"}` es una puerta cerrada con cerradura dorada que **se abre sola al coger la llave** (no pide pregunta). El validador exige que exista alguna llave. `tools/llaves-niveles.js nivel…` coloca la llave junto a una fórmula y la puerta más adelante (methodes-physiques, newton-2 y force-acides-bases). `tools/magos-niveles.js` reparte 1–2 magos (`fauna`/`mago`, ver arriba) por nivel de capítulo.
+
+## Cristal de hielo y power-ups del mar
+`hielo` (letra H, persistente): X/F/J dispara un rayo recto que **congela** 5 s a la fauna (inmóvil, inofensiva, se puede pisar incluso a submarinos y langostas; el tiburón recibe 2 de daño). `Cueva.aplicar` deja cápsulas de hielo y fuego en las cuevas y el Quiz Quest los da como premio en la fase de agua.

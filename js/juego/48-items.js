@@ -22,6 +22,7 @@
     estrella: { nombre: 'Supernova', col: '#ffe27a', letra: '★', reserva: true, aviso: 'Supernova guardada en la reserva (Q)' },
     reloj: { nombre: 'Reloj', col: '#e8f0ff', letra: 'R', reserva: true, aviso: 'Reloj guardado en la reserva (Q)' },
     vida: { nombre: 'Vida', col: '#ff4d6d', letra: '♥', aviso: '¡+1 vida!' },
+    hielo: { nombre: 'Cristal de hielo', col: '#9fe7ff', letra: 'H', persistente: true, aviso: '¡Cristal de hielo! Congela enemigos (X / F / J)' },
     fuego: { nombre: 'Flor de plasma', col: '#ff7a2a', letra: 'L', persistente: true, aviso: '¡Flor de plasma! Disparas bolas rebotantes (X / F / J)' },
     escopeta: { nombre: 'Escopeta de iones', col: '#b0b8d8', letra: 'S', municion: 10, aviso: '¡Escopeta de iones! 10 cartuchos (X / F / J)' },
     grande: { nombre: 'Núcleo expansivo', col: '#2ee59d', letra: 'G', persistente: true, aviso: '¡Núcleo expansivo! Creces y aguantas un golpe' },
@@ -31,7 +32,7 @@
 
   // ---------- estado por partida ----------
   I.iniciar = function (g) {
-    g.it = { zapatos: 0, iman: 0, mochila: 0, canon: 0, fuel: 2.8, municion: 0, cd: 0, fuego: false, escopeta: 0, grande: false };
+    g.it = { zapatos: 0, iman: 0, mochila: 0, canon: 0, fuel: 2.8, municion: 0, cd: 0, fuego: false, hielo: false, escopeta: 0, grande: false, alt: false };
     g.reserva = [];
     g.fotones = []; g.fuegos = []; g.perdigones = [];
     g.itemsMundo = (g.nivel.segmentos || []).filter((s) => s.tipo === 'item' && DEF[s.item]).map((s) => ({ x: Math.floor(s.x), y: Math.floor(s.y), item: s.item, tomado: false, fase: (J.hash('it' + s.x + s.y) % 100) / 16 }));
@@ -45,6 +46,7 @@
     else if (d.reserva) { if (g.reserva.length < 3) g.reserva.push(tipo); else usarTipo(g, tipo); }
     else if (tipo === 'grande') crecer(g);
     else if (tipo === 'fuego') { g.it.fuego = true; crecer(g); }
+    else if (tipo === 'hielo') g.it.hielo = true;
     else if (tipo === 'escopeta') g.it.escopeta = Math.min(20, g.it.escopeta + d.municion);
     else { g.it[tipo] = d.dur; if (tipo === 'canon') g.it.municion = d.municion; if (tipo === 'mochila') g.it.fuel = 2.8; }
     J.Audio.sfx('premio'); J.chispas(g, (p.x + p.w / 2) * T, (p.y + p.h / 2) * T, 18, d.col, 4, 3);
@@ -77,7 +79,7 @@
 
   // ---------- impacto de los disparos del jugador (fuego, perdigones…) ----------
   function impacto(g, x, y, rad, por) {
-    const w = g.w, col = por === 'fuego' ? '#ff7a2a' : '#ffe27a';
+    const w = g.w, col = por === 'fuego' ? '#ff7a2a' : por === 'hielo' ? '#9fe7ff' : '#ffe27a';
     for (const e of w.enemigos) { if (!e.vivo || e.muertoT > 0) continue; if (Math.hypot(x - (e.x + e.w / 2), y - (e.y + e.h / 2)) < rad + 0.55) { e.muertoT = 0.001; J.Audio.sfx('pisoton'); J.chispas(g, (e.x + e.w / 2) * T, (e.y + e.h / 2) * T, 12, col, 4); if (g.ui) g.ui.error(e); return true; } }
     for (const e of g.bichos || []) { if (!e.vivo || e.muertoT > 0) continue; if (Math.hypot(x - (e.x + e.w / 2), y - (e.y + e.h / 2)) < rad + 0.6) { J.Ambiente.matar(g, e, 'foton'); return true; } }
     if (J.Peligros && J.Peligros.golpe(g, x, y, rad)) return true;
@@ -140,8 +142,9 @@
         for (let k = 0; k < 5; k++) { const ang = (k - 2) * 0.11 + (Math.random() - 0.5) * 0.05; g.perdigones.push({ x: pcx + p.dir * 0.7, y: pcy - 0.15, vx: p.dir * Math.cos(ang) * 16, vy: Math.sin(ang) * 16, t: 0 }); }
         p.vx -= p.dir * 3.2; g.shake = Math.max(g.shake, 2); J.Audio.sfx('onda'); J.chispas(g, (pcx + p.dir * 0.9) * T, (pcy - 0.15) * T, 10, '#ffe27a', 3, 0);
         if (it.escopeta === 0) g.ui.aviso('Sin cartuchos'); hud(g, true);
-      } else if (!p.muriendo && g.estado === 'jugando' && it.cd <= 0 && it.fuego && g.fuegos.length < 3) {   // flor de plasma: bolas rebotantes
-        it.cd = 0.3; g.fuegos.push({ x: pcx + p.dir * 0.6, y: pcy, vx: p.dir * 9, vy: 2, t: 0, reb: 0 }); J.Audio.sfx('fuego');
+      } else if (!p.muriendo && g.estado === 'jugando' && it.cd <= 0 && (it.fuego || it.hielo) && g.fuegos.length < 3) {   // flor de plasma (bolas rebotantes) / cristal de hielo (rayo recto que congela)
+        const hielo = it.hielo && (!it.fuego || (it.alt = !it.alt));
+        it.cd = 0.3; g.fuegos.push(hielo ? { x: pcx + p.dir * 0.6, y: pcy, vx: p.dir * 10, vy: 0, t: 0, reb: 0, hielo: true } : { x: pcx + p.dir * 0.6, y: pcy, vx: p.dir * 9, vy: 2, t: 0, reb: 0 }); J.Audio.sfx(hielo ? 'aviso' : 'fuego');
       } else if (it.canon > 0 && it.municion > 0 && it.cd <= 0 && !p.muriendo && g.estado === 'jugando') {
         it.municion--; it.cd = 0.22; g.fotones.push({ x: pcx + p.dir * 0.6, y: pcy - 0.1, vx: p.dir * 13, t: 0 });
         J.Audio.sfx('fuego'); J.chispas(g, (pcx + p.dir * 0.7) * T, (pcy - 0.1) * T, 4, '#6ff0ff', 2, 0);
@@ -185,12 +188,13 @@
     }
     g.perdigones = g.perdigones.filter((q) => !q.muerto);
     for (const f of g.fuegos) {
-      f.t += dt; f.vy += 30 * dt; f.x += f.vx * dt; f.y += f.vy * dt;
+      f.t += dt; if (!f.hielo) f.vy += 30 * dt; f.x += f.vx * dt; f.y += f.vy * dt;
       const suelo = w.get(Math.floor(f.x), Math.floor(f.y + 0.3)), pared = w.get(Math.floor(f.x + Math.sign(f.vx) * 0.35), Math.floor(f.y));
-      if (f.vy > 0 && (suelo === 1 || suelo === 3 || suelo === 4 || suelo === 6 || suelo === 9 || suelo === 10 || suelo === 2)) { f.vy = -6.5; f.y = Math.floor(f.y + 0.3) - 0.3; f.reb++; }
+      if (!f.hielo && f.vy > 0 && (suelo === 1 || suelo === 3 || suelo === 4 || suelo === 6 || suelo === 9 || suelo === 10 || suelo === 2)) { f.vy = -6.5; f.y = Math.floor(f.y + 0.3) - 0.3; f.reb++; }
       if (pared === 1 || pared === 3 || pared === 4 || pared === 6 || pared === 7 || pared === 9 || pared === 10 || pared === 8) { if (pared === 8 && J.Quiz) J.Quiz.golpeLadrillo(g, Math.floor(f.x + Math.sign(f.vx) * 0.35), Math.floor(f.y)); f.muerto = true; }
-      if (f.t > 3.5 || f.reb > 6 || f.x < -2 || f.x > w.ancho + 2 || f.y > w.alto + 1) f.muerto = true;
-      if (!f.muerto && impacto(g, f.x, f.y, 0.25, 'fuego')) f.muerto = true;
+      if (f.hielo && (suelo === 1 || suelo === 3 || suelo === 4 || suelo === 6 || suelo === 9 || suelo === 10)) f.muerto = true;
+      if (f.t > (f.hielo ? 1.6 : 3.5) || f.reb > 6 || f.x < -2 || f.x > w.ancho + 2 || f.y > w.alto + 1) f.muerto = true;
+      if (!f.muerto && impacto(g, f.x, f.y, 0.25, f.hielo ? 'hielo' : 'fuego')) f.muerto = true;
       if (f.muerto) J.chispas(g, f.x * T, f.y * T, 6, '#ff7a2a', 2, 0);
     }
     g.fuegos = g.fuegos.filter((f) => !f.muerto);
@@ -219,7 +223,7 @@
       ctx.fillStyle = '#ffffff'; ctx.fillRect(x - 2, y - 2, 4, 4); ctx.fillStyle = '#6ff0ff'; ctx.fillRect(x - 3, y - 1, 6, 2); ctx.fillRect(x - 1, y - 3, 2, 6);
     }
     for (const q of g.perdigones) { const x = Math.round(q.x * T - camX), y = Math.round(q.y * T - camY); ctx.fillStyle = 'rgba(255,226,122,.5)'; ctx.fillRect(x - Math.round(q.vx * 0.012), y, Math.round(q.vx * 0.012) || 1, 1); ctx.fillStyle = '#fff'; ctx.fillRect(x, y - 1, 2, 2); ctx.fillStyle = '#ffe27a'; ctx.fillRect(x - 1, y, 1, 1); }
-    for (const f of g.fuegos) { const x = Math.round(f.x * T - camX), y = Math.round(f.y * T - camY); ctx.globalAlpha = 0.35; J.Temas.disco(ctx, x, y, 7, '#ff7a2a'); ctx.globalAlpha = 1; J.Temas.disco(ctx, x, y, 4, '#ff4d2e'); J.Temas.disco(ctx, x, y, 3, '#ff9f1c'); J.Temas.disco(ctx, x - 1, y - 1, 1, '#fff'); }
+    for (const f of g.fuegos) { const x = Math.round(f.x * T - camX), y = Math.round(f.y * T - camY); if (f.hielo) { ctx.globalAlpha = 0.35; J.Temas.disco(ctx, x, y, 7, '#9fe7ff'); ctx.globalAlpha = 1; J.Temas.disco(ctx, x, y, 4, '#d8f6ff'); J.Temas.disco(ctx, x, y, 2, '#fff'); ctx.fillStyle = '#9fe7ff'; ctx.fillRect(x - 7, y, 14, 1); ctx.fillRect(x, y - 7, 1, 14); continue; } ctx.globalAlpha = 0.35; J.Temas.disco(ctx, x, y, 7, '#ff7a2a'); ctx.globalAlpha = 1; J.Temas.disco(ctx, x, y, 4, '#ff4d2e'); J.Temas.disco(ctx, x, y, 3, '#ff9f1c'); J.Temas.disco(ctx, x - 1, y - 1, 1, '#fff'); }
   };
   /** Efectos sobre Ato (se llama justo después de dibujarlo). */
   I.dibujarJugador = function (ctx, g, camX, camY) {
@@ -243,11 +247,11 @@
   }
   function hud(g, forzar) {
     if (!g.hudItems) return;
-    const it = g.it, sig = ['zapatos', 'iman', 'mochila', 'canon'].map((k) => Math.ceil(it[k])).join(',') + '|' + it.municion + '|' + it.escopeta + '|' + it.fuego + '|' + it.grande + '|' + Math.round(it.fuel * 3) + '|' + g.reserva.join(',');
+    const it = g.it, sig = ['zapatos', 'iman', 'mochila', 'canon'].map((k) => Math.ceil(it[k])).join(',') + '|' + it.municion + '|' + it.escopeta + '|' + it.fuego + '|' + it.hielo + '|' + it.grande + '|' + Math.round(it.fuel * 3) + '|' + g.reserva.join(',');
     if (sig === g._sigHud && !forzar) return; g._sigHud = sig;
-    g.hudItems.replaceChildren(...['grande', 'fuego', 'escopeta', 'zapatos', 'iman', 'mochila', 'canon'].filter((k) => it[k] > 0 || it[k] === true).map((k) => {
+    g.hudItems.replaceChildren(...['grande', 'fuego', 'hielo', 'escopeta', 'zapatos', 'iman', 'mochila', 'canon'].filter((k) => it[k] > 0 || it[k] === true).map((k) => {
       const d = DEF[k], s = document.createElement('span'); s.className = 'jg-itemchip'; s.style.borderColor = d.col;
-      s.innerHTML = '<b style="background:' + d.col + '">' + d.letra + '</b>' + d.nombre + ' <i>' + (k === 'canon' ? '×' + it.municion : k === 'escopeta' ? '×' + it.escopeta : (k === 'fuego' || k === 'grande') ? '' : k === 'mochila' ? Math.round(Math.max(0, it.fuel) / 2.8 * 100) + '%' : Math.ceil(it[k]) + 's') + '</i>';
+      s.innerHTML = '<b style="background:' + d.col + '">' + d.letra + '</b>' + d.nombre + ' <i>' + (k === 'canon' ? '×' + it.municion : k === 'escopeta' ? '×' + it.escopeta : (k === 'fuego' || k === 'grande' || k === 'hielo') ? '' : k === 'mochila' ? Math.round(Math.max(0, it.fuel) / 2.8 * 100) + '%' : Math.ceil(it[k]) + 's') + '</i>';
       return s;
     }));
     g.hudReserva.replaceChildren(...[0, 1, 2].map((i) => {

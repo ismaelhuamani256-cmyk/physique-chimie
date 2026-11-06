@@ -124,7 +124,7 @@
     // premios variados por fase, en orden barajado
     const PREMIOS = {
       tierra: ['moneda', 'vida', 'pista', 'estrella', 'moneda', 'escudo', 'reloj', 'fuego', 'grande'],
-      agua: ['moneda', 'escudo', 'reloj', 'pista', 'estrella', 'vida', 'moneda', 'grande'],
+      agua: ['moneda', 'escudo', 'reloj', 'pista', 'estrella', 'vida', 'moneda', 'grande', 'fuego', 'hielo'],
       castillo: ['escudo', 'vida', 'pista', 'estrella', 'reloj', 'moneda', 'escudo', 'escopeta', 'fuego'],
     }[fase];
     const colaPremios = U.shuffle(PREMIOS.slice(0, 5), rnd).concat(U.shuffle(PREMIOS.slice(5), rnd));
@@ -437,7 +437,7 @@
       else if (q.tipo === 'numerico') { if (typeof q.valor !== 'number') e.push(donde + ': numérica sin valor (' + q.id + ')'); }
       else e.push(donde + ': tipo de pregunta desconocido');
     };
-    por('bloque_pregunta').forEach((s) => { qOk(s.pregunta, 'bloque'); if (!['moneda', 'vida', 'pista', 'escudo', 'estrella', 'reloj', 'fuego', 'escopeta', 'grande'].includes(s.premio)) e.push('premio inválido ' + s.premio); });
+    por('bloque_pregunta').forEach((s) => { qOk(s.pregunta, 'bloque'); if (!['moneda', 'vida', 'pista', 'escudo', 'estrella', 'reloj', 'fuego', 'hielo', 'escopeta', 'grande'].includes(s.premio)) e.push('premio inválido ' + s.premio); });
     por('tuberia').forEach((s) => qOk(s.pregunta, 'tuberia'));
     por('ladrillo').forEach((s) => { if (s.contenido === 'pregunta') qOk(s.pregunta, 'ladrillo'); });
     if (nivel.tipo_nivel !== 'quiz_agua' && !por('plataforma_cae').length) e.push('fase sin plataforma_cae');

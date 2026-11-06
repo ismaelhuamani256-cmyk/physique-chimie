@@ -67,6 +67,11 @@
 
   /** Disparos del jugador: true si el disparo se gasta aquí. */
   F.golpe = function (g, x, y, rad, por) {
+    if (por === 'hielo') {
+      for (const e of g.fauna || []) { if (!e.vivo || e.muertoT > 0 || e.oculto > 0 || e.esp === 'mina') continue; const [cx, cy] = centro(e); if (Math.abs(x - cx) < e.w / 2 + rad + 0.15 && Math.abs(y - cy) < e.h / 2 + rad + 0.15) { e.helado = 5; e.flash = 0.15; J.Audio.sfx('premio'); J.chispas(g, cx * T, cy * T, 12, '#d8f6ff', 3); return true; } }
+      for (const q of g.faunaProy || []) if (!q.muerto && q.tipo !== 'cavit' && Math.hypot(x - q.x, y - q.y) < 0.7 + rad) { q.muerto = true; return true; }
+      return false;
+    }
     for (const q of g.faunaProy || []) if (!q.muerto && q.tipo !== 'cavit' && Math.hypot(x - q.x, y - q.y) < 0.7 + rad) { q.muerto = true; J.Audio.sfx('pisoton'); J.chispas(g, q.x * T, q.y * T, 8, '#ffffff', 3); return true; }
     for (const e of g.fauna || []) {
       if (!e.vivo || e.muertoT > 0 || e.oculto > 0) continue;
@@ -94,6 +99,10 @@
       if (!e.vivo) continue;
       if (e.muertoT > 0) { e.muertoT += dt; if (e.muertoT > 0.45) e.vivo = false; continue; }
       e.t += dt; e.flash = Math.max(0, e.flash - dt); e.bloq = false;
+      if (e.helado > 0) {   // congelado: inmóvil e inofensivo; se puede pisar (incluso los blindados salvo el tiburón)
+        e.helado -= dt; if (!p.muriendo && e.esp !== 'mina' && toca(p, e) && p.vy > 0.3 && p.y + p.h - e.y < e.h * 0.7) { p.vy = -g.F.v0 * 0.7; p.suelo = false; p.coyote = 0; p.saltando = false; if (e.esp === 'tiburon') damage(g, e, 2); else matar(g, e); }
+        continue;
+      }
       const [cx, cy] = centro(e), dx = pcx - cx, dy = pcy - cy, d = Math.hypot(dx, dy), vivoP = !p.muriendo;
       if (d > 40) continue;
       switch (e.esp) {
@@ -266,6 +275,7 @@
       if (e.muertoT > 0) { ctx.globalAlpha = Math.max(0, 1 - e.muertoT / 0.45); }
       ({ pirana: dPirana, tiburon: dTiburon, langosta: dLangosta, submarino: dSubmarino, globo: dGlobo, mago: dMago, mina: dMina })[e.esp](ctx, e, x, y, t, bl, g, camY);
       ctx.restore();
+      if (e.helado > 0) { ctx.globalAlpha = 0.5; ctx.fillStyle = '#bfefff'; ctx.fillRect(x - 1, y - 1, r(e.w * T) + 2, r(e.h * T) + 2); ctx.globalAlpha = 1; ctx.fillStyle = '#fff'; ctx.fillRect(x + 2, y + 1, 3, 1); ctx.fillRect(x + r(e.w * T) - 6, y + r(e.h * T) - 3, 4, 1); }
     }
     for (const q of g.faunaProy) {
       const x = r(q.x * T - camX), y = r(q.y * T - camY);

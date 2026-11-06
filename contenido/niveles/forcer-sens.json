@@ -3,7 +3,7 @@
  "tipo_nivel": "normal",
  "tema_visual": "laboratorio-neon",
  "fisica_juego": {
-  "gravedad": 1.0,
+  "gravedad": 1,
   "friccion": 0.85,
   "salto": 12,
   "viento": 0
@@ -12,21 +12,9 @@
  "alto_tiles": 18,
  "segmentos": [
   {
-   "tipo": "plataforma",
-   "x": 0,
-   "y": 14,
-   "largo": 24
-  },
-  {
    "tipo": "foso",
    "x": 24,
    "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 27,
-   "y": 14,
-   "largo": 15
   },
   {
    "tipo": "foso",
@@ -34,21 +22,9 @@
    "largo": 3
   },
   {
-   "tipo": "plataforma",
-   "x": 45,
-   "y": 14,
-   "largo": 18
-  },
-  {
    "tipo": "foso",
    "x": 63,
    "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 67,
-   "y": 14,
-   "largo": 18
   },
   {
    "tipo": "foso",
@@ -56,21 +32,9 @@
    "largo": 3
   },
   {
-   "tipo": "plataforma",
-   "x": 88,
-   "y": 14,
-   "largo": 20
-  },
-  {
    "tipo": "foso",
    "x": 108,
    "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 112,
-   "y": 14,
-   "largo": 18
   },
   {
    "tipo": "foso",
@@ -78,56 +42,14 @@
    "largo": 3
   },
   {
-   "tipo": "plataforma",
-   "x": 133,
-   "y": 14,
-   "largo": 19
-  },
-  {
    "tipo": "foso",
    "x": 152,
    "largo": 3
   },
   {
-   "tipo": "plataforma",
-   "x": 155,
-   "y": 14,
-   "largo": 25
-  },
-  {
-   "tipo": "plataforma",
-   "x": 12,
-   "y": 12,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 30,
-   "y": 12,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 50,
-   "y": 12,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 96,
-   "y": 12,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 138,
-   "y": 12,
-   "largo": 4
-  },
-  {
    "tipo": "plataforma_movil",
    "x": 72,
-   "y": 12,
+   "y": 11,
    "largo": 4,
    "recorrido": 5,
    "eje": "x",
@@ -136,7 +58,7 @@
   {
    "tipo": "plataforma_movil",
    "x": 91,
-   "y": 12,
+   "y": 11,
    "largo": 3,
    "recorrido": 1,
    "eje": "y",
@@ -145,7 +67,7 @@
   {
    "tipo": "plataforma_movil",
    "x": 118,
-   "y": 12,
+   "y": 11,
    "largo": 4,
    "recorrido": 6,
    "eje": "x",
@@ -154,7 +76,7 @@
   {
    "tipo": "resorte",
    "x": 21,
-   "y": 14
+   "y": 15
   },
   {
    "tipo": "resorte",
@@ -164,12 +86,12 @@
   {
    "tipo": "resorte",
    "x": 148,
-   "y": 14
+   "y": 13
   },
   {
    "tipo": "zona_campo",
    "x": 28,
-   "y": 8,
+   "y": 9,
    "w": 13,
    "h": 6,
    "fx": 0.5,
@@ -178,7 +100,7 @@
   {
    "tipo": "zona_campo",
    "x": 68,
-   "y": 5,
+   "y": 6,
    "w": 12,
    "h": 9,
    "fx": 0,
@@ -187,7 +109,7 @@
   {
    "tipo": "zona_campo",
    "x": 89,
-   "y": 8,
+   "y": 9,
    "w": 18,
    "h": 6,
    "fx": -0.5,
@@ -237,7 +159,7 @@
   {
    "tipo": "coleccionable",
    "x": 75,
-   "y": 12,
+   "y": 11,
    "ref": "f5",
    "latex": "q = n(e^-)\\cdot N_A\\cdot e",
    "nombre": "Carga y cantidad de electrones"
@@ -261,7 +183,7 @@
   {
    "tipo": "coleccionable",
    "x": 125,
-   "y": 12,
+   "y": 11,
    "ref": "f10",
    "latex": "n = \\dfrac{m}{M}",
    "nombre": "Cantidad de materia a partir de la masa"
@@ -285,7 +207,7 @@
   {
    "tipo": "enemigo",
    "x": 18,
-   "y": 13,
+   "y": 14,
    "enemigo": "error_anodo_catodo",
    "nombre": "Confundir ánodo y cátodo",
    "correccion": "Cátodo = reducción (borne −); ánodo = oxidación (borne +)."
@@ -293,7 +215,7 @@
   {
    "tipo": "enemigo",
    "x": 36,
-   "y": 13,
+   "y": 12,
    "enemigo": "error_volumen_total",
    "nombre": "Usar el volumen de una solución en vez del total",
    "correccion": "Tras mezclar, [X]i = ni / Vtotal de la mezcla."
@@ -309,7 +231,7 @@
   {
    "tipo": "enemigo",
    "x": 78,
-   "y": 13,
+   "y": 14,
    "enemigo": "error_sentido_corriente",
    "nombre": "Invertir el sentido de I y de los e⁻",
    "correccion": "Los electrones circulan en sentido contrario al de la corriente I."
@@ -317,7 +239,7 @@
   {
    "tipo": "enemigo",
    "x": 95,
-   "y": 13,
+   "y": 14,
    "enemigo": "error_portadores",
    "nombre": "Confundir iones y electrones como portadores",
    "correccion": "Iones en la disolución; electrones solo en el circuito exterior."
@@ -333,7 +255,7 @@
   {
    "tipo": "enemigo",
    "x": 145,
-   "y": 13,
+   "y": 12,
    "enemigo": "error_espontanea",
    "nombre": "Creer que la electrólisis es espontánea",
    "correccion": "Es una transformación forzada por el generador, en sentido opuesto al espontáneo; la pila es la espontánea."
@@ -437,11 +359,402 @@
   {
    "tipo": "bicho",
    "x": 124,
-   "y": 11,
+   "y": 10,
    "bicho": "neutrino",
    "nombre": "Confundir iones y electrones como portadores",
    "correccion": "Iones en la disolución; electrones solo en el circuito exterior."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 10,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 16,
+   "y": 15,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 27,
+   "y": 15,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 29,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 30,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 34,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 35,
+   "y": 13,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 39,
+   "y": 12,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 45,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 47,
+   "y": 13,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 50,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 54,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 60,
+   "y": 15,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 67,
+   "y": 15,
+   "largo": 18
+  },
+  {
+   "tipo": "plataforma",
+   "x": 88,
+   "y": 15,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 96,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 100,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 112,
+   "y": 14,
+   "largo": 18
+  },
+  {
+   "tipo": "plataforma",
+   "x": 133,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 135,
+   "y": 13,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 138,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 142,
+   "y": 13,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 155,
+   "y": 14,
+   "largo": 25
+  },
+  {
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 30,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 50,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 96,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 138,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 77,
+   "y": 11,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 78,
+   "y": 11,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 79,
+   "y": 11,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 80,
+   "y": 11,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     23,
+     13
+    ],
+    [
+     24,
+     11
+    ],
+    [
+     25,
+     11
+    ],
+    [
+     26,
+     11
+    ],
+    [
+     27,
+     11
+    ],
+    [
+     28,
+     13
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     41,
+     10
+    ],
+    [
+     42,
+     8
+    ],
+    [
+     43,
+     8
+    ],
+    [
+     44,
+     8
+    ],
+    [
+     45,
+     8
+    ],
+    [
+     46,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     62,
+     13
+    ],
+    [
+     63,
+     12
+    ],
+    [
+     64,
+     11
+    ],
+    [
+     65,
+     11
+    ],
+    [
+     66,
+     11
+    ],
+    [
+     67,
+     12
+    ],
+    [
+     68,
+     13
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     84,
+     13
+    ],
+    [
+     85,
+     11
+    ],
+    [
+     86,
+     11
+    ],
+    [
+     87,
+     11
+    ],
+    [
+     88,
+     11
+    ],
+    [
+     89,
+     13
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     107,
+     12
+    ],
+    [
+     108,
+     11
+    ],
+    [
+     109,
+     10
+    ],
+    [
+     110,
+     10
+    ],
+    [
+     111,
+     10
+    ],
+    [
+     112,
+     11
+    ],
+    [
+     113,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     129,
+     12
+    ],
+    [
+     130,
+     10
+    ],
+    [
+     131,
+     10
+    ],
+    [
+     132,
+     10
+    ],
+    [
+     133,
+     10
+    ],
+    [
+     134,
+     12
+    ]
+   ]
   }
  ],
- "ambiente": "lab"
+ "ambiente": "lab",
+ "relieve": true
 }

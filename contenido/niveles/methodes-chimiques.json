@@ -3,7 +3,7 @@
  "tipo_nivel": "normal",
  "tema_visual": "laboratorio-verde",
  "fisica_juego": {
-  "gravedad": 1.0,
+  "gravedad": 1,
   "friccion": 0.85,
   "salto": 12,
   "viento": 0
@@ -11,12 +11,6 @@
  "ancho_tiles": 196,
  "alto_tiles": 18,
  "segmentos": [
-  {
-   "tipo": "plataforma",
-   "x": 0,
-   "y": 14,
-   "largo": 18
-  },
   {
    "tipo": "coleccionable",
    "x": 5,
@@ -28,7 +22,7 @@
   {
    "tipo": "enemigo",
    "x": 12,
-   "y": 13,
+   "y": 14,
    "enemigo": "confusion_rho_d",
    "nombre": "Confundir masa volúmica y densidad",
    "correccion": "ρ tiene unidad (g·L⁻¹, kg·m⁻³); d = ρ/ρ_eau no tiene unidad."
@@ -37,12 +31,6 @@
    "tipo": "foso",
    "x": 18,
    "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 22,
-   "y": 14,
-   "largo": 14
   },
   {
    "tipo": "coleccionable",
@@ -63,7 +51,7 @@
   {
    "tipo": "coleccionable",
    "x": 33,
-   "y": 12,
+   "y": 13,
    "ref": "f_d",
    "latex": "d = \\dfrac{\\rho}{\\rho_{\\text{eau}}}",
    "nombre": "Densité d'une solution"
@@ -74,19 +62,13 @@
    "largo": 4
   },
   {
-   "tipo": "plataforma",
-   "x": 40,
-   "y": 13,
-   "largo": 10
-  },
-  {
    "tipo": "checkpoint",
    "x": 44
   },
   {
    "tipo": "coleccionable",
    "x": 45,
-   "y": 11,
+   "y": 12,
    "ref": "f_cc",
    "latex": "c = \\dfrac{\\rho_{\\text{eau}}\\cdot d\\cdot w}{M}",
    "nombre": "Concentration d'une solution commerciale"
@@ -94,7 +76,7 @@
   {
    "tipo": "enemigo",
    "x": 47,
-   "y": 12,
+   "y": 13,
    "enemigo": "dilucion_cambia_n",
    "nombre": "Creer que diluir cambia n",
    "correccion": "n se conserva: c·V = c_diluée·V_diluée."
@@ -107,17 +89,11 @@
   {
    "tipo": "plataforma_movil",
    "x": 52,
-   "y": 12,
+   "y": 11,
    "largo": 4,
    "recorrido": 6,
    "eje": "x",
    "periodo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 64,
-   "y": 12,
-   "largo": 10
   },
   {
    "tipo": "coleccionable",
@@ -205,15 +181,9 @@
    "largo": 4
   },
   {
-   "tipo": "plataforma",
-   "x": 102,
-   "y": 12,
-   "largo": 12
-  },
-  {
    "tipo": "coleccionable",
    "x": 107,
-   "y": 10,
+   "y": 11,
    "ref": "f_x",
    "latex": "c_A\\cdot V_A - x_E = 0 \\quad\\text{et}\\quad c_B\\cdot V_E - x_E = 0",
    "nombre": "Tableau d'avancement à l'équivalence"
@@ -243,7 +213,7 @@
   {
    "tipo": "plataforma_movil",
    "x": 116,
-   "y": 12,
+   "y": 11,
    "largo": 4,
    "recorrido": 4,
    "eje": "x",
@@ -281,15 +251,9 @@
    "largo": 4
   },
   {
-   "tipo": "plataforma",
-   "x": 142,
-   "y": 12,
-   "largo": 12
-  },
-  {
    "tipo": "coleccionable",
    "x": 147,
-   "y": 10,
+   "y": 11,
    "ref": "f_u",
    "latex": "\\dfrac{u_c}{c}=\\sqrt{\\left(\\dfrac{u_{V_E}}{V_E}\\right)^2+\\left(\\dfrac{u_{V_A}}{V_A}\\right)^2+\\left(\\dfrac{u_{c_B}}{c_B}\\right)^2}",
    "nombre": "Incertitude-type sur la concentration"
@@ -427,11 +391,505 @@
   {
    "tipo": "bicho",
    "x": 145,
-   "y": 10,
+   "y": 11,
    "bicho": "neutrino",
    "nombre": "Esperar siempre un cambio de color",
    "correccion": "La equivalencia también se halla por pH-metría o conductimetría."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 10,
+   "y": 15,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 22,
+   "y": 15,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 24,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 32,
+   "y": 15,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 40,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 64,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 66,
+   "y": 12,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 102,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 104,
+   "y": 13,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 110,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 142,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 144,
+   "y": 13,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 149,
+   "y": 12,
+   "largo": 5
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 26,
+   "y": 10,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 27,
+   "y": 10,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 28,
+   "y": 10,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 29,
+   "y": 10,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     17,
+     13
+    ],
+    [
+     18,
+     12
+    ],
+    [
+     19,
+     11
+    ],
+    [
+     20,
+     11
+    ],
+    [
+     21,
+     11
+    ],
+    [
+     22,
+     12
+    ],
+    [
+     23,
+     13
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     35,
+     12
+    ],
+    [
+     36,
+     11
+    ],
+    [
+     37,
+     10
+    ],
+    [
+     38,
+     10
+    ],
+    [
+     39,
+     10
+    ],
+    [
+     40,
+     11
+    ],
+    [
+     41,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     49,
+     11
+    ],
+    [
+     50,
+     10
+    ],
+    [
+     51,
+     10
+    ],
+    [
+     52,
+     10
+    ],
+    [
+     53,
+     9
+    ],
+    [
+     54,
+     9
+    ],
+    [
+     55,
+     9
+    ],
+    [
+     56,
+     9
+    ],
+    [
+     57,
+     9
+    ],
+    [
+     58,
+     9
+    ],
+    [
+     59,
+     9
+    ],
+    [
+     60,
+     9
+    ],
+    [
+     61,
+     9
+    ],
+    [
+     62,
+     10
+    ],
+    [
+     63,
+     10
+    ],
+    [
+     64,
+     10
+    ],
+    [
+     65,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     73,
+     10
+    ],
+    [
+     74,
+     8
+    ],
+    [
+     75,
+     8
+    ],
+    [
+     76,
+     8
+    ],
+    [
+     77,
+     8
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     86,
+     9
+    ],
+    [
+     87,
+     8
+    ],
+    [
+     88,
+     8
+    ],
+    [
+     89,
+     8
+    ],
+    [
+     90,
+     9
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     98,
+     9
+    ],
+    [
+     99,
+     8
+    ],
+    [
+     100,
+     8
+    ],
+    [
+     101,
+     8
+    ],
+    [
+     102,
+     9
+    ],
+    [
+     103,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     113,
+     10
+    ],
+    [
+     114,
+     9
+    ],
+    [
+     115,
+     9
+    ],
+    [
+     116,
+     8
+    ],
+    [
+     117,
+     8
+    ],
+    [
+     118,
+     8
+    ],
+    [
+     119,
+     8
+    ],
+    [
+     120,
+     8
+    ],
+    [
+     121,
+     8
+    ],
+    [
+     122,
+     8
+    ],
+    [
+     123,
+     8
+    ],
+    [
+     124,
+     8
+    ],
+    [
+     125,
+     9
+    ],
+    [
+     126,
+     9
+    ],
+    [
+     127,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     137,
+     10
+    ],
+    [
+     138,
+     9
+    ],
+    [
+     139,
+     8
+    ],
+    [
+     140,
+     8
+    ],
+    [
+     141,
+     8
+    ],
+    [
+     142,
+     9
+    ],
+    [
+     143,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     153,
+     10
+    ],
+    [
+     154,
+     9
+    ],
+    [
+     155,
+     9
+    ],
+    [
+     156,
+     8
+    ],
+    [
+     157,
+     8
+    ],
+    [
+     158,
+     8
+    ],
+    [
+     159,
+     8
+    ],
+    [
+     160,
+     8
+    ],
+    [
+     161,
+     8
+    ],
+    [
+     162,
+     8
+    ],
+    [
+     163,
+     8
+    ],
+    [
+     164,
+     8
+    ],
+    [
+     165,
+     9
+    ],
+    [
+     166,
+     9
+    ],
+    [
+     167,
+     10
+    ]
+   ]
   }
  ],
- "ambiente": "lab"
+ "ambiente": "lab",
+ "relieve": true
 }

@@ -42,7 +42,7 @@
         const y = vuela ? s.y : s.y + 1 - d.h;
         g.bichos.push({ tipo: BICHO[s.bicho] ? s.bicho : 'embestidor', x: s.x, y, x0: s.x, y0: y, w: d.w, h: d.h, vx: 0, vy: 0, dir: -1, suelo: false, estado: 'patrulla', t: 0, cd: 0, vivo: true, muertoT: 0,
           nombre: s.nombre || 'Error', correccion: s.correccion || '', ph: (J.hash(String(s.x) + s.bicho) % 628) / 100, alpha: 1, timido: false });
-      } else if (s.tipo === 'estalactita') g.estal.push({ x: Math.floor(s.x), largo: 2, estado: 'quieta', t: 0, y: 0, vy: 0 });
+      } else if (s.tipo === 'estalactita') { const y0 = typeof s.y === 'number' ? s.y : 0; g.estal.push({ x: Math.floor(s.x), largo: 2, estado: 'quieta', t: 0, y0, y: y0, vy: 0 }); }
       else if (s.tipo === 'lluvia_rocas') g.lluvias.push({ x: s.x, w: s.w || 8, periodo: s.periodo || 2.2, t: 1 });
     }
     // props deterministas por capítulo; no se ponen junto a objetos de juego
@@ -123,15 +123,15 @@
     }
     // estalactitas: tiemblan y caen cuando pasas debajo
     for (const s of g.estal) {
-      if (s.estado === 'quieta') { if (!p.muriendo && Math.abs(pcx - (s.x + 0.5)) < 1.4 && pcy > s.largo + 0.5) { s.estado = 'tiembla'; s.t = 0; J.Audio.sfx('aviso'); } }
-      else if (s.estado === 'tiembla') { s.t += dt; if (Math.random() < 0.4) J.chispas(g, (s.x + 0.5) * T, 2 * T, 1, '#cfd8f0', 1, 2); if (s.t > 0.65) { s.estado = 'cae'; s.vy = 0; s.y = 0; } }
+      if (s.estado === 'quieta') { if (!p.muriendo && Math.abs(pcx - (s.x + 0.5)) < 1.4 && pcy > s.y0 + s.largo + 0.5) { s.estado = 'tiembla'; s.t = 0; J.Audio.sfx('aviso'); } }
+      else if (s.estado === 'tiembla') { s.t += dt; if (Math.random() < 0.4) J.chispas(g, (s.x + 0.5) * T, (s.y0 + 1) * T, 1, '#cfd8f0', 1, 2); if (s.t > 0.65) { s.estado = 'cae'; s.vy = 0; s.y = s.y0; } }
       else if (s.estado === 'cae') {
         s.vy = Math.min(18, s.vy + 26 * dt); s.y += s.vy * dt;
         const punta = s.y + s.largo;
         const rota = () => { s.estado = 'rota'; s.t = 0; g.shake = Math.max(g.shake, 3); J.Audio.sfx('romper'); fragmentos(g, s.x + 0.5, Math.min(punta, w.alto - 1), ['#cfd8f0', '#8a90b8', '#ffffff']); };
         if (!p.muriendo && J.solapa(p, { x: s.x + 0.15, y: s.y, w: 0.7, h: s.largo })) { J.herir(g, s.x + 0.5); rota(); }
         else if (punta >= w.alto || SOL(w.get(s.x, Math.floor(punta)))) rota();
-      } else if (s.estado === 'rota') { s.t += dt; if (s.t > 5) { s.estado = 'quieta'; s.y = 0; } }
+      } else if (s.estado === 'rota') { s.t += dt; if (s.t > 5) { s.estado = 'quieta'; s.y = s.y0; } }
     }
     // lluvia de rocas: marca (sombra) y caída
     for (const z of g.lluvias) {

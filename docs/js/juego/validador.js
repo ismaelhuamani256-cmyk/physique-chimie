@@ -178,7 +178,7 @@
     const ancho = Math.round(num(nivel.ancho_tiles, 0)), alto = Math.round(num(nivel.alto_tiles, 0));
     const segs = Array.isArray(nivel.segmentos) ? nivel.segmentos : [];
     const tiles = new Uint8Array(Math.max(0, ancho * alto));
-    const G = { ancho, alto, tiles, movers: [], resortes: [], campos: [], fosos: [], puentes: [], palancas: [], bloques: [], tuberias: [], puertas: [], aguas: [], ladrillos: [], caes: [], plantas: [], minas: [], prensas: [], pendulos: [], cintas: [], picos: [], rebotes: [], sprints: [], rastros: [], carteles: [], atomos: [], estaciones: [], interruptores: [], platEstado: [], arena: null, meta: null, jefe: null };
+    const G = { techo: new Set(), ancho, alto, tiles, movers: [], resortes: [], campos: [], fosos: [], puentes: [], palancas: [], bloques: [], tuberias: [], puertas: [], aguas: [], ladrillos: [], caes: [], plantas: [], minas: [], prensas: [], pendulos: [], cintas: [], picos: [], rebotes: [], sprints: [], rastros: [], carteles: [], atomos: [], estaciones: [], interruptores: [], platEstado: [], arena: null, meta: null, jefe: null };
     const get = (x, y) => (x < 0 || x >= ancho || y < 0 || y >= alto ? 0 : tiles[y * ancho + x]);
     const set = (x, y, v) => { if (x >= 0 && x < ancho && y >= 0 && y < alto) tiles[y * ancho + x] = v; };
     G.get = get;
@@ -193,7 +193,7 @@
       const suelo = s.solido === true || (s.grosor == null && s.solido !== false && y >= alto - FIS.SUELO_PROF);
       for (let i = 0; i < l; i++) {
         if (suelo) for (let yy = y; yy < alto; yy++) set(x + i, yy, 1);
-        else if (s.grosor != null) for (let k = 0; k < Math.max(1, Math.round(s.grosor)); k++) set(x + i, y + k, 4);
+        else if (s.grosor != null) for (let k = 0; k < Math.max(1, Math.round(s.grosor)); k++) { set(x + i, y + k, 4); if (s.techo === true && k === 0) G.techo.add((x + i) + ',' + (y + k)); }   // techo: bloque de cueva/horno, no hay que alcanzarlo
         else set(x + i, y, 2);
       }
     }
@@ -280,7 +280,7 @@
       for (let x = 0; x <= G.ancho; x++) {
         const vt = (xx, yy) => { const q = G.get(xx, yy); return q === 5 || q === 7 || q === 8 ? 0 : q; };   // bloques ? y puertas no cuentan (se abren / se golpean)
         const t = x < G.ancho ? vt(x, y) : 0;
-        const esSup = t !== 0 && !SOLIDO(vt(x, y - 1));
+        const esSup = t !== 0 && !SOLIDO(vt(x, y - 1)) && !(G.techo && G.techo.has(x + ',' + y));
         if (esSup && ini < 0) ini = x;
         if (!esSup && ini >= 0) { out.push({ tipo: 'estatica', y, x0: ini, x1: x, muestras: [{ x0: ini, x1: x, y }] }); ini = -1; }
       }

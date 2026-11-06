@@ -12,21 +12,9 @@
  "alto_tiles": 18,
  "segmentos": [
   {
-   "tipo": "plataforma",
-   "x": 0,
-   "y": 14,
-   "largo": 22
-  },
-  {
    "tipo": "foso",
    "x": 22,
    "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 25,
-   "y": 14,
-   "largo": 14
   },
   {
    "tipo": "foso",
@@ -34,21 +22,9 @@
    "largo": 4
   },
   {
-   "tipo": "plataforma",
-   "x": 43,
-   "y": 14,
-   "largo": 13
-  },
-  {
    "tipo": "foso",
    "x": 56,
    "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 60,
-   "y": 14,
-   "largo": 12
   },
   {
    "tipo": "foso",
@@ -56,21 +32,9 @@
    "largo": 4
   },
   {
-   "tipo": "plataforma",
-   "x": 76,
-   "y": 14,
-   "largo": 14
-  },
-  {
    "tipo": "foso",
    "x": 90,
    "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 93,
-   "y": 14,
-   "largo": 10
   },
   {
    "tipo": "foso",
@@ -78,21 +42,9 @@
    "largo": 3
   },
   {
-   "tipo": "plataforma",
-   "x": 106,
-   "y": 14,
-   "largo": 12
-  },
-  {
    "tipo": "foso",
    "x": 118,
    "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 121,
-   "y": 14,
-   "largo": 14
   },
   {
    "tipo": "foso",
@@ -101,20 +53,14 @@
   },
   {
    "tipo": "plataforma",
-   "x": 138,
-   "y": 14,
-   "largo": 31
-  },
-  {
-   "tipo": "plataforma",
    "x": 30,
-   "y": 11,
+   "y": 9,
    "largo": 5
   },
   {
    "tipo": "plataforma",
    "x": 47,
-   "y": 11,
+   "y": 10,
    "largo": 4
   },
   {
@@ -171,7 +117,7 @@
   {
    "tipo": "plataforma_movil",
    "x": 103,
-   "y": 12,
+   "y": 11,
    "largo": 3,
    "recorrido": 3,
    "eje": "x",
@@ -180,7 +126,7 @@
   {
    "tipo": "plataforma_movil",
    "x": 118,
-   "y": 12,
+   "y": 11,
    "largo": 3,
    "recorrido": 3,
    "eje": "x",
@@ -189,7 +135,7 @@
   {
    "tipo": "plataforma_movil",
    "x": 135,
-   "y": 10,
+   "y": 11,
    "largo": 3,
    "recorrido": 3,
    "eje": "y",
@@ -224,7 +170,7 @@
   {
    "tipo": "coleccionable",
    "x": 18,
-   "y": 12,
+   "y": 10,
    "ref": "f11",
    "latex": "\\vec a = G\\,\\dfrac{M}{r^{2}}\\,\\vec n",
    "nombre": "Accélération d'un satellite"
@@ -232,7 +178,7 @@
   {
    "tipo": "coleccionable",
    "x": 31,
-   "y": 9,
+   "y": 7,
    "ref": "f1",
    "latex": "PF + PF' = 2a",
    "nombre": "1re loi de Kepler : loi des orbites"
@@ -240,7 +186,7 @@
   {
    "tipo": "coleccionable",
    "x": 48,
-   "y": 9,
+   "y": 8,
    "ref": "f2",
    "latex": "\\Delta t_1 = \\Delta t_2 \\;\\Rightarrow\\; \\mathcal{A}_1 = \\mathcal{A}_2",
    "nombre": "2e loi de Kepler : loi des aires"
@@ -288,7 +234,7 @@
   {
    "tipo": "coleccionable",
    "x": 125,
-   "y": 12,
+   "y": 11,
    "ref": "f18",
    "latex": "h = \\left(\\dfrac{T^{2}}{4\\pi^{2}}\\,G\\cdot M\\right)^{\\!1/3} - R_T",
    "nombre": "Altitude d'un satellite géostationnaire"
@@ -296,7 +242,7 @@
   {
    "tipo": "coleccionable",
    "x": 130,
-   "y": 12,
+   "y": 13,
    "ref": "f16",
    "latex": "T^{2} = 4\\pi^{2}\\,\\dfrac{r^{3}}{G\\cdot M}",
    "nombre": "De la période à la 3e loi de Kepler"
@@ -304,7 +250,7 @@
   {
    "tipo": "coleccionable",
    "x": 133,
-   "y": 12,
+   "y": 13,
    "ref": "f8",
    "latex": "\\vec g = -G\\,\\dfrac{M}{R^{2}}\\,\\vec u_r",
    "nombre": "Champ de gravitation"
@@ -312,7 +258,7 @@
   {
    "tipo": "enemigo",
    "x": 14,
-   "y": 13,
+   "y": 12,
    "enemigo": "error_referencial",
    "nombre": "Referencial incompleto",
    "correccion": "Decir «referencial geocéntrico» y su definición: centro de la Tierra y ejes hacia estrellas lejanas fijas."
@@ -320,7 +266,7 @@
   {
    "tipo": "enemigo",
    "x": 36,
-   "y": 13,
+   "y": 11,
    "enemigo": "error_unidades_km",
    "nombre": "No convertir km a m",
    "correccion": "Pasar r y h a metros antes de aplicar v = √(GM/r); 6 840 km = 6,84×10⁶ m."
@@ -328,7 +274,7 @@
   {
    "tipo": "enemigo",
    "x": 52,
-   "y": 13,
+   "y": 12,
    "enemigo": "error_altitud_radio",
    "nombre": "Confundir altitud h con radio de órbita r",
    "correccion": "La altitud se mide desde la superficie: r = R_astro + h."
@@ -360,7 +306,7 @@
   {
    "tipo": "enemigo",
    "x": 114,
-   "y": 13,
+   "y": 12,
    "enemigo": "error_sin_critica",
    "nombre": "No juzgar si el resultado es razonable",
    "correccion": "Comprobar el orden de magnitud: T = 178 s para la ISS es absurdo (≈ 93 min = 5,6×10³ s)."
@@ -444,7 +390,7 @@
   {
    "tipo": "bicho",
    "x": 36,
-   "y": 9,
+   "y": 7,
    "bicho": "neutrino",
    "nombre": "No convertir km a m",
    "correccion": "Pasar r y h a metros antes de aplicar v = √(GM/r); 6 840 km = 6,84×10⁶ m."
@@ -452,7 +398,7 @@
   {
    "tipo": "bicho",
    "x": 132,
-   "y": 8,
+   "y": 9,
    "bicho": "demonio",
    "nombre": "Confundir altitud h con radio de órbita r",
    "correccion": "La altitud se mide desde la superficie: r = R_astro + h."
@@ -460,7 +406,7 @@
   {
    "tipo": "bicho",
    "x": 112,
-   "y": 9,
+   "y": 8,
    "bicho": "demonio",
    "nombre": "Escribir mal la 3.ª ley (T³ = k·a²)",
    "correccion": "Es T² = k·a³: período al cuadrado y semieje al cubo."
@@ -468,7 +414,7 @@
   {
    "tipo": "bicho",
    "x": 45,
-   "y": 13,
+   "y": 12,
    "bicho": "embestidor",
    "nombre": "Pensar que v constante implica aceleración nula",
    "correccion": "En órbita circular uniforme a = v²/r ≠ 0: es radial y centrípeta."
@@ -478,7 +424,348 @@
    "x": 77,
    "w": 9,
    "periodo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 10,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 17,
+   "y": 12,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 25,
+   "y": 12,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 43,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 45,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 53,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 60,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 76,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 93,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 106,
+   "y": 14,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 111,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 121,
+   "y": 13,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 126,
+   "y": 15,
+   "largo": 9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 138,
+   "y": 15,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 140,
+   "y": 14,
+   "largo": 29
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     21,
+     10
+    ],
+    [
+     22,
+     8
+    ],
+    [
+     23,
+     8
+    ],
+    [
+     24,
+     8
+    ],
+    [
+     25,
+     8
+    ],
+    [
+     26,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     38,
+     10
+    ],
+    [
+     39,
+     9
+    ],
+    [
+     40,
+     8
+    ],
+    [
+     41,
+     8
+    ],
+    [
+     42,
+     8
+    ],
+    [
+     43,
+     9
+    ],
+    [
+     44,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     55,
+     12
+    ],
+    [
+     56,
+     11
+    ],
+    [
+     57,
+     10
+    ],
+    [
+     58,
+     10
+    ],
+    [
+     59,
+     10
+    ],
+    [
+     60,
+     11
+    ],
+    [
+     61,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     71,
+     12
+    ],
+    [
+     72,
+     11
+    ],
+    [
+     73,
+     10
+    ],
+    [
+     74,
+     10
+    ],
+    [
+     75,
+     10
+    ],
+    [
+     76,
+     11
+    ],
+    [
+     77,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     89,
+     12
+    ],
+    [
+     90,
+     10
+    ],
+    [
+     91,
+     10
+    ],
+    [
+     92,
+     10
+    ],
+    [
+     93,
+     10
+    ],
+    [
+     94,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     102,
+     12
+    ],
+    [
+     103,
+     10
+    ],
+    [
+     104,
+     10
+    ],
+    [
+     105,
+     10
+    ],
+    [
+     106,
+     10
+    ],
+    [
+     107,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     117,
+     11
+    ],
+    [
+     118,
+     9
+    ],
+    [
+     119,
+     9
+    ],
+    [
+     120,
+     9
+    ],
+    [
+     121,
+     9
+    ],
+    [
+     122,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     134,
+     13
+    ],
+    [
+     135,
+     11
+    ],
+    [
+     136,
+     11
+    ],
+    [
+     137,
+     11
+    ],
+    [
+     138,
+     11
+    ],
+    [
+     139,
+     13
+    ]
+   ]
   }
  ],
- "ambiente": "espacio"
+ "ambiente": "espacio",
+ "relieve": true
 }

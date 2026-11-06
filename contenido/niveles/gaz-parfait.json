@@ -12,12 +12,6 @@
  "alto_tiles": 18,
  "segmentos": [
   {
-   "tipo": "plataforma",
-   "x": 0,
-   "y": 14,
-   "largo": 18
-  },
-  {
    "tipo": "coleccionable",
    "x": 6,
    "y": 12,
@@ -28,7 +22,7 @@
   {
    "tipo": "enemigo",
    "x": 13,
-   "y": 13,
+   "y": 14,
    "enemigo": "temperatura_celsius",
    "nombre": "Usar la temperatura en °C en P·V = nRT",
    "correccion": "Usar T en kelvin: T = θ + 273,15."
@@ -37,12 +31,6 @@
    "tipo": "foso",
    "x": 18,
    "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 22,
-   "y": 14,
-   "largo": 12
   },
   {
    "tipo": "coleccionable",
@@ -66,21 +54,9 @@
    "largo": 4
   },
   {
-   "tipo": "plataforma",
-   "x": 38,
-   "y": 14,
-   "largo": 6
-  },
-  {
    "tipo": "resorte",
    "x": 41,
-   "y": 14
-  },
-  {
-   "tipo": "plataforma",
-   "x": 44,
-   "y": 12,
-   "largo": 12
+   "y": 15
   },
   {
    "tipo": "coleccionable",
@@ -93,7 +69,7 @@
   {
    "tipo": "enemigo",
    "x": 52,
-   "y": 11,
+   "y": 12,
    "enemigo": "mariotte_sin_condiciones",
    "nombre": "Aplicar P·V = cte sin T ni n constantes",
    "correccion": "La ley de Mariotte exige T y n constantes."
@@ -106,17 +82,11 @@
   {
    "tipo": "plataforma_movil",
    "x": 56,
-   "y": 12,
+   "y": 11,
    "largo": 4,
    "recorrido": 2,
    "eje": "x",
    "periodo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 60,
-   "y": 12,
-   "largo": 10
   },
   {
    "tipo": "checkpoint",
@@ -125,7 +95,7 @@
   {
    "tipo": "coleccionable",
    "x": 65,
-   "y": 10,
+   "y": 11,
    "ref": "f4",
    "latex": "V_m = \\dfrac{R\\cdot T}{P}",
    "nombre": "Volumen molar V_m = RT/P"
@@ -145,12 +115,6 @@
    "fy": -0.5
   },
   {
-   "tipo": "plataforma",
-   "x": 74,
-   "y": 12,
-   "largo": 12
-  },
-  {
    "tipo": "coleccionable",
    "x": 79,
    "y": 10,
@@ -161,7 +125,7 @@
   {
    "tipo": "enemigo",
    "x": 82,
-   "y": 11,
+   "y": 12,
    "enemigo": "grados_kelvin",
    "nombre": "Escribir «°K» o dar T en °C",
    "correccion": "Escribir K y no °K; la temperatura termodinámica se da en kelvin."
@@ -174,7 +138,7 @@
   {
    "tipo": "plataforma_movil",
    "x": 86,
-   "y": 12,
+   "y": 11,
    "largo": 4,
    "recorrido": 2,
    "eje": "x",
@@ -183,17 +147,11 @@
   {
    "tipo": "zona_campo",
    "x": 86,
-   "y": 5,
+   "y": 6,
    "w": 4,
    "h": 9,
    "fx": 0,
    "fy": -0.5
-  },
-  {
-   "tipo": "plataforma",
-   "x": 90,
-   "y": 12,
-   "largo": 10
   },
   {
    "tipo": "coleccionable",
@@ -228,19 +186,13 @@
    "nombre": "Masa volúmica ρ = PM/(RT)"
   },
   {
-   "tipo": "plataforma",
-   "x": 114,
-   "y": 12,
-   "largo": 14
-  },
-  {
    "tipo": "checkpoint",
    "x": 116
   },
   {
    "tipo": "coleccionable",
    "x": 119,
-   "y": 10,
+   "y": 11,
    "ref": "f8",
    "latex": "N = n \\cdot N_A",
    "nombre": "N = n·N_A"
@@ -248,7 +200,7 @@
   {
    "tipo": "enemigo",
    "x": 121,
-   "y": 11,
+   "y": 12,
    "enemigo": "modelo_siempre_valido",
    "nombre": "Creer que el gas perfecto vale para cualquier gas real y a cualquier P",
    "correccion": "El gas perfecto solo aproxima a los gases reales a presiones bajas (unos pocos bar)."
@@ -256,7 +208,7 @@
   {
    "tipo": "palanca",
    "x": 124,
-   "y": 11,
+   "y": 12,
    "id": "palanca_entropia",
    "nombre": "Palanca de Entropía",
    "efecto": "cae_puente",
@@ -270,17 +222,11 @@
   {
    "tipo": "plataforma_movil",
    "x": 128,
-   "y": 12,
+   "y": 11,
    "largo": 4,
    "recorrido": 2,
    "eje": "x",
    "periodo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 132,
-   "y": 12,
-   "largo": 44
   },
   {
    "tipo": "checkpoint",
@@ -387,7 +333,7 @@
   {
    "tipo": "bicho",
    "x": 81,
-   "y": 8,
+   "y": 9,
    "bicho": "demonio",
    "nombre": "Escribir «°K» o dar T en °C",
    "correccion": "Escribir K y no °K (la temperatura termodinámica se da en kelvin)."
@@ -399,7 +345,369 @@
    "bicho": "embestidor",
    "nombre": "Duplicar θ (°C) creyendo que se duplica T",
    "correccion": "A V y n constantes, P se duplica cuando T (en K) se duplica: 290,15 K × 2 = 580,3 K = 307,15 °C."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 10,
+   "y": 15,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 22,
+   "y": 15,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 26,
+   "y": 14,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 31,
+   "y": 15,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 38,
+   "y": 15,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 44,
+   "y": 13,
+   "largo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 45,
+   "y": 12,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 52,
+   "y": 13,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 60,
+   "y": 13,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 66,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 74,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 80,
+   "y": 13,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 90,
+   "y": 13,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 94,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 114,
+   "y": 12,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 119,
+   "y": 13,
+   "largo": 9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 132,
+   "y": 13,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 136,
+   "y": 12,
+   "largo": 40
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 119,
+   "y": 9,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 120,
+   "y": 9,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 121,
+   "y": 9,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 122,
+   "y": 9,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 123,
+   "y": 9,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 124,
+   "y": 9,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 125,
+   "y": 9,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     17,
+     13
+    ],
+    [
+     18,
+     12
+    ],
+    [
+     19,
+     11
+    ],
+    [
+     20,
+     11
+    ],
+    [
+     21,
+     11
+    ],
+    [
+     22,
+     12
+    ],
+    [
+     23,
+     13
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     33,
+     13
+    ],
+    [
+     34,
+     12
+    ],
+    [
+     35,
+     11
+    ],
+    [
+     36,
+     11
+    ],
+    [
+     37,
+     11
+    ],
+    [
+     38,
+     12
+    ],
+    [
+     39,
+     13
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     55,
+     11
+    ],
+    [
+     56,
+     10
+    ],
+    [
+     57,
+     9
+    ],
+    [
+     58,
+     9
+    ],
+    [
+     59,
+     9
+    ],
+    [
+     60,
+     10
+    ],
+    [
+     61,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     69,
+     10
+    ],
+    [
+     70,
+     9
+    ],
+    [
+     71,
+     8
+    ],
+    [
+     72,
+     8
+    ],
+    [
+     73,
+     8
+    ],
+    [
+     74,
+     9
+    ],
+    [
+     75,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     85,
+     11
+    ],
+    [
+     86,
+     10
+    ],
+    [
+     87,
+     9
+    ],
+    [
+     88,
+     9
+    ],
+    [
+     89,
+     9
+    ],
+    [
+     90,
+     10
+    ],
+    [
+     91,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     127,
+     11
+    ],
+    [
+     128,
+     10
+    ],
+    [
+     129,
+     9
+    ],
+    [
+     130,
+     9
+    ],
+    [
+     131,
+     9
+    ],
+    [
+     132,
+     10
+    ],
+    [
+     133,
+     11
+    ]
+   ]
   }
  ],
- "ambiente": "castillo"
+ "ambiente": "castillo",
+ "relieve": true
 }

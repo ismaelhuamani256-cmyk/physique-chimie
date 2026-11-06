@@ -3,7 +3,7 @@
  "tipo_nivel": "normal",
  "tema_visual": "pista-hielo-newton",
  "fisica_juego": {
-  "gravedad": 1.0,
+  "gravedad": 1,
   "friccion": 0.6,
   "salto": 12,
   "viento": 0
@@ -12,21 +12,9 @@
  "alto_tiles": 18,
  "segmentos": [
   {
-   "tipo": "plataforma",
-   "x": 0,
-   "y": 14,
-   "largo": 24
-  },
-  {
    "tipo": "foso",
    "x": 24,
    "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 27,
-   "y": 14,
-   "largo": 16
   },
   {
    "tipo": "foso",
@@ -34,27 +22,9 @@
    "largo": 3
   },
   {
-   "tipo": "plataforma",
-   "x": 46,
-   "y": 12,
-   "largo": 6
-  },
-  {
-   "tipo": "plataforma",
-   "x": 52,
-   "y": 14,
-   "largo": 14
-  },
-  {
    "tipo": "foso",
    "x": 66,
    "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 70,
-   "y": 14,
-   "largo": 22
   },
   {
    "tipo": "foso",
@@ -63,27 +33,9 @@
   },
   {
    "tipo": "plataforma",
-   "x": 95,
-   "y": 12,
-   "largo": 5
-  },
-  {
-   "tipo": "plataforma",
    "x": 100,
    "y": 10,
    "largo": 5
-  },
-  {
-   "tipo": "plataforma",
-   "x": 105,
-   "y": 12,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 109,
-   "y": 14,
-   "largo": 22
   },
   {
    "tipo": "foso",
@@ -91,26 +43,14 @@
    "largo": 4
   },
   {
-   "tipo": "plataforma",
-   "x": 135,
-   "y": 14,
-   "largo": 17
-  },
-  {
    "tipo": "foso",
    "x": 152,
    "largo": 3
   },
   {
-   "tipo": "plataforma",
-   "x": 155,
-   "y": 14,
-   "largo": 25
-  },
-  {
    "tipo": "plataforma_movil",
    "x": 63,
-   "y": 12,
+   "y": 11,
    "largo": 4,
    "recorrido": 5,
    "eje": "x",
@@ -119,7 +59,7 @@
   {
    "tipo": "plataforma_movil",
    "x": 109,
-   "y": 10,
+   "y": 9,
    "largo": 4,
    "recorrido": 6,
    "eje": "x",
@@ -142,12 +82,12 @@
   {
    "tipo": "resorte",
    "x": 22,
-   "y": 13
+   "y": 14
   },
   {
    "tipo": "zona_campo",
    "x": 112,
-   "y": 8,
+   "y": 7,
    "w": 10,
    "h": 6,
    "fx": 0.5,
@@ -173,7 +113,7 @@
   {
    "tipo": "coleccionable",
    "x": 19,
-   "y": 12,
+   "y": 13,
    "ref": "f3",
    "latex": "\\vec a_G=\\dfrac{\\sum \\vec F_{\\text{ext/syst}}}{m}",
    "nombre": "De las fuerzas a la aceleración"
@@ -205,7 +145,7 @@
   {
    "tipo": "coleccionable",
    "x": 76,
-   "y": 12,
+   "y": 13,
    "ref": "f5",
    "latex": "R = P\\cos\\alpha = m\\,g\\cos\\alpha",
    "nombre": "Proyección perpendicular a la pista (esquiador)"
@@ -221,7 +161,7 @@
   {
    "tipo": "coleccionable",
    "x": 116,
-   "y": 12,
+   "y": 11,
    "ref": "f7",
    "latex": "F = k\\times h",
    "nombre": "Fuerza de recuperación de un resorte"
@@ -229,7 +169,7 @@
   {
    "tipo": "coleccionable",
    "x": 124,
-   "y": 12,
+   "y": 10,
    "ref": "f9",
    "latex": "m_1\\,\\overrightarrow{GA}+m_2\\,\\overrightarrow{GB}=\\vec 0",
    "nombre": "Baricentro de dos puntos materiales"
@@ -237,7 +177,7 @@
   {
    "tipo": "coleccionable",
    "x": 143,
-   "y": 12,
+   "y": 13,
    "ref": "f11",
    "latex": "F = m\\,(a_G + g\\sin\\alpha)",
    "nombre": "Fuerza del resorte lanzador sobre un disco en plano inclinado"
@@ -245,7 +185,7 @@
   {
    "tipo": "enemigo",
    "x": 14,
-   "y": 13,
+   "y": 14,
    "enemigo": "fuerzas_compensadas",
    "nombre": "Fuerzas compensadas = reposo",
    "correccion": "Si las fuerzas se compensan, a_G = 0: el sistema puede estar en reposo o en movimiento rectilíneo uniforme."
@@ -269,7 +209,7 @@
   {
    "tipo": "enemigo",
    "x": 82,
-   "y": 13,
+   "y": 14,
    "enemigo": "angulo_unidades",
    "nombre": "Ángulo, unidades y escala",
    "correccion": "Calculadora en grados, unidades coherentes, escala de la cronofotografía y ángulo de la pendiente en el peso."
@@ -277,7 +217,7 @@
   {
    "tipo": "enemigo",
    "x": 128,
-   "y": 13,
+   "y": 11,
    "enemigo": "sigma_f_sentido_velocidad",
    "nombre": "ΣF en el sentido de la velocidad",
    "correccion": "ΣF tiene el sentido de a_G, no necesariamente el de v: al frenar, ΣF apunta contra el movimiento."
@@ -389,7 +329,7 @@
   {
    "tipo": "bicho",
    "x": 143,
-   "y": 13,
+   "y": 14,
    "bicho": "embestidor",
    "nombre": "Referencial no galileano",
    "correccion": "La 2.ª ley (ΣF = m·a_G) solo vale en un referencial galileano; en un manège que gira o un referencial acelerado no se aplica."
@@ -397,7 +337,7 @@
   {
    "tipo": "bicho",
    "x": 112,
-   "y": 8,
+   "y": 7,
    "bicho": "demonio",
    "nombre": "Vectores sin escala ni sentido",
    "correccion": "Da el valor de cada fuerza, define una escala y comprueba el sentido de los vectores antes de aplicar la ley."
@@ -429,7 +369,373 @@
   {
    "tipo": "estalactita",
    "x": 97
+  },
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 10,
+   "y": 15,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 27,
+   "y": 15,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 29,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 39,
+   "y": 13,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 46,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 52,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 70,
+   "y": 14,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 74,
+   "y": 15,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 86,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 95,
+   "y": 12,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 105,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 109,
+   "y": 13,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 121,
+   "y": 12,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 135,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 137,
+   "y": 14,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 142,
+   "y": 15,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 155,
+   "y": 14,
+   "largo": 25
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 14,
+   "y": 11,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 15,
+   "y": 11,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 16,
+   "y": 11,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 17,
+   "y": 11,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 18,
+   "y": 11,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 19,
+   "y": 11,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 20,
+   "y": 11,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 137,
+   "y": 10,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 138,
+   "y": 10,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 139,
+   "y": 10,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 140,
+   "y": 10,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 83,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     83,
+     10
+    ],
+    [
+     84,
+     10
+    ],
+    [
+     85,
+     10
+    ],
+    [
+     86,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     23,
+     13
+    ],
+    [
+     24,
+     11
+    ],
+    [
+     25,
+     11
+    ],
+    [
+     26,
+     11
+    ],
+    [
+     27,
+     11
+    ],
+    [
+     28,
+     13
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     42,
+     10
+    ],
+    [
+     43,
+     8
+    ],
+    [
+     44,
+     8
+    ],
+    [
+     45,
+     8
+    ],
+    [
+     46,
+     8
+    ],
+    [
+     47,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     65,
+     12
+    ],
+    [
+     66,
+     11
+    ],
+    [
+     67,
+     10
+    ],
+    [
+     68,
+     10
+    ],
+    [
+     69,
+     10
+    ],
+    [
+     70,
+     11
+    ],
+    [
+     71,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     91,
+     10
+    ],
+    [
+     92,
+     8
+    ],
+    [
+     93,
+     8
+    ],
+    [
+     94,
+     8
+    ],
+    [
+     95,
+     8
+    ],
+    [
+     96,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     130,
+     10
+    ],
+    [
+     131,
+     9
+    ],
+    [
+     132,
+     8
+    ],
+    [
+     133,
+     8
+    ],
+    [
+     134,
+     8
+    ],
+    [
+     135,
+     9
+    ],
+    [
+     136,
+     10
+    ]
+   ]
   }
  ],
- "ambiente": "hielo"
+ "ambiente": "hielo",
+ "relieve": true
 }

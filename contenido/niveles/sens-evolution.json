@@ -3,7 +3,7 @@
  "tipo_nivel": "normal",
  "tema_visual": "laboratorio-neon",
  "fisica_juego": {
-  "gravedad": 1.0,
+  "gravedad": 1,
   "friccion": 0.85,
   "salto": 12,
   "viento": 0
@@ -11,12 +11,6 @@
  "ancho_tiles": 181,
  "alto_tiles": 18,
  "segmentos": [
-  {
-   "tipo": "plataforma",
-   "x": 0,
-   "y": 14,
-   "largo": 20
-  },
   {
    "tipo": "coleccionable",
    "x": 6,
@@ -28,7 +22,7 @@
   {
    "tipo": "enemigo",
    "x": 14,
-   "y": 13,
+   "y": 14,
    "enemigo": "solido_en_qr",
    "nombre": "Escribir [solvente] o [sólido] en Qr",
    "correccion": "Un solvente, un sólido o un gas no disuelto se reemplaza por 1 en Qr (p. ej. NaCl(s): Qr = [Na⁺]·[Cl⁻])."
@@ -41,17 +35,11 @@
   {
    "tipo": "plataforma_movil",
    "x": 20,
-   "y": 14,
+   "y": 11,
    "largo": 3,
    "recorrido": 2,
    "eje": "x",
    "periodo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 25,
-   "y": 14,
-   "largo": 14
   },
   {
    "tipo": "coleccionable",
@@ -64,7 +52,7 @@
   {
    "tipo": "enemigo",
    "x": 35,
-   "y": 13,
+   "y": 14,
    "enemigo": "equilibrio_estatico",
    "nombre": "Creer que equilibrio = «todo se detiene»",
    "correccion": "El equilibrio es dinámico: las reacciones directa y opuesta continúan a la misma velocidad (v1 = v2)."
@@ -75,19 +63,13 @@
    "largo": 4
   },
   {
-   "tipo": "plataforma",
-   "x": 43,
-   "y": 14,
-   "largo": 18
-  },
-  {
    "tipo": "checkpoint",
    "x": 45
   },
   {
    "tipo": "zona_campo",
    "x": 45,
-   "y": 8,
+   "y": 9,
    "w": 12,
    "h": 6,
    "fx": 0.5,
@@ -96,7 +78,7 @@
   {
    "tipo": "coleccionable",
    "x": 50,
-   "y": 12,
+   "y": 11,
    "ref": "f3",
    "latex": "K(T) = Q_{r,\\acute{e}q} = \\dfrac{[\\mathrm{C}]_f^c\\cdot[\\mathrm{D}]_f^d}{[\\mathrm{A}]_f^a\\cdot[\\mathrm{B}]_f^b}",
    "nombre": "Constante de equilibrio K(T)"
@@ -104,7 +86,7 @@
   {
    "tipo": "enemigo",
    "x": 56,
-   "y": 13,
+   "y": 12,
    "enemigo": "criterio_invertido",
    "nombre": "Invertir el criterio Qr,i frente a K",
    "correccion": "Qr,i < K → sentido directo; Qr,i > K → sentido opuesto; la evolución para en Qr = K."
@@ -117,22 +99,16 @@
   {
    "tipo": "plataforma_movil",
    "x": 61,
-   "y": 14,
+   "y": 11,
    "largo": 3,
    "recorrido": 2,
    "eje": "x",
    "periodo": 3
   },
   {
-   "tipo": "plataforma",
-   "x": 66,
-   "y": 13,
-   "largo": 16
-  },
-  {
    "tipo": "zona_campo",
    "x": 68,
-   "y": 7,
+   "y": 6,
    "w": 6,
    "h": 6,
    "fx": -0.4,
@@ -141,7 +117,7 @@
   {
    "tipo": "coleccionable",
    "x": 74,
-   "y": 11,
+   "y": 10,
    "ref": "f4",
    "latex": "Q_{r,i} < K(T) \\Rightarrow \\text{sens direct}\\ ;\\quad Q_{r,i} > K(T) \\Rightarrow \\text{sens opposé}\\ ;\\quad Q_{r,i} = K(T) \\Rightarrow \\text{équilibre}",
    "nombre": "Critère d'évolution spontanée"
@@ -149,7 +125,7 @@
   {
    "tipo": "enemigo",
    "x": 78,
-   "y": 12,
+   "y": 11,
    "enemigo": "agua_solvente",
    "nombre": "Tratar el agua como solvente cuando es reactivo puro",
    "correccion": "Con reactivos puros (no en disolución) el agua es un producto, no el solvente: su cantidad entra en Qr."
@@ -162,17 +138,11 @@
   {
    "tipo": "plataforma_movil",
    "x": 82,
-   "y": 13,
+   "y": 11,
    "largo": 3,
    "recorrido": 2,
    "eje": "x",
    "periodo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 87,
-   "y": 13,
-   "largo": 16
   },
   {
    "tipo": "checkpoint",
@@ -194,7 +164,7 @@
   {
    "tipo": "enemigo",
    "x": 97,
-   "y": 12,
+   "y": 13,
    "enemigo": "sin_puente_salino",
    "nombre": "Olvidar el puente salino en el esquema de la pila",
    "correccion": "Sin puente salino el circuito no se cierra ni se mantiene la neutralidad: dibújalo siempre."
@@ -202,7 +172,7 @@
   {
    "tipo": "coleccionable",
    "x": 100,
-   "y": 11,
+   "y": 12,
    "ref": "f6",
    "latex": "n(\\mathrm{e}^-) = z\\cdot n(\\text{réactif limitant})\\qquad (\\mathrm{Zn}:\\ z = 2)",
    "nombre": "Cantidad de electrones intercambiados"
@@ -211,12 +181,6 @@
    "tipo": "foso",
    "x": 103,
    "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 107,
-   "y": 14,
-   "largo": 14
   },
   {
    "tipo": "checkpoint",
@@ -246,22 +210,16 @@
   {
    "tipo": "plataforma_movil",
    "x": 121,
-   "y": 14,
+   "y": 11,
    "largo": 3,
    "recorrido": 2,
    "eje": "x",
    "periodo": 3
   },
   {
-   "tipo": "plataforma",
-   "x": 126,
-   "y": 14,
-   "largo": 18
-  },
-  {
    "tipo": "coleccionable",
    "x": 131,
-   "y": 12,
+   "y": 11,
    "ref": "f8",
    "latex": "I = \\dfrac{q}{\\Delta t}",
    "nombre": "Intensité du courant électrique"
@@ -282,17 +240,11 @@
   {
    "tipo": "plataforma_movil",
    "x": 144,
-   "y": 14,
+   "y": 11,
    "largo": 3,
    "recorrido": 2,
    "eje": "x",
    "periodo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 149,
-   "y": 14,
-   "largo": 32
   },
   {
    "tipo": "jefe",
@@ -357,7 +309,7 @@
   {
    "tipo": "bicho",
    "x": 36,
-   "y": 13,
+   "y": 14,
    "bicho": "embestidor",
    "nombre": "Escribir [solvente] o [sólido] en Qr",
    "correccion": "Un solvente, un sólido o un gas no disuelto se reemplaza por 1 en Qr (p. ej. NaCl(s): Qr = [Na⁺]·[Cl⁻])."
@@ -365,7 +317,7 @@
   {
    "tipo": "bicho",
    "x": 128,
-   "y": 8,
+   "y": 7,
    "bicho": "demonio",
    "nombre": "Creer que equilibrio = «todo se detiene»",
    "correccion": "El equilibrio es dinámico: las reacciones directa y opuesta continúan a la misma velocidad (v1 = v2)."
@@ -373,7 +325,7 @@
   {
    "tipo": "bicho",
    "x": 55,
-   "y": 8,
+   "y": 7,
    "bicho": "demonio",
    "nombre": "Invertir el criterio Qr,i frente a K",
    "correccion": "Qr,i < K → sentido directo; Qr,i > K → sentido opuesto; la evolución para en Qr = K."
@@ -381,11 +333,448 @@
   {
    "tipo": "bicho",
    "x": 68,
-   "y": 11,
+   "y": 10,
    "bicho": "neutrino",
    "nombre": "Tratar el agua como solvente cuando es reactivo puro",
    "correccion": "Con reactivos puros (no en disolución) el agua es un producto, no el solvente: su cantidad entra en Qr."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 10,
+   "y": 15,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 25,
+   "y": 15,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 27,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 35,
+   "y": 15,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 43,
+   "y": 15,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 49,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 57,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 66,
+   "y": 12,
+   "largo": 13
+  },
+  {
+   "tipo": "plataforma",
+   "x": 79,
+   "y": 13,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 87,
+   "y": 13,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 94,
+   "y": 14,
+   "largo": 9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 107,
+   "y": 15,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 112,
+   "y": 14,
+   "largo": 9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 126,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 128,
+   "y": 13,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 136,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 149,
+   "y": 14,
+   "largo": 32
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 14,
+   "y": 11,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 15,
+   "y": 11,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 16,
+   "y": 11,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 17,
+   "y": 11,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 69,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 70,
+   "y": 8,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 71,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 72,
+   "y": 8,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 73,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 74,
+   "y": 8,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 75,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     19,
+     13
+    ],
+    [
+     20,
+     12
+    ],
+    [
+     21,
+     11
+    ],
+    [
+     22,
+     11
+    ],
+    [
+     23,
+     11
+    ],
+    [
+     24,
+     11
+    ],
+    [
+     25,
+     12
+    ],
+    [
+     26,
+     13
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     38,
+     13
+    ],
+    [
+     39,
+     12
+    ],
+    [
+     40,
+     11
+    ],
+    [
+     41,
+     11
+    ],
+    [
+     42,
+     11
+    ],
+    [
+     43,
+     12
+    ],
+    [
+     44,
+     13
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     60,
+     10
+    ],
+    [
+     61,
+     9
+    ],
+    [
+     62,
+     8
+    ],
+    [
+     63,
+     8
+    ],
+    [
+     64,
+     8
+    ],
+    [
+     65,
+     8
+    ],
+    [
+     66,
+     9
+    ],
+    [
+     67,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     81,
+     11
+    ],
+    [
+     82,
+     10
+    ],
+    [
+     83,
+     9
+    ],
+    [
+     84,
+     9
+    ],
+    [
+     85,
+     9
+    ],
+    [
+     86,
+     9
+    ],
+    [
+     87,
+     10
+    ],
+    [
+     88,
+     11
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     102,
+     12
+    ],
+    [
+     103,
+     11
+    ],
+    [
+     104,
+     10
+    ],
+    [
+     105,
+     10
+    ],
+    [
+     106,
+     10
+    ],
+    [
+     107,
+     11
+    ],
+    [
+     108,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     120,
+     12
+    ],
+    [
+     121,
+     11
+    ],
+    [
+     122,
+     10
+    ],
+    [
+     123,
+     10
+    ],
+    [
+     124,
+     10
+    ],
+    [
+     125,
+     10
+    ],
+    [
+     126,
+     11
+    ],
+    [
+     127,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     143,
+     12
+    ],
+    [
+     144,
+     11
+    ],
+    [
+     145,
+     10
+    ],
+    [
+     146,
+     10
+    ],
+    [
+     147,
+     10
+    ],
+    [
+     148,
+     10
+    ],
+    [
+     149,
+     11
+    ],
+    [
+     150,
+     12
+    ]
+   ]
   }
  ],
- "ambiente": "lab"
+ "ambiente": "lab",
+ "relieve": true
 }

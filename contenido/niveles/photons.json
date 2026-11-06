@@ -12,38 +12,14 @@
  "alto_tiles": 18,
  "segmentos": [
   {
-   "tipo": "plataforma",
-   "x": 0,
-   "y": 14,
-   "largo": 22
-  },
-  {
    "tipo": "foso",
    "x": 22,
    "largo": 3
   },
   {
-   "tipo": "plataforma",
-   "x": 25,
-   "y": 14,
-   "largo": 14
-  },
-  {
    "tipo": "foso",
    "x": 39,
    "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 42,
-   "y": 12,
-   "largo": 6
-  },
-  {
-   "tipo": "plataforma",
-   "x": 48,
-   "y": 14,
-   "largo": 14
   },
   {
    "tipo": "foso",
@@ -53,17 +29,11 @@
   {
    "tipo": "plataforma_movil",
    "x": 62,
-   "y": 12,
+   "y": 11,
    "largo": 4,
    "recorrido": 4,
    "eje": "x",
    "periodo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 66,
-   "y": 14,
-   "largo": 16
   },
   {
    "tipo": "resorte",
@@ -83,44 +53,26 @@
   },
   {
    "tipo": "plataforma",
-   "x": 85,
-   "y": 12,
-   "largo": 5
-  },
-  {
-   "tipo": "plataforma",
    "x": 90,
-   "y": 10,
+   "y": 8,
    "largo": 5
-  },
-  {
-   "tipo": "plataforma",
-   "x": 95,
-   "y": 12,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 99,
-   "y": 14,
-   "largo": 20
   },
   {
    "tipo": "plataforma",
    "x": 105,
-   "y": 10,
+   "y": 9,
    "largo": 4
   },
   {
    "tipo": "plataforma",
    "x": 110,
-   "y": 8,
+   "y": 7,
    "largo": 4
   },
   {
    "tipo": "zona_campo",
    "x": 103,
-   "y": 5,
+   "y": 4,
    "w": 12,
    "h": 9,
    "fx": 0,
@@ -134,22 +86,16 @@
   {
    "tipo": "plataforma_movil",
    "x": 119,
-   "y": 12,
+   "y": 10,
    "largo": 4,
    "recorrido": 5,
    "eje": "x",
    "periodo": 5
   },
   {
-   "tipo": "plataforma",
-   "x": 123,
-   "y": 14,
-   "largo": 18
-  },
-  {
    "tipo": "zona_campo",
    "x": 128,
-   "y": 8,
+   "y": 6,
    "w": 10,
    "h": 6,
    "fx": 0.5,
@@ -163,17 +109,11 @@
   {
    "tipo": "plataforma_movil",
    "x": 141,
-   "y": 11,
+   "y": 10,
    "largo": 4,
    "recorrido": 3,
    "eje": "y",
    "periodo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 145,
-   "y": 14,
-   "largo": 35
   },
   {
    "tipo": "coleccionable",
@@ -186,7 +126,7 @@
   {
    "tipo": "coleccionable",
    "x": 19,
-   "y": 12,
+   "y": 13,
    "ref": "f2",
    "latex": "\\lambda_s = \\dfrac{c}{\\nu_s}",
    "nombre": "Longitud de onda umbral"
@@ -210,7 +150,7 @@
   {
    "tipo": "coleccionable",
    "x": 56,
-   "y": 11,
+   "y": 10,
    "ref": "f5",
    "latex": "E_c = h\\nu - h\\nu_s = h\\,(\\nu - \\nu_s)",
    "nombre": "Energía cinética del electrón extraído"
@@ -218,7 +158,7 @@
   {
    "tipo": "coleccionable",
    "x": 64,
-   "y": 10,
+   "y": 9,
    "ref": "f6",
    "latex": "E_c = \\dfrac{1}{2}\\,m_e v^2 \\;\\Rightarrow\\; v = \\sqrt{\\dfrac{2E_c}{m_e}}",
    "nombre": "Velocidad del electrón extraído"
@@ -242,7 +182,7 @@
   {
    "tipo": "coleccionable",
    "x": 92,
-   "y": 8,
+   "y": 6,
    "ref": "f9",
    "latex": "P_{\\text{électrique}} = U \\times I",
    "nombre": "Potencia eléctrica y punto de potencia máxima"
@@ -250,7 +190,7 @@
   {
    "tipo": "coleccionable",
    "x": 106,
-   "y": 8,
+   "y": 7,
    "ref": "f10",
    "latex": "E_{\\text{photon}} = \\dfrac{hc}{\\lambda} \\geq E_{\\text{gap}} \\;\\Rightarrow\\; \\lambda \\leq \\dfrac{hc}{E_{\\text{gap}}}",
    "nombre": "Condición de absorción de un fotón por un semiconductor"
@@ -258,7 +198,7 @@
   {
    "tipo": "coleccionable",
    "x": 111,
-   "y": 6,
+   "y": 5,
    "ref": "n1",
    "latex": "\\text{onde} \\leftrightarrow \\text{photon}",
    "nombre": "Dualité onde-particule"
@@ -266,7 +206,7 @@
   {
    "tipo": "coleccionable",
    "x": 126,
-   "y": 12,
+   "y": 10,
    "ref": "n3",
    "latex": "m=0,\\ q=0,\\ E=h\\nu,\\ v=c",
    "nombre": "Carte d'identité du photon"
@@ -274,7 +214,7 @@
   {
    "tipo": "coleccionable",
    "x": 148,
-   "y": 12,
+   "y": 13,
    "ref": "n12",
    "latex": "P_{\\max}=U_m\\,I_m",
    "nombre": "Point de puissance maximale"
@@ -282,7 +222,7 @@
   {
    "tipo": "enemigo",
    "x": 14,
-   "y": 13,
+   "y": 14,
    "enemigo": "intensidad_basta",
    "nombre": "Más intensidad = efecto fotoeléctrico",
    "correccion": "No: por debajo de la frecuencia umbral no se extrae ningún electrón, sea cual sea la intensidad; un solo fotón con hν ≥ W basta."
@@ -306,7 +246,7 @@
   {
    "tipo": "enemigo",
    "x": 55,
-   "y": 13,
+   "y": 12,
    "enemigo": "intensidad_ec",
    "nombre": "Intensidad ↔ energía cinética",
    "correccion": "La intensidad fija el número de electrones emitidos; E_c solo depende de la frecuencia (E_c = h(ν − ν_s))."
@@ -322,7 +262,7 @@
   {
    "tipo": "enemigo",
    "x": 115,
-   "y": 13,
+   "y": 12,
    "enemigo": "rendimiento_reves",
    "nombre": "Rendimiento al revés",
    "correccion": "η = P_eléctrica / P_luminosa × 100 (salida entre entrada), no P_luminosa / P_eléctrica."
@@ -330,7 +270,7 @@
   {
    "tipo": "enemigo",
    "x": 130,
-   "y": 13,
+   "y": 12,
    "enemigo": "montaje_sin_reostato",
    "nombre": "Montaje sin resistencia variable",
    "correccion": "Para hallar la potencia máxima hay que variar R (resistencia variable) con el amperímetro en serie y el voltímetro en derivación."
@@ -338,7 +278,7 @@
   {
    "tipo": "enemigo",
    "x": 136,
-   "y": 13,
+   "y": 12,
    "enemigo": "absorcion_emision",
    "nombre": "Confundir absorción y emisión de fotones",
    "correccion": "La célula fotovoltaica y el fotodiodo absorben fotones; la DEL los emite (recombinación electrón-hueco)."
@@ -459,7 +399,7 @@
   {
    "tipo": "bicho",
    "x": 104,
-   "y": 13,
+   "y": 12,
    "bicho": "embestidor",
    "nombre": "Más intensidad = efecto fotoeléctrico",
    "correccion": "No: por debajo de la frecuencia umbral no se extrae ningún electrón, sea cual sea la intensidad; un solo fotón con hν ≥ W basta."
@@ -467,7 +407,7 @@
   {
    "tipo": "bicho",
    "x": 135,
-   "y": 8,
+   "y": 7,
    "bicho": "demonio",
    "nombre": "Olvidar convertir eV en J",
    "correccion": "Antes de usar h o m_e convierte W y E_c a julios: 1 eV = 1,602×10⁻¹⁹ J."
@@ -475,7 +415,7 @@
   {
    "tipo": "bicho",
    "x": 54,
-   "y": 8,
+   "y": 7,
    "bicho": "demonio",
    "nombre": "Trabajo de extracción negativo o velocidad nula",
    "correccion": "W es una energía positiva (la ordenada en el origen es −W); y bajo el umbral no hay velocidad nula: no se emiten electrones."
@@ -483,11 +423,441 @@
   {
    "tipo": "bicho",
    "x": 112,
-   "y": 11,
+   "y": 10,
    "bicho": "neutrino",
    "nombre": "Confundir ν y λ",
    "correccion": "Efecto si ν ≥ ν_s pero λ ≤ λ_s (desigualdad invertida); λ_s = c/ν_s."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 10
+  },
+  {
+   "tipo": "plataforma",
+   "x": 10,
+   "y": 15,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 25,
+   "y": 15,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 27,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 42,
+   "y": 12,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 48,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 52,
+   "y": 13,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 57,
+   "y": 14,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 66,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "plataforma",
+   "x": 78,
+   "y": 13,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 85,
+   "y": 12,
+   "largo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 95,
+   "y": 12,
+   "largo": 4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 99,
+   "y": 13,
+   "largo": 17
+  },
+  {
+   "tipo": "plataforma",
+   "x": 116,
+   "y": 12,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 123,
+   "y": 12,
+   "largo": 7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 130,
+   "y": 13,
+   "largo": 11
+  },
+  {
+   "tipo": "plataforma",
+   "x": 145,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 147,
+   "y": 15,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 150,
+   "y": 14,
+   "largo": 30
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 14,
+   "y": 11,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 15,
+   "y": 11,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 16,
+   "y": 11,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 17,
+   "y": 11,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 18,
+   "y": 11,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 19,
+   "y": 11,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 47,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 48,
+   "y": 8,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 49,
+   "y": 8,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 50,
+   "y": 8,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 135,
+   "y": 9,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 136,
+   "y": 9,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 137,
+   "y": 9,
+   "largo": 1,
+   "contenido": "moneda"
+  },
+  {
+   "tipo": "ladrillo",
+   "x": 138,
+   "y": 9,
+   "largo": 1,
+   "contenido": "nada"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 70,
+   "y": 11,
+   "largo": 5
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     70,
+     9
+    ],
+    [
+     71,
+     9
+    ],
+    [
+     72,
+     9
+    ],
+    [
+     73,
+     9
+    ],
+    [
+     74,
+     9
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     21,
+     13
+    ],
+    [
+     22,
+     11
+    ],
+    [
+     23,
+     11
+    ],
+    [
+     24,
+     11
+    ],
+    [
+     25,
+     11
+    ],
+    [
+     26,
+     13
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     38,
+     10
+    ],
+    [
+     39,
+     8
+    ],
+    [
+     40,
+     8
+    ],
+    [
+     41,
+     8
+    ],
+    [
+     42,
+     8
+    ],
+    [
+     43,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     61,
+     12
+    ],
+    [
+     62,
+     11
+    ],
+    [
+     63,
+     10
+    ],
+    [
+     64,
+     10
+    ],
+    [
+     65,
+     10
+    ],
+    [
+     66,
+     11
+    ],
+    [
+     67,
+     12
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     81,
+     10
+    ],
+    [
+     82,
+     8
+    ],
+    [
+     83,
+     8
+    ],
+    [
+     84,
+     8
+    ],
+    [
+     85,
+     8
+    ],
+    [
+     86,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     118,
+     10
+    ],
+    [
+     119,
+     9
+    ],
+    [
+     120,
+     8
+    ],
+    [
+     121,
+     8
+    ],
+    [
+     122,
+     8
+    ],
+    [
+     123,
+     9
+    ],
+    [
+     124,
+     10
+    ]
+   ]
+  },
+  {
+   "tipo": "rastro_monedas",
+   "puntos": [
+    [
+     140,
+     11
+    ],
+    [
+     141,
+     10
+    ],
+    [
+     142,
+     9
+    ],
+    [
+     143,
+     9
+    ],
+    [
+     144,
+     9
+    ],
+    [
+     145,
+     10
+    ],
+    [
+     146,
+     11
+    ]
+   ]
   }
  ],
- "ambiente": "campo"
+ "ambiente": "campo",
+ "relieve": true
 }

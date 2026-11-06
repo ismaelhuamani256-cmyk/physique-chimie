@@ -32,6 +32,7 @@ Mapa 3D ─▶ eliges capítulo ─▶ NIVEL de plataformas ─▶ (ganar o mori
 - **Lagos de lava** (parkour + magma), **gigantes y alados**, **espectros tímidos**, **Maestro Calavera**, doble salto y gravedad lunar.
 - **20 niveles extra** (uno por capítulo, se encadenan al ganar): montañas, granja con OVNI, fundición con mecánicos, laberintos de llaves y circuitos ON/OFF.
 - **Niveles `--3` por bioma** con matraces, gas, murciélagos, ácido, cristales, nubes, tormentas, asteroides, hielo, yunques, vapor, cadenas, tornados, espantapájaros, fantasmas, tablones y espejos; jefes Pozo Gravitatorio y Yeti Criogénico.
+- **Nivel 4 parkour extremo** y **Nivel 5 batalla final** (jefe perseguidor + bombardeos) en cada capítulo.
 - **Torres verticales**: champ-gravitation, images y evolution-temporelle se suben en zigzag hasta el jefe.
 - **Fortalezas** (castillo de lava + jefe «Rey Entropía», que se derrota respondiendo preguntas del cours): capítulos 1, 10, 15, 17 y 20.
 

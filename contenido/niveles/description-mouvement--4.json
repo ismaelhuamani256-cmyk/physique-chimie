@@ -1,0 +1,772 @@
+{
+ "capitulo_id": "description-mouvement",
+ "tipo_nivel": "normal",
+ "tema_visual": "lava-fortaleza",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 248,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 14,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 16,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 18,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 20,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 22,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.2,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 24,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 24,
+   "y": 12,
+   "ref": "f1",
+   "latex": "\\overrightarrow{OM}(t)=x(t)\\,\\vec i+y(t)\\,\\vec j+z(t)\\,\\vec k=\\begin{pmatrix}x(t)\\\\y(t)\\\\z(t)\\end{pmatrix}",
+   "nombre": "Vector posición"
+  },
+  {
+   "tipo": "foso",
+   "x": 26,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 28,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.3,
+   "retardo": 1.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 30,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 32,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 33,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.4,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 35,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 37,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 39,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.9,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 41,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 41,
+   "y": 10,
+   "ref": "f3",
+   "latex": "\\vec v(t)=\\dfrac{d\\overrightarrow{OM}(t)}{dt}",
+   "nombre": "Vector velocidad (derivada del vector posición)"
+  },
+  {
+   "tipo": "foso",
+   "x": 43,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 44,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.9,
+   "retardo": 2.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 46,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 14,
+   "y": 0,
+   "w": 34,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 48,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 52,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 58,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 64,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 68,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 69
+  },
+  {
+   "tipo": "enemigo",
+   "x": 73,
+   "y": 13,
+   "enemigo": "error_aceleracion_solo_aumento",
+   "nombre": "Creer que aceleración = «solo aumenta la rapidez»",
+   "correccion": "a⃗ ≠ 0 también si v frena o solo cambia de dirección; a⃗ = dv⃗/dt (vector)."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 71,
+   "y": 12,
+   "ref": "f4",
+   "latex": "\\vec v(t)=\\dfrac{dx}{dt}\\,\\vec i+\\dfrac{dy}{dt}\\,\\vec j+\\dfrac{dz}{dt}\\,\\vec k=\\begin{pmatrix}dx/dt\\\\dy/dt\\\\dz/dt\\end{pmatrix}",
+   "nombre": "Coordenadas del vector velocidad"
+  },
+  {
+   "tipo": "item",
+   "x": 71,
+   "y": 12,
+   "item": "doble"
+  },
+  {
+   "tipo": "foso",
+   "x": 76,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 78,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.9,
+   "retardo": 1.5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 76,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 81,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 83,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 85,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.9,
+   "retardo": 1
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 83,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 88,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 91,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "sierra",
+   "x": 95,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 100,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3
+  },
+  {
+   "tipo": "sierra",
+   "x": 105,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.7
+  },
+  {
+   "tipo": "sierra",
+   "x": 110,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.7
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 113,
+   "y": 11,
+   "ref": "f7",
+   "latex": "\\vec a=\\begin{pmatrix}dv_x/dt\\\\dv_y/dt\\\\dv_z/dt\\end{pmatrix}=\\begin{pmatrix}d^2x/dt^2\\\\d^2y/dt^2\\\\d^2z/dt^2\\end{pmatrix}",
+   "nombre": "Coordenadas del vector aceleración"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 115,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 116
+  },
+  {
+   "tipo": "enemigo",
+   "x": 120,
+   "y": 13,
+   "enemigo": "error_diametro_radio",
+   "nombre": "Usar el diámetro en lugar del radio en v²/R",
+   "correccion": "R = D/2: a_n = v²/(D/2)."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 118,
+   "y": 12,
+   "ref": "f6",
+   "latex": "\\vec a(t)=\\dfrac{d\\vec v(t)}{dt}",
+   "nombre": "Vector aceleración (derivada del vector velocidad)"
+  },
+  {
+   "tipo": "item",
+   "x": 118,
+   "y": 12,
+   "item": "luna"
+  },
+  {
+   "tipo": "foso",
+   "x": 123,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 125,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.9,
+   "retardo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 127,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 127,
+   "y": 12,
+   "ref": "f9",
+   "latex": "\\vec a=a_\\tau\\,\\vec\\tau+a_n\\,\\vec n\\quad\\text{con}\\quad a_\\tau=\\dfrac{dv}{dt},\\;\\; a_n=\\dfrac{v^2}{R}",
+   "nombre": "Aceleración en el repère de Frenet"
+  },
+  {
+   "tipo": "foso",
+   "x": 129,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 130,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.4,
+   "retardo": 2.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 132,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 134,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 135,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.7,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 137,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 137,
+   "y": 10,
+   "ref": "f10",
+   "latex": "a=\\dfrac{v^{2}}{R}\\qquad \\vec a=\\dfrac{v^{2}}{R}\\,\\vec n",
+   "nombre": "Aceleración en el movimiento circular uniforme"
+  },
+  {
+   "tipo": "foso",
+   "x": 139,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 140,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.4,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 142,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 144,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 145,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.7,
+   "retardo": 0.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 147,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 147,
+   "y": 11,
+   "ref": "f8",
+   "latex": "\\vec v=v\\,\\vec\\tau=\\begin{pmatrix}v\\\\0\\end{pmatrix}",
+   "nombre": "Velocidad en el repère de Frenet"
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 123,
+   "y": 0,
+   "w": 26,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 149,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 149,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 152,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 163,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 168,
+   "y": 12,
+   "ref": "f2",
+   "latex": "\\vec v(t_i)=\\dfrac{\\Delta\\overrightarrow{OM}(t_i)}{\\Delta t}=\\dfrac{\\overrightarrow{OM}(t_{i+1})-\\overrightarrow{OM}(t_{i-1})}{t_{i+1}-t_{i-1}}",
+   "nombre": "Vector velocidad a partir de las posiciones (construcción en un punto)"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 171,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 172
+  },
+  {
+   "tipo": "enemigo",
+   "x": 176,
+   "y": 13,
+   "enemigo": "error_signo_aceleracion",
+   "nombre": "Ignorar el signo de a_τ o de la aceleración",
+   "correccion": "a_τ < 0 (o a opuesto a v) significa que el móvil se ralentiza, no que «vaya hacia atrás»."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 174,
+   "y": 12,
+   "ref": "f5",
+   "latex": "\\vec a(t_i)=\\dfrac{\\Delta\\vec v(t_i)}{\\Delta t}=\\dfrac{\\vec v(t_{i+1})-\\vec v(t_{i-1})}{t_{i+1}-t_{i-1}}",
+   "nombre": "Vector aceleración a partir de las velocidades (construcción en un punto)"
+  },
+  {
+   "tipo": "item",
+   "x": 174,
+   "y": 12,
+   "item": "escudo"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 179,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "laser",
+   "x": 183,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.7,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "laser",
+   "x": 189,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 2.8,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "laser",
+   "x": 195,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.7,
+   "retardo": 0
+  },
+  {
+   "tipo": "foso",
+   "x": 201,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 202,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.8,
+   "retardo": 1.9
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 203,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 205,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 206,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.6,
+   "retardo": 2.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 207,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 209,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 210,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.2,
+   "retardo": 2.9
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 211,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 213,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 214,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.6,
+   "retardo": 2.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 215,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 217,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 218,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.6,
+   "retardo": 1
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 219,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 221,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 222,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.7,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 223,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 225,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 226
+  },
+  {
+   "tipo": "enemigo",
+   "x": 230,
+   "y": 13,
+   "enemigo": "error_aceleracion_solo_aumento",
+   "nombre": "Creer que aceleración = «solo aumenta la rapidez»",
+   "correccion": "a⃗ ≠ 0 también si v frena o solo cambia de dirección; a⃗ = dv⃗/dt (vector)."
+  },
+  {
+   "tipo": "item",
+   "x": 228,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 233,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "meta",
+   "x": 238
+  },
+  {
+   "tipo": "plataforma",
+   "x": 234,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 72,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 133,
+   "y": 7
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 193,
+   "y": 8
+  }
+ ],
+ "ambiente": "castillo",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "lava_parkour": true,
+ "extra": "p4",
+ "nombre_fase": "Parkour extremo"
+}

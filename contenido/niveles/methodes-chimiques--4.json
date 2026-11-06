@@ -1,0 +1,790 @@
+{
+ "capitulo_id": "methodes-chimiques",
+ "tipo_nivel": "normal",
+ "tema_visual": "laboratorio-verde",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 254,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 15,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.9,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 17,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 17,
+   "y": 11,
+   "ref": "f_w",
+   "latex": "w = \\dfrac{m_{\\text{soluté}}}{m_{\\text{solution}}}\\times 100",
+   "nombre": "Titre massique"
+  },
+  {
+   "tipo": "foso",
+   "x": 19,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 21,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.7,
+   "retardo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 23,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 25,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 26,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.1,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 28,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 28,
+   "y": 11,
+   "ref": "f_rho",
+   "latex": "\\rho = \\dfrac{m}{V}",
+   "nombre": "Masse volumique"
+  },
+  {
+   "tipo": "foso",
+   "x": 30,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 31,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.6,
+   "retardo": 2.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 33,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 35,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 36,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3,
+   "retardo": 2.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 38,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 38,
+   "y": 11,
+   "ref": "f_d",
+   "latex": "d = \\dfrac{\\rho}{\\rho_{\\text{eau}}}",
+   "nombre": "Densité d'une solution"
+  },
+  {
+   "tipo": "foso",
+   "x": 40,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 41,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.8,
+   "retardo": 2.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 43,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 14,
+   "y": 0,
+   "w": 31,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 45,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "sierra",
+   "x": 49,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "sierra",
+   "x": 54,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3
+  },
+  {
+   "tipo": "sierra",
+   "x": 59,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 64,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 67,
+   "y": 11,
+   "ref": "f_cc",
+   "latex": "c = \\dfrac{\\rho_{\\text{eau}}\\cdot d\\cdot w}{M}",
+   "nombre": "Concentration d'une solution commerciale"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 69,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 70
+  },
+  {
+   "tipo": "enemigo",
+   "x": 74,
+   "y": 13,
+   "enemigo": "confusion_rho_d",
+   "nombre": "Confundir masa volúmica y densidad",
+   "correccion": "ρ tiene unidad (g·L⁻¹, kg·m⁻³); d = ρ/ρ_eau no tiene unidad."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 72,
+   "y": 12,
+   "ref": "f_dil",
+   "latex": "c\\cdot V = c_{\\text{diluée}}\\cdot V_{\\text{diluée}}",
+   "nombre": "Conservation de la quantité de matière lors d'une dilution"
+  },
+  {
+   "tipo": "item",
+   "x": 72,
+   "y": 12,
+   "item": "doble"
+  },
+  {
+   "tipo": "foso",
+   "x": 77,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 79,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.1,
+   "retardo": 1.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 81,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 83,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 85,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.8,
+   "retardo": 2.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 87,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 87,
+   "y": 12,
+   "ref": "f_eq",
+   "latex": "n_A = n_B \\;\\Longleftrightarrow\\; c_A\\cdot V_A = c_B\\cdot V_E",
+   "nombre": "Relation à l'équivalence"
+  },
+  {
+   "tipo": "foso",
+   "x": 89,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 91,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.1,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 93,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 95,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 97,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.9,
+   "retardo": 2.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 99,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 101,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 103,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.4,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 105,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 105,
+   "y": 12,
+   "ref": "f_cA",
+   "latex": "c_A = \\dfrac{n_A}{V_A} = \\dfrac{c_B\\cdot V_E}{V_A}",
+   "nombre": "Concentration de l'espèce titrée"
+  },
+  {
+   "tipo": "foso",
+   "x": 107,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 108,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.3,
+   "retardo": 2.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 110,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 77,
+   "y": 0,
+   "w": 35,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "foso",
+   "x": 112,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 113,
+   "y": 17,
+   "altura": 7,
+   "periodo": 4,
+   "retardo": 1
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 114,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 116,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 117,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.8,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 118,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 120,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 121,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.8,
+   "retardo": 2.5
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 122,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 124,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 125,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.1,
+   "retardo": 0.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 126,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 128,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 129,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.9,
+   "retardo": 2.3
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 130,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 132,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 133,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.3,
+   "retardo": 2.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 134,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 136,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 137
+  },
+  {
+   "tipo": "enemigo",
+   "x": 141,
+   "y": 13,
+   "enemigo": "masa_disolvente",
+   "nombre": "Usar la masa del disolvente en w",
+   "correccion": "w = m_soluté / m_solución (de la solución entera) × 100."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 139,
+   "y": 12,
+   "ref": "f_x",
+   "latex": "c_A\\cdot V_A - x_E = 0 \\quad\\text{et}\\quad c_B\\cdot V_E - x_E = 0",
+   "nombre": "Tableau d'avancement à l'équivalence"
+  },
+  {
+   "tipo": "item",
+   "x": 139,
+   "y": 12,
+   "item": "luna"
+  },
+  {
+   "tipo": "foso",
+   "x": 144,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 146,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.6,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 144,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 149,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 151,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 153,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.4,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 151,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 156,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 159,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 163,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 169,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 175,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 179,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 180
+  },
+  {
+   "tipo": "enemigo",
+   "x": 184,
+   "y": 13,
+   "enemigo": "dilucion_cambia_n",
+   "nombre": "Creer que diluir cambia n",
+   "correccion": "n se conserva: c·V = c_diluée·V_diluée."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 182,
+   "y": 12,
+   "ref": "f_n",
+   "latex": "n = \\dfrac{m}{M}",
+   "nombre": "Quantité de matière à partir de la masse"
+  },
+  {
+   "tipo": "item",
+   "x": 182,
+   "y": 12,
+   "item": "escudo"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 187,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "laser",
+   "x": 191,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3,
+   "retardo": 0
+  },
+  {
+   "tipo": "laser",
+   "x": 197,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 2.9,
+   "retardo": 1.9
+  },
+  {
+   "tipo": "laser",
+   "x": 203,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.2,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 209,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 209,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 212,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 223,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 228,
+   "y": 12,
+   "ref": "f_u",
+   "latex": "\\dfrac{u_c}{c}=\\sqrt{\\left(\\dfrac{u_{V_E}}{V_E}\\right)^2+\\left(\\dfrac{u_{V_A}}{V_A}\\right)^2+\\left(\\dfrac{u_{c_B}}{c_B}\\right)^2}",
+   "nombre": "Incertitude-type sur la concentration"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 231,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 232
+  },
+  {
+   "tipo": "enemigo",
+   "x": 236,
+   "y": 13,
+   "enemigo": "siempre_color",
+   "nombre": "Esperar siempre un cambio de color",
+   "correccion": "La equivalencia también se halla por pH-metría o conductimetría."
+  },
+  {
+   "tipo": "item",
+   "x": 234,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 239,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "meta",
+   "x": 244
+  },
+  {
+   "tipo": "plataforma",
+   "x": 240,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 74,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 136,
+   "y": 7
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 198,
+   "y": 8
+  }
+ ],
+ "ambiente": "lab",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "extra": "p4",
+ "nombre_fase": "Parkour extremo"
+}

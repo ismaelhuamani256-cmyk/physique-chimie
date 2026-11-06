@@ -1,0 +1,567 @@
+{
+ "capitulo_id": "images",
+ "tipo_nivel": "normal",
+ "tema_visual": "cielo-ondas",
+ "fisica_juego": {
+  "gravedad": 0.85,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 191,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 15,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3,
+   "retardo": 0.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 17,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 17,
+   "y": 12,
+   "ref": "f1",
+   "latex": "\\dfrac{1}{\\overline{OA'}}=\\dfrac{1}{\\overline{OA}}+\\dfrac{1}{f'}",
+   "nombre": "Relación de conjugación de Descartes"
+  },
+  {
+   "tipo": "foso",
+   "x": 19,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 21,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.6,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 23,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 25,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 26,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.6,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 28,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 28,
+   "y": 11,
+   "ref": "f2",
+   "latex": "\\overline{\\gamma}=\\dfrac{\\overline{A'B'}}{\\overline{AB}}=\\dfrac{\\overline{OA'}}{\\overline{OA}}",
+   "nombre": "Grandissement de una lente"
+  },
+  {
+   "tipo": "foso",
+   "x": 30,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 31,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.5,
+   "retardo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 33,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 35,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 35,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 38,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 49,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 54,
+   "y": 12,
+   "ref": "f3",
+   "latex": "\\overline{FA}\\times\\overline{F'A'}=-f'^{2}",
+   "nombre": "Relación de conjugación de Newton"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 57,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 58
+  },
+  {
+   "tipo": "foso",
+   "x": 63,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 64,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.9,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 66,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 68,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 69,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.9,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 71,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 71,
+   "y": 10,
+   "ref": "f4",
+   "latex": "\\dfrac{1}{\\overline{O_1A}}\\to 0\\ \\Rightarrow\\ \\overline{O_1A_1}=f'_1",
+   "nombre": "Imagen intermedia de un objeto en el infinito"
+  },
+  {
+   "tipo": "foso",
+   "x": 73,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 74,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.6,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 76,
+   "y": 10,
+   "largo": 2,
+   "grosor": 8
+  },
+  {
+   "tipo": "foso",
+   "x": 78,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 80,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.6,
+   "retardo": 2.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 82,
+   "y": 11,
+   "largo": 2,
+   "grosor": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 84,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 85,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.6,
+   "retardo": 2.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 87,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 89,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "laser",
+   "x": 93,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.2,
+   "retardo": 0
+  },
+  {
+   "tipo": "laser",
+   "x": 99,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 2.8,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "laser",
+   "x": 105,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 2.9,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 111,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 112
+  },
+  {
+   "tipo": "plataforma",
+   "x": 117,
+   "y": 14,
+   "largo": 19
+  },
+  {
+   "tipo": "sierra",
+   "x": 121,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.7
+  },
+  {
+   "tipo": "sierra",
+   "x": 126,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.9
+  },
+  {
+   "tipo": "sierra",
+   "x": 131,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.9
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 134,
+   "y": 11,
+   "ref": "f5",
+   "latex": "\\overline{O_1O_2}=\\overline{O_1F'_1}+\\overline{F'_1F_2}+\\overline{F_2O_2}=f'_1+f'_2",
+   "nombre": "Distancia objetivo-ocular de una lunette afocale"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 136,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 72,
+   "y": 10,
+   "ref": "f6",
+   "latex": "\\theta\\approx\\tan\\theta=\\dfrac{\\overline{A_1B_1}}{\\overline{O_1A_1}}=\\dfrac{\\overline{A_1B_1}}{f'_1}\\qquad \\theta'\\approx\\tan\\theta'=\\dfrac{\\overline{A_1B_1}}{\\overline{O_2A_1}}=\\dfrac{\\overline{A_1B_1}}{-f'_2}",
+   "nombre": "Ángulos θ y θ' (aproximación de ángulos pequeños)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 23,
+   "y": 12,
+   "ref": "f8",
+   "latex": "\\overline{G}=-\\dfrac{f'_1}{f'_2}",
+   "nombre": "Grossissement de una lunette afocale"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 28,
+   "y": 11,
+   "ref": "f9",
+   "latex": "\\overline{G}=-\\dfrac{D}{a}",
+   "nombre": "Grossissement y círculo ocular"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 87,
+   "y": 12,
+   "ref": "n9",
+   "latex": "\\text{cercle oculaire} = \\text{image de la monture de l'objectif}",
+   "nombre": "Cercle oculaire"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 36,
+   "y": 12,
+   "ref": "f7",
+   "latex": "\\overline{G}=\\dfrac{\\theta'}{\\theta}",
+   "nombre": "Grossissement de una lunette"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 112,
+   "y": 13,
+   "enemigo": "unidades_focales",
+   "nombre": "Distancias focales sin unificar unidades",
+   "correccion": "Pasa f'₁ y f'₂ a la misma unidad antes de sumar: 60 cm + 20 mm = 62 cm."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 60,
+   "y": 13,
+   "enemigo": "objetivo_ocular",
+   "nombre": "Objetivo con focal menor",
+   "correccion": "El objetivo tiene la focal más grande (≈ 1 m); el ocular la más pequeña (≈ 1 cm)."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 58,
+   "y": 13,
+   "enemigo": "afocale_mal",
+   "nombre": "Afocale ≠ distancia > f'₁",
+   "correccion": "Lunette afocale: F'₁ = F₂, así que O₁O₂ = f'₁ + f'₂."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 113,
+   "y": 13,
+   "enemigo": "grossissement_diametro",
+   "nombre": "G depende del diámetro",
+   "correccion": "G = −f'₁/f'₂ no depende del diámetro del objetivo; este fija la luz recogida."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 137,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 139
+  },
+  {
+   "tipo": "item",
+   "x": 140,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 142,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 144,
+   "y": 12,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 146,
+   "y": 12,
+   "item": "vida"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 143,
+   "y": 13,
+   "enemigo": "unidades_focales",
+   "nombre": "Distancias focales sin unificar unidades",
+   "correccion": "Pasa f'₁ y f'₂ a la misma unidad antes de sumar: 60 cm + 20 mm = 62 cm."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 149,
+   "y": 14,
+   "largo": 42
+  },
+  {
+   "tipo": "sprint",
+   "x_ini": 14,
+   "x_fin": 137,
+   "velocidad": 4.1,
+   "perseguidor": "pozo_gravitatorio"
+  },
+  {
+   "tipo": "jefe",
+   "x": 166,
+   "jefe": "pozo_gravitatorio",
+   "titulo": "BATALLA FINAL · Pozo Gravitatorio",
+   "preguntas": [
+    {
+     "pregunta": "Pour une lunette afocale, le foyer image F'₁ de l'objectif coïncide avec :",
+     "opciones": [
+      "le centre optique O₂ de l'oculaire",
+      "le foyer objet F₂ de l'oculaire",
+      "le foyer image F'₂ de l'oculaire",
+      "le centre optique O₁ de l'objectif"
+     ],
+     "correcta": 1,
+     "explicacion": "Dans une lunette afocale, le foyer image F'₁ de l'objectif coïncide avec le foyer objet F₂ de l'oculaire.",
+     "pagina_pdf": 478
+    },
+    {
+     "pregunta": "Où se forme l'image intermédiaire A₁B₁ d'un objet situé à l'infini, pour une lunette afocale ?",
+     "opciones": [
+      "dans le plan focal image de l'objectif (= plan focal objet de l'oculaire)",
+      "à l'infini",
+      "sur l'oculaire, au centre optique O₂",
+      "au centre optique O₁ de l'objectif"
+     ],
+     "correcta": 0,
+     "explicacion": "L'objectif donne d'un objet à l'infini une image dans son plan focal image, qui coïncide avec le plan focal objet de l'oculaire.",
+     "pagina_pdf": 479
+    },
+    {
+     "pregunta": "Lunette afocale d'objectif f'₁ = 50 cm et d'oculaire f'₂ = 1,0 cm : le grossissement vaut",
+     "opciones": [
+      "G = +50",
+      "G = −50",
+      "G = −0,020",
+      "G = −5,0"
+     ],
+     "correcta": 1,
+     "explicacion": "G = −f'₁/f'₂ = −50,0/1,0 = −50 (ex. 19).",
+     "pagina_pdf": 484
+    },
+    {
+     "pregunta": "Quel paramètre de la lunette conditionne la quantité de lumière collectée ?",
+     "opciones": [
+      "la distance focale de l'oculaire",
+      "le grossissement",
+      "le diamètre de l'objectif",
+      "la distance O₁O₂"
+     ],
+     "correcta": 2,
+     "explicacion": "Plus le diamètre de l'objectif est grand, plus la quantité de lumière collectée par la lunette est grande.",
+     "pagina_pdf": 480
+    }
+   ],
+   "vidas": 5,
+   "furia": 2
+  },
+  {
+   "tipo": "meta",
+   "x": 185
+  },
+  {
+   "tipo": "meteoros",
+   "x": 153,
+   "w": 36,
+   "periodo": 1.3
+  },
+  {
+   "tipo": "tormenta",
+   "x": 153,
+   "w": 36,
+   "periodo": 2
+  },
+  {
+   "tipo": "lluvia_rocas",
+   "x": 155,
+   "w": 30,
+   "periodo": 2.1
+  }
+ ],
+ "ambiente": "nube",
+ "vertical": true,
+ "peligros": true,
+ "aire": true,
+ "relieve": true,
+ "extra": "batalla",
+ "nombre_fase": "Batalla final"
+}

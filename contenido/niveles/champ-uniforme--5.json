@@ -1,0 +1,585 @@
+{
+ "capitulo_id": "champ-uniforme",
+ "tipo_nivel": "normal",
+ "tema_visual": "pista-campo-uniforme",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 194,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 14,
+   "y": 14,
+   "largo": 19
+  },
+  {
+   "tipo": "sierra",
+   "x": 18,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3
+  },
+  {
+   "tipo": "sierra",
+   "x": 23,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.1
+  },
+  {
+   "tipo": "sierra",
+   "x": 28,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.7
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 31,
+   "y": 11,
+   "ref": "f1",
+   "latex": "\\vec{a}_G = \\vec{g}_0",
+   "nombre": "Aceleración en un campo de gravedad uniforme"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 33,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 33,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 36,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 47,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 52,
+   "y": 12,
+   "ref": "f2",
+   "latex": "\\vec{v}(t)\\begin{cases} v_x(t)=v_0\\cos\\alpha \\\\ v_y(t)=-g_0\\,t+v_0\\sin\\alpha \\\\ v_z(t)=0 \\end{cases}",
+   "nombre": "Ecuaciones horarias de la velocidad (lanzamiento oblicuo)"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 55,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 56
+  },
+  {
+   "tipo": "plataforma",
+   "x": 61,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 65,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 71,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 77,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "foso",
+   "x": 81,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 82,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.8,
+   "retardo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 84,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 86,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 88,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.7,
+   "retardo": 2.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 90,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 90,
+   "y": 11,
+   "ref": "f3",
+   "latex": "\\overrightarrow{OG}(t)\\begin{cases} x(t)=v_0\\cos\\alpha\\times t \\\\ y(t)=-\\tfrac12 g_0 t^2+v_0\\sin\\alpha\\times t \\\\ z(t)=0 \\end{cases}",
+   "nombre": "Ecuaciones horarias de la posición (lanzamiento oblicuo)"
+  },
+  {
+   "tipo": "foso",
+   "x": 92,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 93,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.4,
+   "retardo": 2.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 95,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 97,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 98,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.7,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 100,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 102,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 103,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.4,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 105,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 107,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 108
+  },
+  {
+   "tipo": "foso",
+   "x": 113,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 115,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.1,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 117,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 117,
+   "y": 12,
+   "ref": "f4",
+   "latex": "y(x)=\\dfrac{-g_0}{2\\,v_0^2\\cos^2\\alpha}\\,x^2+x\\tan\\alpha",
+   "nombre": "Ecuación de la trayectoria en un campo de gravedad uniforme"
+  },
+  {
+   "tipo": "foso",
+   "x": 119,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 120,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.4,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 122,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 124,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 125,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.7,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 127,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 127,
+   "y": 12,
+   "ref": "f7",
+   "latex": "E=\\dfrac{U_{AB}}{d}",
+   "nombre": "Campo eléctrico en un condensador plano"
+  },
+  {
+   "tipo": "foso",
+   "x": 129,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 130,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.9,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 132,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 134,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 135,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.8,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 137,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 137,
+   "y": 12,
+   "ref": "f8",
+   "latex": "\\vec{a}=\\dfrac{q}{m}\\,\\vec{E}",
+   "nombre": "Aceleración de una partícula cargada en un campo eléctrico uniforme"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 139,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 95,
+   "y": 12,
+   "ref": "f10",
+   "latex": "y(x)=\\dfrac{-q\\,E}{2\\,m\\,v_0^2\\cos^2\\alpha}\\,x^2+x\\tan\\alpha",
+   "nombre": "Ecuación de la trayectoria en un campo eléctrico uniforme"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 133,
+   "y": 11,
+   "ref": "f13",
+   "latex": "E_m=E_c+E_p=\\text{cte}\\quad(\\Delta E_m=0)",
+   "nombre": "Conservación de la energía mecánica"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 59,
+   "y": 12,
+   "ref": "f15",
+   "latex": "\\Delta E_c=W_{AB}(\\vec F_e)=\\vec F_e\\cdot\\overrightarrow{AB}=q\\,\\vec E\\cdot\\overrightarrow{AB}=q\\,U_{AB}",
+   "nombre": "Trabajo de la fuerza eléctrica en un condensador plano (acelerador lineal)"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 58,
+   "y": 13,
+   "enemigo": "sin_condicion_inicial",
+   "nombre": "Olvidar la condición inicial z(0) = z₀",
+   "correccion": "Al integrar, usa v(0) y OG(0): si z(0) ≠ 0 suma z₀."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 108,
+   "y": 13,
+   "enemigo": "razonar_sin_ecuaciones",
+   "nombre": "Razonar sin ecuaciones («el peso baja, luego frena»)",
+   "correccion": "Justifica con v_z(t) = −g₀t + v₀, no con la dirección del peso."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 36,
+   "y": 13,
+   "enemigo": "signo_de_q",
+   "nombre": "Olvidar el signo de q al orientar a",
+   "correccion": "a = (q/m)E: para un electrón q = −e, a es opuesta a E."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 75,
+   "y": 13,
+   "enemigo": "peso_sin_justificar",
+   "nombre": "Despreciar el peso sin justificarlo",
+   "correccion": "Compara F_e/P (≈ 10¹⁰ para un protón) antes de despreciar el peso."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 140,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 142
+  },
+  {
+   "tipo": "item",
+   "x": 143,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 145,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 147,
+   "y": 12,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 149,
+   "y": 12,
+   "item": "vida"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 146,
+   "y": 13,
+   "enemigo": "cociente_invertido",
+   "nombre": "Escribir a = (m/e)·E (cociente invertido)",
+   "correccion": "La aceleración es a = (q/m)E, no (m/q)E."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 152,
+   "y": 14,
+   "largo": 42
+  },
+  {
+   "tipo": "sprint",
+   "x_ini": 14,
+   "x_fin": 140,
+   "velocidad": 4.1,
+   "perseguidor": "pozo_gravitatorio"
+  },
+  {
+   "tipo": "jefe",
+   "x": 169,
+   "y": 11,
+   "jefe": "pozo_gravitatorio",
+   "titulo": "BATALLA FINAL · Pozo Gravitatorio",
+   "preguntas": [
+    {
+     "pregunta": "Un objeto lanzado en un campo de gravedad uniforme, solo sometido a su peso. Su vector aceleración es :",
+     "opciones": [
+      "constante e igual al campo g₀",
+      "nulo, porque la velocidad horizontal es constante",
+      "a = −g₀·t, creciente con el tiempo",
+      "dependiente de la velocidad inicial v₀"
+     ],
+     "correcta": 0,
+     "explicacion": "m·a = m·g₀ ⇒ a = g₀: constante, vertical, hacia abajo, independiente de la masa y de v₀ (Cours §1).",
+     "pagina_pdf": 316
+    },
+    {
+     "pregunta": "La trayectoria del centro de masa en un campo uniforme (peso o fuerza eléctrica constante) es :",
+     "opciones": [
+      "una recta",
+      "una porción de parábola",
+      "una porción de hipérbola",
+      "una circunferencia"
+     ],
+     "correcta": 1,
+     "explicacion": "Al eliminar t entre x(t) e y(t) queda y = A·x² + B·x: una porción de parábola (Cours p. 317).",
+     "pagina_pdf": 317
+    },
+    {
+     "pregunta": "Una partícula de carga q entra en un condensador plano (E uniforme). Su aceleración vale :",
+     "opciones": [
+      "a = (m/q)·E",
+      "a = (q/m)·E",
+      "a = q·m·E",
+      "a = (q/m)·E² "
+     ],
+     "correcta": 1,
+     "explicacion": "Peso despreciable: m·a = q·E ⇒ a = (q/m)E, paralela a E (Cours p. 317).",
+     "pagina_pdf": 317
+    },
+    {
+     "pregunta": "Un electrón, sin velocidad inicial, es acelerado entre A y B con U_AB = −5,0 kV. Su velocidad en B es del orden de :",
+     "opciones": [
+      "4,2×10⁷ m·s⁻¹",
+      "2,1×10⁵ m·s⁻¹",
+      "8,4×10¹⁰ m·s⁻¹",
+      "4,2×10³ m·s⁻¹"
+     ],
+     "correcta": 0,
+     "explicacion": "ΔE_c = qU_AB ⇒ ½mv² = eU ⇒ v = √(2·1,6×10⁻¹⁹·5000/9,11×10⁻³¹) = 4,2×10⁷ m·s⁻¹ (ejemplo del Cours p. 318).",
+     "pagina_pdf": 318
+    },
+    {
+     "pregunta": "En un campo uniforme y sin fuerzas no conservativas, ¿qué es cierto?",
+     "opciones": [
+      "E_c se conserva",
+      "E_m = E_c + E_p se conserva",
+      "ΔE_c = ΔE_p",
+      "E_p siempre es nula"
+     ],
+     "correcta": 1,
+     "explicacion": "Sin fuerzas no conservativas ΔE_m = 0, luego ΔE_c = −ΔE_p (Cours p. 318; QCM 7).",
+     "pagina_pdf": 318
+    }
+   ],
+   "vidas": 5,
+   "furia": 2
+  },
+  {
+   "tipo": "meta",
+   "x": 188
+  },
+  {
+   "tipo": "meteoros",
+   "x": 156,
+   "w": 36,
+   "periodo": 1.3
+  },
+  {
+   "tipo": "tormenta",
+   "x": 156,
+   "w": 36,
+   "periodo": 2
+  },
+  {
+   "tipo": "lluvia_rocas",
+   "x": 158,
+   "w": 30,
+   "periodo": 2.1
+  }
+ ],
+ "ambiente": "campo",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "extra": "batalla",
+ "nombre_fase": "Batalla final"
+}

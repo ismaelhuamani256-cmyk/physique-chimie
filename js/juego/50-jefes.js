@@ -42,8 +42,8 @@
     const b = {
       kind, skin, rey, quiz, flota: tam.flota != null, hover: tam.flota || 0, w: tam.w, h: tam.h, hNormal: tam.h, hAt: tam.hAt,
       floorY, xmin: A.izq + 1, xmax: A.der, vx: 0, vy: 0, dir: -1, estado: 'entra', t: 0, anim: 0, flash: 0, reloj: 0, cdPreg: 0, escudoFlash: 0,
-      aire: tam.flota == null, aciertos: A.progreso.aciertos, furia: A.progreso.furia, pIdx: A.progreso.pIdx, ciclo: 0, ronda: 0, prog: [],
-      vidasMax: Array.isArray(seg.fases) && seg.fases.length ? seg.fases.length : quiz ? Math.max(1, seg.vidas || 3) : 3, yObj: 0,
+      aire: tam.flota == null, aciertos: A.progreso.aciertos, furia: A.progreso.furia + (seg.furia || 0), pIdx: A.progreso.pIdx, ciclo: 0, ronda: 0, prog: [],
+      vidasMax: Array.isArray(seg.fases) && seg.fases.length ? seg.fases.length : (quiz || seg.vidas) ? Math.max(1, seg.vidas || 3) : 3, yObj: 0,
       fases: Array.isArray(seg.fases) && seg.fases.length ? seg.fases : null,
       preguntas: seg.preguntas || (Array.isArray(seg.fases) ? seg.fases.flatMap((f) => f.preguntas || []) : []), titulo: seg.titulo || (skin ? SKIN_NOMBRE[skin] : NOMBRE[kind]),
       disp: kind === 'bomba', coraza: 8, corazaMax: 8,
@@ -667,6 +667,15 @@
     ctx.fillStyle = OUT; ctx.fillRect(cx - 7, hy + 8, 5, 3); ctx.fillRect(cx + 2, hy + 8, 5, 3); ctx.fillStyle = aturdido ? '#fff' : atq ? '#ff4d6d' : '#fff'; ctx.fillRect(cx - 6, hy + 9, 3, 2); ctx.fillRect(cx + 3, hy + 9, 3, 2);
     ctx.fillStyle = OUT; ctx.fillRect(cx - 4, hy + 13, 8, 3); ctx.fillStyle = '#fff'; ctx.fillRect(cx - 3, hy + 13, 2, 2); ctx.fillRect(cx + 1, hy + 13, 2, 2); ctx.fillRect(cx - 9, hy - 2, 18, 3);
   }
+
+  /** Dibuja un jefe «fantasma» (el perseguidor del Nivel 5) a escala. kind: rey_bomba | maestro_calavera | pozo_gravitatorio | yeti_criogenico | … */
+  Jefe.dibujarPerseguidor = function (ctx, kind, x, y, esc, t, atacando) {
+    const k = { rey_bomba: 'bomba', maestro_calavera: 'calavera', pozo_gravitatorio: 'gravedad', yeti_criogenico: 'yeti', bombardero_neutron: 'bomba', foton_veloz: 'gravedad', isotopo_inestable: 'bomba' }[kind] || 'bomba';
+    const tam = TAM[k], b = { estado: atacando ? 'aviso_rafaga' : 'carga', dir: 1, furia: 3, anim: t, kind: k, w: tam.w, h: tam.h, flash: 0 };
+    ctx.save(); ctx.translate(Math.round(x), Math.round(y)); ctx.scale(esc, esc);
+    const w = Math.round(tam.w * J.T), h = Math.round(tam.h * J.T), f = { bomba: dibujarBomba, calavera: dibujarCalavera, gravedad: dibujarGravedad, yeti: dibujarYeti }[k];
+    f(ctx, b, -w, -h, w, h, t, false); ctx.restore();
+  };
 
   /** Maestro Calavera (diseño propio): esqueleto con birrete, gafas redondas y capa verde. */
   function dibujarCalavera(ctx, b, x, y, w, h, t, bl) {

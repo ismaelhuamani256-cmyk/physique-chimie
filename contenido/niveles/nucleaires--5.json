@@ -1,0 +1,600 @@
+{
+ "capitulo_id": "nucleaires",
+ "tipo_nivel": "normal",
+ "tema_visual": "mina-uranio",
+ "fisica_juego": {
+  "gravedad": 0.9,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 195,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 14,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "laser",
+   "x": 18,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.1,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "laser",
+   "x": 24,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.5,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "laser",
+   "x": 30,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.4,
+   "retardo": 1.3
+  },
+  {
+   "tipo": "foso",
+   "x": 36,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 38,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.9,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 40,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 40,
+   "y": 12,
+   "ref": "f1",
+   "latex": "Z = Z' + Z'' \\quad\\text{et}\\quad A = A' + A''",
+   "nombre": "Lois de conservation (charge et nucléons)"
+  },
+  {
+   "tipo": "foso",
+   "x": 42,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 44,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.6,
+   "retardo": 2.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 46,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 48,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 49,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.8,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 51,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 51,
+   "y": 11,
+   "ref": "f2",
+   "latex": "{}^{A}_{Z}\\mathrm{X} \\to {}^{A-4}_{Z-2}\\mathrm{X}' + {}^{4}_{2}\\mathrm{He}",
+   "nombre": "Désintégration α"
+  },
+  {
+   "tipo": "foso",
+   "x": 53,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 55,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.1,
+   "retardo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 57,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 59,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 60
+  },
+  {
+   "tipo": "foso",
+   "x": 65,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 66,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.9,
+   "retardo": 2.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 68,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 70,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 72,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.8,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 74,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 74,
+   "y": 11,
+   "ref": "f3",
+   "latex": "{}^{A}_{Z}\\mathrm{X} \\to {}^{A}_{Z+1}\\mathrm{X}' + {}^{\\,0}_{-1}\\mathrm{e}",
+   "nombre": "Désintégration β⁻"
+  },
+  {
+   "tipo": "foso",
+   "x": 76,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 77,
+   "y": 17,
+   "altura": 7,
+   "periodo": 4,
+   "retardo": 1.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 79,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 81,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 83,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.4,
+   "retardo": 1.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 85,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 87,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 88,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.5,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 90,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 92,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 92,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 95,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 106,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 111,
+   "y": 12,
+   "ref": "f4",
+   "latex": "{}^{A}_{Z}\\mathrm{X} \\to {}^{A}_{Z-1}\\mathrm{X}' + {}^{\\,0}_{1}\\mathrm{e}",
+   "nombre": "Désintégration β⁺"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 114,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 115
+  },
+  {
+   "tipo": "plataforma",
+   "x": 120,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 124,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 130,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 136,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 140,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 51,
+   "y": 11,
+   "ref": "f5",
+   "latex": "{}^{A}_{Z}\\mathrm{X}^{*} \\to {}^{A}_{Z}\\mathrm{X} + \\gamma",
+   "nombre": "Radioactivité γ (désexcitation)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 86,
+   "y": 12,
+   "ref": "f6",
+   "latex": "\\Delta N = -\\lambda \\cdot N(t) \\cdot \\Delta t",
+   "nombre": "Variation du nombre de noyaux"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 117,
+   "y": 12,
+   "ref": "f7",
+   "latex": "\\dfrac{\\mathrm{d}N(t)}{\\mathrm{d}t} = -\\lambda \\cdot N(t)",
+   "nombre": "Équation différentielle de la décroissance"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 79,
+   "y": 11,
+   "ref": "f8",
+   "latex": "N(t) = N_0 \\cdot e^{-\\lambda \\cdot t}",
+   "nombre": "Loi de décroissance radioactive"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 59,
+   "y": 12,
+   "ref": "f9",
+   "latex": "t_{1/2} = \\dfrac{\\ln 2}{\\lambda}",
+   "nombre": "Temps de demi-vie"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 75,
+   "y": 11,
+   "ref": "f10",
+   "latex": "A(t) = -\\dfrac{\\mathrm{d}N(t)}{\\mathrm{d}t} = \\lambda \\cdot N(t)",
+   "nombre": "Activité d'un échantillon"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 115,
+   "y": 13,
+   "enemigo": "error_conservacion",
+   "nombre": "Olvidar la conservación de Z y A",
+   "correccion": "Comprobar siempre Z = Z' + Z'' y A = A' + A''."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 60,
+   "y": 13,
+   "enemigo": "error_beta_signo",
+   "nombre": "Confundir β⁻ y β⁺",
+   "correccion": "β⁻: electrón, Z sube 1. β⁺: positón, Z baja 1."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 62,
+   "y": 13,
+   "enemigo": "error_espontanea",
+   "nombre": "Confundir espontánea y provocada",
+   "correccion": "Radiactiva = espontánea; la artificial se provoca."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 61,
+   "y": 13,
+   "enemigo": "error_unidades_lambda",
+   "nombre": "No convertir λ a s⁻¹",
+   "correccion": "Pasar λ y t al SI antes de calcular."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 141,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 143
+  },
+  {
+   "tipo": "item",
+   "x": 144,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 146,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 148,
+   "y": 12,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 150,
+   "y": 12,
+   "item": "vida"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 147,
+   "y": 13,
+   "enemigo": "error_actividad_n",
+   "nombre": "Confundir actividad A y núcleos N",
+   "correccion": "A (Bq) = λ·N: desintegraciones por segundo."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 153,
+   "y": 14,
+   "largo": 42
+  },
+  {
+   "tipo": "sprint",
+   "x_ini": 14,
+   "x_fin": 141,
+   "velocidad": 4.1,
+   "perseguidor": "bombardero_neutron"
+  },
+  {
+   "tipo": "jefe",
+   "x": 170,
+   "jefe": "bombardero_neutron",
+   "titulo": "BATALLA FINAL · Bombardero Neutrón",
+   "vidas": 5,
+   "preguntas": [
+    {
+     "id": "b1",
+     "tipo": "opcion",
+     "enunciado": "Désintégration α du radium: ²²⁶₈₈Ra → ²²²₈₆Rn + ᴬ_Z X. Quelle est la particule émise ?",
+     "opciones": [
+      "⁴₂He (noyau d'hélium)",
+      "⁰₋₁e (électron)",
+      "⁰₁e (positon)",
+      "¹₀n (neutron)"
+     ],
+     "correcta": 0,
+     "explicacion": "Z: 88 = 86 + 2 et A: 226 = 222 + 4 ; c'est un noyau d'hélium ⁴₂He, donc une radioactivité α.",
+     "pagina_pdf": 136
+    },
+    {
+     "id": "b2",
+     "tipo": "opcion",
+     "enunciado": "Quelle relation lie le temps de demi-vie t½ et la constante radioactive λ ?",
+     "opciones": [
+      "t½ = ln2 / λ",
+      "t½ = λ / ln2",
+      "t½ = log2 / λ",
+      "t½ = λ · ln2"
+     ],
+     "correcta": 0,
+     "explicacion": "N(t½) = N₀/2 conduit à −λ·t½ = −ln2, soit t½ = ln2/λ.",
+     "pagina_pdf": 138
+    },
+    {
+     "id": "b3",
+     "tipo": "opcion",
+     "enunciado": "Dans ³⁰₁₅P → ³⁰₁₄Si + ⁰₁e, de quel type de désintégration s'agit-il ?",
+     "opciones": [
+      "β⁺ (émission d'un positon)",
+      "β⁻ (émission d'un électron)",
+      "α",
+      "γ"
+     ],
+     "correcta": 0,
+     "explicacion": "La particule émise ⁰₁e est un positon : radioactivité β⁺ (un proton se transforme en neutron).",
+     "pagina_pdf": 136
+    },
+    {
+     "id": "b4",
+     "tipo": "opcion",
+     "enunciado": "Quel rayonnement est le plus pénétrant ?",
+     "opciones": [
+      "Le rayonnement γ",
+      "Les particules α",
+      "Les particules β",
+      "Aucun : tous sont arrêtés par une feuille de papier"
+     ],
+     "correcta": 0,
+     "explicacion": "Les rayons γ sont très pénétrants ; α et β sont complètement absorbés par la matière, pas γ (il faut blinder avec un matériau lourd comme le plomb).",
+     "pagina_pdf": 138
+    },
+    {
+     "id": "q1",
+     "tipo": "opcion",
+     "enunciado": "Dans l'équation ²⁷₁₃Al + ⁴₂He → ³⁰₁₅P + ᴬ_Z X, quelle est la particule X ?",
+     "opciones": [
+      "Un neutron ¹₀n",
+      "Un proton ¹₁H",
+      "Un électron ⁰₋₁e",
+      "Un positon ⁰₁e"
+     ],
+     "correcta": 0,
+     "explicacion": "A : 27 + 4 = 30 + A donc A = 1 ; Z : 13 + 2 = 15 + Z donc Z = 0. C'est un neutron ¹₀n.",
+     "pagina_pdf": 146
+    },
+    {
+     "id": "q2",
+     "tipo": "opcion",
+     "enunciado": "Le carbone 14 se désintègre selon ¹⁴₆C → ¹⁴₇N + ⁰₋₁e. Il s'agit d'une radioactivité :",
+     "opciones": [
+      "β⁻",
+      "β⁺",
+      "α",
+      "γ"
+     ],
+     "correcta": 0,
+     "explicacion": "La particule émise est un électron ⁰₋₁e : radioactivité β⁻ ; un neutron se transforme en proton (Z passe de 6 à 7).",
+     "pagina_pdf": 136
+    }
+   ],
+   "furia": 2
+  },
+  {
+   "tipo": "meta",
+   "x": 189
+  },
+  {
+   "tipo": "meteoros",
+   "x": 157,
+   "w": 36,
+   "periodo": 1.3
+  },
+  {
+   "tipo": "tormenta",
+   "x": 157,
+   "w": 36,
+   "periodo": 2
+  },
+  {
+   "tipo": "lluvia_rocas",
+   "x": 159,
+   "w": 30,
+   "periodo": 2.1
+  }
+ ],
+ "ambiente": "cueva",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "extra": "batalla",
+ "nombre_fase": "Batalla final"
+}

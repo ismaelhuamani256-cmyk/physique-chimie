@@ -1,0 +1,569 @@
+{
+ "capitulo_id": "sens-evolution",
+ "tipo_nivel": "normal",
+ "tema_visual": "laboratorio-neon",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 193,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 15,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.8,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 17,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 19,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 20,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.3,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 22,
+   "y": 10,
+   "largo": 2,
+   "grosor": 8
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 22,
+   "y": 8,
+   "ref": "f1",
+   "latex": "\\tau = \\dfrac{x_f}{x_{max}}",
+   "nombre": "Taux d'avancement final"
+  },
+  {
+   "tipo": "foso",
+   "x": 24,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 25,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 27,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 29,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 30,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.5,
+   "retardo": 2.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 32,
+   "y": 11,
+   "largo": 2,
+   "grosor": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 34,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 35,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.8,
+   "retardo": 2.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 37,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 39,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 43,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 49,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 55,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 59,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 60
+  },
+  {
+   "tipo": "plataforma",
+   "x": 65,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "laser",
+   "x": 69,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 2.9,
+   "retardo": 1.3
+  },
+  {
+   "tipo": "laser",
+   "x": 75,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.4,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "laser",
+   "x": 81,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "foso",
+   "x": 87,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 88,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.9,
+   "retardo": 0.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 90,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 90,
+   "y": 12,
+   "ref": "f2",
+   "latex": "Q_r = \\dfrac{[\\mathrm{C}]^c\\cdot[\\mathrm{D}]^d}{[\\mathrm{A}]^a\\cdot[\\mathrm{B}]^b}",
+   "nombre": "Quotient de réaction"
+  },
+  {
+   "tipo": "foso",
+   "x": 92,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 93,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.7,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 95,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 97,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 98,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.7,
+   "retardo": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 100,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 100,
+   "y": 12,
+   "ref": "f3",
+   "latex": "K(T) = Q_{r,\\acute{e}q} = \\dfrac{[\\mathrm{C}]_f^c\\cdot[\\mathrm{D}]_f^d}{[\\mathrm{A}]_f^a\\cdot[\\mathrm{B}]_f^b}",
+   "nombre": "Constante de equilibrio K(T)"
+  },
+  {
+   "tipo": "foso",
+   "x": 102,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 103,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.8,
+   "retardo": 2.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 105,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 107,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 109,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.3,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 111,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 111,
+   "y": 12,
+   "ref": "f4",
+   "latex": "Q_{r,i} < K(T) \\Rightarrow \\text{sens direct}\\ ;\\quad Q_{r,i} > K(T) \\Rightarrow \\text{sens opposé}\\ ;\\quad Q_{r,i} = K(T) \\Rightarrow \\text{équilibre}",
+   "nombre": "Critère d'évolution spontanée"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 113,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 114
+  },
+  {
+   "tipo": "plataforma",
+   "x": 119,
+   "y": 14,
+   "largo": 19
+  },
+  {
+   "tipo": "sierra",
+   "x": 123,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "sierra",
+   "x": 128,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3
+  },
+  {
+   "tipo": "sierra",
+   "x": 133,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.8
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 136,
+   "y": 11,
+   "ref": "f5",
+   "latex": "q_{max} = n(\\mathrm{e}^-)\\cdot N_A\\cdot e",
+   "nombre": "Capacité électrique d'une pile"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 138,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 63,
+   "y": 12,
+   "ref": "f6",
+   "latex": "n(\\mathrm{e}^-) = z\\cdot n(\\text{réactif limitant})\\qquad (\\mathrm{Zn}:\\ z = 2)",
+   "nombre": "Cantidad de electrones intercambiados"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 95,
+   "y": 12,
+   "ref": "f7",
+   "latex": "\\sigma = \\sum_{i=1}^{n}\\lambda_i\\cdot[X_i]",
+   "nombre": "Loi de Kohlrausch"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 73,
+   "y": 12,
+   "ref": "f8",
+   "latex": "I = \\dfrac{q}{\\Delta t}",
+   "nombre": "Intensité du courant électrique"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 71,
+   "y": 13,
+   "enemigo": "solido_en_qr",
+   "nombre": "Escribir [solvente] o [sólido] en Qr",
+   "correccion": "Un solvente, un sólido o un gas no disuelto se reemplaza por 1 en Qr (p. ej. NaCl(s): Qr = [Na⁺]·[Cl⁻])."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 82,
+   "y": 13,
+   "enemigo": "equilibrio_estatico",
+   "nombre": "Creer que equilibrio = «todo se detiene»",
+   "correccion": "El equilibrio es dinámico: las reacciones directa y opuesta continúan a la misma velocidad (v1 = v2)."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 74,
+   "y": 13,
+   "enemigo": "criterio_invertido",
+   "nombre": "Invertir el criterio Qr,i frente a K",
+   "correccion": "Qr,i < K → sentido directo; Qr,i > K → sentido opuesto; la evolución para en Qr = K."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 114,
+   "y": 13,
+   "enemigo": "agua_solvente",
+   "nombre": "Tratar el agua como solvente cuando es reactivo puro",
+   "correccion": "Con reactivos puros (no en disolución) el agua es un producto, no el solvente: su cantidad entra en Qr."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 139,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 141
+  },
+  {
+   "tipo": "item",
+   "x": 142,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 144,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 146,
+   "y": 12,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 148,
+   "y": 12,
+   "item": "vida"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 145,
+   "y": 13,
+   "enemigo": "sin_puente_salino",
+   "nombre": "Olvidar el puente salino en el esquema de la pila",
+   "correccion": "Sin puente salino el circuito no se cierra ni se mantiene la neutralidad: dibújalo siempre."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 151,
+   "y": 14,
+   "largo": 42
+  },
+  {
+   "tipo": "sprint",
+   "x_ini": 14,
+   "x_fin": 139,
+   "velocidad": 4.1,
+   "perseguidor": "maestro_calavera"
+  },
+  {
+   "tipo": "jefe",
+   "x": 168,
+   "jefe": "maestro_calavera",
+   "titulo": "BATALLA FINAL · Maestro Calavera",
+   "preguntas": [
+    {
+     "pregunta": "Síntesis del etanoato de bencilo (K = 4,0): a t₁ se calcula Qr = 0,18. ¿Qué se concluye?",
+     "opciones": [
+      "Qr < K: el sistema evoluciona en el sentido directo",
+      "Qr < K: el sistema evoluciona en el sentido opuesto",
+      "Qr < K: el sistema ya está en equilibrio",
+      "No se puede concluir sin conocer el volumen"
+     ],
+     "correcta": 0,
+     "explicacion": "Si Qr < K(T), [C] y [D] aumentan: el sistema evoluciona en el sentido directo. El volumen se simplifica en Qr.",
+     "pagina_pdf": 168
+    },
+    {
+     "pregunta": "En el mismo ejercicio xf = 0,067 mol y xmax = 0,10 mol. ¿Cuánto vale τ y qué significa?",
+     "opciones": [
+      "τ = 0,067: transformación no total",
+      "τ = 0,67: transformación no total",
+      "τ = 0,67: transformación total",
+      "τ = 1,5: transformación total"
+     ],
+     "correcta": 1,
+     "explicacion": "τ = xf/xmax = 0,067/0,10 = 0,67 = 67 % < 100 %: la transformación no es total.",
+     "pagina_pdf": 168
+    },
+    {
+     "pregunta": "Pila Ag⁺/Ag – Ni²⁺/Ni: la masa del electrodo de Ag aumenta y la de Ni disminuye. ¿Sentido de los electrones y de la corriente en el circuito exterior?",
+     "opciones": [
+      "Electrones de Ag a Ni; corriente de Ni a Ag",
+      "Electrones de Ni a Ag; corriente de Ag (borne +) a Ni (borne −)",
+      "Electrones y corriente van de Ni a Ag",
+      "Los electrones atraviesan el puente salino"
+     ],
+     "correcta": 1,
+     "explicacion": "Ni se oxida (cede e⁻) y Ag⁺ se reduce: los electrones van de Ni a Ag; la corriente va en sentido opuesto, de Ag (+) a Ni (−).",
+     "pagina_pdf": 169
+    },
+    {
+     "pregunta": "Con 10,0 g de níquel como reactivo limitante (M = 58,7 g·mol⁻¹), ¿cuál es la capacidad qmax de la pila?",
+     "opciones": [
+      "1,6×10⁴ C",
+      "3,3×10⁴ C",
+      "3,3×10⁷ C",
+      "0,17 C"
+     ],
+     "correcta": 1,
+     "explicacion": "n(Ni) = 0,170 mol; n(e⁻) = 2 n(Ni); qmax = 2×0,170×6,02×10²³×1,6×10⁻¹⁹ = 3,3×10⁴ C.",
+     "pagina_pdf": 169
+    }
+   ],
+   "vidas": 5,
+   "furia": 2
+  },
+  {
+   "tipo": "meta",
+   "x": 187
+  },
+  {
+   "tipo": "meteoros",
+   "x": 155,
+   "w": 36,
+   "periodo": 1.3
+  },
+  {
+   "tipo": "tormenta",
+   "x": 155,
+   "w": 36,
+   "periodo": 2
+  },
+  {
+   "tipo": "lluvia_rocas",
+   "x": 157,
+   "w": 30,
+   "periodo": 2.1
+  }
+ ],
+ "ambiente": "lab",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "extra": "batalla",
+ "nombre_fase": "Batalla final"
+}

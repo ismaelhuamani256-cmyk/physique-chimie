@@ -1,0 +1,512 @@
+{
+ "capitulo_id": "description-mouvement",
+ "tipo_nivel": "normal",
+ "tema_visual": "lava-fortaleza",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 186,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 14,
+   "y": 14,
+   "largo": 19
+  },
+  {
+   "tipo": "sierra",
+   "x": 18,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.2
+  },
+  {
+   "tipo": "sierra",
+   "x": 23,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 28,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.7
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 31,
+   "y": 11,
+   "ref": "f1",
+   "latex": "\\overrightarrow{OM}(t)=x(t)\\,\\vec i+y(t)\\,\\vec j+z(t)\\,\\vec k=\\begin{pmatrix}x(t)\\\\y(t)\\\\z(t)\\end{pmatrix}",
+   "nombre": "Vector posición"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 33,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "laser",
+   "x": 37,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.7,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "laser",
+   "x": 43,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.7,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "laser",
+   "x": 49,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.2,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 55,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 56
+  },
+  {
+   "tipo": "plataforma",
+   "x": 61,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 61,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 64,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 75,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 80,
+   "y": 12,
+   "ref": "f3",
+   "latex": "\\vec v(t)=\\dfrac{d\\overrightarrow{OM}(t)}{dt}",
+   "nombre": "Vector velocidad (derivada del vector posición)"
+  },
+  {
+   "tipo": "foso",
+   "x": 83,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 85,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.3,
+   "retardo": 2.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 87,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 87,
+   "y": 12,
+   "ref": "f4",
+   "latex": "\\vec v(t)=\\dfrac{dx}{dt}\\,\\vec i+\\dfrac{dy}{dt}\\,\\vec j+\\dfrac{dz}{dt}\\,\\vec k=\\begin{pmatrix}dx/dt\\\\dy/dt\\\\dz/dt\\end{pmatrix}",
+   "nombre": "Coordenadas del vector velocidad"
+  },
+  {
+   "tipo": "foso",
+   "x": 89,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 90,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3,
+   "retardo": 0.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 92,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 94,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 95,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.1,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 97,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 97,
+   "y": 10,
+   "ref": "f7",
+   "latex": "\\vec a=\\begin{pmatrix}dv_x/dt\\\\dv_y/dt\\\\dv_z/dt\\end{pmatrix}=\\begin{pmatrix}d^2x/dt^2\\\\d^2y/dt^2\\\\d^2z/dt^2\\end{pmatrix}",
+   "nombre": "Coordenadas del vector aceleración"
+  },
+  {
+   "tipo": "foso",
+   "x": 99,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 101,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.7,
+   "retardo": 0.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 103,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 105,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 106
+  },
+  {
+   "tipo": "plataforma",
+   "x": 111,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 115,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 121,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 127,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 131,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 109,
+   "y": 12,
+   "ref": "f6",
+   "latex": "\\vec a(t)=\\dfrac{d\\vec v(t)}{dt}",
+   "nombre": "Vector aceleración (derivada del vector velocidad)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 71,
+   "y": 12,
+   "ref": "f9",
+   "latex": "\\vec a=a_\\tau\\,\\vec\\tau+a_n\\,\\vec n\\quad\\text{con}\\quad a_\\tau=\\dfrac{dv}{dt},\\;\\; a_n=\\dfrac{v^2}{R}",
+   "nombre": "Aceleración en el repère de Frenet"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 71,
+   "y": 12,
+   "ref": "f10",
+   "latex": "a=\\dfrac{v^{2}}{R}\\qquad \\vec a=\\dfrac{v^{2}}{R}\\,\\vec n",
+   "nombre": "Aceleración en el movimiento circular uniforme"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 60,
+   "y": 12,
+   "ref": "f8",
+   "latex": "\\vec v=v\\,\\vec\\tau=\\begin{pmatrix}v\\\\0\\end{pmatrix}",
+   "nombre": "Velocidad en el repère de Frenet"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 40,
+   "y": 12,
+   "ref": "f2",
+   "latex": "\\vec v(t_i)=\\dfrac{\\Delta\\overrightarrow{OM}(t_i)}{\\Delta t}=\\dfrac{\\overrightarrow{OM}(t_{i+1})-\\overrightarrow{OM}(t_{i-1})}{t_{i+1}-t_{i-1}}",
+   "nombre": "Vector velocidad a partir de las posiciones (construcción en un punto)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 60,
+   "y": 12,
+   "ref": "f5",
+   "latex": "\\vec a(t_i)=\\dfrac{\\Delta\\vec v(t_i)}{\\Delta t}=\\dfrac{\\vec v(t_{i+1})-\\vec v(t_{i-1})}{t_{i+1}-t_{i-1}}",
+   "nombre": "Vector aceleración a partir de las velocidades (construcción en un punto)"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 117,
+   "y": 13,
+   "enemigo": "error_aceleracion_solo_aumento",
+   "nombre": "Creer que aceleración = «solo aumenta la rapidez»",
+   "correccion": "a⃗ ≠ 0 también si v frena o solo cambia de dirección; a⃗ = dv⃗/dt (vector)."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 108,
+   "y": 13,
+   "enemigo": "error_diametro_radio",
+   "nombre": "Usar el diámetro en lugar del radio en v²/R",
+   "correccion": "R = D/2: a_n = v²/(D/2)."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 119,
+   "y": 13,
+   "enemigo": "error_signo_aceleracion",
+   "nombre": "Ignorar el signo de a_τ o de la aceleración",
+   "correccion": "a_τ < 0 (o a opuesto a v) significa que el móvil se ralentiza, no que «vaya hacia atrás»."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 128,
+   "y": 13,
+   "enemigo": "error_aceleracion_solo_aumento",
+   "nombre": "Creer que aceleración = «solo aumenta la rapidez»",
+   "correccion": "a⃗ ≠ 0 también si v frena o solo cambia de dirección; a⃗ = dv⃗/dt (vector)."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 132,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 134
+  },
+  {
+   "tipo": "item",
+   "x": 135,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 137,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 139,
+   "y": 12,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 141,
+   "y": 12,
+   "item": "vida"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 138,
+   "y": 13,
+   "enemigo": "error_diametro_radio",
+   "nombre": "Usar el diámetro en lugar del radio en v²/R",
+   "correccion": "R = D/2: a_n = v²/(D/2)."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 144,
+   "y": 14,
+   "largo": 42
+  },
+  {
+   "tipo": "sprint",
+   "x_ini": 14,
+   "x_fin": 132,
+   "velocidad": 4.1,
+   "perseguidor": "maestro_calavera"
+  },
+  {
+   "tipo": "jefe",
+   "x": 161,
+   "jefe": "maestro_calavera",
+   "titulo": "BATALLA FINAL · Maestro Calavera",
+   "preguntas": [
+    {
+     "pregunta": "¿Cuál es la relación entre el vector posición OM y el vector velocidad v⃗?",
+     "opciones": [
+      "v⃗ = k·OM (k constante)",
+      "v⃗ = dOM/dt",
+      "OM = dv⃗/dt",
+      "v⃗ = da⃗/dt"
+     ],
+     "correcta": 1,
+     "explicacion": "El vector velocidad es la derivada respecto al tiempo del vector posición: v⃗ = dOM/dt (tangente a la trayectoria, en el sentido del movimiento).",
+     "pagina_pdf": 267
+    },
+    {
+     "pregunta": "En un movimiento circular uniforme de radio R y velocidad v, el vector aceleración...",
+     "opciones": [
+      "es nulo porque v es constante",
+      "es colineal con v⃗ y vale dv/dt",
+      "es ortogonal a v⃗, apunta al centro y vale v²/R",
+      "apunta hacia fuera del círculo y vale v²/R"
+     ],
+     "correcta": 2,
+     "explicacion": "a_τ = dv/dt = 0, así que a⃗ = (v²/R)·n⃗, constante en valor, ortogonal a v⃗ y dirigido al centro.",
+     "pagina_pdf": 269
+    },
+    {
+     "pregunta": "Ejercicio 11: con y(t) = −4,9·t² + 5,87·t + 2,0 (SI), ¿cuál es la componente vertical v_y(t) de la velocidad?",
+     "opciones": [
+      "−9,8·t + 5,87",
+      "−4,9·t² + 5,87",
+      "−9,8·t² + 5,87·t",
+      "5,87"
+     ],
+     "correcta": 0,
+     "explicacion": "v_y = dy/dt = −2×4,9·t + 5,87 = −9,8·t + 5,87 m·s⁻¹ (a_y = −9,8 m·s⁻²).",
+     "pagina_pdf": 272
+    },
+    {
+     "pregunta": "En el repère de Frenet, ¿cuál es la expresión general de la aceleración?",
+     "opciones": [
+      "a⃗ = (dv/dt)·τ⃗ + (v²/R)·n⃗",
+      "a⃗ = v·τ⃗",
+      "a⃗ = (v²/R)·τ⃗ + (dv/dt)·n⃗",
+      "a⃗ = (dv/dt)·n⃗"
+     ],
+     "correcta": 0,
+     "explicacion": "a_τ = dv/dt (tangencial) y a_n = v²/R (normal, hacia el centro de curvatura).",
+     "pagina_pdf": 268
+    },
+    {
+     "pregunta": "Si v⃗ y a⃗ son colineales y de mismo sentido (a⃗ constante), el movimiento es...",
+     "opciones": [
+      "rectilíneo uniforme",
+      "rectilíneo uniformemente acelerado",
+      "rectilíneo uniformemente ralentizado",
+      "circular uniforme"
+     ],
+     "correcta": 1,
+     "explicacion": "a⃗·v⃗ > 0: la norma de v aumenta, su sentido y dirección no cambian: rectilíneo uniformemente acelerado.",
+     "pagina_pdf": 269
+    }
+   ],
+   "vidas": 5,
+   "furia": 2
+  },
+  {
+   "tipo": "meta",
+   "x": 180
+  },
+  {
+   "tipo": "meteoros",
+   "x": 148,
+   "w": 36,
+   "periodo": 1.3
+  },
+  {
+   "tipo": "tormenta",
+   "x": 148,
+   "w": 36,
+   "periodo": 2
+  },
+  {
+   "tipo": "lluvia_rocas",
+   "x": 150,
+   "w": 30,
+   "periodo": 2.1
+  }
+ ],
+ "ambiente": "castillo",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "lava_parkour": true,
+ "extra": "batalla",
+ "nombre_fase": "Batalla final"
+}

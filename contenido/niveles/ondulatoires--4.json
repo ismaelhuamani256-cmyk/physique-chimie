@@ -1,0 +1,714 @@
+{
+ "capitulo_id": "ondulatoires",
+ "tipo_nivel": "normal",
+ "tema_visual": "lava-fortaleza",
+ "fisica_juego": {
+  "gravedad": 0.9,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 239,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 15,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.5,
+   "retardo": 1.5
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 16,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 18,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 19,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.9,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 20,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 22,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 23,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.7,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 24,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 26,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 27,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.8,
+   "retardo": 0.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 28,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 30,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 32,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.6,
+   "retardo": 2.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 34,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 36,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 37,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3,
+   "retardo": 0.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 39,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 39,
+   "y": 12,
+   "ref": "f2",
+   "latex": "L = 10\\,\\log\\dfrac{I}{I_0}",
+   "nombre": "Nivel de intensidad sonora"
+  },
+  {
+   "tipo": "foso",
+   "x": 41,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 42,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.1,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 44,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 46,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 47,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.3,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 49,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 51,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 52,
+   "y": 17,
+   "altura": 6,
+   "periodo": 4,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 54,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 54,
+   "y": 12,
+   "ref": "f3",
+   "latex": "I = I_0\\cdot 10^{\\frac{L}{10}}",
+   "nombre": "Intensidad a partir del nivel sonoro"
+  },
+  {
+   "tipo": "foso",
+   "x": 56,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 57,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.7,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 59,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 30,
+   "y": 0,
+   "w": 31,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 61,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 62
+  },
+  {
+   "tipo": "enemigo",
+   "x": 66,
+   "y": 13,
+   "enemigo": "suma_db",
+   "nombre": "Sumar niveles sonoros en dB",
+   "correccion": "Se suman las intensidades (W·m⁻²), no los dB; luego se vuelve a L = 10 log(I/I₀)."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 64,
+   "y": 12,
+   "ref": "f4",
+   "latex": "L(x) = L_{(\\text{à }1\\text{ m})} - 20\\,\\log x",
+   "nombre": "Atenuación geométrica del nivel sonoro"
+  },
+  {
+   "tipo": "item",
+   "x": 64,
+   "y": 12,
+   "item": "doble"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 69,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 69,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 72,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 83,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 88,
+   "y": 12,
+   "ref": "f6",
+   "latex": "\\theta = \\dfrac{\\lambda}{a}",
+   "nombre": "Ángulo característico de difracción"
+  },
+  {
+   "tipo": "foso",
+   "x": 91,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 93,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.5,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 91,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 96,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 98,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 100,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.9,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 98,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 103,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 106,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 107
+  },
+  {
+   "tipo": "enemigo",
+   "x": 111,
+   "y": 13,
+   "enemigo": "destructiva_mal",
+   "nombre": "Condición destructiva mal escrita",
+   "correccion": "Destructivas: δ = (k+½)λ; constructivas: δ = kλ."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 109,
+   "y": 12,
+   "ref": "f7",
+   "latex": "\\tan\\theta \\approx \\theta = \\dfrac{L}{2D} = \\dfrac{\\lambda}{a} \\;\\Rightarrow\\; a = \\dfrac{2\\lambda\\cdot D}{L}",
+   "nombre": "Tamaño de la abertura a partir de la mancha central"
+  },
+  {
+   "tipo": "item",
+   "x": 109,
+   "y": 12,
+   "item": "luna"
+  },
+  {
+   "tipo": "foso",
+   "x": 114,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 115,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.8,
+   "retardo": 2.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 117,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 117,
+   "y": 12,
+   "ref": "f9",
+   "latex": "\\delta = e\\cdot\\dfrac{x}{D}",
+   "nombre": "Diferencia de camino óptico (trous de Young)"
+  },
+  {
+   "tipo": "foso",
+   "x": 119,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 121,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.8,
+   "retardo": 2.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 123,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 125,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 127,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 129,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 129,
+   "y": 12,
+   "ref": "f10",
+   "latex": "i = \\dfrac{\\lambda\\cdot D}{e}",
+   "nombre": "Interfranja"
+  },
+  {
+   "tipo": "foso",
+   "x": 131,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 132,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.9,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 134,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 114,
+   "y": 0,
+   "w": 22,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 136,
+   "y": 14,
+   "largo": 28
+  },
+  {
+   "tipo": "laser",
+   "x": 140,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.6,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "laser",
+   "x": 146,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.6,
+   "retardo": 1.9
+  },
+  {
+   "tipo": "laser",
+   "x": 152,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.7,
+   "retardo": 1
+  },
+  {
+   "tipo": "laser",
+   "x": 158,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.1,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 164,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 165
+  },
+  {
+   "tipo": "enemigo",
+   "x": 169,
+   "y": 13,
+   "enemigo": "signo_doppler",
+   "nombre": "Signo equivocado en Doppler",
+   "correccion": "Se acerca: c − v (f_R > f_e); se aleja: c + v (f_R < f_e)."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 167,
+   "y": 12,
+   "ref": "f11",
+   "latex": "\\delta = k\\cdot\\lambda \\;\\; (\\text{constructivas})\\qquad \\delta = \\left(k+\\tfrac{1}{2}\\right)\\lambda \\;\\; (\\text{destructivas})",
+   "nombre": "Condiciones de interferencia"
+  },
+  {
+   "tipo": "item",
+   "x": 167,
+   "y": 12,
+   "item": "escudo"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 172,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "sierra",
+   "x": 176,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 181,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.2
+  },
+  {
+   "tipo": "sierra",
+   "x": 186,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.3
+  },
+  {
+   "tipo": "sierra",
+   "x": 191,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.7
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 194,
+   "y": 11,
+   "ref": "f13",
+   "latex": "\\Delta f = f_R - f_e = \\dfrac{f_e\\cdot v}{c}",
+   "nombre": "Desfase Doppler (v ≪ c)"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 196,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 200,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 206,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 212,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 216,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 217
+  },
+  {
+   "tipo": "enemigo",
+   "x": 221,
+   "y": 13,
+   "enemigo": "afirmar_sin_justificar",
+   "nombre": "Afirmar en vez de justificar",
+   "correccion": "Cita la relación del cours y explica el razonamiento; evita «sé que...»."
+  },
+  {
+   "tipo": "item",
+   "x": 219,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 224,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "meta",
+   "x": 229
+  },
+  {
+   "tipo": "plataforma",
+   "x": 225,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 69,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 128,
+   "y": 7
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 186,
+   "y": 8
+  }
+ ],
+ "ambiente": "castillo",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "lava_parkour": true,
+ "extra": "p4",
+ "nombre_fase": "Parkour extremo"
+}

@@ -1,0 +1,750 @@
+{
+ "capitulo_id": "nucleaires",
+ "tipo_nivel": "normal",
+ "tema_visual": "mina-uranio",
+ "fisica_juego": {
+  "gravedad": 0.9,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 242,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 15,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.9,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 17,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 19,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 20,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.5,
+   "retardo": 0.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 22,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 22,
+   "y": 12,
+   "ref": "f1",
+   "latex": "Z = Z' + Z'' \\quad\\text{et}\\quad A = A' + A''",
+   "nombre": "Lois de conservation (charge et nucléons)"
+  },
+  {
+   "tipo": "foso",
+   "x": 24,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 25,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 27,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 29,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 30,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.7,
+   "retardo": 2.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 32,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 34,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 35,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.3,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 37,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 37,
+   "y": 11,
+   "ref": "f2",
+   "latex": "{}^{A}_{Z}\\mathrm{X} \\to {}^{A-4}_{Z-2}\\mathrm{X}' + {}^{4}_{2}\\mathrm{He}",
+   "nombre": "Désintégration α"
+  },
+  {
+   "tipo": "foso",
+   "x": 39,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 40,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.7,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 42,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 44,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 45,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.2,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 47,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 14,
+   "y": 0,
+   "w": 35,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "foso",
+   "x": 49,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 50,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.5,
+   "retardo": 2.9
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 51,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 53,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 54,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.3,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 55,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 57,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 58,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.7,
+   "retardo": 2.9
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 59,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 61,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 62,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.8,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 63,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 65,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 66
+  },
+  {
+   "tipo": "enemigo",
+   "x": 70,
+   "y": 13,
+   "enemigo": "error_conservacion",
+   "nombre": "Olvidar la conservación de Z y A",
+   "correccion": "Comprobar siempre Z = Z' + Z'' y A = A' + A''."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 68,
+   "y": 12,
+   "ref": "f3",
+   "latex": "{}^{A}_{Z}\\mathrm{X} \\to {}^{A}_{Z+1}\\mathrm{X}' + {}^{\\,0}_{-1}\\mathrm{e}",
+   "nombre": "Désintégration β⁻"
+  },
+  {
+   "tipo": "item",
+   "x": 68,
+   "y": 12,
+   "item": "doble"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 73,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "sierra",
+   "x": 77,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3
+  },
+  {
+   "tipo": "sierra",
+   "x": 82,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 87,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "sierra",
+   "x": 92,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 95,
+   "y": 11,
+   "ref": "f4",
+   "latex": "{}^{A}_{Z}\\mathrm{X} \\to {}^{A}_{Z-1}\\mathrm{X}' + {}^{\\,0}_{1}\\mathrm{e}",
+   "nombre": "Désintégration β⁺"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 97,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 97,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 100,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 111,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 116,
+   "y": 12,
+   "ref": "f5",
+   "latex": "{}^{A}_{Z}\\mathrm{X}^{*} \\to {}^{A}_{Z}\\mathrm{X} + \\gamma",
+   "nombre": "Radioactivité γ (désexcitation)"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 119,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 120
+  },
+  {
+   "tipo": "enemigo",
+   "x": 124,
+   "y": 13,
+   "enemigo": "error_beta_signo",
+   "nombre": "Confundir β⁻ y β⁺",
+   "correccion": "β⁻: electrón, Z sube 1. β⁺: positón, Z baja 1."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 122,
+   "y": 12,
+   "ref": "f6",
+   "latex": "\\Delta N = -\\lambda \\cdot N(t) \\cdot \\Delta t",
+   "nombre": "Variation du nombre de noyaux"
+  },
+  {
+   "tipo": "item",
+   "x": 122,
+   "y": 12,
+   "item": "luna"
+  },
+  {
+   "tipo": "foso",
+   "x": 127,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 129,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.5,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 131,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 131,
+   "y": 12,
+   "ref": "f7",
+   "latex": "\\dfrac{\\mathrm{d}N(t)}{\\mathrm{d}t} = -\\lambda \\cdot N(t)",
+   "nombre": "Équation différentielle de la décroissance"
+  },
+  {
+   "tipo": "foso",
+   "x": 133,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 134,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.9,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 136,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 138,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 140,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3,
+   "retardo": 0.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 142,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 142,
+   "y": 12,
+   "ref": "f8",
+   "latex": "N(t) = N_0 \\cdot e^{-\\lambda \\cdot t}",
+   "nombre": "Loi de décroissance radioactive"
+  },
+  {
+   "tipo": "foso",
+   "x": 144,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 145,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.8,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 147,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 149,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 150,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.9,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 152,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 152,
+   "y": 12,
+   "ref": "f9",
+   "latex": "t_{1/2} = \\dfrac{\\ln 2}{\\lambda}",
+   "nombre": "Temps de demi-vie"
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 127,
+   "y": 0,
+   "w": 27,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 154,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "laser",
+   "x": 158,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.1,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "laser",
+   "x": 164,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.1,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "laser",
+   "x": 170,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 2.8,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 176,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 177
+  },
+  {
+   "tipo": "enemigo",
+   "x": 181,
+   "y": 13,
+   "enemigo": "error_espontanea",
+   "nombre": "Confundir espontánea y provocada",
+   "correccion": "Radiactiva = espontánea; la artificial se provoca."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 179,
+   "y": 12,
+   "ref": "f10",
+   "latex": "A(t) = -\\dfrac{\\mathrm{d}N(t)}{\\mathrm{d}t} = \\lambda \\cdot N(t)",
+   "nombre": "Activité d'un échantillon"
+  },
+  {
+   "tipo": "item",
+   "x": 179,
+   "y": 12,
+   "item": "escudo"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 184,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 188,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 194,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 200,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "foso",
+   "x": 204,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 206,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.7,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 204,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 209,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 211,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 213,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.1,
+   "retardo": 2.5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 211,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 216,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 219,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 220
+  },
+  {
+   "tipo": "enemigo",
+   "x": 224,
+   "y": 13,
+   "enemigo": "error_unidades_lambda",
+   "nombre": "No convertir λ a s⁻¹",
+   "correccion": "Pasar λ y t al SI antes de calcular."
+  },
+  {
+   "tipo": "item",
+   "x": 222,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 227,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "meta",
+   "x": 232
+  },
+  {
+   "tipo": "plataforma",
+   "x": 228,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 70,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 129,
+   "y": 7
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 188,
+   "y": 8
+  }
+ ],
+ "ambiente": "cueva",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "extra": "p4",
+ "nombre_fase": "Parkour extremo"
+}

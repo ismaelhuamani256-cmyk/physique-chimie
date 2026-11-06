@@ -1,0 +1,561 @@
+{
+ "capitulo_id": "methodes-chimiques",
+ "tipo_nivel": "normal",
+ "tema_visual": "laboratorio-verde",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 189,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 14,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 16,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.7,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 18,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 20,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 21,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.8,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 23,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 23,
+   "y": 12,
+   "ref": "f_w",
+   "latex": "w = \\dfrac{m_{\\text{soluté}}}{m_{\\text{solution}}}\\times 100",
+   "nombre": "Titre massique"
+  },
+  {
+   "tipo": "foso",
+   "x": 25,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 27,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.7,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 29,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 31,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 32,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.8,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 34,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 36,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 37,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.9,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 39,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 41,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 41,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 44,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 55,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 60,
+   "y": 12,
+   "ref": "f_rho",
+   "latex": "\\rho = \\dfrac{m}{V}",
+   "nombre": "Masse volumique"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 63,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 64
+  },
+  {
+   "tipo": "plataforma",
+   "x": 69,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 73,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 79,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 85,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 89,
+   "y": 14,
+   "largo": 19
+  },
+  {
+   "tipo": "sierra",
+   "x": 93,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "sierra",
+   "x": 98,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.5
+  },
+  {
+   "tipo": "sierra",
+   "x": 103,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.8
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 106,
+   "y": 11,
+   "ref": "f_d",
+   "latex": "d = \\dfrac{\\rho}{\\rho_{\\text{eau}}}",
+   "nombre": "Densité d'une solution"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 108,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 109
+  },
+  {
+   "tipo": "foso",
+   "x": 114,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 115,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.9,
+   "retardo": 2.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 117,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 117,
+   "y": 12,
+   "ref": "f_cc",
+   "latex": "c = \\dfrac{\\rho_{\\text{eau}}\\cdot d\\cdot w}{M}",
+   "nombre": "Concentration d'une solution commerciale"
+  },
+  {
+   "tipo": "foso",
+   "x": 119,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 120,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.6,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 122,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 124,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 125,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.8,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 127,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 127,
+   "y": 12,
+   "ref": "f_dil",
+   "latex": "c\\cdot V = c_{\\text{diluée}}\\cdot V_{\\text{diluée}}",
+   "nombre": "Conservation de la quantité de matière lors d'une dilution"
+  },
+  {
+   "tipo": "foso",
+   "x": 129,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 130,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.7,
+   "retardo": 1.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 132,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 134,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 29,
+   "y": 12,
+   "ref": "f_eq",
+   "latex": "n_A = n_B \\;\\Longleftrightarrow\\; c_A\\cdot V_A = c_B\\cdot V_E",
+   "nombre": "Relation à l'équivalence"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 117,
+   "y": 12,
+   "ref": "f_cA",
+   "latex": "c_A = \\dfrac{n_A}{V_A} = \\dfrac{c_B\\cdot V_E}{V_A}",
+   "nombre": "Concentration de l'espèce titrée"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 118,
+   "y": 12,
+   "ref": "f_x",
+   "latex": "c_A\\cdot V_A - x_E = 0 \\quad\\text{et}\\quad c_B\\cdot V_E - x_E = 0",
+   "nombre": "Tableau d'avancement à l'équivalence"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 104,
+   "y": 12,
+   "ref": "f_n",
+   "latex": "n = \\dfrac{m}{M}",
+   "nombre": "Quantité de matière à partir de la masse"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 52,
+   "y": 12,
+   "ref": "f_u",
+   "latex": "\\dfrac{u_c}{c}=\\sqrt{\\left(\\dfrac{u_{V_E}}{V_E}\\right)^2+\\left(\\dfrac{u_{V_A}}{V_A}\\right)^2+\\left(\\dfrac{u_{c_B}}{c_B}\\right)^2}",
+   "nombre": "Incertitude-type sur la concentration"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 67,
+   "y": 13,
+   "enemigo": "confusion_rho_d",
+   "nombre": "Confundir masa volúmica y densidad",
+   "correccion": "ρ tiene unidad (g·L⁻¹, kg·m⁻³); d = ρ/ρ_eau no tiene unidad."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 65,
+   "y": 13,
+   "enemigo": "masa_disolvente",
+   "nombre": "Usar la masa del disolvente en w",
+   "correccion": "w = m_soluté / m_solución (de la solución entera) × 100."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 83,
+   "y": 13,
+   "enemigo": "dilucion_cambia_n",
+   "nombre": "Creer que diluir cambia n",
+   "correccion": "n se conserva: c·V = c_diluée·V_diluée."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 55,
+   "y": 13,
+   "enemigo": "siempre_color",
+   "nombre": "Esperar siempre un cambio de color",
+   "correccion": "La equivalencia también se halla por pH-metría o conductimetría."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 135,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 137
+  },
+  {
+   "tipo": "item",
+   "x": 138,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 140,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 142,
+   "y": 12,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 144,
+   "y": 12,
+   "item": "vida"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 141,
+   "y": 13,
+   "enemigo": "titrante_titrado",
+   "nombre": "Confundir titrante y titrado como limitante",
+   "correccion": "Hasta V_E el titrante es limitante; después lo es el titrado."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 147,
+   "y": 14,
+   "largo": 42
+  },
+  {
+   "tipo": "sprint",
+   "x_ini": 14,
+   "x_fin": 135,
+   "velocidad": 4.1,
+   "perseguidor": "rey_bomba"
+  },
+  {
+   "tipo": "jefe",
+   "x": 164,
+   "jefe": "rey_bomba",
+   "titulo": "BATALLA FINAL · Rey Bomba",
+   "preguntas": [
+    {
+     "pregunta": "¿Qué caracteriza la equivalencia de un titrage?",
+     "opciones": [
+      "El titrante y la especie titrada se han mezclado en proporciones estequiométricas y se consumen totalmente",
+      "Solo queda la especie titrante en la solución",
+      "El pH vale siempre 7",
+      "La conductividad es siempre nula"
+     ],
+     "correcta": 0,
+     "explicacion": "Equivalencia: estado en que titrante y titrada se mezclaron en proporciones estequiométricas (y hay cambio de reactivo limitante).",
+     "pagina_pdf": 88
+    },
+    {
+     "pregunta": "En un seguimiento conductimétrico, ¿cómo se halla el volumen equivalente V_E?",
+     "opciones": [
+      "En el máximo de pH",
+      "En la abscisa de la intersección de las dos rectas (cambio de pendiente)",
+      "Cuando la conductividad vale cero",
+      "Cuando se vierten 10 mL"
+     ],
+     "correcta": 1,
+     "explicacion": "La equivalencia se repère por el cambio de pendiente; V_E es la abscisa del punto de intersección de las dos rectas.",
+     "pagina_pdf": 90
+    },
+    {
+     "pregunta": "Al titular un ácido con una base y trazar dpH/dV frente a V, ¿qué indica V_E?",
+     "opciones": [
+      "Un mínimo de la derivada",
+      "Un cruce con el eje de abscisas",
+      "Un máximo de la derivada",
+      "Un valor constante"
+     ],
+     "correcta": 2,
+     "explicacion": "Método de la derivada: el extremo es un máximo al titular un ácido con una base y un mínimo al titular una base con un ácido.",
+     "pagina_pdf": 89
+    },
+    {
+     "pregunta": "Una solución comercial tiene ρ = 1,18×10³ g·L⁻¹ y ρ_eau = 1,00×10³ g·L⁻¹. ¿Cuál es su densidad?",
+     "opciones": [
+      "1,18 g·L⁻¹",
+      "1,18 (sin unidad)",
+      "0,85",
+      "1,18×10³"
+     ],
+     "correcta": 1,
+     "explicacion": "d = ρ/ρ_eau = 1,18, sin unidad porque las dos masas volúmicas están en la misma unidad.",
+     "pagina_pdf": 87
+    }
+   ],
+   "vidas": 5,
+   "furia": 2
+  },
+  {
+   "tipo": "meta",
+   "x": 183
+  },
+  {
+   "tipo": "meteoros",
+   "x": 151,
+   "w": 36,
+   "periodo": 1.3
+  },
+  {
+   "tipo": "tormenta",
+   "x": 151,
+   "w": 36,
+   "periodo": 2
+  },
+  {
+   "tipo": "lluvia_rocas",
+   "x": 153,
+   "w": 30,
+   "periodo": 2.1
+  }
+ ],
+ "ambiente": "lab",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "extra": "batalla",
+ "nombre_fase": "Batalla final"
+}

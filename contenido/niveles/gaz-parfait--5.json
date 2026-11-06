@@ -1,0 +1,548 @@
+{
+ "capitulo_id": "gaz-parfait",
+ "tipo_nivel": "normal",
+ "tema_visual": "lava-fortaleza",
+ "fisica_juego": {
+  "gravedad": 0.8,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 184,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 14,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 16,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.4,
+   "retardo": 2.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 18,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 18,
+   "y": 12,
+   "ref": "f1",
+   "latex": "P \\cdot V = n \\cdot R \\cdot T",
+   "nombre": "Ecuación de estado del gas perfecto"
+  },
+  {
+   "tipo": "foso",
+   "x": 20,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 21,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.9,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 23,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 25,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 26,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.8,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 28,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 28,
+   "y": 12,
+   "ref": "f2",
+   "latex": "T = \\theta + 273{,}15",
+   "nombre": "Temperatura termodinámica T = θ + 273,15"
+  },
+  {
+   "tipo": "foso",
+   "x": 30,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 31,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.9,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 33,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 35,
+   "y": 14,
+   "largo": 19
+  },
+  {
+   "tipo": "sierra",
+   "x": 39,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.9
+  },
+  {
+   "tipo": "sierra",
+   "x": 44,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.5
+  },
+  {
+   "tipo": "sierra",
+   "x": 49,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.7
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 52,
+   "y": 11,
+   "ref": "f3",
+   "latex": "P \\cdot V = \\text{constante}\\quad (n,\\ T\\ \\text{constantes})",
+   "nombre": "Ley de Mariotte"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 54,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 55
+  },
+  {
+   "tipo": "foso",
+   "x": 60,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 61,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.4,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 63,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 63,
+   "y": 12,
+   "ref": "f4",
+   "latex": "V_m = \\dfrac{R\\cdot T}{P}",
+   "nombre": "Volumen molar V_m = RT/P"
+  },
+  {
+   "tipo": "foso",
+   "x": 65,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 66,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.6,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 68,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 70,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 71,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.9,
+   "retardo": 0.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 73,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 73,
+   "y": 11,
+   "ref": "f5",
+   "latex": "n = \\dfrac{V}{V_m}",
+   "nombre": "n = V/V_m"
+  },
+  {
+   "tipo": "foso",
+   "x": 75,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 77,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.8,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 79,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 81,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 85,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 91,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 97,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 101,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 102
+  },
+  {
+   "tipo": "plataforma",
+   "x": 107,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 107,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 110,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 121,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 126,
+   "y": 12,
+   "ref": "f6",
+   "latex": "n = \\dfrac{m}{M} = \\dfrac{\\rho\\cdot V}{M}",
+   "nombre": "n = m/M = ρV/M"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 129,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 19,
+   "y": 12,
+   "ref": "f7",
+   "latex": "\\rho = \\dfrac{P\\cdot M}{R\\cdot T}",
+   "nombre": "Masa volúmica ρ = PM/(RT)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 73,
+   "y": 11,
+   "ref": "f8",
+   "latex": "N = n \\cdot N_A",
+   "nombre": "N = n·N_A"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 28,
+   "y": 12,
+   "ref": "f9",
+   "latex": "u_P = P\\cdot\\sqrt{\\left(\\dfrac{u_T}{T}\\right)^2+\\left(\\dfrac{u_V}{V}\\right)^2}",
+   "nombre": "Incertidumbre de P calculada"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 50,
+   "y": 13,
+   "enemigo": "temperatura_celsius",
+   "nombre": "Usar la temperatura en °C en P·V = nRT",
+   "correccion": "Usar T en kelvin: T = θ + 273,15."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 98,
+   "y": 13,
+   "enemigo": "grados_kelvin",
+   "nombre": "Escribir «°K» o dar T en °C",
+   "correccion": "Escribir K y no °K; la temperatura termodinámica se da en kelvin."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 124,
+   "y": 13,
+   "enemigo": "duplicar_celsius",
+   "nombre": "Duplicar θ (°C) creyendo que se duplica T",
+   "correccion": "P se duplica al duplicar T en K, no al duplicar θ en °C."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 52,
+   "y": 13,
+   "enemigo": "modelo_siempre_valido",
+   "nombre": "Creer que el gas perfecto vale para cualquier gas real y a cualquier P",
+   "correccion": "El gas perfecto solo aproxima a los gases reales a presiones bajas (unos pocos bar)."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 130,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 132
+  },
+  {
+   "tipo": "item",
+   "x": 133,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 135,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 137,
+   "y": 12,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 139,
+   "y": 12,
+   "item": "vida"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 136,
+   "y": 13,
+   "enemigo": "temperatura_celsius",
+   "nombre": "Usar la temperatura en °C en P·V = nRT",
+   "correccion": "Usar T en kelvin: T = θ + 273,15."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 142,
+   "y": 14,
+   "largo": 42
+  },
+  {
+   "tipo": "sprint",
+   "x_ini": 14,
+   "x_fin": 130,
+   "velocidad": 4.1,
+   "perseguidor": "rey_bomba"
+  },
+  {
+   "tipo": "jefe",
+   "x": 159,
+   "y": 11,
+   "jefe": "rey_bomba",
+   "titulo": "BATALLA FINAL · Rey Bomba",
+   "preguntas": [
+    {
+     "pregunta": "Dans l'équation d'état du gaz parfait P·V = n·R·T, les unités à utiliser pour exprimer P, V et T sont :",
+     "opciones": [
+      "P en Pa ; V en L ; T en °C",
+      "P en bar ; V en m³ ; T en K",
+      "P en Pa ; V en m³ ; T en K",
+      "P en hPa ; V en cm³ ; T en °C"
+     ],
+     "correcta": 2,
+     "explicacion": "Dans P·V = n·R·T avec R = 8,31 J·K⁻¹·mol⁻¹ : P en Pa, V en m³ et T en K.",
+     "pagina_pdf": 402
+    },
+    {
+     "pregunta": "À l'échelle microscopique, la valeur de la pression mesurée d'un gaz dans un récipient est liée :",
+     "opciones": [
+      "au degré d'agitation seul des molécules, sans lien avec les parois",
+      "à la fréquence des chocs des molécules sur les parois du récipient",
+      "à la masse seule des molécules, quel que soit leur nombre",
+      "à la température exprimée en °C uniquement"
+     ],
+     "correcta": 1,
+     "explicacion": "La pression d'un gaz a pour origine les chocs des particules sur les parois : plus ils sont fréquents, plus P est élevée.",
+     "pagina_pdf": 399
+    },
+    {
+     "pregunta": "La température thermodynamique T d'un système s'exprime en kelvin et vérifie :",
+     "opciones": [
+      "T = θ − 273,15",
+      "T = θ + 273,15",
+      "T = θ × 273,15",
+      "T = θ + 273,15 en °C"
+     ],
+     "correcta": 1,
+     "explicacion": "T (K) = θ (°C) + 273,15 ; à 0 K il n'y a plus d'agitation (zéro absolu).",
+     "pagina_pdf": 399
+    },
+    {
+     "pregunta": "Le modèle du gaz parfait est applicable aux gaz réels :",
+     "opciones": [
+      "toujours, quelle que soit la pression",
+      "seulement pour des pressions inférieures à quelques bars",
+      "uniquement aux très hautes pressions",
+      "quelle que soit la température et la pression"
+     ],
+     "correcta": 1,
+     "explicacion": "À faibles pressions (jusqu'à quelques bars) les molécules sont très éloignées : un gaz réel se comporte comme un gaz parfait.",
+     "pagina_pdf": 402
+    },
+    {
+     "pregunta": "Pour une quantité de gaz donnée à température constante, l'équation d'état du gaz parfait conduit à :",
+     "opciones": [
+      "P / T = constante",
+      "P·V = constante (loi de Mariotte)",
+      "V / P = constante",
+      "P + V = constante"
+     ],
+     "correcta": 1,
+     "explicacion": "Si n et T sont constantes, n·R·T l'est aussi donc P·V = constante : c'est la loi de Mariotte.",
+     "pagina_pdf": 400
+    }
+   ],
+   "vidas": 5,
+   "furia": 2
+  },
+  {
+   "tipo": "meta",
+   "x": 178
+  },
+  {
+   "tipo": "meteoros",
+   "x": 146,
+   "w": 36,
+   "periodo": 1.3
+  },
+  {
+   "tipo": "tormenta",
+   "x": 146,
+   "w": 36,
+   "periodo": 2
+  },
+  {
+   "tipo": "lluvia_rocas",
+   "x": 148,
+   "w": 30,
+   "periodo": 2.1
+  }
+ ],
+ "ambiente": "castillo",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "lava_parkour": true,
+ "extra": "batalla",
+ "nombre_fase": "Batalla final"
+}

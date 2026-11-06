@@ -247,3 +247,9 @@ Además se reparten `sierra` (en raíl) y `laser` horizontales de 51-peligros.js
 - **Campo:** `tornado` (eleva y lanza), `espantapajaros` (despierta al acercarte), `trampolin` (rebote ×1,6).
 - **Castillo:** `fantasma` (peligroso si no lo miras; mirado se vuelve piedra y se pisa), `tablon` (se rompe 0,45 s tras pisarlo), `espejo` (refleja disparos).
 - **Jefes nuevos:** `pozo_gravitatorio` (invierte la gravedad 3,4 s mientras dispara; `g.gravMult`) y `yeti_criogenico` (la arena es pista de hielo; bolas y ventisca que congelan). Ambos se cansan tras 4 ataques → pisotón → pregunta.
+
+## Niveles 4 y 5 (`tools/niveles-parkour.js`)
+
+- **`<cap>--4` Parkour extremo:** carrera de ~230 tiles sin jefe: pilares de hasta 4 tiles e islotes sobre lava con magma saltarín, plataformas que caen y móviles, pasillos de sierras, láseres verticales, cañones y géiseres, viento en contra, pocos descansos (checkpoint + cápsula doble salto/luna/escudo/fuego), espectros y magos en el aire.
+- **`<cap>--5` Batalla final:** primero un tramo `sprint` de ~120 tiles con un **JEFE PERSEGUIDOR** (`sprint.perseguidor`: rey_bomba, maestro_calavera, pozo_gravitatorio, yeti_criogenico…) que corre tras de ti y dispara (bombas, huesos o bolas); tocarlo mata. Luego una zona de cápsulas (escopeta, fuego, grande, vida) y la arena con **bombardeo de meteoritos, tormenta con rayos y lluvia de rocas** más el jefe en modo difícil (`vidas:5`, `furia:+2`). Jefe por capítulo: Rey Bomba, Maestro Calavera, Pozo Gravitatorio, Yeti Criogénico, Bombardero Neutrón (nucleaires), Fotón Veloz (photons) o Isótopo Inestable.
+- En el mapa: botones **Nivel 2 · 3 · 4 · 5** en cada capítulo; ganar uno encadena el siguiente.

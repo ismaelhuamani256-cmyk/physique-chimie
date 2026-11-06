@@ -1,0 +1,511 @@
+{
+ "capitulo_id": "newton-2",
+ "tipo_nivel": "normal",
+ "tema_visual": "pista-hielo-newton",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.6,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 188,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 14,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 18,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 24,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 30,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 34,
+   "y": 14,
+   "largo": 19
+  },
+  {
+   "tipo": "sierra",
+   "x": 38,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3
+  },
+  {
+   "tipo": "sierra",
+   "x": 43,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3
+  },
+  {
+   "tipo": "sierra",
+   "x": 48,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.1
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 51,
+   "y": 11,
+   "ref": "f1",
+   "latex": "\\sum \\vec F_{\\text{ext/syst}} = m\\,\\vec a_G",
+   "nombre": "Deuxième loi de Newton"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 53,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 54
+  },
+  {
+   "tipo": "plataforma",
+   "x": 59,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "laser",
+   "x": 63,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.2,
+   "retardo": 1
+  },
+  {
+   "tipo": "laser",
+   "x": 69,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 2.8,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "laser",
+   "x": 75,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.1,
+   "retardo": 1.3
+  },
+  {
+   "tipo": "foso",
+   "x": 81,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 83,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.9,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 85,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 85,
+   "y": 12,
+   "ref": "f3",
+   "latex": "\\vec a_G=\\dfrac{\\sum \\vec F_{\\text{ext/syst}}}{m}",
+   "nombre": "De las fuerzas a la aceleración"
+  },
+  {
+   "tipo": "foso",
+   "x": 87,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 89,
+   "y": 17,
+   "altura": 8,
+   "periodo": 4,
+   "retardo": 1.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 91,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 93,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 95,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.9,
+   "retardo": 2.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 97,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 97,
+   "y": 12,
+   "ref": "f4",
+   "latex": "\\vec a_i=\\dfrac{\\Delta \\vec v_i}{\\Delta t}=\\dfrac{\\vec v_{i+1}-\\vec v_{i-1}}{2\\tau}",
+   "nombre": "Aceleración a partir de una cronofotografía"
+  },
+  {
+   "tipo": "foso",
+   "x": 99,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 101,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.1,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 103,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 105,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 106
+  },
+  {
+   "tipo": "plataforma",
+   "x": 111,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 111,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 114,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 125,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 130,
+   "y": 12,
+   "ref": "f2",
+   "latex": "\\vec v_G=\\vec 0\\ \\text{et}\\ \\vec a_G=\\vec 0 \\;\\Rightarrow\\; \\sum \\vec F_{\\text{ext/syst}}=\\vec 0",
+   "nombre": "Équilibre d'un système"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 133,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 92,
+   "y": 12,
+   "ref": "f8",
+   "latex": "P = m\\times g",
+   "nombre": "Peso"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 86,
+   "y": 12,
+   "ref": "f5",
+   "latex": "R = P\\cos\\alpha = m\\,g\\cos\\alpha",
+   "nombre": "Proyección perpendicular a la pista (esquiador)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 130,
+   "y": 12,
+   "ref": "f6",
+   "latex": "f = m\\,(g\\sin\\alpha - a_G)",
+   "nombre": "Proyección a lo largo de la pista (rozamiento)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 86,
+   "y": 12,
+   "ref": "f7",
+   "latex": "F = k\\times h",
+   "nombre": "Fuerza de recuperación de un resorte"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 43,
+   "y": 12,
+   "ref": "f9",
+   "latex": "m_1\\,\\overrightarrow{GA}+m_2\\,\\overrightarrow{GB}=\\vec 0",
+   "nombre": "Baricentro de dos puntos materiales"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 92,
+   "y": 12,
+   "ref": "f11",
+   "latex": "F = m\\,(a_G + g\\sin\\alpha)",
+   "nombre": "Fuerza del resorte lanzador sobre un disco en plano inclinado"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 54,
+   "y": 13,
+   "enemigo": "fuerzas_compensadas",
+   "nombre": "Fuerzas compensadas = reposo",
+   "correccion": "Si las fuerzas se compensan, a_G = 0: el sistema puede estar en reposo o en movimiento rectilíneo uniforme."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 116,
+   "y": 13,
+   "enemigo": "referencial_no_galileano",
+   "nombre": "Referencial no galileano",
+   "correccion": "La 2.ª ley (ΣF = m·a_G) solo vale en un referencial galileano; en un manège que gira o un referencial acelerado no se aplica."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 75,
+   "y": 13,
+   "enemigo": "vectores_sin_escala",
+   "nombre": "Vectores sin escala ni sentido",
+   "correccion": "Da el valor de cada fuerza, define una escala y comprueba el sentido de los vectores antes de aplicar la ley."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 108,
+   "y": 13,
+   "enemigo": "angulo_unidades",
+   "nombre": "Ángulo, unidades y escala",
+   "correccion": "Calculadora en grados, unidades coherentes, escala de la cronofotografía y ángulo de la pendiente en el peso."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 134,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 136
+  },
+  {
+   "tipo": "item",
+   "x": 137,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 139,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 141,
+   "y": 12,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 143,
+   "y": 12,
+   "item": "vida"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 140,
+   "y": 13,
+   "enemigo": "sigma_f_sentido_velocidad",
+   "nombre": "ΣF en el sentido de la velocidad",
+   "correccion": "ΣF tiene el sentido de a_G, no necesariamente el de v: al frenar, ΣF apunta contra el movimiento."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 146,
+   "y": 14,
+   "largo": 42
+  },
+  {
+   "tipo": "sprint",
+   "x_ini": 14,
+   "x_fin": 134,
+   "velocidad": 4.1,
+   "perseguidor": "yeti_criogenico"
+  },
+  {
+   "tipo": "jefe",
+   "x": 163,
+   "jefe": "yeti_criogenico",
+   "titulo": "BATALLA FINAL · Yeti Criogénico",
+   "preguntas": [
+    {
+     "pregunta": "Un référentiel est galiléen si :",
+     "opciones": [
+      "la 1re loi de Newton (principe d'inertie) y est vérifiée",
+      "la 1re loi de Newton n'y est pas vérifiée",
+      "aucune loi de Newton n'y est vérifiée",
+      "il tourne sur lui-même par rapport au Soleil"
+     ],
+     "correcta": 0,
+     "explicacion": "Par définition, un référentiel est galiléen si le principe d'inertie (1re loi de Newton) y est vérifié.",
+     "pagina_pdf": 292
+    },
+    {
+     "pregunta": "La deuxième loi de Newton, pour un système de masse constante dans un référentiel galiléen, s'écrit :",
+     "opciones": [
+      "ΣF = 0",
+      "ΣF = m·v_G",
+      "ΣF = m·a_G",
+      "ΣF = a_G / m"
+     ],
+     "correcta": 2,
+     "explicacion": "La somme vectorielle des forces extérieures est égale au produit de la masse par le vecteur accélération du centre de masse : ΣF = m·a_G.",
+     "pagina_pdf": 293
+    },
+    {
+     "pregunta": "Ariane 5 (M = 7,3×10⁵ kg, F = 1,16×10⁷ N, g = 10 m·s⁻²) : quelle est l'accélération au décollage ?",
+     "opciones": [
+      "5,9 m·s⁻²",
+      "15,9 m·s⁻²",
+      "25,9 m·s⁻²",
+      "0 m·s⁻² (la fusée est à l'équilibre)"
+     ],
+     "correcta": 0,
+     "explicacion": "a = F/M − g = 1,16×10⁷/7,3×10⁵ − 10 = 15,9 − 10 = 5,9 m·s⁻².",
+     "pagina_pdf": 300
+    },
+    {
+     "pregunta": "Skieur sur une piste inclinée de α (poids P, réaction R, frottement f) : projeté sur l'axe x'x de la piste, f vaut :",
+     "opciones": [
+      "m·(g·sin α − a_G)",
+      "m·(g·cos α − a_G)",
+      "m·g·sin α + m·a_G",
+      "m·g·cos α"
+     ],
+     "correcta": 0,
+     "explicacion": "P·sin α − f = m·a_G donc f = m·g·sin α − m·a_G = m(g sin α − a_G).",
+     "pagina_pdf": 294
+    },
+    {
+     "pregunta": "Si un système est à l'équilibre dans un référentiel galiléen, alors :",
+     "opciones": [
+      "v⃗_G = 0⃗ et a⃗_G = 0⃗, donc ΣF⃗ = 0⃗",
+      "ΣF⃗ ≠ 0⃗ mais v⃗_G = 0⃗",
+      "a⃗_G est colinéaire à v⃗_G et non nul",
+      "ΣF⃗ = m·v⃗_G"
+     ],
+     "correcta": 0,
+     "explicacion": "À l'équilibre v_G = 0 et a_G = 0 ; d'après la 2e loi, la résultante des forces est nulle.",
+     "pagina_pdf": 293
+    }
+   ],
+   "vidas": 5,
+   "furia": 2
+  },
+  {
+   "tipo": "meta",
+   "x": 182
+  },
+  {
+   "tipo": "meteoros",
+   "x": 150,
+   "w": 36,
+   "periodo": 1.3
+  },
+  {
+   "tipo": "tormenta",
+   "x": 150,
+   "w": 36,
+   "periodo": 2
+  },
+  {
+   "tipo": "lluvia_rocas",
+   "x": 152,
+   "w": 30,
+   "periodo": 2.1
+  }
+ ],
+ "ambiente": "hielo",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "extra": "batalla",
+ "nombre_fase": "Batalla final"
+}

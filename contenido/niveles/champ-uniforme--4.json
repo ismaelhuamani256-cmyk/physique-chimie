@@ -1,0 +1,724 @@
+{
+ "capitulo_id": "champ-uniforme",
+ "tipo_nivel": "normal",
+ "tema_visual": "pista-campo-uniforme",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 237,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 14,
+   "y": 14,
+   "largo": 28
+  },
+  {
+   "tipo": "laser",
+   "x": 18,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.6,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "laser",
+   "x": 24,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.4,
+   "retardo": 1.3
+  },
+  {
+   "tipo": "laser",
+   "x": 30,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 2.8,
+   "retardo": 1
+  },
+  {
+   "tipo": "laser",
+   "x": 36,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.6,
+   "retardo": 0.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 42,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 46,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 52,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 58,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 62,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 63
+  },
+  {
+   "tipo": "enemigo",
+   "x": 67,
+   "y": 13,
+   "enemigo": "sin_condicion_inicial",
+   "nombre": "Olvidar la condición inicial z(0) = z₀",
+   "correccion": "Al integrar, usa v(0) y OG(0): si z(0) ≠ 0 suma z₀."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 65,
+   "y": 12,
+   "ref": "f1",
+   "latex": "\\vec{a}_G = \\vec{g}_0",
+   "nombre": "Aceleración en un campo de gravedad uniforme"
+  },
+  {
+   "tipo": "item",
+   "x": 65,
+   "y": 12,
+   "item": "doble"
+  },
+  {
+   "tipo": "foso",
+   "x": 70,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 72,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.8,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 70,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 75,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 77,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 79,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.5,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 77,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 82,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "foso",
+   "x": 85,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 86,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.4,
+   "retardo": 1.9
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 87,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 89,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 90,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.7,
+   "retardo": 2.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 91,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 93,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 94,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 95,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 97,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 98,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.1,
+   "retardo": 2.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 99,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 101,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 102
+  },
+  {
+   "tipo": "enemigo",
+   "x": 106,
+   "y": 13,
+   "enemigo": "razonar_sin_ecuaciones",
+   "nombre": "Razonar sin ecuaciones («el peso baja, luego frena»)",
+   "correccion": "Justifica con v_z(t) = −g₀t + v₀, no con la dirección del peso."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 104,
+   "y": 12,
+   "ref": "f2",
+   "latex": "\\vec{v}(t)\\begin{cases} v_x(t)=v_0\\cos\\alpha \\\\ v_y(t)=-g_0\\,t+v_0\\sin\\alpha \\\\ v_z(t)=0 \\end{cases}",
+   "nombre": "Ecuaciones horarias de la velocidad (lanzamiento oblicuo)"
+  },
+  {
+   "tipo": "item",
+   "x": 104,
+   "y": 12,
+   "item": "luna"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 109,
+   "y": 14,
+   "largo": 19
+  },
+  {
+   "tipo": "sierra",
+   "x": 113,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 118,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.1
+  },
+  {
+   "tipo": "sierra",
+   "x": 123,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.8
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 126,
+   "y": 11,
+   "ref": "f3",
+   "latex": "\\overrightarrow{OG}(t)\\begin{cases} x(t)=v_0\\cos\\alpha\\times t \\\\ y(t)=-\\tfrac12 g_0 t^2+v_0\\sin\\alpha\\times t \\\\ z(t)=0 \\end{cases}",
+   "nombre": "Ecuaciones horarias de la posición (lanzamiento oblicuo)"
+  },
+  {
+   "tipo": "foso",
+   "x": 128,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 129,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.7,
+   "retardo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 131,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 133,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 134,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.3,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 136,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 136,
+   "y": 12,
+   "ref": "f4",
+   "latex": "y(x)=\\dfrac{-g_0}{2\\,v_0^2\\cos^2\\alpha}\\,x^2+x\\tan\\alpha",
+   "nombre": "Ecuación de la trayectoria en un campo de gravedad uniforme"
+  },
+  {
+   "tipo": "foso",
+   "x": 138,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 139,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.1,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 141,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 143,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 145,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.2,
+   "retardo": 0.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 147,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 149,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 150,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.8,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 152,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 152,
+   "y": 10,
+   "ref": "f7",
+   "latex": "E=\\dfrac{U_{AB}}{d}",
+   "nombre": "Campo eléctrico en un condensador plano"
+  },
+  {
+   "tipo": "foso",
+   "x": 154,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 155,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.5,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 157,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 128,
+   "y": 0,
+   "w": 31,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 159,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 160
+  },
+  {
+   "tipo": "enemigo",
+   "x": 164,
+   "y": 13,
+   "enemigo": "signo_de_q",
+   "nombre": "Olvidar el signo de q al orientar a",
+   "correccion": "a = (q/m)E: para un electrón q = −e, a es opuesta a E."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 162,
+   "y": 12,
+   "ref": "f8",
+   "latex": "\\vec{a}=\\dfrac{q}{m}\\,\\vec{E}",
+   "nombre": "Aceleración de una partícula cargada en un campo eléctrico uniforme"
+  },
+  {
+   "tipo": "item",
+   "x": 162,
+   "y": 12,
+   "item": "escudo"
+  },
+  {
+   "tipo": "foso",
+   "x": 167,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 168,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.2,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 170,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 170,
+   "y": 11,
+   "ref": "f10",
+   "latex": "y(x)=\\dfrac{-q\\,E}{2\\,m\\,v_0^2\\cos^2\\alpha}\\,x^2+x\\tan\\alpha",
+   "nombre": "Ecuación de la trayectoria en un campo eléctrico uniforme"
+  },
+  {
+   "tipo": "foso",
+   "x": 172,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 173,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.7,
+   "retardo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 175,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 177,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 178,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.3,
+   "retardo": 1.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 180,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 180,
+   "y": 11,
+   "ref": "f13",
+   "latex": "E_m=E_c+E_p=\\text{cte}\\quad(\\Delta E_m=0)",
+   "nombre": "Conservación de la energía mecánica"
+  },
+  {
+   "tipo": "foso",
+   "x": 182,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 183,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.5,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 185,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 187,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 188,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.9,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 190,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 190,
+   "y": 12,
+   "ref": "f15",
+   "latex": "\\Delta E_c=W_{AB}(\\vec F_e)=\\vec F_e\\cdot\\overrightarrow{AB}=q\\,\\vec E\\cdot\\overrightarrow{AB}=q\\,U_{AB}",
+   "nombre": "Trabajo de la fuerza eléctrica en un condensador plano (acelerador lineal)"
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 167,
+   "y": 0,
+   "w": 25,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 192,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 192,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 195,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 206,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 214,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 215
+  },
+  {
+   "tipo": "enemigo",
+   "x": 219,
+   "y": 13,
+   "enemigo": "peso_sin_justificar",
+   "nombre": "Despreciar el peso sin justificarlo",
+   "correccion": "Compara F_e/P (≈ 10¹⁰ para un protón) antes de despreciar el peso."
+  },
+  {
+   "tipo": "item",
+   "x": 217,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 222,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "meta",
+   "x": 227
+  },
+  {
+   "tipo": "plataforma",
+   "x": 223,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 69,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 127,
+   "y": 7
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 184,
+   "y": 8
+  }
+ ],
+ "ambiente": "campo",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "extra": "p4",
+ "nombre_fase": "Parkour extremo"
+}

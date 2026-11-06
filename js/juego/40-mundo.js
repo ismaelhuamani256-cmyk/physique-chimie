@@ -52,7 +52,7 @@
     w.cintas = G.cintas.map((c) => ({ x: c.x, y: c.y, largo: c.largo, v: c.velocidad }));
     w.picos = G.picos.map((c) => ({ x: c.x, y: c.y, largo: c.largo }));
     w.rebotes = G.rebotes.map((r) => ({ x: r.x, y: r.y, largo: r.largo, comp: 0 }));
-    w.sprints = G.sprints.map((sp) => ({ ini: sp.ini, fin: sp.fin, v: sp.velocidad, activo: false, hecho: false, cam: 0 }));
+    w.sprints = G.sprints.map((sp) => ({ ini: sp.ini, fin: sp.fin, v: sp.velocidad, activo: false, hecho: false, cam: 0, perseguidor: (sp.seg && sp.seg.perseguidor) || null, tAtq: 2.5 }));
     w.carteles = G.carteles.map((c) => ({ x: celda(c.x), y: celda(c.y), texto: c.texto, cerca: false }));
     for (const rs of G.rastros) rs.puntos.forEach((q, i) => w.items.push({ x: celda(q[0]), y: celda(q[1]), moneda: true, tomado: false, fase: i * 0.4, ref: null }));
     w.atomos = G.atomos.map((a) => ({ x: a.x, y: a.y, el: a.elemento, tomado: false, fase: (J.hash('at' + a.x + a.y) % 60) / 10 }));

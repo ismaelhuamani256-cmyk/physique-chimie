@@ -1,0 +1,769 @@
+{
+ "capitulo_id": "forcer-sens",
+ "tipo_nivel": "normal",
+ "tema_visual": "laboratorio-neon",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 248,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 14,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 18,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 24,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 30,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 34,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 34,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 37,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 48,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 53,
+   "y": 12,
+   "ref": "f1",
+   "latex": "Q_{r,i} < K(T) \\;\\Rightarrow\\; \\text{évolution spontanée dans le sens direct}",
+   "nombre": "Critère d'évolution spontanée (Qr,i frente a K)"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 56,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 57
+  },
+  {
+   "tipo": "enemigo",
+   "x": 61,
+   "y": 13,
+   "enemigo": "error_anodo_catodo",
+   "nombre": "Confundir ánodo y cátodo",
+   "correccion": "Cátodo = reducción (borne −); ánodo = oxidación (borne +)."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 59,
+   "y": 12,
+   "ref": "f2",
+   "latex": "Q_{r,i} = \\dfrac{[\\mathrm{Zn^{2+}(aq)}]_i\\,[\\mathrm{I^-(aq)}]_i^{2}}{[\\mathrm{I_2(aq)}]_i}",
+   "nombre": "Cociente de reacción inicial (ejemplo Zn / I2)"
+  },
+  {
+   "tipo": "item",
+   "x": 59,
+   "y": 12,
+   "item": "doble"
+  },
+  {
+   "tipo": "foso",
+   "x": 64,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 65,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.1,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 67,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 67,
+   "y": 11,
+   "ref": "f3",
+   "latex": "[\\mathrm{X}]_i = \\dfrac{n_i}{V_{total}} = \\dfrac{c\\cdot V}{V_{total}}",
+   "nombre": "Concentración inicial tras mezclar"
+  },
+  {
+   "tipo": "foso",
+   "x": 69,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 70,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.9,
+   "retardo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 72,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 74,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 75,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.6,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 77,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 77,
+   "y": 10,
+   "ref": "f4",
+   "latex": "q = I\\cdot\\Delta t",
+   "nombre": "Carga eléctrica y corriente"
+  },
+  {
+   "tipo": "foso",
+   "x": 79,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 81,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.3,
+   "retardo": 2.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 83,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 85,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 86,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.3,
+   "retardo": 0.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 88,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 88,
+   "y": 10,
+   "ref": "f5",
+   "latex": "q = n(e^-)\\cdot N_A\\cdot e",
+   "nombre": "Carga y cantidad de electrones"
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 64,
+   "y": 0,
+   "w": 26,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "foso",
+   "x": 90,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 91,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 93,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 95,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 96,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3,
+   "retardo": 1.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 98,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 98,
+   "y": 12,
+   "ref": "f6",
+   "latex": "n(\\mathrm{I_2})_{\\text{formé}}=n(\\mathrm{Zn})_{\\text{formé}}=\\dfrac{1}{2}\\,n(e^-)=\\dfrac{I\\cdot\\Delta t}{2\\,N_A\\cdot e}",
+   "nombre": "Balance de materia de la electrólisis (Zn²⁺ / I⁻)"
+  },
+  {
+   "tipo": "foso",
+   "x": 100,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 101,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.2,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 103,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 105,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 106,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.5,
+   "retardo": 2.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 108,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 110,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 111,
+   "y": 17,
+   "altura": 7,
+   "periodo": 4,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 113,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 113,
+   "y": 12,
+   "ref": "f7",
+   "latex": "\\Delta t = \\dfrac{n(e^-)\\cdot N_A\\cdot e}{I}",
+   "nombre": "Duración de la electrólisis"
+  },
+  {
+   "tipo": "foso",
+   "x": 115,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 117,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.1,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 119,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 121,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 123,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.4,
+   "retardo": 2.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 125,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 127,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 128,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.7,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 130,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 90,
+   "y": 0,
+   "w": 42,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 132,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 133
+  },
+  {
+   "tipo": "enemigo",
+   "x": 137,
+   "y": 13,
+   "enemigo": "error_volumen_total",
+   "nombre": "Usar el volumen de una solución en vez del total",
+   "correccion": "Tras mezclar, [X]i = ni / Vtotal de la mezcla."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 135,
+   "y": 12,
+   "ref": "f10",
+   "latex": "n = \\dfrac{m}{M}",
+   "nombre": "Cantidad de materia a partir de la masa"
+  },
+  {
+   "tipo": "item",
+   "x": 135,
+   "y": 12,
+   "item": "luna"
+  },
+  {
+   "tipo": "foso",
+   "x": 140,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 141,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.1,
+   "retardo": 0.5
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 142,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 144,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 145,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.3,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 146,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 148,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 149,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.1,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 150,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 152,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 153,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.8,
+   "retardo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 154,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 156,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 158,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.7,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 156,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 161,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 163,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 165,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.5,
+   "retardo": 2
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 163,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 168,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 171,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 172
+  },
+  {
+   "tipo": "enemigo",
+   "x": 176,
+   "y": 13,
+   "enemigo": "error_unidades",
+   "nombre": "Unidades incoherentes",
+   "correccion": "Pasar Δt a segundos y µm/cm² a cm antes de calcular (q en C, I en A)."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 174,
+   "y": 12,
+   "ref": "f9",
+   "latex": "m = \\rho\\cdot V = \\rho\\cdot S\\cdot e",
+   "nombre": "Masa de un depósito metálico"
+  },
+  {
+   "tipo": "item",
+   "x": 174,
+   "y": 12,
+   "item": "escudo"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 179,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "sierra",
+   "x": 183,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "sierra",
+   "x": 188,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3
+  },
+  {
+   "tipo": "sierra",
+   "x": 193,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.7
+  },
+  {
+   "tipo": "sierra",
+   "x": 198,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.4
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 201,
+   "y": 11,
+   "ref": "f8",
+   "latex": "E = U\\cdot I\\cdot\\Delta t",
+   "nombre": "Energía eléctrica"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 203,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "laser",
+   "x": 207,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.4,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "laser",
+   "x": 213,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 2.9,
+   "retardo": 1.5
+  },
+  {
+   "tipo": "laser",
+   "x": 219,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 2.9,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 225,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 226
+  },
+  {
+   "tipo": "enemigo",
+   "x": 230,
+   "y": 13,
+   "enemigo": "error_sentido_corriente",
+   "nombre": "Invertir el sentido de I y de los e⁻",
+   "correccion": "Los electrones circulan en sentido contrario al de la corriente I."
+  },
+  {
+   "tipo": "item",
+   "x": 228,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 233,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "meta",
+   "x": 238
+  },
+  {
+   "tipo": "plataforma",
+   "x": 234,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 72,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 133,
+   "y": 7
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 193,
+   "y": 8
+  }
+ ],
+ "ambiente": "lab",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "extra": "p4",
+ "nombre_fase": "Parkour extremo"
+}

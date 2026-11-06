@@ -1,0 +1,518 @@
+{
+ "capitulo_id": "force-acides-bases",
+ "tipo_nivel": "normal",
+ "tema_visual": "laboratorio-ambar",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 190,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 14,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 14,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 17,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 28,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 33,
+   "y": 12,
+   "ref": "f2",
+   "latex": "K_e = [\\mathrm{H_3O^+}]_f \\cdot [\\mathrm{HO^-}]_f",
+   "nombre": "Producto iónico del agua"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 36,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "laser",
+   "x": 40,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.7,
+   "retardo": 0
+  },
+  {
+   "tipo": "laser",
+   "x": 46,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "laser",
+   "x": 52,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.4,
+   "retardo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 58,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 59
+  },
+  {
+   "tipo": "plataforma",
+   "x": 64,
+   "y": 14,
+   "largo": 19
+  },
+  {
+   "tipo": "sierra",
+   "x": 68,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.9
+  },
+  {
+   "tipo": "sierra",
+   "x": 73,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3
+  },
+  {
+   "tipo": "sierra",
+   "x": 78,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.9
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 81,
+   "y": 11,
+   "ref": "f4",
+   "latex": "K_A = \\dfrac{[\\mathrm{A^-}]_f \\cdot [\\mathrm{H_3O^+}]_f}{[\\mathrm{AH}]_f}",
+   "nombre": "Constante de acidez de un par"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 83,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 87,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 93,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 99,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 103,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 104
+  },
+  {
+   "tipo": "foso",
+   "x": 109,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 110,
+   "y": 17,
+   "altura": 8,
+   "periodo": 4,
+   "retardo": 1.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 112,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 112,
+   "y": 12,
+   "ref": "f6",
+   "latex": "\\mathrm{pH} = -\\log c",
+   "nombre": "pH de una solución de ácido fuerte"
+  },
+  {
+   "tipo": "foso",
+   "x": 114,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 116,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.4,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 118,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 120,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 121,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.9,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 123,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 123,
+   "y": 12,
+   "ref": "f7",
+   "latex": "\\mathrm{pH} = \\mathrm{p}K_e + \\log c",
+   "nombre": "pH de una solución de base fuerte"
+  },
+  {
+   "tipo": "foso",
+   "x": 125,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 126,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.1,
+   "retardo": 2.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 128,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 130,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 131,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.6,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 133,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 133,
+   "y": 10,
+   "ref": "f11",
+   "latex": "c\\cdot\\tau^2 + K_A\\cdot\\tau - K_A = 0",
+   "nombre": "Ecuación de segundo grado del ácido débil"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 135,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 118,
+   "y": 12,
+   "ref": "n11",
+   "latex": "\\text{Solution tampon}",
+   "nombre": "Solution tampon"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 62,
+   "y": 12,
+   "ref": "f14",
+   "latex": "\\mathrm{pH} = \\mathrm{p}K_A + \\log\\dfrac{[\\mathrm{A^-}]_f}{[\\mathrm{AH}]_f}",
+   "nombre": "pH de una solución de un par ácido-base"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 124,
+   "y": 12,
+   "ref": "f12",
+   "latex": "\\tau = \\dfrac{-K_A+\\sqrt{\\Delta}}{2c} \\qquad \\Delta = K_A^2+4\\,c\\,K_A",
+   "nombre": "Solución de la ecuación (τ > 0)"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 87,
+   "y": 12,
+   "ref": "f8",
+   "latex": "x_{max}=c\\cdot V \\qquad \\tau = \\dfrac{x_f}{x_{max}} \\;\\Rightarrow\\; x_f = x_{max}\\cdot\\tau",
+   "nombre": "Avance máximo y tasa de avance final"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 81,
+   "y": 12,
+   "ref": "n14",
+   "latex": "\\text{Indicateur coloré}",
+   "nombre": "Indicateur coloré et zone de virage"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 59,
+   "y": 13,
+   "enemigo": "error_ph_debil",
+   "nombre": "Aplicar pH = −log c a un ácido débil",
+   "correccion": "Esa relación solo vale si la transformación es total; para un ácido débil hay que usar KA, τ y [H₃O⁺]f = c·τ."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 106,
+   "y": 13,
+   "enemigo": "error_reaccion_total",
+   "nombre": "Escribir xf = c·V en la tabla de un ácido débil",
+   "correccion": "La transformación no es total: xf = xmax·τ < xmax y [AH]f = c(1−τ) ≠ 0."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 107,
+   "y": 13,
+   "enemigo": "error_concentracion",
+   "nombre": "Confundir concentración aportada con concentración efectiva",
+   "correccion": "c (la del frasco) no es la de las especies presentes: calcular [A⁻]f, [AH]f y [H₃O⁺]f con la tabla de avance."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 106,
+   "y": 13,
+   "enemigo": "error_raiz_negativa",
+   "nombre": "Conservar la raíz negativa de la ecuación de 2.º grado",
+   "correccion": "Δ > 0 da dos raíces; τ es positivo (y menor que 1): conservar solo τ = (−KA + √Δ)/(2c)."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 136,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 138
+  },
+  {
+   "tipo": "item",
+   "x": 139,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 141,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 143,
+   "y": 12,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 145,
+   "y": 12,
+   "item": "vida"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 142,
+   "y": 13,
+   "enemigo": "error_indicador",
+   "nombre": "Elegir un indicador cuya zona de viraje no contiene el pH de equivalencia",
+   "correccion": "El indicador sirve si el pH en la equivalencia está dentro de su zona de viraje (FIG. 9–10)."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 148,
+   "y": 14,
+   "largo": 42
+  },
+  {
+   "tipo": "sprint",
+   "x_ini": 14,
+   "x_fin": 136,
+   "velocidad": 4.1,
+   "perseguidor": "maestro_calavera"
+  },
+  {
+   "tipo": "jefe",
+   "x": 165,
+   "jefe": "maestro_calavera",
+   "titulo": "BATALLA FINAL · Maestro Calavera",
+   "preguntas": [
+    {
+     "pregunta": "Une solution aqueuse d'acide fort (réaction quasi-totale avec l'eau) a une concentration c en acide apporté. Quelle relation donne son pH ?",
+     "opciones": [
+      "pH = pKe + log c",
+      "pH = − log c",
+      "pH = pKA + log c",
+      "pH = 14 − c"
+     ],
+     "correcta": 1,
+     "explicacion": "Si la transformation est totale, [H₃O⁺]f = c, donc pH = −log c (ex. HCl 1,0×10⁻² mol·L⁻¹ → pH = 2,0).",
+     "pagina_pdf": 185
+    },
+    {
+     "pregunta": "Plus le pKA d'un couple acide-base est grand...",
+     "opciones": [
+      "plus l'acide réagit avec l'eau, donc plus il est fort",
+      "moins l'acide réagit avec l'eau, donc plus il est faible et plus sa base est forte",
+      "plus Ke est grand",
+      "plus la solution est tampon"
+     ],
+     "correcta": 1,
+     "explicacion": "Un pKA grand correspond à un acide qui réagit peu avec l'eau (acide faible) et à une base conjuguée plus forte.",
+     "pagina_pdf": 185
+    },
+    {
+     "pregunta": "Dans un diagramme de distribution, à quelle condition l'acide et sa base conjuguée sont-ils en proportions égales (50 % chacun) ?",
+     "opciones": [
+      "pH = 7",
+      "pH = pKe",
+      "pH = pKA",
+      "pH = 0"
+     ],
+     "correcta": 2,
+     "explicacion": "Quand [AH]f = [A⁻]f, KA = [H₃O⁺]f donc pH = pKA.",
+     "pagina_pdf": 188
+    },
+    {
+     "pregunta": "Le pH à l'équivalence du titrage de la soude par l'acide chlorhydrique vaut 7,0. Quel indicateur coloré choisir parmi ceux du tableau ?",
+     "opciones": [
+      "Hélianthine (3,1–4,4)",
+      "Rouge de méthyle (4,2–6,2)",
+      "Bleu de bromothymol (6,0–7,6)",
+      "Thymolphtaléine (9,3–10,5)"
+     ],
+     "correcta": 2,
+     "explicacion": "Le pH à l'équivalence doit se situer dans la zone de virage : 7,0 est dans 6,0–7,6, donc le BBT.",
+     "pagina_pdf": 188
+    }
+   ],
+   "vidas": 5,
+   "furia": 2
+  },
+  {
+   "tipo": "meta",
+   "x": 184
+  },
+  {
+   "tipo": "meteoros",
+   "x": 152,
+   "w": 36,
+   "periodo": 1.3
+  },
+  {
+   "tipo": "tormenta",
+   "x": 152,
+   "w": 36,
+   "periodo": 2
+  },
+  {
+   "tipo": "lluvia_rocas",
+   "x": 154,
+   "w": 30,
+   "periodo": 2.1
+  }
+ ],
+ "ambiente": "lab",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "extra": "batalla",
+ "nombre_fase": "Batalla final"
+}

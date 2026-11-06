@@ -1,0 +1,714 @@
+{
+ "capitulo_id": "evolution-temporelle",
+ "tipo_nivel": "normal",
+ "tema_visual": "caverna",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 236,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 14,
+   "y": 14,
+   "largo": 28
+  },
+  {
+   "tipo": "laser",
+   "x": 18,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.3,
+   "retardo": 0.5
+  },
+  {
+   "tipo": "laser",
+   "x": 24,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.6,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "laser",
+   "x": 30,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.3,
+   "retardo": 2
+  },
+  {
+   "tipo": "laser",
+   "x": 36,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.4,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 42,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 42,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 45,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 56,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 61,
+   "y": 12,
+   "ref": "f1",
+   "latex": "v_{\\text{Produit}} = \\dfrac{\\mathrm{d}[\\text{Produit}]}{\\mathrm{d}t}",
+   "nombre": "Velocidad volúmica de aparición de un producto"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 64,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 65
+  },
+  {
+   "tipo": "enemigo",
+   "x": 69,
+   "y": 13,
+   "enemigo": "error_signo",
+   "nombre": "Olvidar el signo menos",
+   "correccion": "En v de un reactivo se pone −d[R]/dt para que sea positiva."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 67,
+   "y": 12,
+   "ref": "f2",
+   "latex": "v_{\\text{Réactif}} = -\\dfrac{\\mathrm{d}[\\text{Réactif}]}{\\mathrm{d}t}",
+   "nombre": "Velocidad volúmica de desaparición de un reactivo"
+  },
+  {
+   "tipo": "item",
+   "x": 67,
+   "y": 12,
+   "item": "doble"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 72,
+   "y": 14,
+   "largo": 19
+  },
+  {
+   "tipo": "sierra",
+   "x": 76,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.1
+  },
+  {
+   "tipo": "sierra",
+   "x": 81,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 86,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 89,
+   "y": 11,
+   "ref": "f3",
+   "latex": "x(t_{1/2}) = \\dfrac{x_\\mathrm{f}}{2}",
+   "nombre": "Tiempo de semirreacción"
+  },
+  {
+   "tipo": "foso",
+   "x": 91,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 93,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.5,
+   "retardo": 2.7
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 91,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 96,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 98,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 100,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.6,
+   "retardo": 2.9
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 98,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 103,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 106,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 107
+  },
+  {
+   "tipo": "enemigo",
+   "x": 111,
+   "y": 13,
+   "enemigo": "error_estequiometria",
+   "nombre": "Olvidar el nº estequiométrico",
+   "correccion": "[producto] = (coeficiente·x)/V, no x/V."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 109,
+   "y": 12,
+   "ref": "f4",
+   "latex": "v_\\mathrm{A} = k \\cdot [\\mathrm{A}]",
+   "nombre": "Ley de velocidad de orden 1 (reactivo)"
+  },
+  {
+   "tipo": "item",
+   "x": 109,
+   "y": 12,
+   "item": "luna"
+  },
+  {
+   "tipo": "foso",
+   "x": 114,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 115,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.1,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 116,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 118,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 119,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.5,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 120,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 122,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 123,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.4,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 124,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 126,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 127,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.5,
+   "retardo": 0.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 128,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 130,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 131,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.4,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 133,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 135,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 137,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.8,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 139,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 139,
+   "y": 12,
+   "ref": "f5",
+   "latex": "v_\\mathrm{P} = k' \\cdot [\\mathrm{A}]",
+   "nombre": "Ley de velocidad de orden 1 (producto)"
+  },
+  {
+   "tipo": "foso",
+   "x": 141,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 143,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.5,
+   "retardo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 145,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 147,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 148,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.9,
+   "retardo": 2.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 150,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 152,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 154,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.7,
+   "retardo": 2.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 156,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 156,
+   "y": 12,
+   "ref": "f10",
+   "latex": "\\sigma_{\\text{solution}} = \\sum_i \\lambda_i \\cdot [\\mathrm{X}_i]",
+   "nombre": "Ley de Kohlrausch"
+  },
+  {
+   "tipo": "foso",
+   "x": 158,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 159,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.9,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 161,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 130,
+   "y": 0,
+   "w": 33,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 163,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 164
+  },
+  {
+   "tipo": "enemigo",
+   "x": 168,
+   "y": 13,
+   "enemigo": "confusion_catalizador",
+   "nombre": "Confundir catalizador e intermediario",
+   "correccion": "Intermediario: formado y consumido; catalizador: consumido y regenerado."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 166,
+   "y": 12,
+   "ref": "n7",
+   "latex": "\\text{Temps de demi-réaction t1/2}",
+   "nombre": "Temps de demi-réaction t1/2"
+  },
+  {
+   "tipo": "item",
+   "x": 166,
+   "y": 12,
+   "item": "escudo"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 171,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 175,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 181,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 187,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "foso",
+   "x": 191,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 193,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3,
+   "retardo": 0.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 195,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 195,
+   "y": 12,
+   "ref": "f6",
+   "latex": "n_{\\text{réactif}}(t_{1/2}) = \\dfrac{n_0}{2}",
+   "nombre": "Cantidad de reactivo en t1/2"
+  },
+  {
+   "tipo": "foso",
+   "x": 197,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 198,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.8,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 200,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 202,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 203,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.3,
+   "retardo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 205,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 205,
+   "y": 11,
+   "ref": "n4",
+   "latex": "\\text{Catalyseur}",
+   "nombre": "Catalyseur"
+  },
+  {
+   "tipo": "foso",
+   "x": 207,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 209,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.4,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 211,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 191,
+   "y": 0,
+   "w": 22,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 213,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 214
+  },
+  {
+   "tipo": "enemigo",
+   "x": 218,
+   "y": 13,
+   "enemigo": "catalizador_en_balance",
+   "nombre": "El catalizador cambia el balance",
+   "correccion": "No aparece en la ecuación y no cambia el estado final."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 216,
+   "y": 12,
+   "ref": "f11",
+   "latex": "[\\mathrm{HO^-}](t) = c_0 \\cdot \\dfrac{\\sigma_t - \\sigma_\\infty}{\\sigma_0 - \\sigma_\\infty}",
+   "nombre": "Concentración de HO⁻ por conductimetría"
+  },
+  {
+   "tipo": "item",
+   "x": 216,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 221,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "meta",
+   "x": 226
+  },
+  {
+   "tipo": "plataforma",
+   "x": 222,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 69,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 126,
+   "y": 7
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 184,
+   "y": 8
+  }
+ ],
+ "ambiente": "cueva",
+ "vertical": true,
+ "peligros": true,
+ "aire": true,
+ "relieve": true,
+ "extra": "p4",
+ "nombre_fase": "Parkour extremo"
+}

@@ -1,0 +1,567 @@
+{
+ "capitulo_id": "methodes-physiques",
+ "tipo_nivel": "normal",
+ "tema_visual": "laboratorio-violeta",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.9,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 197,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 15,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.8,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 17,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 17,
+   "y": 12,
+   "ref": "f1",
+   "latex": "\\mathrm{pH} = -\\log\\left(\\dfrac{[\\mathrm{H_3O^+}]}{c^{\\circ}}\\right)",
+   "nombre": "pH a partir de la concentración en ion oxonio"
+  },
+  {
+   "tipo": "foso",
+   "x": 19,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 21,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.8,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 23,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 25,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 26,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.4,
+   "retardo": 2.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 28,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 28,
+   "y": 12,
+   "ref": "f2",
+   "latex": "[\\mathrm{H_3O^+}] = c^{\\circ}\\times 10^{-\\mathrm{pH}}",
+   "nombre": "Concentración en ion oxonio a partir del pH"
+  },
+  {
+   "tipo": "foso",
+   "x": 30,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 31,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.3,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 33,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 35,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 36,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.8,
+   "retardo": 0.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 38,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 38,
+   "y": 12,
+   "ref": "f5",
+   "latex": "A = k\\cdot c",
+   "nombre": "Ley de Beer-Lambert"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 40,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 40,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 43,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 54,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 59,
+   "y": 12,
+   "ref": "f9",
+   "latex": "\\sigma = \\sum_{i=1}^{n}\\lambda_i\\cdot[X_i]",
+   "nombre": "Ley de Kohlrausch"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 62,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 63
+  },
+  {
+   "tipo": "foso",
+   "x": 68,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 69,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.6,
+   "retardo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 71,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 73,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 75,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.2,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 77,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 77,
+   "y": 10,
+   "ref": "f8",
+   "latex": "\\sigma = \\dfrac{\\ell}{S}\\cdot G",
+   "nombre": "Conductividad a partir de la conductancia"
+  },
+  {
+   "tipo": "foso",
+   "x": 79,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 80,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.5,
+   "retardo": 0.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 82,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 84,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 86,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.9,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 88,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 90,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 91,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.8,
+   "retardo": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 93,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 95,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "laser",
+   "x": 99,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.1,
+   "retardo": 1
+  },
+  {
+   "tipo": "laser",
+   "x": 105,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.5,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "laser",
+   "x": 111,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.3,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 117,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 118
+  },
+  {
+   "tipo": "plataforma",
+   "x": 123,
+   "y": 14,
+   "largo": 19
+  },
+  {
+   "tipo": "sierra",
+   "x": 127,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.8
+  },
+  {
+   "tipo": "sierra",
+   "x": 132,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.1
+  },
+  {
+   "tipo": "sierra",
+   "x": 137,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 140,
+   "y": 11,
+   "ref": "f7",
+   "latex": "G = \\dfrac{1}{R} = \\dfrac{I}{U}",
+   "nombre": "Conductancia de una solución"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 142,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 39,
+   "y": 12,
+   "ref": "f3",
+   "latex": "\\tilde{\\nu} = \\dfrac{1}{\\lambda}",
+   "nombre": "Número de onda"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 78,
+   "y": 10,
+   "ref": "f4",
+   "latex": "\\Delta E = E_f - E_i = h\\cdot\\nu",
+   "nombre": "Energía del fotón absorbido"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 121,
+   "y": 13,
+   "enemigo": "error_unidades",
+   "nombre": "Olvidar pasar mol·L⁻¹ a mol·m⁻³ en Kohlrausch",
+   "correccion": "Multiplica c por 10³: σ en S·m⁻¹ exige [Xᵢ] en mol·m⁻³."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 128,
+   "y": 13,
+   "enemigo": "error_dominio_ph",
+   "nombre": "Usar pH = −log(…) fuera de su dominio",
+   "correccion": "Solo vale entre 10⁻² y 10⁻⁶·⁵ mol·L⁻¹; si hay mucha dilución, pH = 7."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 128,
+   "y": 13,
+   "enemigo": "error_dilucion",
+   "nombre": "Usar Beer-Lambert o Kohlrausch con c ≥ 10⁻² mol·L⁻¹",
+   "correccion": "Diluye antes: solo son válidas para c < 10⁻² mol·L⁻¹."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 130,
+   "y": 13,
+   "enemigo": "error_lambda",
+   "nombre": "Medir la absorbancia en una λ cualquiera",
+   "correccion": "Colócate en λ_max del espectro de la especie."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 143,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 145
+  },
+  {
+   "tipo": "item",
+   "x": 146,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 148,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 150,
+   "y": 12,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 152,
+   "y": 12,
+   "item": "vida"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 149,
+   "y": 13,
+   "enemigo": "error_factor_dilucion",
+   "nombre": "Olvidar el factor de dilución al leer la curva de calibrado",
+   "correccion": "c solución = factor de dilución × c leída (ej. 10 × 6,8 mmol·L⁻¹)."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 155,
+   "y": 14,
+   "largo": 42
+  },
+  {
+   "tipo": "sprint",
+   "x_ini": 14,
+   "x_fin": 143,
+   "velocidad": 4.1,
+   "perseguidor": "isotopo_inestable"
+  },
+  {
+   "tipo": "jefe",
+   "x": 172,
+   "jefe": "isotopo_inestable",
+   "titulo": "BATALLA FINAL · Isótopo Inestable",
+   "preguntas": [
+    {
+     "pregunta": "Una banda fina y fuerte hacia 1 740 cm⁻¹ en un espectro IR corresponde a…",
+     "opciones": [
+      "un enlace O–H de alcohol",
+      "un enlace C=O",
+      "un enlace C–H de aldehído",
+      "la zona de las huellas dactilares únicamente"
+     ],
+     "correcta": 1,
+     "explicacion": "Según la tabla de datos espectroscópicos, C=O de cetonas, aldehídos y ácidos carboxílicos aparece como banda fina y fuerte entre 1 680 y 1 800 cm⁻¹ (1 740 cm⁻¹ en ácidos).",
+     "pagina_pdf": 62
+    },
+    {
+     "pregunta": "La ley de Beer-Lambert A = k·c solo es válida para concentraciones…",
+     "opciones": [
+      "superiores a 1 mol·L⁻¹",
+      "inferiores a 10⁻² mol·L⁻¹",
+      "iguales a la concentración estándar c°",
+      "cualquiera, siempre que A < 1"
+     ],
+     "correcta": 1,
+     "explicacion": "La absorbancia debe ser suficientemente pequeña, por lo que las concentraciones deben ser inferiores a 10⁻² mol·L⁻¹.",
+     "pagina_pdf": 65
+    },
+    {
+     "pregunta": "¿Cuál es el pH de una solución con [H₃O⁺] = 0,010 mol·L⁻¹?",
+     "opciones": [
+      "12",
+      "0,010",
+      "2",
+      "−2"
+     ],
+     "correcta": 2,
+     "explicacion": "pH = −log(0,010/1) = 2.",
+     "pagina_pdf": 63
+    },
+    {
+     "pregunta": "Se disuelve CaCl₂(s) con un aporte c′ = 0,068 mol·L⁻¹. ¿Cuál es [Cl⁻]?",
+     "opciones": [
+      "0,068 mol·L⁻¹",
+      "0,034 mol·L⁻¹",
+      "0,136 mol·L⁻¹",
+      "0,204 mol·L⁻¹"
+     ],
+     "correcta": 2,
+     "explicacion": "CaCl₂(s) → Ca²⁺(aq) + 2 Cl⁻(aq): [Cl⁻] = 2c′ = 0,136 mol·L⁻¹.",
+     "pagina_pdf": 73
+    }
+   ],
+   "vidas": 5,
+   "furia": 2
+  },
+  {
+   "tipo": "meta",
+   "x": 191
+  },
+  {
+   "tipo": "meteoros",
+   "x": 159,
+   "w": 36,
+   "periodo": 1.3
+  },
+  {
+   "tipo": "tormenta",
+   "x": 159,
+   "w": 36,
+   "periodo": 2
+  },
+  {
+   "tipo": "lluvia_rocas",
+   "x": 161,
+   "w": 30,
+   "periodo": 2.1
+  }
+ ],
+ "ambiente": "lab",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "extra": "batalla",
+ "nombre_fase": "Batalla final"
+}

@@ -1,0 +1,562 @@
+{
+ "capitulo_id": "evolution-temporelle",
+ "tipo_nivel": "normal",
+ "tema_visual": "caverna",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 190,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 14,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 16,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.2,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 18,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 18,
+   "y": 12,
+   "ref": "f1",
+   "latex": "v_{\\text{Produit}} = \\dfrac{\\mathrm{d}[\\text{Produit}]}{\\mathrm{d}t}",
+   "nombre": "Velocidad volúmica de aparición de un producto"
+  },
+  {
+   "tipo": "foso",
+   "x": 20,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 22,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.9,
+   "retardo": 0.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 24,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 26,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 27,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.5,
+   "retardo": 1.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 29,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 29,
+   "y": 12,
+   "ref": "f2",
+   "latex": "v_{\\text{Réactif}} = -\\dfrac{\\mathrm{d}[\\text{Réactif}]}{\\mathrm{d}t}",
+   "nombre": "Velocidad volúmica de desaparición de un reactivo"
+  },
+  {
+   "tipo": "foso",
+   "x": 31,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 32,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.4,
+   "retardo": 2.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 34,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 36,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 37,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.6,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 39,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 39,
+   "y": 12,
+   "ref": "f3",
+   "latex": "x(t_{1/2}) = \\dfrac{x_\\mathrm{f}}{2}",
+   "nombre": "Tiempo de semirreacción"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 41,
+   "y": 14,
+   "largo": 19
+  },
+  {
+   "tipo": "sierra",
+   "x": 45,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.2
+  },
+  {
+   "tipo": "sierra",
+   "x": 50,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3
+  },
+  {
+   "tipo": "sierra",
+   "x": 55,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.7
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 58,
+   "y": 11,
+   "ref": "f4",
+   "latex": "v_\\mathrm{A} = k \\cdot [\\mathrm{A}]",
+   "nombre": "Ley de velocidad de orden 1 (reactivo)"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 60,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 61
+  },
+  {
+   "tipo": "foso",
+   "x": 66,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 67,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.5,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 69,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 69,
+   "y": 12,
+   "ref": "f5",
+   "latex": "v_\\mathrm{P} = k' \\cdot [\\mathrm{A}]",
+   "nombre": "Ley de velocidad de orden 1 (producto)"
+  },
+  {
+   "tipo": "foso",
+   "x": 71,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 72,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.4,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 74,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 76,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 78,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.5,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 80,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 80,
+   "y": 12,
+   "ref": "f10",
+   "latex": "\\sigma_{\\text{solution}} = \\sum_i \\lambda_i \\cdot [\\mathrm{X}_i]",
+   "nombre": "Ley de Kohlrausch"
+  },
+  {
+   "tipo": "foso",
+   "x": 82,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 83,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.4,
+   "retardo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 85,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 87,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 91,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 97,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 103,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 107,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 108
+  },
+  {
+   "tipo": "plataforma",
+   "x": 113,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 113,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 116,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 127,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 132,
+   "y": 12,
+   "ref": "n7",
+   "latex": "\\text{Temps de demi-réaction t1/2}",
+   "nombre": "Temps de demi-réaction t1/2"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 135,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 34,
+   "y": 12,
+   "ref": "f6",
+   "latex": "n_{\\text{réactif}}(t_{1/2}) = \\dfrac{n_0}{2}",
+   "nombre": "Cantidad de reactivo en t1/2"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 34,
+   "y": 12,
+   "ref": "n4",
+   "latex": "\\text{Catalyseur}",
+   "nombre": "Catalyseur"
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 30,
+   "y": 12,
+   "ref": "f11",
+   "latex": "[\\mathrm{HO^-}](t) = c_0 \\cdot \\dfrac{\\sigma_t - \\sigma_\\infty}{\\sigma_0 - \\sigma_\\infty}",
+   "nombre": "Concentración de HO⁻ por conductimetría"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 110,
+   "y": 13,
+   "enemigo": "error_signo",
+   "nombre": "Olvidar el signo menos",
+   "correccion": "En v de un reactivo se pone −d[R]/dt para que sea positiva."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 61,
+   "y": 13,
+   "enemigo": "error_estequiometria",
+   "nombre": "Olvidar el nº estequiométrico",
+   "correccion": "[producto] = (coeficiente·x)/V, no x/V."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 61,
+   "y": 13,
+   "enemigo": "confusion_catalizador",
+   "nombre": "Confundir catalizador e intermediario",
+   "correccion": "Intermediario: formado y consumido; catalizador: consumido y regenerado."
+  },
+  {
+   "tipo": "enemigo",
+   "x": 53,
+   "y": 13,
+   "enemigo": "catalizador_en_balance",
+   "nombre": "El catalizador cambia el balance",
+   "correccion": "No aparece en la ecuación y no cambia el estado final."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 136,
+   "y": 14,
+   "largo": 12
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 138
+  },
+  {
+   "tipo": "item",
+   "x": 139,
+   "y": 12,
+   "item": "escopeta"
+  },
+  {
+   "tipo": "item",
+   "x": 141,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "item",
+   "x": 143,
+   "y": 12,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 145,
+   "y": 12,
+   "item": "vida"
+  },
+  {
+   "tipo": "enemigo",
+   "x": 142,
+   "y": 13,
+   "enemigo": "error_signo",
+   "nombre": "Olvidar el signo menos",
+   "correccion": "En v de un reactivo se pone −d[R]/dt para que sea positiva."
+  },
+  {
+   "tipo": "plataforma",
+   "x": 148,
+   "y": 14,
+   "largo": 42
+  },
+  {
+   "tipo": "sprint",
+   "x_ini": 14,
+   "x_fin": 136,
+   "velocidad": 4.1,
+   "perseguidor": "yeti_criogenico"
+  },
+  {
+   "tipo": "jefe",
+   "x": 165,
+   "jefe": "yeti_criogenico",
+   "titulo": "BATALLA FINAL · Yeti Criogénico",
+   "preguntas": [
+    {
+     "pregunta": "Un catalizador es una especie química que...",
+     "opciones": [
+      "aumenta la cantidad final de producto formado",
+      "acelera la transformación y no aparece en el balance reaccional",
+      "aparece en el balance reaccional",
+      "modifica el estado final del sistema"
+     ],
+     "correcta": 1,
+     "explicacion": "Acelera u orienta la transformación sin modificar el estado final; se consume y se regenera, así que no está en la ecuación.",
+     "pagina_pdf": 112
+    },
+    {
+     "pregunta": "La velocidad volúmica de desaparición de un reactivo se expresa:",
+     "opciones": [
+      "v = dn/dt",
+      "v = d[Réactif]/dt",
+      "v = −d[Réactif]/dt",
+      "v = [Réactif]·t"
+     ],
+     "correcta": 2,
+     "explicacion": "La concentración del reactivo disminuye; el signo menos hace positiva la velocidad.",
+     "pagina_pdf": 113
+    },
+    {
+     "pregunta": "El tiempo de semirreacción t1/2 es la duración al cabo de la cual...",
+     "opciones": [
+      "la reacción está terminada",
+      "el avance vale x_f/2",
+      "la velocidad vale cero",
+      "el catalizador se regenera"
+     ],
+     "correcta": 1,
+     "explicacion": "x(t1/2) = x_f/2.",
+     "pagina_pdf": 113
+    },
+    {
+     "pregunta": "Un intermediario reaccional es una especie...",
+     "opciones": [
+      "formada y luego consumida en el mecanismo",
+      "consumida y luego regenerada",
+      "presente en el balance global",
+      "que solo aparece en la última etapa"
+     ],
+     "correcta": 0,
+     "explicacion": "Intermediario: formado y luego consumido. Consumido y regenerado define al catalizador.",
+     "pagina_pdf": 114
+    }
+   ],
+   "vidas": 5,
+   "furia": 2
+  },
+  {
+   "tipo": "meta",
+   "x": 184
+  },
+  {
+   "tipo": "meteoros",
+   "x": 152,
+   "w": 36,
+   "periodo": 1.3
+  },
+  {
+   "tipo": "tormenta",
+   "x": 152,
+   "w": 36,
+   "periodo": 2
+  },
+  {
+   "tipo": "lluvia_rocas",
+   "x": 154,
+   "w": 30,
+   "periodo": 2.1
+  }
+ ],
+ "ambiente": "cueva",
+ "vertical": true,
+ "peligros": true,
+ "aire": true,
+ "relieve": true,
+ "extra": "batalla",
+ "nombre_fase": "Batalla final"
+}

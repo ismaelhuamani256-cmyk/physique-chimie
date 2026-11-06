@@ -1,0 +1,791 @@
+{
+ "capitulo_id": "ecoulement-fluide",
+ "tipo_nivel": "normal",
+ "tema_visual": "caverna",
+ "fisica_juego": {
+  "gravedad": 0.8,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 254,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 14,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 14,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 17,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 28,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 33,
+   "y": 12,
+   "ref": "f1",
+   "latex": "F = P \\cdot S",
+   "nombre": "Fuerza presionante"
+  },
+  {
+   "tipo": "foso",
+   "x": 36,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 37,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.4,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 39,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 41,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 43,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.7,
+   "retardo": 2.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 45,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 45,
+   "y": 12,
+   "ref": "f2",
+   "latex": "\\Delta P = \\rho \\cdot g \\cdot \\Delta z",
+   "nombre": "Ley fundamental de la estática de fluidos"
+  },
+  {
+   "tipo": "foso",
+   "x": 47,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 49,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.4,
+   "retardo": 0.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 51,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 53,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 54,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.9,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 56,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 58,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 59,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.4,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 61,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 61,
+   "y": 10,
+   "ref": "f3",
+   "latex": "\\vec{\\pi} = -m_f \\cdot \\vec{g} = -\\rho_f \\cdot V \\cdot \\vec{g}",
+   "nombre": "Empuje de Arquímedes (expresión vectorial)"
+  },
+  {
+   "tipo": "foso",
+   "x": 63,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 65,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.2,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 67,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 69,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 70,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.6,
+   "retardo": 2.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 72,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 36,
+   "y": 0,
+   "w": 38,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 74,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 75
+  },
+  {
+   "tipo": "enemigo",
+   "x": 79,
+   "y": 13,
+   "enemigo": "error_unidades",
+   "nombre": "No convertir a unidades SI",
+   "correccion": "Pasar caudales a m³·s⁻¹ y diámetros a m (S = πd²/4) antes de aplicar Q = v·S o Bernoulli."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 77,
+   "y": 12,
+   "ref": "f4",
+   "latex": "\\pi = \\rho_f \\cdot V \\cdot g",
+   "nombre": "Valor del empuje de Arquímedes"
+  },
+  {
+   "tipo": "item",
+   "x": 77,
+   "y": 12,
+   "item": "doble"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 82,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 86,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 92,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 98,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 102,
+   "y": 14,
+   "largo": 19
+  },
+  {
+   "tipo": "sierra",
+   "x": 106,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.5
+  },
+  {
+   "tipo": "sierra",
+   "x": 111,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.5
+  },
+  {
+   "tipo": "sierra",
+   "x": 116,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.4
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 119,
+   "y": 11,
+   "ref": "f5",
+   "latex": "\\pi = P_1 - P_2 \\quad (\\text{peso aparente } P_2 = P_1 - \\pi)",
+   "nombre": "Empuje y peso aparente (dinamómetro)"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 121,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 122
+  },
+  {
+   "tipo": "enemigo",
+   "x": 126,
+   "y": 13,
+   "enemigo": "empuje_depende_masa",
+   "nombre": "Pensar que el empuje depende de la masa del cuerpo",
+   "correccion": "π = ρ_f·V·g: depende del volumen sumergido y del fluido, no de la masa, forma o profundidad del cuerpo."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 124,
+   "y": 12,
+   "ref": "f6",
+   "latex": "Q = \\dfrac{V}{\\Delta t}",
+   "nombre": "Caudal volumétrico"
+  },
+  {
+   "tipo": "item",
+   "x": 124,
+   "y": 12,
+   "item": "luna"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 129,
+   "y": 14,
+   "largo": 28
+  },
+  {
+   "tipo": "laser",
+   "x": 133,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.1,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "laser",
+   "x": 139,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.5,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "laser",
+   "x": 145,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.7,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "laser",
+   "x": 151,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.2,
+   "retardo": 0.1
+  },
+  {
+   "tipo": "foso",
+   "x": 157,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 159,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.6,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 157,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 162,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 164,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 166,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.9,
+   "retardo": 2.5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 164,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 169,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 172,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 173
+  },
+  {
+   "tipo": "enemigo",
+   "x": 177,
+   "y": 13,
+   "enemigo": "confusion_peso_empuje",
+   "nombre": "Confundir P (peso) y π (empuje)",
+   "correccion": "Para flotar en equilibrio π = P; si π > P el cuerpo asciende, si π < P se hunde (ej. 26 y 30)."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 175,
+   "y": 12,
+   "ref": "f7",
+   "latex": "Q = v \\cdot S",
+   "nombre": "Caudal, velocidad y sección"
+  },
+  {
+   "tipo": "item",
+   "x": 175,
+   "y": 12,
+   "item": "escudo"
+  },
+  {
+   "tipo": "foso",
+   "x": 180,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 181,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.3,
+   "retardo": 1.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 183,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 183,
+   "y": 12,
+   "ref": "f8",
+   "latex": "Q_{(A)} = Q_{(B)} \\;\\Leftrightarrow\\; v_A \\cdot S_A = v_B \\cdot S_B \\;\\Rightarrow\\; \\dfrac{v_B}{v_A} = \\dfrac{S_A}{S_B}",
+   "nombre": "Conservación del caudal volumétrico"
+  },
+  {
+   "tipo": "foso",
+   "x": 185,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 187,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.5,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 189,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 191,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 192,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.4,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 194,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 194,
+   "y": 11,
+   "ref": "f9",
+   "latex": "P + \\dfrac{1}{2}\\,\\rho\\, v^2 + \\rho\\, g\\, z = \\text{constante}",
+   "nombre": "Relación de Bernoulli"
+  },
+  {
+   "tipo": "foso",
+   "x": 196,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 197,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.4,
+   "retardo": 1.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 199,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 201,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 203,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.9,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 205,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 205,
+   "y": 12,
+   "ref": "f10",
+   "latex": "P_A + \\dfrac{1}{2}\\rho v_A^2 + \\rho g z_A = P_B + \\dfrac{1}{2}\\rho v_B^2 + \\rho g z_B",
+   "nombre": "Bernoulli entre dos puntos de una línea de corriente"
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 180,
+   "y": 0,
+   "w": 27,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "foso",
+   "x": 207,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 208,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.6,
+   "retardo": 2.4
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 209,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 211,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 212,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.8,
+   "retardo": 0.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 213,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 215,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 216,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.1,
+   "retardo": 2.4
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 217,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 219,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 220,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.4,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 221,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 223,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 224,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.7,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 225,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 227,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 228,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.7,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 229,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 231,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 232
+  },
+  {
+   "tipo": "enemigo",
+   "x": 236,
+   "y": 13,
+   "enemigo": "mas_velocidad_mas_presion",
+   "nombre": "Creer que más velocidad implica más presión",
+   "correccion": "Efecto Venturi: en régimen permanente, si v aumenta, P disminuye (P + ½ρv² = cte a igual altitud)."
+  },
+  {
+   "tipo": "item",
+   "x": 234,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 239,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "meta",
+   "x": 244
+  },
+  {
+   "tipo": "plataforma",
+   "x": 240,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 74,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 136,
+   "y": 7
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 198,
+   "y": 8
+  }
+ ],
+ "ambiente": "cueva",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "extra": "p4",
+ "nombre_fase": "Parkour extremo"
+}

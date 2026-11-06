@@ -1,0 +1,767 @@
+{
+ "capitulo_id": "systeme-electrique",
+ "tipo_nivel": "normal",
+ "tema_visual": "lava-fortaleza",
+ "fisica_juego": {
+  "gravedad": 0.9,
+  "friccion": 0.8,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 240,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 14,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 16,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.4,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 18,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 18,
+   "y": 12,
+   "ref": "f1",
+   "latex": "i(t)=\\dfrac{\\mathrm{d}q(t)}{\\mathrm{d}t}",
+   "nombre": "Intensidad como derivada de la carga"
+  },
+  {
+   "tipo": "foso",
+   "x": 20,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 21,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3,
+   "retardo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 23,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 25,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 26,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.8,
+   "retardo": 0.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 28,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 28,
+   "y": 11,
+   "ref": "f2",
+   "latex": "q=C\\cdot u",
+   "nombre": "Carga y capacidad del condensador"
+  },
+  {
+   "tipo": "foso",
+   "x": 30,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 31,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.6,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 33,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 35,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 36,
+   "y": 17,
+   "altura": 6,
+   "periodo": 4,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 38,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 38,
+   "y": 12,
+   "ref": "f3",
+   "latex": "i=C\\cdot\\dfrac{\\mathrm{d}u}{\\mathrm{d}t}",
+   "nombre": "Comportamiento capacitivo: i = C·du/dt"
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 14,
+   "y": 0,
+   "w": 26,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "foso",
+   "x": 40,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 41,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 42,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 44,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 45,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.1,
+   "retardo": 2.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 46,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 48,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 49,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.2,
+   "retardo": 2.5
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 50,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 52,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 53,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.6,
+   "retardo": 2.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 54,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 56,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 57,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.2,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 58,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 60,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 61,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.8,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 62,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 64,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 65
+  },
+  {
+   "tipo": "enemigo",
+   "x": 69,
+   "y": 13,
+   "enemigo": "diferencia_i_q",
+   "nombre": "Dejar i = dq/dt en corriente continua",
+   "correccion": "Con I constante la derivada es una diferencia: I = q/Δt."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 67,
+   "y": 12,
+   "ref": "f4",
+   "latex": "C=\\varepsilon\\times\\dfrac{S}{d}",
+   "nombre": "Capacidad de un condensador plano"
+  },
+  {
+   "tipo": "item",
+   "x": 67,
+   "y": 12,
+   "item": "doble"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 72,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 72,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 75,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 86,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 91,
+   "y": 12,
+   "ref": "f5",
+   "latex": "\\dfrac{\\mathrm{d}u_C}{\\mathrm{d}t}+\\dfrac{1}{R\\cdot C}\\cdot u_C=\\dfrac{E}{R\\cdot C}",
+   "nombre": "Ecuación diferencial de la carga del condensador"
+  },
+  {
+   "tipo": "foso",
+   "x": 94,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 95,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.2,
+   "retardo": 2.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 97,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 99,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 100,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.8,
+   "retardo": 1.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 102,
+   "y": 10,
+   "largo": 2,
+   "grosor": 8
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 102,
+   "y": 8,
+   "ref": "f6",
+   "latex": "u_C(t)=E\\cdot\\left(1-e^{-\\frac{t}{R\\cdot C}}\\right)",
+   "nombre": "Tensión durante la carga"
+  },
+  {
+   "tipo": "foso",
+   "x": 104,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 106,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.1,
+   "retardo": 2.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 108,
+   "y": 10,
+   "largo": 2,
+   "grosor": 8
+  },
+  {
+   "tipo": "foso",
+   "x": 110,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 111,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.2,
+   "retardo": 2.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 113,
+   "y": 11,
+   "largo": 2,
+   "grosor": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 115,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 116,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.6,
+   "retardo": 1.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 118,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 118,
+   "y": 10,
+   "ref": "f7",
+   "latex": "\\dfrac{\\mathrm{d}u_C}{\\mathrm{d}t}+\\dfrac{1}{R\\cdot C}\\cdot u_C=0",
+   "nombre": "Ecuación diferencial de la descarga"
+  },
+  {
+   "tipo": "foso",
+   "x": 120,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 121,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.8,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 123,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 94,
+   "y": 0,
+   "w": 31,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 125,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 126
+  },
+  {
+   "tipo": "enemigo",
+   "x": 130,
+   "y": 13,
+   "enemigo": "voltimetro_serie",
+   "nombre": "Voltímetro en serie",
+   "correccion": "El voltímetro va en derivación y el amperímetro en serie."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 128,
+   "y": 12,
+   "ref": "f8",
+   "latex": "u_C(t)=E\\cdot e^{-\\frac{t}{R\\cdot C}}",
+   "nombre": "Tensión durante la descarga"
+  },
+  {
+   "tipo": "item",
+   "x": 128,
+   "y": 12,
+   "item": "luna"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 133,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 137,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 143,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 149,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 153,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "laser",
+   "x": 157,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.7,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "laser",
+   "x": 163,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.6,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "laser",
+   "x": 169,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.4,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 175,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 176
+  },
+  {
+   "tipo": "enemigo",
+   "x": 180,
+   "y": 13,
+   "enemigo": "u_i_en_fase",
+   "nombre": "u e i en fase",
+   "correccion": "i = C·du/dt: la intensidad i está en avance de fase sobre u."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 178,
+   "y": 12,
+   "ref": "f9",
+   "latex": "\\tau=R\\cdot C",
+   "nombre": "Constante de tiempo del circuito RC"
+  },
+  {
+   "tipo": "item",
+   "x": 178,
+   "y": 12,
+   "item": "escudo"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 183,
+   "y": 14,
+   "largo": 19
+  },
+  {
+   "tipo": "sierra",
+   "x": 187,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.5
+  },
+  {
+   "tipo": "sierra",
+   "x": 192,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.8
+  },
+  {
+   "tipo": "sierra",
+   "x": 197,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 200,
+   "y": 11,
+   "ref": "f10",
+   "latex": "u_C(\\tau)=0{,}63\\,E\\ \\text{(carga)}\\qquad u_C(\\tau)=0{,}37\\,E\\ \\text{(descarga)}",
+   "nombre": "Valor de u_C en t = τ (63 % / 37 %)"
+  },
+  {
+   "tipo": "foso",
+   "x": 202,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 204,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.2,
+   "retardo": 1.9
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 202,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 207,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 209,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 211,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.2,
+   "retardo": 2.5
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 209,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 214,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 217,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 218
+  },
+  {
+   "tipo": "enemigo",
+   "x": 222,
+   "y": 13,
+   "enemigo": "carga_vs_descarga",
+   "nombre": "Confundir carga con descarga",
+   "correccion": "Carga: u_C crece de 0 a E. Descarga: u_C decrece de E a 0."
+  },
+  {
+   "tipo": "item",
+   "x": 220,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 225,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "meta",
+   "x": 230
+  },
+  {
+   "tipo": "plataforma",
+   "x": 226,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 70,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 128,
+   "y": 7
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 187,
+   "y": 8
+  }
+ ],
+ "ambiente": "castillo",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "lava_parkour": true,
+ "extra": "p4",
+ "nombre_fase": "Parkour extremo"
+}

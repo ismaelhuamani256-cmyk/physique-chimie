@@ -1,0 +1,802 @@
+{
+ "capitulo_id": "synthese-organique",
+ "tipo_nivel": "normal",
+ "tema_visual": "laboratorio-verde",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 264,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 14,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 14,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 17,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 28,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 33,
+   "y": 12,
+   "ref": "f1",
+   "latex": "n = \\dfrac{m}{M}",
+   "nombre": "Quantité de matière à partir de la masse"
+  },
+  {
+   "tipo": "foso",
+   "x": 36,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 38,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.9,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 40,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 40,
+   "y": 12,
+   "ref": "f2",
+   "latex": "n = \\dfrac{\\rho\\cdot V}{M}",
+   "nombre": "Quantité de matière d'un liquide"
+  },
+  {
+   "tipo": "foso",
+   "x": 42,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 44,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.7,
+   "retardo": 0.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 46,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 48,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 50,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.3,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 52,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 52,
+   "y": 12,
+   "ref": "f3",
+   "latex": "R = \\dfrac{n_{\\text{obtenue}}}{n_{\\text{attendue}}}\\times 100",
+   "nombre": "Rendement d'une synthèse"
+  },
+  {
+   "tipo": "foso",
+   "x": 54,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 56,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.8,
+   "retardo": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 58,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 60,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 61,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.4,
+   "retardo": 2.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 63,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 63,
+   "y": 11,
+   "ref": "f4",
+   "latex": "Q_r = \\dfrac{[C]^c\\cdot[D]^d}{[A]^a\\cdot[B]^b}",
+   "nombre": "Quotient de réaction"
+  },
+  {
+   "tipo": "foso",
+   "x": 65,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 66,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.8,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 68,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 36,
+   "y": 0,
+   "w": 34,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 70,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 71
+  },
+  {
+   "tipo": "enemigo",
+   "x": 75,
+   "y": 13,
+   "enemigo": "error_1",
+   "nombre": "Confundir velocidad y rendimiento",
+   "correccion": "Calentar o añadir un catalizador acelera la reacción, pero no cambia la cantidad final de producto: el rendimiento queda inalterado."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 73,
+   "y": 12,
+   "ref": "f5",
+   "latex": "K(T) = Q_{r,\\text{éq}}",
+   "nombre": "Constante d'équilibre"
+  },
+  {
+   "tipo": "item",
+   "x": 73,
+   "y": 12,
+   "item": "doble"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 78,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 82,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 88,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 94,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 98,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "sierra",
+   "x": 102,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.5
+  },
+  {
+   "tipo": "sierra",
+   "x": 107,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 112,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3
+  },
+  {
+   "tipo": "sierra",
+   "x": 117,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.7
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 120,
+   "y": 11,
+   "ref": "f6",
+   "latex": "Q_{r,i} < K(T)\\ \\Rightarrow\\ \\text{sens direct}",
+   "nombre": "Critère d'évolution spontanée"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 122,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 123
+  },
+  {
+   "tipo": "enemigo",
+   "x": 127,
+   "y": 13,
+   "enemigo": "error_2",
+   "nombre": "Llamar «adición» a la esterificación",
+   "correccion": "Se forma agua además del éster: la esterificación es más bien una sustitución, no una adición."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 125,
+   "y": 12,
+   "ref": "f7",
+   "latex": "\\tau = \\dfrac{x_f}{x_{max}}",
+   "nombre": "Taux d'avancement final"
+  },
+  {
+   "tipo": "item",
+   "x": 125,
+   "y": 12,
+   "item": "luna"
+  },
+  {
+   "tipo": "foso",
+   "x": 130,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 131,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.2,
+   "retardo": 2.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 133,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 135,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 137,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.9,
+   "retardo": 2.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 139,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 139,
+   "y": 12,
+   "ref": "f8",
+   "latex": "c = \\dfrac{m_{\\text{soluté}}}{M\\cdot V}\\quad\\text{con}\\quad m_{\\text{soluté}} = \\rho_{eau}\\cdot d\\cdot V\\cdot w",
+   "nombre": "Concentration d'une solution commerciale (titre massique)"
+  },
+  {
+   "tipo": "foso",
+   "x": 141,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 142,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.9,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 144,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 146,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 147,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.6,
+   "retardo": 2.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 149,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 151,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 152,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.8,
+   "retardo": 2.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 154,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 156,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 157,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.7,
+   "retardo": 1.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 159,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 161,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 162,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.7,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 164,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 130,
+   "y": 0,
+   "w": 36,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "foso",
+   "x": 166,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 168,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.7,
+   "retardo": 2.3
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 166,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 171,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 173,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 175,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.8,
+   "retardo": 2.1
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 173,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 178,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 181,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 182
+  },
+  {
+   "tipo": "enemigo",
+   "x": 186,
+   "y": 13,
+   "enemigo": "error_3",
+   "nombre": "Olvidar el catalizador (H₂SO₄)",
+   "correccion": "El ácido sulfúrico es catalizador: aumenta la velocidad de formación; interrogarse siempre por el papel de cada especie introducida."
+  },
+  {
+   "tipo": "item",
+   "x": 184,
+   "y": 12,
+   "item": "escudo"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 189,
+   "y": 14,
+   "largo": 28
+  },
+  {
+   "tipo": "laser",
+   "x": 193,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.1,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "laser",
+   "x": 199,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.8,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "laser",
+   "x": 205,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 2.9,
+   "retardo": 1
+  },
+  {
+   "tipo": "laser",
+   "x": 211,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.6,
+   "retardo": 1.5
+  },
+  {
+   "tipo": "foso",
+   "x": 217,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 218,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.8,
+   "retardo": 0
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 219,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 221,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 222,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.5,
+   "retardo": 1.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 223,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 225,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 226,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.3,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 227,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 229,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 230,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3,
+   "retardo": 1.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 231,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 233,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 234,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.7,
+   "retardo": 2.3
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 235,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 237,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 238,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.1,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 239,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 241,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 242
+  },
+  {
+   "tipo": "enemigo",
+   "x": 246,
+   "y": 13,
+   "enemigo": "error_4",
+   "nombre": "Calcular n_attendue con el reactivo en exceso",
+   "correccion": "n_attendue sale del avance máximo, fijado por el reactivo limitante (tabla de avance)."
+  },
+  {
+   "tipo": "item",
+   "x": 244,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 249,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "meta",
+   "x": 254
+  },
+  {
+   "tipo": "plataforma",
+   "x": 250,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 77,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 141,
+   "y": 7
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 206,
+   "y": 8
+  }
+ ],
+ "ambiente": "lab",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "extra": "p4",
+ "nombre_fase": "Parkour extremo"
+}

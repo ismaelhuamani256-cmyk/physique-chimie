@@ -80,6 +80,17 @@
         sp.cam = g.snapCamara ? Math.max(0, p.x - 10) : Math.max(0, g.cam.x / T);
         J.Audio.sfx('sprint'); g.ui.aviso('¡CORRE!');
       }
+      if (sp.activo && sp.perseguidor && vivo) {   // un JEFE te persigue y te ataca desde atrás
+        sp.tAtq -= dt;
+        if (sp.tAtq <= 0) {
+          sp.tAtq = 2.3; const izq0 = sp.cam, py = p.y + p.h / 2, topY = g.w.topAt(Math.floor(Math.max(0, p.x))); sp.flash = 0.35;
+          if (/bomba|isotopo|bombardero/.test(sp.perseguidor)) g.proy.push({ tipo: 'bomba', x: izq0 + 2, y: py - 3, vx: sp.v + 4.4, vy: -8, grav: 17, fuse: 2.0, t: 0, rad: 2.3 });
+          else if (sp.perseguidor === 'maestro_calavera') g.proy.push({ tipo: 'hueso', x: izq0 + 1.5, y: topY > 0 ? topY : p.y + p.h, vx: sp.v + 3.5, h: 1.1, t: 0 });
+          else g.proy.push({ tipo: 'bola', x: izq0 + 2, y: py, vx: sp.v + 3.8, vy: (Math.random() - 0.5) * 2, grav: 0, t: 0, col: sp.perseguidor === 'yeti_criogenico' ? 'azul' : null });
+          J.Audio.sfx('aviso');
+        }
+        sp.flash = Math.max(0, (sp.flash || 0) - dt);
+      }
       if (sp.activo) {
         sp.cam = Math.min(sp.cam + sp.v * dt, Math.max(0, w.ancho - J.VW / T));
         const izq = sp.cam, der = sp.cam + J.VW / T;
@@ -138,6 +149,7 @@
         ctx.fillStyle = 'rgba(255,230,120,.9)'; ctx.fillRect(izq + ancho - 8, y, 2, 2);
       }
       ctx.fillStyle = 'rgba(255,61,166,.14)'; ctx.fillRect(izq, 0, 40, J.VH);
+      if (sp.perseguidor && J.Jefe && J.Jefe.dibujarPerseguidor) J.Jefe.dibujarPerseguidor(ctx, sp.perseguidor, izq + 46, J.VH - 8, 2.0, t, (sp.flash || 0) > 0);
       const prog = Math.min(1, (g.jugador.x - sp.ini) / (sp.fin - sp.ini));   // barra de progreso del tramo
       ctx.fillStyle = '#0b1230'; ctx.fillRect(J.VW / 2 - 52, J.VH - 12, 104, 6); ctx.fillStyle = '#ffd166'; ctx.fillRect(J.VW / 2 - 51, J.VH - 11, Math.round(102 * prog), 4);
     }

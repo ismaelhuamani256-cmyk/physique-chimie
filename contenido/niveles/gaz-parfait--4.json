@@ -1,0 +1,780 @@
+{
+ "capitulo_id": "gaz-parfait",
+ "tipo_nivel": "normal",
+ "tema_visual": "lava-fortaleza",
+ "fisica_juego": {
+  "gravedad": 0.8,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 247,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 15,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.3,
+   "retardo": 0.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 17,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 19,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 20,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3,
+   "retardo": 2.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 22,
+   "y": 11,
+   "largo": 2,
+   "grosor": 7
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 22,
+   "y": 9,
+   "ref": "f1",
+   "latex": "P \\cdot V = n \\cdot R \\cdot T",
+   "nombre": "Ecuación de estado del gas perfecto"
+  },
+  {
+   "tipo": "foso",
+   "x": 24,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 26,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.9,
+   "retardo": 1.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 28,
+   "y": 11,
+   "largo": 2,
+   "grosor": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 30,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 31,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.3,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 33,
+   "y": 11,
+   "largo": 2,
+   "grosor": 7
+  },
+  {
+   "tipo": "foso",
+   "x": 35,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 36,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.3,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 38,
+   "y": 11,
+   "largo": 2,
+   "grosor": 7
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 38,
+   "y": 9,
+   "ref": "f2",
+   "latex": "T = \\theta + 273{,}15",
+   "nombre": "Temperatura termodinámica T = θ + 273,15"
+  },
+  {
+   "tipo": "foso",
+   "x": 40,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 41,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.1,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 43,
+   "y": 10,
+   "largo": 2,
+   "grosor": 8
+  },
+  {
+   "tipo": "foso",
+   "x": 45,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 46,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.6,
+   "retardo": 0.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 48,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 14,
+   "y": 0,
+   "w": 36,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "foso",
+   "x": 50,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 52,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.3,
+   "retardo": 0.8
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 50,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 55,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 57,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 59,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.8,
+   "retardo": 1.3
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 57,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 62,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 65,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 66
+  },
+  {
+   "tipo": "enemigo",
+   "x": 70,
+   "y": 13,
+   "enemigo": "temperatura_celsius",
+   "nombre": "Usar la temperatura en °C en P·V = nRT",
+   "correccion": "Usar T en kelvin: T = θ + 273,15."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 68,
+   "y": 12,
+   "ref": "f3",
+   "latex": "P \\cdot V = \\text{constante}\\quad (n,\\ T\\ \\text{constantes})",
+   "nombre": "Ley de Mariotte"
+  },
+  {
+   "tipo": "item",
+   "x": 68,
+   "y": 12,
+   "item": "doble"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 73,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 77,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 83,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 89,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 93,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 93,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 96,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 107,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 112,
+   "y": 12,
+   "ref": "f4",
+   "latex": "V_m = \\dfrac{R\\cdot T}{P}",
+   "nombre": "Volumen molar V_m = RT/P"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 115,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 116
+  },
+  {
+   "tipo": "enemigo",
+   "x": 120,
+   "y": 13,
+   "enemigo": "grados_kelvin",
+   "nombre": "Escribir «°K» o dar T en °C",
+   "correccion": "Escribir K y no °K; la temperatura termodinámica se da en kelvin."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 118,
+   "y": 12,
+   "ref": "f5",
+   "latex": "n = \\dfrac{V}{V_m}",
+   "nombre": "n = V/V_m"
+  },
+  {
+   "tipo": "item",
+   "x": 118,
+   "y": 12,
+   "item": "luna"
+  },
+  {
+   "tipo": "foso",
+   "x": 123,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 125,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.3,
+   "retardo": 2.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 127,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 127,
+   "y": 12,
+   "ref": "f6",
+   "latex": "n = \\dfrac{m}{M} = \\dfrac{\\rho\\cdot V}{M}",
+   "nombre": "n = m/M = ρV/M"
+  },
+  {
+   "tipo": "foso",
+   "x": 129,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 130,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.8,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 132,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 134,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 135,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 137,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 137,
+   "y": 10,
+   "ref": "f7",
+   "latex": "\\rho = \\dfrac{P\\cdot M}{R\\cdot T}",
+   "nombre": "Masa volúmica ρ = PM/(RT)"
+  },
+  {
+   "tipo": "foso",
+   "x": 139,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 141,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.8,
+   "retardo": 2.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 143,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 145,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 147,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.9,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 149,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 149,
+   "y": 12,
+   "ref": "f8",
+   "latex": "N = n \\cdot N_A",
+   "nombre": "N = n·N_A"
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 123,
+   "y": 0,
+   "w": 28,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "foso",
+   "x": 151,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 152,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.9,
+   "retardo": 2.4
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 153,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 155,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 156,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.8,
+   "retardo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 157,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 159,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 160,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.3,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 161,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 163,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 164,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3,
+   "retardo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 165,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 167,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 168,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.7,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 169,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 171,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 172,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.4,
+   "retardo": 1.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 173,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 175,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 176
+  },
+  {
+   "tipo": "enemigo",
+   "x": 180,
+   "y": 13,
+   "enemigo": "duplicar_celsius",
+   "nombre": "Duplicar θ (°C) creyendo que se duplica T",
+   "correccion": "P se duplica al duplicar T en K, no al duplicar θ en °C."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 178,
+   "y": 12,
+   "ref": "f9",
+   "latex": "u_P = P\\cdot\\sqrt{\\left(\\dfrac{u_T}{T}\\right)^2+\\left(\\dfrac{u_V}{V}\\right)^2}",
+   "nombre": "Incertidumbre de P calculada"
+  },
+  {
+   "tipo": "item",
+   "x": 178,
+   "y": 12,
+   "item": "escudo"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 183,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "laser",
+   "x": 187,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.3,
+   "retardo": 1
+  },
+  {
+   "tipo": "laser",
+   "x": 193,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.3,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "laser",
+   "x": 199,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.6,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 205,
+   "y": 14,
+   "largo": 19
+  },
+  {
+   "tipo": "sierra",
+   "x": 209,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.2
+  },
+  {
+   "tipo": "sierra",
+   "x": 214,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 219,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 224,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 225
+  },
+  {
+   "tipo": "enemigo",
+   "x": 229,
+   "y": 13,
+   "enemigo": "modelo_siempre_valido",
+   "nombre": "Creer que el gas perfecto vale para cualquier gas real y a cualquier P",
+   "correccion": "El gas perfecto solo aproxima a los gases reales a presiones bajas (unos pocos bar)."
+  },
+  {
+   "tipo": "item",
+   "x": 227,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 232,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "meta",
+   "x": 237
+  },
+  {
+   "tipo": "plataforma",
+   "x": 233,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 72,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 132,
+   "y": 7
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 192,
+   "y": 8
+  }
+ ],
+ "ambiente": "castillo",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "lava_parkour": true,
+ "extra": "p4",
+ "nombre_fase": "Parkour extremo"
+}

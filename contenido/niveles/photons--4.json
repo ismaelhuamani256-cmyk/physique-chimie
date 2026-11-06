@@ -1,0 +1,782 @@
+{
+ "capitulo_id": "photons",
+ "tipo_nivel": "normal",
+ "tema_visual": "camara-fotoelectrica",
+ "fisica_juego": {
+  "gravedad": 0.9,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 246,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "plataforma",
+   "x": 14,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 14,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 17,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 28,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 33,
+   "y": 12,
+   "ref": "f1",
+   "latex": "E = h\\nu = h\\,\\dfrac{c}{\\lambda}",
+   "nombre": "Energía de un fotón"
+  },
+  {
+   "tipo": "foso",
+   "x": 36,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 38,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.5,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 36,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 41,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 43,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 45,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.9,
+   "retardo": 2.7
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 43,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 48,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 51,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 52
+  },
+  {
+   "tipo": "enemigo",
+   "x": 56,
+   "y": 13,
+   "enemigo": "intensidad_basta",
+   "nombre": "Más intensidad = efecto fotoeléctrico",
+   "correccion": "No: por debajo de la frecuencia umbral no se extrae ningún electrón, sea cual sea la intensidad; un solo fotón con hν ≥ W basta."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 54,
+   "y": 12,
+   "ref": "f2",
+   "latex": "\\lambda_s = \\dfrac{c}{\\nu_s}",
+   "nombre": "Longitud de onda umbral"
+  },
+  {
+   "tipo": "item",
+   "x": 54,
+   "y": 12,
+   "item": "doble"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 59,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 63,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 69,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 75,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 79,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "laser",
+   "x": 83,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.8,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "laser",
+   "x": 89,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.3,
+   "retardo": 1
+  },
+  {
+   "tipo": "laser",
+   "x": 95,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.4,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 101,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 102
+  },
+  {
+   "tipo": "enemigo",
+   "x": 106,
+   "y": 13,
+   "enemigo": "ev_sin_convertir",
+   "nombre": "Olvidar convertir eV en J",
+   "correccion": "Antes de usar h o m_e convierte W y E_c a julios: 1 eV = 1,602×10⁻¹⁹ J."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 104,
+   "y": 12,
+   "ref": "f3",
+   "latex": "W = h\\,\\nu_s",
+   "nombre": "Trabajo de extracción"
+  },
+  {
+   "tipo": "item",
+   "x": 104,
+   "y": 12,
+   "item": "luna"
+  },
+  {
+   "tipo": "foso",
+   "x": 109,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 110,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.5,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 112,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 112,
+   "y": 11,
+   "ref": "f4",
+   "latex": "E_{\\text{photon}} = W + E_c",
+   "nombre": "Conservación de la energía en el efecto fotoeléctrico"
+  },
+  {
+   "tipo": "foso",
+   "x": 114,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 116,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.6,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 118,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 120,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 121,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.4,
+   "retardo": 0.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 123,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 123,
+   "y": 12,
+   "ref": "f5",
+   "latex": "E_c = h\\nu - h\\nu_s = h\\,(\\nu - \\nu_s)",
+   "nombre": "Energía cinética del electrón extraído"
+  },
+  {
+   "tipo": "foso",
+   "x": 125,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 126,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.8,
+   "retardo": 2.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 128,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 130,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 131,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.8,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 133,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 133,
+   "y": 12,
+   "ref": "f6",
+   "latex": "E_c = \\dfrac{1}{2}\\,m_e v^2 \\;\\Rightarrow\\; v = \\sqrt{\\dfrac{2E_c}{m_e}}",
+   "nombre": "Velocidad del electrón extraído"
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 109,
+   "y": 0,
+   "w": 26,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 135,
+   "y": 14,
+   "largo": 19
+  },
+  {
+   "tipo": "sierra",
+   "x": 139,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "sierra",
+   "x": 144,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.2
+  },
+  {
+   "tipo": "sierra",
+   "x": 149,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.9
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 152,
+   "y": 11,
+   "ref": "f7",
+   "latex": "\\eta = \\dfrac{P_{\\text{électrique}}}{P_{\\text{lumineuse}}}\\times 100 = \\dfrac{E_{\\text{utile}}}{E_{\\text{fournie}}}\\times 100",
+   "nombre": "Rendimiento de una célula fotovoltaica"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 154,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 155
+  },
+  {
+   "tipo": "enemigo",
+   "x": 159,
+   "y": 13,
+   "enemigo": "nu_lambda",
+   "nombre": "Confundir ν y λ",
+   "correccion": "Efecto si ν ≥ ν_s pero λ ≤ λ_s (desigualdad invertida); λ_s = c/ν_s."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 157,
+   "y": 12,
+   "ref": "f8",
+   "latex": "P_{\\text{lumineuse}} = E \\times S",
+   "nombre": "Potencia luminosa recibida"
+  },
+  {
+   "tipo": "item",
+   "x": 157,
+   "y": 12,
+   "item": "escudo"
+  },
+  {
+   "tipo": "foso",
+   "x": 162,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 163,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.1,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 165,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 167,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 168,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.7,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 170,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 170,
+   "y": 11,
+   "ref": "f9",
+   "latex": "P_{\\text{électrique}} = U \\times I",
+   "nombre": "Potencia eléctrica y punto de potencia máxima"
+  },
+  {
+   "tipo": "foso",
+   "x": 172,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 174,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.4,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 176,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 178,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 179,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.1,
+   "retardo": 2.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 181,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 183,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 184,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.7,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 186,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 186,
+   "y": 11,
+   "ref": "f10",
+   "latex": "E_{\\text{photon}} = \\dfrac{hc}{\\lambda} \\geq E_{\\text{gap}} \\;\\Rightarrow\\; \\lambda \\leq \\dfrac{hc}{E_{\\text{gap}}}",
+   "nombre": "Condición de absorción de un fotón por un semiconductor"
+  },
+  {
+   "tipo": "foso",
+   "x": 188,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 190,
+   "y": 17,
+   "altura": 6,
+   "periodo": 4,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 192,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 194,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 195,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.3,
+   "retardo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 197,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 162,
+   "y": 0,
+   "w": 37,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "foso",
+   "x": 199,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 200,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.1,
+   "retardo": 2.7
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 201,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 203,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 204,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.7,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 205,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 207,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 208,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.7,
+   "retardo": 0.8
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 209,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 211,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 212,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.2,
+   "retardo": 2.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 213,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 215,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 216,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 217,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 219,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 220,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.2,
+   "retardo": 2.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 221,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 223,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 224
+  },
+  {
+   "tipo": "enemigo",
+   "x": 228,
+   "y": 13,
+   "enemigo": "intensidad_ec",
+   "nombre": "Intensidad ↔ energía cinética",
+   "correccion": "La intensidad fija el número de electrones emitidos; E_c solo depende de la frecuencia (E_c = h(ν − ν_s))."
+  },
+  {
+   "tipo": "item",
+   "x": 226,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 231,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "meta",
+   "x": 236
+  },
+  {
+   "tipo": "plataforma",
+   "x": 232,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 72,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 132,
+   "y": 7
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 192,
+   "y": 8
+  }
+ ],
+ "ambiente": "campo",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "extra": "p4",
+ "nombre_fase": "Parkour extremo"
+}

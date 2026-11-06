@@ -1,0 +1,790 @@
+{
+ "capitulo_id": "thermodynamique",
+ "tipo_nivel": "normal",
+ "tema_visual": "horno-termico",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.85,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 251,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 14,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 16,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.3,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 14,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 19,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 21,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 23,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.8,
+   "retardo": 3
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 21,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 26,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 29,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 29,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 32,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 43,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 48,
+   "y": 12,
+   "ref": "f1",
+   "latex": "U = E_{c,\\text{micro}} + E_{pp,\\text{micro}}",
+   "nombre": "Énergie interne U"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 51,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 52
+  },
+  {
+   "tipo": "enemigo",
+   "x": 56,
+   "y": 13,
+   "enemigo": "temperatura_en_celsius",
+   "nombre": "Usar T en °C en la ley de Stefan-Boltzmann",
+   "correccion": "La ley F = σ·T⁴ exige T en kelvin: T(K) = θ(°C) + 273. En cambio, para una variación ΔT (Q = C·ΔT) se puede razonar directamente en °C."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 54,
+   "y": 12,
+   "ref": "f2",
+   "latex": "E_{tot} = E_c + E_{pp} + U",
+   "nombre": "Énergie totale"
+  },
+  {
+   "tipo": "item",
+   "x": 54,
+   "y": 12,
+   "item": "doble"
+  },
+  {
+   "tipo": "foso",
+   "x": 59,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 60,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.5,
+   "retardo": 2.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 62,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 64,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 65,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.4,
+   "retardo": 1.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 67,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 67,
+   "y": 11,
+   "ref": "f4",
+   "latex": "\\Delta U = W + Q",
+   "nombre": "Premier principe: ΔU = W + Q"
+  },
+  {
+   "tipo": "foso",
+   "x": 69,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 71,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.1,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 73,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 75,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 76,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.8,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 78,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 80,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 81,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3,
+   "retardo": 0.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 83,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 83,
+   "y": 12,
+   "ref": "f5",
+   "latex": "\\Delta U = Q = C\\cdot\\Delta T",
+   "nombre": "ΔU = Q = C·ΔT"
+  },
+  {
+   "tipo": "foso",
+   "x": 85,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 86,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.6,
+   "retardo": 0.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 88,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 90,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 91,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.3,
+   "retardo": 2.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 93,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 59,
+   "y": 0,
+   "w": 36,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "foso",
+   "x": 95,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 96,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.7,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 98,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 98,
+   "y": 12,
+   "ref": "f6",
+   "latex": "C = m\\cdot c",
+   "nombre": "C = m·c"
+  },
+  {
+   "tipo": "foso",
+   "x": 100,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 101,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.9,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 103,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 105,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 106,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.6,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 108,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 108,
+   "y": 12,
+   "ref": "f7",
+   "latex": "\\Phi = \\dfrac{Q}{\\Delta t}",
+   "nombre": "Flux thermique"
+  },
+  {
+   "tipo": "foso",
+   "x": 110,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 112,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.7,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 114,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 116,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 118,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.2,
+   "retardo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 120,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 120,
+   "y": 12,
+   "ref": "f8",
+   "latex": "\\Phi = \\dfrac{T_c - T_f}{R_{th}}",
+   "nombre": "Flux et résistance thermique"
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 95,
+   "y": 0,
+   "w": 27,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 122,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 123
+  },
+  {
+   "tipo": "enemigo",
+   "x": 127,
+   "y": 13,
+   "enemigo": "energia_destruida",
+   "nombre": "Creer que la energía se destruye al frenar o enfriar",
+   "correccion": "No se destruye: se transfiere del sistema al medio exterior (Exercice 17: «Faux. L'énergie est transférée»)."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 125,
+   "y": 12,
+   "ref": "f9",
+   "latex": "R_{th} = \\dfrac{e}{\\lambda\\cdot S}",
+   "nombre": "R_th = e/(λ·S)"
+  },
+  {
+   "tipo": "item",
+   "x": 125,
+   "y": 12,
+   "item": "luna"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 130,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "laser",
+   "x": 134,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.1,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "laser",
+   "x": 140,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 2.9,
+   "retardo": 0.5
+  },
+  {
+   "tipo": "laser",
+   "x": 146,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 2.9,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "foso",
+   "x": 152,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 153,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.5,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 154,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 156,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 157,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.8,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 158,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 160,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 161,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.9,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 162,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 164,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 165,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.9,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 166,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 168,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 169,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.9,
+   "retardo": 0.7
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 170,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 172,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 173,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.5,
+   "retardo": 0.9
+  },
+  {
+   "tipo": "plataforma",
+   "x": 174,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 176,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 177
+  },
+  {
+   "tipo": "enemigo",
+   "x": 181,
+   "y": 13,
+   "enemigo": "unidades_sin_convertir",
+   "nombre": "Olvidar convertir unidades y cifras significativas",
+   "correccion": "Pasar el espesor a m (3,6 cm = 3,6×10⁻² m), MJ a J y kWh a J (1 kWh = 3,6×10⁶ J), y dar el resultado con las cifras significativas de los datos."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 179,
+   "y": 12,
+   "ref": "f10",
+   "latex": "F = \\sigma\\cdot T^{4}",
+   "nombre": "Loi de Stefan-Boltzmann"
+  },
+  {
+   "tipo": "item",
+   "x": 179,
+   "y": 12,
+   "item": "escudo"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 184,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 188,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 194,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 200,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 204,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "sierra",
+   "x": 208,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3.2
+  },
+  {
+   "tipo": "sierra",
+   "x": 213,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.9
+  },
+  {
+   "tipo": "sierra",
+   "x": 218,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "sierra",
+   "x": 223,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.7
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 226,
+   "y": 11,
+   "ref": "f11",
+   "latex": "F\\cdot \\pi R_{atm}^{2} = F'\\cdot 4\\pi R_{atm}^{2}\\ \\Rightarrow\\ F' = \\dfrac{F}{4}",
+   "nombre": "F' = F/4"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 228,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 229
+  },
+  {
+   "tipo": "enemigo",
+   "x": 233,
+   "y": 13,
+   "enemigo": "solo_calor_cambia_U",
+   "nombre": "Pensar que solo el calor puede aumentar U",
+   "correccion": "El trabajo W también aumenta la energía interna: el agua agitada de la experiencia de Joule se calienta. W y Q pueden producir la misma ΔU."
+  },
+  {
+   "tipo": "item",
+   "x": 231,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 236,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "meta",
+   "x": 241
+  },
+  {
+   "tipo": "plataforma",
+   "x": 237,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 73,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 134,
+   "y": 7
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 196,
+   "y": 8
+  }
+ ],
+ "ambiente": "horno",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "extra": "p4",
+ "nombre_fase": "Parkour extremo"
+}

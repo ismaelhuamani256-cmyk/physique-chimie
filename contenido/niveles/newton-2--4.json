@@ -1,0 +1,759 @@
+{
+ "capitulo_id": "newton-2",
+ "tipo_nivel": "normal",
+ "tema_visual": "pista-hielo-newton",
+ "fisica_juego": {
+  "gravedad": 1,
+  "friccion": 0.6,
+  "salto": 12,
+  "viento": 0
+ },
+ "ancho_tiles": 250,
+ "alto_tiles": 18,
+ "segmentos": [
+  {
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 14,
+   "largo": 14
+  },
+  {
+   "tipo": "foso",
+   "x": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 15,
+   "y": 17,
+   "altura": 8,
+   "periodo": 2.7,
+   "retardo": 2.3
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 16,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 18,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 19,
+   "y": 17,
+   "altura": 7,
+   "periodo": 4,
+   "retardo": 1.7
+  },
+  {
+   "tipo": "plataforma",
+   "x": 20,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 22,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 23,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.9,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "plataforma_cae",
+   "x": 24,
+   "y": 14,
+   "largo": 2,
+   "retardo": 0.5,
+   "reaparece": 4
+  },
+  {
+   "tipo": "foso",
+   "x": 26,
+   "largo": 2
+  },
+  {
+   "tipo": "magma",
+   "x": 27,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.9,
+   "retardo": 0.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 28,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 30,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 32,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.2,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 34,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 36,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 37,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.2,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 39,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 39,
+   "y": 10,
+   "ref": "f1",
+   "latex": "\\sum \\vec F_{\\text{ext/syst}} = m\\,\\vec a_G",
+   "nombre": "Deuxième loi de Newton"
+  },
+  {
+   "tipo": "foso",
+   "x": 41,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 42,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.7,
+   "retardo": 2.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 44,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 46,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 47,
+   "y": 17,
+   "altura": 7,
+   "periodo": 2.6,
+   "retardo": 0.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 49,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 51,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 53,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.1,
+   "retardo": 1.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 55,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 55,
+   "y": 12,
+   "ref": "f3",
+   "latex": "\\vec a_G=\\dfrac{\\sum \\vec F_{\\text{ext/syst}}}{m}",
+   "nombre": "De las fuerzas a la aceleración"
+  },
+  {
+   "tipo": "foso",
+   "x": 57,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 58,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.4,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 60,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 62,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 63,
+   "y": 17,
+   "altura": 7,
+   "periodo": 3.8,
+   "retardo": 2.5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 65,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 30,
+   "y": 0,
+   "w": 37,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 67,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 68
+  },
+  {
+   "tipo": "enemigo",
+   "x": 72,
+   "y": 13,
+   "enemigo": "fuerzas_compensadas",
+   "nombre": "Fuerzas compensadas = reposo",
+   "correccion": "Si las fuerzas se compensan, a_G = 0: el sistema puede estar en reposo o en movimiento rectilíneo uniforme."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 70,
+   "y": 12,
+   "ref": "f4",
+   "latex": "\\vec a_i=\\dfrac{\\Delta \\vec v_i}{\\Delta t}=\\dfrac{\\vec v_{i+1}-\\vec v_{i-1}}{2\\tau}",
+   "nombre": "Aceleración a partir de una cronofotografía"
+  },
+  {
+   "tipo": "item",
+   "x": 70,
+   "y": 12,
+   "item": "doble"
+  },
+  {
+   "tipo": "foso",
+   "x": 75,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 76,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.5,
+   "retardo": 1.6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 78,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 78,
+   "y": 11,
+   "ref": "f2",
+   "latex": "\\vec v_G=\\vec 0\\ \\text{et}\\ \\vec a_G=\\vec 0 \\;\\Rightarrow\\; \\sum \\vec F_{\\text{ext/syst}}=\\vec 0",
+   "nombre": "Équilibre d'un système"
+  },
+  {
+   "tipo": "foso",
+   "x": 80,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 81,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.4,
+   "retardo": 0.1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 83,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 85,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 87,
+   "y": 17,
+   "altura": 8,
+   "periodo": 3.7,
+   "retardo": 2.8
+  },
+  {
+   "tipo": "plataforma",
+   "x": 89,
+   "y": 13,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 89,
+   "y": 11,
+   "ref": "f8",
+   "latex": "P = m\\times g",
+   "nombre": "Peso"
+  },
+  {
+   "tipo": "foso",
+   "x": 91,
+   "largo": 3
+  },
+  {
+   "tipo": "magma",
+   "x": 92,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.4,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "plataforma",
+   "x": 94,
+   "y": 12,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 96,
+   "largo": 4
+  },
+  {
+   "tipo": "magma",
+   "x": 98,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.5,
+   "retardo": 1
+  },
+  {
+   "tipo": "plataforma",
+   "x": 100,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 100,
+   "y": 12,
+   "ref": "f5",
+   "latex": "R = P\\cos\\alpha = m\\,g\\cos\\alpha",
+   "nombre": "Proyección perpendicular a la pista (esquiador)"
+  },
+  {
+   "tipo": "zona_campo",
+   "x": 75,
+   "y": 0,
+   "w": 27,
+   "h": 18,
+   "fx": -0.45,
+   "fy": 0
+  },
+  {
+   "tipo": "plataforma",
+   "x": 102,
+   "y": 14,
+   "largo": 24
+  },
+  {
+   "tipo": "sierra",
+   "x": 106,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.5
+  },
+  {
+   "tipo": "sierra",
+   "x": 111,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.5
+  },
+  {
+   "tipo": "sierra",
+   "x": 116,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.8
+  },
+  {
+   "tipo": "sierra",
+   "x": 121,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 3
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 124,
+   "y": 11,
+   "ref": "f6",
+   "latex": "f = m\\,(g\\sin\\alpha - a_G)",
+   "nombre": "Proyección a lo largo de la pista (rozamiento)"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 126,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 127
+  },
+  {
+   "tipo": "enemigo",
+   "x": 131,
+   "y": 13,
+   "enemigo": "referencial_no_galileano",
+   "nombre": "Referencial no galileano",
+   "correccion": "La 2.ª ley (ΣF = m·a_G) solo vale en un referencial galileano; en un manège que gira o un referencial acelerado no se aplica."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 129,
+   "y": 12,
+   "ref": "f7",
+   "latex": "F = k\\times h",
+   "nombre": "Fuerza de recuperación de un resorte"
+  },
+  {
+   "tipo": "item",
+   "x": 129,
+   "y": 12,
+   "item": "luna"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 134,
+   "y": 14,
+   "largo": 28
+  },
+  {
+   "tipo": "laser",
+   "x": 138,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.5,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "laser",
+   "x": 144,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 2.9,
+   "retardo": 1
+  },
+  {
+   "tipo": "laser",
+   "x": 150,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.7,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "laser",
+   "x": 156,
+   "y": 10,
+   "eje": "v",
+   "largo": 4,
+   "periodo": 3.4,
+   "retardo": 1.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 162,
+   "y": 14,
+   "largo": 22
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 162,
+   "y": 13,
+   "dir": 1,
+   "periodo": 3.2,
+   "retardo": 0.4
+  },
+  {
+   "tipo": "canon_bala",
+   "x": 165,
+   "y": 11,
+   "dir": 1,
+   "periodo": 3.6,
+   "retardo": 1.4
+  },
+  {
+   "tipo": "sierra",
+   "x": 176,
+   "y": 13,
+   "eje": "x",
+   "recorrido": 3,
+   "periodo": 2.6
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 181,
+   "y": 12,
+   "ref": "f9",
+   "latex": "m_1\\,\\overrightarrow{GA}+m_2\\,\\overrightarrow{GB}=\\vec 0",
+   "nombre": "Baricentro de dos puntos materiales"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 184,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 185
+  },
+  {
+   "tipo": "enemigo",
+   "x": 189,
+   "y": 13,
+   "enemigo": "vectores_sin_escala",
+   "nombre": "Vectores sin escala ni sentido",
+   "correccion": "Da el valor de cada fuerza, define una escala y comprueba el sentido de los vectores antes de aplicar la ley."
+  },
+  {
+   "tipo": "coleccionable",
+   "x": 187,
+   "y": 12,
+   "ref": "f11",
+   "latex": "F = m\\,(a_G + g\\sin\\alpha)",
+   "nombre": "Fuerza del resorte lanzador sobre un disco en plano inclinado"
+  },
+  {
+   "tipo": "item",
+   "x": 187,
+   "y": 12,
+   "item": "escudo"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 192,
+   "y": 14,
+   "largo": 20
+  },
+  {
+   "tipo": "geiser",
+   "x": 196,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 0
+  },
+  {
+   "tipo": "geiser",
+   "x": 202,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 1.1
+  },
+  {
+   "tipo": "geiser",
+   "x": 208,
+   "y": 14,
+   "alto": 5,
+   "periodo": 3.6,
+   "retardo": 2.2
+  },
+  {
+   "tipo": "foso",
+   "x": 212,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 214,
+   "y": 17,
+   "altura": 6,
+   "periodo": 2.6,
+   "retardo": 1.2
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 212,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 4.4
+  },
+  {
+   "tipo": "plataforma",
+   "x": 217,
+   "y": 14,
+   "largo": 2
+  },
+  {
+   "tipo": "foso",
+   "x": 219,
+   "largo": 5
+  },
+  {
+   "tipo": "magma",
+   "x": 221,
+   "y": 17,
+   "altura": 6,
+   "periodo": 3.9,
+   "retardo": 2.3
+  },
+  {
+   "tipo": "plataforma_movil",
+   "x": 219,
+   "y": 14,
+   "largo": 3,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5.3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 224,
+   "y": 14,
+   "largo": 3
+  },
+  {
+   "tipo": "plataforma",
+   "x": 227,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "checkpoint",
+   "x": 228
+  },
+  {
+   "tipo": "enemigo",
+   "x": 232,
+   "y": 13,
+   "enemigo": "angulo_unidades",
+   "nombre": "Ángulo, unidades y escala",
+   "correccion": "Calculadora en grados, unidades coherentes, escala de la cronofotografía y ángulo de la pendiente en el peso."
+  },
+  {
+   "tipo": "item",
+   "x": 230,
+   "y": 12,
+   "item": "fuego"
+  },
+  {
+   "tipo": "plataforma",
+   "x": 235,
+   "y": 14,
+   "largo": 1
+  },
+  {
+   "tipo": "meta",
+   "x": 240
+  },
+  {
+   "tipo": "plataforma",
+   "x": 236,
+   "y": 14,
+   "largo": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 73,
+   "y": 8
+  },
+  {
+   "tipo": "fauna",
+   "especie": "mago",
+   "x": 134,
+   "y": 7
+  },
+  {
+   "tipo": "fauna",
+   "especie": "espectro",
+   "x": 195,
+   "y": 8
+  }
+ ],
+ "ambiente": "hielo",
+ "relieve": true,
+ "aire": true,
+ "peligros": true,
+ "extra": "p4",
+ "nombre_fase": "Parkour extremo"
+}

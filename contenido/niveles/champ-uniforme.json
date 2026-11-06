@@ -355,6 +355,39 @@
    "tipo": "meta",
    "x": 158,
    "y": 12
+  },
+  {
+   "tipo": "bicho",
+   "x": 81,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Olvidar la condición inicial z(0) = z₀",
+   "correccion": "Al integrar, las constantes salen de v(0) y OG(0): si z(0) ≠ 0 hay que sumar z₀ en z(t)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 26,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Razonar sin ecuaciones («el peso baja, luego frena»)",
+   "correccion": "Justificar con las ecuaciones horarias: v_z(t) = −g₀t + v₀ es afín decreciente, no con la dirección del peso."
+  },
+  {
+   "tipo": "bicho",
+   "x": 48,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Dar un valor numérico cuando piden «exprimer»",
+   "correccion": "Exprimer = dar la relación literal entre las magnitudes; el cálculo numérico viene después."
+  },
+  {
+   "tipo": "bicho",
+   "x": 93,
+   "y": 10,
+   "bicho": "neutrino",
+   "nombre": "Calcular h_max sin sumar la altura inicial",
+   "correccion": "h_max = z(t_a) con z(t) = −½g₀t² + v₀t + z₀: incluir z₀ y usar el t_a correcto."
   }
- ]
+ ],
+ "ambiente": "campo"
 }

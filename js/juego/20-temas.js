@@ -59,6 +59,17 @@
       estilo: 'agua', musica: 'agua',
       pal: { cielo0: '#021a38', cielo1: '#0a7a9a', acento: '#ffe27a', acento2: '#ff7aa8', marco: '#2a7a9a', fillA: '#16405a', fillB: '#1d5070', linea: '#0c2a40', top: '#35e0b8', top2: '#1a9a8a', plat: '#e0608a', platLuz: '#ffb3cc', hz0: '#0a2a50', hz1: '#041428', hzTop: '#3a7ab0', texto: '#e8fbff' },
     },
+    // ---- temas con identidad propia (cada capítulo elige el suyo con tema_visual) ----
+    caverna: { estilo: 'cueva', musica: 'base', pal: { cielo0: '#0a0814', cielo1: '#1d1536', acento: '#b48cff', acento2: '#4cf0c8', marco: '#4a3d6a', fillA: '#2a2140', fillB: '#33294f', linea: '#150f24', top: '#6a5a96', top2: '#4a3d6a', plat: '#4a3d6a', platLuz: '#cdb8ff', hz0: '#4a9aff', hz1: '#0b2a5a', hzTop: '#bfe0ff', texto: '#eaf0ff' } },
+    'mina-uranio': { estilo: 'cueva', musica: 'base', pal: { cielo0: '#06120a', cielo1: '#12301a', acento: '#7dff4a', acento2: '#ffe27a', marco: '#3a4a2a', fillA: '#1c2a1a', fillB: '#243822', linea: '#0c160c', top: '#5a7a3a', top2: '#3a5a2a', plat: '#3a4a2a', platLuz: '#c9ff9a', hz0: '#7dff4a', hz1: '#2a7a1a', hzTop: '#d8ffb8', texto: '#eaf0ff' } },
+    'pista-hielo-newton': { estilo: 'hielo', musica: 'cielo', pal: { cielo0: '#0a1a3a', cielo1: '#7ac8f0', acento: '#9fe7ff', acento2: '#ffffff', marco: '#6a9ac8', fillA: '#3a6a9a', fillB: '#4a7aaa', linea: '#2a4a74', top: '#e8f8ff', top2: '#b8e0f8', plat: '#8ac0e8', platLuz: '#ffffff', hz0: '#4a9aff', hz1: '#0b3a7a', hzTop: '#d0ecff', texto: '#0b1230' } },
+    'espacio-orbital': { estilo: 'espacio', musica: 'cielo', pal: { cielo0: '#02030d', cielo1: '#1a1040', acento: '#6ff0ff', acento2: '#ffb020', marco: '#3a4a7a', fillA: '#1a2040', fillB: '#222a54', linea: '#0b0f26', top: '#8aa0d0', top2: '#5a6aa0', plat: '#3a4a7a', platLuz: '#cfe0ff', hz0: '#9b5de5', hz1: '#2a1070', hzTop: '#e0c8ff', texto: '#eaf0ff' } },
+    'horno-termico': { estilo: 'horno', musica: 'lava', pal: { cielo0: '#1a0804', cielo1: '#5a2008', acento: '#ffb020', acento2: '#ff4d2e', marco: '#4a3a34', fillA: '#2e211c', fillB: '#3a2a24', linea: '#140a08', top: '#8a6a4a', top2: '#5a4a3a', plat: '#5a4a3a', platLuz: '#ffd9a0', hz0: '#ff9f1c', hz1: '#8a2a0a', hzTop: '#ffe27a', texto: '#eaf0ff' } },
+    'laboratorio-verde': { estilo: 'lab', musica: 'lab', pal: { cielo0: '#04140e', cielo1: '#0c3a2a', acento: '#2ee59d', acento2: '#ffe27a', marco: '#1f6a4a', fillA: '#0f2a22', fillB: '#16382c', linea: '#08170f', top: '#2ee59d', top2: '#1aa070', plat: '#1f6a4a', platLuz: '#b6ffe0', hz0: '#ff3da6', hz1: '#5a0f40', hzTop: '#ffc0e0', texto: '#eaf0ff' } },
+    'laboratorio-ambar': { estilo: 'lab', musica: 'lab', pal: { cielo0: '#140a04', cielo1: '#3a1a08', acento: '#ffb020', acento2: '#19e3ff', marco: '#7a4a1a', fillA: '#2a1a0c', fillB: '#382412', linea: '#150c04', top: '#ffb020', top2: '#c07a10', plat: '#7a4a1a', platLuz: '#ffe0a0', hz0: '#2ee59d', hz1: '#0b5d46', hzTop: '#b6ffe0', texto: '#eaf0ff' } },
+    'laboratorio-violeta': { estilo: 'lab', musica: 'lab', pal: { cielo0: '#0c0420', cielo1: '#2a0f5a', acento: '#b48cff', acento2: '#19e3ff', marco: '#4a2a9a', fillA: '#1a1040', fillB: '#241658', linea: '#0a0620', top: '#b48cff', top2: '#7a52d0', plat: '#4a2a9a', platLuz: '#e0d0ff', hz0: '#ff3da6', hz1: '#5a0f40', hzTop: '#ffc0e0', texto: '#eaf0ff' } },
+    'camara-fotoelectrica': { estilo: 'lab', musica: 'lab', pal: { cielo0: '#06061a', cielo1: '#2a1850', acento: '#ffe27a', acento2: '#6ff0ff', marco: '#6a5a1a', fillA: '#1c1a3a', fillB: '#26224c', linea: '#0a0a20', top: '#ffe27a', top2: '#c0a020', plat: '#6a5a1a', platLuz: '#fff0b0', hz0: '#6ff0ff', hz1: '#0b4a5a', hzTop: '#d0faff', texto: '#eaf0ff' } },
+    'pista-campo-uniforme': { estilo: 'lab', musica: 'lab', pal: { cielo0: '#030a24', cielo1: '#0a2a6a', acento: '#4a9aff', acento2: '#ff4d6d', marco: '#1a4aaa', fillA: '#0c1c4a', fillB: '#12286a', linea: '#060e2a', top: '#4a9aff', top2: '#2a6ad0', plat: '#1a4aaa', platLuz: '#b0d4ff', hz0: '#ff4d6d', hz1: '#5a1020', hzTop: '#ffc0cc', texto: '#eaf0ff' } },
     _fallback: {
       estilo: 'natural', musica: 'base',
       pal: { cielo0: '#0f2f3f', cielo1: '#3aa0a0', acento: '#ffd166', acento2: '#ef476f', marco: '#6a4a2a', fillA: '#4a3420', fillB: '#58402a', linea: '#2e2012', top: '#4ed17a', top2: '#2e9a52', plat: '#8a6a3a', platLuz: '#c9a15e', hz0: '#2a6fd6', hz1: '#143a7a', hzTop: '#bfe0ff', texto: '#ffffff' },
@@ -84,6 +95,23 @@
       } else if (def.estilo === 'nube') {
         x.fillStyle = alt; for (let i = 0; i < 4; i++) { const cx = (r() * 12) | 0, cy = (r() * 12) | 0; x.fillRect(cx, cy, 4, 2); x.fillRect(cx + 1, cy - 1, 2, 1); }
         x.fillStyle = p.linea; x.fillRect(0, 15, 16, 1);
+      } else if (def.estilo === 'cueva') {       // roca con vetas y fisuras
+        x.fillStyle = alt; for (let i = 0; i < 6; i++) x.fillRect((r() * 13) | 0, (r() * 14) | 0, 2 + ((r() * 3) | 0), 2);
+        x.fillStyle = p.linea; for (let i = 0; i < 3; i++) { const a = (r() * 12) | 0, b = (r() * 12) | 0; x.fillRect(a, b, 1, 3); x.fillRect(a + 1, b + 2, 2, 1); }
+        if (v) { x.fillStyle = p.acento; x.globalAlpha = 0.7; x.fillRect(5, 6, 1, 1); x.fillRect(11, 11, 1, 1); x.globalAlpha = 1; }
+      } else if (def.estilo === 'hielo') {       // hielo: vetas claras y burbujas
+        x.fillStyle = alt; for (let i = 0; i < 5; i++) x.fillRect((r() * 12) | 0, (r() * 14) | 0, 3 + ((r() * 4) | 0), 1);
+        x.fillStyle = 'rgba(255,255,255,.5)'; for (let i = 0; i < 4; i++) x.fillRect((r() * 14) | 0, (r() * 14) | 0, 1, 1);
+        x.fillStyle = p.linea; x.fillRect(0, 15, 16, 1);
+      } else if (def.estilo === 'espacio') {     // paneles metálicos con remaches
+        x.fillStyle = p.linea; x.fillRect(0, 0, 16, 1); x.fillRect(0, 0, 1, 16); x.fillRect(0, 8, 16, 1);
+        x.fillStyle = alt; x.fillRect(2, 2, 12, 1); x.fillRect(2, 10, 12, 1);
+        x.fillStyle = p.top; x.fillRect(2, 5, 1, 1); x.fillRect(13, 5, 1, 1); x.fillRect(2, 13, 1, 1); x.fillRect(13, 13, 1, 1);
+        if (v) { x.fillStyle = p.acento; x.fillRect(7, 4, 2, 1); }
+      } else if (def.estilo === 'horno') {       // ladrillo refractario con brasas
+        x.fillStyle = p.linea; x.fillRect(0, 0, 16, 1); x.fillRect(0, 8, 16, 1); x.fillRect(v ? 5 : 10, 1, 1, 7); x.fillRect(v ? 12 : 4, 9, 1, 7);
+        x.fillStyle = alt; for (let i = 0; i < 5; i++) x.fillRect((r() * 14) | 0, (r() * 14) | 0, 2, 1);
+        x.fillStyle = 'rgba(255,140,30,.3)'; x.fillRect(v ? 6 : 1, 12, 4, 1); x.fillRect(v ? 2 : 9, 4, 3, 1);
       } else if (def.estilo === 'agua') {
         x.fillStyle = alt; for (let i = 0; i < 7; i++) x.fillRect((r() * 13) | 0, (r() * 14) | 0, 2 + ((r() * 2) | 0), 1);
         x.fillStyle = p.linea; for (let i = 0; i < 4; i++) x.fillRect((r() * 14) | 0, (r() * 14) | 0, 2, 2);
@@ -100,6 +128,8 @@
       x.fillStyle = 'rgba(255,255,255,.35)'; x.fillRect(0, 0, 16, 1);
       if (def.estilo === 'natural') { x.fillStyle = p.top; for (let i = 0; i < 16; i += 3) x.fillRect(i, 5, 2, 1 + (r() * 2 | 0)); }
       if (def.estilo === 'castillo') { x.fillStyle = p.acento2; x.fillRect(2 + v * 7, 4, 3, 1); }
+      if (def.estilo === 'hielo') { x.fillStyle = '#ffffff'; for (let i = 0; i < 16; i += 4) x.fillRect(i + (v ? 1 : 0), 3, 3, 2); }
+      if (def.estilo === 'cueva') { x.fillStyle = p.acento; x.globalAlpha = 0.8; x.fillRect(3 + v * 8, 3, 1, 1); x.fillRect(9 - v * 4, 5, 1, 1); x.globalAlpha = 1; }
       if (def.estilo === 'agua') { x.fillStyle = p.top; for (let i = 0; i < 16; i += 2) x.fillRect(i, 5, 1, 1 + ((r() * 3) | 0)); }
       out.top.push(c);
     }
@@ -250,6 +280,46 @@
         poli(x, [[bx, 288], [bx + ww * 0.2, 288 - hh], [bx + ww * 0.7, 288 - hh * 0.8], [bx + ww, 288]], '#0b2e48');
         for (let k = 0; k < 4; k++) { const ax = bx + ww * 0.25 + k * 5; x.fillStyle = '#4a2a7a'; x.fillRect(ax, 288 - hh - 8, 2, 10); x.fillStyle = '#6ff0ff'; x.fillRect(ax, 288 - hh - 10, 2, 2); }
       }
+    } else if (def.estilo === 'cueva') {
+      let x = nueva(0.06);      // pared lejana: manchas de roca y esporas luminosas
+      for (let i = 0; i < 70; i++) { x.fillStyle = r() < 0.5 ? p.fillA : p.linea; x.globalAlpha = 0.25 + r() * 0.3; const rr = 4 + r() * 16; disco(x, r() * LW, 20 + r() * 230, rr, x.fillStyle); }
+      x.globalAlpha = 1; for (let i = 0; i < 50; i++) { x.fillStyle = r() < 0.5 ? p.acento : p.acento2; x.globalAlpha = 0.25 + r() * 0.5; x.fillRect((r() * LW) | 0, (r() * 240) | 0, 1, 1); } x.globalAlpha = 1;
+      x = nueva(0.2);           // estalactitas y estalagmitas lejanas
+      for (let i = 0; i < 16; i++) { const cx = i * (LW / 16) + r() * 30, hh = 20 + r() * 60, ww = 10 + r() * 14; envolver((ox) => { poli(x, [[cx + ox, 0], [cx + ww + ox, 0], [cx + ww / 2 + ox, hh]], p.linea); poli(x, [[cx + 4 + ox, 288], [cx + ww + 8 + ox, 288], [cx + ww / 2 + 4 + ox, 288 - hh * 0.8]], p.fillA); }); }
+      x = nueva(0.4);           // cristales luminosos
+      for (let i = 0; i < 10; i++) {
+        const bx = 20 + i * 100 + r() * 40, col = r() < 0.5 ? p.acento : p.acento2;
+        for (let k = 0; k < 3; k++) { const hh = 14 + r() * 26, ox = bx + k * 7; x.globalAlpha = 0.18; disco(x, ox + 3, 270 - hh / 2, 14, col); x.globalAlpha = 1; poli(x, [[ox, 272], [ox + 3, 272 - hh], [ox + 6, 272]], col); x.fillStyle = '#ffffff'; x.globalAlpha = 0.6; x.fillRect(ox + 2, 272 - hh + 2, 1, 4); x.globalAlpha = 1; }
+      }
+    } else if (def.estilo === 'hielo') {
+      let x = nueva(0.04);      // estrellas y aurora
+      for (let i = 0; i < 60; i++) { x.fillStyle = '#fff'; x.globalAlpha = 0.3 + r() * 0.6; x.fillRect((r() * LW) | 0, (r() * 120) | 0, 1, 1); } x.globalAlpha = 1;
+      for (let k = 0; k < 3; k++) for (let xx = 0; xx < LW; xx++) { const y = 40 + k * 14 + Math.sin((xx / LW) * Math.PI * 2 * (2 + k)) * 14; x.fillStyle = ['rgba(120,255,200,.14)', 'rgba(120,200,255,.14)', 'rgba(200,160,255,.12)'][k]; x.fillRect(xx, Math.round(y), 1, 26); }
+      x = nueva(0.14);          // montañas nevadas
+      for (let i = 0; i < 9; i++) { const cx = i * 118 + r() * 40, hh = 70 + r() * 70, ww = 60 + r() * 40; envolver((ox) => { poli(x, [[cx - ww + ox, 262], [cx + ox, 262 - hh], [cx + ww + ox, 262]], '#6a90c0'); poli(x, [[cx - ww * 0.3 + ox, 262 - hh * 0.72], [cx + ox, 262 - hh], [cx + ww * 0.3 + ox, 262 - hh * 0.72]], '#ffffff'); }); }
+      x.fillStyle = '#6a90c0'; x.fillRect(0, 262, LW, 26);
+      x = nueva(0.34);          // carámbanos colgando y cristales de hielo
+      for (let i = 0; i < 18; i++) { const cx = i * 57 + r() * 25, hh = 18 + r() * 52; envolver((ox) => { poli(x, [[cx + ox, 0], [cx + 9 + ox, 0], [cx + 4 + ox, hh]], '#a8d8f8'); poli(x, [[cx + 2 + ox, 0], [cx + 5 + ox, 0], [cx + 3 + ox, hh * 0.7]], '#e8f8ff'); }); }
+      for (let i = 0; i < 9; i++) { const bx = 30 + i * 112 + r() * 40; for (let k = 0; k < 3; k++) { const hh = 14 + r() * 24; poli(x, [[bx + k * 7, 276], [bx + k * 7 + 3, 276 - hh], [bx + k * 7 + 6, 276]], k % 2 ? '#9fe7ff' : '#d8f4ff'); } }
+      x = nueva(0.55);          // ventisqueros
+      for (let xx = 0; xx < LW; xx++) { const y = 268 + Math.sin((xx / LW) * Math.PI * 2 * 6) * 6; x.fillStyle = '#e8f8ff'; x.fillRect(xx, Math.round(y), 1, VH); x.fillStyle = '#b8dcf5'; x.fillRect(xx, Math.round(y) + 3, 1, 1); }
+    } else if (def.estilo === 'espacio') {
+      let x = nueva(0.03);      // estrellas, nebulosa y planeta anillado
+      for (let i = 0; i < 160; i++) { x.fillStyle = r() < 0.15 ? p.acento : '#ffffff'; x.globalAlpha = 0.3 + r() * 0.7; x.fillRect((r() * LW) | 0, (r() * 288) | 0, 1, r() < 0.1 ? 2 : 1); } x.globalAlpha = 1;
+      for (let i = 0; i < 6; i++) { x.globalAlpha = 0.07; disco(x, r() * LW, 40 + r() * 160, 40 + r() * 50, i % 2 ? '#9b5de5' : '#4cc9f0'); } x.globalAlpha = 1;
+      disco(x, 700, 110, 44, '#3a2a70'); disco(x, 700, 110, 40, '#6a4ab8'); disco(x, 690, 100, 14, '#8a6ad8');
+      x.strokeStyle = 'rgba(255,226,122,.6)'; x.lineWidth = 3; x.beginPath(); x.ellipse(700, 110, 72, 16, -0.35, 0, Math.PI * 2); x.stroke();
+      x = nueva(0.12);          // asteroides lejanos
+      for (let i = 0; i < 14; i++) { const cx = r() * LW, cy = 30 + r() * 200, rr = 5 + r() * 12; poli(x, [[cx - rr, cy], [cx - rr * 0.3, cy - rr * 0.8], [cx + rr * 0.8, cy - rr * 0.4], [cx + rr, cy + rr * 0.3], [cx, cy + rr * 0.8]], '#2a3260'); disco(x, cx - rr * 0.3, cy - rr * 0.2, 2, '#1a2040'); }
+      x = nueva(0.3);           // estación orbital lejana: vigas y luces
+      for (let i = 0; i < 4; i++) { const bx = 80 + i * 260 + r() * 60, by = 150 + r() * 70; x.fillStyle = '#1a2040'; x.fillRect(bx, by, 90, 6); x.fillRect(bx + 40, by - 40, 6, 80); x.fillStyle = '#2a3a78'; x.fillRect(bx - 28, by - 14, 22, 34); x.fillRect(bx + 96, by - 14, 22, 34); x.fillStyle = p.acento; x.fillRect(bx + 43, by - 40, 1, 1); x.fillStyle = p.acento2; x.fillRect(bx + 2, by + 2, 1, 1); x.fillRect(bx + 86, by + 2, 1, 1); }
+    } else if (def.estilo === 'horno') {
+      let x = nueva(0.05);      // resplandor del horno
+      for (let y = 140; y < 288; y += 4) { x.fillStyle = 'rgba(255,120,20,' + ((y - 140) / 148) * 0.35 + ')'; x.fillRect(0, y, LW, 4); }
+      x = nueva(0.18);          // chimeneas y depósitos
+      for (let i = 0; i < 7; i++) { const bx = i * 150 + r() * 50, hh = 90 + r() * 80, ww = 22 + r() * 20; x.fillStyle = '#1a0c08'; x.fillRect(bx, 262 - hh, ww, hh + 26); x.fillStyle = '#2a1410'; x.fillRect(bx + 3, 262 - hh, 3, hh + 26); x.fillStyle = '#3a1a10'; x.fillRect(bx - 3, 262 - hh, ww + 6, 5); for (let k = 0; k < 3; k++) { x.fillStyle = r() < 0.6 ? '#ffb020' : '#7a2a10'; x.fillRect(bx + 5 + k * 6, 262 - hh + 14 + k * 18, 3, 5); } }
+      x = nueva(0.42);          // red de tuberías con válvulas
+      for (let i = 0; i < 6; i++) { const by = 40 + i * 38 + r() * 10; x.fillStyle = '#1a0c08'; x.fillRect(0, by, LW, 7); x.fillStyle = '#4a2a1c'; x.fillRect(0, by + 1, LW, 2); for (let k = 0; k < 8; k++) { const vx = (r() * LW) | 0; x.fillStyle = '#2a140c'; x.fillRect(vx, by - 5, 8, 17); x.fillStyle = p.acento2; x.fillRect(vx + 2, by - 7, 4, 3); } }
     } else {
       let x = nueva(0.06);
       for (let i = 0; i < 40; i++) { x.fillStyle = '#fff'; x.globalAlpha = 0.2 + r() * 0.4; x.fillRect((r() * LW) | 0, (r() * 150) | 0, 1, 1); } x.globalAlpha = 1;
@@ -293,6 +363,10 @@
       else if (tema.estilo === 'lab') { y = ((a.y - t * a.v * 0.8) % VH + VH) % VH; x = (a.x + Math.sin(t * 0.8 + a.ph) * 6 - camX * 0.6 + 4000 * VW) % VW; col = a.s > 1 ? '#ff3da6' : '#19e3ff'; }
       else if (tema.estilo === 'nube') { y = (a.y + Math.sin(t + a.ph) * 6); x = ((a.x - t * a.v * 0.7 - camX * 0.5) % VW + VW) % VW; col = a.s > 1 ? '#fff' : '#cdbfff'; }
       else if (tema.estilo === 'agua') { y = ((a.y - t * a.v * 1.3) % VH + VH) % VH; x = ((a.x + Math.sin(t * 1.2 + a.ph) * 5 - camX * 0.55) % VW + VW) % VW; col = a.s > 1 ? '#d8f6ff' : '#8fd8f0'; }
+      else if (tema.estilo === 'cueva') { y = ((a.y - t * a.v * 0.35) % VH + VH) % VH; x = ((a.x + Math.sin(t * 0.7 + a.ph) * 9 - camX * 0.6) % VW + VW) % VW; col = a.s > 1 ? tema.pal.acento2 : tema.pal.acento; }
+      else if (tema.estilo === 'hielo') { y = ((a.y + t * a.v * 0.9) % VH); x = ((a.x + Math.sin(t * 0.9 + a.ph) * 12 - camX * 0.6) % VW + VW) % VW; col = '#ffffff'; }
+      else if (tema.estilo === 'espacio') { y = a.y; x = ((a.x - camX * 0.3) % VW + VW) % VW; col = a.s > 1 ? tema.pal.acento : '#ffffff'; }
+      else if (tema.estilo === 'horno') { y = ((a.y - t * a.v * 2.2) % VH + VH) % VH; x = ((a.x + Math.sin(t * 1.4 + a.ph) * 7 - camX * 0.7) % VW + VW) % VW; col = a.s > 1 ? '#ffd166' : '#ff7a2a'; }
       else { y = ((a.y + t * a.v * 0.3) % VH); x = ((a.x - camX * 0.5) % VW + VW) % VW; col = '#ffffff55'; }
       ctx.globalAlpha = 0.35 + 0.35 * Math.sin(t * 2 + a.ph);
       ctx.fillStyle = col; ctx.fillRect(Math.round(x), Math.round(y), a.s, a.s);

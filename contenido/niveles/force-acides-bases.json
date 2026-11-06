@@ -1,7 +1,7 @@
 {
  "capitulo_id": "force-acides-bases",
  "tipo_nivel": "normal",
- "tema_visual": "laboratorio-neon",
+ "tema_visual": "laboratorio-ambar",
  "fisica_juego": {
   "gravedad": 1.0,
   "friccion": 0.85,
@@ -362,6 +362,39 @@
   {
    "tipo": "meta",
    "x": 166
+  },
+  {
+   "tipo": "bicho",
+   "x": 60,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Aplicar pH = −log c a un ácido débil",
+   "correccion": "Esa relación solo vale si la transformación es total; para un ácido débil hay que usar KA, τ y [H₃O⁺]f = c·τ."
+  },
+  {
+   "tipo": "bicho",
+   "x": 130,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Escribir xf = c·V en la tabla de un ácido débil",
+   "correccion": "La transformación no es total: xf = xmax·τ < xmax y [AH]f = c(1−τ) ≠ 0."
+  },
+  {
+   "tipo": "bicho",
+   "x": 39,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Confundir concentración aportada con concentración efectiva",
+   "correccion": "c (la del frasco) no es la de las especies presentes: calcular [A⁻]f, [AH]f y [H₃O⁺]f con la tabla de avance."
+  },
+  {
+   "tipo": "bicho",
+   "x": 113,
+   "y": 11,
+   "bicho": "neutrino",
+   "nombre": "Confundir diagrama de predominancia con diagrama de distribución",
+   "correccion": "Predominancia = eje de pH con dominios; distribución = curvas de % de cada especie en función del pH."
   }
- ]
+ ],
+ "ambiente": "lab"
 }

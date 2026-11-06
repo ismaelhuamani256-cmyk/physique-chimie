@@ -1,7 +1,7 @@
 {
  "capitulo_id": "nucleaires",
  "tipo_nivel": "normal",
- "tema_visual": "laboratorio-neon",
+ "tema_visual": "mina-uranio",
  "fisica_juego": {
   "gravedad": 0.9,
   "friccion": 0.85,
@@ -409,6 +409,71 @@
   {
    "tipo": "meta",
    "x": 167
+  },
+  {
+   "tipo": "bicho",
+   "x": 69,
+   "y": 10,
+   "bicho": "murcielago",
+   "nombre": "Olvidar la conservación de Z y A",
+   "correccion": "Comprobar siempre Z = Z' + Z'' y A = A' + A''."
+  },
+  {
+   "tipo": "bicho",
+   "x": 142,
+   "y": 9,
+   "bicho": "murcielago",
+   "nombre": "Confundir β⁻ y β⁺",
+   "correccion": "β⁻: electrón, Z sube 1. β⁺: positón, Z baja 1."
+  },
+  {
+   "tipo": "bicho",
+   "x": 110,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Confundir espontánea y provocada",
+   "correccion": "Radiactiva = espontánea; la artificial se provoca."
+  },
+  {
+   "tipo": "bicho",
+   "x": 34,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "No convertir λ a s⁻¹",
+   "correccion": "Pasar λ y t al SI antes de calcular."
+  },
+  {
+   "tipo": "bicho",
+   "x": 131,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Confundir actividad A y núcleos N",
+   "correccion": "A (Bq) = λ·N: desintegraciones por segundo."
+  },
+  {
+   "tipo": "bicho",
+   "x": 93,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Creer que a 2 t½ no queda nada",
+   "correccion": "A 2 t½ queda N₀/4 (la mitad de la mitad)."
+  },
+  {
+   "tipo": "estalactita",
+   "x": 87
+  },
+  {
+   "tipo": "estalactita",
+   "x": 47
+  },
+  {
+   "tipo": "estalactita",
+   "x": 27
+  },
+  {
+   "tipo": "estalactita",
+   "x": 103
   }
- ]
+ ],
+ "ambiente": "cueva"
 }

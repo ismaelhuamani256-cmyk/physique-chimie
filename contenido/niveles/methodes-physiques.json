@@ -1,7 +1,7 @@
 {
  "capitulo_id": "methodes-physiques",
  "tipo_nivel": "normal",
- "tema_visual": "laboratorio-neon",
+ "tema_visual": "laboratorio-violeta",
  "fisica_juego": {
   "gravedad": 1.0,
   "friccion": 0.9,
@@ -311,6 +311,39 @@
   {
    "tipo": "meta",
    "x": 166
+  },
+  {
+   "tipo": "bicho",
+   "x": 38,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Olvidar pasar mol·L⁻¹ a mol·m⁻³ en Kohlrausch",
+   "correccion": "Multiplica c por 10³: σ en S·m⁻¹ exige [Xᵢ] en mol·m⁻³."
+  },
+  {
+   "tipo": "bicho",
+   "x": 77,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Usar pH = −log(…) fuera de su dominio",
+   "correccion": "Solo vale entre 10⁻² y 10⁻⁶·⁵ mol·L⁻¹; si hay mucha dilución, pH = 7."
+  },
+  {
+   "tipo": "bicho",
+   "x": 127,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Usar Beer-Lambert o Kohlrausch con c ≥ 10⁻² mol·L⁻¹",
+   "correccion": "Diluye antes: solo son válidas para c < 10⁻² mol·L⁻¹."
+  },
+  {
+   "tipo": "bicho",
+   "x": 60,
+   "y": 9,
+   "bicho": "neutrino",
+   "nombre": "Medir la absorbancia en una λ cualquiera",
+   "correccion": "Colócate en λ_max del espectro de la especie."
   }
- ]
+ ],
+ "ambiente": "lab"
 }

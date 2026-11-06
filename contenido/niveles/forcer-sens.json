@@ -409,6 +409,39 @@
   {
    "tipo": "meta",
    "x": 178
+  },
+  {
+   "tipo": "bicho",
+   "x": 30,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Confundir ánodo y cátodo",
+   "correccion": "Cátodo = reducción (borne −); ánodo = oxidación (borne +)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 55,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Unidades incoherentes",
+   "correccion": "Pasar Δt a segundos y µm/cm² a cm antes de calcular (q en C, I en A)."
+  },
+  {
+   "tipo": "bicho",
+   "x": 96,
+   "y": 10,
+   "bicho": "demonio",
+   "nombre": "Usar el volumen de una solución en vez del total",
+   "correccion": "Tras mezclar, [X]i = ni / Vtotal de la mezcla."
+  },
+  {
+   "tipo": "bicho",
+   "x": 124,
+   "y": 11,
+   "bicho": "neutrino",
+   "nombre": "Confundir iones y electrones como portadores",
+   "correccion": "Iones en la disolución; electrones solo en el circuito exterior."
   }
- ]
+ ],
+ "ambiente": "lab"
 }

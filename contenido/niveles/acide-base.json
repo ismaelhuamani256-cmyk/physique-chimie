@@ -969,6 +969,15 @@
    "x": 69,
    "y": 12,
    "item": "estrella"
+  },
+  {
+   "tipo": "bicho",
+   "x": 32,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Confundir ácido con disolución ácida",
+   "correccion": "Un ácido es una especie química; una disolución es ácida según [H₃O⁺] y [HO⁻]."
   }
- ]
+ ],
+ "ambiente": "castillo"
 }

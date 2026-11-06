@@ -377,6 +377,59 @@
   {
    "tipo": "meta",
    "x": 177
+  },
+  {
+   "tipo": "bicho",
+   "x": 53,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Fuerzas compensadas = reposo",
+   "correccion": "Si las fuerzas se compensan, a_G = 0: el sistema puede estar en reposo o en movimiento rectilíneo uniforme."
+  },
+  {
+   "tipo": "bicho",
+   "x": 143,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Referencial no galileano",
+   "correccion": "La 2.ª ley (ΣF = m·a_G) solo vale en un referencial galileano; en un manège que gira o un referencial acelerado no se aplica."
+  },
+  {
+   "tipo": "bicho",
+   "x": 112,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Vectores sin escala ni sentido",
+   "correccion": "Da el valor de cada fuerza, define una escala y comprueba el sentido de los vectores antes de aplicar la ley."
+  },
+  {
+   "tipo": "bicho",
+   "x": 73,
+   "y": 8,
+   "bicho": "murcielago",
+   "nombre": "Ángulo, unidades y escala",
+   "correccion": "Calculadora en grados, unidades coherentes, escala de la cronofotografía y ángulo de la pendiente en el peso."
+  },
+  {
+   "tipo": "estalactita",
+   "x": 128
+  },
+  {
+   "tipo": "estalactita",
+   "x": 89
+  },
+  {
+   "tipo": "estalactita",
+   "x": 149
+  },
+  {
+   "tipo": "estalactita",
+   "x": 137
+  },
+  {
+   "tipo": "estalactita",
+   "x": 97
   }
- ]
+ ],
+ "ambiente": "hielo"
 }

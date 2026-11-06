@@ -24,7 +24,7 @@
     S.ui.cerrarModal(); S.ui.ocultarJefe(); S.ui.vidas(-1); S.ui.vidas(3);
     g.terminar = (gano) => terminar(g, gano);
     g.preguntar = (b) => preguntar(g, b);
-    J.Quim.iniciar(g); if (J.Items) J.Items.iniciar(g); g.ui.cartel(null);
+    J.Quim.iniciar(g); if (J.Items) J.Items.iniciar(g); if (J.Ambiente) J.Ambiente.iniciar(g); g.ui.cartel(null);
     g.ui.estados(g, true);
     J.pasoCamara(g, 0);
     J.Audio.musica(tema.musica);
@@ -104,6 +104,7 @@
     for (const c of w.campos) if (vis(c.x, c.x + c.w)) dibujarCampo(ctx, c, camX, camY, t, tema);
     J.Temas.dibujarPeligro(ctx, w, tema, camX, camY, t);
     J.Temas.dibujarTiles(ctx, w, tema, camX, camY);
+    if (J.Ambiente) J.Ambiente.dibujarAtras(ctx, g, camX, camY);
     for (const m of w.movers) if (!m.cae && !m.est && vis(m.x, m.x + m.largo)) J.Temas.dibujarMovil(ctx, tema, m, camX, camY);
     for (const e of w.escombros) { ctx.save(); ctx.translate(Math.round((e.x + 0.5) * T - camX), Math.round((e.y + 0.5) * T - camY)); ctx.rotate(e.rot); ctx.drawImage(tema.tiles.puente, -8, -8); ctx.restore(); }
     // meta, checkpoints, palancas, resortes
@@ -121,6 +122,7 @@
     if (J.Items) J.Items.dibujar(ctx, g, camX, camY, vis);
     for (const k of w.bloqueos) if (k.activo && vis(k.x, k.x + 1)) dibujarMuro(ctx, k, camX, camY, t, w);
     for (const e of w.enemigos) if (e.vivo && vis(e.x, e.x + 1)) { if (e.acuatico) S2.dibujarAcuatico(ctx, e, t, camX, camY); else S2.dibujarEnemigo(ctx, e, t, camX, camY); }
+    if (J.Ambiente) J.Ambiente.dibujar(ctx, g, camX, camY, vis);
     J.Jefe.dibujar(ctx, g, camX, camY);
     const pj = g.jugador;
     if (pj.hundido > 0 && g.anim && g.anim.pipe) {   // entrando en la tubería: Ato se hunde tras la boca

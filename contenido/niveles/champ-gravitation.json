@@ -432,6 +432,53 @@
   {
    "tipo": "meta",
    "x": 166
+  },
+  {
+   "tipo": "bicho",
+   "x": 96,
+   "y": 9,
+   "bicho": "neutrino",
+   "nombre": "Referencial incompleto",
+   "correccion": "Decir «referencial geocéntrico» y su definición: centro de la Tierra y ejes hacia estrellas lejanas fijas."
+  },
+  {
+   "tipo": "bicho",
+   "x": 36,
+   "y": 9,
+   "bicho": "neutrino",
+   "nombre": "No convertir km a m",
+   "correccion": "Pasar r y h a metros antes de aplicar v = √(GM/r); 6 840 km = 6,84×10⁶ m."
+  },
+  {
+   "tipo": "bicho",
+   "x": 132,
+   "y": 8,
+   "bicho": "demonio",
+   "nombre": "Confundir altitud h con radio de órbita r",
+   "correccion": "La altitud se mide desde la superficie: r = R_astro + h."
+  },
+  {
+   "tipo": "bicho",
+   "x": 112,
+   "y": 9,
+   "bicho": "demonio",
+   "nombre": "Escribir mal la 3.ª ley (T³ = k·a²)",
+   "correccion": "Es T² = k·a³: período al cuadrado y semieje al cubo."
+  },
+  {
+   "tipo": "bicho",
+   "x": 45,
+   "y": 13,
+   "bicho": "embestidor",
+   "nombre": "Pensar que v constante implica aceleración nula",
+   "correccion": "En órbita circular uniforme a = v²/r ≠ 0: es radial y centrípeta."
+  },
+  {
+   "tipo": "lluvia_rocas",
+   "x": 77,
+   "w": 9,
+   "periodo": 2.2
   }
- ]
+ ],
+ "ambiente": "espacio"
 }

@@ -210,3 +210,7 @@ Segmento `{"tipo":"fauna","especie":…,"x","y"}`:
 | `mago` | se teletransporta junto a ti y lanza orbes que te buscan |
 | `mina` | mina flotante con cadena; explota al tocarla o dispararla y arrastra a la fauna cercana |
 Además se reparten `sierra` (en raíl) y `laser` horizontales de 51-peligros.js. Los disparos del jugador (`Items.impacto` y fotones) llaman a `Fauna.golpe`.
+
+## Niveles verticales (torres)
+
+`alto_tiles` admite hasta 64 y la cámara sigue al jugador en vertical. `tools/torre-niveles.js nivel…` convierte un nivel en una **torre** (48×54 tiles): se sube en zigzag por 13 plataformas (con 3 móviles si valida) hasta una arena de jefe en lo alto; reutiliza las fórmulas, errores, bichos y el jefe del nivel original y reparte torretas, sierras bajo las plataformas, minas, láseres, lluvia de rocas, 3 cápsulas (escopeta, grande, fuego) y 3 checkpoints. Aplicado a `champ-gravitation` (espacio), `images` (nubes) y `evolution-temporelle` (cueva). Nota: `topAt` devuelve la plataforma más alta de la columna, por eso los checkpoints van en columnas exclusivas de su plataforma.

@@ -8,254 +8,346 @@
   "salto": 12,
   "viento": 0
  },
- "ancho_tiles": 168,
- "alto_tiles": 18,
+ "ancho_tiles": 48,
+ "alto_tiles": 54,
  "segmentos": [
   {
-   "tipo": "foso",
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 50,
+   "largo": 48
+  },
+  {
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 8,
+   "largo": 36
+  },
+  {
+   "tipo": "plataforma",
+   "x": 4,
+   "y": 47,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 44,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma_movil",
    "x": 22,
-   "largo": 3
-  },
-  {
-   "tipo": "foso",
-   "x": 41,
-   "largo": 4
-  },
-  {
-   "tipo": "foso",
-   "x": 61,
-   "largo": 4
-  },
-  {
-   "tipo": "foso",
-   "x": 85,
-   "largo": 4
-  },
-  {
-   "tipo": "foso",
-   "x": 105,
-   "largo": 4
-  },
-  {
-   "tipo": "foso",
-   "x": 127,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 56,
-   "y": 8,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 118,
-   "y": 11,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 41,
-   "y": 11,
-   "largo": 3,
-   "recorrido": 2,
-   "eje": "x",
-   "periodo": 4
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 85,
-   "y": 11,
-   "largo": 3,
-   "recorrido": 3,
-   "eje": "x",
-   "periodo": 4
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 105,
-   "y": 11,
+   "y": 41,
    "largo": 4,
-   "recorrido": 3,
-   "eje": "y",
-   "periodo": 4
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 38,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 4,
+   "y": 35,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 32,
+   "largo": 6
   },
   {
    "tipo": "plataforma_movil",
-   "x": 127,
-   "y": 11,
-   "largo": 3,
-   "recorrido": 3,
+   "x": 22,
+   "y": 29,
+   "largo": 4,
+   "recorrido": 5,
    "eje": "x",
-   "periodo": 4
+   "periodo": 5
   },
   {
-   "tipo": "resorte",
-   "x": 48,
-   "y": 12
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 26,
+   "largo": 6
   },
   {
-   "tipo": "resorte",
-   "x": 94,
-   "y": 14
+   "tipo": "plataforma",
+   "x": 4,
+   "y": 23,
+   "largo": 6
   },
   {
-   "tipo": "zona_campo",
-   "x": 72,
-   "y": 8,
-   "w": 10,
-   "h": 6,
-   "fx": 0.5,
-   "fy": 0
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 20,
+   "largo": 6
   },
   {
-   "tipo": "zona_campo",
-   "x": 96,
-   "y": 7,
-   "w": 8,
-   "h": 8,
-   "fx": -0.4,
-   "fy": 0
+   "tipo": "plataforma_movil",
+   "x": 22,
+   "y": 17,
+   "largo": 4,
+   "recorrido": 5,
+   "eje": "x",
+   "periodo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 4,
+   "y": 11,
+   "largo": 6
   },
   {
    "tipo": "coleccionable",
-   "x": 6,
-   "y": 12,
+   "x": 15,
+   "y": 42,
    "ref": "f1",
    "latex": "\\dfrac{1}{\\overline{OA'}}=\\dfrac{1}{\\overline{OA}}+\\dfrac{1}{f'}",
    "nombre": "Relación de conjugación de Descartes"
   },
   {
    "tipo": "coleccionable",
-   "x": 30,
-   "y": 12,
+   "x": 24,
+   "y": 39,
    "ref": "f2",
    "latex": "\\overline{\\gamma}=\\dfrac{\\overline{A'B'}}{\\overline{AB}}=\\dfrac{\\overline{OA'}}{\\overline{OA}}",
    "nombre": "Grandissement de una lente"
   },
   {
    "tipo": "coleccionable",
-   "x": 48,
-   "y": 6,
+   "x": 15,
+   "y": 36,
    "ref": "f3",
    "latex": "\\overline{FA}\\times\\overline{F'A'}=-f'^{2}",
    "nombre": "Relación de conjugación de Newton"
   },
   {
    "tipo": "coleccionable",
-   "x": 57,
-   "y": 6,
+   "x": 6,
+   "y": 33,
    "ref": "f4",
    "latex": "\\dfrac{1}{\\overline{O_1A}}\\to 0\\ \\Rightarrow\\ \\overline{O_1A_1}=f'_1",
    "nombre": "Imagen intermedia de un objeto en el infinito"
   },
   {
    "tipo": "coleccionable",
-   "x": 75,
-   "y": 12,
+   "x": 15,
+   "y": 30,
    "ref": "f5",
    "latex": "\\overline{O_1O_2}=\\overline{O_1F'_1}+\\overline{F'_1F_2}+\\overline{F_2O_2}=f'_1+f'_2",
    "nombre": "Distancia objetivo-ocular de una lunette afocale"
   },
   {
    "tipo": "coleccionable",
-   "x": 102,
-   "y": 12,
+   "x": 24,
+   "y": 27,
    "ref": "f6",
    "latex": "\\theta\\approx\\tan\\theta=\\dfrac{\\overline{A_1B_1}}{\\overline{O_1A_1}}=\\dfrac{\\overline{A_1B_1}}{f'_1}\\qquad \\theta'\\approx\\tan\\theta'=\\dfrac{\\overline{A_1B_1}}{\\overline{O_2A_1}}=\\dfrac{\\overline{A_1B_1}}{-f'_2}",
    "nombre": "Ángulos θ y θ' (aproximación de ángulos pequeños)"
   },
   {
    "tipo": "coleccionable",
-   "x": 94,
-   "y": 8,
+   "x": 15,
+   "y": 24,
    "ref": "f8",
    "latex": "\\overline{G}=-\\dfrac{f'_1}{f'_2}",
    "nombre": "Grossissement de una lunette afocale"
   },
   {
    "tipo": "coleccionable",
-   "x": 115,
-   "y": 11,
+   "x": 6,
+   "y": 21,
    "ref": "f9",
    "latex": "\\overline{G}=-\\dfrac{D}{a}",
    "nombre": "Grossissement y círculo ocular"
   },
   {
    "tipo": "coleccionable",
-   "x": 119,
-   "y": 9,
+   "x": 15,
+   "y": 18,
    "ref": "n9",
    "latex": "\\text{cercle oculaire} = \\text{image de la monture de l'objectif}",
    "nombre": "Cercle oculaire"
   },
   {
    "tipo": "coleccionable",
-   "x": 134,
-   "y": 12,
+   "x": 24,
+   "y": 15,
    "ref": "f7",
    "latex": "\\overline{G}=\\dfrac{\\theta'}{\\theta}",
    "nombre": "Grossissement de una lunette"
   },
   {
    "tipo": "enemigo",
-   "x": 14,
-   "y": 12,
+   "x": 6,
+   "y": 46,
    "enemigo": "unidades_focales",
    "nombre": "Distancias focales sin unificar unidades",
    "correccion": "Pasa f'₁ y f'₂ a la misma unidad antes de sumar: 60 cm + 20 mm = 62 cm."
   },
   {
    "tipo": "enemigo",
-   "x": 34,
-   "y": 12,
+   "x": 6,
+   "y": 34,
    "enemigo": "objetivo_ocular",
    "nombre": "Objetivo con focal menor",
    "correccion": "El objetivo tiene la focal más grande (≈ 1 m); el ocular la más pequeña (≈ 1 cm)."
   },
   {
    "tipo": "enemigo",
-   "x": 58,
-   "y": 11,
+   "x": 6,
+   "y": 22,
    "enemigo": "afocale_mal",
    "nombre": "Afocale ≠ distancia > f'₁",
    "correccion": "Lunette afocale: F'₁ = F₂, así que O₁O₂ = f'₁ + f'₂."
   },
   {
    "tipo": "enemigo",
-   "x": 70,
-   "y": 11,
+   "x": 15,
+   "y": 13,
    "enemigo": "grossissement_diametro",
    "nombre": "G depende del diámetro",
    "correccion": "G = −f'₁/f'₂ no depende del diámetro del objetivo; este fija la luz recogida."
   },
   {
-   "tipo": "enemigo",
-   "x": 100,
-   "y": 13,
-   "enemigo": "grossissement_grandissement",
-   "nombre": "Grossissement = grandissement",
-   "correccion": "Con objeto lejano e imagen virtual se usa G = θ'/θ (ángulos), no γ."
+   "tipo": "bicho",
+   "x": 21,
+   "y": 22,
+   "bicho": "demonio",
+   "nombre": "Distancias focales sin pasar a la misma unidad",
+   "correccion": "Convierte f'₁ y f'₂ a la misma unidad antes de operar (p. ej. f'₁ = 60 cm y f'₂ = 20 mm → 62 cm, no 80)."
   },
   {
-   "tipo": "enemigo",
-   "x": 120,
-   "y": 14,
-   "enemigo": "mirar_sol",
-   "nombre": "Mirar el Sol por la lunette",
-   "correccion": "Nunca mires el Sol por un instrumento: proyecta su imagen sobre una pantalla."
+   "tipo": "bicho",
+   "x": 21,
+   "y": 34,
+   "bicho": "demonio",
+   "nombre": "Objetivo con focal menor que el ocular",
+   "correccion": "El objetivo tiene la mayor distancia focal (del orden del metro); el ocular, la menor (del orden del centímetro): f'₁ > f'₂."
   },
   {
-   "tipo": "checkpoint",
-   "x": 68
+   "tipo": "bicho",
+   "x": 12,
+   "y": 31,
+   "bicho": "murcielago",
+   "nombre": "Afocale ≠ «distancia > f'₁»",
+   "correccion": "Una lunette afocale tiene F'₁ = F₂: la distancia entre lentes es exactamente f'₁ + f'₂."
   },
   {
-   "tipo": "checkpoint",
-   "x": 112
+   "tipo": "torreta",
+   "x": 18,
+   "y": 37,
+   "periodo": 2.8,
+   "nombre": "Distancias focales sin unificar unidades",
+   "correccion": "Pasa f'₁ y f'₂ a la misma unidad antes de sumar: 60 cm + 20 mm = 62 cm."
+  },
+  {
+   "tipo": "torreta",
+   "x": 18,
+   "y": 31,
+   "periodo": 2.8,
+   "nombre": "Distancias focales sin unificar unidades",
+   "correccion": "Pasa f'₁ y f'₂ a la misma unidad antes de sumar: 60 cm + 20 mm = 62 cm."
+  },
+  {
+   "tipo": "torreta",
+   "x": 18,
+   "y": 19,
+   "periodo": 2.8,
+   "nombre": "Distancias focales sin unificar unidades",
+   "correccion": "Pasa f'₁ y f'₂ a la misma unidad antes de sumar: 60 cm + 20 mm = 62 cm."
+  },
+  {
+   "tipo": "sierra",
+   "x": 16,
+   "y": 47,
+   "eje": "x",
+   "recorrido": 4,
+   "periodo": 3.423513422999531
+  },
+  {
+   "tipo": "sierra",
+   "x": 16,
+   "y": 35,
+   "eje": "x",
+   "recorrido": 4,
+   "periodo": 3.74245205456391
+  },
+  {
+   "tipo": "sierra",
+   "x": 16,
+   "y": 29,
+   "eje": "x",
+   "recorrido": 4,
+   "periodo": 4.14730597245507
+  },
+  {
+   "tipo": "sierra",
+   "x": 16,
+   "y": 17,
+   "eje": "x",
+   "recorrido": 4,
+   "periodo": 3.627929253317416
+  },
+  {
+   "tipo": "mina",
+   "x": 17,
+   "y": 25,
+   "modo": "temporizador",
+   "radio": 1.4
+  },
+  {
+   "tipo": "laser",
+   "x": 29,
+   "y": 26,
+   "eje": "h",
+   "largo": 3,
+   "periodo": 3.6,
+   "retardo": 0.7440982516855001
+  },
+  {
+   "tipo": "laser",
+   "x": 20,
+   "y": 17,
+   "eje": "h",
+   "largo": 3,
+   "periodo": 3.6,
+   "retardo": 0.3742316444404423
+  },
+  {
+   "tipo": "lluvia_rocas",
+   "x": 14,
+   "w": 20,
+   "periodo": 2.4
+  },
+  {
+   "tipo": "item",
+   "x": 14,
+   "y": 30,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 5,
+   "y": 21,
+   "item": "fuego"
   },
   {
    "tipo": "jefe",
-   "x": 148,
+   "x": 32,
    "jefe": "ejercicio_bac_1",
    "titulo": "Ejercicio BAC : lunette afocale",
    "preguntas": [
@@ -311,589 +403,16 @@
   },
   {
    "tipo": "meta",
-   "x": 164
+   "x": 44
   },
   {
-   "tipo": "bicho",
-   "x": 82,
-   "y": 10,
-   "bicho": "demonio",
-   "nombre": "Distancias focales sin pasar a la misma unidad",
-   "correccion": "Convierte f'₁ y f'₂ a la misma unidad antes de operar (p. ej. f'₁ = 60 cm y f'₂ = 20 mm → 62 cm, no 80)."
-  },
-  {
-   "tipo": "bicho",
-   "x": 56,
-   "y": 7,
-   "bicho": "demonio",
-   "nombre": "Objetivo con focal menor que el ocular",
-   "correccion": "El objetivo tiene la mayor distancia focal (del orden del metro); el ocular, la menor (del orden del centímetro): f'₁ > f'₂."
-  },
-  {
-   "tipo": "bicho",
-   "x": 121,
-   "y": 11,
-   "bicho": "murcielago",
-   "nombre": "Afocale ≠ «distancia > f'₁»",
-   "correccion": "Una lunette afocale tiene F'₁ = F₂: la distancia entre lentes es exactamente f'₁ + f'₂."
-  },
-  {
-   "tipo": "bicho",
-   "x": 102,
-   "y": 8,
-   "bicho": "murcielago",
-   "nombre": "Conversiones y cifras significativas olvidadas",
-   "correccion": "Convierte las unidades y da G con las cifras significativas de los datos (no 1,6666…); recuerda también que G es negativo."
-  },
-  {
-   "tipo": "plataforma",
-   "x": 0,
-   "y": 14,
-   "largo": 10
-  },
-  {
-   "tipo": "plataforma",
-   "x": 10,
-   "y": 13,
-   "largo": 6
-  },
-  {
-   "tipo": "plataforma",
-   "x": 16,
-   "y": 14,
-   "largo": 6
-  },
-  {
-   "tipo": "plataforma",
-   "x": 25,
-   "y": 14,
-   "largo": 6
-  },
-  {
-   "tipo": "plataforma",
-   "x": 31,
-   "y": 13,
-   "largo": 10
-  },
-  {
-   "tipo": "plataforma",
-   "x": 45,
-   "y": 13,
-   "largo": 6
-  },
-  {
-   "tipo": "plataforma",
-   "x": 51,
-   "y": 12,
-   "largo": 10
-  },
-  {
-   "tipo": "plataforma",
-   "x": 65,
-   "y": 12,
-   "largo": 6
-  },
-  {
-   "tipo": "plataforma",
-   "x": 71,
-   "y": 14,
-   "largo": 10
-  },
-  {
-   "tipo": "plataforma",
-   "x": 81,
-   "y": 15,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 89,
-   "y": 15,
-   "largo": 8
-  },
-  {
-   "tipo": "plataforma",
-   "x": 97,
-   "y": 14,
-   "largo": 8
-  },
-  {
-   "tipo": "plataforma",
-   "x": 109,
-   "y": 14,
-   "largo": 5
-  },
-  {
-   "tipo": "plataforma",
-   "x": 114,
-   "y": 12,
-   "largo": 1
-  },
-  {
-   "tipo": "plataforma",
-   "x": 115,
-   "y": 13,
-   "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 118,
-   "y": 15,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 122,
-   "y": 13,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 126,
-   "y": 15,
-   "largo": 1
-  },
-  {
-   "tipo": "plataforma",
-   "x": 131,
-   "y": 15,
-   "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 134,
-   "y": 14,
-   "largo": 34
-  },
-  {
-   "tipo": "plataforma",
-   "x": 52,
-   "y": 12,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 114,
-   "y": 12,
-   "largo": 1
-  },
-  {
-   "tipo": "plataforma",
-   "x": 115,
-   "y": 13,
-   "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 122,
-   "y": 13,
-   "largo": 4
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 73,
-   "y": 10,
-   "largo": 1,
-   "contenido": "nada"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 74,
-   "y": 10,
-   "largo": 1,
-   "contenido": "moneda"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 75,
-   "y": 10,
-   "largo": 1,
-   "contenido": "moneda"
-  },
-  {
-   "tipo": "ladrillo",
-   "x": 76,
-   "y": 10,
-   "largo": 1,
-   "contenido": "nada"
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     21,
-     12
-    ],
-    [
-     22,
-     10
-    ],
-    [
-     23,
-     10
-    ],
-    [
-     24,
-     10
-    ],
-    [
-     25,
-     10
-    ],
-    [
-     26,
-     12
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     40,
-     11
-    ],
-    [
-     41,
-     10
-    ],
-    [
-     42,
-     9
-    ],
-    [
-     43,
-     9
-    ],
-    [
-     44,
-     9
-    ],
-    [
-     45,
-     10
-    ],
-    [
-     46,
-     11
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     60,
-     10
-    ],
-    [
-     61,
-     9
-    ],
-    [
-     62,
-     8
-    ],
-    [
-     63,
-     8
-    ],
-    [
-     64,
-     8
-    ],
-    [
-     65,
-     9
-    ],
-    [
-     66,
-     10
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     84,
-     13
-    ],
-    [
-     85,
-     12
-    ],
-    [
-     86,
-     11
-    ],
-    [
-     87,
-     11
-    ],
-    [
-     88,
-     11
-    ],
-    [
-     89,
-     12
-    ],
-    [
-     90,
-     13
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     104,
-     12
-    ],
-    [
-     105,
-     11
-    ],
-    [
-     106,
-     10
-    ],
-    [
-     107,
-     10
-    ],
-    [
-     108,
-     10
-    ],
-    [
-     109,
-     11
-    ],
-    [
-     110,
-     12
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     126,
-     13
-    ],
-    [
-     127,
-     12
-    ],
-    [
-     128,
-     11
-    ],
-    [
-     129,
-     11
-    ],
-    [
-     130,
-     11
-    ],
-    [
-     131,
-     12
-    ],
-    [
-     132,
-     13
-    ]
-   ]
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 24,
-   "y": 11,
-   "largo": 3,
-   "recorrido": -3,
-   "eje": "y",
-   "periodo": 4.1
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 47,
-   "y": 11,
-   "largo": 3,
-   "recorrido": 5,
-   "eje": "x",
-   "periodo": 4.2
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 65,
-   "y": 9,
-   "largo": 3,
-   "recorrido": -3,
-   "eje": "y",
-   "periodo": 4
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 114,
-   "y": 9,
-   "largo": 3,
-   "recorrido": 8,
-   "eje": "x",
-   "periodo": 5.1
-  },
-  {
-   "tipo": "bicho",
-   "x": 32,
-   "y": 8,
-   "bicho": "murcielago",
-   "nombre": "Confundir grossissement y grandissement",
-   "correccion": "Con objeto lejano e imagen virtual no se mide γ (tamaños) sino G = θ'/θ (ángulos)."
-  },
-  {
-   "tipo": "bicho",
-   "x": 45,
-   "y": 7,
-   "bicho": "demonio",
-   "nombre": "«El grossissement depende del diámetro del objetivo»",
-   "correccion": "G = −f'₁/f'₂ depende solo de las distancias focales; el diámetro del objetivo fija la luz recogida (luminosidad)."
-  },
-  {
-   "tipo": "bicho",
-   "x": 73,
-   "y": 7,
-   "bicho": "demonio",
-   "nombre": "Imagen intermedia = un punto",
-   "correccion": "El haz de un punto en el infinito fuera del eje converge en el plano focal imagen del objetivo (no en el foco F'₁, salvo sobre el eje)."
-  },
-  {
-   "tipo": "bicho",
-   "x": 85,
-   "y": 7,
-   "bicho": "murcielago",
-   "nombre": "Ángulos sin la aproximación de ángulos pequeños",
-   "correccion": "tan θ ≈ θ solo vale en radianes y para ángulos pequeños; usa tan θ = A₁B₁/O₁A₁ y la calculadora en el modo correcto."
-  },
-  {
-   "tipo": "bicho",
-   "x": 94,
-   "y": 9,
-   "bicho": "murcielago",
-   "nombre": "Mirar el Sol con un instrumento óptico",
-   "correccion": "Nunca observes el Sol a través de una lunette: concentra la energía en el círculo ocular; para verlo, proyecta su imagen sobre una pantalla."
-  },
-  {
-   "tipo": "bicho",
-   "x": 114,
-   "y": 5,
-   "bicho": "murcielago",
-   "nombre": "Distancias focales sin pasar a la misma unidad",
-   "correccion": "Convierte f'₁ y f'₂ a la misma unidad antes de operar (p. ej. f'₁ = 60 cm y f'₂ = 20 mm → 62 cm, no 80)."
-  },
-  {
-   "tipo": "bicho",
-   "x": 129,
-   "y": 7,
-   "bicho": "murcielago",
-   "nombre": "Objetivo con focal menor que el ocular",
-   "correccion": "El objetivo tiene la mayor distancia focal (del orden del metro); el ocular, la menor (del orden del centímetro): f'₁ > f'₂."
-  },
-  {
-   "tipo": "canon_bala",
-   "x": 38,
-   "y": 12,
-   "dir": -1,
-   "periodo": 3.5,
-   "retardo": 2.6
-  },
-  {
-   "tipo": "canon_bala",
-   "x": 78,
-   "y": 13,
-   "dir": -1,
-   "periodo": 3.9,
-   "retardo": 0.8
-  },
-  {
-   "tipo": "canon_bala",
-   "x": 74,
-   "y": 13,
-   "dir": 1,
-   "periodo": 4.3,
-   "retardo": 0.3
-  },
-  {
-   "tipo": "canon_bala",
-   "x": 53,
-   "y": 11,
-   "dir": 1,
-   "periodo": 4.1,
-   "retardo": 1.2
-  },
-  {
-   "tipo": "canon_bala",
-   "x": 102,
-   "y": 13,
-   "dir": -1,
-   "periodo": 4,
-   "retardo": 0.3
-  },
-  {
-   "tipo": "laser",
-   "x": 122,
-   "y": 12,
-   "eje": "h",
-   "largo": 5,
-   "periodo": 3.9,
-   "retardo": 1.1
-  },
-  {
-   "tipo": "planta_techo",
-   "x": 83,
-   "largo": 9,
-   "ciclo": 3.9,
-   "visible": 1.3
-  },
-  {
-   "tipo": "planta_techo",
-   "x": 63,
-   "largo": 6,
-   "ciclo": 3.2,
-   "visible": 1.3
-  },
-  {
-   "tipo": "planta_techo",
-   "x": 42,
-   "largo": 7,
-   "ciclo": 3.3,
-   "visible": 1.3
-  },
-  {
-   "tipo": "item",
-   "x": 20,
-   "y": 13,
-   "item": "grande"
-  },
-  {
-   "tipo": "item",
-   "x": 56,
-   "y": 11,
-   "item": "fuego"
-  },
-  {
-   "tipo": "item",
-   "x": 97,
-   "y": 13,
-   "item": "escopeta"
+   "tipo": "checkpoint",
+   "x": 14
   }
  ],
  "ambiente": "nube",
- "relieve": true,
+ "vertical": true,
+ "peligros": true,
  "aire": true,
- "peligros": true
+ "relieve": true
 }

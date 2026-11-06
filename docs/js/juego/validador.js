@@ -316,7 +316,7 @@
     // --- campos básicos ---
     const ancho = nivel.ancho_tiles, alto = nivel.alto_tiles;
     if (!Number.isInteger(ancho) || ancho < 40 || ancho > 400) E(`ancho_tiles debe ser un entero entre 40 y 400 (vale ${ancho}).`);
-    if (!Number.isInteger(alto) || alto < 12 || alto > 30) E(`alto_tiles debe ser un entero entre 12 y 30 (vale ${alto}).`);
+    if (!Number.isInteger(alto) || alto < 12 || alto > 64) E(`alto_tiles debe ser un entero entre 12 y 64 (vale ${alto}).`);
     if (!Array.isArray(nivel.segmentos)) E('Falta el array "segmentos".');
     if (err.length) return fin();
     if (typeof nivel.capitulo_id !== 'string' || !nivel.capitulo_id) E('Falta capitulo_id.');

@@ -8,320 +8,354 @@
   "salto": 12,
   "viento": 0
  },
- "ancho_tiles": 170,
- "alto_tiles": 18,
+ "ancho_tiles": 48,
+ "alto_tiles": 54,
  "segmentos": [
   {
-   "tipo": "foso",
+   "tipo": "plataforma",
+   "x": 0,
+   "y": 50,
+   "largo": 48
+  },
+  {
+   "tipo": "plataforma",
+   "x": 12,
+   "y": 8,
+   "largo": 36
+  },
+  {
+   "tipo": "plataforma",
+   "x": 4,
+   "y": 47,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 44,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma_movil",
    "x": 22,
-   "largo": 3
-  },
-  {
-   "tipo": "foso",
-   "x": 39,
-   "largo": 4
-  },
-  {
-   "tipo": "foso",
-   "x": 56,
-   "largo": 4
-  },
-  {
-   "tipo": "foso",
-   "x": 72,
-   "largo": 4
-  },
-  {
-   "tipo": "foso",
-   "x": 90,
-   "largo": 3
-  },
-  {
-   "tipo": "foso",
-   "x": 103,
-   "largo": 3
-  },
-  {
-   "tipo": "foso",
-   "x": 118,
-   "largo": 3
-  },
-  {
-   "tipo": "foso",
-   "x": 135,
-   "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 30,
-   "y": 9,
-   "largo": 5
-  },
-  {
-   "tipo": "plataforma",
-   "x": 47,
-   "y": 10,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 64,
-   "y": 11,
-   "largo": 5
-  },
-  {
-   "tipo": "plataforma",
-   "x": 80,
-   "y": 11,
-   "largo": 5
-  },
-  {
-   "tipo": "plataforma",
-   "x": 86,
-   "y": 9,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma",
-   "x": 96,
-   "y": 11,
-   "largo": 4
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 56,
-   "y": 11,
+   "y": 41,
    "largo": 4,
-   "recorrido": 4,
+   "recorrido": 5,
    "eje": "x",
-   "periodo": 4
+   "periodo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 38,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 4,
+   "y": 35,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 32,
+   "largo": 6
   },
   {
    "tipo": "plataforma_movil",
-   "x": 72,
-   "y": 11,
+   "x": 22,
+   "y": 29,
    "largo": 4,
-   "recorrido": 4,
+   "recorrido": 5,
    "eje": "x",
-   "periodo": 3.5
+   "periodo": 5
+  },
+  {
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 26,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 4,
+   "y": 23,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 20,
+   "largo": 6
   },
   {
    "tipo": "plataforma_movil",
-   "x": 90,
-   "y": 11,
-   "largo": 3,
-   "recorrido": 3,
+   "x": 22,
+   "y": 17,
+   "largo": 4,
+   "recorrido": 5,
    "eje": "x",
-   "periodo": 3
+   "periodo": 5
   },
   {
-   "tipo": "plataforma_movil",
-   "x": 103,
+   "tipo": "plataforma",
+   "x": 13,
+   "y": 14,
+   "largo": 6
+  },
+  {
+   "tipo": "plataforma",
+   "x": 4,
    "y": 11,
-   "largo": 3,
-   "recorrido": 3,
-   "eje": "x",
-   "periodo": 4
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 118,
-   "y": 11,
-   "largo": 3,
-   "recorrido": 3,
-   "eje": "x",
-   "periodo": 3.5
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 135,
-   "y": 11,
-   "largo": 3,
-   "recorrido": 3,
-   "eje": "y",
-   "periodo": 3
-  },
-  {
-   "tipo": "zona_campo",
-   "x": 88,
-   "y": 5,
-   "w": 8,
-   "h": 9,
-   "fx": 0,
-   "fy": -0.45
-  },
-  {
-   "tipo": "zona_campo",
-   "x": 106,
-   "y": 4,
-   "w": 30,
-   "h": 10,
-   "fx": 0,
-   "fy": 0.7
+   "largo": 6
   },
   {
    "tipo": "coleccionable",
-   "x": 8,
-   "y": 12,
+   "x": 15,
+   "y": 42,
    "ref": "f7",
    "latex": "\\vec F_{A/B} = -\\vec F_{B/A} = G\\,\\dfrac{m_A\\cdot m_B}{d^{2}}\\;\\vec u_{BA}",
    "nombre": "Force d'interaction gravitationnelle"
   },
   {
    "tipo": "coleccionable",
-   "x": 18,
-   "y": 10,
+   "x": 24,
+   "y": 39,
    "ref": "f11",
    "latex": "\\vec a = G\\,\\dfrac{M}{r^{2}}\\,\\vec n",
    "nombre": "Accélération d'un satellite"
   },
   {
    "tipo": "coleccionable",
-   "x": 31,
-   "y": 7,
+   "x": 15,
+   "y": 36,
    "ref": "f1",
    "latex": "PF + PF' = 2a",
    "nombre": "1re loi de Kepler : loi des orbites"
   },
   {
    "tipo": "coleccionable",
-   "x": 48,
-   "y": 8,
+   "x": 6,
+   "y": 33,
    "ref": "f2",
    "latex": "\\Delta t_1 = \\Delta t_2 \\;\\Rightarrow\\; \\mathcal{A}_1 = \\mathcal{A}_2",
    "nombre": "2e loi de Kepler : loi des aires"
   },
   {
    "tipo": "coleccionable",
-   "x": 66,
-   "y": 9,
+   "x": 15,
+   "y": 30,
    "ref": "f3",
    "latex": "\\dfrac{T^{2}}{a^{3}} = k = \\text{constante}",
    "nombre": "3e loi de Kepler : loi des périodes"
   },
   {
    "tipo": "coleccionable",
-   "x": 82,
-   "y": 9,
+   "x": 24,
+   "y": 27,
    "ref": "f4",
    "latex": "k = \\dfrac{4\\pi^{2}}{G\\cdot M}",
    "nombre": "Constante de la 3e loi de Kepler"
   },
   {
    "tipo": "coleccionable",
-   "x": 87,
-   "y": 7,
+   "x": 15,
+   "y": 24,
    "ref": "f13",
    "latex": "v = \\sqrt{\\dfrac{G\\cdot M}{r}}",
    "nombre": "Vitesse d'un satellite en orbite circulaire"
   },
   {
    "tipo": "coleccionable",
-   "x": 97,
-   "y": 9,
+   "x": 6,
+   "y": 21,
    "ref": "f15",
    "latex": "T = 2\\pi\\sqrt{\\dfrac{r^{3}}{G\\cdot M}}",
    "nombre": "Période de révolution"
   },
   {
    "tipo": "coleccionable",
-   "x": 110,
-   "y": 12,
+   "x": 15,
+   "y": 18,
    "ref": "f17",
    "latex": "r = R_T + h",
    "nombre": "Rayon d'orbite d'un satellite terrestre"
   },
   {
    "tipo": "coleccionable",
-   "x": 125,
-   "y": 11,
+   "x": 24,
+   "y": 15,
    "ref": "f18",
    "latex": "h = \\left(\\dfrac{T^{2}}{4\\pi^{2}}\\,G\\cdot M\\right)^{\\!1/3} - R_T",
    "nombre": "Altitude d'un satellite géostationnaire"
   },
   {
    "tipo": "coleccionable",
-   "x": 130,
-   "y": 13,
+   "x": 15,
+   "y": 12,
    "ref": "f16",
    "latex": "T^{2} = 4\\pi^{2}\\,\\dfrac{r^{3}}{G\\cdot M}",
    "nombre": "De la période à la 3e loi de Kepler"
   },
   {
-   "tipo": "coleccionable",
-   "x": 133,
-   "y": 13,
-   "ref": "f8",
-   "latex": "\\vec g = -G\\,\\dfrac{M}{R^{2}}\\,\\vec u_r",
-   "nombre": "Champ de gravitation"
-  },
-  {
    "tipo": "enemigo",
-   "x": 14,
-   "y": 12,
+   "x": 6,
+   "y": 46,
    "enemigo": "error_referencial",
    "nombre": "Referencial incompleto",
    "correccion": "Decir «referencial geocéntrico» y su definición: centro de la Tierra y ejes hacia estrellas lejanas fijas."
   },
   {
    "tipo": "enemigo",
-   "x": 36,
-   "y": 11,
+   "x": 6,
+   "y": 34,
    "enemigo": "error_unidades_km",
    "nombre": "No convertir km a m",
    "correccion": "Pasar r y h a metros antes de aplicar v = √(GM/r); 6 840 km = 6,84×10⁶ m."
   },
   {
    "tipo": "enemigo",
-   "x": 52,
-   "y": 12,
+   "x": 6,
+   "y": 22,
    "enemigo": "error_altitud_radio",
    "nombre": "Confundir altitud h con radio de órbita r",
    "correccion": "La altitud se mide desde la superficie: r = R_astro + h."
   },
   {
    "tipo": "enemigo",
-   "x": 68,
+   "x": 15,
    "y": 13,
    "enemigo": "error_t3_a2",
    "nombre": "Escribir mal la 3.ª ley (T³ = k·a²)",
    "correccion": "Es T² = k·a³: período al cuadrado y semieje al cubo."
   },
   {
-   "tipo": "enemigo",
-   "x": 84,
-   "y": 13,
-   "enemigo": "error_aceleracion_nula",
-   "nombre": "Pensar que v constante implica aceleración nula",
-   "correccion": "En órbita circular uniforme a = v²/r ≠ 0: es radial y centrípeta."
+   "tipo": "bicho",
+   "x": 21,
+   "y": 34,
+   "bicho": "neutrino",
+   "nombre": "Referencial incompleto",
+   "correccion": "Decir «referencial geocéntrico» y su definición: centro de la Tierra y ejes hacia estrellas lejanas fijas."
   },
   {
-   "tipo": "enemigo",
-   "x": 99,
-   "y": 13,
-   "enemigo": "error_vector_unitario",
-   "nombre": "Olvidar el vector unitario y el esquema de la fuerza",
-   "correccion": "F = G·m·M/r²·n con n unitario hacia el astro; dibujar siempre la flecha en un esquema."
+   "tipo": "bicho",
+   "x": 12,
+   "y": 31,
+   "bicho": "neutrino",
+   "nombre": "No convertir km a m",
+   "correccion": "Pasar r y h a metros antes de aplicar v = √(GM/r); 6 840 km = 6,84×10⁶ m."
   },
   {
-   "tipo": "enemigo",
-   "x": 114,
-   "y": 12,
-   "enemigo": "error_sin_critica",
-   "nombre": "No juzgar si el resultado es razonable",
-   "correccion": "Comprobar el orden de magnitud: T = 178 s para la ISS es absurdo (≈ 93 min = 5,6×10³ s)."
+   "tipo": "bicho",
+   "x": 21,
+   "y": 28,
+   "bicho": "demonio",
+   "nombre": "Confundir altitud h con radio de órbita r",
+   "correccion": "La altitud se mide desde la superficie: r = R_astro + h."
   },
   {
-   "tipo": "checkpoint",
-   "x": 60
+   "tipo": "torreta",
+   "x": 18,
+   "y": 37,
+   "periodo": 2.8,
+   "nombre": "Referencial incompleto",
+   "correccion": "Decir «referencial geocéntrico» y su definición: centro de la Tierra y ejes hacia estrellas lejanas fijas."
   },
   {
-   "tipo": "checkpoint",
-   "x": 121
+   "tipo": "torreta",
+   "x": 18,
+   "y": 31,
+   "periodo": 2.8,
+   "nombre": "Referencial incompleto",
+   "correccion": "Decir «referencial geocéntrico» y su definición: centro de la Tierra y ejes hacia estrellas lejanas fijas."
+  },
+  {
+   "tipo": "torreta",
+   "x": 18,
+   "y": 19,
+   "periodo": 2.8,
+   "nombre": "Referencial incompleto",
+   "correccion": "Decir «referencial geocéntrico» y su definición: centro de la Tierra y ejes hacia estrellas lejanas fijas."
+  },
+  {
+   "tipo": "sierra",
+   "x": 16,
+   "y": 47,
+   "eje": "x",
+   "recorrido": 4,
+   "periodo": 4.17395755443722
+  },
+  {
+   "tipo": "sierra",
+   "x": 16,
+   "y": 35,
+   "eje": "x",
+   "recorrido": 4,
+   "periodo": 3.2060514896176757
+  },
+  {
+   "tipo": "sierra",
+   "x": 16,
+   "y": 29,
+   "eje": "x",
+   "recorrido": 4,
+   "periodo": 3.646337778354064
+  },
+  {
+   "tipo": "sierra",
+   "x": 16,
+   "y": 17,
+   "eje": "x",
+   "recorrido": 4,
+   "periodo": 3.2328647759743037
+  },
+  {
+   "tipo": "mina",
+   "x": 17,
+   "y": 25,
+   "modo": "temporizador",
+   "radio": 1.4
+  },
+  {
+   "tipo": "laser",
+   "x": 29,
+   "y": 26,
+   "eje": "h",
+   "largo": 3,
+   "periodo": 3.6,
+   "retardo": 1.845084108877927
+  },
+  {
+   "tipo": "laser",
+   "x": 20,
+   "y": 17,
+   "eje": "h",
+   "largo": 3,
+   "periodo": 3.6,
+   "retardo": 1.7748171011917293
+  },
+  {
+   "tipo": "lluvia_rocas",
+   "x": 14,
+   "w": 20,
+   "periodo": 2.4
+  },
+  {
+   "tipo": "item",
+   "x": 14,
+   "y": 30,
+   "item": "grande"
+  },
+  {
+   "tipo": "item",
+   "x": 5,
+   "y": 21,
+   "item": "fuego"
   },
   {
    "tipo": "jefe",
-   "x": 154,
+   "x": 32,
    "jefe": "ejercicio_bac_1",
    "titulo": "Ejercicio bac: el satélite en órbita",
    "preguntas": [
@@ -377,560 +411,16 @@
   },
   {
    "tipo": "meta",
-   "x": 166
+   "x": 44
   },
   {
-   "tipo": "bicho",
-   "x": 96,
-   "y": 9,
-   "bicho": "neutrino",
-   "nombre": "Referencial incompleto",
-   "correccion": "Decir «referencial geocéntrico» y su definición: centro de la Tierra y ejes hacia estrellas lejanas fijas."
-  },
-  {
-   "tipo": "bicho",
-   "x": 36,
-   "y": 7,
-   "bicho": "neutrino",
-   "nombre": "No convertir km a m",
-   "correccion": "Pasar r y h a metros antes de aplicar v = √(GM/r); 6 840 km = 6,84×10⁶ m."
-  },
-  {
-   "tipo": "bicho",
-   "x": 132,
-   "y": 9,
-   "bicho": "demonio",
-   "nombre": "Confundir altitud h con radio de órbita r",
-   "correccion": "La altitud se mide desde la superficie: r = R_astro + h."
-  },
-  {
-   "tipo": "bicho",
-   "x": 112,
-   "y": 8,
-   "bicho": "demonio",
-   "nombre": "Escribir mal la 3.ª ley (T³ = k·a²)",
-   "correccion": "Es T² = k·a³: período al cuadrado y semieje al cubo."
-  },
-  {
-   "tipo": "bicho",
-   "x": 45,
-   "y": 12,
-   "bicho": "embestidor",
-   "nombre": "Pensar que v constante implica aceleración nula",
-   "correccion": "En órbita circular uniforme a = v²/r ≠ 0: es radial y centrípeta."
-  },
-  {
-   "tipo": "lluvia_rocas",
-   "x": 77,
-   "w": 9,
-   "periodo": 2.2
-  },
-  {
-   "tipo": "plataforma",
-   "x": 0,
-   "y": 14,
-   "largo": 10
-  },
-  {
-   "tipo": "plataforma",
-   "x": 10,
-   "y": 13,
-   "largo": 7
-  },
-  {
-   "tipo": "plataforma",
-   "x": 17,
-   "y": 12,
-   "largo": 5
-  },
-  {
-   "tipo": "plataforma",
-   "x": 25,
-   "y": 12,
-   "largo": 14
-  },
-  {
-   "tipo": "plataforma",
-   "x": 43,
-   "y": 12,
-   "largo": 2
-  },
-  {
-   "tipo": "plataforma",
-   "x": 45,
-   "y": 13,
-   "largo": 8
-  },
-  {
-   "tipo": "plataforma",
-   "x": 53,
-   "y": 14,
-   "largo": 3
-  },
-  {
-   "tipo": "plataforma",
-   "x": 60,
-   "y": 14,
-   "largo": 12
-  },
-  {
-   "tipo": "plataforma",
-   "x": 76,
-   "y": 14,
-   "largo": 14
-  },
-  {
-   "tipo": "plataforma",
-   "x": 93,
-   "y": 14,
-   "largo": 10
-  },
-  {
-   "tipo": "plataforma",
-   "x": 106,
-   "y": 14,
-   "largo": 5
-  },
-  {
-   "tipo": "plataforma",
-   "x": 111,
-   "y": 13,
-   "largo": 7
-  },
-  {
-   "tipo": "plataforma",
-   "x": 121,
-   "y": 13,
-   "largo": 5
-  },
-  {
-   "tipo": "plataforma",
-   "x": 126,
-   "y": 15,
-   "largo": 9
-  },
-  {
-   "tipo": "plataforma",
-   "x": 138,
-   "y": 15,
-   "largo": 2
-  },
-  {
-   "tipo": "plataforma",
-   "x": 140,
-   "y": 14,
-   "largo": 29
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     21,
-     10
-    ],
-    [
-     22,
-     8
-    ],
-    [
-     23,
-     8
-    ],
-    [
-     24,
-     8
-    ],
-    [
-     25,
-     8
-    ],
-    [
-     26,
-     10
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     38,
-     10
-    ],
-    [
-     39,
-     9
-    ],
-    [
-     40,
-     8
-    ],
-    [
-     41,
-     8
-    ],
-    [
-     42,
-     8
-    ],
-    [
-     43,
-     9
-    ],
-    [
-     44,
-     10
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     55,
-     12
-    ],
-    [
-     56,
-     11
-    ],
-    [
-     57,
-     10
-    ],
-    [
-     58,
-     10
-    ],
-    [
-     59,
-     10
-    ],
-    [
-     60,
-     11
-    ],
-    [
-     61,
-     12
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     71,
-     12
-    ],
-    [
-     72,
-     11
-    ],
-    [
-     73,
-     10
-    ],
-    [
-     74,
-     10
-    ],
-    [
-     75,
-     10
-    ],
-    [
-     76,
-     11
-    ],
-    [
-     77,
-     12
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     89,
-     12
-    ],
-    [
-     90,
-     10
-    ],
-    [
-     91,
-     10
-    ],
-    [
-     92,
-     10
-    ],
-    [
-     93,
-     10
-    ],
-    [
-     94,
-     12
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     102,
-     12
-    ],
-    [
-     103,
-     10
-    ],
-    [
-     104,
-     10
-    ],
-    [
-     105,
-     10
-    ],
-    [
-     106,
-     10
-    ],
-    [
-     107,
-     12
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     117,
-     11
-    ],
-    [
-     118,
-     9
-    ],
-    [
-     119,
-     9
-    ],
-    [
-     120,
-     9
-    ],
-    [
-     121,
-     9
-    ],
-    [
-     122,
-     11
-    ]
-   ]
-  },
-  {
-   "tipo": "rastro_monedas",
-   "puntos": [
-    [
-     134,
-     13
-    ],
-    [
-     135,
-     11
-    ],
-    [
-     136,
-     11
-    ],
-    [
-     137,
-     11
-    ],
-    [
-     138,
-     11
-    ],
-    [
-     139,
-     13
-    ]
-   ]
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 24,
-   "y": 9,
-   "largo": 3,
-   "recorrido": -4,
-   "eje": "y",
-   "periodo": 3.7
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 36,
-   "y": 10,
-   "largo": 3,
-   "recorrido": 6,
-   "eje": "x",
-   "periodo": 4.4
-  },
-  {
-   "tipo": "plataforma_movil",
-   "x": 114,
-   "y": 10,
-   "largo": 3,
-   "recorrido": -3,
-   "eje": "y",
-   "periodo": 4.8
-  },
-  {
-   "tipo": "bicho",
-   "x": 40,
-   "y": 7,
-   "bicho": "neutrino",
-   "nombre": "Confundir altitud h con radio de órbita r",
-   "correccion": "La altitud se mide desde la superficie: r = R_astro + h."
-  },
-  {
-   "tipo": "bicho",
-   "x": 64,
-   "y": 8,
-   "bicho": "demonio",
-   "nombre": "Escribir mal la 3.ª ley (T³ = k·a²)",
-   "correccion": "Es T² = k·a³: período al cuadrado y semieje al cubo."
-  },
-  {
-   "tipo": "bicho",
-   "x": 74,
-   "y": 8,
-   "bicho": "murcielago",
-   "nombre": "Pensar que v constante implica aceleración nula",
-   "correccion": "En órbita circular uniforme a = v²/r ≠ 0: es radial y centrípeta."
-  },
-  {
-   "tipo": "bicho",
-   "x": 109,
-   "y": 8,
-   "bicho": "murcielago",
-   "nombre": "Olvidar el vector unitario y el esquema de la fuerza",
-   "correccion": "F = G·m·M/r²·n con n unitario hacia el astro; dibujar siempre la flecha en un esquema."
-  },
-  {
-   "tipo": "bicho",
-   "x": 121,
-   "y": 8,
-   "bicho": "demonio",
-   "nombre": "No juzgar si el resultado es razonable",
-   "correccion": "Comprobar el orden de magnitud: T = 178 s para la ISS es absurdo (≈ 93 min = 5,6×10³ s)."
-  },
-  {
-   "tipo": "mina",
-   "x": 31,
-   "y": 11,
-   "modo": "temporizador",
-   "radio": 1.4
-  },
-  {
-   "tipo": "canon_bala",
-   "x": 128,
-   "y": 14,
-   "dir": 1,
-   "periodo": 4,
-   "retardo": 2.4
-  },
-  {
-   "tipo": "torreta",
-   "x": 49,
-   "y": 12,
-   "periodo": 2.9,
-   "nombre": "Confundir altitud h con radio de órbita r",
-   "correccion": "La altitud se mide desde la superficie: r = R_astro + h."
-  },
-  {
-   "tipo": "mina",
-   "x": 132,
-   "y": 14,
-   "modo": "temporizador",
-   "radio": 1.4
-  },
-  {
-   "tipo": "torreta",
-   "x": 95,
-   "y": 13,
-   "periodo": 2.8,
-   "nombre": "Escribir mal la 3.ª ley (T³ = k·a²)",
-   "correccion": "Es T² = k·a³: período al cuadrado y semieje al cubo."
-  },
-  {
-   "tipo": "torreta",
-   "x": 65,
-   "y": 13,
-   "periodo": 3,
-   "nombre": "Pensar que v constante implica aceleración nula",
-   "correccion": "En órbita circular uniforme a = v²/r ≠ 0: es radial y centrípeta."
-  },
-  {
-   "tipo": "mina",
-   "x": 27,
-   "y": 11,
-   "modo": "contacto",
-   "radio": 1.4
-  },
-  {
-   "tipo": "canon_bala",
-   "x": 108,
-   "y": 13,
-   "dir": -1,
-   "periodo": 3.9,
-   "retardo": 1.8
-  },
-  {
-   "tipo": "laser",
-   "x": 40,
-   "y": 11,
-   "eje": "h",
-   "largo": 5,
-   "periodo": 3.5,
-   "retardo": 2.9
-  },
-  {
-   "tipo": "sierra",
-   "x": 103,
-   "y": 8,
-   "eje": "y",
-   "recorrido": 4,
-   "periodo": 3.8
-  },
-  {
-   "tipo": "item",
-   "x": 34,
-   "y": 11,
-   "item": "grande"
-  },
-  {
-   "tipo": "item",
-   "x": 63,
-   "y": 13,
-   "item": "fuego"
-  },
-  {
-   "tipo": "item",
-   "x": 111,
-   "y": 12,
-   "item": "escopeta"
+   "tipo": "checkpoint",
+   "x": 14
   }
  ],
  "ambiente": "espacio",
- "relieve": true,
+ "vertical": true,
+ "peligros": true,
  "aire": true,
- "peligros": true
+ "relieve": true
 }

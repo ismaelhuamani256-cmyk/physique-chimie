@@ -1021,7 +1021,7 @@
           if (et === 1) arco(c, [CX + 50, CY - 4, CX + 80, CY - 60, Ox - 14, Oy - 14], q2, AM);
           if (et === 2 && u < 3) arco(c, [CX + 32, CY - 100, CX + 62, CY - 50, CX + 8, CY - 36], q3, AM);
           // rótulos
-          if (n === 0) { txt(c, 'site donneur', Ox, Oy - 66, { s: 13, c: MG, b: 1 }); txt(c, '(doublets non liants)', Ox + 8, Oy - 50, { s: 12, c: MG }); txt(c, 'site accepteur', hp0[0] + 10, hp0[1] - 30, { s: 13, c: AM, b: 1 }); txt(c, '(lacune électronique)', hp0[0] + 10, hp0[1] - 14, { s: 12, c: AM }); }
+          if (n === 0) { txt(c, 'site donneur', Ox, Oy - 66, { s: 13, c: MG, b: 1 }); txt(c, '(doublets non liants)', Ox + 8, Oy - 50, { s: 12, c: MG }); txt(c, 'site accepteur', hp0[0] + 10, hp0[1] - 58, { s: 13, c: AM, b: 1 }); txt(c, '(lacune électronique)', hp0[0] + 10, hp0[1] - 42, { s: 12, c: AM }); }
           chip(c, u >= 3 ? 'mecanismo completo' : 'étape ' + (et + 1) + ' / 3', 90, 40, VE, { s: 13 });
           if (p1 > 0.98 && p2 < 0.5 && u < 3) chip(c, 'intermédiaire 1 : alcool protoné', 330, 396, AZ, { s: 12 });
           if (p2 > 0.95 && p3 < 0.5 && u < 3) chip(c, 'intermédiaire 2 : carbocation', 330, 396, AZ, { s: 12 });
@@ -1090,6 +1090,284 @@
       { pregunta: 'Gráficamente, la velocidad volúmica de aparición de un producto en un instante es…', opciones: ['el coeficiente director de la tangente a la curva en ese instante', 'la altura de la curva', 'el área bajo la curva'], correcta: 0, explicacion: 'v = d[P]/dt es la pendiente de la tangente (p. 113).' },
       { pregunta: '¿Por qué hay un signo menos en v = −d[R]/dt?', opciones: ['Porque [R] disminuye y la velocidad debe ser positiva', 'Porque R es un catalizador', 'Porque el tiempo va hacia atrás'], correcta: 0, explicacion: 'La derivada de una concentración que baja es negativa.' },
       { pregunta: 'En t½ la reacción…', opciones: ['ha alcanzado la mitad del avance final, no ha terminado', 'ha terminado', 'ha avanzado un 75 %'], correcta: 0, explicacion: 't½: x = x_f/2. Se considera terminada hacia 6–7 t½.' },
+    ],
+  });
+
+  // =====================================================================================
+  // CAP. 5 · nucleaires
+  // =====================================================================================
+  const SIMB = 'H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe Cs Ba La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Po At Rn Fr Ra Ac Th Pa U'.split(' ');
+  const sup = (n) => String(n).split('').map((d) => '⁰¹²³⁴⁵⁶⁷⁸⁹'[+d]).join('');
+  const sub = (n) => String(n).split('').map((d) => '₀₁₂₃₄₅₆₇₈₉'[+d]).join('');
+  const nuc = (Z, A) => sup(A) + sub(Z) + (SIMB[Z - 1] || '?');
+  // valle de estabilidad (esquema aproximado: N = Z hasta Z = 20 y exceso de neutrones después)
+  const nEst = (Z) => (Z <= 20 ? Z + Math.min(1, Z / 12) : Z + 1 + 0.6263 * (Z - 20) + 0.001344 * (Z - 20) * (Z - 20));
+  const tolN = (Z) => 0.7 + 0.01 * Z;
+  const diagnostico = (Z, N) => { const d = N - nEst(Z); if (Z >= 84) return 'alpha'; if (d > tolN(Z)) return 'beta-'; if (d < -tolN(Z)) return 'beta+'; return 'estable'; };
+
+  // ---- 5.1 Diagrama (N, Z): valle de estabilidad (p. 136) ----
+  reg({
+    id: 'diagramme-nz', capitulos: ['nucleaires'], titulo: 'El valle de estabilidad: ¿qué núcleo se desintegra y cómo?', fr: 'Diagramme (N, Z) et vallée de la stabilité', pagina_pdf: 136,
+    resumen: 'En el diagrama (N, Z) los núcleos estables forman una banda estrecha, el valle de estabilidad. Fuera de él, el exceso de neutrones, de protones o de nucleones decide si el núcleo emite β⁻, β⁺ o α.',
+    pasos: [
+      { titulo: 'El diagrama (N, Z)', texto: 'Cada casilla es un núcleo: Z (protones) en el eje horizontal, N (neutrones) en el vertical. La línea de puntos N = Z es la de los núcleos con tantos neutrones como protones. Pulsa en el diagrama para elegir un núcleo.', fr: 'Diagramme N = f(Z) : N le nombre de neutrons, Z le nombre de protons.' },
+      { titulo: 'La banda estable', texto: 'Los núcleos ligeros (Z ≤ 20) son estables si N = Z. Los más pesados necesitan un exceso de neutrones, y por eso la banda se curva hacia arriba: es la vallée de la stabilité. El ¹²C está dentro; el ¹⁴C, no. (Banda esquemática y aproximada.)', fr: 'Les noyaux légers jusqu’à Z ≤ 20 sont stables si N = Z ; les plus lourds ont un excès de neutrons.' },
+      { titulo: 'Exceso de neutrones → β⁻', texto: 'Por encima del valle sobran neutrones. El ¹⁴C (Z = 6, N = 8) transforma un neutrón en protón: Z sube 1 y N baja 1. En el diagrama la flecha va hacia abajo y a la derecha, de vuelta al valle.', fr: 'Un noyau qui possède un excès de neutrons peut subir une désintégration β⁻.' },
+      { titulo: 'Exceso de protones → β⁺', texto: 'Por debajo del valle sobran protones. El ³⁰P (Z = 15, N = 15) transforma un protón en neutrón: Z baja 1 y N sube 1; la flecha va arriba y a la izquierda (se emite un positón).', fr: 'Un noyau qui possède un excès de protons peut subir une désintégration β⁺.' },
+      { titulo: 'Núcleos muy pesados → α', texto: 'Más allá del plomo/bismuto, los núcleos tienen demasiados nucleones: emiten un núcleo de helio ⁴₂He y pierden 4 nucleones (Z − 2, N − 2). Ejemplo: ²²⁶₈₈Ra. Prueba con cualquier casilla y mira qué desintegración corresponde.', fr: 'Un noyau lourd contenant trop de nucléons peut subir une désintégration α.' },
+    ],
+    montar(host, api) {
+      const S = { Z: 6, N: 6 };
+      const PX0 = 70, PX1 = 540, PY0 = 380, PY1 = 40, ZM = 92, NM = 146;
+      const gx = (z) => PX0 + (z / ZM) * (PX1 - PX0), gy = (n) => PY0 - (n / NM) * (PY0 - PY1);
+      const PRE = [['¹²₆C (estable)', 6, 6], ['¹⁴₆C', 6, 8], ['³⁰₁₅P', 15, 15], ['²²⁶₈₈Ra', 88, 138], ['²⁰⁸₈₂Pb (estable)', 82, 126]];
+      let eh = null;
+      const E = escena(host, api, {
+        estado: S,
+        controles: [
+          { tipo: 'sel', id: 'pre', txt: 'Ejemplos', opciones: PRE.map((x) => x[0]), val: 0 },
+          { tipo: 'rango', id: 'Z', txt: 'Z', min: 1, max: 92, paso: 1, val: 6, fmt: (v) => String(v) },
+          { tipo: 'rango', id: 'N', txt: 'N', min: 0, max: 146, paso: 1, val: 6, fmt: (v) => String(v) },
+        ],
+        alCambiar(id, v, S, E) { if (id === 'pre') { E.set('Z', PRE[v][1]); E.set('N', PRE[v][2]); } },
+        ir(n, S, E) { const k = [0, 0, 1, 2, 3][n]; E.el.pre.value = k; S.pre = k; E.set('Z', PRE[k][1]); E.set('N', PRE[k][2]); },
+        dibujar(c, S) {
+          const n = S.n, Z = S.Z, N = S.N, A = Z + N, dg = diagnostico(Z, N);
+          // fondo por zonas
+          c.save(); c.beginPath(); c.rect(PX0, PY1, PX1 - PX0, PY0 - PY1); c.clip();
+          const banda = (k) => { c.beginPath(); for (let z = 0; z <= 92; z++) { const x = gx(z), y = gy(nEst(z) + k * tolN(z)); z ? c.lineTo(x, y) : c.moveTo(x, y); } };
+          if (n >= 1) { c.beginPath(); for (let z = 0; z <= 92; z++) { const x = gx(z), y = gy(nEst(z) + tolN(z) + 1.6); z ? c.lineTo(x, y) : c.moveTo(x, y); } for (let z = 92; z >= 0; z--) c.lineTo(gx(z), gy(nEst(z) - tolN(z) - 1.6)); c.closePath(); c.fillStyle = '#2ee59d44'; c.fill();
+            c.beginPath(); for (let z = 0; z <= 92; z++) { const x = gx(z), y = gy(nEst(z) + tolN(z)); z ? c.lineTo(x, y) : c.moveTo(x, y); } c.lineTo(gx(92), gy(NM)); c.lineTo(gx(0), gy(NM)); c.closePath(); c.fillStyle = '#4cc9f018'; c.fill();
+            c.beginPath(); for (let z = 0; z <= 92; z++) { const x = gx(z), y = gy(nEst(z) - tolN(z)); z ? c.lineTo(x, y) : c.moveTo(x, y); } c.lineTo(gx(92), gy(0)); c.lineTo(gx(0), gy(0)); c.closePath(); c.fillStyle = '#ff3da618'; c.fill();
+            c.fillStyle = '#ffd16618'; c.fillRect(gx(83.5), PY1, PX1 - gx(83.5), PY0 - PY1);
+            for (let z = 1; z <= 83; z++) { const nn = Math.round(nEst(z)); c.fillStyle = '#2ee59dcc'; c.fillRect(gx(z) - 2, gy(nn) - 2, 4, 4); } }
+          c.restore();
+          lin(c, PX0, PY0, PX1, PY0, T2, 1.2); lin(c, PX0, PY0, PX0, PY1, T2, 1.2);
+          [0, 20, 40, 60, 80].forEach((z) => { lin(c, gx(z), PY0, gx(z), PY0 + 4, T2, 1); txt(c, String(z), gx(z), PY0 + 14, { s: 11, c: T2 }); }); [0, 40, 80, 120].forEach((v) => { lin(c, PX0 - 4, gy(v), PX0, gy(v), T2, 1); txt(c, String(v), PX0 - 16, gy(v), { s: 11, c: T2 }); });
+          txt(c, 'Z (protons)', PX1, PY0 + 28, { s: 12, c: T2, a: 'right' }); txt(c, 'N (neutrons)', PX0 + 6, PY1 - 10, { s: 12, c: T2, a: 'left' });
+          lin(c, gx(0), gy(0), gx(60), gy(60), '#e8eefc', 1.4, [3, 4]); txt(c, 'N = Z', gx(60) + 6, gy(60) + 12, { s: 12, c: '#e8eefc', a: 'left' });
+          if (n >= 1) { txt(c, 'vallée de la stabilité', gx(64), gy(108), { s: 12, c: VE, b: 1, a: 'left' }); lin(c, gx(64) + 6, gy(108) + 8, gx(52), gy(nEst(52)) - 4, VE, 1); txt(c, 'excès de neutrons', gx(10), gy(110), { s: 12, c: AZ, a: 'left' }); txt(c, 'excès de protons', gx(52), gy(18), { s: 12, c: MG, a: 'left' }); txt(c, 'noyaux lourds', gx(88), gy(140) + 4, { s: 12, c: AM, a: 'right' }); }
+          // flecha de desintegración
+          const dZ = dg === 'beta-' ? 1 : dg === 'beta+' ? -1 : dg === 'alpha' ? -2 : 0, dN = dg === 'beta-' ? -1 : dg === 'beta+' ? 1 : dg === 'alpha' ? -2 : 0;
+          if (dg !== 'estable') { const k = 1 + 0.2 * Math.sin(S.t * 5); const x1 = gx(Z), y1 = gy(N), x2 = gx(Z + dZ), y2 = gy(N + dN); const L = Math.hypot(x2 - x1, y2 - y1) || 1; flecha(c, x1, y1, x1 + (x2 - x1) * 4 * k, y1 + (y2 - y1) * 4 * k, dg === 'alpha' ? AM : dg === 'beta-' ? AZ : MG, 3); }
+          const k2 = 0.5 + 0.5 * Math.sin(S.t * 4); circ(c, gx(Z), gy(N), 7 + k2 * 2, '#ffffff22', '#ffffff', 2); circ(c, gx(Z), gy(N), 3.5, AM);
+          // panel
+          panel(c, 560, 40, 222, 340, GR);
+          txt(c, nuc(Z, A), 671, 84, { s: 36, b: 1, c: TX });
+          txt(c, 'A = ' + A + ' · Z = ' + Z + ' · N = ' + N, 671, 120, { s: 13, c: T2 }); txt(c, 'N/Z = ' + (N / Z).toFixed(2).replace('.', ','), 671, 140, { s: 13, c: T2 });
+          const info = { 'estable': ['estable', 'dentro del valle', VE], 'beta-': ['radiactivo β⁻', 'exceso de neutrones', AZ], 'beta+': ['radiactivo β⁺', 'exceso de protones', MG], 'alpha': ['radiactivo α', 'demasiados nucleones', AM] }[dg];
+          chip(c, info[0], 671, 176, info[2], { s: 14 }); txt(c, info[1], 671, 204, { s: 13, c: info[2] });
+          if (dg !== 'estable') {
+            const Zh = Z + dZ, Ah = dg === 'alpha' ? A - 4 : A, part = dg === 'alpha' ? '⁴₂He' : dg === 'beta-' ? '⁰₋₁e' : '⁰₁e';
+            txt(c, nuc(Z, A) + ' →', 671, 248, { s: 15, b: 1 }); txt(c, nuc(Zh, Ah) + ' + ' + part, 671, 272, { s: 15, b: 1, c: info[2] });
+            txt(c, 'Z : ' + Z + ' = ' + Zh + ' + ' + (dg === 'alpha' ? 2 : dg === 'beta-' ? -1 : 1), 671, 306, { s: 12, c: T2 }); txt(c, 'A : ' + A + ' = ' + Ah + ' + ' + (dg === 'alpha' ? 4 : 0), 671, 324, { s: 12, c: T2 });
+            txt(c, dg === 'beta-' ? 'n → p' : dg === 'beta+' ? 'p → n' : '−4 nucléons', 671, 352, { s: 13, c: info[2], b: 1 });
+          } else txt(c, 'no se desintegra', 671, 262, { s: 14, c: T2 });
+        },
+      });
+      E.E.canvas.style.cursor = 'crosshair';
+      E.E.canvas.addEventListener('pointerdown', (ev) => { const r = E.E.canvas.getBoundingClientRect(), lx = ((ev.clientX - r.left) / r.width) * W, ly = ((ev.clientY - r.top) / r.height) * H; if (lx >= PX0 - 6 && lx <= PX1 + 6 && ly >= PY1 - 6 && ly <= PY0 + 6) { const z = clamp(Math.round(((lx - PX0) / (PX1 - PX0)) * ZM), 1, 92), nn = clamp(Math.round(((PY0 - ly) / (PY0 - PY1)) * NM), 0, 146); E.E.set('Z', z); E.E.set('N', nn); } });
+      return E;
+    },
+    test: [
+      { pregunta: 'El ¹⁴₆C (6 protones, 8 neutrones) está por encima del valle. ¿Cómo se desintegra?', opciones: ['β⁻: un neutrón se transforma en protón', 'β⁺: un protón se transforma en neutrón', 'α: emite helio'], correcta: 0, explicacion: 'Exceso de neutrones → β⁻ (p. 136): ¹⁴₆C → ¹⁴₇N + ⁰₋₁e.' },
+      { pregunta: 'Los núcleos ligeros (Z ≤ 20) son estables si…', opciones: ['N = Z', 'N = 2Z', 'N = 0'], correcta: 0, explicacion: 'Los más pesados necesitan exceso de neutrones.' },
+      { pregunta: 'Un núcleo muy pesado con demasiados nucleones suele emitir…', opciones: ['una partícula α (⁴₂He)', 'un fotón γ únicamente', 'un neutrón del átomo vecino'], correcta: 0, explicacion: 'La desintegración α elimina 4 nucleones.' },
+    ],
+  });
+
+  // ---- 5.2 α, β⁻, β⁺, γ: qué sale del núcleo y cómo cambian Z y A (p. 136–137) ----
+  reg({
+    id: 'desintegraciones', capitulos: ['nucleaires'], titulo: 'α, β⁻, β⁺, γ: qué sale del núcleo', fr: 'Radioactivités α, β⁻, β⁺ et γ · lois de conservation', pagina_pdf: 136,
+    resumen: 'Cada radiactividad expulsa algo distinto del núcleo. Cuenta protones y neutrones antes y después: la carga (Z) y el número de nucleones (A) siempre se conservan.',
+    pasos: [
+      { titulo: 'Un núcleo inestable', texto: 'Aquí ves un núcleo como un racimo de protones (magenta) y neutrones (gris). Un núcleo inestable es radiactivo: se transforma espontáneamente en otro más estable emitiendo una radiación. Elige un tipo con el selector o con los pasos.', fr: 'Les noyaux instables se transforment spontanément en d’autres noyaux plus stables lors de désintégrations.' },
+      { titulo: 'α: sale un núcleo de helio', texto: '²²⁶₈₈Ra emite ⁴₂He (2 protones + 2 neutrones): se pierden 4 nucleones, Z baja 2 y A baja 4. Resultado: ²²²₈₆Rn. (El racimo está dibujado con pocas esferas representativas.)', fr: '²²⁶₈₈Ra → ²²²₈₆Rn + ⁴₂He' },
+      { titulo: 'β⁻: un neutrón se hace protón', texto: '¹⁴₆C tiene exceso de neutrones: un neutrón se transforma en protón y se emite un electrón. Z sube 1 y A no cambia: ¹⁴₇N.', fr: '¹⁴₆C → ¹⁴₇N + ⁰₋₁e' },
+      { titulo: 'β⁺: un protón se hace neutrón', texto: '³⁰₁₅P tiene exceso de protones: un protón se transforma en neutrón y se emite un positón (misma masa que el electrón, carga opuesta). Z baja 1 y A no cambia: ³⁰₁₄Si.', fr: '³⁰₁₅P → ³⁰₁₄Si + ⁰₁e' },
+      { titulo: 'γ: el núcleo hijo se relaja', texto: 'Tras una desintegración, el núcleo hijo suele quedar excitado (X*). Vuelve al estado fundamental emitiendo uno o varios fotones γ: no hay cambio de Z ni de A. γ es una onda electromagnética, no una partícula.', fr: 'Le noyau fils excité X* revient à l’état fondamental en émettant des photons γ.' },
+    ],
+    montar(host, api) {
+      const TIPOS = [
+        { id: 'a', n: 'α · ²²⁶₈₈Ra', Z: 88, A: 226, p: 12, nn: 14, hijo: [86, 222], part: '⁴₂He', col: AM, eq: '²²⁶₈₈Ra → ²²²₈₆Rn + ⁴₂He', z2: 2, a2: 4 },
+        { id: 'b-', n: 'β⁻ · ¹⁴₆C', Z: 6, A: 14, p: 6, nn: 8, hijo: [7, 14], part: '⁰₋₁e', col: AZ, eq: '¹⁴₆C → ¹⁴₇N + ⁰₋₁e', z2: -1, a2: 0 },
+        { id: 'b+', n: 'β⁺ · ³⁰₁₅P', Z: 15, A: 30, p: 15, nn: 15, hijo: [14, 30], part: '⁰₁e', col: MG, eq: '³⁰₁₅P → ³⁰₁₄Si + ⁰₁e', z2: 1, a2: 0 },
+        { id: 'g', n: 'γ · núcleo excitado', Z: 7, A: 14, p: 7, nn: 7, hijo: [7, 14], part: 'γ', col: '#ffffff', eq: '¹⁴₇N* → ¹⁴₇N + γ', z2: 0, a2: 0 },
+      ];
+      const S = { tipo: 0, p: 0, meta: null };
+      const rng0 = PCB.util.rng ? PCB.util.rng : (s) => Math.random;
+      const bolas = TIPOS.map((t, ti) => { const rg = rng0(40 + ti);
+        const lista = []; for (let i = 0; i < t.p; i++) lista.push('p'); for (let i = 0; i < t.nn; i++) lista.push('n'); for (let i = lista.length - 1; i > 0; i--) { const j = Math.floor(rg() * (i + 1)); [lista[i], lista[j]] = [lista[j], lista[i]]; }
+        return lista.map((k, i) => { const R = (t.A > 100 ? 9 : 14) * Math.sqrt(i + 0.5) * (t.A > 100 ? 1.0 : 1.0), a = i * 2.39996; return { k, x: Math.cos(a) * R, y: Math.sin(a) * R }; }); });
+      const CX = 270, CY = 215;
+      return escena(host, api, {
+        estado: S,
+        controles: [
+          { tipo: 'sel', id: 'tipo', txt: 'Radiactividad', opciones: TIPOS.map((t) => t.n), val: 0 },
+          { tipo: 'rango', id: 'p', txt: 'avance', min: 0, max: 1, paso: 0.01, val: 0, fmt: (v) => Math.round(v * 100) + ' %' },
+          { tipo: 'btn', txt: '▶ Desintegrar', al: (S, E) => { if (S.p >= 0.99) E.set('p', 0); S.meta = 1; if (S.red) { E.set('p', 1); S.meta = null; } } },
+          { tipo: 'btn', txt: '↺', al: (S, E) => { S.meta = null; E.set('p', 0); } },
+        ],
+        alCambiar(id, v, S, E) { if (id === 'p') S.meta = null; if (id === 'tipo') { S.meta = null; E.set('p', 0); } },
+        paso(dt, S, E) { if (S.meta != null) { const v = S.p + dt * 0.35; if (v >= S.meta) { E.set('p', S.meta); S.meta = null; } else E.set('p', v); } },
+        ir(n, S, E) { S.meta = null; if (n === 0) { E.el.tipo.value = 1; S.tipo = 1; E.set('p', 0); } else { S.tipo = n - 1; E.el.tipo.value = n - 1; E.set('p', 0); if (S.red) E.set('p', 1); else S.meta = 1; } },
+        dibujar(c, S) {
+          const T = TIPOS[S.tipo], p = S.p, B = bolas[S.tipo], big = T.A > 100, r = big ? 8 : 12, ease = p * p * (3 - 2 * p);
+                    // marca de los emitidos (α: dos p y dos n)
+          let idxA = [];
+          if (T.id === 'a') { let pp = 0, nn = 0; B.forEach((b, i) => { if (b.k === 'p' && pp < 2 && Math.hypot(b.x, b.y) > 22) { idxA.push(i); pp++; } else if (b.k === 'n' && nn < 2 && Math.hypot(b.x, b.y) > 22) { idxA.push(i); nn++; } }); }
+          let cambio = -1; if (T.id === 'b-') cambio = B.findIndex((b) => b.k === 'n'); if (T.id === 'b+') cambio = B.findIndex((b) => b.k === 'p');
+          const glow = T.id === 'g' ? 0.5 + 0.5 * Math.sin(S.t * 6) * (1 - ease) : 0;
+          if (T.id === 'g' && p < 1) { c.globalAlpha = 0.1 + 0.12 * glow; circ(c, CX, CY, 78, '#ffffff', null); c.globalAlpha = 1; circ(c, CX, CY, 78, null, '#ffffff66', 1.5); }
+          B.forEach((b, i) => { let x = CX + b.x, y = CY + b.y, k = b.k, a = 1; if (T.id === 'a' && idxA.includes(i)) { const j = idxA.indexOf(i), tx = CX + 150 + (j % 2) * 15 + 150 * ease * 0.0, ty = CY - 90 + (j >> 1) * 15; x = lerp(CX + b.x, tx + 30 * ease, ease); y = lerp(CY + b.y, ty - 10 * ease, ease); } if (i === cambio && p > 0.4) k = T.id === 'b-' ? 'p' : 'n'; const col = k === 'p' ? MG : '#9aa3c4'; circ(c, x, y, r, col + 'cc', col, 1.6); });
+          // partículas emitidas
+          if (T.id === 'b-' || T.id === 'b+') { const q = ph2(p, 0.3, 1); if (q > 0) { const x = CX + 40 + q * 260, y = CY - 30 - q * 60, col = T.col; circ(c, x, y, 7, col + 'aa', col, 2); txt(c, T.id === 'b-' ? 'e⁻' : 'e⁺', x, y - 18, { s: 13, c: col, b: 1 }); } if (cambio >= 0 && p > 0.3 && p < 0.9) { const b = B[cambio]; circ(c, CX + b.x, CY + b.y, r + 5 + 3 * Math.sin(S.t * 10), null, AM, 2); } }
+          if (T.id === 'g') { const q = ph2(p, 0.3, 1); if (q > 0) { c.beginPath(); for (let x = 0; x < q * 300; x += 3) { const xx = CX + 70 + x, yy = CY - 20 - x * 0.2 + 10 * Math.sin(x * 0.28 - S.t * 12); x ? c.lineTo(xx, yy) : c.moveTo(xx, yy); } c.strokeStyle = '#ffffff'; c.lineWidth = 2.5; c.stroke(); txt(c, 'γ', CX + 80 + q * 300, CY - 40 - q * 60, { s: 18, c: '#fff', b: 1 }); } }
+          if (T.id === 'a' && p > 0.3) txt(c, '⁴₂He (α)', CX + 190, CY - 126, { s: 15, c: AM, b: 1 });
+          // etiquetas del núcleo
+          const desp = p > 0.5, Zc = desp ? T.hijo[0] : T.Z, Ac = desp ? T.hijo[1] : T.A;
+          txt(c, T.id === 'g' && !desp ? '¹⁴₇N*' : nuc(Zc, Ac), CX, CY + 128, { s: 26, b: 1, c: TX });
+          // panel de conservación
+          panel(c, 520, 56, 262, 300, GR);
+          txt(c, 'Lois de conservation', 651, 78, { s: 14, b: 1, c: VE });
+          txt(c, T.eq, 651, 110, { s: 16, b: 1, c: T.col });
+          const z1 = T.Z, a1 = T.A, z2 = T.hijo[0] + T.z2, a2 = T.hijo[1] + T.a2;
+          txt(c, 'carga (Z)', 651, 146, { s: 12, c: T2 }); txt(c, z1 + ' = ' + T.hijo[0] + ' + ' + (T.z2 < 0 ? '(' + T.z2 + ')' : T.z2) + '  ✔', 651, 168, { s: 16, b: 1, c: TX });
+          txt(c, 'nucleones (A)', 651, 206, { s: 12, c: T2 }); txt(c, a1 + ' = ' + T.hijo[1] + ' + ' + T.a2 + '  ✔', 651, 228, { s: 16, b: 1, c: TX });
+          txt(c, T.id === 'a' ? 'sale: 2 p + 2 n' : T.id === 'b-' ? 'n → p + e⁻' : T.id === 'b+' ? 'p → n + e⁺' : 'ni Z ni A cambian', 651, 270, { s: 14, b: 1, c: T.col });
+          txt(c, T.id === 'a' ? '(se eliminan 4 nucleones)' : T.id === 'g' ? 'γ = onda electromagnética' : 'positón = antielectrón', 651, 296, { s: 12, c: T2 });
+          txt(c, 'p ● protón   n ● neutrón', 651, 336, { s: 12, c: T2 });
+        },
+      });
+      function ph2(p, a, b) { return clamp((p - a) / (b - a), 0, 1); }
+    },
+    test: [
+      { pregunta: 'En una desintegración β⁻ del ¹⁴₆C, ¿qué le pasa al núcleo?', opciones: ['Un neutrón se transforma en protón: Z + 1, A igual', 'Pierde dos protones y dos neutrones', 'Un protón se transforma en neutrón'], correcta: 0, explicacion: '¹⁴₆C → ¹⁴₇N + ⁰₋₁e.' },
+      { pregunta: 'La radiación α está formada por…', opciones: ['un núcleo de helio ⁴₂He', 'un electrón', 'un fotón'], correcta: 0, explicacion: 'Se eliminan 4 nucleones (2 p + 2 n).' },
+      { pregunta: 'Una ecuación nuclear correcta debe conservar…', opciones: ['la carga (Z) y el número de nucleones (A)', 'solo la masa en gramos', 'solo el número de neutrones'], correcta: 0, explicacion: 'Lois de conservation de la charge et du nombre de nucléons.' },
+    ],
+  });
+
+  // ---- 5.3 Decaimiento aleatorio y t½ (p. 137–138) ----
+  reg({
+    id: 'decaimiento-aleatorio', capitulos: ['nucleaires'], titulo: 'Cada núcleo decae al azar, el conjunto sigue la ley', fr: 'Phénomène aléatoire · loi de décroissance · temps de demi-vie', pagina_pdf: 137,
+    resumen: 'No se puede prever cuándo se desintegra un núcleo concreto, pero con muchos núcleos la curva N(t) es suave y exponencial: cada t½ se desintegra la mitad de los que quedan.',
+    pasos: [
+      { titulo: 'Una muestra radiactiva', texto: 'Cada casilla es un núcleo radiactivo (N₀ en total). Tienen la misma probabilidad por unidad de tiempo de desintegrarse, que depende solo del tipo de núcleo: la constante radiactiva λ.', fr: 'N₀ est le nombre de noyaux radioactifs initialement présents.' },
+      { titulo: 'La desintegración es aleatoria', texto: 'Con pocos núcleos (N₀ = 20) pulsa «Iniciar»: se apagan en desorden y la curva roja (la simulación) se desvía de la teórica. Es imposible saber cuál se desintegrará ni cuándo.', fr: 'La désintégration d’un noyau est un phénomène aléatoire.' },
+      { titulo: 'Muchos núcleos: ley de decaimiento', texto: 'Con N₀ = 400 la curva simulada se pega a N(t) = N₀·e^(−λt). El azar individual se promedia: el comportamiento colectivo es predecible.', fr: 'N(t) = N₀·e^(−λ·t)' },
+      { titulo: 'Tiempo de semivida t½', texto: 'Tras t½ queda N₀/2; tras 2 t½ queda N₀/4 (¡no cero!); tras 3 t½, N₀/8. La semivida es una propiedad del núcleo, no depende de cuántos haya.', fr: 'N(t½) = N₀/2 ; t½ = ln 2 / λ' },
+      { titulo: 'Actividad: desintegraciones por segundo', texto: 'La actividad A = λ·N es el número medio de desintegraciones por segundo (becquerel). Se ve en las barras: baja al mismo ritmo que N, porque quedan menos núcleos que puedan decaer.', fr: 'A(t) = A₀·e^(−λ·t) ; 1 Bq = 1 désintégration par seconde.' },
+    ],
+    montar(host, api) {
+      const rng = PCB.util.rng ? PCB.util.rng(99) : Math.random;
+      const TV = 3; // segundos de pantalla por t½
+      const S = { N0: 20, tau: 0, vivos: [], hist: [], corre: false, hechas: [], act: 0, bin: [] };
+      function reinicia(S) { S.vivos = []; for (let i = 0; i < S.N0; i++) S.vivos.push(true); S.tau = 0; S.hist = [[0, S.N0]]; S.bin = []; S.corre = false; S.flash = []; }
+      reinicia(S);
+      const gx = (t) => 400 + (t / 5) * 370, gy = (f) => 330 - f * 250;
+      return escena(host, api, {
+        estado: S,
+        controles: [
+          { tipo: 'rango', id: 'N0', txt: 'N₀', min: 10, max: 400, paso: 10, val: 20, fmt: (v) => String(v) },
+          { tipo: 'btn', id: 'go', txt: '▶ Iniciar', al: (S, E) => { if (S.tau > 4.9 || !S.corre && S.tau > 0 && S.vivos.every((v) => !v)) reinicia(S); S.corre = true; } },
+          { tipo: 'btn', txt: '↺ Reiniciar', al: (S) => reinicia(S) },
+        ],
+        alCambiar(id, v, S) { reinicia(S); },
+        paso(dt, S) {
+          if (!S.corre) return; const dtau = dt / TV * (S.red ? 0.7 : 1), pr = 1 - Math.pow(0.5, dtau); let k = 0;
+          for (let i = 0; i < S.vivos.length; i++) if (S.vivos[i] && rng() < pr) { S.vivos[i] = false; k++; S.flash.push({ i, t: 0 }); }
+          S.tau += dtau; S.hist.push([S.tau, S.vivos.filter(Boolean).length]); S.act = k / dt; S.bin.push([S.tau, k / dtau / TV * 0 + k]); if (S.tau >= 5) S.corre = false;
+          S.flash.forEach((f) => (f.t += dt)); S.flash = S.flash.filter((f) => f.t < 0.4);
+        },
+        ir(n, S, E) { S.corre = false; if (n === 0) { E.set('N0', 20); reinicia(S); } else if (n === 1) { E.set('N0', 20); reinicia(S); S.corre = !S.red; if (S.red) { for (let i = 0; i < 40; i++) { /* sin animación: curva teórica */ } } } else if (n === 2) { E.set('N0', 400); reinicia(S); S.corre = true; } else if (n === 3) { E.set('N0', 200); reinicia(S); S.corre = true; } else { E.set('N0', 200); reinicia(S); S.corre = true; } },
+        dibujar(c, S) {
+          const n = S.n, N0 = S.N0, Nt = S.vivos.filter(Boolean).length;
+          // rejilla de núcleos
+          const cols = Math.ceil(Math.sqrt(N0 * 1.2)), cell = Math.min(270 / cols, 270 / Math.ceil(N0 / cols), 26), gx0 = 40, gy0 = 70;
+          txt(c, 'noyaux radioactifs', gx0 + 135, 52, { s: 13, c: T2 });
+          for (let i = 0; i < N0; i++) { const x = gx0 + (i % cols) * cell + cell / 2, y = gy0 + Math.floor(i / cols) * cell + cell / 2; const vivo = S.vivos[i]; circ(c, x, y, cell * 0.38, vivo ? '#ff3da6cc' : '#1b2650', vivo ? MG : '#2a376b', 1.2); }
+          S.flash.forEach((f) => { const x = gx0 + (f.i % cols) * cell + cell / 2, y = gy0 + Math.floor(f.i / cols) * cell + cell / 2; c.globalAlpha = 1 - f.t / 0.4; circ(c, x, y, cell * 0.4 + f.t * 40, null, '#fff', 1.6); c.globalAlpha = 1; });
+          txt(c, 'N(t) = ' + Nt + ' / ' + N0, 175, 360, { s: 16, b: 1, c: TX });
+          // gráfica N/N0 vs t/t½
+          lin(c, gx(0), gy(0), gx(5), gy(0), T2, 1); lin(c, gx(0), gy(0), gx(0), gy(1), T2, 1); txt(c, 'N / N₀', gx(0) + 4, gy(1) - 10, { s: 12, c: T2, a: 'left' }); txt(c, 't / t½', gx(5), gy(0) + 28, { s: 12, c: T2, a: 'right' });
+          for (let i = 0; i <= 5; i++) { lin(c, gx(i), gy(0), gx(i), gy(0) + 4, T2, 1); txt(c, String(i), gx(i), gy(0) + 14, { s: 11, c: T2 }); } [0.25, 0.5, 0.75, 1].forEach((f) => { lin(c, gx(0) - 4, gy(f), gx(0), gy(f), T2, 1); txt(c, String(f).replace('.', ','), gx(0) - 18, gy(f), { s: 11, c: T2 }); });
+          c.beginPath(); for (let t = 0; t <= 5.001; t += 0.05) { const x = gx(t), y = gy(Math.pow(0.5, t)); t ? c.lineTo(x, y) : c.moveTo(x, y); } c.strokeStyle = '#7b86ad'; c.lineWidth = 2; c.setLineDash([6, 5]); c.stroke(); c.setLineDash([]);
+          txt(c, 'N₀·e^(−λt)', gx(2.2), gy(0.5) - 24, { s: 12, c: '#aab4d4', a: 'left' });
+          c.beginPath(); S.hist.forEach((h, i) => { const x = gx(h[0]), y = gy(h[1] / N0); i ? c.lineTo(x, y) : c.moveTo(x, y); }); c.strokeStyle = MG; c.lineWidth = 2.6; c.stroke(); txt(c, 'simulación', gx(3.2), gy(0.5) + 38, { s: 12, c: MG, b: 1, a: 'left' });
+          if (n >= 3) { [[1, '1/2'], [2, '1/4'], [3, '1/8']].forEach(([k, f]) => { lin(c, gx(k), gy(0), gx(k), gy(Math.pow(0.5, k)), AM, 1.2, [4, 4]); lin(c, gx(0), gy(Math.pow(0.5, k)), gx(k), gy(Math.pow(0.5, k)), AM, 1.2, [4, 4]); circ(c, gx(k), gy(Math.pow(0.5, k)), 4, AM); txt(c, k === 1 ? 't½ → N₀/2' : k === 2 ? '2 t½ → N₀/4' : '3 t½ → N₀/8', gx(k) + 8, gy(Math.pow(0.5, k)) - 12, { s: 12, c: AM, b: 1, a: 'left' }); }); }
+          if (n >= 4) { const mx = 28; const tmax = 5; panel(c, 40, 380, 300, 26, GR); txt(c, 'A = λ·N ≈ ' + (S.corre ? Math.round(Nt * Math.LN2 / TV * 10) / 10 : 0).toFixed(1).replace('.', ',') + ' désint./s (en pantalla)', 190, 393, { s: 12, c: TX }); }
+          txt(c, S.tau.toFixed(2).replace('.', ',') + ' t½', gx(5), gy(1) - 10, { s: 13, c: AM, b: 1, a: 'right' });
+        },
+      });
+    },
+    test: [
+      { pregunta: 'Si empiezas con N₀ núcleos, ¿cuántos quedan tras 2 t½?', opciones: ['N₀/4', 'cero', 'N₀/2'], correcta: 0, explicacion: 'Cada t½ queda la mitad de los que había: N₀/2 y después N₀/4.' },
+      { pregunta: 'La desintegración de un núcleo concreto…', opciones: ['es aleatoria: no se puede predecir cuándo', 'ocurre siempre en t½', 'depende de cuántos núcleos haya'], correcta: 0, explicacion: 'Solo el conjunto sigue una ley estadística (p. 137).' },
+      { pregunta: 'La semivida t½ depende de…', opciones: ['el tipo de núcleo (λ)', 'el número inicial de núcleos', 'la temperatura de la muestra'], correcta: 0, explicacion: 't½ = ln2/λ es característica del núcleo radiactivo.' },
+    ],
+  });
+
+  // ---- 5.4 Datación por carbono 14 (p. 134, 138, 143 ex. 23) ----
+  reg({
+    id: 'datation-c14', capitulos: ['nucleaires'], titulo: 'Datación con carbono 14: un reloj que se apaga', fr: 'Principe de la datation au carbone 14', pagina_pdf: 138,
+    resumen: 'Un ser vivo renueva su ¹⁴C y mantiene constante la proporción ¹⁴C/¹²C. Al morir, el ¹⁴C ya no se renueva y su actividad cae como e^(−λt): midiéndola se deduce la edad.',
+    pasos: [
+      { titulo: 'En vida: proporción constante', texto: 'Mientras vive, el organismo intercambia carbono con el entorno: cada ¹⁴C que decae es reemplazado por otro nuevo. La proporción ¹⁴C/¹²C permanece prácticamente constante.', fr: 'La proportion ¹⁴C/¹²C est quasi constante chez les êtres vivants.' },
+      { titulo: 'Al morir: se corta la renovación', texto: 'Tras la muerte (t = 0) ya no entra ¹⁴C nuevo. El ¹²C, estable, no cambia; el ¹⁴C, radiactivo, empieza a decaer. Mueve el deslizador «Edad» para ver cómo se apaga.', fr: 'À sa mort, le ¹⁴C n’est plus renouvelé.' },
+      { titulo: 'La actividad cae como e^(−λt)', texto: 'La actividad A(t) = A₀·e^(−λt) cae a la mitad cada t½. Con λ(¹⁴C) = 3,87·10⁻¹² s⁻¹ (ex. 23) sale t½ ≈ 5,7·10³ años: cada ≈ 5 700 años se pierde la mitad del ¹⁴C.', fr: 'A(t) = A₀·e^(−λ·t)' },
+      { titulo: 'Medir A y despejar la edad', texto: 'Ejemplo del cours (ex. 23): un trozo de madera de un drakkar tiene A = 12,0 desint./min por gramo de carbono, frente a A₀ = 13,6 del carbono vivo. De t = (1/λ)·ln(A₀/A) sale t ≈ 1,03·10³ años. Pulsa «Madera del drakkar».', fr: 't = (1/λ)·ln(A₀ / A(t))' },
+      { titulo: 'Un reloj con ritmo fijo', texto: 'Cada t½ la actividad se divide por 2: 1/2, 1/4, 1/8… Por eso el método sirve para edades de algunos miles de años; con muy poco ¹⁴C restante la medida deja de ser fiable.', fr: 'La loi de décroissance permet de dater un échantillon.' },
+    ],
+    montar(host, api) {
+      const LAM = 3.87e-12, AN = 365.25 * 86400, T12 = Math.LN2 / LAM / AN, A0 = 13.6; // años, desint/min/g
+      const rng = PCB.util.rng ? PCB.util.rng(21) : Math.random;
+      const S = { edad: 0, meta: null, vivo: true };
+      const gx = (t) => 410 + (t / 20000) * 350, gy = (a) => 298 - (a / 14) * 215;
+      const C12 = []; for (let i = 0; i < 30; i++) C12.push({ x: 70 + rng() * 270, y: 118 + rng() * 150, ph: rng() * 6 });
+      const C14 = []; for (let i = 0; i < 24; i++) C14.push({ x: 70 + rng() * 270, y: 118 + rng() * 150, ph: rng() * 6, u: rng() });
+      return escena(host, api, {
+        estado: S,
+        controles: [
+          { tipo: 'rango', id: 'edad', txt: 'Edad', min: 0, max: 20000, paso: 50, val: 0, fmt: (v) => Math.round(v).toLocaleString('es') + ' años' },
+          { tipo: 'btn', txt: '🛶 Madera del drakkar', al: (S, E) => { S.vivo = false; S.meta = null; E.set('edad', 1025); S.drak = true; } },
+          { tipo: 'btn', txt: '▶ Recorrer', al: (S, E) => { S.vivo = false; E.set('edad', 0); S.meta = 20000; S.drak = false; if (S.red) { S.meta = null; E.set('edad', 5700); } } },
+        ],
+        alCambiar(id, v, S) { S.meta = null; S.drak = false; S.vivo = false; },
+        paso(dt, S, E) { if (S.meta != null) { const v = S.edad + dt * 2600; if (v >= S.meta) { E.set('edad', S.meta); S.meta = null; } else E.set('edad', v); } },
+        ir(n, S, E) { S.meta = null; S.drak = false; S.vivo = n === 0; if (n === 0) E.set('edad', 0); else if (n === 1) E.set('edad', 0); else if (n === 2) { E.set('edad', 0); if (S.red) E.set('edad', 5700); else S.meta = 11500; } else if (n === 3) { E.set('edad', 1025); S.drak = true; } else { E.set('edad', 0); if (S.red) E.set('edad', 17100); else S.meta = 17200; } },
+        dibujar(c, S) {
+          const n = S.n, t = S.edad, f = Math.exp(-LAM * t * AN), A = A0 * f, vivo = S.vivo && n === 0;
+          // organismo
+          rr(c, 50, 86, 310, 210, 18); c.fillStyle = vivo ? '#143a2e66' : '#2a1a2e66'; c.fill(); c.strokeStyle = vivo ? VE : '#7b86ad'; c.lineWidth = 2.5; c.stroke();
+          txt(c, vivo ? 'ser vivo : renueva su carbono' : 'ser muerto : sin renovación', 205, 70, { s: 13, b: 1, c: vivo ? VE : T2 });
+          C12.forEach((p) => { circ(c, p.x + Math.sin(S.t * 1.5 + p.ph) * 4, p.y + Math.cos(S.t * 1.2 + p.ph) * 4, 6, '#aab4d4aa', '#aab4d4', 1.2); });
+          const rest = vivo ? 24 : Math.round(24 * f);
+          C14.forEach((p, i) => { if (i < rest) { c.globalAlpha = 1; circ(c, p.x + Math.sin(S.t * 1.7 + p.ph) * 4, p.y + Math.cos(S.t * 1.3 + p.ph) * 4, 6.5, '#ff3da6cc', MG, 1.5); } else if (!vivo) { c.globalAlpha = 0.12; circ(c, p.x, p.y, 6.5, null, MG, 1); c.globalAlpha = 1; } });
+          c.globalAlpha = 1;
+          if (vivo) { const k = 0.5 + 0.5 * Math.sin(S.t * 3); c.globalAlpha = k; flecha(c, 40, 190, 70, 190, VE, 2); c.globalAlpha = 1; txt(c, 'entra ¹⁴C nuevo', 40, 308, { s: 12, c: VE, a: 'left' }); }
+          [['¹²C (estable)', '#aab4d4'], ['¹⁴C (radiactivo)', MG]].forEach((l, i) => { circ(c, 62 + i * 160, 322, 6, l[1] + 'aa', l[1], 1.3); txt(c, l[0], 74 + i * 160, 322, { s: 12, a: 'left' }); });
+          txt(c, '¹⁴C/¹²C : ' + (vivo ? '100' : Math.round(f * 100)) + ' % del valor en vida', 205, 350, { s: 14, b: 1, c: TX });
+          // gráfica A(t)
+          lin(c, gx(0), gy(0), gx(20000), gy(0), T2, 1); lin(c, gx(0), gy(0), gx(0), gy(14), T2, 1);
+          txt(c, 'A (desint./min/g de C)', gx(0) + 4, gy(14) - 12, { s: 12, c: T2, a: 'left' }); txt(c, 'edad (años)', gx(20000), gy(0) + 27, { s: 12, c: T2, a: 'right' });
+          [0, 5000, 10000, 15000, 20000].forEach((v) => { lin(c, gx(v), gy(0), gx(v), gy(0) + 4, T2, 1); txt(c, v / 1000 + ' k', gx(v), gy(0) + 14, { s: 11, c: T2 }); }); [0, 5, 10].forEach((v) => { lin(c, gx(0) - 4, gy(v), gx(0), gy(v), T2, 1); txt(c, String(v), gx(0) - 14, gy(v), { s: 11, c: T2 }); });
+          lin(c, gx(0), gy(A0), gx(20000), gy(A0), '#ffffff22', 1, [5, 5]); txt(c, 'A₀ = 13,6', gx(20000) - 4, gy(A0) - 10, { s: 12, c: T2, a: 'right' });
+          c.beginPath(); for (let tt = 0; tt <= 20000; tt += 200) { const x = gx(tt), y = gy(A0 * Math.exp(-LAM * tt * AN)); tt ? c.lineTo(x, y) : c.moveTo(x, y); } c.strokeStyle = MG; c.lineWidth = 3; c.stroke();
+          if (n >= 2) { [1, 2, 3].forEach((k) => { const tk = k * T12, ak = A0 * Math.pow(0.5, k); if (tk < 20000) { lin(c, gx(tk), gy(0), gx(tk), gy(ak), AM, 1.2, [4, 4]); lin(c, gx(0), gy(ak), gx(tk), gy(ak), AM, 1.2, [4, 4]); circ(c, gx(tk), gy(ak), 3.5, AM); txt(c, (k === 1 ? 't½ ' : k + ' t½ ') + '→ ' + (ak).toFixed(1).replace('.', ','), gx(tk) + 6, gy(ak) - 10, { s: 11, c: AM, a: 'left' }); } }); }
+          if (!vivo) { circ(c, gx(t), gy(A), 6, '#fff', MG, 2); lin(c, gx(t), gy(A), gx(t), gy(0), '#fff', 1, [3, 3]); }
+          if (S.drak || n === 3) { lin(c, gx(0), gy(12.0), gx(1025), gy(12.0), VE, 1.5, [5, 4]); txt(c, 'A = 12,0', gx(1025) + 150, gy(12.0) - 14, { s: 12, c: VE, b: 1 }); }
+          panel(c, 410, 332 - 0, 350, 74, GR);
+          txt(c, 'A(t) = ' + A0.toString().replace('.', ',') + ' · e^(−λt) = ' + A.toFixed(1).replace('.', ',') + ' desint./min/g', 585, 350, { s: 13, b: 1, c: TX });
+          txt(c, vivo ? 'ser vivo: A ≈ A₀ (se renueva)' : 'edad = ' + Math.round(t).toLocaleString('es') + ' años  ·  t½ ≈ ' + Math.round(T12).toLocaleString('es') + ' años', 585, 372, { s: 13, c: AM });
+          txt(c, S.drak ? 't = (1/λ)·ln(13,6/12,0) ≈ 1,03·10³ años' : 't = (1/λ)·ln(A₀/A)', 585, 394, { s: 12, c: T2 });
+        },
+      });
+    },
+    test: [
+      { pregunta: '¿Por qué en un ser vivo la proporción ¹⁴C/¹²C es constante?', opciones: ['Porque renueva su carbono y el ¹⁴C que decae se reemplaza', 'Porque el ¹⁴C no es radiactivo', 'Porque no hay ¹²C'], correcta: 0, explicacion: 'Al morir ya no se renueva y la proporción baja (p. 134).' },
+      { pregunta: 'Si un resto tiene A = A₀/2, su edad es…', opciones: ['un t½ del ¹⁴C (≈ 5,7·10³ años)', '2 t½', 'cero'], correcta: 0, explicacion: 'La actividad se divide por 2 en cada t½.' },
+      { pregunta: 'Para fechar con ¹⁴C hay que conocer…', opciones: ['A₀ (o N₀) y medir A(t) (o N(t))', 'solo la masa de la muestra', 'solo la temperatura'], correcta: 0, explicacion: 'La ley de decaimiento permite fechar si se conoce A₀ y se mide A(t) (p. 138).' },
     ],
   });
 
